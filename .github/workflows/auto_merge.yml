@@ -22,39 +22,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Wait for the PR to be mergeable with all checks passed
-      - name: Wait for mergeable state
-        id: wait-mergeable
+      # Check PR mergeability
+      - name: Check PR status
+        id: pr-check
         uses: actions/github-script@v6
         with:
           script: |
-            const pull_number = context.payload.pull_request.number;
-            let mergeableState = '';
-            let tries = 0;
+            const pr = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+            const mergeable = pr.data.mergeable;
+            const state = pr.data.mergeable_state;
 
-            do {
-              const pr = await github.rest.pulls.get({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number
-              });
+            if (!mergeable || state !== 'clean') {
+              core.setFailed(`PR is not mergeable: mergeable=${mergeable}, state=${state}`);
+            }
 
-              mergeableState = pr.data.mergeable_state;
-
-              if (mergeableState === 'clean') {
-                break;
-              }
-
-              if (tries >= 10) {  // Timeout after 10 attempts
-                core.setFailed(`PR did not become mergeable within the timeout: current state is '${mergeableState}'`);
-              }
-
-              console.log(`Waiting for PR to become mergeable... Current state: ${mergeableState}`);
-              await new Promise(resolve => setTimeout(resolve, 10000)); // Wait 10 seconds
-              tries++;
-            } while (mergeableState !== 'clean');
-
-      # Automatically merge the PR
+      # Automatically merge the PR if checks have passed
       - name: Merge the pull request
         uses: actions/github-script@v6
         with:
