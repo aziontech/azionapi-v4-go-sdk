@@ -1,0 +1,524 @@
+openapi: 3.0.3
+info:
+  description: REST API OpenAPI documentation for the EdgeSQL API
+  title: edgesql-api
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /edge_sql/databases:
+    get:
+      description: List all databases owned by your account.
+      operationId: list databases
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A numeric value that indicates the number of items per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseListDatabaseList'
+          description: ""
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: List databases
+      tags:
+      - Edge SQL
+    post:
+      description: Create a new database for your account.
+      operationId: create database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DatabaseRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DatabaseRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Database'
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDatabase'
+          description: ""
+        "409":
+          description: Conflict
+        "422":
+          description: Unprocessable Entity
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Create a database
+      tags:
+      - Edge SQL
+  /edge_sql/databases/{id}:
+    delete:
+      description: Schedule the destruction of a specific database in your account.
+      operationId: destroy database
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteDatabase'
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteDatabase'
+          description: ""
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Destroy a database
+      tags:
+      - Edge SQL
+    get:
+      description: Retrieve details from a specific database in your account.
+      operationId: retrive database
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRetrieveDatabase'
+          description: ""
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Retrieve details from a database
+      tags:
+      - Edge SQL
+  /edge_sql/databases/{id}/query:
+    post:
+      description: Execute a query into a database for your account.
+      operationId: execute query
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SQLStatementsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SQLStatementsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SQLStatementsRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Database'
+          description: ""
+        "422":
+          description: Unprocessable Entity
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Execute a query into a database
+      tags:
+      - Edge SQL
+components:
+  schemas:
+    Database:
+      additionalProperties: false
+      example:
+        is_active: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 0
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+        client_id: client_id
+        status: "{}"
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 50
+          minLength: 6
+          pattern: "^[A-Za-z0-9-]{6,50}$"
+          type: string
+        client_id:
+          readOnly: true
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        created_at:
+          format: date-time
+          readOnly: true
+          type: string
+        updated_at:
+          format: date-time
+          readOnly: true
+          type: string
+        deleted_at:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        is_active:
+          type: boolean
+      required:
+      - client_id
+      - created_at
+      - deleted_at
+      - id
+      - name
+      - updated_at
+      title: Database
+      type: object
+    DatabaseRequest:
+      additionalProperties: false
+      example:
+        is_active: true
+        name: name
+        status: "{}"
+      properties:
+        name:
+          maxLength: 50
+          minLength: 6
+          pattern: "^[A-Za-z0-9-]{6,50}$"
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        is_active:
+          type: boolean
+      required:
+      - name
+      title: DatabaseRequest
+      type: object
+    PaginatedResponseListDatabaseList:
+      additionalProperties: false
+      example:
+        count: 123
+        results:
+        - is_active: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 0
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          client_id: client_id
+          status: "{}"
+        - is_active: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 0
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          client_id: client_id
+          status: "{}"
+      properties:
+        count:
+          example: 123
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseListDatabase'
+          type: array
+      title: PaginatedResponseListDatabaseList
+      type: object
+    ResponseDatabase:
+      additionalProperties: false
+      example:
+        data:
+          is_active: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 0
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          client_id: client_id
+          status: "{}"
+        state: "{}"
+      properties:
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        data:
+          $ref: '#/components/schemas/Database'
+      required:
+      - data
+      - state
+      title: ResponseDatabase
+      type: object
+    ResponseDeleteDatabase:
+      additionalProperties: false
+      example:
+        data: ""
+        state: "{}"
+      properties:
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        data:
+          allOf:
+          - $ref: '#/components/schemas/Database'
+          nullable: true
+      required:
+      - data
+      - state
+      title: ResponseDeleteDatabase
+      type: object
+    ResponseListDatabase:
+      additionalProperties: false
+      example:
+        is_active: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 0
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+        client_id: client_id
+        status: "{}"
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 50
+          minLength: 6
+          pattern: "^[A-Za-z0-9-]{6,50}$"
+          type: string
+        client_id:
+          readOnly: true
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        created_at:
+          format: date-time
+          readOnly: true
+          type: string
+        updated_at:
+          format: date-time
+          readOnly: true
+          type: string
+        deleted_at:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        is_active:
+          type: boolean
+      required:
+      - client_id
+      - created_at
+      - deleted_at
+      - id
+      - name
+      - updated_at
+      title: ResponseListDatabase
+      type: object
+    ResponseRetrieveDatabase:
+      additionalProperties: false
+      example:
+        data:
+          is_active: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 0
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          client_id: client_id
+          status: "{}"
+      properties:
+        data:
+          $ref: '#/components/schemas/Database'
+      required:
+      - data
+      title: ResponseRetrieveDatabase
+      type: object
+    SQLStatementsRequest:
+      additionalProperties: false
+      example:
+        statements:
+        - statements
+        - statements
+        - statements
+        - statements
+        - statements
+      properties:
+        statements:
+          items:
+            type: string
+          maxItems: 1000
+          type: array
+      required:
+      - statements
+      title: SQLStatementsRequest
+      type: object
+    StateEnum:
+      additionalProperties: false
+      enum:
+      - pending
+      - executed
+      title: StateEnum
+      type: object
+    StatusEnum:
+      additionalProperties: false
+      enum:
+      - creating
+      - creation_failed
+      - created
+      - deleting
+      - deletion_failed
+      - deleted
+      title: StatusEnum
+      type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http
+    TokenAuth:
+      description: Token-based authentication with required prefix "Token"
+      in: header
+      name: Authorization
+      type: apiKey
