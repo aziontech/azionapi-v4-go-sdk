@@ -10,14 +10,14 @@ jobs:
 
     steps:
       - name: Checkout PR branch
-        if: ${{ contains(github.event.pull_request.title, 'Patch yml') }}  # Runs only if "Patch yml" is NOT in the PR title
+        if: ${{ contains(github.event.pull_request.title, 'Patch yml') }}  # Runs only if "Patch yml" is in the PR title
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 2
 
       - name: Find newly committed files
-        if: ${{ contains(github.event.pull_request.title, 'Patch yml') }}  # Runs only if "Patch yml" is NOT in the PR title
+        if: ${{ contains(github.event.pull_request.title, 'Patch yml') }}  # Runs only if "Patch yml" is in the PR title
         id: find_files
         run: |
           FILES=$(git diff --name-only --diff-filter=A ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
@@ -30,7 +30,7 @@ jobs:
           echo "EOF" >> $GITHUB_ENV
 
       - name: Apply corresponding patches
-        if: ${{ contains(github.event.pull_request.title, 'Patch yml') }}  # Runs only if "Patch yml" is NOT in the PR title
+        if: ${{ contains(github.event.pull_request.title, 'Patch yml') }}  # Runs only if "Patch yml" is in the PR title
         run: |
           while read -r FILE; do
             PATCH_FILE="${FILE}.patch"
@@ -43,7 +43,7 @@ jobs:
           done <<< "$NEW_FILES"
 
       - name: Commit and push changes
-        if: ${{ contains(github.event.pull_request.title, 'Patch yml') }}  # Runs only if "Patch yml" is NOT in the PR title
+        if: ${{ contains(github.event.pull_request.title, 'Patch yml') }}  # Runs only if "Patch yml" is in the PR title
         run: |
           if git diff --quiet; then
             echo "No changes after patching. Skipping commit."
@@ -63,6 +63,7 @@ jobs:
         pull-requests: write
     steps:
       - name: automerge
+        if: ${{ contains(github.event.pull_request.title, '#automerge') }}  # Runs only if "#automerge" is in the PR title
         id: automerge
         uses: "pascalgn/automerge-action@v0.16.4"
         env:
