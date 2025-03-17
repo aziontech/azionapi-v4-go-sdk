@@ -51,7 +51,7 @@ jobs:
       - name: Get Changed .yml Files
         id: changed-files
         run: |
-          echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | grep '\.yml$' | xargs)" >> $GITHUB_OUTPUT
+          echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | grep '\.yaml$' | xargs)" >> $GITHUB_OUTPUT
 
       - name: Run OpenAPI Generator for Changed Files
         run: |
