@@ -70,7 +70,6 @@ func (v NullableStateEnum) IsSet() bool {
 }
 
 func (v *NullableStateEnum) Unset() {
-	v.value = nil
 	v.isSet = false
 }
 
