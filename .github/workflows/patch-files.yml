@@ -3,6 +3,8 @@ name: Apply Patch to Committed Files if necessary and Automerge PRs
 on:
   pull_request:
     types: [opened, edited, reopened]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
 
 jobs:
   apply_patch:
@@ -51,9 +53,10 @@ jobs:
           fi
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout ${{ github.event.pull_request.head.ref }}
           git add .
-          git commit -m "Applied patches to new files"
-          git push
+          git commit -m "chore: applied patches to new files"
+          git push origin ${{ github.event.pull_request.head.ref }}
 
   automerge:
     needs: apply_patch
