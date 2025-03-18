@@ -1,0 +1,2046 @@
+--- /Users/patrick.menoti/Documents/azionapi-v4-openapi/edge.yaml	2025-03-13 16:49:51
++++ edge.yaml	2025-03-14 10:45:38
+@@ -1085,7 +1085,7 @@
+             application/json:
+               schema:
+                 $ref: '#/components/schemas/ResponseDeleteEdgeApplicationDeviceGroups'
+-          description: ''
++          description: 'Success'
+         '202':
+           content:
+             application/json:
+@@ -6361,10 +6361,6 @@
+         name: purgeType
+         schema:
+           type: string
+-          enum:
+-          - cachekey
+-          - url
+-          - wildcard
+         description: 'type of purge: URL, Wildcard or Cachekey'
+         required: true
+       tags:
+@@ -7218,15 +7214,11 @@
+ components:
+   schemas:
+     AdaptiveDeliveryActionEnum:
+-      enum:
+-      - ignore
+-      - whitelist
+       type: string
+       description: |-
+         * `ignore` - Ignore
+         * `whitelist` - Whitelist
+       title: AdaptiveDeliveryActionEnum
+-      additionalProperties: false
+     ApplicationControlsModule:
+       type: object
+       properties:
+@@ -7293,11 +7285,6 @@
+       - query_string_sort_enabled
+       title: ApplicationControlsModuleRequest
+       additionalProperties: false
+-    BlankEnum:
+-      enum:
+-      - ''
+-      title: BlankEnum
+-      additionalProperties: false
+     BrowserCacheModule:
+       type: object
+       properties:
+@@ -7313,17 +7300,12 @@
+       title: BrowserCacheModule
+       additionalProperties: false
+     BrowserCacheModuleBehaviorEnum:
+-      enum:
+-      - honor
+-      - override
+-      - no-cache
+       type: string
+       description: |-
+         * `honor` - Honor Origin Cache Headers
+         * `override` - Override Cache Settings
+         * `no-cache` - No Cache
+       title: BrowserCacheModuleBehaviorEnum
+-      additionalProperties: false
+     BrowserCacheModuleRequest:
+       type: object
+       properties:
+@@ -7339,11 +7321,6 @@
+       title: BrowserCacheModuleRequest
+       additionalProperties: false
+     CacheByCookiesEnum:
+-      enum:
+-      - ignore
+-      - whitelist
+-      - blacklist
+-      - all
+       type: string
+       description: |-
+         * `ignore` - Content does not vary by Cookies (Improves Caching)
+@@ -7351,13 +7328,7 @@
+         * `blacklist` - Content varies by Cookies, with the exception of a few (Blacklist)
+         * `all` - Content varies by all Cookies
+       title: CacheByCookiesEnum
+-      additionalProperties: false
+     CacheByQueryStringEnum:
+-      enum:
+-      - ignore
+-      - whitelist
+-      - blacklist
+-      - all
+       type: string
+       description: |-
+         * `ignore` - Content does not vary by Query String (Improves Caching)
+@@ -7365,7 +7336,6 @@
+         * `blacklist` - Content varies by Query String, except for some fields (Blacklist)
+         * `all` - Content varies by all Query String fields
+       title: CacheByQueryStringEnum
+-      additionalProperties: false
+     CacheSetting:
+       type: object
+       properties:
+@@ -7466,20 +7436,6 @@
+       - subject
+       title: CaptureMatchGroupsArgumentRequest
+       additionalProperties: false
+-    CiphersEnum:
+-      enum:
+-      - TLSv1.2_2018
+-      - TLSv1.2_2019
+-      - TLSv1.3_2022
+-      - TLSv1.2_2021
+-      type: string
+-      description: |-
+-        * `TLSv1.2_2018` - TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES256-SHA384:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256
+-        * `TLSv1.2_2019` - ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-SHA256:TLS_AES_256_GCM_SHA384:ECDHE-RSA-AES128-GCM-SHA256:TLS_CHACHA20_POLY1305_SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:TLS_AES_128_GCM_SHA256
+-        * `TLSv1.3_2022` - ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-GCM-SHA256
+-        * `TLSv1.2_2021` - ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-CHACHA20-POLY1305:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:TLS_AES_128_GCM_SHA256
+-      title: CiphersEnum
+-      additionalProperties: false
+     CloneEdgeApplicationRequest:
+       type: object
+       properties:
+@@ -7517,30 +7473,6 @@
+       title: CloneWAFRequest
+       additionalProperties: false
+     CodeEnum:
+-      enum:
+-      - 400
+-      - 401
+-      - 403
+-      - 404
+-      - 405
+-      - 406
+-      - 408
+-      - 409
+-      - 410
+-      - 411
+-      - 414
+-      - 415
+-      - 416
+-      - 426
+-      - 429
+-      - 431
+-      - 500
+-      - 501
+-      - 502
+-      - 503
+-      - 504
+-      - 505
+-      - any
+       description: |-
+         * `400` - 400: Bad Request
+         * `401` - 401: Unauthorized
+@@ -7565,13 +7497,10 @@
+         * `504` - 504: Gateway Timeout
+         * `505` - 505: HTTP Version Not Supported
+         * `any` - any
++      type: integer
++      format: int64
+       title: CodeEnum
+-      additionalProperties: false
+     ConditionalEnum:
+-      enum:
+-      - if
+-      - or
+-      - and
+       type: string
+       description: |-
+         * `if` - if
+@@ -7580,12 +7509,6 @@
+       title: ConditionalEnum
+       additionalProperties: false
+     CrossSiteScriptingSensitivityEnum:
+-      enum:
+-      - lowest
+-      - low
+-      - medium
+-      - high
+-      - highest
+       type: string
+       description: |-
+         * `lowest` - lowest
+@@ -7606,12 +7529,6 @@
+       title: DefaultErrorResponse
+       additionalProperties: false
+     DirectoryTraversalSensitivityEnum:
+-      enum:
+-      - lowest
+-      - low
+-      - medium
+-      - high
+-      - highest
+       type: string
+       description: |-
+         * `lowest` - lowest
+@@ -7632,7 +7549,6 @@
+           minLength: 1
+         allow_access:
+           type: boolean
+-          default: true
+       title: DomainInfo
+       additionalProperties: false
+     DomainInfoRequest:
+@@ -7646,7 +7562,6 @@
+           maxLength: 250
+         allow_access:
+           type: boolean
+-          default: true
+       title: DomainInfoRequest
+       additionalProperties: false
+     EdgeApplication:
+@@ -7681,10 +7596,8 @@
+           $ref: '#/components/schemas/EdgeApplicationModules'
+         active:
+           type: boolean
+-          default: true
+         debug:
+           type: boolean
+-          default: false
+       required:
+       - id
+       - last_editor
+@@ -7720,31 +7633,6 @@
+       title: EdgeApplicationBehaviorFieldRequest
+       additionalProperties: false
+     EdgeApplicationBehaviorNameField:
+-      enum:
+-      - deny
+-      - run_function
+-      - no_content
+-      - deliver
+-      - finish_request_phase
+-      - redirect_to_301
+-      - redirect_to_302
+-      - forward_cookies
+-      - optimize_images
+-      - set_origin
+-      - set_cache_policy
+-      - bypass_cache_phase
+-      - enable_gzip
+-      - redirect_http_to_https
+-      - set_cookie
+-      - rewrite_request
+-      - add_request_header
+-      - filter_request_header
+-      - add_response_header
+-      - filter_response_header
+-      - capture_match_groups
+-      - add_request_cookie
+-      - filter_response_cookie
+-      - filter_request_cookie
+       type: string
+       description: |-
+         * `deny` - deny
+@@ -7772,7 +7660,6 @@
+         * `filter_response_cookie` - filter_response_cookie
+         * `filter_request_cookie` - filter_request_cookie
+       title: EdgeApplicationBehaviorNameField
+-      additionalProperties: false
+     EdgeApplicationBehaviorPolymorphicArgument:
+       oneOf:
+       - type: integer
+@@ -7849,13 +7736,12 @@
+           allOf:
+           - $ref: '#/components/schemas/EdgeApplicationCriterionPolymorphicArgument'
+           nullable: true
+-          default: ''
+         variable:
+-          $ref: '#/components/schemas/EdgeApplicationCriterionFieldVariableEnum'
++          type: string
+         conditional:
+-          $ref: '#/components/schemas/ConditionalEnum'
++          type: string
+         operator:
+-          $ref: '#/components/schemas/OperatorEnum'
++          type: string
+       required:
+       - conditional
+       - operator
+@@ -7922,114 +7808,17 @@
+           allOf:
+           - $ref: '#/components/schemas/EdgeApplicationCriterionPolymorphicArgumentRequest'
+           nullable: true
+-          default: ''
+         variable:
+-          $ref: '#/components/schemas/EdgeApplicationCriterionFieldVariableEnum'
++          type: string
+         conditional:
+-          $ref: '#/components/schemas/ConditionalEnum'
++          type: string
+         operator:
+-          $ref: '#/components/schemas/OperatorEnum'
++          type: string
+       required:
+       - conditional
+       - operator
+       - variable
+       title: EdgeApplicationCriterionFieldRequest
+-      additionalProperties: false
+-    EdgeApplicationCriterionFieldVariableEnum:
+-      enum:
+-      - ${arg_<name>}
+-      - ${args}
+-      - ${cookie_<name>}
+-      - ${device_group}
+-      - ${geoip_city_continent_code}
+-      - ${geoip_city_country_code}
+-      - ${geoip_city_country_name}
+-      - ${geoip_city}
+-      - ${geoip_continent_code}
+-      - ${geoip_country_code}
+-      - ${geoip_country_name}
+-      - ${geoip_region_name}
+-      - ${geoip_region}
+-      - ${host}
+-      - ${domain}
+-      - ${http_<header_name>}
+-      - ${remote_addr}
+-      - ${remote_user}
+-      - ${request_method}
+-      - ${request_uri}
+-      - ${request}
+-      - ${scheme}
+-      - ${sent_http_<header_name>}
+-      - ${status}
+-      - ${upstream_addr}
+-      - ${upstream_cookie_<name>}
+-      - ${upstream_http_<header_name>}
+-      - ${upstream_status}
+-      - ${uri}
+-      - ${server_addr}
+-      - ${server_port}
+-      - ${ssl_client_cert}
+-      - ${ssl_client_escaped_cert}
+-      - ${ssl_client_fingerprint}
+-      - ${ssl_client_i_dn}
+-      - ${ssl_client_s_dn_parsed}
+-      - ${ssl_client_s_dn}
+-      - ${ssl_client_serial}
+-      - ${ssl_client_v_end}
+-      - ${ssl_client_v_remain}
+-      - ${ssl_client_v_start}
+-      - ${ssl_client_verify}
+-      - ${tcpinfo_rtt}
+-      - ${remote_port}
+-      - ${request_body}
+-      type: string
+-      description: |-
+-        * `${arg_<name>}` - ${arg_<name>}
+-        * `${args}` - ${args}
+-        * `${cookie_<name>}` - ${cookie_<name>}
+-        * `${device_group}` - ${device_group}
+-        * `${geoip_city_continent_code}` - ${geoip_city_continent_code}
+-        * `${geoip_city_country_code}` - ${geoip_city_country_code}
+-        * `${geoip_city_country_name}` - ${geoip_city_country_name}
+-        * `${geoip_city}` - ${geoip_city}
+-        * `${geoip_continent_code}` - ${geoip_continent_code}
+-        * `${geoip_country_code}` - ${geoip_country_code}
+-        * `${geoip_country_name}` - ${geoip_country_name}
+-        * `${geoip_region_name}` - ${geoip_region_name}
+-        * `${geoip_region}` - ${geoip_region}
+-        * `${host}` - ${host}
+-        * `${domain}` - ${domain}
+-        * `${http_<header_name>}` - ${http_<header_name>}
+-        * `${remote_addr}` - ${remote_addr}
+-        * `${remote_user}` - ${remote_user}
+-        * `${request_method}` - ${request_method}
+-        * `${request_uri}` - ${request_uri}
+-        * `${request}` - ${request}
+-        * `${scheme}` - ${scheme}
+-        * `${sent_http_<header_name>}` - ${sent_http_<header_name>}
+-        * `${status}` - ${status}
+-        * `${upstream_addr}` - ${upstream_addr}
+-        * `${upstream_cookie_<name>}` - ${upstream_cookie_<name>}
+-        * `${upstream_http_<header_name>}` - ${upstream_http_<header_name>}
+-        * `${upstream_status}` - ${upstream_status}
+-        * `${uri}` - ${uri}
+-        * `${server_addr}` - ${server_addr}
+-        * `${server_port}` - ${server_port}
+-        * `${ssl_client_cert}` - ${ssl_client_cert}
+-        * `${ssl_client_escaped_cert}` - ${ssl_client_escaped_cert}
+-        * `${ssl_client_fingerprint}` - ${ssl_client_fingerprint}
+-        * `${ssl_client_i_dn}` - ${ssl_client_i_dn}
+-        * `${ssl_client_s_dn_parsed}` - ${ssl_client_s_dn_parsed}
+-        * `${ssl_client_s_dn}` - ${ssl_client_s_dn}
+-        * `${ssl_client_serial}` - ${ssl_client_serial}
+-        * `${ssl_client_v_end}` - ${ssl_client_v_end}
+-        * `${ssl_client_v_remain}` - ${ssl_client_v_remain}
+-        * `${ssl_client_v_start}` - ${ssl_client_v_start}
+-        * `${ssl_client_verify}` - ${ssl_client_verify}
+-        * `${tcpinfo_rtt}` - ${tcpinfo_rtt}
+-        * `${remote_port}` - ${remote_port}
+-        * `${request_body}` - ${request_body}
+-      title: EdgeApplicationCriterionFieldVariableEnum
+       additionalProperties: false
+     EdgeApplicationCriterionPolymorphicArgument:
+       oneOf:
+@@ -8149,19 +7938,14 @@
+       properties:
+         edge_cache_enabled:
+           type: boolean
+-          default: true
+         edge_functions_enabled:
+           type: boolean
+-          default: false
+         application_accelerator_enabled:
+           type: boolean
+-          default: false
+         image_processor_enabled:
+           type: boolean
+-          default: false
+         tiered_cache_enabled:
+           type: boolean
+-          default: false
+       title: EdgeApplicationModules
+       additionalProperties: false
+     EdgeApplicationModulesRequest:
+@@ -8169,19 +7953,14 @@
+       properties:
+         edge_cache_enabled:
+           type: boolean
+-          default: true
+         edge_functions_enabled:
+           type: boolean
+-          default: false
+         application_accelerator_enabled:
+           type: boolean
+-          default: false
+         image_processor_enabled:
+           type: boolean
+-          default: false
+         tiered_cache_enabled:
+           type: boolean
+-          default: false
+       title: EdgeApplicationModulesRequest
+       additionalProperties: false
+     EdgeApplicationRequest:
+@@ -8196,10 +7975,8 @@
+           $ref: '#/components/schemas/EdgeApplicationModulesRequest'
+         active:
+           type: boolean
+-          default: true
+         debug:
+           type: boolean
+-          default: false
+       required:
+       - name
+       title: EdgeApplicationRequest
+@@ -8219,7 +7996,6 @@
+           $ref: '#/components/schemas/PhaseEnum'
+         active:
+           type: boolean
+-          default: true
+         behaviors:
+           type: array
+           items:
+@@ -8294,7 +8070,6 @@
+           $ref: '#/components/schemas/PhaseEnum'
+         active:
+           type: boolean
+-          default: true
+         behaviors:
+           type: array
+           items:
+@@ -8355,15 +8130,11 @@
+       title: EdgeCacheModule
+       additionalProperties: false
+     EdgeCacheModuleBehaviorEnum:
+-      enum:
+-      - honor
+-      - override
+       type: string
+       description: |-
+         * `honor` - Honor Origin Cache Settings
+         * `override` - Override Cache Settings
+       title: EdgeCacheModuleBehaviorEnum
+-      additionalProperties: false
+     EdgeCacheModuleRequest:
+       type: object
+       properties:
+@@ -8410,10 +8181,8 @@
+           $ref: '#/components/schemas/EdgeFirewallModules'
+         debug_rules:
+           type: boolean
+-          default: false
+         active:
+           type: boolean
+-          default: true
+         last_editor:
+           type: string
+           readOnly: true
+@@ -8464,14 +8233,6 @@
+       title: EdgeFirewallBehaviorFieldRequest
+       additionalProperties: false
+     EdgeFirewallBehaviorNameField:
+-      enum:
+-      - deny
+-      - run_function
+-      - drop
+-      - set_rate_limit
+-      - tag_event
+-      - set_custom_response
+-      - set_waf_ruleset
+       type: string
+       description: |-
+         * `deny` - deny
+@@ -8482,7 +8243,6 @@
+         * `set_custom_response` - set_custom_response
+         * `set_waf_ruleset` - set_waf_ruleset
+       title: EdgeFirewallBehaviorNameField
+-      additionalProperties: false
+     EdgeFirewallBehaviorPolymorphicArgument:
+       oneOf:
+       - type: integer
+@@ -8530,16 +8290,14 @@
+         About `operator` field: it's the operator to be used to evaluate the current criterion. When used in the first criterion of a block it should be always the `if` operator.
+       properties:
+         argument:
+-          allOf:
+-          - $ref: '#/components/schemas/EdgeFirewallCriterionPolymorphicArgument'
++          type: string
+           nullable: true
+-          default: ''
+         variable:
+           $ref: '#/components/schemas/EdgeFirewallCriterionFieldVariableEnum'
+         conditional:
+-          $ref: '#/components/schemas/ConditionalEnum'
++          type: string
+         operator:
+-          $ref: '#/components/schemas/OperatorEnum'
++          type: string
+       required:
+       - conditional
+       - operator
+@@ -8576,13 +8334,12 @@
+           allOf:
+           - $ref: '#/components/schemas/EdgeFirewallCriterionPolymorphicArgumentRequest'
+           nullable: true
+-          default: ''
+         variable:
+-          $ref: '#/components/schemas/EdgeFirewallCriterionFieldVariableEnum'
+-        conditional:
+-          $ref: '#/components/schemas/ConditionalEnum'
++          type: string
++        conditional:
++          type: string
+         operator:
+-          $ref: '#/components/schemas/OperatorEnum'
++          type: string
+       required:
+       - conditional
+       - operator
+@@ -8590,22 +8347,6 @@
+       title: EdgeFirewallCriterionFieldRequest
+       additionalProperties: false
+     EdgeFirewallCriterionFieldVariableEnum:
+-      enum:
+-      - ${header_accept}
+-      - ${header_accept_encoding}
+-      - ${header_accept_language}
+-      - ${header_cookie}
+-      - ${header_origin}
+-      - ${header_referer}
+-      - ${header_user_agent}
+-      - ${host}
+-      - ${network}
+-      - ${request_args}
+-      - ${request_method}
+-      - ${request_uri}
+-      - ${scheme}
+-      - ${ssl_verification_status}
+-      - ${client_certificate_validation}
+       type: string
+       description: |-
+         * `${header_accept}` - ${header_accept}
+@@ -8624,30 +8365,9 @@
+         * `${ssl_verification_status}` - ${ssl_verification_status}
+         * `${client_certificate_validation}` - ${client_certificate_validation}
+       title: EdgeFirewallCriterionFieldVariableEnum
+-      additionalProperties: false
+-    EdgeFirewallCriterionPolymorphicArgument:
+-      oneOf:
+-      - enum:
+-        - SUCCESS
+-        - CERTIFICATE_VERIFICATION_ERROR
+-        - MISSING_CLIENT_CERTIFICATE
+-        type: string
+-        description: These values are only valid when using ${ssl_verification_status}
+-          variable.
+-      - type: integer
+-      - type: string
+-      nullable: true
+-      title: EdgeFirewallCriterionPolymorphicArgument
+       additionalProperties: false
+     EdgeFirewallCriterionPolymorphicArgumentRequest:
+       oneOf:
+-      - enum:
+-        - SUCCESS
+-        - CERTIFICATE_VERIFICATION_ERROR
+-        - MISSING_CLIENT_CERTIFICATE
+-        type: string
+-        description: These values are only valid when using ${ssl_verification_status}
+-          variable.
+       - type: integer
+       - type: string
+       nullable: true
+@@ -8717,16 +8437,12 @@
+       properties:
+         ddos_protection_enabled:
+           type: boolean
+-          default: true
+         edge_functions_enabled:
+           type: boolean
+-          default: true
+         network_protection_enabled:
+           type: boolean
+-          default: true
+         waf_enabled:
+           type: boolean
+-          default: true
+       title: EdgeFirewallModules
+       additionalProperties: false
+     EdgeFirewallModulesRequest:
+@@ -8734,16 +8450,12 @@
+       properties:
+         ddos_protection_enabled:
+           type: boolean
+-          default: true
+         edge_functions_enabled:
+           type: boolean
+-          default: true
+         network_protection_enabled:
+           type: boolean
+-          default: true
+         waf_enabled:
+           type: boolean
+-          default: true
+       title: EdgeFirewallModulesRequest
+       additionalProperties: false
+     EdgeFirewallRequest:
+@@ -8758,10 +8470,8 @@
+           $ref: '#/components/schemas/EdgeFirewallModulesRequest'
+         debug_rules:
+           type: boolean
+-          default: false
+         active:
+           type: boolean
+-          default: true
+       required:
+       - name
+       title: EdgeFirewallRequest
+@@ -8788,7 +8498,6 @@
+           readOnly: true
+         active:
+           type: boolean
+-          default: true
+         behaviors:
+           type: array
+           items:
+@@ -8849,7 +8558,6 @@
+           maxLength: 250
+         active:
+           type: boolean
+-          default: true
+         behaviors:
+           type: array
+           items:
+@@ -8888,23 +8596,26 @@
+           pattern: .*
+           maxLength: 250
+           minLength: 1
+-        language:
+-          allOf:
+-          - $ref: '#/components/schemas/LanguageEnum'
+-          default: javascript
++        LanguageEnum:
++          type: string
++          description: |-
++            * `javascript` - JavaScript
++            * `lua` - Lua
++          title: LanguageEnum
+         code:
+           type: string
+           pattern: .*
+           maxLength: 20971520
+           minLength: 1
+         json_args: {}
+-        initiator_type:
+-          allOf:
+-          - $ref: '#/components/schemas/InitiatorTypeEnum'
+-          default: edge_application
++        InitiatorTypeEnum:
++          type: string
++          description: |-
++            * `edge_application` - Edge Application
++            * `edge_firewall` - Edge Firewall
++          title: InitiatorTypeEnum
+         active:
+           type: boolean
+-          default: true
+         reference_count:
+           type: integer
+           readOnly: true
+@@ -8950,23 +8661,26 @@
+           minLength: 1
+           pattern: .*
+           maxLength: 250
+-        language:
+-          allOf:
+-          - $ref: '#/components/schemas/LanguageEnum'
+-          default: javascript
++        LanguageEnum:
++          type: string
++          description: |-
++            * `javascript` - JavaScript
++            * `lua` - Lua
++          title: LanguageEnum
+         code:
+           type: string
+           minLength: 1
+           pattern: .*
+           maxLength: 20971520
+         json_args: {}
+-        initiator_type:
+-          allOf:
+-          - $ref: '#/components/schemas/InitiatorTypeEnum'
+-          default: edge_application
++        InitiatorTypeEnum:
++          type: string
++          description: |-
++            * `edge_application` - Edge Application
++            * `edge_firewall` - Edge Firewall
++          title: InitiatorTypeEnum
+         active:
+           type: boolean
+-          default: true
+       required:
+       - code
+       - name
+@@ -9013,12 +8727,6 @@
+       title: ErrorResponsesRequest
+       additionalProperties: false
+     EvadingTricksSensitivityEnum:
+-      enum:
+-      - lowest
+-      - low
+-      - medium
+-      - high
+-      - highest
+       type: string
+       description: |-
+         * `lowest` - lowest
+@@ -9029,12 +8737,6 @@
+       title: EvadingTricksSensitivityEnum
+       additionalProperties: false
+     FileUploadSensitivityEnum:
+-      enum:
+-      - lowest
+-      - low
+-      - medium
+-      - high
+-      - highest
+       type: string
+       description: |-
+         * `lowest` - lowest
+@@ -9043,7 +8745,6 @@
+         * `high` - high
+         * `highest` - highest
+       title: FileUploadSensitivityEnum
+-      additionalProperties: false
+     HttpProtocol:
+       type: object
+       properties:
+@@ -9052,24 +8753,17 @@
+           items:
+             type: string
+             maxLength: 30
+-          default:
+-          - http1
+-          - http2
+           maxItems: 3
+         http_ports:
+           type: array
+           items:
+             type: integer
+-          default:
+-          - 80
+           maxItems: 4
+         https_ports:
+           type: array
+           items:
+             type: integer
+           nullable: true
+-          default:
+-          - 443
+           maxItems: 12
+         quic_ports:
+           type: array
+@@ -9088,24 +8782,17 @@
+             type: string
+             minLength: 1
+             maxLength: 30
+-          default:
+-          - http1
+-          - http2
+           maxItems: 3
+         http_ports:
+           type: array
+           items:
+             type: integer
+-          default:
+-          - 80
+           maxItems: 4
+         https_ports:
+           type: array
+           items:
+             type: integer
+           nullable: true
+-          default:
+-          - 443
+           maxItems: 12
+         quic_ports:
+           type: array
+@@ -9116,12 +8803,6 @@
+       title: HttpProtocolRequest
+       additionalProperties: false
+     IdentifiedAttackSensitivityEnum:
+-      enum:
+-      - lowest
+-      - low
+-      - medium
+-      - high
+-      - highest
+       type: string
+       description: |-
+         * `lowest` - lowest
+@@ -9130,54 +8811,35 @@
+         * `high` - high
+         * `highest` - highest
+       title: IdentifiedAttackSensitivityEnum
+-      additionalProperties: false
+     InitiatorTypeEnum:
+-      enum:
+-      - edge_application
+-      - edge_firewall
+       type: string
+       description: |-
+         * `edge_application` - Edge Application
+         * `edge_firewall` - Edge Firewall
+       title: InitiatorTypeEnum
+-      additionalProperties: false
+     LanguageEnum:
+-      enum:
+-      - javascript
+-      - lua
+       type: string
+       description: |-
+         * `javascript` - JavaScript
+         * `lua` - Lua
+       title: LanguageEnum
+-      additionalProperties: false
+     LayerEnum:
+-      enum:
+-      - edge_cache
+-      - tiered_cache
+       type: string
+       description: |-
+         * `edge_cache` - Edge Cache
+         * `tiered_cache` - Tiered Cache
+       title: LayerEnum
+-      additionalProperties: false
+     LimitByEnum:
+-      enum:
+-      - client_ip
+-      - global
+       type: string
+       description: |-
+         * `client_ip` - client_ip
+         * `global` - global
+       title: LimitByEnum
+-      additionalProperties: false
+     MTLS:
+       type: object
+       properties:
+         verification:
+-          allOf:
+-          - $ref: '#/components/schemas/VerificationEnum'
+-          default: enforce
++          type: string
+         certificate:
+           type: integer
+           minimum: 1
+@@ -9195,9 +8857,7 @@
+       type: object
+       properties:
+         verification:
+-          allOf:
+-          - $ref: '#/components/schemas/VerificationEnum'
+-          default: enforce
++          type: string
+         certificate:
+           type: integer
+           minimum: 1
+@@ -9215,8 +8875,7 @@
+       type: object
+       properties:
+         zone:
+-          allOf:
+-          - $ref: '#/components/schemas/ZoneEnum'
++          type: string
+           title: Match Zone
+         zone_input:
+           type: string
+@@ -9226,10 +8885,7 @@
+           minLength: 0
+         matches_on:
+           nullable: true
+-          oneOf:
+-          - $ref: '#/components/schemas/MatchesOnEnum'
+-          - $ref: '#/components/schemas/BlankEnum'
+-          - $ref: '#/components/schemas/NullEnum'
++          type: string
+       required:
+       - zone
+       title: MatchZone
+@@ -9238,8 +8894,7 @@
+       type: object
+       properties:
+         zone:
+-          allOf:
+-          - $ref: '#/components/schemas/ZoneEnum'
++          type: string
+           title: Match Zone
+         zone_input:
+           type: string
+@@ -9249,30 +8904,19 @@
+           maxLength: 255
+         matches_on:
+           nullable: true
+-          oneOf:
++          allOf:
+           - $ref: '#/components/schemas/MatchesOnEnum'
+-          - $ref: '#/components/schemas/BlankEnum'
+-          - $ref: '#/components/schemas/NullEnum'
+       required:
+       - zone
+       title: MatchZoneRequest
+       additionalProperties: false
+     MatchesOnEnum:
+-      enum:
+-      - value
+-      - name
+       type: string
+       description: |-
+         * `value` - Value
+         * `name` - Name
+       title: MatchesOnEnum
+-      additionalProperties: false
+     MinimumVersionEnum:
+-      enum:
+-      - tls_1_0
+-      - tls_1_1
+-      - tls_1_2
+-      - tls_1_3
+       type: string
+       description: |-
+         * `` - None
+@@ -9281,17 +8925,12 @@
+         * `tls_1_2` - TLS 1.2
+         * `tls_1_3` - TLS 1.3
+       title: MinimumVersionEnum
+-      additionalProperties: false
+     ModeEnum:
+-      enum:
+-      - learning
+-      - blocking
+       type: string
+       description: |-
+         * `learning` - learning
+         * `blocking` - blocking
+       title: ModeEnum
+-      additionalProperties: false
+     NestedErrorResponse:
+       type: object
+       properties:
+@@ -9356,7 +8995,7 @@
+           maxLength: 250
+           minLength: 1
+         type:
+-          $ref: '#/components/schemas/Type687Enum'
++          type: string
+         items:
+           type: array
+           items:
+@@ -9377,7 +9016,6 @@
+           readOnly: true
+         active:
+           type: boolean
+-          default: true
+       required:
+       - id
+       - items
+@@ -9396,7 +9034,7 @@
+           pattern: .*
+           maxLength: 250
+         type:
+-          $ref: '#/components/schemas/Type687Enum'
++          type: string
+         items:
+           type: array
+           items:
+@@ -9408,7 +9046,6 @@
+           minItems: 1
+         active:
+           type: boolean
+-          default: true
+       required:
+       - items
+       - name
+@@ -9416,45 +9053,11 @@
+       title: NetworkListRequest
+       additionalProperties: false
+     NetworkMapEnum:
+-      enum:
+-      - '1'
+-      - '2'
+       type: string
+       description: |-
+         * `1` - Edge Global Network
+         * `2` - Staging Network
+       title: NetworkMapEnum
+-      additionalProperties: false
+-    NullEnum:
+-      enum:
+-      - null
+-      title: NullEnum
+-      additionalProperties: false
+-    OperatorEnum:
+-      enum:
+-      - does_not_exist
+-      - does_not_match
+-      - does_not_start_with
+-      - exists
+-      - is_equal
+-      - is_in_list
+-      - is_not_equal
+-      - is_not_in_list
+-      - matches
+-      - starts_with
+-      type: string
+-      description: |-
+-        * `does_not_exist` - does_not_exist
+-        * `does_not_match` - does_not_match
+-        * `does_not_start_with` - does_not_start_with
+-        * `exists` - exists
+-        * `is_equal` - is_equal
+-        * `is_in_list` - is_in_list
+-        * `is_not_equal` - is_not_equal
+-        * `is_not_in_list` - is_not_in_list
+-        * `matches` - matches
+-        * `starts_with` - starts_with
+-      title: OperatorEnum
+       additionalProperties: false
+     PaginatedResponseListCacheSettingList:
+       type: object
+@@ -9729,10 +9332,8 @@
+           $ref: '#/components/schemas/EdgeApplicationModulesRequest'
+         active:
+           type: boolean
+-          default: true
+         debug:
+           type: boolean
+-          default: false
+       title: PatchedEdgeApplicationRequest
+       additionalProperties: false
+     PatchedEdgeApplicationRuleEngineRequest:
+@@ -9747,7 +9348,6 @@
+           $ref: '#/components/schemas/PhaseEnum'
+         active:
+           type: boolean
+-          default: true
+         behaviors:
+           type: array
+           items:
+@@ -9801,10 +9401,8 @@
+           $ref: '#/components/schemas/EdgeFirewallModulesRequest'
+         debug_rules:
+           type: boolean
+-          default: false
+         active:
+           type: boolean
+-          default: true
+       title: PatchedEdgeFirewallRequest
+       additionalProperties: false
+     PatchedEdgeFirewallRuleEngineRequest:
+@@ -9817,7 +9415,6 @@
+           maxLength: 250
+         active:
+           type: boolean
+-          default: true
+         behaviors:
+           type: array
+           items:
+@@ -9849,23 +9446,26 @@
+           minLength: 1
+           pattern: .*
+           maxLength: 250
+-        language:
+-          allOf:
+-          - $ref: '#/components/schemas/LanguageEnum'
+-          default: javascript
++        LanguageEnum:
++          type: string
++          description: |-
++            * `javascript` - JavaScript
++            * `lua` - Lua
++          title: LanguageEnum
+         code:
+           type: string
+           minLength: 1
+           pattern: .*
+           maxLength: 20971520
+         json_args: {}
+-        initiator_type:
+-          allOf:
+-          - $ref: '#/components/schemas/InitiatorTypeEnum'
+-          default: edge_application
++        InitiatorTypeEnum:
++          type: string
++          description: |-
++            * `edge_application` - Edge Application
++            * `edge_firewall` - Edge Firewall
++          title: InitiatorTypeEnum
+         active:
+           type: boolean
+-          default: true
+       title: PatchedEdgeFunctionsRequest
+       additionalProperties: false
+     PatchedErrorResponsesRequest:
+@@ -9889,7 +9489,7 @@
+           pattern: .*
+           maxLength: 250
+         type:
+-          $ref: '#/components/schemas/Type687Enum'
++          type: string
+         items:
+           type: array
+           items:
+@@ -9901,7 +9501,6 @@
+           minItems: 1
+         active:
+           type: boolean
+-          default: true
+       title: PatchedNetworkListRequest
+       additionalProperties: false
+     PatchedWAFRequest:
+@@ -9909,7 +9508,6 @@
+       properties:
+         active:
+           type: boolean
+-          default: true
+         name:
+           type: string
+           minLength: 1
+@@ -9925,7 +9523,6 @@
+         rule_id:
+           allOf:
+           - $ref: '#/components/schemas/RuleIdEnum'
+-          default: 0
+           description: |-
+             1 - Validation of protocol compliance: weird request, unable to parse<br>
+             2 - Request too big, stored on disk and not parsed<br>
+@@ -10071,10 +9668,8 @@
+             $ref: '#/components/schemas/MatchZoneRequest'
+         use_regex:
+           type: boolean
+-          default: false
+         active:
+           type: boolean
+-          default: true
+       title: PatchedWAFRuleRequest
+       additionalProperties: false
+     PatchedWorkloadDeploymentRequest:
+@@ -10089,7 +9684,6 @@
+           $ref: '#/components/schemas/WorkloadDeploymentBindsRequest'
+         current:
+           type: boolean
+-          default: true
+       title: PatchedWorkloadDeploymentRequest
+       additionalProperties: false
+     PatchedWorkloadRequest:
+@@ -10106,35 +9700,17 @@
+             type: string
+             minLength: 1
+             maxLength: 50
+-          default: []
+           maxItems: 50
+         active:
+           type: boolean
+-          default: true
+         network_map:
+-          allOf:
+-          - $ref: '#/components/schemas/NetworkMapEnum'
+-          default: '1'
++          type: string
+         tls:
+           allOf:
+           - $ref: '#/components/schemas/TLSRequest'
+-          default:
+-            certificate: null
+-            ciphers: null
+-            minimum_version: tls_1_2
+         protocols:
+           allOf:
+           - $ref: '#/components/schemas/ProtocolsRequest'
+-          default:
+-            http:
+-              versions:
+-              - http1
+-              - http2
+-              http_ports:
+-              - 80
+-              https_ports:
+-              - 443
+-              quic_ports: null
+         mtls:
+           $ref: '#/components/schemas/MTLSRequest'
+         domains:
+@@ -10146,32 +9722,18 @@
+       title: PatchedWorkloadRequest
+       additionalProperties: false
+     PhaseEnum:
+-      enum:
+-      - default
+-      - request
+-      - response
+       type: string
+       description: |-
+         * `default` - default
+         * `request` - request
+         * `response` - response
+       title: PhaseEnum
+-      additionalProperties: false
+     Protocols:
+       type: object
+       properties:
+         http:
+           allOf:
+           - $ref: '#/components/schemas/HttpProtocol'
+-          default:
+-            versions:
+-            - http1
+-            - http2
+-            http_ports:
+-            - 80
+-            https_ports:
+-            - 443
+-            quic_ports: null
+       title: Protocols
+       additionalProperties: false
+     ProtocolsRequest:
+@@ -10180,15 +9742,6 @@
+         http:
+           allOf:
+           - $ref: '#/components/schemas/HttpProtocolRequest'
+-          default:
+-            versions:
+-            - http1
+-            - http2
+-            http_ports:
+-            - 80
+-            https_ports:
+-            - 443
+-            quic_ports: null
+       title: ProtocolsRequest
+       additionalProperties: false
+     PurgeInput:
+@@ -10204,7 +9757,6 @@
+         layer:
+           allOf:
+           - $ref: '#/components/schemas/LayerEnum'
+-          default: edge_cache
+       required:
+       - items
+       title: PurgeInput
+@@ -10222,18 +9774,11 @@
+         layer:
+           allOf:
+           - $ref: '#/components/schemas/LayerEnum'
+-          default: edge_cache
+       required:
+       - items
+       title: PurgeInputRequest
+       additionalProperties: false
+     RemoteFileInclusionSensitivityEnum:
+-      enum:
+-      - lowest
+-      - low
+-      - medium
+-      - high
+-      - highest
+       type: string
+       description: |-
+         * `lowest` - lowest
+@@ -11562,10 +11107,8 @@
+           $ref: '#/components/schemas/EdgeApplicationModules'
+         active:
+           type: boolean
+-          default: true
+         debug:
+           type: boolean
+-          default: false
+       required:
+       - id
+       - last_editor
+@@ -11648,7 +11191,6 @@
+           $ref: '#/components/schemas/PhaseEnum'
+         active:
+           type: boolean
+-          default: true
+         behaviors:
+           type: array
+           items:
+@@ -11712,10 +11254,8 @@
+           $ref: '#/components/schemas/EdgeFirewallModules'
+         debug_rules:
+           type: boolean
+-          default: false
+         active:
+           type: boolean
+-          default: true
+         last_editor:
+           type: string
+           readOnly: true
+@@ -11798,7 +11338,6 @@
+           readOnly: true
+         active:
+           type: boolean
+-          default: true
+         behaviors:
+           type: array
+           items:
+@@ -11847,17 +11386,12 @@
+           maxLength: 250
+           minLength: 1
+         language:
+-          allOf:
+-          - $ref: '#/components/schemas/LanguageEnum'
+-          default: javascript
++          type: string
+         json_args: {}
+         initiator_type:
+-          allOf:
+-          - $ref: '#/components/schemas/InitiatorTypeEnum'
+-          default: edge_application
++          type: string
+         active:
+           type: boolean
+-          default: true
+         reference_count:
+           type: integer
+           readOnly: true
+@@ -11932,7 +11466,7 @@
+           maxLength: 250
+           minLength: 1
+         type:
+-          $ref: '#/components/schemas/Type687Enum'
++          type: string
+         last_editor:
+           type: string
+           readOnly: true
+@@ -11944,7 +11478,6 @@
+           readOnly: true
+         active:
+           type: boolean
+-          default: true
+       required:
+       - id
+       - last_editor
+@@ -11961,7 +11494,6 @@
+           readOnly: true
+         active:
+           type: boolean
+-          default: true
+         name:
+           type: string
+           pattern: .*
+@@ -12003,7 +11535,6 @@
+         rule_id:
+           allOf:
+           - $ref: '#/components/schemas/RuleIdEnum'
+-          default: 0
+           description: |-
+             1 - Validation of protocol compliance: weird request, unable to parse<br>
+             2 - Request too big, stored on disk and not parsed<br>
+@@ -12149,10 +11680,8 @@
+             $ref: '#/components/schemas/MatchZone'
+         use_regex:
+           type: boolean
+-          default: false
+         active:
+           type: boolean
+-          default: true
+         last_editor:
+           type: string
+           readOnly: true
+@@ -12184,15 +11713,12 @@
+           items:
+             type: string
+             maxLength: 50
+-          default: []
+           maxItems: 50
+         active:
+           type: boolean
+-          default: true
+         network_map:
+           allOf:
+           - $ref: '#/components/schemas/NetworkMapEnum'
+-          default: '1'
+         last_editor:
+           type: string
+           readOnly: true
+@@ -12206,23 +11732,9 @@
+         tls:
+           allOf:
+           - $ref: '#/components/schemas/TLS'
+-          default:
+-            certificate: null
+-            ciphers: null
+-            minimum_version: tls_1_2
+         protocols:
+           allOf:
+           - $ref: '#/components/schemas/Protocols'
+-          default:
+-            http:
+-              versions:
+-              - http1
+-              - http2
+-              http_ports:
+-              - 80
+-              https_ports:
+-              - 443
+-              quic_ports: null
+         mtls:
+           $ref: '#/components/schemas/MTLS'
+         domains:
+@@ -12260,7 +11772,6 @@
+           $ref: '#/components/schemas/WorkloadDeploymentBinds'
+         current:
+           type: boolean
+-          default: true
+       required:
+       - binds
+       - id
+@@ -12475,70 +11986,6 @@
+       title: ResponseWorkloadDeployment
+       additionalProperties: false
+     RuleIdEnum:
+-      enum:
+-      - 1
+-      - 2
+-      - 10
+-      - 11
+-      - 12
+-      - 13
+-      - 14
+-      - 15
+-      - 16
+-      - 17
+-      - 18
+-      - 1000
+-      - 1001
+-      - 1002
+-      - 1003
+-      - 1004
+-      - 1005
+-      - 1006
+-      - 1007
+-      - 1008
+-      - 1009
+-      - 1010
+-      - 1011
+-      - 1013
+-      - 1015
+-      - 1016
+-      - 1017
+-      - 1100
+-      - 1101
+-      - 1102
+-      - 1103
+-      - 1104
+-      - 1105
+-      - 1106
+-      - 1107
+-      - 1108
+-      - 1109
+-      - 1110
+-      - 1200
+-      - 1202
+-      - 1203
+-      - 1204
+-      - 1205
+-      - 1206
+-      - 1302
+-      - 1303
+-      - 1310
+-      - 1311
+-      - 1312
+-      - 1314
+-      - 1315
+-      - 1400
+-      - 1401
+-      - 1500
+-      - 0
+-      - 1199
+-      - 1198
+-      - 2001
+-      - 1208
+-      - 1209
+-      - 1210
+-      - 1402
+-      - 1207
+       type: integer
+       description: |-
+         * `1` - Validation of protocol compliance: weird request, unable to parse
+@@ -12605,7 +12052,6 @@
+         * `1402` - Possible trick to evade protection: encoded chars (%20-%3F) found in Body, Query String or Cookies
+         * `1207` - Possible Directory Traversal attack: obvious path probe (/..;/) found in Body, Query String or Cookies
+       title: RuleIdEnum
+-      additionalProperties: false
+     SetCustomResponseArgument:
+       type: object
+       properties:
+@@ -12615,13 +12061,11 @@
+           minimum: 200
+         content_type:
+           type: string
+-          default: ''
+           pattern: .*
+           maxLength: 255
+           minLength: 0
+         content_body:
+           type: string
+-          default: ''
+           pattern: .*
+           maxLength: 500
+           minLength: 0
+@@ -12638,13 +12082,11 @@
+           minimum: 200
+         content_type:
+           type: string
+-          default: ''
+           pattern: .*
+           maxLength: 255
+           minLength: 0
+         content_body:
+           type: string
+-          default: ''
+           pattern: .*
+           maxLength: 500
+           minLength: 0
+@@ -12658,7 +12100,6 @@
+         type:
+           allOf:
+           - $ref: '#/components/schemas/SetRateLimitArgumentTypeEnum'
+-          default: second
+         limit_by:
+           $ref: '#/components/schemas/LimitByEnum'
+         average_rate_limit:
+@@ -12680,7 +12121,6 @@
+         type:
+           allOf:
+           - $ref: '#/components/schemas/SetRateLimitArgumentTypeEnum'
+-          default: second
+         limit_by:
+           $ref: '#/components/schemas/LimitByEnum'
+         average_rate_limit:
+@@ -12697,15 +12137,11 @@
+       title: SetRateLimitArgumentRequest
+       additionalProperties: false
+     SetRateLimitArgumentTypeEnum:
+-      enum:
+-      - second
+-      - minute
+       type: string
+       description: |-
+         * `second` - second
+         * `minute` - minute
+       title: SetRateLimitArgumentTypeEnum
+-      additionalProperties: false
+     SetWafRuleSetArgument:
+       type: object
+       properties:
+@@ -12749,7 +12185,6 @@
+           type: integer
+           maximum: 1024
+           minimum: 0
+-          default: 1024
+       required:
+       - slice_configuration_enabled
+       - slice_edge_caching_enabled
+@@ -12769,7 +12204,6 @@
+           type: integer
+           maximum: 1024
+           minimum: 0
+-          default: 1024
+       required:
+       - slice_configuration_enabled
+       - slice_edge_caching_enabled
+@@ -12777,12 +12211,6 @@
+       title: SliceControlsModuleRequest
+       additionalProperties: false
+     SqlInjectionSensitivityEnum:
+-      enum:
+-      - lowest
+-      - low
+-      - medium
+-      - high
+-      - highest
+       type: string
+       description: |-
+         * `lowest` - lowest
+@@ -12791,17 +12219,12 @@
+         * `high` - high
+         * `highest` - highest
+       title: SqlInjectionSensitivityEnum
+-      additionalProperties: false
+     StateEnum:
+-      enum:
+-      - pending
+-      - executed
+       type: string
+       description: |-
+         * `pending` - pending
+         * `executed` - executed
+       title: StateEnum
+-      additionalProperties: false
+     TLS:
+       type: object
+       properties:
+@@ -12821,16 +12244,10 @@
+             * `TLSv1.2_2019` - ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-SHA256:TLS_AES_256_GCM_SHA384:ECDHE-RSA-AES128-GCM-SHA256:TLS_CHACHA20_POLY1305_SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:TLS_AES_128_GCM_SHA256
+             * `TLSv1.3_2022` - ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-GCM-SHA256
+             * `TLSv1.2_2021` - ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-CHACHA20-POLY1305:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:TLS_AES_128_GCM_SHA256
+-          oneOf:
+-          - $ref: '#/components/schemas/CiphersEnum'
+-          - $ref: '#/components/schemas/NullEnum'
++          type: string
+         minimum_version:
+           nullable: true
+-          default: tls_1_2
+-          oneOf:
+-          - $ref: '#/components/schemas/MinimumVersionEnum'
+-          - $ref: '#/components/schemas/BlankEnum'
+-          - $ref: '#/components/schemas/NullEnum'
++          type: string
+       title: TLS
+       additionalProperties: false
+     TLSRequest:
+@@ -12852,56 +12269,18 @@
+             * `TLSv1.2_2019` - ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-SHA256:TLS_AES_256_GCM_SHA384:ECDHE-RSA-AES128-GCM-SHA256:TLS_CHACHA20_POLY1305_SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:TLS_AES_128_GCM_SHA256
+             * `TLSv1.3_2022` - ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-GCM-SHA256
+             * `TLSv1.2_2021` - ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-CHACHA20-POLY1305:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:TLS_AES_128_GCM_SHA256
+-          oneOf:
+-          - $ref: '#/components/schemas/CiphersEnum'
+-          - $ref: '#/components/schemas/NullEnum'
++          type: string
+         minimum_version:
+           nullable: true
+-          default: tls_1_2
+-          oneOf:
+-          - $ref: '#/components/schemas/MinimumVersionEnum'
+-          - $ref: '#/components/schemas/BlankEnum'
+-          - $ref: '#/components/schemas/NullEnum'
++          type: string
+       title: TLSRequest
+-      additionalProperties: false
+-    Type687Enum:
+-      enum:
+-      - asn
+-      - countries
+-      - ip_cidr
+-      type: string
+-      description: |-
+-        * `asn` - ASN
+-        * `countries` - Countries
+-        * `ip_cidr` - IP/CIDR
+-      title: Type687Enum
+-      additionalProperties: false
+-    UnwantedAccessSensitivityEnum:
+-      enum:
+-      - lowest
+-      - low
+-      - medium
+-      - high
+-      - highest
+-      type: string
+-      description: |-
+-        * `lowest` - lowest
+-        * `low` - low
+-        * `medium` - medium
+-        * `high` - high
+-        * `highest` - highest
+-      title: UnwantedAccessSensitivityEnum
+       additionalProperties: false
+     VerificationEnum:
+-      enum:
+-      - enforce
+-      - permissive
+       type: string
+       description: |-
+         * `enforce` - Enforce
+         * `permissive` - Permissive
+       title: VerificationEnum
+-      additionalProperties: false
+     WAF:
+       type: object
+       properties:
+@@ -12910,7 +12289,6 @@
+           readOnly: true
+         active:
+           type: boolean
+-          default: true
+         name:
+           type: string
+           pattern: .*
+@@ -12948,7 +12326,6 @@
+       properties:
+         active:
+           type: boolean
+-          default: true
+         name:
+           type: string
+           minLength: 1
+@@ -12967,9 +12344,8 @@
+           type: integer
+           readOnly: true
+         rule_id:
+-          allOf:
+-          - $ref: '#/components/schemas/RuleIdEnum'
+-          default: 0
++          type: integer
++          format: int64
+           description: |-
+             1 - Validation of protocol compliance: weird request, unable to parse<br>
+             2 - Request too big, stored on disk and not parsed<br>
+@@ -13115,10 +12491,8 @@
+             $ref: '#/components/schemas/MatchZone'
+         use_regex:
+           type: boolean
+-          default: false
+         active:
+           type: boolean
+-          default: true
+         last_editor:
+           type: string
+           readOnly: true
+@@ -13138,9 +12512,8 @@
+       type: object
+       properties:
+         rule_id:
+-          allOf:
+-          - $ref: '#/components/schemas/RuleIdEnum'
+-          default: 0
++          type: integer
++          format: int64
+           description: |-
+             1 - Validation of protocol compliance: weird request, unable to parse<br>
+             2 - Request too big, stored on disk and not parsed<br>
+@@ -13286,10 +12659,8 @@
+             $ref: '#/components/schemas/MatchZoneRequest'
+         use_regex:
+           type: boolean
+-          default: false
+         active:
+           type: boolean
+-          default: true
+       required:
+       - match_zones
+       - name
+@@ -13300,60 +12671,36 @@
+       properties:
+         cross_site_scripting:
+           type: boolean
+-          default: true
+         cross_site_scripting_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/CrossSiteScriptingSensitivityEnum'
+-          default: medium
++          type: string
+         directory_traversal:
+           type: boolean
+-          default: true
+         directory_traversal_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/DirectoryTraversalSensitivityEnum'
+-          default: medium
++          type: string
+         evading_tricks:
+           type: boolean
+-          default: true
+         evading_tricks_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/EvadingTricksSensitivityEnum'
+-          default: medium
++          type: string
+         file_upload:
+           type: boolean
+-          default: true
+         file_upload_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/FileUploadSensitivityEnum'
+-          default: medium
++          type: string
+         identified_attack:
+           type: boolean
+-          default: true
+         identified_attack_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/IdentifiedAttackSensitivityEnum'
+-          default: medium
++          type: string
+         remote_file_inclusion:
+           type: boolean
+-          default: true
+         remote_file_inclusion_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/RemoteFileInclusionSensitivityEnum'
+-          default: medium
++          type: string
+         sql_injection:
+           type: boolean
+-          default: true
+         sql_injection_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/SqlInjectionSensitivityEnum'
+-          default: medium
++          type: string
+         unwanted_access:
+           type: boolean
+-          default: true
+         unwanted_access_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/UnwantedAccessSensitivityEnum'
+-          default: medium
++          type: string
+       title: WAFThreatsConfiguration
+       additionalProperties: false
+     WAFThreatsConfigurationRequest:
+@@ -13361,60 +12708,36 @@
+       properties:
+         cross_site_scripting:
+           type: boolean
+-          default: true
+         cross_site_scripting_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/CrossSiteScriptingSensitivityEnum'
+-          default: medium
++          type: string
+         directory_traversal:
+           type: boolean
+-          default: true
+         directory_traversal_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/DirectoryTraversalSensitivityEnum'
+-          default: medium
++          type: string
+         evading_tricks:
+           type: boolean
+-          default: true
+         evading_tricks_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/EvadingTricksSensitivityEnum'
+-          default: medium
++          type: string
+         file_upload:
+           type: boolean
+-          default: true
+         file_upload_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/FileUploadSensitivityEnum'
+-          default: medium
++          type: string
+         identified_attack:
+           type: boolean
+-          default: true
+         identified_attack_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/IdentifiedAttackSensitivityEnum'
+-          default: medium
++          type: string
+         remote_file_inclusion:
+           type: boolean
+-          default: true
+         remote_file_inclusion_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/RemoteFileInclusionSensitivityEnum'
+-          default: medium
++          type: string
+         sql_injection:
+           type: boolean
+-          default: true
+         sql_injection_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/SqlInjectionSensitivityEnum'
+-          default: medium
++          type: string
+         unwanted_access:
+           type: boolean
+-          default: true
+         unwanted_access_sensitivity:
+-          allOf:
+-          - $ref: '#/components/schemas/UnwantedAccessSensitivityEnum'
+-          default: medium
++          type: string
+       title: WAFThreatsConfigurationRequest
+       additionalProperties: false
+     Workload:
+@@ -13433,15 +12756,11 @@
+           items:
+             type: string
+             maxLength: 50
+-          default: []
+           maxItems: 50
+         active:
+           type: boolean
+-          default: true
+         network_map:
+-          allOf:
+-          - $ref: '#/components/schemas/NetworkMapEnum'
+-          default: '1'
++          type: string
+         last_editor:
+           type: string
+           readOnly: true
+@@ -13455,23 +12774,9 @@
+         tls:
+           allOf:
+           - $ref: '#/components/schemas/TLS'
+-          default:
+-            certificate: null
+-            ciphers: null
+-            minimum_version: tls_1_2
+         protocols:
+           allOf:
+           - $ref: '#/components/schemas/Protocols'
+-          default:
+-            http:
+-              versions:
+-              - http1
+-              - http2
+-              http_ports:
+-              - 80
+-              https_ports:
+-              - 443
+-              quic_ports: null
+         mtls:
+           $ref: '#/components/schemas/MTLS'
+         domains:
+@@ -13509,7 +12814,6 @@
+           $ref: '#/components/schemas/WorkloadDeploymentBinds'
+         current:
+           type: boolean
+-          default: true
+       required:
+       - binds
+       - id
+@@ -13558,7 +12862,6 @@
+           $ref: '#/components/schemas/WorkloadDeploymentBindsRequest'
+         current:
+           type: boolean
+-          default: true
+       required:
+       - binds
+       - tag
+@@ -13578,7 +12881,6 @@
+             type: string
+             minLength: 1
+             maxLength: 50
+-          default: []
+           maxItems: 50
+         edge_application:
+           type: integer
+@@ -13588,11 +12890,8 @@
+           writeOnly: true
+         active:
+           type: boolean
+-          default: true
+         network_map:
+-          allOf:
+-          - $ref: '#/components/schemas/NetworkMapEnum'
+-          default: '1'
++          type: string
+         edge_firewall:
+           type: integer
+           writeOnly: true
+@@ -13600,23 +12899,9 @@
+         tls:
+           allOf:
+           - $ref: '#/components/schemas/TLSRequest'
+-          default:
+-            certificate: null
+-            ciphers: null
+-            minimum_version: tls_1_2
+         protocols:
+           allOf:
+           - $ref: '#/components/schemas/ProtocolsRequest'
+-          default:
+-            http:
+-              versions:
+-              - http1
+-              - http2
+-              http_ports:
+-              - 80
+-              https_ports:
+-              - 443
+-              quic_ports: null
+         mtls:
+           $ref: '#/components/schemas/MTLSRequest'
+         domains:
+@@ -13631,16 +12916,6 @@
+       title: WorkloadRequest
+       additionalProperties: false
+     ZoneEnum:
+-      enum:
+-      - conditional_query_string
+-      - conditional_request_body
+-      - conditional_request_header
+-      - file_name
+-      - path
+-      - query_string
+-      - raw_body
+-      - request_body
+-      - request_header
+       type: string
+       description: |-
+         * `conditional_query_string` - Conditional Query String
+@@ -13653,7 +12928,6 @@
+         * `request_body` - Request Body
+         * `request_header` - Request Header
+       title: ZoneEnum
+-      additionalProperties: false
+   securitySchemes:
+     BearerAuth:
+       type: http
