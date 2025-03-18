@@ -78,7 +78,6 @@ jobs:
           GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
 
   bump:
-      needs: generate_sdk
       runs-on: ubuntu-latest
   
       steps:
