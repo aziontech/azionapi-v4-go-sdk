@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponseListWAF{}
 
 // ResponseListWAF struct for ResponseListWAF
 type ResponseListWAF struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Active *bool `json:"active,omitempty"`
 	Name string `json:"name" validate:"regexp=.*"`
 	LastEditor string `json:"last_editor" validate:"regexp=.*"`
@@ -37,7 +37,7 @@ type _ResponseListWAF ResponseListWAF
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseListWAF(id int32, name string, lastEditor string, lastModified time.Time, productVersion NullableString) *ResponseListWAF {
+func NewResponseListWAF(id int64, name string, lastEditor string, lastModified time.Time, productVersion NullableString) *ResponseListWAF {
 	this := ResponseListWAF{}
 	this.Id = id
 	this.Name = name
@@ -56,9 +56,9 @@ func NewResponseListWAFWithDefaults() *ResponseListWAF {
 }
 
 // GetId returns the Id field value
-func (o *ResponseListWAF) GetId() int32 {
+func (o *ResponseListWAF) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -67,7 +67,7 @@ func (o *ResponseListWAF) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListWAF) GetIdOk() (*int32, bool) {
+func (o *ResponseListWAF) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,7 +75,7 @@ func (o *ResponseListWAF) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *ResponseListWAF) SetId(v int32) {
+func (o *ResponseListWAF) SetId(v int64) {
 	o.Id = v
 }
 

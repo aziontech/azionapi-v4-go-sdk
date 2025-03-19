@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Behavior** | **string** | * &#x60;honor&#x60; - Honor Origin Cache Settings * &#x60;override&#x60; - Override Cache Settings | 
-**MaxAge** | **int32** |  | 
+**MaxAge** | **int64** |  | 
 **CachingForPostEnabled** | **bool** |  | 
 **CachingForOptionsEnabled** | **bool** |  | 
 **StaleCacheEnabled** | **bool** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEdgeCacheModule
 
-`func NewEdgeCacheModule(behavior string, maxAge int32, cachingForPostEnabled bool, cachingForOptionsEnabled bool, staleCacheEnabled bool, tieredCacheEnabled bool, ) *EdgeCacheModule`
+`func NewEdgeCacheModule(behavior string, maxAge int64, cachingForPostEnabled bool, cachingForOptionsEnabled bool, staleCacheEnabled bool, tieredCacheEnabled bool, ) *EdgeCacheModule`
 
 NewEdgeCacheModule instantiates a new EdgeCacheModule object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ SetBehavior sets Behavior field to given value.
 
 ### GetMaxAge
 
-`func (o *EdgeCacheModule) GetMaxAge() int32`
+`func (o *EdgeCacheModule) GetMaxAge() int64`
 
 GetMaxAge returns the MaxAge field if non-nil, zero value otherwise.
 
 ### GetMaxAgeOk
 
-`func (o *EdgeCacheModule) GetMaxAgeOk() (*int32, bool)`
+`func (o *EdgeCacheModule) GetMaxAgeOk() (*int64, bool)`
 
 GetMaxAgeOk returns a tuple with the MaxAge field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxAge
 
-`func (o *EdgeCacheModule) SetMaxAge(v int32)`
+`func (o *EdgeCacheModule) SetMaxAge(v int64)`
 
 SetMaxAge sets MaxAge field to given value.
 

@@ -23,7 +23,7 @@ var _ MappedNullable = &BrowserCacheModule{}
 type BrowserCacheModule struct {
 	// * `honor` - Honor Origin Cache Headers * `override` - Override Cache Settings * `no-cache` - No Cache
 	Behavior string `json:"behavior"`
-	MaxAge int32 `json:"max_age"`
+	MaxAge int64 `json:"max_age"`
 }
 
 type _BrowserCacheModule BrowserCacheModule
@@ -32,7 +32,7 @@ type _BrowserCacheModule BrowserCacheModule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBrowserCacheModule(behavior string, maxAge int32) *BrowserCacheModule {
+func NewBrowserCacheModule(behavior string, maxAge int64) *BrowserCacheModule {
 	this := BrowserCacheModule{}
 	this.Behavior = behavior
 	this.MaxAge = maxAge
@@ -72,9 +72,9 @@ func (o *BrowserCacheModule) SetBehavior(v string) {
 }
 
 // GetMaxAge returns the MaxAge field value
-func (o *BrowserCacheModule) GetMaxAge() int32 {
+func (o *BrowserCacheModule) GetMaxAge() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -83,7 +83,7 @@ func (o *BrowserCacheModule) GetMaxAge() int32 {
 
 // GetMaxAgeOk returns a tuple with the MaxAge field value
 // and a boolean to check if the value has been set.
-func (o *BrowserCacheModule) GetMaxAgeOk() (*int32, bool) {
+func (o *BrowserCacheModule) GetMaxAgeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *BrowserCacheModule) GetMaxAgeOk() (*int32, bool) {
 }
 
 // SetMaxAge sets field value
-func (o *BrowserCacheModule) SetMaxAge(v int32) {
+func (o *BrowserCacheModule) SetMaxAge(v int64) {
 	o.MaxAge = v
 }
 

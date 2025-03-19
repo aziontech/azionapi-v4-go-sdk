@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponseListNetworkList{}
 
 // ResponseListNetworkList struct for ResponseListNetworkList
 type ResponseListNetworkList struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	Type string `json:"type"`
 	LastEditor string `json:"last_editor" validate:"regexp=.*"`
@@ -36,7 +36,7 @@ type _ResponseListNetworkList ResponseListNetworkList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseListNetworkList(id int32, name string, type_ string, lastEditor string, lastModified time.Time) *ResponseListNetworkList {
+func NewResponseListNetworkList(id int64, name string, type_ string, lastEditor string, lastModified time.Time) *ResponseListNetworkList {
 	this := ResponseListNetworkList{}
 	this.Id = id
 	this.Name = name
@@ -55,9 +55,9 @@ func NewResponseListNetworkListWithDefaults() *ResponseListNetworkList {
 }
 
 // GetId returns the Id field value
-func (o *ResponseListNetworkList) GetId() int32 {
+func (o *ResponseListNetworkList) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *ResponseListNetworkList) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListNetworkList) GetIdOk() (*int32, bool) {
+func (o *ResponseListNetworkList) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *ResponseListNetworkList) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *ResponseListNetworkList) SetId(v int32) {
+func (o *ResponseListNetworkList) SetId(v int64) {
 	o.Id = v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **Behaviors** | [**[]EdgeFirewallBehaviorField**](EdgeFirewallBehaviorField.md) |  | 
 **Criteria** | [**[][]EdgeFirewallCriterionField**]([]EdgeFirewallCriterionField.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Order** | **int32** |  | [readonly] 
+**Order** | **int64** |  | [readonly] 
 
 ## Methods
 
 ### NewResponseListEdgeFirewallRuleEngine
 
-`func NewResponseListEdgeFirewallRuleEngine(id int32, name string, lastEditor string, lastModified time.Time, behaviors []EdgeFirewallBehaviorField, criteria [][]EdgeFirewallCriterionField, order int32, ) *ResponseListEdgeFirewallRuleEngine`
+`func NewResponseListEdgeFirewallRuleEngine(id int64, name string, lastEditor string, lastModified time.Time, behaviors []EdgeFirewallBehaviorField, criteria [][]EdgeFirewallCriterionField, order int64, ) *ResponseListEdgeFirewallRuleEngine`
 
 NewResponseListEdgeFirewallRuleEngine instantiates a new ResponseListEdgeFirewallRuleEngine object
 This constructor will assign default values to properties that have it defined,
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ResponseListEdgeFirewallRuleEngine) GetId() int32`
+`func (o *ResponseListEdgeFirewallRuleEngine) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponseListEdgeFirewallRuleEngine) GetIdOk() (*int32, bool)`
+`func (o *ResponseListEdgeFirewallRuleEngine) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponseListEdgeFirewallRuleEngine) SetId(v int32)`
+`func (o *ResponseListEdgeFirewallRuleEngine) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -205,20 +205,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetOrder
 
-`func (o *ResponseListEdgeFirewallRuleEngine) GetOrder() int32`
+`func (o *ResponseListEdgeFirewallRuleEngine) GetOrder() int64`
 
 GetOrder returns the Order field if non-nil, zero value otherwise.
 
 ### GetOrderOk
 
-`func (o *ResponseListEdgeFirewallRuleEngine) GetOrderOk() (*int32, bool)`
+`func (o *ResponseListEdgeFirewallRuleEngine) GetOrderOk() (*int64, bool)`
 
 GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrder
 
-`func (o *ResponseListEdgeFirewallRuleEngine) SetOrder(v int32)`
+`func (o *ResponseListEdgeFirewallRuleEngine) SetOrder(v int64)`
 
 SetOrder sets Order field to given value.
 

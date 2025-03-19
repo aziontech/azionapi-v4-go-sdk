@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **Behaviors** | [**[]EdgeFirewallBehaviorField**](EdgeFirewallBehaviorField.md) |  | 
 **Criteria** | [**[][]EdgeFirewallCriterionField**]([]EdgeFirewallCriterionField.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Order** | **int32** |  | [readonly] 
+**Order** | **int64** |  | [readonly] 
 
 ## Methods
 
 ### NewEdgeFirewallRuleEngine
 
-`func NewEdgeFirewallRuleEngine(id int32, name string, lastEditor string, lastModified time.Time, behaviors []EdgeFirewallBehaviorField, criteria [][]EdgeFirewallCriterionField, order int32, ) *EdgeFirewallRuleEngine`
+`func NewEdgeFirewallRuleEngine(id int64, name string, lastEditor string, lastModified time.Time, behaviors []EdgeFirewallBehaviorField, criteria [][]EdgeFirewallCriterionField, order int64, ) *EdgeFirewallRuleEngine`
 
 NewEdgeFirewallRuleEngine instantiates a new EdgeFirewallRuleEngine object
 This constructor will assign default values to properties that have it defined,
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *EdgeFirewallRuleEngine) GetId() int32`
+`func (o *EdgeFirewallRuleEngine) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *EdgeFirewallRuleEngine) GetIdOk() (*int32, bool)`
+`func (o *EdgeFirewallRuleEngine) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *EdgeFirewallRuleEngine) SetId(v int32)`
+`func (o *EdgeFirewallRuleEngine) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -205,20 +205,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetOrder
 
-`func (o *EdgeFirewallRuleEngine) GetOrder() int32`
+`func (o *EdgeFirewallRuleEngine) GetOrder() int64`
 
 GetOrder returns the Order field if non-nil, zero value otherwise.
 
 ### GetOrderOk
 
-`func (o *EdgeFirewallRuleEngine) GetOrderOk() (*int32, bool)`
+`func (o *EdgeFirewallRuleEngine) GetOrderOk() (*int64, bool)`
 
 GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrder
 
-`func (o *EdgeFirewallRuleEngine) SetOrder(v int32)`
+`func (o *EdgeFirewallRuleEngine) SetOrder(v int64)`
 
 SetOrder sets Order field to given value.
 

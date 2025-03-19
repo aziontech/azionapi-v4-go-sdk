@@ -409,8 +409,8 @@ type ApiListWAFExceptionsRequest struct {
 	wafId string
 	fields *string
 	ordering *string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	search *string
 }
 
@@ -427,13 +427,13 @@ func (r ApiListWAFExceptionsRequest) Ordering(ordering string) ApiListWAFExcepti
 }
 
 // A page number within the paginated result set.
-func (r ApiListWAFExceptionsRequest) Page(page int32) ApiListWAFExceptionsRequest {
+func (r ApiListWAFExceptionsRequest) Page(page int64) ApiListWAFExceptionsRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiListWAFExceptionsRequest) PageSize(pageSize int32) ApiListWAFExceptionsRequest {
+func (r ApiListWAFExceptionsRequest) PageSize(pageSize int64) ApiListWAFExceptionsRequest {
 	r.pageSize = &pageSize
 	return r
 }

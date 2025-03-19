@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **EdgeApplication** | **int64** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **NetworkMap** | Pointer to **string** |  | [optional] 
-**EdgeFirewall** | Pointer to **NullableInt32** |  | [optional] 
+**EdgeFirewall** | Pointer to **NullableInt64** |  | [optional] 
 **Tls** | Pointer to [**TLSRequest**](TLSRequest.md) |  | [optional] 
 **Protocols** | Pointer to [**ProtocolsRequest**](ProtocolsRequest.md) |  | [optional] 
 **Mtls** | Pointer to [**MTLSRequest**](MTLSRequest.md) |  | [optional] 
@@ -151,20 +151,20 @@ HasNetworkMap returns a boolean if a field has been set.
 
 ### GetEdgeFirewall
 
-`func (o *WorkloadRequest) GetEdgeFirewall() int32`
+`func (o *WorkloadRequest) GetEdgeFirewall() int64`
 
 GetEdgeFirewall returns the EdgeFirewall field if non-nil, zero value otherwise.
 
 ### GetEdgeFirewallOk
 
-`func (o *WorkloadRequest) GetEdgeFirewallOk() (*int32, bool)`
+`func (o *WorkloadRequest) GetEdgeFirewallOk() (*int64, bool)`
 
 GetEdgeFirewallOk returns a tuple with the EdgeFirewall field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEdgeFirewall
 
-`func (o *WorkloadRequest) SetEdgeFirewall(v int32)`
+`func (o *WorkloadRequest) SetEdgeFirewall(v int64)`
 
 SetEdgeFirewall sets EdgeFirewall field to given value.
 

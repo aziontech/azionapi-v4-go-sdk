@@ -409,8 +409,8 @@ type ApiListEdgeFirewallRulesRequest struct {
 	edgeFirewallId string
 	fields *string
 	ordering *string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	search *string
 }
 
@@ -427,13 +427,13 @@ func (r ApiListEdgeFirewallRulesRequest) Ordering(ordering string) ApiListEdgeFi
 }
 
 // A page number within the paginated result set.
-func (r ApiListEdgeFirewallRulesRequest) Page(page int32) ApiListEdgeFirewallRulesRequest {
+func (r ApiListEdgeFirewallRulesRequest) Page(page int64) ApiListEdgeFirewallRulesRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiListEdgeFirewallRulesRequest) PageSize(pageSize int32) ApiListEdgeFirewallRulesRequest {
+func (r ApiListEdgeFirewallRulesRequest) PageSize(pageSize int64) ApiListEdgeFirewallRulesRequest {
 	r.pageSize = &pageSize
 	return r
 }

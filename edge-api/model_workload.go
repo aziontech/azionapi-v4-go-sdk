@@ -22,7 +22,7 @@ var _ MappedNullable = &Workload{}
 
 // Workload struct for Workload
 type Workload struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	AlternateDomains []string `json:"alternate_domains,omitempty"`
 	Active *bool `json:"active,omitempty"`
@@ -42,7 +42,7 @@ type _Workload Workload
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkload(id int32, name string, lastEditor string, lastModified time.Time, productVersion string) *Workload {
+func NewWorkload(id int64, name string, lastEditor string, lastModified time.Time, productVersion string) *Workload {
 	this := Workload{}
 	this.Id = id
 	this.Name = name
@@ -61,9 +61,9 @@ func NewWorkloadWithDefaults() *Workload {
 }
 
 // GetId returns the Id field value
-func (o *Workload) GetId() int32 {
+func (o *Workload) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -72,7 +72,7 @@ func (o *Workload) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *Workload) GetIdOk() (*int32, bool) {
+func (o *Workload) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -80,7 +80,7 @@ func (o *Workload) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *Workload) SetId(v int32) {
+func (o *Workload) SetId(v int64) {
 	o.Id = v
 }
 

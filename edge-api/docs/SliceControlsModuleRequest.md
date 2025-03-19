@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **SliceConfigurationEnabled** | **bool** |  | 
 **SliceEdgeCachingEnabled** | **bool** |  | 
 **SliceTieredCachingEnabled** | **bool** |  | 
-**SliceConfigurationRange** | Pointer to **int32** |  | [optional] 
+**SliceConfigurationRange** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -90,20 +90,20 @@ SetSliceTieredCachingEnabled sets SliceTieredCachingEnabled field to given value
 
 ### GetSliceConfigurationRange
 
-`func (o *SliceControlsModuleRequest) GetSliceConfigurationRange() int32`
+`func (o *SliceControlsModuleRequest) GetSliceConfigurationRange() int64`
 
 GetSliceConfigurationRange returns the SliceConfigurationRange field if non-nil, zero value otherwise.
 
 ### GetSliceConfigurationRangeOk
 
-`func (o *SliceControlsModuleRequest) GetSliceConfigurationRangeOk() (*int32, bool)`
+`func (o *SliceControlsModuleRequest) GetSliceConfigurationRangeOk() (*int64, bool)`
 
 GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSliceConfigurationRange
 
-`func (o *SliceControlsModuleRequest) SetSliceConfigurationRange(v int32)`
+`func (o *SliceControlsModuleRequest) SetSliceConfigurationRange(v int64)`
 
 SetSliceConfigurationRange sets SliceConfigurationRange field to given value.
 

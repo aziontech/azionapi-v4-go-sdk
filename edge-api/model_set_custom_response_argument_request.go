@@ -21,7 +21,7 @@ var _ MappedNullable = &SetCustomResponseArgumentRequest{}
 
 // SetCustomResponseArgumentRequest struct for SetCustomResponseArgumentRequest
 type SetCustomResponseArgumentRequest struct {
-	StatusCode int32 `json:"status_code"`
+	StatusCode int64 `json:"status_code"`
 	ContentType *string `json:"content_type,omitempty" validate:"regexp=.*"`
 	ContentBody *string `json:"content_body,omitempty" validate:"regexp=.*"`
 }
@@ -32,7 +32,7 @@ type _SetCustomResponseArgumentRequest SetCustomResponseArgumentRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetCustomResponseArgumentRequest(statusCode int32) *SetCustomResponseArgumentRequest {
+func NewSetCustomResponseArgumentRequest(statusCode int64) *SetCustomResponseArgumentRequest {
 	this := SetCustomResponseArgumentRequest{}
 	this.StatusCode = statusCode
 	return &this
@@ -47,9 +47,9 @@ func NewSetCustomResponseArgumentRequestWithDefaults() *SetCustomResponseArgumen
 }
 
 // GetStatusCode returns the StatusCode field value
-func (o *SetCustomResponseArgumentRequest) GetStatusCode() int32 {
+func (o *SetCustomResponseArgumentRequest) GetStatusCode() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *SetCustomResponseArgumentRequest) GetStatusCode() int32 {
 
 // GetStatusCodeOk returns a tuple with the StatusCode field value
 // and a boolean to check if the value has been set.
-func (o *SetCustomResponseArgumentRequest) GetStatusCodeOk() (*int32, bool) {
+func (o *SetCustomResponseArgumentRequest) GetStatusCodeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SetCustomResponseArgumentRequest) GetStatusCodeOk() (*int32, bool) {
 }
 
 // SetStatusCode sets field value
-func (o *SetCustomResponseArgumentRequest) SetStatusCode(v int32) {
+func (o *SetCustomResponseArgumentRequest) SetStatusCode(v int64) {
 	o.StatusCode = v
 }
 

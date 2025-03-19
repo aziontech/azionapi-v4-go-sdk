@@ -594,8 +594,8 @@ type ApiListWAFsRequest struct {
 	ApiService *WAFsAPIService
 	fields *string
 	ordering *string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	search *string
 }
 
@@ -612,13 +612,13 @@ func (r ApiListWAFsRequest) Ordering(ordering string) ApiListWAFsRequest {
 }
 
 // A page number within the paginated result set.
-func (r ApiListWAFsRequest) Page(page int32) ApiListWAFsRequest {
+func (r ApiListWAFsRequest) Page(page int64) ApiListWAFsRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiListWAFsRequest) PageSize(pageSize int32) ApiListWAFsRequest {
+func (r ApiListWAFsRequest) PageSize(pageSize int64) ApiListWAFsRequest {
 	r.pageSize = &pageSize
 	return r
 }

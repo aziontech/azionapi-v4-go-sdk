@@ -21,7 +21,7 @@ var _ MappedNullable = &SetCustomResponseArgument{}
 
 // SetCustomResponseArgument struct for SetCustomResponseArgument
 type SetCustomResponseArgument struct {
-	StatusCode int32 `json:"status_code"`
+	StatusCode int64 `json:"status_code"`
 	ContentType *string `json:"content_type,omitempty" validate:"regexp=.*"`
 	ContentBody *string `json:"content_body,omitempty" validate:"regexp=.*"`
 }
@@ -32,7 +32,7 @@ type _SetCustomResponseArgument SetCustomResponseArgument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetCustomResponseArgument(statusCode int32) *SetCustomResponseArgument {
+func NewSetCustomResponseArgument(statusCode int64) *SetCustomResponseArgument {
 	this := SetCustomResponseArgument{}
 	this.StatusCode = statusCode
 	return &this
@@ -47,9 +47,9 @@ func NewSetCustomResponseArgumentWithDefaults() *SetCustomResponseArgument {
 }
 
 // GetStatusCode returns the StatusCode field value
-func (o *SetCustomResponseArgument) GetStatusCode() int32 {
+func (o *SetCustomResponseArgument) GetStatusCode() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *SetCustomResponseArgument) GetStatusCode() int32 {
 
 // GetStatusCodeOk returns a tuple with the StatusCode field value
 // and a boolean to check if the value has been set.
-func (o *SetCustomResponseArgument) GetStatusCodeOk() (*int32, bool) {
+func (o *SetCustomResponseArgument) GetStatusCodeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SetCustomResponseArgument) GetStatusCodeOk() (*int32, bool) {
 }
 
 // SetStatusCode sets field value
-func (o *SetCustomResponseArgument) SetStatusCode(v int32) {
+func (o *SetCustomResponseArgument) SetStatusCode(v int64) {
 	o.StatusCode = v
 }
 

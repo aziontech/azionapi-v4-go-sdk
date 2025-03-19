@@ -22,7 +22,7 @@ var _ MappedNullable = &NetworkList{}
 
 // NetworkList struct for NetworkList
 type NetworkList struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	Type string `json:"type"`
 	Items []string `json:"items"`
@@ -37,7 +37,7 @@ type _NetworkList NetworkList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNetworkList(id int32, name string, type_ string, items []string, lastEditor string, lastModified time.Time) *NetworkList {
+func NewNetworkList(id int64, name string, type_ string, items []string, lastEditor string, lastModified time.Time) *NetworkList {
 	this := NetworkList{}
 	this.Id = id
 	this.Name = name
@@ -57,9 +57,9 @@ func NewNetworkListWithDefaults() *NetworkList {
 }
 
 // GetId returns the Id field value
-func (o *NetworkList) GetId() int32 {
+func (o *NetworkList) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *NetworkList) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *NetworkList) GetIdOk() (*int32, bool) {
+func (o *NetworkList) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *NetworkList) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *NetworkList) SetId(v int32) {
+func (o *NetworkList) SetId(v int64) {
 	o.Id = v
 }
 

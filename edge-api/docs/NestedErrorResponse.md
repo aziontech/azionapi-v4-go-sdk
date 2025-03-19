@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **int64** | * &#x60;400&#x60; - 400: Bad Request * &#x60;401&#x60; - 401: Unauthorized * &#x60;403&#x60; - 403: Forbidden * &#x60;404&#x60; - 404: Not Found * &#x60;405&#x60; - 405: Method Not Allowed * &#x60;406&#x60; - 406: Not Acceptable * &#x60;408&#x60; - 408: Request Timeout * &#x60;409&#x60; - 409: Conflict * &#x60;410&#x60; - 410: Gone * &#x60;411&#x60; - 411: Length Required * &#x60;414&#x60; - 414: URI Too Long * &#x60;415&#x60; - 415: Unsupported Media Type * &#x60;416&#x60; - 416: Requested Range Not Satisfiable * &#x60;426&#x60; - 426: Upgrade Required * &#x60;429&#x60; - 429: Too Many Requests * &#x60;431&#x60; - 431: Request Header Fields Too Large * &#x60;500&#x60; - 500: Internal Server Error * &#x60;501&#x60; - 501: Not Implemented * &#x60;502&#x60; - 502: Bad Gateway * &#x60;503&#x60; - 503: Service Unavailable * &#x60;504&#x60; - 504: Gateway Timeout * &#x60;505&#x60; - 505: HTTP Version Not Supported * &#x60;any&#x60; - any | 
-**Timeout** | **int32** |  | 
+**Timeout** | **int64** |  | 
 **Uri** | Pointer to **NullableString** |  | [optional] 
 **CustomStatusCode** | Pointer to **NullableString** |  | [optional] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewNestedErrorResponse
 
-`func NewNestedErrorResponse(code int64, timeout int32, ) *NestedErrorResponse`
+`func NewNestedErrorResponse(code int64, timeout int64, ) *NestedErrorResponse`
 
 NewNestedErrorResponse instantiates a new NestedErrorResponse object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetCode sets Code field to given value.
 
 ### GetTimeout
 
-`func (o *NestedErrorResponse) GetTimeout() int32`
+`func (o *NestedErrorResponse) GetTimeout() int64`
 
 GetTimeout returns the Timeout field if non-nil, zero value otherwise.
 
 ### GetTimeoutOk
 
-`func (o *NestedErrorResponse) GetTimeoutOk() (*int32, bool)`
+`func (o *NestedErrorResponse) GetTimeoutOk() (*int64, bool)`
 
 GetTimeoutOk returns a tuple with the Timeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeout
 
-`func (o *NestedErrorResponse) SetTimeout(v int32)`
+`func (o *NestedErrorResponse) SetTimeout(v int64)`
 
 SetTimeout sets Timeout field to given value.
 

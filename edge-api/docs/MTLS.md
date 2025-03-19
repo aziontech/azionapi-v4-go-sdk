@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Verification** | Pointer to **string** |  | [optional] 
-**Certificate** | Pointer to **NullableInt32** |  | [optional] 
-**Crl** | Pointer to **[]int32** |  | [optional] 
+**Certificate** | Pointer to **NullableInt64** |  | [optional] 
+**Crl** | Pointer to **[]int64** |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasVerification returns a boolean if a field has been set.
 
 ### GetCertificate
 
-`func (o *MTLS) GetCertificate() int32`
+`func (o *MTLS) GetCertificate() int64`
 
 GetCertificate returns the Certificate field if non-nil, zero value otherwise.
 
 ### GetCertificateOk
 
-`func (o *MTLS) GetCertificateOk() (*int32, bool)`
+`func (o *MTLS) GetCertificateOk() (*int64, bool)`
 
 GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertificate
 
-`func (o *MTLS) SetCertificate(v int32)`
+`func (o *MTLS) SetCertificate(v int64)`
 
 SetCertificate sets Certificate field to given value.
 
@@ -89,20 +89,20 @@ HasCertificate returns a boolean if a field has been set.
 UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
 ### GetCrl
 
-`func (o *MTLS) GetCrl() []int32`
+`func (o *MTLS) GetCrl() []int64`
 
 GetCrl returns the Crl field if non-nil, zero value otherwise.
 
 ### GetCrlOk
 
-`func (o *MTLS) GetCrlOk() (*[]int32, bool)`
+`func (o *MTLS) GetCrlOk() (*[]int64, bool)`
 
 GetCrlOk returns a tuple with the Crl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCrl
 
-`func (o *MTLS) SetCrl(v []int32)`
+`func (o *MTLS) SetCrl(v []int64)`
 
 SetCrl sets Crl field to given value.
 

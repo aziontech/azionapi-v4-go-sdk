@@ -22,7 +22,7 @@ var _ MappedNullable = &WorkloadDeploymentBinds{}
 // WorkloadDeploymentBinds struct for WorkloadDeploymentBinds
 type WorkloadDeploymentBinds struct {
 	EdgeApplication int64 `json:"edge_application"`
-	EdgeFirewall NullableInt32 `json:"edge_firewall,omitempty"`
+	EdgeFirewall NullableInt64 `json:"edge_firewall,omitempty"`
 }
 
 type _WorkloadDeploymentBinds WorkloadDeploymentBinds
@@ -70,9 +70,9 @@ func (o *WorkloadDeploymentBinds) SetEdgeApplication(v int64) {
 }
 
 // GetEdgeFirewall returns the EdgeFirewall field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkloadDeploymentBinds) GetEdgeFirewall() int32 {
+func (o *WorkloadDeploymentBinds) GetEdgeFirewall() int64 {
 	if o == nil || IsNil(o.EdgeFirewall.Get()) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.EdgeFirewall.Get()
@@ -81,7 +81,7 @@ func (o *WorkloadDeploymentBinds) GetEdgeFirewall() int32 {
 // GetEdgeFirewallOk returns a tuple with the EdgeFirewall field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkloadDeploymentBinds) GetEdgeFirewallOk() (*int32, bool) {
+func (o *WorkloadDeploymentBinds) GetEdgeFirewallOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *WorkloadDeploymentBinds) HasEdgeFirewall() bool {
 	return false
 }
 
-// SetEdgeFirewall gets a reference to the given NullableInt32 and assigns it to the EdgeFirewall field.
-func (o *WorkloadDeploymentBinds) SetEdgeFirewall(v int32) {
+// SetEdgeFirewall gets a reference to the given NullableInt64 and assigns it to the EdgeFirewall field.
+func (o *WorkloadDeploymentBinds) SetEdgeFirewall(v int64) {
 	o.EdgeFirewall.Set(&v)
 }
 // SetEdgeFirewallNil sets the value for EdgeFirewall to be an explicit nil

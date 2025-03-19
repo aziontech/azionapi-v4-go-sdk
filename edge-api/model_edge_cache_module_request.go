@@ -23,7 +23,7 @@ var _ MappedNullable = &EdgeCacheModuleRequest{}
 type EdgeCacheModuleRequest struct {
 	// * `honor` - Honor Origin Cache Settings * `override` - Override Cache Settings
 	Behavior string `json:"behavior"`
-	MaxAge int32 `json:"max_age"`
+	MaxAge int64 `json:"max_age"`
 	CachingForPostEnabled bool `json:"caching_for_post_enabled"`
 	CachingForOptionsEnabled bool `json:"caching_for_options_enabled"`
 	StaleCacheEnabled bool `json:"stale_cache_enabled"`
@@ -37,7 +37,7 @@ type _EdgeCacheModuleRequest EdgeCacheModuleRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEdgeCacheModuleRequest(behavior string, maxAge int32, cachingForPostEnabled bool, cachingForOptionsEnabled bool, staleCacheEnabled bool, tieredCacheEnabled bool) *EdgeCacheModuleRequest {
+func NewEdgeCacheModuleRequest(behavior string, maxAge int64, cachingForPostEnabled bool, cachingForOptionsEnabled bool, staleCacheEnabled bool, tieredCacheEnabled bool) *EdgeCacheModuleRequest {
 	this := EdgeCacheModuleRequest{}
 	this.Behavior = behavior
 	this.MaxAge = maxAge
@@ -81,9 +81,9 @@ func (o *EdgeCacheModuleRequest) SetBehavior(v string) {
 }
 
 // GetMaxAge returns the MaxAge field value
-func (o *EdgeCacheModuleRequest) GetMaxAge() int32 {
+func (o *EdgeCacheModuleRequest) GetMaxAge() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -92,7 +92,7 @@ func (o *EdgeCacheModuleRequest) GetMaxAge() int32 {
 
 // GetMaxAgeOk returns a tuple with the MaxAge field value
 // and a boolean to check if the value has been set.
-func (o *EdgeCacheModuleRequest) GetMaxAgeOk() (*int32, bool) {
+func (o *EdgeCacheModuleRequest) GetMaxAgeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *EdgeCacheModuleRequest) GetMaxAgeOk() (*int32, bool) {
 }
 
 // SetMaxAge sets field value
-func (o *EdgeCacheModuleRequest) SetMaxAge(v int32) {
+func (o *EdgeCacheModuleRequest) SetMaxAge(v int64) {
 	o.MaxAge = v
 }
 

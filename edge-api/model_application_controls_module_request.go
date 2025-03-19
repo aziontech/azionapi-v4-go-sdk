@@ -30,7 +30,7 @@ type ApplicationControlsModuleRequest struct {
 	CookieNames []string `json:"cookie_names"`
 	// * `ignore` - Ignore * `whitelist` - Whitelist
 	AdaptiveDeliveryAction string `json:"adaptive_delivery_action"`
-	DeviceGroup []int32 `json:"device_group"`
+	DeviceGroup []int64 `json:"device_group"`
 }
 
 type _ApplicationControlsModuleRequest ApplicationControlsModuleRequest
@@ -39,7 +39,7 @@ type _ApplicationControlsModuleRequest ApplicationControlsModuleRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationControlsModuleRequest(cacheByQueryString string, queryStringFields []string, queryStringSortEnabled bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int32) *ApplicationControlsModuleRequest {
+func NewApplicationControlsModuleRequest(cacheByQueryString string, queryStringFields []string, queryStringSortEnabled bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int64) *ApplicationControlsModuleRequest {
 	this := ApplicationControlsModuleRequest{}
 	this.CacheByQueryString = cacheByQueryString
 	this.QueryStringFields = queryStringFields
@@ -204,9 +204,9 @@ func (o *ApplicationControlsModuleRequest) SetAdaptiveDeliveryAction(v string) {
 }
 
 // GetDeviceGroup returns the DeviceGroup field value
-func (o *ApplicationControlsModuleRequest) GetDeviceGroup() []int32 {
+func (o *ApplicationControlsModuleRequest) GetDeviceGroup() []int64 {
 	if o == nil {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 
@@ -215,7 +215,7 @@ func (o *ApplicationControlsModuleRequest) GetDeviceGroup() []int32 {
 
 // GetDeviceGroupOk returns a tuple with the DeviceGroup field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationControlsModuleRequest) GetDeviceGroupOk() ([]int32, bool) {
+func (o *ApplicationControlsModuleRequest) GetDeviceGroupOk() ([]int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -223,7 +223,7 @@ func (o *ApplicationControlsModuleRequest) GetDeviceGroupOk() ([]int32, bool) {
 }
 
 // SetDeviceGroup sets field value
-func (o *ApplicationControlsModuleRequest) SetDeviceGroup(v []int32) {
+func (o *ApplicationControlsModuleRequest) SetDeviceGroup(v []int64) {
 	o.DeviceGroup = v
 }
 

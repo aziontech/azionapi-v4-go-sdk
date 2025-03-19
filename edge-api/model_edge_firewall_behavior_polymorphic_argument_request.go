@@ -21,7 +21,7 @@ type EdgeFirewallBehaviorPolymorphicArgumentRequest struct {
 	SetCustomResponseArgumentRequest *SetCustomResponseArgumentRequest
 	SetRateLimitArgumentRequest *SetRateLimitArgumentRequest
 	SetWafRuleSetArgumentRequest *SetWafRuleSetArgumentRequest
-	Int32 *int32
+	Int64 *int64
 	String *string
 }
 
@@ -46,10 +46,10 @@ func SetWafRuleSetArgumentRequestAsEdgeFirewallBehaviorPolymorphicArgumentReques
 	}
 }
 
-// int32AsEdgeFirewallBehaviorPolymorphicArgumentRequest is a convenience function that returns int32 wrapped in EdgeFirewallBehaviorPolymorphicArgumentRequest
-func Int32AsEdgeFirewallBehaviorPolymorphicArgumentRequest(v *int32) EdgeFirewallBehaviorPolymorphicArgumentRequest {
+// int64AsEdgeFirewallBehaviorPolymorphicArgumentRequest is a convenience function that returns int64 wrapped in EdgeFirewallBehaviorPolymorphicArgumentRequest
+func Int64AsEdgeFirewallBehaviorPolymorphicArgumentRequest(v *int64) EdgeFirewallBehaviorPolymorphicArgumentRequest {
 	return EdgeFirewallBehaviorPolymorphicArgumentRequest{
-		Int32: v,
+		Int64: v,
 	}
 }
 
@@ -121,21 +121,21 @@ func (dst *EdgeFirewallBehaviorPolymorphicArgumentRequest) UnmarshalJSON(data []
 		dst.SetWafRuleSetArgumentRequest = nil
 	}
 
-	// try to unmarshal data into Int32
-	err = newStrictDecoder(data).Decode(&dst.Int32)
+	// try to unmarshal data into Int64
+	err = newStrictDecoder(data).Decode(&dst.Int64)
 	if err == nil {
-		jsonInt32, _ := json.Marshal(dst.Int32)
-		if string(jsonInt32) == "{}" { // empty struct
-			dst.Int32 = nil
+		jsonInt64, _ := json.Marshal(dst.Int64)
+		if string(jsonInt64) == "{}" { // empty struct
+			dst.Int64 = nil
 		} else {
-			if err = validator.Validate(dst.Int32); err != nil {
-				dst.Int32 = nil
+			if err = validator.Validate(dst.Int64); err != nil {
+				dst.Int64 = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Int32 = nil
+		dst.Int64 = nil
 	}
 
 	// try to unmarshal data into String
@@ -160,7 +160,7 @@ func (dst *EdgeFirewallBehaviorPolymorphicArgumentRequest) UnmarshalJSON(data []
 		dst.SetCustomResponseArgumentRequest = nil
 		dst.SetRateLimitArgumentRequest = nil
 		dst.SetWafRuleSetArgumentRequest = nil
-		dst.Int32 = nil
+		dst.Int64 = nil
 		dst.String = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(EdgeFirewallBehaviorPolymorphicArgumentRequest)")
@@ -185,8 +185,8 @@ func (src EdgeFirewallBehaviorPolymorphicArgumentRequest) MarshalJSON() ([]byte,
 		return json.Marshal(&src.SetWafRuleSetArgumentRequest)
 	}
 
-	if src.Int32 != nil {
-		return json.Marshal(&src.Int32)
+	if src.Int64 != nil {
+		return json.Marshal(&src.Int64)
 	}
 
 	if src.String != nil {
@@ -213,8 +213,8 @@ func (obj *EdgeFirewallBehaviorPolymorphicArgumentRequest) GetActualInstance() (
 		return obj.SetWafRuleSetArgumentRequest
 	}
 
-	if obj.Int32 != nil {
-		return obj.Int32
+	if obj.Int64 != nil {
+		return obj.Int64
 	}
 
 	if obj.String != nil {

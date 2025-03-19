@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | * &#x60;second&#x60; - second * &#x60;minute&#x60; - minute | [optional] 
 **LimitBy** | **string** | * &#x60;client_ip&#x60; - client_ip * &#x60;global&#x60; - global | 
-**AverageRateLimit** | **int32** |  | 
-**MaximumBurstSize** | Pointer to **int32** |  | [optional] 
+**AverageRateLimit** | **int64** |  | 
+**MaximumBurstSize** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
 ### NewSetRateLimitArgumentRequest
 
-`func NewSetRateLimitArgumentRequest(limitBy string, averageRateLimit int32, ) *SetRateLimitArgumentRequest`
+`func NewSetRateLimitArgumentRequest(limitBy string, averageRateLimit int64, ) *SetRateLimitArgumentRequest`
 
 NewSetRateLimitArgumentRequest instantiates a new SetRateLimitArgumentRequest object
 This constructor will assign default values to properties that have it defined,
@@ -75,40 +75,40 @@ SetLimitBy sets LimitBy field to given value.
 
 ### GetAverageRateLimit
 
-`func (o *SetRateLimitArgumentRequest) GetAverageRateLimit() int32`
+`func (o *SetRateLimitArgumentRequest) GetAverageRateLimit() int64`
 
 GetAverageRateLimit returns the AverageRateLimit field if non-nil, zero value otherwise.
 
 ### GetAverageRateLimitOk
 
-`func (o *SetRateLimitArgumentRequest) GetAverageRateLimitOk() (*int32, bool)`
+`func (o *SetRateLimitArgumentRequest) GetAverageRateLimitOk() (*int64, bool)`
 
 GetAverageRateLimitOk returns a tuple with the AverageRateLimit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAverageRateLimit
 
-`func (o *SetRateLimitArgumentRequest) SetAverageRateLimit(v int32)`
+`func (o *SetRateLimitArgumentRequest) SetAverageRateLimit(v int64)`
 
 SetAverageRateLimit sets AverageRateLimit field to given value.
 
 
 ### GetMaximumBurstSize
 
-`func (o *SetRateLimitArgumentRequest) GetMaximumBurstSize() int32`
+`func (o *SetRateLimitArgumentRequest) GetMaximumBurstSize() int64`
 
 GetMaximumBurstSize returns the MaximumBurstSize field if non-nil, zero value otherwise.
 
 ### GetMaximumBurstSizeOk
 
-`func (o *SetRateLimitArgumentRequest) GetMaximumBurstSizeOk() (*int32, bool)`
+`func (o *SetRateLimitArgumentRequest) GetMaximumBurstSizeOk() (*int64, bool)`
 
 GetMaximumBurstSizeOk returns a tuple with the MaximumBurstSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumBurstSize
 
-`func (o *SetRateLimitArgumentRequest) SetMaximumBurstSize(v int32)`
+`func (o *SetRateLimitArgumentRequest) SetMaximumBurstSize(v int64)`
 
 SetMaximumBurstSize sets MaximumBurstSize field to given value.
 

@@ -21,7 +21,7 @@ var _ MappedNullable = &ErrorResponsesRequest{}
 
 // ErrorResponsesRequest struct for ErrorResponsesRequest
 type ErrorResponsesRequest struct {
-	OriginId NullableInt32 `json:"origin_id,omitempty"`
+	OriginId NullableInt64 `json:"origin_id,omitempty"`
 	ErrorResponses []NestedErrorResponseRequest `json:"error_responses"`
 }
 
@@ -46,9 +46,9 @@ func NewErrorResponsesRequestWithDefaults() *ErrorResponsesRequest {
 }
 
 // GetOriginId returns the OriginId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ErrorResponsesRequest) GetOriginId() int32 {
+func (o *ErrorResponsesRequest) GetOriginId() int64 {
 	if o == nil || IsNil(o.OriginId.Get()) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.OriginId.Get()
@@ -57,7 +57,7 @@ func (o *ErrorResponsesRequest) GetOriginId() int32 {
 // GetOriginIdOk returns a tuple with the OriginId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ErrorResponsesRequest) GetOriginIdOk() (*int32, bool) {
+func (o *ErrorResponsesRequest) GetOriginIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -73,8 +73,8 @@ func (o *ErrorResponsesRequest) HasOriginId() bool {
 	return false
 }
 
-// SetOriginId gets a reference to the given NullableInt32 and assigns it to the OriginId field.
-func (o *ErrorResponsesRequest) SetOriginId(v int32) {
+// SetOriginId gets a reference to the given NullableInt64 and assigns it to the OriginId field.
+func (o *ErrorResponsesRequest) SetOriginId(v int64) {
 	o.OriginId.Set(&v)
 }
 // SetOriginIdNil sets the value for OriginId to be an explicit nil

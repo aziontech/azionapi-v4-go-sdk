@@ -20,9 +20,9 @@ var _ MappedNullable = &HttpProtocolRequest{}
 // HttpProtocolRequest struct for HttpProtocolRequest
 type HttpProtocolRequest struct {
 	Versions []string `json:"versions,omitempty"`
-	HttpPorts []int32 `json:"http_ports,omitempty"`
-	HttpsPorts []int32 `json:"https_ports,omitempty"`
-	QuicPorts []int32 `json:"quic_ports,omitempty"`
+	HttpPorts []int64 `json:"http_ports,omitempty"`
+	HttpsPorts []int64 `json:"https_ports,omitempty"`
+	QuicPorts []int64 `json:"quic_ports,omitempty"`
 }
 
 // NewHttpProtocolRequest instantiates a new HttpProtocolRequest object
@@ -75,9 +75,9 @@ func (o *HttpProtocolRequest) SetVersions(v []string) {
 }
 
 // GetHttpPorts returns the HttpPorts field value if set, zero value otherwise.
-func (o *HttpProtocolRequest) GetHttpPorts() []int32 {
+func (o *HttpProtocolRequest) GetHttpPorts() []int64 {
 	if o == nil || IsNil(o.HttpPorts) {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.HttpPorts
@@ -85,7 +85,7 @@ func (o *HttpProtocolRequest) GetHttpPorts() []int32 {
 
 // GetHttpPortsOk returns a tuple with the HttpPorts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HttpProtocolRequest) GetHttpPortsOk() ([]int32, bool) {
+func (o *HttpProtocolRequest) GetHttpPortsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.HttpPorts) {
 		return nil, false
 	}
@@ -101,15 +101,15 @@ func (o *HttpProtocolRequest) HasHttpPorts() bool {
 	return false
 }
 
-// SetHttpPorts gets a reference to the given []int32 and assigns it to the HttpPorts field.
-func (o *HttpProtocolRequest) SetHttpPorts(v []int32) {
+// SetHttpPorts gets a reference to the given []int64 and assigns it to the HttpPorts field.
+func (o *HttpProtocolRequest) SetHttpPorts(v []int64) {
 	o.HttpPorts = v
 }
 
 // GetHttpsPorts returns the HttpsPorts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *HttpProtocolRequest) GetHttpsPorts() []int32 {
+func (o *HttpProtocolRequest) GetHttpsPorts() []int64 {
 	if o == nil {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.HttpsPorts
@@ -118,7 +118,7 @@ func (o *HttpProtocolRequest) GetHttpsPorts() []int32 {
 // GetHttpsPortsOk returns a tuple with the HttpsPorts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *HttpProtocolRequest) GetHttpsPortsOk() ([]int32, bool) {
+func (o *HttpProtocolRequest) GetHttpsPortsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.HttpsPorts) {
 		return nil, false
 	}
@@ -134,15 +134,15 @@ func (o *HttpProtocolRequest) HasHttpsPorts() bool {
 	return false
 }
 
-// SetHttpsPorts gets a reference to the given []int32 and assigns it to the HttpsPorts field.
-func (o *HttpProtocolRequest) SetHttpsPorts(v []int32) {
+// SetHttpsPorts gets a reference to the given []int64 and assigns it to the HttpsPorts field.
+func (o *HttpProtocolRequest) SetHttpsPorts(v []int64) {
 	o.HttpsPorts = v
 }
 
 // GetQuicPorts returns the QuicPorts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *HttpProtocolRequest) GetQuicPorts() []int32 {
+func (o *HttpProtocolRequest) GetQuicPorts() []int64 {
 	if o == nil {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.QuicPorts
@@ -151,7 +151,7 @@ func (o *HttpProtocolRequest) GetQuicPorts() []int32 {
 // GetQuicPortsOk returns a tuple with the QuicPorts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *HttpProtocolRequest) GetQuicPortsOk() ([]int32, bool) {
+func (o *HttpProtocolRequest) GetQuicPortsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.QuicPorts) {
 		return nil, false
 	}
@@ -167,8 +167,8 @@ func (o *HttpProtocolRequest) HasQuicPorts() bool {
 	return false
 }
 
-// SetQuicPorts gets a reference to the given []int32 and assigns it to the QuicPorts field.
-func (o *HttpProtocolRequest) SetQuicPorts(v []int32) {
+// SetQuicPorts gets a reference to the given []int64 and assigns it to the QuicPorts field.
+func (o *HttpProtocolRequest) SetQuicPorts(v []int64) {
 	o.QuicPorts = v
 }
 

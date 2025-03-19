@@ -19,7 +19,7 @@ import (
 // EdgeApplicationBehaviorPolymorphicArgumentRequest - struct for EdgeApplicationBehaviorPolymorphicArgumentRequest
 type EdgeApplicationBehaviorPolymorphicArgumentRequest struct {
 	CaptureMatchGroupsArgumentRequest *CaptureMatchGroupsArgumentRequest
-	Int32 *int32
+	Int64 *int64
 	String *string
 }
 
@@ -30,10 +30,10 @@ func CaptureMatchGroupsArgumentRequestAsEdgeApplicationBehaviorPolymorphicArgume
 	}
 }
 
-// int32AsEdgeApplicationBehaviorPolymorphicArgumentRequest is a convenience function that returns int32 wrapped in EdgeApplicationBehaviorPolymorphicArgumentRequest
-func Int32AsEdgeApplicationBehaviorPolymorphicArgumentRequest(v *int32) EdgeApplicationBehaviorPolymorphicArgumentRequest {
+// int64AsEdgeApplicationBehaviorPolymorphicArgumentRequest is a convenience function that returns int64 wrapped in EdgeApplicationBehaviorPolymorphicArgumentRequest
+func Int64AsEdgeApplicationBehaviorPolymorphicArgumentRequest(v *int64) EdgeApplicationBehaviorPolymorphicArgumentRequest {
 	return EdgeApplicationBehaviorPolymorphicArgumentRequest{
-		Int32: v,
+		Int64: v,
 	}
 }
 
@@ -71,21 +71,21 @@ func (dst *EdgeApplicationBehaviorPolymorphicArgumentRequest) UnmarshalJSON(data
 		dst.CaptureMatchGroupsArgumentRequest = nil
 	}
 
-	// try to unmarshal data into Int32
-	err = newStrictDecoder(data).Decode(&dst.Int32)
+	// try to unmarshal data into Int64
+	err = newStrictDecoder(data).Decode(&dst.Int64)
 	if err == nil {
-		jsonInt32, _ := json.Marshal(dst.Int32)
-		if string(jsonInt32) == "{}" { // empty struct
-			dst.Int32 = nil
+		jsonInt64, _ := json.Marshal(dst.Int64)
+		if string(jsonInt64) == "{}" { // empty struct
+			dst.Int64 = nil
 		} else {
-			if err = validator.Validate(dst.Int32); err != nil {
-				dst.Int32 = nil
+			if err = validator.Validate(dst.Int64); err != nil {
+				dst.Int64 = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Int32 = nil
+		dst.Int64 = nil
 	}
 
 	// try to unmarshal data into String
@@ -108,7 +108,7 @@ func (dst *EdgeApplicationBehaviorPolymorphicArgumentRequest) UnmarshalJSON(data
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.CaptureMatchGroupsArgumentRequest = nil
-		dst.Int32 = nil
+		dst.Int64 = nil
 		dst.String = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(EdgeApplicationBehaviorPolymorphicArgumentRequest)")
@@ -125,8 +125,8 @@ func (src EdgeApplicationBehaviorPolymorphicArgumentRequest) MarshalJSON() ([]by
 		return json.Marshal(&src.CaptureMatchGroupsArgumentRequest)
 	}
 
-	if src.Int32 != nil {
-		return json.Marshal(&src.Int32)
+	if src.Int64 != nil {
+		return json.Marshal(&src.Int64)
 	}
 
 	if src.String != nil {
@@ -145,8 +145,8 @@ func (obj *EdgeApplicationBehaviorPolymorphicArgumentRequest) GetActualInstance(
 		return obj.CaptureMatchGroupsArgumentRequest
 	}
 
-	if obj.Int32 != nil {
-		return obj.Int32
+	if obj.Int64 != nil {
+		return obj.Int64
 	}
 
 	if obj.String != nil {

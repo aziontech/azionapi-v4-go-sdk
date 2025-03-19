@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **JsonArgs** | **interface{}** |  | 
 **EdgeFunction** | **int64** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEdgeFirewallFunctionInstance
 
-`func NewEdgeFirewallFunctionInstance(id int32, name string, jsonArgs interface{}, edgeFunction int64, lastEditor string, lastModified time.Time, ) *EdgeFirewallFunctionInstance`
+`func NewEdgeFirewallFunctionInstance(id int64, name string, jsonArgs interface{}, edgeFunction int64, lastEditor string, lastModified time.Time, ) *EdgeFirewallFunctionInstance`
 
 NewEdgeFirewallFunctionInstance instantiates a new EdgeFirewallFunctionInstance object
 This constructor will assign default values to properties that have it defined,
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *EdgeFirewallFunctionInstance) GetId() int32`
+`func (o *EdgeFirewallFunctionInstance) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *EdgeFirewallFunctionInstance) GetIdOk() (*int32, bool)`
+`func (o *EdgeFirewallFunctionInstance) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *EdgeFirewallFunctionInstance) SetId(v int32)`
+`func (o *EdgeFirewallFunctionInstance) SetId(v int64)`
 
 SetId sets Id field to given value.
 

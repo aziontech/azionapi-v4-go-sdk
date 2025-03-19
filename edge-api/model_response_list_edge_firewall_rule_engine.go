@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponseListEdgeFirewallRuleEngine{}
 
 // ResponseListEdgeFirewallRuleEngine struct for ResponseListEdgeFirewallRuleEngine
 type ResponseListEdgeFirewallRuleEngine struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	LastEditor string `json:"last_editor" validate:"regexp=.*"`
 	LastModified time.Time `json:"last_modified"`
@@ -30,7 +30,7 @@ type ResponseListEdgeFirewallRuleEngine struct {
 	Behaviors []EdgeFirewallBehaviorField `json:"behaviors"`
 	Criteria [][]EdgeFirewallCriterionField `json:"criteria"`
 	Description *string `json:"description,omitempty" validate:"regexp=.*"`
-	Order int32 `json:"order"`
+	Order int64 `json:"order"`
 }
 
 type _ResponseListEdgeFirewallRuleEngine ResponseListEdgeFirewallRuleEngine
@@ -39,7 +39,7 @@ type _ResponseListEdgeFirewallRuleEngine ResponseListEdgeFirewallRuleEngine
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseListEdgeFirewallRuleEngine(id int32, name string, lastEditor string, lastModified time.Time, behaviors []EdgeFirewallBehaviorField, criteria [][]EdgeFirewallCriterionField, order int32) *ResponseListEdgeFirewallRuleEngine {
+func NewResponseListEdgeFirewallRuleEngine(id int64, name string, lastEditor string, lastModified time.Time, behaviors []EdgeFirewallBehaviorField, criteria [][]EdgeFirewallCriterionField, order int64) *ResponseListEdgeFirewallRuleEngine {
 	this := ResponseListEdgeFirewallRuleEngine{}
 	this.Id = id
 	this.Name = name
@@ -60,9 +60,9 @@ func NewResponseListEdgeFirewallRuleEngineWithDefaults() *ResponseListEdgeFirewa
 }
 
 // GetId returns the Id field value
-func (o *ResponseListEdgeFirewallRuleEngine) GetId() int32 {
+func (o *ResponseListEdgeFirewallRuleEngine) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -71,7 +71,7 @@ func (o *ResponseListEdgeFirewallRuleEngine) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListEdgeFirewallRuleEngine) GetIdOk() (*int32, bool) {
+func (o *ResponseListEdgeFirewallRuleEngine) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -79,7 +79,7 @@ func (o *ResponseListEdgeFirewallRuleEngine) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *ResponseListEdgeFirewallRuleEngine) SetId(v int32) {
+func (o *ResponseListEdgeFirewallRuleEngine) SetId(v int64) {
 	o.Id = v
 }
 
@@ -268,9 +268,9 @@ func (o *ResponseListEdgeFirewallRuleEngine) SetDescription(v string) {
 }
 
 // GetOrder returns the Order field value
-func (o *ResponseListEdgeFirewallRuleEngine) GetOrder() int32 {
+func (o *ResponseListEdgeFirewallRuleEngine) GetOrder() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -279,7 +279,7 @@ func (o *ResponseListEdgeFirewallRuleEngine) GetOrder() int32 {
 
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListEdgeFirewallRuleEngine) GetOrderOk() (*int32, bool) {
+func (o *ResponseListEdgeFirewallRuleEngine) GetOrderOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -287,7 +287,7 @@ func (o *ResponseListEdgeFirewallRuleEngine) GetOrderOk() (*int32, bool) {
 }
 
 // SetOrder sets field value
-func (o *ResponseListEdgeFirewallRuleEngine) SetOrder(v int32) {
+func (o *ResponseListEdgeFirewallRuleEngine) SetOrder(v int64) {
 	o.Order = v
 }
 

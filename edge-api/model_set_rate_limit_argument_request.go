@@ -25,8 +25,8 @@ type SetRateLimitArgumentRequest struct {
 	Type *string `json:"type,omitempty"`
 	// * `client_ip` - client_ip * `global` - global
 	LimitBy string `json:"limit_by"`
-	AverageRateLimit int32 `json:"average_rate_limit"`
-	MaximumBurstSize *int32 `json:"maximum_burst_size,omitempty"`
+	AverageRateLimit int64 `json:"average_rate_limit"`
+	MaximumBurstSize *int64 `json:"maximum_burst_size,omitempty"`
 }
 
 type _SetRateLimitArgumentRequest SetRateLimitArgumentRequest
@@ -35,7 +35,7 @@ type _SetRateLimitArgumentRequest SetRateLimitArgumentRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetRateLimitArgumentRequest(limitBy string, averageRateLimit int32) *SetRateLimitArgumentRequest {
+func NewSetRateLimitArgumentRequest(limitBy string, averageRateLimit int64) *SetRateLimitArgumentRequest {
 	this := SetRateLimitArgumentRequest{}
 	this.LimitBy = limitBy
 	this.AverageRateLimit = averageRateLimit
@@ -107,9 +107,9 @@ func (o *SetRateLimitArgumentRequest) SetLimitBy(v string) {
 }
 
 // GetAverageRateLimit returns the AverageRateLimit field value
-func (o *SetRateLimitArgumentRequest) GetAverageRateLimit() int32 {
+func (o *SetRateLimitArgumentRequest) GetAverageRateLimit() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -118,7 +118,7 @@ func (o *SetRateLimitArgumentRequest) GetAverageRateLimit() int32 {
 
 // GetAverageRateLimitOk returns a tuple with the AverageRateLimit field value
 // and a boolean to check if the value has been set.
-func (o *SetRateLimitArgumentRequest) GetAverageRateLimitOk() (*int32, bool) {
+func (o *SetRateLimitArgumentRequest) GetAverageRateLimitOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -126,14 +126,14 @@ func (o *SetRateLimitArgumentRequest) GetAverageRateLimitOk() (*int32, bool) {
 }
 
 // SetAverageRateLimit sets field value
-func (o *SetRateLimitArgumentRequest) SetAverageRateLimit(v int32) {
+func (o *SetRateLimitArgumentRequest) SetAverageRateLimit(v int64) {
 	o.AverageRateLimit = v
 }
 
 // GetMaximumBurstSize returns the MaximumBurstSize field value if set, zero value otherwise.
-func (o *SetRateLimitArgumentRequest) GetMaximumBurstSize() int32 {
+func (o *SetRateLimitArgumentRequest) GetMaximumBurstSize() int64 {
 	if o == nil || IsNil(o.MaximumBurstSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaximumBurstSize
@@ -141,7 +141,7 @@ func (o *SetRateLimitArgumentRequest) GetMaximumBurstSize() int32 {
 
 // GetMaximumBurstSizeOk returns a tuple with the MaximumBurstSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetRateLimitArgumentRequest) GetMaximumBurstSizeOk() (*int32, bool) {
+func (o *SetRateLimitArgumentRequest) GetMaximumBurstSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaximumBurstSize) {
 		return nil, false
 	}
@@ -157,8 +157,8 @@ func (o *SetRateLimitArgumentRequest) HasMaximumBurstSize() bool {
 	return false
 }
 
-// SetMaximumBurstSize gets a reference to the given int32 and assigns it to the MaximumBurstSize field.
-func (o *SetRateLimitArgumentRequest) SetMaximumBurstSize(v int32) {
+// SetMaximumBurstSize gets a reference to the given int64 and assigns it to the MaximumBurstSize field.
+func (o *SetRateLimitArgumentRequest) SetMaximumBurstSize(v int64) {
 	o.MaximumBurstSize = &v
 }
 

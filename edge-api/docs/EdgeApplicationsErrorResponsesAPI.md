@@ -28,15 +28,15 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 	edgeApplicationId := "edgeApplicationId_example" // string | 
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: edge_application_id, origin_id, error_responses, name) (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | A numeric value that indicates the number of items per page. (optional)
+	page := int64(789) // int64 | A page number within the paginated result set. (optional)
+	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
 	search := "search_example" // string | A search term. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -69,8 +69,8 @@ Name | Type | Description  | Notes
 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: edge_application_id, origin_id, error_responses, name) | 
- **page** | **int32** | A page number within the paginated result set. | 
- **pageSize** | **int32** | A numeric value that indicates the number of items per page. | 
+ **page** | **int64** | A page number within the paginated result set. | 
+ **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -108,7 +108,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -183,7 +183,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -258,13 +258,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 	edgeApplicationId := "edgeApplicationId_example" // string | 
 	id := "id_example" // string | 
-	errorResponsesRequest := *openapiclient.NewErrorResponsesRequest([]openapiclient.NestedErrorResponseRequest{*openapiclient.NewNestedErrorResponseRequest(int64(123), int32(123))}) // ErrorResponsesRequest | 
+	errorResponsesRequest := *openapiclient.NewErrorResponsesRequest([]openapiclient.NestedErrorResponseRequest{*openapiclient.NewNestedErrorResponseRequest(int64(123), int64(123))}) // ErrorResponsesRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

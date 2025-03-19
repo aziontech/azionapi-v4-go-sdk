@@ -22,7 +22,7 @@ var _ MappedNullable = &EdgeApplicationRuleEngine{}
 
 // EdgeApplicationRuleEngine struct for EdgeApplicationRuleEngine
 type EdgeApplicationRuleEngine struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	// * `default` - default * `request` - request * `response` - response
 	Phase string `json:"phase"`
@@ -30,7 +30,7 @@ type EdgeApplicationRuleEngine struct {
 	Behaviors []EdgeApplicationBehaviorField `json:"behaviors"`
 	Criteria [][]EdgeApplicationCriterionField `json:"criteria"`
 	Description *string `json:"description,omitempty" validate:"regexp=.*"`
-	Order int32 `json:"order"`
+	Order int64 `json:"order"`
 	LastEditor NullableString `json:"last_editor" validate:"regexp=.*"`
 	LastModified NullableTime `json:"last_modified"`
 }
@@ -41,7 +41,7 @@ type _EdgeApplicationRuleEngine EdgeApplicationRuleEngine
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEdgeApplicationRuleEngine(id int32, name string, phase string, behaviors []EdgeApplicationBehaviorField, criteria [][]EdgeApplicationCriterionField, order int32, lastEditor NullableString, lastModified NullableTime) *EdgeApplicationRuleEngine {
+func NewEdgeApplicationRuleEngine(id int64, name string, phase string, behaviors []EdgeApplicationBehaviorField, criteria [][]EdgeApplicationCriterionField, order int64, lastEditor NullableString, lastModified NullableTime) *EdgeApplicationRuleEngine {
 	this := EdgeApplicationRuleEngine{}
 	this.Id = id
 	this.Name = name
@@ -63,9 +63,9 @@ func NewEdgeApplicationRuleEngineWithDefaults() *EdgeApplicationRuleEngine {
 }
 
 // GetId returns the Id field value
-func (o *EdgeApplicationRuleEngine) GetId() int32 {
+func (o *EdgeApplicationRuleEngine) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -74,7 +74,7 @@ func (o *EdgeApplicationRuleEngine) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *EdgeApplicationRuleEngine) GetIdOk() (*int32, bool) {
+func (o *EdgeApplicationRuleEngine) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -82,7 +82,7 @@ func (o *EdgeApplicationRuleEngine) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *EdgeApplicationRuleEngine) SetId(v int32) {
+func (o *EdgeApplicationRuleEngine) SetId(v int64) {
 	o.Id = v
 }
 
@@ -247,9 +247,9 @@ func (o *EdgeApplicationRuleEngine) SetDescription(v string) {
 }
 
 // GetOrder returns the Order field value
-func (o *EdgeApplicationRuleEngine) GetOrder() int32 {
+func (o *EdgeApplicationRuleEngine) GetOrder() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -258,7 +258,7 @@ func (o *EdgeApplicationRuleEngine) GetOrder() int32 {
 
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
-func (o *EdgeApplicationRuleEngine) GetOrderOk() (*int32, bool) {
+func (o *EdgeApplicationRuleEngine) GetOrderOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -266,7 +266,7 @@ func (o *EdgeApplicationRuleEngine) GetOrderOk() (*int32, bool) {
 }
 
 // SetOrder sets field value
-func (o *EdgeApplicationRuleEngine) SetOrder(v int32) {
+func (o *EdgeApplicationRuleEngine) SetOrder(v int64) {
 	o.Order = v
 }
 

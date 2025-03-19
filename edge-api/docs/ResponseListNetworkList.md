@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **Type** | **string** |  | 
 **LastEditor** | **string** |  | [readonly] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewResponseListNetworkList
 
-`func NewResponseListNetworkList(id int32, name string, type_ string, lastEditor string, lastModified time.Time, ) *ResponseListNetworkList`
+`func NewResponseListNetworkList(id int64, name string, type_ string, lastEditor string, lastModified time.Time, ) *ResponseListNetworkList`
 
 NewResponseListNetworkList instantiates a new ResponseListNetworkList object
 This constructor will assign default values to properties that have it defined,
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ResponseListNetworkList) GetId() int32`
+`func (o *ResponseListNetworkList) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponseListNetworkList) GetIdOk() (*int32, bool)`
+`func (o *ResponseListNetworkList) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponseListNetworkList) SetId(v int32)`
+`func (o *ResponseListNetworkList) SetId(v int64)`
 
 SetId sets Id field to given value.
 
