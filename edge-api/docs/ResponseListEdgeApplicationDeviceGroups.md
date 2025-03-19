@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **UserAgent** | **string** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewResponseListEdgeApplicationDeviceGroups
 
-`func NewResponseListEdgeApplicationDeviceGroups(id int32, name string, userAgent string, ) *ResponseListEdgeApplicationDeviceGroups`
+`func NewResponseListEdgeApplicationDeviceGroups(id int64, name string, userAgent string, ) *ResponseListEdgeApplicationDeviceGroups`
 
 NewResponseListEdgeApplicationDeviceGroups instantiates a new ResponseListEdgeApplicationDeviceGroups object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ResponseListEdgeApplicationDeviceGroups) GetId() int32`
+`func (o *ResponseListEdgeApplicationDeviceGroups) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponseListEdgeApplicationDeviceGroups) GetIdOk() (*int32, bool)`
+`func (o *ResponseListEdgeApplicationDeviceGroups) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponseListEdgeApplicationDeviceGroups) SetId(v int32)`
+`func (o *ResponseListEdgeApplicationDeviceGroups) SetId(v int64)`
 
 SetId sets Id field to given value.
 

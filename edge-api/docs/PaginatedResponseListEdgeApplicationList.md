@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int32** |  | [optional] 
+**Count** | Pointer to **int64** |  | [optional] 
 **Results** | Pointer to [**[]ResponseListEdgeApplication**](ResponseListEdgeApplication.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCount
 
-`func (o *PaginatedResponseListEdgeApplicationList) GetCount() int32`
+`func (o *PaginatedResponseListEdgeApplicationList) GetCount() int64`
 
 GetCount returns the Count field if non-nil, zero value otherwise.
 
 ### GetCountOk
 
-`func (o *PaginatedResponseListEdgeApplicationList) GetCountOk() (*int32, bool)`
+`func (o *PaginatedResponseListEdgeApplicationList) GetCountOk() (*int64, bool)`
 
 GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCount
 
-`func (o *PaginatedResponseListEdgeApplicationList) SetCount(v int32)`
+`func (o *PaginatedResponseListEdgeApplicationList) SetCount(v int64)`
 
 SetCount sets Count field to given value.
 

@@ -29,8 +29,8 @@ type ApiListErrorResponsesRequest struct {
 	edgeApplicationId string
 	fields *string
 	ordering *string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	search *string
 }
 
@@ -47,13 +47,13 @@ func (r ApiListErrorResponsesRequest) Ordering(ordering string) ApiListErrorResp
 }
 
 // A page number within the paginated result set.
-func (r ApiListErrorResponsesRequest) Page(page int32) ApiListErrorResponsesRequest {
+func (r ApiListErrorResponsesRequest) Page(page int64) ApiListErrorResponsesRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiListErrorResponsesRequest) PageSize(pageSize int32) ApiListErrorResponsesRequest {
+func (r ApiListErrorResponsesRequest) PageSize(pageSize int64) ApiListErrorResponsesRequest {
 	r.pageSize = &pageSize
 	return r
 }

@@ -20,8 +20,8 @@ var _ MappedNullable = &MTLSRequest{}
 // MTLSRequest struct for MTLSRequest
 type MTLSRequest struct {
 	Verification *string `json:"verification,omitempty"`
-	Certificate NullableInt32 `json:"certificate,omitempty"`
-	Crl []int32 `json:"crl,omitempty"`
+	Certificate NullableInt64 `json:"certificate,omitempty"`
+	Crl []int64 `json:"crl,omitempty"`
 }
 
 // NewMTLSRequest instantiates a new MTLSRequest object
@@ -74,9 +74,9 @@ func (o *MTLSRequest) SetVerification(v string) {
 }
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MTLSRequest) GetCertificate() int32 {
+func (o *MTLSRequest) GetCertificate() int64 {
 	if o == nil || IsNil(o.Certificate.Get()) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Certificate.Get()
@@ -85,7 +85,7 @@ func (o *MTLSRequest) GetCertificate() int32 {
 // GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MTLSRequest) GetCertificateOk() (*int32, bool) {
+func (o *MTLSRequest) GetCertificateOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *MTLSRequest) HasCertificate() bool {
 	return false
 }
 
-// SetCertificate gets a reference to the given NullableInt32 and assigns it to the Certificate field.
-func (o *MTLSRequest) SetCertificate(v int32) {
+// SetCertificate gets a reference to the given NullableInt64 and assigns it to the Certificate field.
+func (o *MTLSRequest) SetCertificate(v int64) {
 	o.Certificate.Set(&v)
 }
 // SetCertificateNil sets the value for Certificate to be an explicit nil
@@ -116,9 +116,9 @@ func (o *MTLSRequest) UnsetCertificate() {
 }
 
 // GetCrl returns the Crl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MTLSRequest) GetCrl() []int32 {
+func (o *MTLSRequest) GetCrl() []int64 {
 	if o == nil {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.Crl
@@ -127,7 +127,7 @@ func (o *MTLSRequest) GetCrl() []int32 {
 // GetCrlOk returns a tuple with the Crl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MTLSRequest) GetCrlOk() ([]int32, bool) {
+func (o *MTLSRequest) GetCrlOk() ([]int64, bool) {
 	if o == nil || IsNil(o.Crl) {
 		return nil, false
 	}
@@ -143,8 +143,8 @@ func (o *MTLSRequest) HasCrl() bool {
 	return false
 }
 
-// SetCrl gets a reference to the given []int32 and assigns it to the Crl field.
-func (o *MTLSRequest) SetCrl(v []int32) {
+// SetCrl gets a reference to the given []int64 and assigns it to the Crl field.
+func (o *MTLSRequest) SetCrl(v []int64) {
 	o.Crl = v
 }
 

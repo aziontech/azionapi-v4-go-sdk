@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **Phase** | **string** | * &#x60;default&#x60; - default * &#x60;request&#x60; - request * &#x60;response&#x60; - response | 
 **Active** | Pointer to **bool** |  | [optional] 
 **Behaviors** | [**[]EdgeApplicationBehaviorField**](EdgeApplicationBehaviorField.md) |  | 
 **Criteria** | [**[][]EdgeApplicationCriterionField**]([]EdgeApplicationCriterionField.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Order** | **int32** |  | [readonly] 
+**Order** | **int64** |  | [readonly] 
 **LastEditor** | **NullableString** |  | [readonly] 
 **LastModified** | **NullableTime** |  | [readonly] 
 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewEdgeApplicationRuleEngine
 
-`func NewEdgeApplicationRuleEngine(id int32, name string, phase string, behaviors []EdgeApplicationBehaviorField, criteria [][]EdgeApplicationCriterionField, order int32, lastEditor NullableString, lastModified NullableTime, ) *EdgeApplicationRuleEngine`
+`func NewEdgeApplicationRuleEngine(id int64, name string, phase string, behaviors []EdgeApplicationBehaviorField, criteria [][]EdgeApplicationCriterionField, order int64, lastEditor NullableString, lastModified NullableTime, ) *EdgeApplicationRuleEngine`
 
 NewEdgeApplicationRuleEngine instantiates a new EdgeApplicationRuleEngine object
 This constructor will assign default values to properties that have it defined,
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *EdgeApplicationRuleEngine) GetId() int32`
+`func (o *EdgeApplicationRuleEngine) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *EdgeApplicationRuleEngine) GetIdOk() (*int32, bool)`
+`func (o *EdgeApplicationRuleEngine) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *EdgeApplicationRuleEngine) SetId(v int32)`
+`func (o *EdgeApplicationRuleEngine) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -186,20 +186,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetOrder
 
-`func (o *EdgeApplicationRuleEngine) GetOrder() int32`
+`func (o *EdgeApplicationRuleEngine) GetOrder() int64`
 
 GetOrder returns the Order field if non-nil, zero value otherwise.
 
 ### GetOrderOk
 
-`func (o *EdgeApplicationRuleEngine) GetOrderOk() (*int32, bool)`
+`func (o *EdgeApplicationRuleEngine) GetOrderOk() (*int64, bool)`
 
 GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrder
 
-`func (o *EdgeApplicationRuleEngine) SetOrder(v int32)`
+`func (o *EdgeApplicationRuleEngine) SetOrder(v int64)`
 
 SetOrder sets Order field to given value.
 

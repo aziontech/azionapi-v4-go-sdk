@@ -22,7 +22,7 @@ var _ MappedNullable = &EdgeFirewallRuleEngine{}
 
 // EdgeFirewallRuleEngine struct for EdgeFirewallRuleEngine
 type EdgeFirewallRuleEngine struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	LastEditor string `json:"last_editor" validate:"regexp=.*"`
 	LastModified time.Time `json:"last_modified"`
@@ -30,7 +30,7 @@ type EdgeFirewallRuleEngine struct {
 	Behaviors []EdgeFirewallBehaviorField `json:"behaviors"`
 	Criteria [][]EdgeFirewallCriterionField `json:"criteria"`
 	Description *string `json:"description,omitempty" validate:"regexp=.*"`
-	Order int32 `json:"order"`
+	Order int64 `json:"order"`
 }
 
 type _EdgeFirewallRuleEngine EdgeFirewallRuleEngine
@@ -39,7 +39,7 @@ type _EdgeFirewallRuleEngine EdgeFirewallRuleEngine
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEdgeFirewallRuleEngine(id int32, name string, lastEditor string, lastModified time.Time, behaviors []EdgeFirewallBehaviorField, criteria [][]EdgeFirewallCriterionField, order int32) *EdgeFirewallRuleEngine {
+func NewEdgeFirewallRuleEngine(id int64, name string, lastEditor string, lastModified time.Time, behaviors []EdgeFirewallBehaviorField, criteria [][]EdgeFirewallCriterionField, order int64) *EdgeFirewallRuleEngine {
 	this := EdgeFirewallRuleEngine{}
 	this.Id = id
 	this.Name = name
@@ -60,9 +60,9 @@ func NewEdgeFirewallRuleEngineWithDefaults() *EdgeFirewallRuleEngine {
 }
 
 // GetId returns the Id field value
-func (o *EdgeFirewallRuleEngine) GetId() int32 {
+func (o *EdgeFirewallRuleEngine) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -71,7 +71,7 @@ func (o *EdgeFirewallRuleEngine) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *EdgeFirewallRuleEngine) GetIdOk() (*int32, bool) {
+func (o *EdgeFirewallRuleEngine) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -79,7 +79,7 @@ func (o *EdgeFirewallRuleEngine) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *EdgeFirewallRuleEngine) SetId(v int32) {
+func (o *EdgeFirewallRuleEngine) SetId(v int64) {
 	o.Id = v
 }
 
@@ -268,9 +268,9 @@ func (o *EdgeFirewallRuleEngine) SetDescription(v string) {
 }
 
 // GetOrder returns the Order field value
-func (o *EdgeFirewallRuleEngine) GetOrder() int32 {
+func (o *EdgeFirewallRuleEngine) GetOrder() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -279,7 +279,7 @@ func (o *EdgeFirewallRuleEngine) GetOrder() int32 {
 
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
-func (o *EdgeFirewallRuleEngine) GetOrderOk() (*int32, bool) {
+func (o *EdgeFirewallRuleEngine) GetOrderOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -287,7 +287,7 @@ func (o *EdgeFirewallRuleEngine) GetOrderOk() (*int32, bool) {
 }
 
 // SetOrder sets field value
-func (o *EdgeFirewallRuleEngine) SetOrder(v int32) {
+func (o *EdgeFirewallRuleEngine) SetOrder(v int64) {
 	o.Order = v
 }
 

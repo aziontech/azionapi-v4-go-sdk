@@ -24,7 +24,7 @@ type SliceControlsModule struct {
 	SliceConfigurationEnabled bool `json:"slice_configuration_enabled"`
 	SliceEdgeCachingEnabled bool `json:"slice_edge_caching_enabled"`
 	SliceTieredCachingEnabled bool `json:"slice_tiered_caching_enabled"`
-	SliceConfigurationRange *int32 `json:"slice_configuration_range,omitempty"`
+	SliceConfigurationRange *int64 `json:"slice_configuration_range,omitempty"`
 }
 
 type _SliceControlsModule SliceControlsModule
@@ -122,9 +122,9 @@ func (o *SliceControlsModule) SetSliceTieredCachingEnabled(v bool) {
 }
 
 // GetSliceConfigurationRange returns the SliceConfigurationRange field value if set, zero value otherwise.
-func (o *SliceControlsModule) GetSliceConfigurationRange() int32 {
+func (o *SliceControlsModule) GetSliceConfigurationRange() int64 {
 	if o == nil || IsNil(o.SliceConfigurationRange) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SliceConfigurationRange
@@ -132,7 +132,7 @@ func (o *SliceControlsModule) GetSliceConfigurationRange() int32 {
 
 // GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SliceControlsModule) GetSliceConfigurationRangeOk() (*int32, bool) {
+func (o *SliceControlsModule) GetSliceConfigurationRangeOk() (*int64, bool) {
 	if o == nil || IsNil(o.SliceConfigurationRange) {
 		return nil, false
 	}
@@ -148,8 +148,8 @@ func (o *SliceControlsModule) HasSliceConfigurationRange() bool {
 	return false
 }
 
-// SetSliceConfigurationRange gets a reference to the given int32 and assigns it to the SliceConfigurationRange field.
-func (o *SliceControlsModule) SetSliceConfigurationRange(v int32) {
+// SetSliceConfigurationRange gets a reference to the given int64 and assigns it to the SliceConfigurationRange field.
+func (o *SliceControlsModule) SetSliceConfigurationRange(v int64) {
 	o.SliceConfigurationRange = &v
 }
 

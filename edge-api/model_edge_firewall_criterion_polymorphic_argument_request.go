@@ -18,14 +18,14 @@ import (
 
 // EdgeFirewallCriterionPolymorphicArgumentRequest - struct for EdgeFirewallCriterionPolymorphicArgumentRequest
 type EdgeFirewallCriterionPolymorphicArgumentRequest struct {
-	Int32 *int32
+	Int64 *int64
 	String *string
 }
 
-// int32AsEdgeFirewallCriterionPolymorphicArgumentRequest is a convenience function that returns int32 wrapped in EdgeFirewallCriterionPolymorphicArgumentRequest
-func Int32AsEdgeFirewallCriterionPolymorphicArgumentRequest(v *int32) EdgeFirewallCriterionPolymorphicArgumentRequest {
+// int64AsEdgeFirewallCriterionPolymorphicArgumentRequest is a convenience function that returns int64 wrapped in EdgeFirewallCriterionPolymorphicArgumentRequest
+func Int64AsEdgeFirewallCriterionPolymorphicArgumentRequest(v *int64) EdgeFirewallCriterionPolymorphicArgumentRequest {
 	return EdgeFirewallCriterionPolymorphicArgumentRequest{
-		Int32: v,
+		Int64: v,
 	}
 }
 
@@ -46,21 +46,21 @@ func (dst *EdgeFirewallCriterionPolymorphicArgumentRequest) UnmarshalJSON(data [
 	}
 
 	match := 0
-	// try to unmarshal data into Int32
-	err = newStrictDecoder(data).Decode(&dst.Int32)
+	// try to unmarshal data into Int64
+	err = newStrictDecoder(data).Decode(&dst.Int64)
 	if err == nil {
-		jsonInt32, _ := json.Marshal(dst.Int32)
-		if string(jsonInt32) == "{}" { // empty struct
-			dst.Int32 = nil
+		jsonInt64, _ := json.Marshal(dst.Int64)
+		if string(jsonInt64) == "{}" { // empty struct
+			dst.Int64 = nil
 		} else {
-			if err = validator.Validate(dst.Int32); err != nil {
-				dst.Int32 = nil
+			if err = validator.Validate(dst.Int64); err != nil {
+				dst.Int64 = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Int32 = nil
+		dst.Int64 = nil
 	}
 
 	// try to unmarshal data into String
@@ -82,7 +82,7 @@ func (dst *EdgeFirewallCriterionPolymorphicArgumentRequest) UnmarshalJSON(data [
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Int32 = nil
+		dst.Int64 = nil
 		dst.String = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(EdgeFirewallCriterionPolymorphicArgumentRequest)")
@@ -95,8 +95,8 @@ func (dst *EdgeFirewallCriterionPolymorphicArgumentRequest) UnmarshalJSON(data [
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src EdgeFirewallCriterionPolymorphicArgumentRequest) MarshalJSON() ([]byte, error) {
-	if src.Int32 != nil {
-		return json.Marshal(&src.Int32)
+	if src.Int64 != nil {
+		return json.Marshal(&src.Int64)
 	}
 
 	if src.String != nil {
@@ -111,8 +111,8 @@ func (obj *EdgeFirewallCriterionPolymorphicArgumentRequest) GetActualInstance() 
 	if obj == nil {
 		return nil
 	}
-	if obj.Int32 != nil {
-		return obj.Int32
+	if obj.Int64 != nil {
+		return obj.Int64
 	}
 
 	if obj.String != nil {

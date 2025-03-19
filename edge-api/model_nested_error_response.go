@@ -23,7 +23,7 @@ var _ MappedNullable = &NestedErrorResponse{}
 type NestedErrorResponse struct {
 	// * `400` - 400: Bad Request * `401` - 401: Unauthorized * `403` - 403: Forbidden * `404` - 404: Not Found * `405` - 405: Method Not Allowed * `406` - 406: Not Acceptable * `408` - 408: Request Timeout * `409` - 409: Conflict * `410` - 410: Gone * `411` - 411: Length Required * `414` - 414: URI Too Long * `415` - 415: Unsupported Media Type * `416` - 416: Requested Range Not Satisfiable * `426` - 426: Upgrade Required * `429` - 429: Too Many Requests * `431` - 431: Request Header Fields Too Large * `500` - 500: Internal Server Error * `501` - 501: Not Implemented * `502` - 502: Bad Gateway * `503` - 503: Service Unavailable * `504` - 504: Gateway Timeout * `505` - 505: HTTP Version Not Supported * `any` - any
 	Code int64 `json:"code"`
-	Timeout int32 `json:"timeout"`
+	Timeout int64 `json:"timeout"`
 	Uri NullableString `json:"uri,omitempty" validate:"regexp=^\\/[\\/a-zA-Z0-9\\\\-_\\\\.\\\\~@:]*$"`
 	CustomStatusCode NullableString `json:"custom_status_code,omitempty" validate:"regexp=^[1-5]\\\\d{2}$"`
 }
@@ -34,7 +34,7 @@ type _NestedErrorResponse NestedErrorResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNestedErrorResponse(code int64, timeout int32) *NestedErrorResponse {
+func NewNestedErrorResponse(code int64, timeout int64) *NestedErrorResponse {
 	this := NestedErrorResponse{}
 	this.Code = code
 	this.Timeout = timeout
@@ -74,9 +74,9 @@ func (o *NestedErrorResponse) SetCode(v int64) {
 }
 
 // GetTimeout returns the Timeout field value
-func (o *NestedErrorResponse) GetTimeout() int32 {
+func (o *NestedErrorResponse) GetTimeout() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *NestedErrorResponse) GetTimeout() int32 {
 
 // GetTimeoutOk returns a tuple with the Timeout field value
 // and a boolean to check if the value has been set.
-func (o *NestedErrorResponse) GetTimeoutOk() (*int32, bool) {
+func (o *NestedErrorResponse) GetTimeoutOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *NestedErrorResponse) GetTimeoutOk() (*int32, bool) {
 }
 
 // SetTimeout sets field value
-func (o *NestedErrorResponse) SetTimeout(v int32) {
+func (o *NestedErrorResponse) SetTimeout(v int64) {
 	o.Timeout = v
 }
 

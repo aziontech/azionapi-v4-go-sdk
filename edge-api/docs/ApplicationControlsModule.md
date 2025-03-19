@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **CacheByCookies** | **string** | * &#x60;ignore&#x60; - Content does not vary by Cookies (Improves Caching) * &#x60;whitelist&#x60; - Content varies by some Cookies (Whitelist) * &#x60;blacklist&#x60; - Content varies by Cookies, with the exception of a few (Blacklist) * &#x60;all&#x60; - Content varies by all Cookies | 
 **CookieNames** | **[]string** |  | 
 **AdaptiveDeliveryAction** | **string** | * &#x60;ignore&#x60; - Ignore * &#x60;whitelist&#x60; - Whitelist | 
-**DeviceGroup** | **[]int32** |  | 
+**DeviceGroup** | **[]int64** |  | 
 
 ## Methods
 
 ### NewApplicationControlsModule
 
-`func NewApplicationControlsModule(cacheByQueryString string, queryStringFields []string, queryStringSortEnabled bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int32, ) *ApplicationControlsModule`
+`func NewApplicationControlsModule(cacheByQueryString string, queryStringFields []string, queryStringSortEnabled bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int64, ) *ApplicationControlsModule`
 
 NewApplicationControlsModule instantiates a new ApplicationControlsModule object
 This constructor will assign default values to properties that have it defined,
@@ -153,20 +153,20 @@ SetAdaptiveDeliveryAction sets AdaptiveDeliveryAction field to given value.
 
 ### GetDeviceGroup
 
-`func (o *ApplicationControlsModule) GetDeviceGroup() []int32`
+`func (o *ApplicationControlsModule) GetDeviceGroup() []int64`
 
 GetDeviceGroup returns the DeviceGroup field if non-nil, zero value otherwise.
 
 ### GetDeviceGroupOk
 
-`func (o *ApplicationControlsModule) GetDeviceGroupOk() (*[]int32, bool)`
+`func (o *ApplicationControlsModule) GetDeviceGroupOk() (*[]int64, bool)`
 
 GetDeviceGroupOk returns a tuple with the DeviceGroup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceGroup
 
-`func (o *ApplicationControlsModule) SetDeviceGroup(v []int32)`
+`func (o *ApplicationControlsModule) SetDeviceGroup(v []int64)`
 
 SetDeviceGroup sets DeviceGroup field to given value.
 

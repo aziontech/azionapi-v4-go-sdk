@@ -23,7 +23,7 @@ var _ MappedNullable = &EdgeCacheModule{}
 type EdgeCacheModule struct {
 	// * `honor` - Honor Origin Cache Settings * `override` - Override Cache Settings
 	Behavior string `json:"behavior"`
-	MaxAge int32 `json:"max_age"`
+	MaxAge int64 `json:"max_age"`
 	CachingForPostEnabled bool `json:"caching_for_post_enabled"`
 	CachingForOptionsEnabled bool `json:"caching_for_options_enabled"`
 	StaleCacheEnabled bool `json:"stale_cache_enabled"`
@@ -37,7 +37,7 @@ type _EdgeCacheModule EdgeCacheModule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEdgeCacheModule(behavior string, maxAge int32, cachingForPostEnabled bool, cachingForOptionsEnabled bool, staleCacheEnabled bool, tieredCacheEnabled bool) *EdgeCacheModule {
+func NewEdgeCacheModule(behavior string, maxAge int64, cachingForPostEnabled bool, cachingForOptionsEnabled bool, staleCacheEnabled bool, tieredCacheEnabled bool) *EdgeCacheModule {
 	this := EdgeCacheModule{}
 	this.Behavior = behavior
 	this.MaxAge = maxAge
@@ -81,9 +81,9 @@ func (o *EdgeCacheModule) SetBehavior(v string) {
 }
 
 // GetMaxAge returns the MaxAge field value
-func (o *EdgeCacheModule) GetMaxAge() int32 {
+func (o *EdgeCacheModule) GetMaxAge() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -92,7 +92,7 @@ func (o *EdgeCacheModule) GetMaxAge() int32 {
 
 // GetMaxAgeOk returns a tuple with the MaxAge field value
 // and a boolean to check if the value has been set.
-func (o *EdgeCacheModule) GetMaxAgeOk() (*int32, bool) {
+func (o *EdgeCacheModule) GetMaxAgeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *EdgeCacheModule) GetMaxAgeOk() (*int32, bool) {
 }
 
 // SetMaxAge sets field value
-func (o *EdgeCacheModule) SetMaxAge(v int32) {
+func (o *EdgeCacheModule) SetMaxAge(v int64) {
 	o.MaxAge = v
 }
 

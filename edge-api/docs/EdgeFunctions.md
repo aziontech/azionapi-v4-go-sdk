@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **LanguageEnum** | Pointer to **string** | * &#x60;javascript&#x60; - JavaScript * &#x60;lua&#x60; - Lua | [optional] 
 **Code** | **string** |  | 
 **JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **InitiatorTypeEnum** | Pointer to **string** | * &#x60;edge_application&#x60; - Edge Application * &#x60;edge_firewall&#x60; - Edge Firewall | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
-**ReferenceCount** | **int32** |  | [readonly] 
+**ReferenceCount** | **int64** |  | [readonly] 
 **Version** | **string** | Installed version, which may not be the latest if the vendor has released updates since installation. | [readonly] 
 **Vendor** | **string** |  | [readonly] 
 **LastEditor** | **string** |  | [readonly] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewEdgeFunctions
 
-`func NewEdgeFunctions(id int32, name string, code string, referenceCount int32, version string, vendor string, lastEditor string, lastModified time.Time, productVersion string, ) *EdgeFunctions`
+`func NewEdgeFunctions(id int64, name string, code string, referenceCount int64, version string, vendor string, lastEditor string, lastModified time.Time, productVersion string, ) *EdgeFunctions`
 
 NewEdgeFunctions instantiates a new EdgeFunctions object
 This constructor will assign default values to properties that have it defined,
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *EdgeFunctions) GetId() int32`
+`func (o *EdgeFunctions) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *EdgeFunctions) GetIdOk() (*int32, bool)`
+`func (o *EdgeFunctions) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *EdgeFunctions) SetId(v int32)`
+`func (o *EdgeFunctions) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -209,20 +209,20 @@ HasActive returns a boolean if a field has been set.
 
 ### GetReferenceCount
 
-`func (o *EdgeFunctions) GetReferenceCount() int32`
+`func (o *EdgeFunctions) GetReferenceCount() int64`
 
 GetReferenceCount returns the ReferenceCount field if non-nil, zero value otherwise.
 
 ### GetReferenceCountOk
 
-`func (o *EdgeFunctions) GetReferenceCountOk() (*int32, bool)`
+`func (o *EdgeFunctions) GetReferenceCountOk() (*int64, bool)`
 
 GetReferenceCountOk returns a tuple with the ReferenceCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReferenceCount
 
-`func (o *EdgeFunctions) SetReferenceCount(v int32)`
+`func (o *EdgeFunctions) SetReferenceCount(v int64)`
 
 SetReferenceCount sets ReferenceCount field to given value.
 

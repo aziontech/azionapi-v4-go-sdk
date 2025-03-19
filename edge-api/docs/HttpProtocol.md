@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Versions** | Pointer to **[]string** |  | [optional] 
-**HttpPorts** | Pointer to **[]int32** |  | [optional] 
-**HttpsPorts** | Pointer to **[]int32** |  | [optional] 
-**QuicPorts** | Pointer to **[]int32** |  | [optional] 
+**HttpPorts** | Pointer to **[]int64** |  | [optional] 
+**HttpsPorts** | Pointer to **[]int64** |  | [optional] 
+**QuicPorts** | Pointer to **[]int64** |  | [optional] 
 
 ## Methods
 
@@ -55,20 +55,20 @@ HasVersions returns a boolean if a field has been set.
 
 ### GetHttpPorts
 
-`func (o *HttpProtocol) GetHttpPorts() []int32`
+`func (o *HttpProtocol) GetHttpPorts() []int64`
 
 GetHttpPorts returns the HttpPorts field if non-nil, zero value otherwise.
 
 ### GetHttpPortsOk
 
-`func (o *HttpProtocol) GetHttpPortsOk() (*[]int32, bool)`
+`func (o *HttpProtocol) GetHttpPortsOk() (*[]int64, bool)`
 
 GetHttpPortsOk returns a tuple with the HttpPorts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpPorts
 
-`func (o *HttpProtocol) SetHttpPorts(v []int32)`
+`func (o *HttpProtocol) SetHttpPorts(v []int64)`
 
 SetHttpPorts sets HttpPorts field to given value.
 
@@ -80,20 +80,20 @@ HasHttpPorts returns a boolean if a field has been set.
 
 ### GetHttpsPorts
 
-`func (o *HttpProtocol) GetHttpsPorts() []int32`
+`func (o *HttpProtocol) GetHttpsPorts() []int64`
 
 GetHttpsPorts returns the HttpsPorts field if non-nil, zero value otherwise.
 
 ### GetHttpsPortsOk
 
-`func (o *HttpProtocol) GetHttpsPortsOk() (*[]int32, bool)`
+`func (o *HttpProtocol) GetHttpsPortsOk() (*[]int64, bool)`
 
 GetHttpsPortsOk returns a tuple with the HttpsPorts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpsPorts
 
-`func (o *HttpProtocol) SetHttpsPorts(v []int32)`
+`func (o *HttpProtocol) SetHttpsPorts(v []int64)`
 
 SetHttpsPorts sets HttpsPorts field to given value.
 
@@ -115,20 +115,20 @@ HasHttpsPorts returns a boolean if a field has been set.
 UnsetHttpsPorts ensures that no value is present for HttpsPorts, not even an explicit nil
 ### GetQuicPorts
 
-`func (o *HttpProtocol) GetQuicPorts() []int32`
+`func (o *HttpProtocol) GetQuicPorts() []int64`
 
 GetQuicPorts returns the QuicPorts field if non-nil, zero value otherwise.
 
 ### GetQuicPortsOk
 
-`func (o *HttpProtocol) GetQuicPortsOk() (*[]int32, bool)`
+`func (o *HttpProtocol) GetQuicPortsOk() (*[]int64, bool)`
 
 GetQuicPortsOk returns a tuple with the QuicPorts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuicPorts
 
-`func (o *HttpProtocol) SetQuicPorts(v []int32)`
+`func (o *HttpProtocol) SetQuicPorts(v []int64)`
 
 SetQuicPorts sets QuicPorts field to given value.
 

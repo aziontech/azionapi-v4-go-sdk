@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | * &#x60;second&#x60; - second * &#x60;minute&#x60; - minute | [optional] 
 **LimitBy** | **string** | * &#x60;client_ip&#x60; - client_ip * &#x60;global&#x60; - global | 
-**AverageRateLimit** | **int32** |  | 
-**MaximumBurstSize** | Pointer to **int32** |  | [optional] 
-**StatusCode** | **int32** |  | 
+**AverageRateLimit** | **int64** |  | 
+**MaximumBurstSize** | Pointer to **int64** |  | [optional] 
+**StatusCode** | **int64** |  | 
 **ContentType** | Pointer to **string** |  | [optional] 
 **ContentBody** | Pointer to **string** |  | [optional] 
 **Id** | **int64** |  | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewEdgeFirewallBehaviorPolymorphicArgument
 
-`func NewEdgeFirewallBehaviorPolymorphicArgument(limitBy string, averageRateLimit int32, statusCode int32, id int64, mode string, ) *EdgeFirewallBehaviorPolymorphicArgument`
+`func NewEdgeFirewallBehaviorPolymorphicArgument(limitBy string, averageRateLimit int64, statusCode int64, id int64, mode string, ) *EdgeFirewallBehaviorPolymorphicArgument`
 
 NewEdgeFirewallBehaviorPolymorphicArgument instantiates a new EdgeFirewallBehaviorPolymorphicArgument object
 This constructor will assign default values to properties that have it defined,
@@ -80,40 +80,40 @@ SetLimitBy sets LimitBy field to given value.
 
 ### GetAverageRateLimit
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetAverageRateLimit() int32`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetAverageRateLimit() int64`
 
 GetAverageRateLimit returns the AverageRateLimit field if non-nil, zero value otherwise.
 
 ### GetAverageRateLimitOk
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetAverageRateLimitOk() (*int32, bool)`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetAverageRateLimitOk() (*int64, bool)`
 
 GetAverageRateLimitOk returns a tuple with the AverageRateLimit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAverageRateLimit
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) SetAverageRateLimit(v int32)`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) SetAverageRateLimit(v int64)`
 
 SetAverageRateLimit sets AverageRateLimit field to given value.
 
 
 ### GetMaximumBurstSize
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetMaximumBurstSize() int32`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetMaximumBurstSize() int64`
 
 GetMaximumBurstSize returns the MaximumBurstSize field if non-nil, zero value otherwise.
 
 ### GetMaximumBurstSizeOk
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetMaximumBurstSizeOk() (*int32, bool)`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetMaximumBurstSizeOk() (*int64, bool)`
 
 GetMaximumBurstSizeOk returns a tuple with the MaximumBurstSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumBurstSize
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) SetMaximumBurstSize(v int32)`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) SetMaximumBurstSize(v int64)`
 
 SetMaximumBurstSize sets MaximumBurstSize field to given value.
 
@@ -125,20 +125,20 @@ HasMaximumBurstSize returns a boolean if a field has been set.
 
 ### GetStatusCode
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetStatusCode() int32`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetStatusCode() int64`
 
 GetStatusCode returns the StatusCode field if non-nil, zero value otherwise.
 
 ### GetStatusCodeOk
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetStatusCodeOk() (*int32, bool)`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) GetStatusCodeOk() (*int64, bool)`
 
 GetStatusCodeOk returns a tuple with the StatusCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatusCode
 
-`func (o *EdgeFirewallBehaviorPolymorphicArgument) SetStatusCode(v int32)`
+`func (o *EdgeFirewallBehaviorPolymorphicArgument) SetStatusCode(v int64)`
 
 SetStatusCode sets StatusCode field to given value.
 

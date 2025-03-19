@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -457,20 +456,4 @@ model_workload_deployment_binds_request.go
 model_workload_deployment_request.go
 model_workload_request.go
 response.go
-test/api_edge_applications_cache_settings_test.go
-test/api_edge_applications_device_groups_test.go
-test/api_edge_applications_error_responses_test.go
-test/api_edge_applications_function_test.go
-test/api_edge_applications_rules_test.go
-test/api_edge_applications_test.go
-test/api_edge_firewalls_function_test.go
-test/api_edge_firewalls_rules_engine_test.go
-test/api_edge_firewalls_test.go
-test/api_edge_functions_test.go
-test/api_network_lists_test.go
-test/api_purge_test.go
-test/api_wafs_exceptions_test.go
-test/api_wafs_test.go
-test/api_workload_deployments_test.go
-test/api_workloads_test.go
 utils.go

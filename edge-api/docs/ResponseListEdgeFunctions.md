@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **Language** | Pointer to **string** |  | [optional] 
 **JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **InitiatorType** | Pointer to **string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
-**ReferenceCount** | **int32** |  | [readonly] 
+**ReferenceCount** | **int64** |  | [readonly] 
 **Version** | **string** | Installed version, which may not be the latest if the vendor has released updates since installation. | [readonly] 
 **Vendor** | **string** |  | [readonly] 
 **LastEditor** | **string** |  | [readonly] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewResponseListEdgeFunctions
 
-`func NewResponseListEdgeFunctions(id int32, name string, referenceCount int32, version string, vendor string, lastEditor string, lastModified time.Time, productVersion string, ) *ResponseListEdgeFunctions`
+`func NewResponseListEdgeFunctions(id int64, name string, referenceCount int64, version string, vendor string, lastEditor string, lastModified time.Time, productVersion string, ) *ResponseListEdgeFunctions`
 
 NewResponseListEdgeFunctions instantiates a new ResponseListEdgeFunctions object
 This constructor will assign default values to properties that have it defined,
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ResponseListEdgeFunctions) GetId() int32`
+`func (o *ResponseListEdgeFunctions) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponseListEdgeFunctions) GetIdOk() (*int32, bool)`
+`func (o *ResponseListEdgeFunctions) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponseListEdgeFunctions) SetId(v int32)`
+`func (o *ResponseListEdgeFunctions) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -188,20 +188,20 @@ HasActive returns a boolean if a field has been set.
 
 ### GetReferenceCount
 
-`func (o *ResponseListEdgeFunctions) GetReferenceCount() int32`
+`func (o *ResponseListEdgeFunctions) GetReferenceCount() int64`
 
 GetReferenceCount returns the ReferenceCount field if non-nil, zero value otherwise.
 
 ### GetReferenceCountOk
 
-`func (o *ResponseListEdgeFunctions) GetReferenceCountOk() (*int32, bool)`
+`func (o *ResponseListEdgeFunctions) GetReferenceCountOk() (*int64, bool)`
 
 GetReferenceCountOk returns a tuple with the ReferenceCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReferenceCount
 
-`func (o *ResponseListEdgeFunctions) SetReferenceCount(v int32)`
+`func (o *ResponseListEdgeFunctions) SetReferenceCount(v int64)`
 
 SetReferenceCount sets ReferenceCount field to given value.
 

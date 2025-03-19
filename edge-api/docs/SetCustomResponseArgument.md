@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StatusCode** | **int32** |  | 
+**StatusCode** | **int64** |  | 
 **ContentType** | Pointer to **string** |  | [optional] 
 **ContentBody** | Pointer to **string** |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewSetCustomResponseArgument
 
-`func NewSetCustomResponseArgument(statusCode int32, ) *SetCustomResponseArgument`
+`func NewSetCustomResponseArgument(statusCode int64, ) *SetCustomResponseArgument`
 
 NewSetCustomResponseArgument instantiates a new SetCustomResponseArgument object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStatusCode
 
-`func (o *SetCustomResponseArgument) GetStatusCode() int32`
+`func (o *SetCustomResponseArgument) GetStatusCode() int64`
 
 GetStatusCode returns the StatusCode field if non-nil, zero value otherwise.
 
 ### GetStatusCodeOk
 
-`func (o *SetCustomResponseArgument) GetStatusCodeOk() (*int32, bool)`
+`func (o *SetCustomResponseArgument) GetStatusCodeOk() (*int64, bool)`
 
 GetStatusCodeOk returns a tuple with the StatusCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatusCode
 
-`func (o *SetCustomResponseArgument) SetStatusCode(v int32)`
+`func (o *SetCustomResponseArgument) SetStatusCode(v int64)`
 
 SetStatusCode sets StatusCode field to given value.
 

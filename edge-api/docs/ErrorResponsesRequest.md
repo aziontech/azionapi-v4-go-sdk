@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OriginId** | Pointer to **NullableInt32** |  | [optional] 
+**OriginId** | Pointer to **NullableInt64** |  | [optional] 
 **ErrorResponses** | [**[]NestedErrorResponseRequest**](NestedErrorResponseRequest.md) |  | 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOriginId
 
-`func (o *ErrorResponsesRequest) GetOriginId() int32`
+`func (o *ErrorResponsesRequest) GetOriginId() int64`
 
 GetOriginId returns the OriginId field if non-nil, zero value otherwise.
 
 ### GetOriginIdOk
 
-`func (o *ErrorResponsesRequest) GetOriginIdOk() (*int32, bool)`
+`func (o *ErrorResponsesRequest) GetOriginIdOk() (*int64, bool)`
 
 GetOriginIdOk returns a tuple with the OriginId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOriginId
 
-`func (o *ErrorResponsesRequest) SetOriginId(v int32)`
+`func (o *ErrorResponsesRequest) SetOriginId(v int64)`
 
 SetOriginId sets OriginId field to given value.
 

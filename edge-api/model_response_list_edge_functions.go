@@ -22,13 +22,13 @@ var _ MappedNullable = &ResponseListEdgeFunctions{}
 
 // ResponseListEdgeFunctions struct for ResponseListEdgeFunctions
 type ResponseListEdgeFunctions struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	Language *string `json:"language,omitempty"`
 	JsonArgs interface{} `json:"json_args,omitempty"`
 	InitiatorType *string `json:"initiator_type,omitempty"`
 	Active *bool `json:"active,omitempty"`
-	ReferenceCount int32 `json:"reference_count"`
+	ReferenceCount int64 `json:"reference_count"`
 	// Installed version, which may not be the latest if the vendor has released updates since installation.
 	Version string `json:"version"`
 	Vendor string `json:"vendor"`
@@ -43,7 +43,7 @@ type _ResponseListEdgeFunctions ResponseListEdgeFunctions
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseListEdgeFunctions(id int32, name string, referenceCount int32, version string, vendor string, lastEditor string, lastModified time.Time, productVersion string) *ResponseListEdgeFunctions {
+func NewResponseListEdgeFunctions(id int64, name string, referenceCount int64, version string, vendor string, lastEditor string, lastModified time.Time, productVersion string) *ResponseListEdgeFunctions {
 	this := ResponseListEdgeFunctions{}
 	this.Id = id
 	this.Name = name
@@ -65,9 +65,9 @@ func NewResponseListEdgeFunctionsWithDefaults() *ResponseListEdgeFunctions {
 }
 
 // GetId returns the Id field value
-func (o *ResponseListEdgeFunctions) GetId() int32 {
+func (o *ResponseListEdgeFunctions) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -76,7 +76,7 @@ func (o *ResponseListEdgeFunctions) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListEdgeFunctions) GetIdOk() (*int32, bool) {
+func (o *ResponseListEdgeFunctions) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,7 +84,7 @@ func (o *ResponseListEdgeFunctions) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *ResponseListEdgeFunctions) SetId(v int32) {
+func (o *ResponseListEdgeFunctions) SetId(v int64) {
 	o.Id = v
 }
 
@@ -242,9 +242,9 @@ func (o *ResponseListEdgeFunctions) SetActive(v bool) {
 }
 
 // GetReferenceCount returns the ReferenceCount field value
-func (o *ResponseListEdgeFunctions) GetReferenceCount() int32 {
+func (o *ResponseListEdgeFunctions) GetReferenceCount() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -253,7 +253,7 @@ func (o *ResponseListEdgeFunctions) GetReferenceCount() int32 {
 
 // GetReferenceCountOk returns a tuple with the ReferenceCount field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListEdgeFunctions) GetReferenceCountOk() (*int32, bool) {
+func (o *ResponseListEdgeFunctions) GetReferenceCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -261,7 +261,7 @@ func (o *ResponseListEdgeFunctions) GetReferenceCountOk() (*int32, bool) {
 }
 
 // SetReferenceCount sets field value
-func (o *ResponseListEdgeFunctions) SetReferenceCount(v int32) {
+func (o *ResponseListEdgeFunctions) SetReferenceCount(v int64) {
 	o.ReferenceCount = v
 }
 

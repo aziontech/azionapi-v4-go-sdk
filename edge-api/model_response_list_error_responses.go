@@ -21,10 +21,10 @@ var _ MappedNullable = &ResponseListErrorResponses{}
 
 // ResponseListErrorResponses struct for ResponseListErrorResponses
 type ResponseListErrorResponses struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name"`
-	EdgeApplicationId int32 `json:"edge_application_id"`
-	OriginId NullableInt32 `json:"origin_id,omitempty"`
+	EdgeApplicationId int64 `json:"edge_application_id"`
+	OriginId NullableInt64 `json:"origin_id,omitempty"`
 	ErrorResponses []NestedErrorResponse `json:"error_responses"`
 }
 
@@ -34,7 +34,7 @@ type _ResponseListErrorResponses ResponseListErrorResponses
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseListErrorResponses(id int32, name string, edgeApplicationId int32, errorResponses []NestedErrorResponse) *ResponseListErrorResponses {
+func NewResponseListErrorResponses(id int64, name string, edgeApplicationId int64, errorResponses []NestedErrorResponse) *ResponseListErrorResponses {
 	this := ResponseListErrorResponses{}
 	this.Id = id
 	this.Name = name
@@ -52,9 +52,9 @@ func NewResponseListErrorResponsesWithDefaults() *ResponseListErrorResponses {
 }
 
 // GetId returns the Id field value
-func (o *ResponseListErrorResponses) GetId() int32 {
+func (o *ResponseListErrorResponses) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -63,7 +63,7 @@ func (o *ResponseListErrorResponses) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListErrorResponses) GetIdOk() (*int32, bool) {
+func (o *ResponseListErrorResponses) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *ResponseListErrorResponses) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *ResponseListErrorResponses) SetId(v int32) {
+func (o *ResponseListErrorResponses) SetId(v int64) {
 	o.Id = v
 }
 
@@ -100,9 +100,9 @@ func (o *ResponseListErrorResponses) SetName(v string) {
 }
 
 // GetEdgeApplicationId returns the EdgeApplicationId field value
-func (o *ResponseListErrorResponses) GetEdgeApplicationId() int32 {
+func (o *ResponseListErrorResponses) GetEdgeApplicationId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -111,7 +111,7 @@ func (o *ResponseListErrorResponses) GetEdgeApplicationId() int32 {
 
 // GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListErrorResponses) GetEdgeApplicationIdOk() (*int32, bool) {
+func (o *ResponseListErrorResponses) GetEdgeApplicationIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,14 +119,14 @@ func (o *ResponseListErrorResponses) GetEdgeApplicationIdOk() (*int32, bool) {
 }
 
 // SetEdgeApplicationId sets field value
-func (o *ResponseListErrorResponses) SetEdgeApplicationId(v int32) {
+func (o *ResponseListErrorResponses) SetEdgeApplicationId(v int64) {
 	o.EdgeApplicationId = v
 }
 
 // GetOriginId returns the OriginId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ResponseListErrorResponses) GetOriginId() int32 {
+func (o *ResponseListErrorResponses) GetOriginId() int64 {
 	if o == nil || IsNil(o.OriginId.Get()) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.OriginId.Get()
@@ -135,7 +135,7 @@ func (o *ResponseListErrorResponses) GetOriginId() int32 {
 // GetOriginIdOk returns a tuple with the OriginId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ResponseListErrorResponses) GetOriginIdOk() (*int32, bool) {
+func (o *ResponseListErrorResponses) GetOriginIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -151,8 +151,8 @@ func (o *ResponseListErrorResponses) HasOriginId() bool {
 	return false
 }
 
-// SetOriginId gets a reference to the given NullableInt32 and assigns it to the OriginId field.
-func (o *ResponseListErrorResponses) SetOriginId(v int32) {
+// SetOriginId gets a reference to the given NullableInt64 and assigns it to the OriginId field.
+func (o *ResponseListErrorResponses) SetOriginId(v int64) {
 	o.OriginId.Set(&v)
 }
 // SetOriginIdNil sets the value for OriginId to be an explicit nil

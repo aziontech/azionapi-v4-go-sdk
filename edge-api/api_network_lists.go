@@ -400,8 +400,8 @@ type ApiListNetworkListsRequest struct {
 	ApiService *NetworkListsAPIService
 	fields *string
 	ordering *string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	search *string
 }
 
@@ -418,13 +418,13 @@ func (r ApiListNetworkListsRequest) Ordering(ordering string) ApiListNetworkList
 }
 
 // A page number within the paginated result set.
-func (r ApiListNetworkListsRequest) Page(page int32) ApiListNetworkListsRequest {
+func (r ApiListNetworkListsRequest) Page(page int64) ApiListNetworkListsRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiListNetworkListsRequest) PageSize(pageSize int32) ApiListNetworkListsRequest {
+func (r ApiListNetworkListsRequest) PageSize(pageSize int64) ApiListNetworkListsRequest {
 	r.pageSize = &pageSize
 	return r
 }

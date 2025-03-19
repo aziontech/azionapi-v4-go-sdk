@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponseListEdgeApplication{}
 
 // ResponseListEdgeApplication struct for ResponseListEdgeApplication
 type ResponseListEdgeApplication struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	LastEditor string `json:"last_editor" validate:"regexp=.*"`
 	LastModified time.Time `json:"last_modified"`
@@ -38,7 +38,7 @@ type _ResponseListEdgeApplication ResponseListEdgeApplication
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseListEdgeApplication(id int32, name string, lastEditor string, lastModified time.Time, productVersion NullableString) *ResponseListEdgeApplication {
+func NewResponseListEdgeApplication(id int64, name string, lastEditor string, lastModified time.Time, productVersion NullableString) *ResponseListEdgeApplication {
 	this := ResponseListEdgeApplication{}
 	this.Id = id
 	this.Name = name
@@ -57,9 +57,9 @@ func NewResponseListEdgeApplicationWithDefaults() *ResponseListEdgeApplication {
 }
 
 // GetId returns the Id field value
-func (o *ResponseListEdgeApplication) GetId() int32 {
+func (o *ResponseListEdgeApplication) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *ResponseListEdgeApplication) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListEdgeApplication) GetIdOk() (*int32, bool) {
+func (o *ResponseListEdgeApplication) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *ResponseListEdgeApplication) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *ResponseListEdgeApplication) SetId(v int32) {
+func (o *ResponseListEdgeApplication) SetId(v int64) {
 	o.Id = v
 }
 

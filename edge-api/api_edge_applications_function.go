@@ -409,8 +409,8 @@ type ApiListEdgeApplicationFunctionInstancesRequest struct {
 	edgeApplicationId string
 	fields *string
 	ordering *string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	search *string
 }
 
@@ -427,13 +427,13 @@ func (r ApiListEdgeApplicationFunctionInstancesRequest) Ordering(ordering string
 }
 
 // A page number within the paginated result set.
-func (r ApiListEdgeApplicationFunctionInstancesRequest) Page(page int32) ApiListEdgeApplicationFunctionInstancesRequest {
+func (r ApiListEdgeApplicationFunctionInstancesRequest) Page(page int64) ApiListEdgeApplicationFunctionInstancesRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiListEdgeApplicationFunctionInstancesRequest) PageSize(pageSize int32) ApiListEdgeApplicationFunctionInstancesRequest {
+func (r ApiListEdgeApplicationFunctionInstancesRequest) PageSize(pageSize int64) ApiListEdgeApplicationFunctionInstancesRequest {
 	r.pageSize = &pageSize
 	return r
 }

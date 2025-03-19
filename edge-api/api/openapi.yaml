@@ -35,6 +35,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -43,6 +44,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -213,6 +215,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -221,6 +224,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -732,6 +736,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -740,6 +745,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -1252,6 +1258,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -1260,6 +1267,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -1616,6 +1624,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -1624,6 +1633,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -2137,6 +2147,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -2145,6 +2156,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -3104,6 +3116,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -3112,6 +3125,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -3283,6 +3297,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -3291,6 +3306,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -3804,6 +3820,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -3812,6 +3829,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -4769,6 +4787,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -4777,6 +4796,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -5322,6 +5342,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -5330,6 +5351,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -5841,6 +5863,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -5849,6 +5872,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -6311,6 +6335,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -6319,6 +6344,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -6863,6 +6889,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -6871,6 +6898,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -7333,6 +7361,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A numeric value that indicates the number of items per page.
@@ -7341,6 +7370,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - description: A search term.
@@ -7725,6 +7755,7 @@ components:
           type: string
         device_group:
           items:
+            format: int64
             type: integer
           type: array
       required:
@@ -7788,6 +7819,7 @@ components:
           type: string
         device_group:
           items:
+            format: int64
             type: integer
           type: array
       required:
@@ -7803,7 +7835,7 @@ components:
     BrowserCacheModule:
       additionalProperties: false
       example:
-        max_age: 19008185
+        max_age: 1
         behavior: behavior
       properties:
         behavior:
@@ -7814,8 +7846,7 @@ components:
           title: BrowserCacheModuleBehaviorEnum
           type: string
         max_age:
-          maximum: 31536000
-          minimum: 0
+          format: int64
           type: integer
       required:
       - behavior
@@ -7832,7 +7863,7 @@ components:
     BrowserCacheModuleRequest:
       additionalProperties: false
       example:
-        max_age: 2525491
+        max_age: 0
         behavior: behavior
       properties:
         behavior:
@@ -7843,8 +7874,7 @@ components:
           title: BrowserCacheModuleBehaviorEnum
           type: string
         max_age:
-          maximum: 31536000
-          minimum: 0
+          format: int64
           type: integer
       required:
       - behavior
@@ -7871,7 +7901,7 @@ components:
       additionalProperties: false
       example:
         edge_cache:
-          max_age: 4622587
+          max_age: 5
           caching_for_post_enabled: true
           caching_for_options_enabled: true
           stale_cache_enabled: true
@@ -7879,13 +7909,13 @@ components:
           tiered_cache_region: tiered_cache_region
           tiered_cache_enabled: true
         browser_cache:
-          max_age: 19008185
+          max_age: 1
           behavior: behavior
         name: name
         slice_controls:
           slice_tiered_caching_enabled: true
           slice_edge_caching_enabled: true
-          slice_configuration_range: 577
+          slice_configuration_range: 2
           slice_configuration_enabled: true
         application_controls:
           cache_by_cookies: cache_by_cookies
@@ -7904,6 +7934,7 @@ components:
         id: 0
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -7932,7 +7963,7 @@ components:
       additionalProperties: false
       example:
         edge_cache:
-          max_age: 19008185
+          max_age: 6
           caching_for_post_enabled: true
           caching_for_options_enabled: true
           stale_cache_enabled: true
@@ -7940,13 +7971,13 @@ components:
           tiered_cache_region: tiered_cache_region
           tiered_cache_enabled: true
         browser_cache:
-          max_age: 2525491
+          max_age: 0
           behavior: behavior
         name: name
         slice_controls:
           slice_tiered_caching_enabled: true
           slice_edge_caching_enabled: true
-          slice_configuration_range: 610
+          slice_configuration_range: 5
           slice_configuration_enabled: true
         application_controls:
           cache_by_cookies: cache_by_cookies
@@ -8192,6 +8223,7 @@ components:
           image_processor_enabled: true
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -8346,7 +8378,8 @@ components:
       additionalProperties: false
       nullable: true
       oneOf:
-      - type: integer
+      - format: int64
+        type: integer
       - type: string
       - $ref: '#/components/schemas/CaptureMatchGroupsArgument'
       title: EdgeApplicationBehaviorPolymorphicArgument
@@ -8354,7 +8387,8 @@ components:
       additionalProperties: false
       nullable: true
       oneOf:
-      - type: integer
+      - format: int64
+        type: integer
       - type: string
       - $ref: '#/components/schemas/CaptureMatchGroupsArgumentRequest'
       title: EdgeApplicationBehaviorPolymorphicArgumentRequest
@@ -8516,14 +8550,16 @@ components:
       additionalProperties: false
       nullable: true
       oneOf:
-      - type: integer
+      - format: int64
+        type: integer
       - type: string
       title: EdgeApplicationCriterionPolymorphicArgument
     EdgeApplicationCriterionPolymorphicArgumentRequest:
       additionalProperties: false
       nullable: true
       oneOf:
-      - type: integer
+      - format: int64
+        type: integer
       - type: string
       title: EdgeApplicationCriterionPolymorphicArgumentRequest
     EdgeApplicationDeviceGroups:
@@ -8534,6 +8570,7 @@ components:
         user_agent: user_agent
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -8585,6 +8622,7 @@ components:
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -8837,9 +8875,10 @@ components:
         description: description
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
-        order: 119
+        order: 6
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -8878,8 +8917,7 @@ components:
           pattern: .*
           type: string
         order:
-          maximum: 199
-          minimum: 0
+          format: int64
           readOnly: true
           type: integer
         last_editor:
@@ -9087,7 +9125,7 @@ components:
     EdgeCacheModule:
       additionalProperties: false
       example:
-        max_age: 4622587
+        max_age: 5
         caching_for_post_enabled: true
         caching_for_options_enabled: true
         stale_cache_enabled: true
@@ -9102,8 +9140,7 @@ components:
           title: EdgeCacheModuleBehaviorEnum
           type: string
         max_age:
-          maximum: 31536000
-          minimum: 0
+          format: int64
           type: integer
         caching_for_post_enabled:
           type: boolean
@@ -9136,7 +9173,7 @@ components:
     EdgeCacheModuleRequest:
       additionalProperties: false
       example:
-        max_age: 19008185
+        max_age: 6
         caching_for_post_enabled: true
         caching_for_options_enabled: true
         stale_cache_enabled: true
@@ -9151,8 +9188,7 @@ components:
           title: EdgeCacheModuleBehaviorEnum
           type: string
         max_age:
-          maximum: 31536000
-          minimum: 0
+          format: int64
           type: integer
         caching_for_post_enabled:
           type: boolean
@@ -9193,6 +9229,7 @@ components:
           edge_functions_enabled: true
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -9294,7 +9331,8 @@ components:
       additionalProperties: false
       nullable: true
       oneOf:
-      - type: integer
+      - format: int64
+        type: integer
       - type: string
       - $ref: '#/components/schemas/SetRateLimitArgument'
       - $ref: '#/components/schemas/SetCustomResponseArgument'
@@ -9304,7 +9342,8 @@ components:
       additionalProperties: false
       nullable: true
       oneOf:
-      - type: integer
+      - format: int64
+        type: integer
       - type: string
       - $ref: '#/components/schemas/SetRateLimitArgumentRequest'
       - $ref: '#/components/schemas/SetCustomResponseArgumentRequest'
@@ -9445,7 +9484,8 @@ components:
       additionalProperties: false
       nullable: true
       oneOf:
-      - type: integer
+      - format: int64
+        type: integer
       - type: string
       title: EdgeFirewallCriterionPolymorphicArgumentRequest
     EdgeFirewallFunctionInstance:
@@ -9460,6 +9500,7 @@ components:
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -9704,9 +9745,10 @@ components:
         description: description
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
-        order: 119
+        order: 6
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -9747,8 +9789,7 @@ components:
           pattern: .*
           type: string
         order:
-          maximum: 199
-          minimum: 0
+          format: int64
           readOnly: true
           type: integer
       required:
@@ -9950,6 +9991,7 @@ components:
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -9978,6 +10020,7 @@ components:
         active:
           type: boolean
         reference_count:
+          format: int64
           readOnly: true
           type: integer
         version:
@@ -10062,25 +10105,28 @@ components:
         - code: 5
           custom_status_code: custom_status_code
           uri: uri
-          timeout: 17778031
+          timeout: 2
         - code: 5
           custom_status_code: custom_status_code
           uri: uri
-          timeout: 17778031
+          timeout: 2
         name: name
         origin_id: 1
         id: 0
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
           readOnly: true
           type: string
         edge_application_id:
+          format: int64
           readOnly: true
           type: integer
         origin_id:
+          format: int64
           nullable: true
           type: integer
         error_responses:
@@ -10101,14 +10147,15 @@ components:
         - code: 6
           custom_status_code: custom_status_code
           uri: uri
-          timeout: 4622587
+          timeout: 1
         - code: 6
           custom_status_code: custom_status_code
           uri: uri
-          timeout: 4622587
+          timeout: 1
         origin_id: 0
       properties:
         origin_id:
+          format: int64
           nullable: true
           type: integer
         error_responses:
@@ -10149,17 +10196,20 @@ components:
           type: array
         http_ports:
           items:
+            format: int64
             type: integer
           maxItems: 4
           type: array
         https_ports:
           items:
+            format: int64
             type: integer
           maxItems: 12
           nullable: true
           type: array
         quic_ports:
           items:
+            format: int64
             type: integer
           maxItems: 12
           nullable: true
@@ -10178,17 +10228,20 @@ components:
           type: array
         http_ports:
           items:
+            format: int64
             type: integer
           maxItems: 4
           type: array
         https_ports:
           items:
+            format: int64
             type: integer
           maxItems: 12
           nullable: true
           type: array
         quic_ports:
           items:
+            format: int64
             type: integer
           maxItems: 12
           nullable: true
@@ -10243,11 +10296,13 @@ components:
         verification:
           type: string
         certificate:
+          format: int64
           minimum: 1
           nullable: true
           type: integer
         crl:
           items:
+            format: int64
             minimum: 1
             type: integer
           maxItems: 100
@@ -10270,11 +10325,13 @@ components:
         verification:
           type: string
         certificate:
+          format: int64
           minimum: 1
           nullable: true
           type: integer
         crl:
           items:
+            format: int64
             minimum: 1
             type: integer
           maxItems: 100
@@ -10356,7 +10413,7 @@ components:
         code: 5
         custom_status_code: custom_status_code
         uri: uri
-        timeout: 17778031
+        timeout: 2
       properties:
         code:
           description: |-
@@ -10387,8 +10444,7 @@ components:
           title: CodeEnum
           type: integer
         timeout:
-          maximum: 31536000
-          minimum: 0
+          format: int64
           type: integer
         uri:
           maxLength: 250
@@ -10413,7 +10469,7 @@ components:
         code: 6
         custom_status_code: custom_status_code
         uri: uri
-        timeout: 4622587
+        timeout: 1
       properties:
         code:
           description: |-
@@ -10444,8 +10500,7 @@ components:
           title: CodeEnum
           type: integer
         timeout:
-          maximum: 31536000
-          minimum: 0
+          format: int64
           type: integer
         uri:
           maxLength: 250
@@ -10481,6 +10536,7 @@ components:
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -10566,10 +10622,10 @@ components:
     PaginatedResponseListCacheSettingList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - edge_cache:
-            max_age: 4622587
+            max_age: 5
             caching_for_post_enabled: true
             caching_for_options_enabled: true
             stale_cache_enabled: true
@@ -10577,13 +10633,13 @@ components:
             tiered_cache_region: tiered_cache_region
             tiered_cache_enabled: true
           browser_cache:
-            max_age: 19008185
+            max_age: 1
             behavior: behavior
           name: name
           slice_controls:
             slice_tiered_caching_enabled: true
             slice_edge_caching_enabled: true
-            slice_configuration_range: 577
+            slice_configuration_range: 2
             slice_configuration_enabled: true
           application_controls:
             cache_by_cookies: cache_by_cookies
@@ -10599,9 +10655,9 @@ components:
             - cookie_names
             - cookie_names
             cache_by_query_string: cache_by_query_string
-          id: 0
+          id: 6
         - edge_cache:
-            max_age: 4622587
+            max_age: 5
             caching_for_post_enabled: true
             caching_for_options_enabled: true
             stale_cache_enabled: true
@@ -10609,13 +10665,13 @@ components:
             tiered_cache_region: tiered_cache_region
             tiered_cache_enabled: true
           browser_cache:
-            max_age: 19008185
+            max_age: 1
             behavior: behavior
           name: name
           slice_controls:
             slice_tiered_caching_enabled: true
             slice_edge_caching_enabled: true
-            slice_configuration_range: 577
+            slice_configuration_range: 2
             slice_configuration_enabled: true
           application_controls:
             cache_by_cookies: cache_by_cookies
@@ -10631,12 +10687,10 @@ components:
             - cookie_names
             - cookie_names
             cache_by_query_string: cache_by_query_string
-          id: 0
+          id: 6
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -10647,19 +10701,17 @@ components:
     PaginatedResponseListEdgeApplicationDeviceGroupsList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - name: name
-          id: 0
+          id: 6
           user_agent: user_agent
         - name: name
-          id: 0
+          id: 6
           user_agent: user_agent
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -10670,27 +10722,25 @@ components:
     PaginatedResponseListEdgeApplicationFunctionInstanceList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
-        - edge_function: 5559347081229897728
+        - edge_function: 1351973845562961920
           last_editor: last_editor
           name: name
           active: true
           json_args: ""
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-        - edge_function: 5559347081229897728
+        - edge_function: 1351973845562961920
           last_editor: last_editor
           name: name
           active: true
           json_args: ""
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -10701,14 +10751,14 @@ components:
     PaginatedResponseListEdgeApplicationList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - product_version: product_version
           debug: true
           last_editor: last_editor
           name: name
           active: true
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
             application_accelerator_enabled: true
@@ -10721,7 +10771,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
             application_accelerator_enabled: true
@@ -10731,9 +10781,7 @@ components:
             image_processor_enabled: true
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -10744,7 +10792,7 @@ components:
     PaginatedResponseListEdgeApplicationRuleEngineList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - phase: phase
           behaviors:
@@ -10863,9 +10911,9 @@ components:
           name: name
           active: true
           description: description
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-          order: 119
+          order: 1
         - phase: phase
           behaviors:
           - argument: ""
@@ -10983,14 +11031,12 @@ components:
           name: name
           active: true
           description: description
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-          order: 119
+          order: 1
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11001,27 +11047,25 @@ components:
     PaginatedResponseListEdgeFirewallFunctionInstanceList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
-        - edge_function: 5559347081229897728
+        - edge_function: 1351973845562961920
           last_editor: last_editor
           name: name
           active: true
           json_args: ""
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-        - edge_function: 5559347081229897728
+        - edge_function: 1351973845562961920
           last_editor: last_editor
           name: name
           active: true
           json_args: ""
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11032,13 +11076,13 @@ components:
     PaginatedResponseListEdgeFirewallList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - product_version: product_version
           last_editor: last_editor
           name: name
           active: true
-          id: 0
+          id: 6
           debug_rules: true
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
@@ -11050,7 +11094,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          id: 0
+          id: 6
           debug_rules: true
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
@@ -11060,9 +11104,7 @@ components:
             edge_functions_enabled: true
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11073,7 +11115,7 @@ components:
     PaginatedResponseListEdgeFirewallRuleEngineList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - behaviors:
           - argument: ""
@@ -11191,9 +11233,9 @@ components:
           name: name
           active: true
           description: description
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-          order: 119
+          order: 1
         - behaviors:
           - argument: ""
             name: name
@@ -11310,14 +11352,12 @@ components:
           name: name
           active: true
           description: description
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-          order: 119
+          order: 1
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11328,7 +11368,7 @@ components:
     PaginatedResponseListEdgeFunctionsList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - product_version: product_version
           vendor: vendor
@@ -11337,8 +11377,8 @@ components:
           active: true
           language: language
           json_args: ""
-          id: 0
-          reference_count: 6
+          id: 6
+          reference_count: 1
           version: version
           last_modified: 2000-01-23T04:56:07.000+00:00
           initiator_type: initiator_type
@@ -11349,16 +11389,14 @@ components:
           active: true
           language: language
           json_args: ""
-          id: 0
-          reference_count: 6
+          id: 6
+          reference_count: 1
           version: version
           last_modified: 2000-01-23T04:56:07.000+00:00
           initiator_type: initiator_type
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11369,39 +11407,37 @@ components:
     PaginatedResponseListErrorResponsesList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
-        - edge_application_id: 6
+        - edge_application_id: 1
           error_responses:
           - code: 5
             custom_status_code: custom_status_code
             uri: uri
-            timeout: 17778031
+            timeout: 2
           - code: 5
             custom_status_code: custom_status_code
             uri: uri
-            timeout: 17778031
+            timeout: 2
           name: name
-          origin_id: 1
-          id: 0
-        - edge_application_id: 6
+          origin_id: 5
+          id: 6
+        - edge_application_id: 1
           error_responses:
           - code: 5
             custom_status_code: custom_status_code
             uri: uri
-            timeout: 17778031
+            timeout: 2
           - code: 5
             custom_status_code: custom_status_code
             uri: uri
-            timeout: 17778031
+            timeout: 2
           name: name
-          origin_id: 1
-          id: 0
+          origin_id: 5
+          id: 6
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11412,25 +11448,23 @@ components:
     PaginatedResponseListNetworkListList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - last_editor: last_editor
           name: name
           active: true
-          id: 0
+          id: 6
           type: type
           last_modified: 2000-01-23T04:56:07.000+00:00
         - last_editor: last_editor
           name: name
           active: true
-          id: 0
+          id: 6
           type: type
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11441,7 +11475,7 @@ components:
     PaginatedResponseListWAFList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - product_version: product_version
           threats_configuration:
@@ -11464,7 +11498,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
         - product_version: product_version
           threats_configuration:
@@ -11487,13 +11521,11 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11504,7 +11536,7 @@ components:
     PaginatedResponseListWAFRuleList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - rule_id: ""
           path: path
@@ -11519,7 +11551,7 @@ components:
           name: name
           active: true
           use_regex: true
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
         - rule_id: ""
           path: path
@@ -11534,13 +11566,11 @@ components:
           name: name
           active: true
           use_regex: true
-          id: 0
+          id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11551,25 +11581,23 @@ components:
     PaginatedResponseListWorkloadDeploymentList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - binds:
-            edge_firewall: 1
-            edge_application: 5559347081229897728
+            edge_firewall: 5
+            edge_application: 1351973845562961920
           current: true
-          id: 0
+          id: 6
           tag: tag
         - binds:
-            edge_firewall: 1
-            edge_application: 5559347081229897728
+            edge_firewall: 5
+            edge_application: 1351973845562961920
           current: true
-          id: 0
+          id: 6
           tag: tag
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11580,7 +11608,7 @@ components:
     PaginatedResponseListWorkloadList:
       additionalProperties: false
       example:
-        count: 123
+        count: 0
         results:
         - network_map: ""
           product_version: product_version
@@ -11591,7 +11619,7 @@ components:
           - domain: domain
             allow_access: true
           tls: ""
-          id: 0
+          id: 6
           alternate_domains:
           - alternate_domains
           - alternate_domains
@@ -11618,7 +11646,7 @@ components:
           - domain: domain
             allow_access: true
           tls: ""
-          id: 0
+          id: 6
           alternate_domains:
           - alternate_domains
           - alternate_domains
@@ -11638,9 +11666,7 @@ components:
             verification: verification
       properties:
         count:
-          example: 123
-          maximum: 2147483647
-          minimum: 0
+          format: int64
           type: integer
         results:
           items:
@@ -11652,7 +11678,7 @@ components:
       additionalProperties: false
       example:
         edge_cache:
-          max_age: 19008185
+          max_age: 6
           caching_for_post_enabled: true
           caching_for_options_enabled: true
           stale_cache_enabled: true
@@ -11660,13 +11686,13 @@ components:
           tiered_cache_region: tiered_cache_region
           tiered_cache_enabled: true
         browser_cache:
-          max_age: 2525491
+          max_age: 0
           behavior: behavior
         name: name
         slice_controls:
           slice_tiered_caching_enabled: true
           slice_edge_caching_enabled: true
-          slice_configuration_range: 610
+          slice_configuration_range: 5
           slice_configuration_enabled: true
         application_controls:
           cache_by_cookies: cache_by_cookies
@@ -12163,14 +12189,15 @@ components:
         - code: 6
           custom_status_code: custom_status_code
           uri: uri
-          timeout: 4622587
+          timeout: 1
         - code: 6
           custom_status_code: custom_status_code
           uri: uri
-          timeout: 4622587
+          timeout: 1
         origin_id: 0
       properties:
         origin_id:
+          format: int64
           nullable: true
           type: integer
         error_responses:
@@ -14087,7 +14114,7 @@ components:
       example:
         data:
           edge_cache:
-            max_age: 4622587
+            max_age: 5
             caching_for_post_enabled: true
             caching_for_options_enabled: true
             stale_cache_enabled: true
@@ -14095,13 +14122,13 @@ components:
             tiered_cache_region: tiered_cache_region
             tiered_cache_enabled: true
           browser_cache:
-            max_age: 19008185
+            max_age: 1
             behavior: behavior
           name: name
           slice_controls:
             slice_tiered_caching_enabled: true
             slice_edge_caching_enabled: true
-            slice_configuration_range: 577
+            slice_configuration_range: 2
             slice_configuration_enabled: true
           application_controls:
             cache_by_cookies: cache_by_cookies
@@ -14609,7 +14636,7 @@ components:
           description: description
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          order: 119
+          order: 6
         state: state
       properties:
         state:
@@ -14804,7 +14831,7 @@ components:
           description: description
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          order: 119
+          order: 6
         state: state
       properties:
         state:
@@ -14861,11 +14888,11 @@ components:
           - code: 5
             custom_status_code: custom_status_code
             uri: uri
-            timeout: 17778031
+            timeout: 2
           - code: 5
             custom_status_code: custom_status_code
             uri: uri
-            timeout: 17778031
+            timeout: 2
           name: name
           origin_id: 1
           id: 0
@@ -14888,7 +14915,7 @@ components:
       additionalProperties: false
       example:
         edge_cache:
-          max_age: 4622587
+          max_age: 5
           caching_for_post_enabled: true
           caching_for_options_enabled: true
           stale_cache_enabled: true
@@ -14896,13 +14923,13 @@ components:
           tiered_cache_region: tiered_cache_region
           tiered_cache_enabled: true
         browser_cache:
-          max_age: 19008185
+          max_age: 1
           behavior: behavior
         name: name
         slice_controls:
           slice_tiered_caching_enabled: true
           slice_edge_caching_enabled: true
-          slice_configuration_range: 577
+          slice_configuration_range: 2
           slice_configuration_enabled: true
         application_controls:
           cache_by_cookies: cache_by_cookies
@@ -14918,9 +14945,10 @@ components:
           - cookie_names
           - cookie_names
           cache_by_query_string: cache_by_query_string
-        id: 0
+        id: 6
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -14953,7 +14981,7 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        id: 0
+        id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
         modules:
           application_accelerator_enabled: true
@@ -14963,6 +14991,7 @@ components:
           image_processor_enabled: true
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15005,10 +15034,11 @@ components:
       additionalProperties: false
       example:
         name: name
-        id: 0
+        id: 6
         user_agent: user_agent
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15030,15 +15060,16 @@ components:
     ResponseListEdgeApplicationFunctionInstance:
       additionalProperties: false
       example:
-        edge_function: 5559347081229897728
+        edge_function: 1351973845562961920
         last_editor: last_editor
         name: name
         active: true
         json_args: ""
-        id: 0
+        id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15192,11 +15223,12 @@ components:
         name: name
         active: true
         description: description
-        id: 0
+        id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
-        order: 119
+        order: 1
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15235,8 +15267,7 @@ components:
           pattern: .*
           type: string
         order:
-          maximum: 199
-          minimum: 0
+          format: int64
           readOnly: true
           type: integer
         last_editor:
@@ -15268,7 +15299,7 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        id: 0
+        id: 6
         debug_rules: true
         last_modified: 2000-01-23T04:56:07.000+00:00
         modules:
@@ -15278,6 +15309,7 @@ components:
           edge_functions_enabled: true
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15317,15 +15349,16 @@ components:
     ResponseListEdgeFirewallFunctionInstance:
       additionalProperties: false
       example:
-        edge_function: 5559347081229897728
+        edge_function: 1351973845562961920
         last_editor: last_editor
         name: name
         active: true
         json_args: ""
-        id: 0
+        id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15478,11 +15511,12 @@ components:
         name: name
         active: true
         description: description
-        id: 0
+        id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
-        order: 119
+        order: 1
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15523,8 +15557,7 @@ components:
           pattern: .*
           type: string
         order:
-          maximum: 199
-          minimum: 0
+          format: int64
           readOnly: true
           type: integer
       required:
@@ -15547,13 +15580,14 @@ components:
         active: true
         language: language
         json_args: ""
-        id: 0
-        reference_count: 6
+        id: 6
+        reference_count: 1
         version: version
         last_modified: 2000-01-23T04:56:07.000+00:00
         initiator_type: initiator_type
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15569,6 +15603,7 @@ components:
         active:
           type: boolean
         reference_count:
+          format: int64
           readOnly: true
           type: integer
         version:
@@ -15607,30 +15642,33 @@ components:
     ResponseListErrorResponses:
       additionalProperties: false
       example:
-        edge_application_id: 6
+        edge_application_id: 1
         error_responses:
         - code: 5
           custom_status_code: custom_status_code
           uri: uri
-          timeout: 17778031
+          timeout: 2
         - code: 5
           custom_status_code: custom_status_code
           uri: uri
-          timeout: 17778031
+          timeout: 2
         name: name
-        origin_id: 1
-        id: 0
+        origin_id: 5
+        id: 6
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
           readOnly: true
           type: string
         edge_application_id:
+          format: int64
           readOnly: true
           type: integer
         origin_id:
+          format: int64
           nullable: true
           type: integer
         error_responses:
@@ -15650,11 +15688,12 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        id: 0
+        id: 6
         type: type
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -15707,10 +15746,11 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        id: 0
+        id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         active:
@@ -15763,10 +15803,11 @@ components:
         name: name
         active: true
         use_regex: true
-        id: 0
+        id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         rule_id:
@@ -15946,7 +15987,7 @@ components:
         - domain: domain
           allow_access: true
         tls: ""
-        id: 0
+        id: 6
         alternate_domains:
         - alternate_domains
         - alternate_domains
@@ -15966,6 +16007,7 @@ components:
           verification: verification
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -16026,13 +16068,14 @@ components:
       additionalProperties: false
       example:
         binds:
-          edge_firewall: 1
-          edge_application: 5559347081229897728
+          edge_firewall: 5
+          edge_application: 1351973845562961920
         current: true
-        id: 0
+        id: 6
         tag: tag
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         tag:
@@ -16109,7 +16152,7 @@ components:
       example:
         data:
           edge_cache:
-            max_age: 4622587
+            max_age: 5
             caching_for_post_enabled: true
             caching_for_options_enabled: true
             stale_cache_enabled: true
@@ -16117,13 +16160,13 @@ components:
             tiered_cache_region: tiered_cache_region
             tiered_cache_enabled: true
           browser_cache:
-            max_age: 19008185
+            max_age: 1
             behavior: behavior
           name: name
           slice_controls:
             slice_tiered_caching_enabled: true
             slice_edge_caching_enabled: true
-            slice_configuration_range: 577
+            slice_configuration_range: 2
             slice_configuration_enabled: true
           application_controls:
             cache_by_cookies: cache_by_cookies
@@ -16326,7 +16369,7 @@ components:
           description: description
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          order: 119
+          order: 6
       properties:
         data:
           $ref: '#/components/schemas/EdgeApplicationRuleEngine'
@@ -16497,7 +16540,7 @@ components:
           description: description
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          order: 119
+          order: 6
       properties:
         data:
           $ref: '#/components/schemas/EdgeFirewallRuleEngine'
@@ -16538,11 +16581,11 @@ components:
           - code: 5
             custom_status_code: custom_status_code
             uri: uri
-            timeout: 17778031
+            timeout: 2
           - code: 5
             custom_status_code: custom_status_code
             uri: uri
-            timeout: 17778031
+            timeout: 2
           name: name
           origin_id: 1
           id: 0
@@ -16679,8 +16722,8 @@ components:
       example:
         data:
           binds:
-            edge_firewall: 1
-            edge_application: 5559347081229897728
+            edge_firewall: 5
+            edge_application: 1351973845562961920
           current: true
           id: 0
           tag: tag
@@ -16818,8 +16861,8 @@ components:
       example:
         data:
           binds:
-            edge_firewall: 1
-            edge_application: 5559347081229897728
+            edge_firewall: 5
+            edge_application: 1351973845562961920
           current: true
           id: 0
           tag: tag
@@ -16903,14 +16946,14 @@ components:
         * `1210` - Possible Directory Traversal attack: obvious path probe (/%2e./) found in Body, Query String or Cookies
         * `1402` - Possible trick to evade protection: encoded chars (%20-%3F) found in Body, Query String or Cookies
         * `1207` - Possible Directory Traversal attack: obvious path probe (/..;/) found in Body, Query String or Cookies
+      format: int64
       title: RuleIdEnum
       type: integer
     SetCustomResponseArgument:
       additionalProperties: false
       properties:
         status_code:
-          maximum: 499
-          minimum: 200
+          format: int64
           type: integer
         content_type:
           maxLength: 255
@@ -16930,8 +16973,7 @@ components:
       additionalProperties: false
       properties:
         status_code:
-          maximum: 499
-          minimum: 200
+          format: int64
           type: integer
         content_type:
           maxLength: 255
@@ -16960,12 +17002,10 @@ components:
           title: LimitByEnum
           type: string
         average_rate_limit:
-          maximum: 2147483647
-          minimum: 1
+          format: int64
           type: integer
         maximum_burst_size:
-          maximum: 2147483647
-          minimum: 1
+          format: int64
           type: integer
       required:
       - average_rate_limit
@@ -16985,12 +17025,10 @@ components:
           title: LimitByEnum
           type: string
         average_rate_limit:
-          maximum: 2147483647
-          minimum: 1
+          format: int64
           type: integer
         maximum_burst_size:
-          maximum: 2147483647
-          minimum: 1
+          format: int64
           type: integer
       required:
       - average_rate_limit
@@ -17046,7 +17084,7 @@ components:
       example:
         slice_tiered_caching_enabled: true
         slice_edge_caching_enabled: true
-        slice_configuration_range: 577
+        slice_configuration_range: 2
         slice_configuration_enabled: true
       properties:
         slice_configuration_enabled:
@@ -17056,8 +17094,7 @@ components:
         slice_tiered_caching_enabled:
           type: boolean
         slice_configuration_range:
-          maximum: 1024
-          minimum: 0
+          format: int64
           type: integer
       required:
       - slice_configuration_enabled
@@ -17070,7 +17107,7 @@ components:
       example:
         slice_tiered_caching_enabled: true
         slice_edge_caching_enabled: true
-        slice_configuration_range: 610
+        slice_configuration_range: 5
         slice_configuration_enabled: true
       properties:
         slice_configuration_enabled:
@@ -17080,8 +17117,7 @@ components:
         slice_tiered_caching_enabled:
           type: boolean
         slice_configuration_range:
-          maximum: 1024
-          minimum: 0
+          format: int64
           type: integer
       required:
       - slice_configuration_enabled
@@ -17108,6 +17144,7 @@ components:
       additionalProperties: false
       properties:
         certificate:
+          format: int64
           minimum: 1
           nullable: true
           type: integer
@@ -17133,6 +17170,7 @@ components:
       additionalProperties: false
       properties:
         certificate:
+          format: int64
           minimum: 1
           nullable: true
           type: integer
@@ -17188,6 +17226,7 @@ components:
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         active:
@@ -17280,6 +17319,7 @@ components:
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         rule_id:
@@ -17758,6 +17798,7 @@ components:
           verification: verification
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         name:
@@ -17817,13 +17858,14 @@ components:
       additionalProperties: false
       example:
         binds:
-          edge_firewall: 1
-          edge_application: 5559347081229897728
+          edge_firewall: 5
+          edge_application: 1351973845562961920
         current: true
         id: 0
         tag: tag
       properties:
         id:
+          format: int64
           readOnly: true
           type: integer
         tag:
@@ -17844,8 +17886,8 @@ components:
     WorkloadDeploymentBinds:
       additionalProperties: false
       example:
-        edge_firewall: 1
-        edge_application: 5559347081229897728
+        edge_firewall: 5
+        edge_application: 1351973845562961920
       properties:
         edge_application:
           format: int64
@@ -17853,6 +17895,7 @@ components:
           minimum: 1
           type: integer
         edge_firewall:
+          format: int64
           nullable: true
           type: integer
       required:
@@ -17871,6 +17914,7 @@ components:
           minimum: 1
           type: integer
         edge_firewall:
+          format: int64
           nullable: true
           type: integer
       required:
@@ -17952,6 +17996,7 @@ components:
         network_map:
           type: string
         edge_firewall:
+          format: int64
           nullable: true
           type: integer
           writeOnly: true

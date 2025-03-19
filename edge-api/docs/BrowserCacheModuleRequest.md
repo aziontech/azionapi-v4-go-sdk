@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Behavior** | **string** | * &#x60;honor&#x60; - Honor Origin Cache Headers * &#x60;override&#x60; - Override Cache Settings * &#x60;no-cache&#x60; - No Cache | 
-**MaxAge** | **int32** |  | 
+**MaxAge** | **int64** |  | 
 
 ## Methods
 
 ### NewBrowserCacheModuleRequest
 
-`func NewBrowserCacheModuleRequest(behavior string, maxAge int32, ) *BrowserCacheModuleRequest`
+`func NewBrowserCacheModuleRequest(behavior string, maxAge int64, ) *BrowserCacheModuleRequest`
 
 NewBrowserCacheModuleRequest instantiates a new BrowserCacheModuleRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetBehavior sets Behavior field to given value.
 
 ### GetMaxAge
 
-`func (o *BrowserCacheModuleRequest) GetMaxAge() int32`
+`func (o *BrowserCacheModuleRequest) GetMaxAge() int64`
 
 GetMaxAge returns the MaxAge field if non-nil, zero value otherwise.
 
 ### GetMaxAgeOk
 
-`func (o *BrowserCacheModuleRequest) GetMaxAgeOk() (*int32, bool)`
+`func (o *BrowserCacheModuleRequest) GetMaxAgeOk() (*int64, bool)`
 
 GetMaxAgeOk returns a tuple with the MaxAge field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxAge
 
-`func (o *BrowserCacheModuleRequest) SetMaxAge(v int32)`
+`func (o *BrowserCacheModuleRequest) SetMaxAge(v int64)`
 
 SetMaxAge sets MaxAge field to given value.
 

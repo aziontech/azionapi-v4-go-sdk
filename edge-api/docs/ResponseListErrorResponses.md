@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | [readonly] 
-**EdgeApplicationId** | **int32** |  | [readonly] 
-**OriginId** | Pointer to **NullableInt32** |  | [optional] 
+**EdgeApplicationId** | **int64** |  | [readonly] 
+**OriginId** | Pointer to **NullableInt64** |  | [optional] 
 **ErrorResponses** | [**[]NestedErrorResponse**](NestedErrorResponse.md) |  | 
 
 ## Methods
 
 ### NewResponseListErrorResponses
 
-`func NewResponseListErrorResponses(id int32, name string, edgeApplicationId int32, errorResponses []NestedErrorResponse, ) *ResponseListErrorResponses`
+`func NewResponseListErrorResponses(id int64, name string, edgeApplicationId int64, errorResponses []NestedErrorResponse, ) *ResponseListErrorResponses`
 
 NewResponseListErrorResponses instantiates a new ResponseListErrorResponses object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ResponseListErrorResponses) GetId() int32`
+`func (o *ResponseListErrorResponses) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponseListErrorResponses) GetIdOk() (*int32, bool)`
+`func (o *ResponseListErrorResponses) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponseListErrorResponses) SetId(v int32)`
+`func (o *ResponseListErrorResponses) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -71,40 +71,40 @@ SetName sets Name field to given value.
 
 ### GetEdgeApplicationId
 
-`func (o *ResponseListErrorResponses) GetEdgeApplicationId() int32`
+`func (o *ResponseListErrorResponses) GetEdgeApplicationId() int64`
 
 GetEdgeApplicationId returns the EdgeApplicationId field if non-nil, zero value otherwise.
 
 ### GetEdgeApplicationIdOk
 
-`func (o *ResponseListErrorResponses) GetEdgeApplicationIdOk() (*int32, bool)`
+`func (o *ResponseListErrorResponses) GetEdgeApplicationIdOk() (*int64, bool)`
 
 GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEdgeApplicationId
 
-`func (o *ResponseListErrorResponses) SetEdgeApplicationId(v int32)`
+`func (o *ResponseListErrorResponses) SetEdgeApplicationId(v int64)`
 
 SetEdgeApplicationId sets EdgeApplicationId field to given value.
 
 
 ### GetOriginId
 
-`func (o *ResponseListErrorResponses) GetOriginId() int32`
+`func (o *ResponseListErrorResponses) GetOriginId() int64`
 
 GetOriginId returns the OriginId field if non-nil, zero value otherwise.
 
 ### GetOriginIdOk
 
-`func (o *ResponseListErrorResponses) GetOriginIdOk() (*int32, bool)`
+`func (o *ResponseListErrorResponses) GetOriginIdOk() (*int64, bool)`
 
 GetOriginIdOk returns a tuple with the OriginId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOriginId
 
-`func (o *ResponseListErrorResponses) SetOriginId(v int32)`
+`func (o *ResponseListErrorResponses) SetOriginId(v int64)`
 
 SetOriginId sets OriginId field to given value.
 

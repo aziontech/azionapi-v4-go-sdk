@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **JsonArgs** | **interface{}** |  | 
 **EdgeFunction** | **int64** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewResponseListEdgeApplicationFunctionInstance
 
-`func NewResponseListEdgeApplicationFunctionInstance(id int32, name string, jsonArgs interface{}, edgeFunction int64, lastEditor string, lastModified time.Time, ) *ResponseListEdgeApplicationFunctionInstance`
+`func NewResponseListEdgeApplicationFunctionInstance(id int64, name string, jsonArgs interface{}, edgeFunction int64, lastEditor string, lastModified time.Time, ) *ResponseListEdgeApplicationFunctionInstance`
 
 NewResponseListEdgeApplicationFunctionInstance instantiates a new ResponseListEdgeApplicationFunctionInstance object
 This constructor will assign default values to properties that have it defined,
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ResponseListEdgeApplicationFunctionInstance) GetId() int32`
+`func (o *ResponseListEdgeApplicationFunctionInstance) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponseListEdgeApplicationFunctionInstance) GetIdOk() (*int32, bool)`
+`func (o *ResponseListEdgeApplicationFunctionInstance) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponseListEdgeApplicationFunctionInstance) SetId(v int32)`
+`func (o *ResponseListEdgeApplicationFunctionInstance) SetId(v int64)`
 
 SetId sets Id field to given value.
 

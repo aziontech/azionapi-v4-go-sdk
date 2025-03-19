@@ -22,7 +22,7 @@ var _ MappedNullable = &EdgeFirewall{}
 
 // EdgeFirewall struct for EdgeFirewall
 type EdgeFirewall struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
 	Modules *EdgeFirewallModules `json:"modules,omitempty"`
 	DebugRules *bool `json:"debug_rules,omitempty"`
@@ -38,7 +38,7 @@ type _EdgeFirewall EdgeFirewall
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEdgeFirewall(id int32, name string, lastEditor string, lastModified time.Time, productVersion string) *EdgeFirewall {
+func NewEdgeFirewall(id int64, name string, lastEditor string, lastModified time.Time, productVersion string) *EdgeFirewall {
 	this := EdgeFirewall{}
 	this.Id = id
 	this.Name = name
@@ -57,9 +57,9 @@ func NewEdgeFirewallWithDefaults() *EdgeFirewall {
 }
 
 // GetId returns the Id field value
-func (o *EdgeFirewall) GetId() int32 {
+func (o *EdgeFirewall) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *EdgeFirewall) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *EdgeFirewall) GetIdOk() (*int32, bool) {
+func (o *EdgeFirewall) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *EdgeFirewall) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *EdgeFirewall) SetId(v int32) {
+func (o *EdgeFirewall) SetId(v int64) {
 	o.Id = v
 }
 

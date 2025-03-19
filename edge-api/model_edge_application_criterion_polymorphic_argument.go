@@ -18,14 +18,14 @@ import (
 
 // EdgeApplicationCriterionPolymorphicArgument - struct for EdgeApplicationCriterionPolymorphicArgument
 type EdgeApplicationCriterionPolymorphicArgument struct {
-	Int32 *int32
+	Int64 *int64
 	String *string
 }
 
-// int32AsEdgeApplicationCriterionPolymorphicArgument is a convenience function that returns int32 wrapped in EdgeApplicationCriterionPolymorphicArgument
-func Int32AsEdgeApplicationCriterionPolymorphicArgument(v *int32) EdgeApplicationCriterionPolymorphicArgument {
+// int64AsEdgeApplicationCriterionPolymorphicArgument is a convenience function that returns int64 wrapped in EdgeApplicationCriterionPolymorphicArgument
+func Int64AsEdgeApplicationCriterionPolymorphicArgument(v *int64) EdgeApplicationCriterionPolymorphicArgument {
 	return EdgeApplicationCriterionPolymorphicArgument{
-		Int32: v,
+		Int64: v,
 	}
 }
 
@@ -46,21 +46,21 @@ func (dst *EdgeApplicationCriterionPolymorphicArgument) UnmarshalJSON(data []byt
 	}
 
 	match := 0
-	// try to unmarshal data into Int32
-	err = newStrictDecoder(data).Decode(&dst.Int32)
+	// try to unmarshal data into Int64
+	err = newStrictDecoder(data).Decode(&dst.Int64)
 	if err == nil {
-		jsonInt32, _ := json.Marshal(dst.Int32)
-		if string(jsonInt32) == "{}" { // empty struct
-			dst.Int32 = nil
+		jsonInt64, _ := json.Marshal(dst.Int64)
+		if string(jsonInt64) == "{}" { // empty struct
+			dst.Int64 = nil
 		} else {
-			if err = validator.Validate(dst.Int32); err != nil {
-				dst.Int32 = nil
+			if err = validator.Validate(dst.Int64); err != nil {
+				dst.Int64 = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Int32 = nil
+		dst.Int64 = nil
 	}
 
 	// try to unmarshal data into String
@@ -82,7 +82,7 @@ func (dst *EdgeApplicationCriterionPolymorphicArgument) UnmarshalJSON(data []byt
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Int32 = nil
+		dst.Int64 = nil
 		dst.String = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(EdgeApplicationCriterionPolymorphicArgument)")
@@ -95,8 +95,8 @@ func (dst *EdgeApplicationCriterionPolymorphicArgument) UnmarshalJSON(data []byt
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src EdgeApplicationCriterionPolymorphicArgument) MarshalJSON() ([]byte, error) {
-	if src.Int32 != nil {
-		return json.Marshal(&src.Int32)
+	if src.Int64 != nil {
+		return json.Marshal(&src.Int64)
 	}
 
 	if src.String != nil {
@@ -111,8 +111,8 @@ func (obj *EdgeApplicationCriterionPolymorphicArgument) GetActualInstance() (int
 	if obj == nil {
 		return nil
 	}
-	if obj.Int32 != nil {
-		return obj.Int32
+	if obj.Int64 != nil {
+		return obj.Int64
 	}
 
 	if obj.String != nil {

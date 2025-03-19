@@ -25,7 +25,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "openapiclient "github.com/aziontech/azionapi-v4-go-sdk""
 )
 
 func main() {
