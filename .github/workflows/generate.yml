@@ -139,7 +139,7 @@ jobs:
       - name: Notify Slack
         if: steps.find-yaml.outputs.run_sdk == 'true'
         run: |
-          SLACK_WEBHOOK_URL="https://hooks.slack.com/services/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"
+          SLACK_WEBHOOK_URL="${{ secrets.SLACK_WEBHOOK }}"
             
           # Extract PR number from GITHUB_REF
           PR_NUMBER="${GITHUB_REF##*/}"
