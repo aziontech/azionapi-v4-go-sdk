@@ -18,15 +18,7 @@ import (
 
 // MatchZoneMatchesOn - struct for MatchZoneMatchesOn
 type MatchZoneMatchesOn struct {
-	MapmapOfStringAny *map[string]interface{}
 	String *string
-}
-
-// map[string]interface{}AsMatchZoneMatchesOn is a convenience function that returns map[string]interface{} wrapped in MatchZoneMatchesOn
-func MapmapOfStringAnyAsMatchZoneMatchesOn(v *map[string]interface{}) MatchZoneMatchesOn {
-	return MatchZoneMatchesOn{
-		MapmapOfStringAny: v,
-	}
 }
 
 // stringAsMatchZoneMatchesOn is a convenience function that returns string wrapped in MatchZoneMatchesOn
@@ -46,23 +38,6 @@ func (dst *MatchZoneMatchesOn) UnmarshalJSON(data []byte) error {
 	}
 
 	match := 0
-	// try to unmarshal data into MapmapOfStringAny
-	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringAny)
-	if err == nil {
-		jsonMapmapOfStringAny, _ := json.Marshal(dst.MapmapOfStringAny)
-		if string(jsonMapmapOfStringAny) == "{}" { // empty struct
-			dst.MapmapOfStringAny = nil
-		} else {
-			if err = validator.Validate(dst.MapmapOfStringAny); err != nil {
-				dst.MapmapOfStringAny = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.MapmapOfStringAny = nil
-	}
-
 	// try to unmarshal data into String
 	err = newStrictDecoder(data).Decode(&dst.String)
 	if err == nil {
@@ -82,7 +57,6 @@ func (dst *MatchZoneMatchesOn) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.MapmapOfStringAny = nil
 		dst.String = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(MatchZoneMatchesOn)")
@@ -95,10 +69,6 @@ func (dst *MatchZoneMatchesOn) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src MatchZoneMatchesOn) MarshalJSON() ([]byte, error) {
-	if src.MapmapOfStringAny != nil {
-		return json.Marshal(&src.MapmapOfStringAny)
-	}
-
 	if src.String != nil {
 		return json.Marshal(&src.String)
 	}
@@ -111,10 +81,6 @@ func (obj *MatchZoneMatchesOn) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.MapmapOfStringAny != nil {
-		return obj.MapmapOfStringAny
-	}
-
 	if obj.String != nil {
 		return obj.String
 	}
@@ -125,10 +91,6 @@ func (obj *MatchZoneMatchesOn) GetActualInstance() (interface{}) {
 
 // Get the actual instance value
 func (obj MatchZoneMatchesOn) GetActualInstanceValue() (interface{}) {
-	if obj.MapmapOfStringAny != nil {
-		return *obj.MapmapOfStringAny
-	}
-
 	if obj.String != nil {
 		return *obj.String
 	}
