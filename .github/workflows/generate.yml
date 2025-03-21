@@ -66,6 +66,9 @@ jobs:
         id: find-yaml
         if: steps.check-commit.outputs.run_commit == 'true'
         run: |
+          # Fetch all branches to make sure origin/main is available
+          git fetch origin main
+        
           YAML_FILES=$(git diff --name-only origin/main HEAD | grep -E '\.yaml$' || echo "")
 
           if [ -z "$YAML_FILES" ]; then
