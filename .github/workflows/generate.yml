@@ -90,6 +90,9 @@ jobs:
       - name: Upgrade pip
         run: python3 -m pip install --upgrade pip
         shell: bash
+      
+      - name: install script dependency
+        run: python3 -m pip install pyyaml
 
       - name: Patch YAML Files
         if: steps.find-yaml.outputs.run_sdk == 'true'
