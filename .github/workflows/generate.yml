@@ -39,6 +39,9 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
+      - name: run safe dir
+        run: git config --global --add safe.directory /__w/azionapi-v4-go-sdk/azionapi-v4-go-sdk
+
       - name: Get PR Commit Message
         id: pr_commit_message
         run: |
