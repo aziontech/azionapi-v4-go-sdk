@@ -79,15 +79,18 @@ jobs:
 
       - name: Install pip for Python 3
         run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-pip
+          apt-get update
+          apt-get install -y python3-pip
+        shell: bash
       
       - name: Upgrade pip
         run: python3 -m pip install --upgrade pip
+        shell: bash
       
       - name: Install Python dependencies
         run: |
           pip install -r requirements.txt || true  # Just in case there are any dependencies for patching.
+        shell: bash
 
       - name: Patch YAML Files
         if: steps.find-yaml.outputs.run_sdk == 'true'
