@@ -113,8 +113,8 @@ jobs:
           while IFS= read -r file; do
             removed=$(echo ${file} | cut -d. -f1)
             npx @openapitools/openapi-generator-cli generate -i $file -g go -o ./${removed} --package-name ${removed}
-            echo 'go.mod' >> ./go/${removed}/.gitignore
-            echo 'go.sum' >> ./go/${removed}/.gitignore
+            echo 'go.mod' >> ./${removed}/.gitignore
+            echo 'go.sum' >> ./${removed}/.gitignore
           done < yaml_files_list.txt
 
       - name: Commit and Push Generated SDKs
