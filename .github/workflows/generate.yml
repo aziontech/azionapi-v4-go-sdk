@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Setup Env
-        run: apt-get update && apt-get install -y npm curl git
+        run: apt-get update && apt-get install -y npm curl git jq
         shell: bash
 
       - name: Install GH CLI
@@ -47,12 +47,13 @@ jobs:
         run: |
           COMMIT_MSG=$(git log --format=%B -n 1 ${{ github.event.pull_request.head.sha }})
           echo "Commit message: $COMMIT_MSG"
-          echo "commit_msg=$COMMIT_MSG" >> $GITHUB_ENV
+          echo "commit_msg=$COMMIT_MSG" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: Check if Commit Message Matches
         id: check-commit
         run: |
+          echo "Commit message -> " ${{ steps.pr_commit_message.outputs.commit_msg }}
           if [[ "${{ steps.pr_commit_message.outputs.commit_msg }}" == *"Updated YAML files"* ]]; then
             echo "run_commit=true" >> $GITHUB_OUTPUT
           else
@@ -65,6 +66,9 @@ jobs:
         id: find-yaml
         if: steps.check-commit.outputs.run_commit == 'true'
         run: |
+          # Fetch all branches to make sure origin/main is available
+          git fetch origin main
+        
           YAML_FILES=$(git diff --name-only origin/main HEAD | grep -E '\.yaml$' || echo "")
 
           if [ -z "$YAML_FILES" ]; then
@@ -76,6 +80,27 @@ jobs:
             echo "$YAML_FILES" > yaml_files_list.txt
           fi
         shell: bash
+
+      - name: Install pip for Python 3
+        run: |
+          apt-get update
+          apt-get install -y python3-pip
+        shell: bash
+      
+      - name: Upgrade pip
+        run: python3 -m pip install --upgrade pip
+        shell: bash
+      
+      - name: install script dependency
+        run: python3 -m pip install pyyaml
+
+      - name: Patch YAML Files
+        if: steps.find-yaml.outputs.run_sdk == 'true'
+        run: |
+          while IFS= read -r file; do
+            echo "Patching YAML file: $file"
+            python3 scripts/patch.py "$file"
+          done < yaml_files_list.txt
 
       - name: Install OpenAPI Generator
         if: steps.find-yaml.outputs.run_sdk == 'true'
@@ -95,8 +120,8 @@ jobs:
       - name: Commit and Push Generated SDKs
         if: steps.find-yaml.outputs.run_sdk == 'true'
         run: |
-          git config user.email "patrick.menoti@gmail.com"
-          git config user.name "PatrickMenoti"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           git add .
 
@@ -109,4 +134,30 @@ jobs:
           else
             git commit -m "Auto-generated SDKs for YAML files"
             git push origin ${{ github.event.pull_request.head.ref }}
+          fi
+
+      - name: Notify Slack
+        if: steps.find-yaml.outputs.run_sdk == 'true'
+        run: |
+          SLACK_WEBHOOK_URL="https://hooks.slack.com/services/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"
+            
+          # Extract PR number from GITHUB_REF
+          PR_NUMBER="${GITHUB_REF##*/}"
+            
+          # Construct the PR URL using GitHub's variables
+          PR_URL="https://github.com/${GITHUB_REPOSITORY}/pull/${PR_NUMBER}"
+            
+          # Commit message with the PR URL
+          COMMIT_MESSAGE="New SDK generated and committed by GitHub Actions. View the PR here: ${PR_URL}"
+            
+          # Prepare Slack message payload
+          PAYLOAD=$(echo "{\"attachments\":[{\"color\":\"#00008B\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*[GitHub Action] New SDK generated and committed!*\\nDetail: ${COMMIT_MESSAGE}\"}}]}]}" | jq .)
+            
+          # Send the Slack message with a timeout
+          RESPONSE=$(curl -X POST "${SLACK_WEBHOOK_URL}" -H "Content-Type: application/json" -H "Accept: application/json" --data "${PAYLOAD}" --max-time 15)
+          
+          if [ $? -ne 0 ]; then
+            echo "[Slack-Notify] Failed to notify Slack!"
+          else
+            echo "[Slack-Notify] Slack response: ${RESPONSE}"
           fi
