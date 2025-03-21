@@ -1,0 +1,134 @@
+# PatchedEdgeFirewallRequest
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Name** | Pointer to **string** |  | [optional] 
+**Modules** | Pointer to [**EdgeFirewallModulesRequest**](EdgeFirewallModulesRequest.md) |  | [optional] 
+**DebugRules** | Pointer to **bool** |  | [optional] [default to false]
+**Active** | Pointer to **bool** |  | [optional] [default to true]
+
+## Methods
+
+### NewPatchedEdgeFirewallRequest
+
+`func NewPatchedEdgeFirewallRequest() *PatchedEdgeFirewallRequest`
+
+NewPatchedEdgeFirewallRequest instantiates a new PatchedEdgeFirewallRequest object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewPatchedEdgeFirewallRequestWithDefaults
+
+`func NewPatchedEdgeFirewallRequestWithDefaults() *PatchedEdgeFirewallRequest`
+
+NewPatchedEdgeFirewallRequestWithDefaults instantiates a new PatchedEdgeFirewallRequest object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *PatchedEdgeFirewallRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *PatchedEdgeFirewallRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *PatchedEdgeFirewallRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *PatchedEdgeFirewallRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetModules
+
+`func (o *PatchedEdgeFirewallRequest) GetModules() EdgeFirewallModulesRequest`
+
+GetModules returns the Modules field if non-nil, zero value otherwise.
+
+### GetModulesOk
+
+`func (o *PatchedEdgeFirewallRequest) GetModulesOk() (*EdgeFirewallModulesRequest, bool)`
+
+GetModulesOk returns a tuple with the Modules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModules
+
+`func (o *PatchedEdgeFirewallRequest) SetModules(v EdgeFirewallModulesRequest)`
+
+SetModules sets Modules field to given value.
+
+### HasModules
+
+`func (o *PatchedEdgeFirewallRequest) HasModules() bool`
+
+HasModules returns a boolean if a field has been set.
+
+### GetDebugRules
+
+`func (o *PatchedEdgeFirewallRequest) GetDebugRules() bool`
+
+GetDebugRules returns the DebugRules field if non-nil, zero value otherwise.
+
+### GetDebugRulesOk
+
+`func (o *PatchedEdgeFirewallRequest) GetDebugRulesOk() (*bool, bool)`
+
+GetDebugRulesOk returns a tuple with the DebugRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebugRules
+
+`func (o *PatchedEdgeFirewallRequest) SetDebugRules(v bool)`
+
+SetDebugRules sets DebugRules field to given value.
+
+### HasDebugRules
+
+`func (o *PatchedEdgeFirewallRequest) HasDebugRules() bool`
+
+HasDebugRules returns a boolean if a field has been set.
+
+### GetActive
+
+`func (o *PatchedEdgeFirewallRequest) GetActive() bool`
+
+GetActive returns the Active field if non-nil, zero value otherwise.
+
+### GetActiveOk
+
+`func (o *PatchedEdgeFirewallRequest) GetActiveOk() (*bool, bool)`
+
+GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActive
+
+`func (o *PatchedEdgeFirewallRequest) SetActive(v bool)`
+
+SetActive sets Active field to given value.
+
+### HasActive
+
+`func (o *PatchedEdgeFirewallRequest) HasActive() bool`
+
+HasActive returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
