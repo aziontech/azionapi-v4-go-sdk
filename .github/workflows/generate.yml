@@ -47,12 +47,13 @@ jobs:
         run: |
           COMMIT_MSG=$(git log --format=%B -n 1 ${{ github.event.pull_request.head.sha }})
           echo "Commit message: $COMMIT_MSG"
-          echo "commit_msg=$COMMIT_MSG" >> $GITHUB_ENV
+          echo "commit_msg=$COMMIT_MSG" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: Check if Commit Message Matches
         id: check-commit
         run: |
+          echo "Commit message -> " ${{ steps.pr_commit_message.outputs.commit_msg }}
           if [[ "${{ steps.pr_commit_message.outputs.commit_msg }}" == *"Updated YAML files"* ]]; then
             echo "run_commit=true" >> $GITHUB_OUTPUT
           else
@@ -85,11 +86,6 @@ jobs:
       
       - name: Upgrade pip
         run: python3 -m pip install --upgrade pip
-        shell: bash
-      
-      - name: Install Python dependencies
-        run: |
-          pip install -r requirements.txt || true  # Just in case there are any dependencies for patching.
         shell: bash
 
       - name: Patch YAML Files
