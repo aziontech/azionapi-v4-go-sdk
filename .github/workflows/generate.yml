@@ -1,16 +1,11 @@
-name: Generate SDKs
+name: Generate SDK for Changed YAML Files
 
 on:
   pull_request:
-    types:
-      - closed
-    branches:
-      - main
+    types: [opened, synchronize]
 
 jobs:
-  generate_sdk:
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.title, 'patch')
-    name: Generate SDK and commit to repo
+  generate-sdk:
     runs-on: ubuntu-latest
     container:
       image: ubuntu:22.04
@@ -39,56 +34,79 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Install openapi-generator
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: run safe dir
+        run: git config --global --add safe.directory /__w/azionapi-v4-go-sdk/azionapi-v4-go-sdk
+
+      - name: Get PR Commit Message
+        id: pr_commit_message
+        run: |
+          COMMIT_MSG=$(git log --format=%B -n 1 ${{ github.event.pull_request.head.sha }})
+          echo "Commit message: $COMMIT_MSG"
+          echo "commit_msg=$COMMIT_MSG" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Check if Commit Message Matches
+        id: check-commit
+        run: |
+          if [[ "${{ steps.pr_commit_message.outputs.commit_msg }}" == *"Updated YAML files"* ]]; then
+            echo "run_commit=true" >> $GITHUB_OUTPUT
+          else
+            echo "::warning::Commit message does not match. Skipping workflow."
+            echo "run_commit=false" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
+
+      - name: Find Modified YAML Files
+        id: find-yaml
+        if: steps.check-commit.outputs.run_commit == 'true'
+        run: |
+          YAML_FILES=$(git diff --name-only origin/main HEAD | grep -E '\.yaml$' || echo "")
+
+          if [ -z "$YAML_FILES" ]; then
+            echo "::warning::No YAML files modified. Skipping SDK generation."
+            echo "run_sdk=false" >> $GITHUB_OUTPUT
+          else
+            echo "Modified YAML files: $YAML_FILES"
+            echo "run_sdk=true" >> $GITHUB_OUTPUT
+            echo "$YAML_FILES" > yaml_files_list.txt
+          fi
+        shell: bash
+
+      - name: Install OpenAPI Generator
+        if: steps.find-yaml.outputs.run_sdk == 'true'
         run: npm install @openapitools/openapi-generator-cli -g
         shell: bash
 
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-
-      - name: Get Changed .yml Files
-        id: changed-files
-        run: |
-          echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | grep '\.yaml$' | xargs)" >> $GITHUB_OUTPUT
-
       - name: Run OpenAPI Generator for Changed Files
+        if: steps.find-yaml.outputs.run_sdk == 'true'
         run: |
-          for file in ${{ steps.changed-files.outputs.changed_files }}; do
-            removed=$(basename "$file" .yml)
-            npx @openapitools/openapi-generator-cli generate -i "$file" -g go -o "./generated/${removed}" --package-name "${removed}"
-            echo 'go.mod' >> "./generated/${removed}/.gitignore"
-            echo 'go.sum' >> "./generated/${removed}/.gitignore"
-          done
+          while IFS= read -r file; do
+            removed=$(echo ${file} | cut -d. -f1)
+            npx @openapitools/openapi-generator-cli generate -i $file -g go -o ./go/${removed} --package-name ${removed}
+            echo 'go.mod' >> ./go/${removed}/.gitignore
+            echo 'go.sum' >> ./go/${removed}/.gitignore
+          done < yaml_files_list.txt
 
-      - name: Commit and Push Changes
+      - name: Commit and Push Generated SDKs
+        if: steps.find-yaml.outputs.run_sdk == 'true'
         run: |
           git config user.email "patrick.menoti@gmail.com"
           git config user.name "PatrickMenoti"
-          git checkout main
-          git add generated/
-          if git diff --cached --quiet; then
-            echo "::warning::No changes detected. Skipping commit."
-          else
-            git commit -m "Auto-Generated SDKs based on merged PR"
-            git push origin main
-          fi
-        env:
-          GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
 
-  bump:
-      runs-on: ubuntu-latest
-  
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
-  
-        - name: Bump version and push tag
-          uses: anothrNick/github-tag-action@1.37.0
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            RELEASE_BRANCHES: main
-            WITH_V: true
+          git add .
+
+          while IFS= read -r file; do
+            git rm -f "$file"
+          done < yaml_files_list.txt
+
+          if git diff-index --quiet HEAD --; then
+            echo "::warning::No SDK changes to commit."
+          else
+            git commit -m "Auto-generated SDKs for YAML files"
+            git push origin ${{ github.event.pull_request.head.ref }}
+          fi
