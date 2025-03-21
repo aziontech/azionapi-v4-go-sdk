@@ -77,6 +77,19 @@ jobs:
           fi
         shell: bash
 
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt || true  # Just in case there are any dependencies for patching.
+
+      - name: Patch YAML Files
+        if: steps.find-yaml.outputs.run_sdk == 'true'
+        run: |
+          while IFS= read -r file; do
+            echo "Patching YAML file: $file"
+            python3 scripts/patch.py "$file"
+          done < yaml_files_list.txt
+
       - name: Install OpenAPI Generator
         if: steps.find-yaml.outputs.run_sdk == 'true'
         run: npm install @openapitools/openapi-generator-cli -g
