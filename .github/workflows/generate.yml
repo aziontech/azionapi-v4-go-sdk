@@ -77,9 +77,16 @@ jobs:
           fi
         shell: bash
 
-      - name: Install Dependencies
+      - name: Install pip for Python 3
         run: |
-          python3 -m pip install --upgrade pip
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+      
+      - name: Upgrade pip
+        run: python3 -m pip install --upgrade pip
+      
+      - name: Install Python dependencies
+        run: |
           pip install -r requirements.txt || true  # Just in case there are any dependencies for patching.
 
       - name: Patch YAML Files
