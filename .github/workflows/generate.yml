@@ -7,6 +7,8 @@ on:
 jobs:
   generate-sdk:
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:22.04
 
     steps:
       - name: Setup Env
