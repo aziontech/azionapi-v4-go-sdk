@@ -1,9 +1,0 @@
-openapi: 3.0.3
-info:
-  title: Dummy
-  version: 1.0.0
-  description: REST API OpenAPI documentation for the Dummy
-paths: {}
-components: {}
-
-
