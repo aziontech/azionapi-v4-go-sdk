@@ -151,7 +151,7 @@ jobs:
           COMMIT_MESSAGE="New SDK generated and committed by GitHub Actions. View the PR here: ${PR_URL}"
             
           # Prepare Slack message payload with the escaped commit message
-          PAYLOAD=$(echo "{\"attachments\":[{\"color\":\"#00008B\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*[GitHub Action] New SDK generated and committed!*\\nDetail: ${ESCAPED_COMMIT_MESSAGE}\"}}]}]}")
+          PAYLOAD=$(echo "{\"attachments\":[{\"color\":\"#00008B\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*[GitHub Action] New SDK generated and committed!*\\nDetail: ${COMMIT_MESSAGE}\"}}]}]}")
             
           # Send the Slack message with a timeout
           RESPONSE=$(curl -X POST "${SLACK_WEBHOOK_URL}" -H "Content-Type: application/json" -H "Accept: application/json" --data "${PAYLOAD}" --max-time 15)
