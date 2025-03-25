@@ -1,112 +1,122 @@
 openapi: 3.0.3
 info:
+  description: REST API OpenAPI documentation for the iam-api
   title: iam-api
   version: 1.0.0
-  description: REST API OpenAPI documentation for the iam-api
+servers:
+- url: /
 paths:
   /iam/mfa/totp:
     post:
-      operationId: createTotpDevice
       description: Create a new TOTP device for your account.
-      summary: Create a TOTP device
-      tags:
-      - MFA - TOTP Device
-      security:
-      - {}
+      operationId: createTotpDevice
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseTOTPDevice'
           description: Created
-        '404':
+        "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DefaultErrorResponse'
           description: Not Found
-        '405':
+        "405":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DefaultErrorResponse'
           description: Not Found
-        '406':
+        "406":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DefaultErrorResponse'
           description: Not Acceptable
-        '429':
+        "429":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DefaultErrorResponse'
           description: Too Many Requests
-        '400':
+        "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseBadRequestTOTPDevice'
           description: Bad Request
-        '202':
+        "202":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseTOTPDevice'
           description: Accepted
+      security:
+      - {}
+      summary: Create a TOTP device
+      tags:
+      - MFA - TOTP Device
 components:
   schemas:
     DefaultErrorResponse:
-      type: object
+      additionalProperties: false
+      example:
+        detail: detail
       properties:
         detail:
           type: string
       title: DefaultErrorResponse
-      additionalProperties: false
-    ResponseBadRequestTOTPDevice:
       type: object
+    ResponseBadRequestTOTPDevice:
+      additionalProperties: false
+      example:
+        detail: detail
+        url:
+        - url
+        - url
       properties:
         url:
-          type: array
           items:
             type: string
+          type: array
         detail:
           type: string
       title: ResponseBadRequestTOTPDevice
-      additionalProperties: false
-    ResponseTOTPDevice:
       type: object
+    ResponseTOTPDevice:
+      additionalProperties: false
+      example:
+        data:
+          url: url
+        state: state
       properties:
         state:
-          $ref: '#/components/schemas/StateEnum'
+          title: StateEnum
+          type: string
         data:
           $ref: '#/components/schemas/TOTPDevice'
       required:
       - data
       - state
       title: ResponseTOTPDevice
-      additionalProperties: false
-    StateEnum:
-      enum:
-      - pending
-      - executed
-      type: string
-      title: StateEnum
-      additionalProperties: false
-    TOTPDevice:
       type: object
+    StateEnum:
+      title: StateEnum
+      type: string
+    TOTPDevice:
+      additionalProperties: false
+      example:
+        url: url
       properties:
         url:
-          type: string
-          readOnly: true
-          pattern: .*
           maxLength: 255
           minLength: 0
+          pattern: .*
+          readOnly: true
+          type: string
       required:
       - url
       title: TOTPDevice
-      additionalProperties: false
-
-
+      type: object
