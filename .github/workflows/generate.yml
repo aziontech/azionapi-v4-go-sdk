@@ -141,17 +141,14 @@ jobs:
         run: |
           SLACK_WEBHOOK_URL="${{ secrets.SLACK_WEBHOOK }}"
             
-          # Extract PR number from GITHUB_REF
-          PR_NUMBER="${GITHUB_REF##*/}"
-            
-          # Construct the PR URL using GitHub's variables
+          PR_NUMBER="${{ github.event.pull_request.number }}"
           PR_URL="https://github.com/${GITHUB_REPOSITORY}/pull/${PR_NUMBER}"
             
           # Commit message with the PR URL
           COMMIT_MESSAGE="New SDK generated and committed by GitHub Actions. View the PR here: ${PR_URL}"
             
           # Prepare Slack message payload with the escaped commit message
-          PAYLOAD=$(echo "{\"attachments\":[{\"color\":\"#00008B\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*[GitHub Action] New SDK generated and committed!*\\nDetail: ${ESCAPED_COMMIT_MESSAGE}\"}}]}]}")
+          PAYLOAD=$(echo "{\"attachments\":[{\"color\":\"#00008B\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*[GitHub Action] New SDK generated and committed!*\\nDetail: ${COMMIT_MESSAGE}\"}}]}]}")
             
           # Send the Slack message with a timeout
           RESPONSE=$(curl -X POST "${SLACK_WEBHOOK_URL}" -H "Content-Type: application/json" -H "Accept: application/json" --data "${PAYLOAD}" --max-time 15)
