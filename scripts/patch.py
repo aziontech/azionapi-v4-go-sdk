@@ -39,6 +39,10 @@ def process_schema(schema, parent_key="root"):
         if schema.get("type") in ["string", "integer"] and "additionalProperties" in schema:
             del schema["additionalProperties"]
 
+        # Remove default field if present
+        if "default" in schema:
+            del schema["default"]
+
         # Recursively process nested dictionaries and lists
         for key, value in schema.items():
             process_schema(value, parent_key=key)
