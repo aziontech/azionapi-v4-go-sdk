@@ -40,8 +40,6 @@ type _ResponseListWAF ResponseListWAF
 func NewResponseListWAF(id int64, name string, lastEditor string, lastModified time.Time, productVersion NullableString) *ResponseListWAF {
 	this := ResponseListWAF{}
 	this.Id = id
-	var active bool = true
-	this.Active = &active
 	this.Name = name
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
@@ -54,8 +52,6 @@ func NewResponseListWAF(id int64, name string, lastEditor string, lastModified t
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListWAFWithDefaults() *ResponseListWAF {
 	this := ResponseListWAF{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

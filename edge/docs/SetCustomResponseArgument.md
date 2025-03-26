@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **StatusCode** | **int64** |  | 
-**ContentType** | Pointer to **string** |  | [optional] [default to ""]
-**ContentBody** | Pointer to **string** |  | [optional] [default to ""]
+**ContentType** | Pointer to **string** |  | [optional] 
+**ContentBody** | Pointer to **string** |  | [optional] 
 
 ## Methods
 

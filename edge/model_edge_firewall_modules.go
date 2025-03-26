@@ -31,14 +31,6 @@ type EdgeFirewallModules struct {
 // will change when the set of required properties is changed
 func NewEdgeFirewallModules() *EdgeFirewallModules {
 	this := EdgeFirewallModules{}
-	var ddosProtectionEnabled bool = true
-	this.DdosProtectionEnabled = &ddosProtectionEnabled
-	var edgeFunctionsEnabled bool = true
-	this.EdgeFunctionsEnabled = &edgeFunctionsEnabled
-	var networkProtectionEnabled bool = true
-	this.NetworkProtectionEnabled = &networkProtectionEnabled
-	var wafEnabled bool = true
-	this.WafEnabled = &wafEnabled
 	return &this
 }
 
@@ -47,14 +39,6 @@ func NewEdgeFirewallModules() *EdgeFirewallModules {
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeFirewallModulesWithDefaults() *EdgeFirewallModules {
 	this := EdgeFirewallModules{}
-	var ddosProtectionEnabled bool = true
-	this.DdosProtectionEnabled = &ddosProtectionEnabled
-	var edgeFunctionsEnabled bool = true
-	this.EdgeFunctionsEnabled = &edgeFunctionsEnabled
-	var networkProtectionEnabled bool = true
-	this.NetworkProtectionEnabled = &networkProtectionEnabled
-	var wafEnabled bool = true
-	this.WafEnabled = &wafEnabled
 	return &this
 }
 

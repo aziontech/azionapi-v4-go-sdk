@@ -34,8 +34,6 @@ type _WAFRequest WAFRequest
 // will change when the set of required properties is changed
 func NewWAFRequest(name string) *WAFRequest {
 	this := WAFRequest{}
-	var active bool = true
-	this.Active = &active
 	this.Name = name
 	return &this
 }
@@ -45,8 +43,6 @@ func NewWAFRequest(name string) *WAFRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewWAFRequestWithDefaults() *WAFRequest {
 	this := WAFRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

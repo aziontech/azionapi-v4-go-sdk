@@ -47,16 +47,8 @@ func NewResponseListWorkload(id int64, name string, lastEditor string, lastModif
 	this := ResponseListWorkload{}
 	this.Id = id
 	this.Name = name
-	var active bool = true
-	this.Active = &active
-	var networkMap string = "1"
-	this.NetworkMap = &networkMap
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
-	var tls TLS = {"certificate":null,"ciphers":null,"minimum_version":"tls_1_2"}
-	this.Tls = &tls
-	var protocols Protocols = {"http":{"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}}
-	this.Protocols = &protocols
 	this.ProductVersion = productVersion
 	return &this
 }
@@ -66,14 +58,6 @@ func NewResponseListWorkload(id int64, name string, lastEditor string, lastModif
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListWorkloadWithDefaults() *ResponseListWorkload {
 	this := ResponseListWorkload{}
-	var active bool = true
-	this.Active = &active
-	var networkMap string = "1"
-	this.NetworkMap = &networkMap
-	var tls TLS = {"certificate":null,"ciphers":null,"minimum_version":"tls_1_2"}
-	this.Tls = &tls
-	var protocols Protocols = {"http":{"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}}
-	this.Protocols = &protocols
 	return &this
 }
 

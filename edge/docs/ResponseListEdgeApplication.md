@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **LastModified** | **time.Time** |  | [readonly] 
 **ProductVersion** | **NullableString** |  | [readonly] 
 **Modules** | Pointer to [**EdgeApplicationModules**](EdgeApplicationModules.md) |  | [optional] 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
-**Debug** | Pointer to **bool** |  | [optional] [default to false]
+**Active** | Pointer to **bool** |  | [optional] 
+**Debug** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

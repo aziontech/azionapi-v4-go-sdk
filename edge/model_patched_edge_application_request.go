@@ -31,10 +31,6 @@ type PatchedEdgeApplicationRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedEdgeApplicationRequest() *PatchedEdgeApplicationRequest {
 	this := PatchedEdgeApplicationRequest{}
-	var active bool = true
-	this.Active = &active
-	var debug bool = false
-	this.Debug = &debug
 	return &this
 }
 
@@ -43,10 +39,6 @@ func NewPatchedEdgeApplicationRequest() *PatchedEdgeApplicationRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedEdgeApplicationRequestWithDefaults() *PatchedEdgeApplicationRequest {
 	this := PatchedEdgeApplicationRequest{}
-	var active bool = true
-	this.Active = &active
-	var debug bool = false
-	this.Debug = &debug
 	return &this
 }
 

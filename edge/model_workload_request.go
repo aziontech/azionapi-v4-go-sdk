@@ -44,14 +44,6 @@ func NewWorkloadRequest(name string, edgeApplication int64) *WorkloadRequest {
 	this := WorkloadRequest{}
 	this.Name = name
 	this.EdgeApplication = edgeApplication
-	var active bool = true
-	this.Active = &active
-	var networkMap string = "1"
-	this.NetworkMap = &networkMap
-	var tls TLSRequest = {"certificate":null,"ciphers":null,"minimum_version":"tls_1_2"}
-	this.Tls = &tls
-	var protocols ProtocolsRequest = {"http":{"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}}
-	this.Protocols = &protocols
 	return &this
 }
 
@@ -60,14 +52,6 @@ func NewWorkloadRequest(name string, edgeApplication int64) *WorkloadRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewWorkloadRequestWithDefaults() *WorkloadRequest {
 	this := WorkloadRequest{}
-	var active bool = true
-	this.Active = &active
-	var networkMap string = "1"
-	this.NetworkMap = &networkMap
-	var tls TLSRequest = {"certificate":null,"ciphers":null,"minimum_version":"tls_1_2"}
-	this.Tls = &tls
-	var protocols ProtocolsRequest = {"http":{"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}}
-	this.Protocols = &protocols
 	return &this
 }
 

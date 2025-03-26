@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Language** | Pointer to **string** | * &#x60;javascript&#x60; - JavaScript * &#x60;lua&#x60; - Lua | [optional] [default to "javascript"]
+**Language** | Pointer to **string** | * &#x60;javascript&#x60; - JavaScript * &#x60;lua&#x60; - Lua | [optional] 
 **Code** | **string** |  | 
 **JsonArgs** | Pointer to **interface{}** |  | [optional] 
-**InitiatorType** | Pointer to **string** | * &#x60;edge_application&#x60; - Edge Application * &#x60;edge_firewall&#x60; - Edge Firewall | [optional] [default to "edge_application"]
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**InitiatorType** | Pointer to **string** | * &#x60;edge_application&#x60; - Edge Application * &#x60;edge_firewall&#x60; - Edge Firewall | [optional] 
+**Active** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

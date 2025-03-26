@@ -35,10 +35,6 @@ type _SetCustomResponseArgumentRequest SetCustomResponseArgumentRequest
 func NewSetCustomResponseArgumentRequest(statusCode int64) *SetCustomResponseArgumentRequest {
 	this := SetCustomResponseArgumentRequest{}
 	this.StatusCode = statusCode
-	var contentType string = ""
-	this.ContentType = &contentType
-	var contentBody string = ""
-	this.ContentBody = &contentBody
 	return &this
 }
 
@@ -47,10 +43,6 @@ func NewSetCustomResponseArgumentRequest(statusCode int64) *SetCustomResponseArg
 // but it doesn't guarantee that properties required by API are set
 func NewSetCustomResponseArgumentRequestWithDefaults() *SetCustomResponseArgumentRequest {
 	this := SetCustomResponseArgumentRequest{}
-	var contentType string = ""
-	this.ContentType = &contentType
-	var contentBody string = ""
-	this.ContentBody = &contentBody
 	return &this
 }
 

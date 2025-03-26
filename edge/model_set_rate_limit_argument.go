@@ -37,8 +37,6 @@ type _SetRateLimitArgument SetRateLimitArgument
 // will change when the set of required properties is changed
 func NewSetRateLimitArgument(limitBy string, averageRateLimit int64) *SetRateLimitArgument {
 	this := SetRateLimitArgument{}
-	var type_ string = "second"
-	this.Type = &type_
 	this.LimitBy = limitBy
 	this.AverageRateLimit = averageRateLimit
 	return &this
@@ -49,8 +47,6 @@ func NewSetRateLimitArgument(limitBy string, averageRateLimit int64) *SetRateLim
 // but it doesn't guarantee that properties required by API are set
 func NewSetRateLimitArgumentWithDefaults() *SetRateLimitArgument {
 	this := SetRateLimitArgument{}
-	var type_ string = "second"
-	this.Type = &type_
 	return &this
 }
 

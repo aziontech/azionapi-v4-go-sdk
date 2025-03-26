@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EdgeCacheEnabled** | Pointer to **bool** |  | [optional] [default to true]
-**EdgeFunctionsEnabled** | Pointer to **bool** |  | [optional] [default to false]
-**ApplicationAcceleratorEnabled** | Pointer to **bool** |  | [optional] [default to false]
-**ImageProcessorEnabled** | Pointer to **bool** |  | [optional] [default to false]
-**TieredCacheEnabled** | Pointer to **bool** |  | [optional] [default to false]
+**EdgeCacheEnabled** | Pointer to **bool** |  | [optional] 
+**EdgeFunctionsEnabled** | Pointer to **bool** |  | [optional] 
+**ApplicationAcceleratorEnabled** | Pointer to **bool** |  | [optional] 
+**ImageProcessorEnabled** | Pointer to **bool** |  | [optional] 
+**TieredCacheEnabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

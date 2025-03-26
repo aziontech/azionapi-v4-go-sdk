@@ -32,16 +32,6 @@ type EdgeApplicationModulesRequest struct {
 // will change when the set of required properties is changed
 func NewEdgeApplicationModulesRequest() *EdgeApplicationModulesRequest {
 	this := EdgeApplicationModulesRequest{}
-	var edgeCacheEnabled bool = true
-	this.EdgeCacheEnabled = &edgeCacheEnabled
-	var edgeFunctionsEnabled bool = false
-	this.EdgeFunctionsEnabled = &edgeFunctionsEnabled
-	var applicationAcceleratorEnabled bool = false
-	this.ApplicationAcceleratorEnabled = &applicationAcceleratorEnabled
-	var imageProcessorEnabled bool = false
-	this.ImageProcessorEnabled = &imageProcessorEnabled
-	var tieredCacheEnabled bool = false
-	this.TieredCacheEnabled = &tieredCacheEnabled
 	return &this
 }
 
@@ -50,16 +40,6 @@ func NewEdgeApplicationModulesRequest() *EdgeApplicationModulesRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeApplicationModulesRequestWithDefaults() *EdgeApplicationModulesRequest {
 	this := EdgeApplicationModulesRequest{}
-	var edgeCacheEnabled bool = true
-	this.EdgeCacheEnabled = &edgeCacheEnabled
-	var edgeFunctionsEnabled bool = false
-	this.EdgeFunctionsEnabled = &edgeFunctionsEnabled
-	var applicationAcceleratorEnabled bool = false
-	this.ApplicationAcceleratorEnabled = &applicationAcceleratorEnabled
-	var imageProcessorEnabled bool = false
-	this.ImageProcessorEnabled = &imageProcessorEnabled
-	var tieredCacheEnabled bool = false
-	this.TieredCacheEnabled = &tieredCacheEnabled
 	return &this
 }
 

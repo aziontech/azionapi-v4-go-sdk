@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **Modules** | Pointer to [**EdgeFirewallModulesRequest**](EdgeFirewallModulesRequest.md) |  | [optional] 
-**DebugRules** | Pointer to **bool** |  | [optional] [default to false]
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**DebugRules** | Pointer to **bool** |  | [optional] 
+**Active** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | [readonly] 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**Active** | Pointer to **bool** |  | [optional] 
 **Name** | **string** |  | 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 

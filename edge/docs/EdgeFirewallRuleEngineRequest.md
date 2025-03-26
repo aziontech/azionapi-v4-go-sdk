@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**Active** | Pointer to **bool** |  | [optional] 
 **Behaviors** | [**[]EdgeFirewallBehaviorFieldRequest**](EdgeFirewallBehaviorFieldRequest.md) |  | 
 **Criteria** | [**[][]EdgeFirewallCriterionFieldRequest**]([]EdgeFirewallCriterionFieldRequest.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 

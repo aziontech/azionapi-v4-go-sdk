@@ -32,8 +32,6 @@ type PatchedNetworkListRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedNetworkListRequest() *PatchedNetworkListRequest {
 	this := PatchedNetworkListRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -42,8 +40,6 @@ func NewPatchedNetworkListRequest() *PatchedNetworkListRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedNetworkListRequestWithDefaults() *PatchedNetworkListRequest {
 	this := PatchedNetworkListRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

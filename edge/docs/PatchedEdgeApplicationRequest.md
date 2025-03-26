@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **Modules** | Pointer to [**EdgeApplicationModulesRequest**](EdgeApplicationModulesRequest.md) |  | [optional] 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
-**Debug** | Pointer to **bool** |  | [optional] [default to false]
+**Active** | Pointer to **bool** |  | [optional] 
+**Debug** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

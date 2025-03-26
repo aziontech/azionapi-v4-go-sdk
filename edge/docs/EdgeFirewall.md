@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **Modules** | Pointer to [**EdgeFirewallModules**](EdgeFirewallModules.md) |  | [optional] 
-**DebugRules** | Pointer to **bool** |  | [optional] [default to false]
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**DebugRules** | Pointer to **bool** |  | [optional] 
+**Active** | Pointer to **bool** |  | [optional] 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
 **ProductVersion** | **string** |  | [readonly] 

@@ -36,10 +36,6 @@ type _EdgeFirewallRequest EdgeFirewallRequest
 func NewEdgeFirewallRequest(name string) *EdgeFirewallRequest {
 	this := EdgeFirewallRequest{}
 	this.Name = name
-	var debugRules bool = false
-	this.DebugRules = &debugRules
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -48,10 +44,6 @@ func NewEdgeFirewallRequest(name string) *EdgeFirewallRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeFirewallRequestWithDefaults() *EdgeFirewallRequest {
 	this := EdgeFirewallRequest{}
-	var debugRules bool = false
-	this.DebugRules = &debugRules
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

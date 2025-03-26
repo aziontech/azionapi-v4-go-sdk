@@ -38,8 +38,6 @@ type _EdgeApplicationCriterionField EdgeApplicationCriterionField
 // will change when the set of required properties is changed
 func NewEdgeApplicationCriterionField(variable string, conditional string, operator string) *EdgeApplicationCriterionField {
 	this := EdgeApplicationCriterionField{}
-	var argument EdgeApplicationCriterionPolymorphicArgument = 
-	this.Argument = *NewNullableEdgeApplicationCriterionPolymorphicArgument(&argument)
 	this.Variable = variable
 	this.Conditional = conditional
 	this.Operator = operator
@@ -51,8 +49,6 @@ func NewEdgeApplicationCriterionField(variable string, conditional string, opera
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeApplicationCriterionFieldWithDefaults() *EdgeApplicationCriterionField {
 	this := EdgeApplicationCriterionField{}
-	var argument EdgeApplicationCriterionPolymorphicArgument = 
-	this.Argument = *NewNullableEdgeApplicationCriterionPolymorphicArgument(&argument)
 	return &this
 }
 

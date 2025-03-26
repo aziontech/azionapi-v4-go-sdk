@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **Phase** | Pointer to **string** | * &#x60;default&#x60; - default * &#x60;request&#x60; - request * &#x60;response&#x60; - response | [optional] 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**Active** | Pointer to **bool** |  | [optional] 
 **Behaviors** | Pointer to [**[]EdgeApplicationBehaviorFieldRequest**](EdgeApplicationBehaviorFieldRequest.md) |  | [optional] 
 **Criteria** | Pointer to [**[][]EdgeApplicationCriterionFieldRequest**]([]EdgeApplicationCriterionFieldRequest.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 

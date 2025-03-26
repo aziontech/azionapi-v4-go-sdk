@@ -30,8 +30,6 @@ type TLS struct {
 // will change when the set of required properties is changed
 func NewTLS() *TLS {
 	this := TLS{}
-	var minimumVersion TLSMinimumVersion = tls_1_2
-	this.MinimumVersion = *NewNullableTLSMinimumVersion(&minimumVersion)
 	return &this
 }
 
@@ -40,8 +38,6 @@ func NewTLS() *TLS {
 // but it doesn't guarantee that properties required by API are set
 func NewTLSWithDefaults() *TLS {
 	this := TLS{}
-	var minimumVersion TLSMinimumVersion = tls_1_2
-	this.MinimumVersion = *NewNullableTLSMinimumVersion(&minimumVersion)
 	return &this
 }
 

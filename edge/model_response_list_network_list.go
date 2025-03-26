@@ -44,8 +44,6 @@ func NewResponseListNetworkList(id int64, name string, type_ string, lastEditor 
 	this.Type = type_
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -54,8 +52,6 @@ func NewResponseListNetworkList(id int64, name string, type_ string, lastEditor 
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListNetworkListWithDefaults() *ResponseListNetworkList {
 	this := ResponseListNetworkList{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

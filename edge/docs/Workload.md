@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
-**AlternateDomains** | Pointer to **[]string** |  | [optional] [default to []]
-**Active** | Pointer to **bool** |  | [optional] [default to true]
-**NetworkMap** | Pointer to **string** | * &#x60;1&#x60; - Edge Global Network * &#x60;2&#x60; - Staging Network | [optional] [default to "1"]
+**AlternateDomains** | Pointer to **[]string** |  | [optional] 
+**Active** | Pointer to **bool** |  | [optional] 
+**NetworkMap** | Pointer to **string** | * &#x60;1&#x60; - Edge Global Network * &#x60;2&#x60; - Staging Network | [optional] 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
-**Tls** | Pointer to [**TLS**](TLS.md) |  | [optional] [default to {"certificate":null,"ciphers":null,"minimum_version":"tls_1_2"}]
-**Protocols** | Pointer to [**Protocols**](Protocols.md) |  | [optional] [default to {"http":{"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}}]
+**Tls** | Pointer to [**TLS**](TLS.md) |  | [optional] 
+**Protocols** | Pointer to [**Protocols**](Protocols.md) |  | [optional] 
 **Mtls** | Pointer to [**MTLS**](MTLS.md) |  | [optional] 
 **Domains** | Pointer to [**[]DomainInfo**](DomainInfo.md) |  | [optional] 
 **ProductVersion** | **string** |  | [readonly] 

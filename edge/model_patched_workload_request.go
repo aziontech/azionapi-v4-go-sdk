@@ -36,14 +36,6 @@ type PatchedWorkloadRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedWorkloadRequest() *PatchedWorkloadRequest {
 	this := PatchedWorkloadRequest{}
-	var active bool = true
-	this.Active = &active
-	var networkMap string = "1"
-	this.NetworkMap = &networkMap
-	var tls TLSRequest = {"certificate":null,"ciphers":null,"minimum_version":"tls_1_2"}
-	this.Tls = &tls
-	var protocols ProtocolsRequest = {"http":{"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}}
-	this.Protocols = &protocols
 	return &this
 }
 
@@ -52,14 +44,6 @@ func NewPatchedWorkloadRequest() *PatchedWorkloadRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedWorkloadRequestWithDefaults() *PatchedWorkloadRequest {
 	this := PatchedWorkloadRequest{}
-	var active bool = true
-	this.Active = &active
-	var networkMap string = "1"
-	this.NetworkMap = &networkMap
-	var tls TLSRequest = {"certificate":null,"ciphers":null,"minimum_version":"tls_1_2"}
-	this.Tls = &tls
-	var protocols ProtocolsRequest = {"http":{"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}}
-	this.Protocols = &protocols
 	return &this
 }
 

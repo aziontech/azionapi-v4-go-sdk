@@ -39,8 +39,6 @@ func NewNetworkListRequest(name string, type_ string, items []string) *NetworkLi
 	this.Name = name
 	this.Type = type_
 	this.Items = items
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -49,8 +47,6 @@ func NewNetworkListRequest(name string, type_ string, items []string) *NetworkLi
 // but it doesn't guarantee that properties required by API are set
 func NewNetworkListRequestWithDefaults() *NetworkListRequest {
 	this := NetworkListRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

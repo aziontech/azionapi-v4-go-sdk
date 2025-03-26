@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**Active** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **ThreatsConfiguration** | Pointer to [**WAFThreatsConfigurationRequest**](WAFThreatsConfigurationRequest.md) |  | [optional] 
 

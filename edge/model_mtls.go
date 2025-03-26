@@ -31,8 +31,6 @@ type MTLS struct {
 // will change when the set of required properties is changed
 func NewMTLS() *MTLS {
 	this := MTLS{}
-	var verification string = "enforce"
-	this.Verification = &verification
 	return &this
 }
 
@@ -41,8 +39,6 @@ func NewMTLS() *MTLS {
 // but it doesn't guarantee that properties required by API are set
 func NewMTLSWithDefaults() *MTLS {
 	this := MTLS{}
-	var verification string = "enforce"
-	this.Verification = &verification
 	return &this
 }
 

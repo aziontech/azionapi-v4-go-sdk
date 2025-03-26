@@ -45,10 +45,6 @@ func NewResponseListEdgeApplication(id int64, name string, lastEditor string, la
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	this.ProductVersion = productVersion
-	var active bool = true
-	this.Active = &active
-	var debug bool = false
-	this.Debug = &debug
 	return &this
 }
 
@@ -57,10 +53,6 @@ func NewResponseListEdgeApplication(id int64, name string, lastEditor string, la
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListEdgeApplicationWithDefaults() *ResponseListEdgeApplication {
 	this := ResponseListEdgeApplication{}
-	var active bool = true
-	this.Active = &active
-	var debug bool = false
-	this.Debug = &debug
 	return &this
 }
 

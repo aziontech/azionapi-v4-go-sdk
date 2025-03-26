@@ -30,8 +30,6 @@ type PatchedWAFRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedWAFRequest() *PatchedWAFRequest {
 	this := PatchedWAFRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -40,8 +38,6 @@ func NewPatchedWAFRequest() *PatchedWAFRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedWAFRequestWithDefaults() *PatchedWAFRequest {
 	this := PatchedWAFRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

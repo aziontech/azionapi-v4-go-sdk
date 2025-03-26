@@ -35,12 +35,6 @@ type PatchedEdgeFunctionsRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedEdgeFunctionsRequest() *PatchedEdgeFunctionsRequest {
 	this := PatchedEdgeFunctionsRequest{}
-	var language string = "javascript"
-	this.Language = &language
-	var initiatorType string = "edge_application"
-	this.InitiatorType = &initiatorType
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -49,12 +43,6 @@ func NewPatchedEdgeFunctionsRequest() *PatchedEdgeFunctionsRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedEdgeFunctionsRequestWithDefaults() *PatchedEdgeFunctionsRequest {
 	this := PatchedEdgeFunctionsRequest{}
-	var language string = "javascript"
-	this.Language = &language
-	var initiatorType string = "edge_application"
-	this.InitiatorType = &initiatorType
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

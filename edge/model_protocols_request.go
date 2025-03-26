@@ -28,8 +28,6 @@ type ProtocolsRequest struct {
 // will change when the set of required properties is changed
 func NewProtocolsRequest() *ProtocolsRequest {
 	this := ProtocolsRequest{}
-	var http HttpProtocolRequest = {"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}
-	this.Http = &http
 	return &this
 }
 
@@ -38,8 +36,6 @@ func NewProtocolsRequest() *ProtocolsRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewProtocolsRequestWithDefaults() *ProtocolsRequest {
 	this := ProtocolsRequest{}
-	var http HttpProtocolRequest = {"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}
-	this.Http = &http
 	return &this
 }
 

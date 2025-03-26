@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DdosProtectionEnabled** | Pointer to **bool** |  | [optional] [default to true]
-**EdgeFunctionsEnabled** | Pointer to **bool** |  | [optional] [default to true]
-**NetworkProtectionEnabled** | Pointer to **bool** |  | [optional] [default to true]
-**WafEnabled** | Pointer to **bool** |  | [optional] [default to true]
+**DdosProtectionEnabled** | Pointer to **bool** |  | [optional] 
+**EdgeFunctionsEnabled** | Pointer to **bool** |  | [optional] 
+**NetworkProtectionEnabled** | Pointer to **bool** |  | [optional] 
+**WafEnabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

@@ -42,10 +42,6 @@ func NewEdgeFirewall(id int64, name string, lastEditor string, lastModified time
 	this := EdgeFirewall{}
 	this.Id = id
 	this.Name = name
-	var debugRules bool = false
-	this.DebugRules = &debugRules
-	var active bool = true
-	this.Active = &active
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	this.ProductVersion = productVersion
@@ -57,10 +53,6 @@ func NewEdgeFirewall(id int64, name string, lastEditor string, lastModified time
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeFirewallWithDefaults() *EdgeFirewall {
 	this := EdgeFirewall{}
-	var debugRules bool = false
-	this.DebugRules = &debugRules
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

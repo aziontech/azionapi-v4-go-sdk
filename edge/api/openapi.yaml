@@ -7832,6 +7832,9 @@ components:
       - query_string_sort_enabled
       title: ApplicationControlsModuleRequest
       type: object
+    BlankEnum:
+      title: BlankEnum
+      type: string
     BrowserCacheModule:
       additionalProperties: false
       example:
@@ -8195,7 +8198,6 @@ components:
           pattern: .*
           type: string
         allow_access:
-          default: true
           type: boolean
       title: DomainInfo
       type: object
@@ -8212,7 +8214,6 @@ components:
           pattern: .*
           type: string
         allow_access:
-          default: true
           type: boolean
       title: DomainInfoRequest
       type: object
@@ -8220,18 +8221,18 @@ components:
       additionalProperties: false
       example:
         product_version: product_version
-        debug: false
+        debug: true
         last_editor: last_editor
         name: name
         active: true
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
         modules:
-          application_accelerator_enabled: false
-          edge_functions_enabled: false
+          application_accelerator_enabled: true
+          edge_functions_enabled: true
           edge_cache_enabled: true
-          tiered_cache_enabled: false
-          image_processor_enabled: false
+          tiered_cache_enabled: true
+          image_processor_enabled: true
       properties:
         id:
           format: int64
@@ -8262,10 +8263,8 @@ components:
         modules:
           $ref: '#/components/schemas/EdgeApplicationModules'
         active:
-          default: true
           type: boolean
         debug:
-          default: false
           type: boolean
       required:
       - id
@@ -8469,7 +8468,6 @@ components:
         argument:
           allOf:
           - $ref: '#/components/schemas/EdgeApplicationCriterionPolymorphicArgument'
-          default: ""
           nullable: true
         variable:
           description: |-
@@ -8611,7 +8609,6 @@ components:
         argument:
           allOf:
           - $ref: '#/components/schemas/EdgeApplicationCriterionPolymorphicArgumentRequest'
-          default: ""
           nullable: true
         variable:
           description: |-
@@ -8878,67 +8875,57 @@ components:
     EdgeApplicationModules:
       additionalProperties: false
       example:
-        application_accelerator_enabled: false
-        edge_functions_enabled: false
+        application_accelerator_enabled: true
+        edge_functions_enabled: true
         edge_cache_enabled: true
-        tiered_cache_enabled: false
-        image_processor_enabled: false
+        tiered_cache_enabled: true
+        image_processor_enabled: true
       properties:
         edge_cache_enabled:
-          default: true
           type: boolean
         edge_functions_enabled:
-          default: false
           type: boolean
         application_accelerator_enabled:
-          default: false
           type: boolean
         image_processor_enabled:
-          default: false
           type: boolean
         tiered_cache_enabled:
-          default: false
           type: boolean
       title: EdgeApplicationModules
       type: object
     EdgeApplicationModulesRequest:
       additionalProperties: false
       example:
-        application_accelerator_enabled: false
-        edge_functions_enabled: false
+        application_accelerator_enabled: true
+        edge_functions_enabled: true
         edge_cache_enabled: true
-        tiered_cache_enabled: false
-        image_processor_enabled: false
+        tiered_cache_enabled: true
+        image_processor_enabled: true
       properties:
         edge_cache_enabled:
-          default: true
           type: boolean
         edge_functions_enabled:
-          default: false
           type: boolean
         application_accelerator_enabled:
-          default: false
           type: boolean
         image_processor_enabled:
-          default: false
           type: boolean
         tiered_cache_enabled:
-          default: false
           type: boolean
       title: EdgeApplicationModulesRequest
       type: object
     EdgeApplicationRequest:
       additionalProperties: false
       example:
-        debug: false
+        debug: true
         name: name
         active: true
         modules:
-          application_accelerator_enabled: false
-          edge_functions_enabled: false
+          application_accelerator_enabled: true
+          edge_functions_enabled: true
           edge_cache_enabled: true
-          tiered_cache_enabled: false
-          image_processor_enabled: false
+          tiered_cache_enabled: true
+          image_processor_enabled: true
       properties:
         name:
           maxLength: 250
@@ -8948,10 +8935,8 @@ components:
         modules:
           $ref: '#/components/schemas/EdgeApplicationModulesRequest'
         active:
-          default: true
           type: boolean
         debug:
-          default: false
           type: boolean
       required:
       - name
@@ -9098,7 +9083,6 @@ components:
           title: PhaseEnum
           type: string
         active:
-          default: true
           type: boolean
         behaviors:
           items:
@@ -9300,7 +9284,6 @@ components:
           title: PhaseEnum
           type: string
         active:
-          default: true
           type: boolean
         behaviors:
           items:
@@ -9432,7 +9415,7 @@ components:
         name: name
         active: true
         id: 0
-        debug_rules: false
+        debug_rules: true
         last_modified: 2000-01-23T04:56:07.000+00:00
         modules:
           ddos_protection_enabled: true
@@ -9452,10 +9435,8 @@ components:
         modules:
           $ref: '#/components/schemas/EdgeFirewallModules'
         debug_rules:
-          default: false
           type: boolean
         active:
-          default: true
           type: boolean
         last_editor:
           maxLength: 250
@@ -9597,7 +9578,6 @@ components:
         argument:
           allOf:
           - $ref: '#/components/schemas/EdgeFirewallCriterionPolymorphicArgument'
-          default: ""
           nullable: true
         variable:
           description: |-
@@ -9679,7 +9659,6 @@ components:
         argument:
           allOf:
           - $ref: '#/components/schemas/EdgeFirewallCriterionPolymorphicArgumentRequest'
-          default: ""
           nullable: true
         variable:
           description: |-
@@ -9850,16 +9829,12 @@ components:
         edge_functions_enabled: true
       properties:
         ddos_protection_enabled:
-          default: true
           type: boolean
         edge_functions_enabled:
-          default: true
           type: boolean
         network_protection_enabled:
-          default: true
           type: boolean
         waf_enabled:
-          default: true
           type: boolean
       title: EdgeFirewallModules
       type: object
@@ -9872,16 +9847,12 @@ components:
         edge_functions_enabled: true
       properties:
         ddos_protection_enabled:
-          default: true
           type: boolean
         edge_functions_enabled:
-          default: true
           type: boolean
         network_protection_enabled:
-          default: true
           type: boolean
         waf_enabled:
-          default: true
           type: boolean
       title: EdgeFirewallModulesRequest
       type: object
@@ -9890,7 +9861,7 @@ components:
       example:
         name: name
         active: true
-        debug_rules: false
+        debug_rules: true
         modules:
           ddos_protection_enabled: true
           waf_enabled: true
@@ -9905,10 +9876,8 @@ components:
         modules:
           $ref: '#/components/schemas/EdgeFirewallModulesRequest'
         debug_rules:
-          default: false
           type: boolean
         active:
-          default: true
           type: boolean
       required:
       - name
@@ -10056,7 +10025,6 @@ components:
           readOnly: true
           type: string
         active:
-          default: true
           type: boolean
         behaviors:
           items:
@@ -10238,7 +10206,6 @@ components:
           pattern: .*
           type: string
         active:
-          default: true
           type: boolean
         behaviors:
           items:
@@ -10296,7 +10263,6 @@ components:
         language:
           allOf:
           - $ref: '#/components/schemas/LanguageEnum'
-          default: javascript
         code:
           maxLength: 20971520
           minLength: 1
@@ -10306,9 +10272,7 @@ components:
         initiator_type:
           allOf:
           - $ref: '#/components/schemas/InitiatorTypeEnum'
-          default: edge_application
         active:
-          default: true
           type: boolean
         reference_count:
           format: int64
@@ -10366,7 +10330,6 @@ components:
         language:
           allOf:
           - $ref: '#/components/schemas/LanguageEnum'
-          default: javascript
         code:
           maxLength: 20971520
           minLength: 1
@@ -10376,9 +10339,7 @@ components:
         initiator_type:
           allOf:
           - $ref: '#/components/schemas/InitiatorTypeEnum'
-          default: edge_application
         active:
-          default: true
           type: boolean
       required:
       - code
@@ -10476,25 +10437,18 @@ components:
       additionalProperties: false
       properties:
         versions:
-          default:
-          - http1
-          - http2
           items:
             maxLength: 30
             type: string
           maxItems: 3
           type: array
         http_ports:
-          default:
-          - 80
           items:
             format: int64
             type: integer
           maxItems: 4
           type: array
         https_ports:
-          default:
-          - 443
           items:
             format: int64
             type: integer
@@ -10514,9 +10468,6 @@ components:
       additionalProperties: false
       properties:
         versions:
-          default:
-          - http1
-          - http2
           items:
             maxLength: 30
             minLength: 1
@@ -10524,16 +10475,12 @@ components:
           maxItems: 3
           type: array
         http_ports:
-          default:
-          - 80
           items:
             format: int64
             type: integer
           maxItems: 4
           type: array
         https_ports:
-          default:
-          - 443
           items:
             format: int64
             type: integer
@@ -10597,7 +10544,6 @@ components:
         verification:
           allOf:
           - $ref: '#/components/schemas/VerificationEnum'
-          default: enforce
         certificate:
           format: int64
           minimum: 1
@@ -10628,7 +10574,6 @@ components:
         verification:
           allOf:
           - $ref: '#/components/schemas/VerificationEnum'
-          default: enforce
         certificate:
           format: int64
           minimum: 1
@@ -10878,7 +10823,6 @@ components:
           readOnly: true
           type: string
         active:
-          default: true
           type: boolean
       required:
       - id
@@ -10924,7 +10868,6 @@ components:
           minItems: 1
           type: array
         active:
-          default: true
           type: boolean
       required:
       - items
@@ -10938,6 +10881,10 @@ components:
         * `2` - Staging Network
       title: NetworkMapEnum
       type: string
+    NullEnum:
+      additionalProperties: false
+      title: NullEnum
+      type: object
     OperatorEnum:
       description: |-
         * `does_not_exist` - does_not_exist
@@ -11096,31 +11043,31 @@ components:
         count: 123
         results:
         - product_version: product_version
-          debug: false
+          debug: true
           last_editor: last_editor
           name: name
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            application_accelerator_enabled: false
-            edge_functions_enabled: false
+            application_accelerator_enabled: true
+            edge_functions_enabled: true
             edge_cache_enabled: true
-            tiered_cache_enabled: false
-            image_processor_enabled: false
+            tiered_cache_enabled: true
+            image_processor_enabled: true
         - product_version: product_version
-          debug: false
+          debug: true
           last_editor: last_editor
           name: name
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            application_accelerator_enabled: false
-            edge_functions_enabled: false
+            application_accelerator_enabled: true
+            edge_functions_enabled: true
             edge_cache_enabled: true
-            tiered_cache_enabled: false
-            image_processor_enabled: false
+            tiered_cache_enabled: true
+            image_processor_enabled: true
       properties:
         count:
           example: 123
@@ -11434,7 +11381,7 @@ components:
           name: name
           active: true
           id: 0
-          debug_rules: false
+          debug_rules: true
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
             ddos_protection_enabled: true
@@ -11446,7 +11393,7 @@ components:
           name: name
           active: true
           id: 0
-          debug_rules: false
+          debug_rules: true
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
             ddos_protection_enabled: true
@@ -11919,7 +11866,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          use_regex: false
+          use_regex: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
         - rule_id: ""
@@ -11934,7 +11881,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          use_regex: false
+          use_regex: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -12146,15 +12093,15 @@ components:
     PatchedEdgeApplicationRequest:
       additionalProperties: false
       example:
-        debug: false
+        debug: true
         name: name
         active: true
         modules:
-          application_accelerator_enabled: false
-          edge_functions_enabled: false
+          application_accelerator_enabled: true
+          edge_functions_enabled: true
           edge_cache_enabled: true
-          tiered_cache_enabled: false
-          image_processor_enabled: false
+          tiered_cache_enabled: true
+          image_processor_enabled: true
       properties:
         name:
           maxLength: 250
@@ -12164,10 +12111,8 @@ components:
         modules:
           $ref: '#/components/schemas/EdgeApplicationModulesRequest'
         active:
-          default: true
           type: boolean
         debug:
-          default: false
           type: boolean
       title: PatchedEdgeApplicationRequest
       type: object
@@ -12304,7 +12249,6 @@ components:
           title: PhaseEnum
           type: string
         active:
-          default: true
           type: boolean
         behaviors:
           items:
@@ -12357,7 +12301,7 @@ components:
       example:
         name: name
         active: true
-        debug_rules: false
+        debug_rules: true
         modules:
           ddos_protection_enabled: true
           waf_enabled: true
@@ -12372,10 +12316,8 @@ components:
         modules:
           $ref: '#/components/schemas/EdgeFirewallModulesRequest'
         debug_rules:
-          default: false
           type: boolean
         active:
-          default: true
           type: boolean
       title: PatchedEdgeFirewallRequest
       type: object
@@ -12504,7 +12446,6 @@ components:
           pattern: .*
           type: string
         active:
-          default: true
           type: boolean
         behaviors:
           items:
@@ -12547,7 +12488,6 @@ components:
         language:
           allOf:
           - $ref: '#/components/schemas/LanguageEnum'
-          default: javascript
         code:
           maxLength: 20971520
           minLength: 1
@@ -12557,9 +12497,7 @@ components:
         initiator_type:
           allOf:
           - $ref: '#/components/schemas/InitiatorTypeEnum'
-          default: edge_application
         active:
-          default: true
           type: boolean
       title: PatchedEdgeFunctionsRequest
       type: object
@@ -12622,7 +12560,6 @@ components:
           minItems: 1
           type: array
         active:
-          default: true
           type: boolean
       title: PatchedNetworkListRequest
       type: object
@@ -12650,7 +12587,6 @@ components:
         active: true
       properties:
         active:
-          default: true
           type: boolean
         name:
           maxLength: 250
@@ -12675,12 +12611,11 @@ components:
           zone_input: zone_input
         name: name
         active: true
-        use_regex: false
+        use_regex: true
       properties:
         rule_id:
           allOf:
           - $ref: '#/components/schemas/RuleIdEnum'
-          default: 0
           description: |-
             1 - Validation of protocol compliance: weird request, unable to parse<br>
             2 - Request too big, stored on disk and not parsed<br>
@@ -12825,10 +12760,8 @@ components:
             $ref: '#/components/schemas/MatchZoneRequest'
           type: array
         use_regex:
-          default: false
           type: boolean
         active:
-          default: true
           type: boolean
       title: PatchedWAFRuleRequest
       type: object
@@ -12849,7 +12782,6 @@ components:
         binds:
           $ref: '#/components/schemas/WorkloadDeploymentBindsRequest'
         current:
-          default: true
           type: boolean
       title: PatchedWorkloadDeploymentRequest
       type: object
@@ -12886,7 +12818,6 @@ components:
           pattern: .*
           type: string
         alternate_domains:
-          default: []
           items:
             maxLength: 50
             minLength: 1
@@ -12894,32 +12825,16 @@ components:
           maxItems: 50
           type: array
         active:
-          default: true
           type: boolean
         network_map:
           allOf:
           - $ref: '#/components/schemas/NetworkMapEnum'
-          default: "1"
         tls:
           allOf:
           - $ref: '#/components/schemas/TLSRequest'
-          default:
-            certificate: null
-            ciphers: null
-            minimum_version: tls_1_2
         protocols:
           allOf:
           - $ref: '#/components/schemas/ProtocolsRequest'
-          default:
-            http:
-              versions:
-              - http1
-              - http2
-              http_ports:
-              - 80
-              https_ports:
-              - 443
-              quic_ports: null
         mtls:
           $ref: '#/components/schemas/MTLSRequest'
         domains:
@@ -12943,15 +12858,6 @@ components:
         http:
           allOf:
           - $ref: '#/components/schemas/HttpProtocol'
-          default:
-            versions:
-            - http1
-            - http2
-            http_ports:
-            - 80
-            https_ports:
-            - 443
-            quic_ports: null
       title: Protocols
       type: object
     ProtocolsRequest:
@@ -12960,15 +12866,6 @@ components:
         http:
           allOf:
           - $ref: '#/components/schemas/HttpProtocolRequest'
-          default:
-            versions:
-            - http1
-            - http2
-            http_ports:
-            - 80
-            https_ports:
-            - 443
-            quic_ports: null
       title: ProtocolsRequest
       type: object
     PurgeInput:
@@ -12989,7 +12886,6 @@ components:
         layer:
           allOf:
           - $ref: '#/components/schemas/LayerEnum'
-          default: edge_cache
       required:
       - items
       title: PurgeInput
@@ -13012,7 +12908,6 @@ components:
         layer:
           allOf:
           - $ref: '#/components/schemas/LayerEnum'
-          default: edge_cache
       required:
       - items
       title: PurgeInputRequest
@@ -14867,18 +14762,18 @@ components:
       example:
         data:
           product_version: product_version
-          debug: false
+          debug: true
           last_editor: last_editor
           name: name
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            application_accelerator_enabled: false
-            edge_functions_enabled: false
+            application_accelerator_enabled: true
+            edge_functions_enabled: true
             edge_cache_enabled: true
-            tiered_cache_enabled: false
-            image_processor_enabled: false
+            tiered_cache_enabled: true
+            image_processor_enabled: true
         state: state
       properties:
         state:
@@ -15090,7 +14985,7 @@ components:
           name: name
           active: true
           id: 0
-          debug_rules: false
+          debug_rules: true
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
             ddos_protection_enabled: true
@@ -15406,18 +15301,18 @@ components:
       additionalProperties: false
       example:
         product_version: product_version
-        debug: false
+        debug: true
         last_editor: last_editor
         name: name
         active: true
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
         modules:
-          application_accelerator_enabled: false
-          edge_functions_enabled: false
+          application_accelerator_enabled: true
+          edge_functions_enabled: true
           edge_cache_enabled: true
-          tiered_cache_enabled: false
-          image_processor_enabled: false
+          tiered_cache_enabled: true
+          image_processor_enabled: true
       properties:
         id:
           format: int64
@@ -15448,10 +15343,8 @@ components:
         modules:
           $ref: '#/components/schemas/EdgeApplicationModules'
         active:
-          default: true
           type: boolean
         debug:
-          default: false
           type: boolean
       required:
       - id
@@ -15675,7 +15568,6 @@ components:
           title: PhaseEnum
           type: string
         active:
-          default: true
           type: boolean
         behaviors:
           items:
@@ -15734,7 +15626,7 @@ components:
         name: name
         active: true
         id: 0
-        debug_rules: false
+        debug_rules: true
         last_modified: 2000-01-23T04:56:07.000+00:00
         modules:
           ddos_protection_enabled: true
@@ -15754,10 +15646,8 @@ components:
         modules:
           $ref: '#/components/schemas/EdgeFirewallModules'
         debug_rules:
-          default: false
           type: boolean
         active:
-          default: true
           type: boolean
         last_editor:
           maxLength: 250
@@ -15970,7 +15860,6 @@ components:
           readOnly: true
           type: string
         active:
-          default: true
           type: boolean
         behaviors:
           items:
@@ -16037,14 +15926,11 @@ components:
         language:
           allOf:
           - $ref: '#/components/schemas/LanguageEnum'
-          default: javascript
         json_args: {}
         initiator_type:
           allOf:
           - $ref: '#/components/schemas/InitiatorTypeEnum'
-          default: edge_application
         active:
-          default: true
           type: boolean
         reference_count:
           format: int64
@@ -16162,7 +16048,6 @@ components:
           readOnly: true
           type: string
         active:
-          default: true
           type: boolean
       required:
       - id
@@ -16204,7 +16089,6 @@ components:
           readOnly: true
           type: integer
         active:
-          default: true
           type: boolean
         name:
           maxLength: 250
@@ -16253,7 +16137,7 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        use_regex: false
+        use_regex: true
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -16264,7 +16148,6 @@ components:
         rule_id:
           allOf:
           - $ref: '#/components/schemas/RuleIdEnum'
-          default: 0
           description: |-
             1 - Validation of protocol compliance: weird request, unable to parse<br>
             2 - Request too big, stored on disk and not parsed<br>
@@ -16409,10 +16292,8 @@ components:
             $ref: '#/components/schemas/MatchZone'
           type: array
         use_regex:
-          default: false
           type: boolean
         active:
-          default: true
           type: boolean
         last_editor:
           readOnly: true
@@ -16470,19 +16351,16 @@ components:
           pattern: .*
           type: string
         alternate_domains:
-          default: []
           items:
             maxLength: 50
             type: string
           maxItems: 50
           type: array
         active:
-          default: true
           type: boolean
         network_map:
           allOf:
           - $ref: '#/components/schemas/NetworkMapEnum'
-          default: "1"
         last_editor:
           maxLength: 250
           minLength: 1
@@ -16496,23 +16374,9 @@ components:
         tls:
           allOf:
           - $ref: '#/components/schemas/TLS'
-          default:
-            certificate: null
-            ciphers: null
-            minimum_version: tls_1_2
         protocols:
           allOf:
           - $ref: '#/components/schemas/Protocols'
-          default:
-            http:
-              versions:
-              - http1
-              - http2
-              http_ports:
-              - 80
-              https_ports:
-              - 443
-              quic_ports: null
         mtls:
           $ref: '#/components/schemas/MTLS'
         domains:
@@ -16557,7 +16421,6 @@ components:
         binds:
           $ref: '#/components/schemas/WorkloadDeploymentBinds'
         current:
-          default: true
           type: boolean
       required:
       - binds
@@ -16667,18 +16530,18 @@ components:
       example:
         data:
           product_version: product_version
-          debug: false
+          debug: true
           last_editor: last_editor
           name: name
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            application_accelerator_enabled: false
-            edge_functions_enabled: false
+            application_accelerator_enabled: true
+            edge_functions_enabled: true
             edge_cache_enabled: true
-            tiered_cache_enabled: false
-            image_processor_enabled: false
+            tiered_cache_enabled: true
+            image_processor_enabled: true
       properties:
         data:
           $ref: '#/components/schemas/EdgeApplication'
@@ -16858,7 +16721,7 @@ components:
           name: name
           active: true
           id: 0
-          debug_rules: false
+          debug_rules: true
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
             ddos_protection_enabled: true
@@ -17141,7 +17004,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          use_regex: false
+          use_regex: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -17264,7 +17127,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          use_regex: false
+          use_regex: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
         state: state
@@ -17430,13 +17293,11 @@ components:
           minimum: 200
           type: integer
         content_type:
-          default: ""
           maxLength: 255
           minLength: 0
           pattern: .*
           type: string
         content_body:
-          default: ""
           maxLength: 500
           minLength: 0
           pattern: .*
@@ -17454,13 +17315,11 @@ components:
           minimum: 200
           type: integer
         content_type:
-          default: ""
           maxLength: 255
           minLength: 0
           pattern: .*
           type: string
         content_body:
-          default: ""
           maxLength: 500
           minLength: 0
           pattern: .*
@@ -17475,7 +17334,6 @@ components:
         type:
           allOf:
           - $ref: '#/components/schemas/SetRateLimitArgumentTypeEnum'
-          default: second
         limit_by:
           description: |-
             * `client_ip` - client_ip
@@ -17503,7 +17361,6 @@ components:
         type:
           allOf:
           - $ref: '#/components/schemas/SetRateLimitArgumentTypeEnum'
-          default: second
         limit_by:
           description: |-
             * `client_ip` - client_ip
@@ -17584,7 +17441,6 @@ components:
         slice_tiered_caching_enabled:
           type: boolean
         slice_configuration_range:
-          default: 1024
           format: int64
           maximum: 1024
           minimum: 0
@@ -17610,7 +17466,6 @@ components:
         slice_tiered_caching_enabled:
           type: boolean
         slice_configuration_range:
-          default: 1024
           format: int64
           maximum: 1024
           minimum: 0
@@ -17718,7 +17573,6 @@ components:
           readOnly: true
           type: integer
         active:
-          default: true
           type: boolean
         name:
           maxLength: 250
@@ -17776,7 +17630,6 @@ components:
         active: true
       properties:
         active:
-          default: true
           type: boolean
         name:
           maxLength: 250
@@ -17804,7 +17657,7 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        use_regex: false
+        use_regex: true
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -17815,7 +17668,6 @@ components:
         rule_id:
           allOf:
           - $ref: '#/components/schemas/RuleIdEnum'
-          default: 0
           description: |-
             1 - Validation of protocol compliance: weird request, unable to parse<br>
             2 - Request too big, stored on disk and not parsed<br>
@@ -17960,10 +17812,8 @@ components:
             $ref: '#/components/schemas/MatchZone'
           type: array
         use_regex:
-          default: false
           type: boolean
         active:
-          default: true
           type: boolean
         last_editor:
           readOnly: true
@@ -17994,12 +17844,11 @@ components:
           zone_input: zone_input
         name: name
         active: true
-        use_regex: false
+        use_regex: true
       properties:
         rule_id:
           allOf:
           - $ref: '#/components/schemas/RuleIdEnum'
-          default: 0
           description: |-
             1 - Validation of protocol compliance: weird request, unable to parse<br>
             2 - Request too big, stored on disk and not parsed<br>
@@ -18144,10 +17993,8 @@ components:
             $ref: '#/components/schemas/MatchZoneRequest'
           type: array
         use_regex:
-          default: false
           type: boolean
         active:
-          default: true
           type: boolean
       required:
       - match_zones
@@ -18175,61 +18022,45 @@ components:
         unwanted_access: true
       properties:
         cross_site_scripting:
-          default: true
           type: boolean
         cross_site_scripting_sensitivity:
           allOf:
           - $ref: '#/components/schemas/CrossSiteScriptingSensitivityEnum'
-          default: medium
         directory_traversal:
-          default: true
           type: boolean
         directory_traversal_sensitivity:
           allOf:
           - $ref: '#/components/schemas/DirectoryTraversalSensitivityEnum'
-          default: medium
         evading_tricks:
-          default: true
           type: boolean
         evading_tricks_sensitivity:
           allOf:
           - $ref: '#/components/schemas/EvadingTricksSensitivityEnum'
-          default: medium
         file_upload:
-          default: true
           type: boolean
         file_upload_sensitivity:
           allOf:
           - $ref: '#/components/schemas/FileUploadSensitivityEnum'
-          default: medium
         identified_attack:
-          default: true
           type: boolean
         identified_attack_sensitivity:
           allOf:
           - $ref: '#/components/schemas/IdentifiedAttackSensitivityEnum'
-          default: medium
         remote_file_inclusion:
-          default: true
           type: boolean
         remote_file_inclusion_sensitivity:
           allOf:
           - $ref: '#/components/schemas/RemoteFileInclusionSensitivityEnum'
-          default: medium
         sql_injection:
-          default: true
           type: boolean
         sql_injection_sensitivity:
           allOf:
           - $ref: '#/components/schemas/SqlInjectionSensitivityEnum'
-          default: medium
         unwanted_access:
-          default: true
           type: boolean
         unwanted_access_sensitivity:
           allOf:
           - $ref: '#/components/schemas/UnwantedAccessSensitivityEnum'
-          default: medium
       title: WAFThreatsConfiguration
       type: object
     WAFThreatsConfigurationRequest:
@@ -18253,61 +18084,45 @@ components:
         unwanted_access: true
       properties:
         cross_site_scripting:
-          default: true
           type: boolean
         cross_site_scripting_sensitivity:
           allOf:
           - $ref: '#/components/schemas/CrossSiteScriptingSensitivityEnum'
-          default: medium
         directory_traversal:
-          default: true
           type: boolean
         directory_traversal_sensitivity:
           allOf:
           - $ref: '#/components/schemas/DirectoryTraversalSensitivityEnum'
-          default: medium
         evading_tricks:
-          default: true
           type: boolean
         evading_tricks_sensitivity:
           allOf:
           - $ref: '#/components/schemas/EvadingTricksSensitivityEnum'
-          default: medium
         file_upload:
-          default: true
           type: boolean
         file_upload_sensitivity:
           allOf:
           - $ref: '#/components/schemas/FileUploadSensitivityEnum'
-          default: medium
         identified_attack:
-          default: true
           type: boolean
         identified_attack_sensitivity:
           allOf:
           - $ref: '#/components/schemas/IdentifiedAttackSensitivityEnum'
-          default: medium
         remote_file_inclusion:
-          default: true
           type: boolean
         remote_file_inclusion_sensitivity:
           allOf:
           - $ref: '#/components/schemas/RemoteFileInclusionSensitivityEnum'
-          default: medium
         sql_injection:
-          default: true
           type: boolean
         sql_injection_sensitivity:
           allOf:
           - $ref: '#/components/schemas/SqlInjectionSensitivityEnum'
-          default: medium
         unwanted_access:
-          default: true
           type: boolean
         unwanted_access_sensitivity:
           allOf:
           - $ref: '#/components/schemas/UnwantedAccessSensitivityEnum'
-          default: medium
       title: WAFThreatsConfigurationRequest
       type: object
     Workload:
@@ -18351,19 +18166,16 @@ components:
           pattern: .*
           type: string
         alternate_domains:
-          default: []
           items:
             maxLength: 50
             type: string
           maxItems: 50
           type: array
         active:
-          default: true
           type: boolean
         network_map:
           allOf:
           - $ref: '#/components/schemas/NetworkMapEnum'
-          default: "1"
         last_editor:
           maxLength: 250
           minLength: 1
@@ -18377,23 +18189,9 @@ components:
         tls:
           allOf:
           - $ref: '#/components/schemas/TLS'
-          default:
-            certificate: null
-            ciphers: null
-            minimum_version: tls_1_2
         protocols:
           allOf:
           - $ref: '#/components/schemas/Protocols'
-          default:
-            http:
-              versions:
-              - http1
-              - http2
-              http_ports:
-              - 80
-              https_ports:
-              - 443
-              quic_ports: null
         mtls:
           $ref: '#/components/schemas/MTLS'
         domains:
@@ -18438,7 +18236,6 @@ components:
         binds:
           $ref: '#/components/schemas/WorkloadDeploymentBinds'
         current:
-          default: true
           type: boolean
       required:
       - binds
@@ -18501,7 +18298,6 @@ components:
         binds:
           $ref: '#/components/schemas/WorkloadDeploymentBindsRequest'
         current:
-          default: true
           type: boolean
       required:
       - binds
@@ -18543,7 +18339,6 @@ components:
           pattern: .*
           type: string
         alternate_domains:
-          default: []
           items:
             maxLength: 50
             minLength: 1
@@ -18557,12 +18352,10 @@ components:
           type: integer
           writeOnly: true
         active:
-          default: true
           type: boolean
         network_map:
           allOf:
           - $ref: '#/components/schemas/NetworkMapEnum'
-          default: "1"
         edge_firewall:
           format: int64
           nullable: true
@@ -18571,23 +18364,9 @@ components:
         tls:
           allOf:
           - $ref: '#/components/schemas/TLSRequest'
-          default:
-            certificate: null
-            ciphers: null
-            minimum_version: tls_1_2
         protocols:
           allOf:
           - $ref: '#/components/schemas/ProtocolsRequest'
-          default:
-            http:
-              versions:
-              - http1
-              - http2
-              http_ports:
-              - 80
-              https_ports:
-              - 443
-              quic_ports: null
         mtls:
           $ref: '#/components/schemas/MTLSRequest'
         domains:
@@ -18618,6 +18397,8 @@ components:
       nullable: true
       oneOf:
       - $ref: '#/components/schemas/MatchesOnEnum'
+      - $ref: '#/components/schemas/BlankEnum'
+      - $ref: '#/components/schemas/NullEnum'
     ResponseBadRequestEdgeApplicationRuleEngine_behaviors:
       oneOf:
       - items:
@@ -18642,11 +18423,13 @@ components:
       nullable: true
       oneOf:
       - $ref: '#/components/schemas/CiphersEnum'
+      - $ref: '#/components/schemas/NullEnum'
     TLS_minimum_version:
-      default: tls_1_2
       nullable: true
       oneOf:
       - $ref: '#/components/schemas/MinimumVersionEnum'
+      - $ref: '#/components/schemas/BlankEnum'
+      - $ref: '#/components/schemas/NullEnum'
   securitySchemes:
     BearerAuth:
       scheme: bearer

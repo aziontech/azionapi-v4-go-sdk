@@ -34,12 +34,6 @@ type PatchedWAFRuleRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedWAFRuleRequest() *PatchedWAFRuleRequest {
 	this := PatchedWAFRuleRequest{}
-	var ruleId int64 = 0
-	this.RuleId = &ruleId
-	var useRegex bool = false
-	this.UseRegex = &useRegex
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -48,12 +42,6 @@ func NewPatchedWAFRuleRequest() *PatchedWAFRuleRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedWAFRuleRequestWithDefaults() *PatchedWAFRuleRequest {
 	this := PatchedWAFRuleRequest{}
-	var ruleId int64 = 0
-	this.RuleId = &ruleId
-	var useRegex bool = false
-	this.UseRegex = &useRegex
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

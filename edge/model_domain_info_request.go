@@ -29,8 +29,6 @@ type DomainInfoRequest struct {
 // will change when the set of required properties is changed
 func NewDomainInfoRequest() *DomainInfoRequest {
 	this := DomainInfoRequest{}
-	var allowAccess bool = true
-	this.AllowAccess = &allowAccess
 	return &this
 }
 
@@ -39,8 +37,6 @@ func NewDomainInfoRequest() *DomainInfoRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewDomainInfoRequestWithDefaults() *DomainInfoRequest {
 	this := DomainInfoRequest{}
-	var allowAccess bool = true
-	this.AllowAccess = &allowAccess
 	return &this
 }
 

@@ -38,14 +38,8 @@ type _WAFRuleRequest WAFRuleRequest
 // will change when the set of required properties is changed
 func NewWAFRuleRequest(name string, matchZones []MatchZoneRequest) *WAFRuleRequest {
 	this := WAFRuleRequest{}
-	var ruleId int64 = 0
-	this.RuleId = &ruleId
 	this.Name = name
 	this.MatchZones = matchZones
-	var useRegex bool = false
-	this.UseRegex = &useRegex
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -54,12 +48,6 @@ func NewWAFRuleRequest(name string, matchZones []MatchZoneRequest) *WAFRuleReque
 // but it doesn't guarantee that properties required by API are set
 func NewWAFRuleRequestWithDefaults() *WAFRuleRequest {
 	this := WAFRuleRequest{}
-	var ruleId int64 = 0
-	this.RuleId = &ruleId
-	var useRegex bool = false
-	this.UseRegex = &useRegex
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

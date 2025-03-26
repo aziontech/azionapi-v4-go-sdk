@@ -38,8 +38,6 @@ type _EdgeFirewallCriterionFieldRequest EdgeFirewallCriterionFieldRequest
 // will change when the set of required properties is changed
 func NewEdgeFirewallCriterionFieldRequest(variable string, conditional string, operator string) *EdgeFirewallCriterionFieldRequest {
 	this := EdgeFirewallCriterionFieldRequest{}
-	var argument EdgeFirewallCriterionPolymorphicArgumentRequest = 
-	this.Argument = *NewNullableEdgeFirewallCriterionPolymorphicArgumentRequest(&argument)
 	this.Variable = variable
 	this.Conditional = conditional
 	this.Operator = operator
@@ -51,8 +49,6 @@ func NewEdgeFirewallCriterionFieldRequest(variable string, conditional string, o
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeFirewallCriterionFieldRequestWithDefaults() *EdgeFirewallCriterionFieldRequest {
 	this := EdgeFirewallCriterionFieldRequest{}
-	var argument EdgeFirewallCriterionPolymorphicArgumentRequest = 
-	this.Argument = *NewNullableEdgeFirewallCriterionPolymorphicArgumentRequest(&argument)
 	return &this
 }
 

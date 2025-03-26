@@ -36,10 +36,6 @@ type _EdgeApplicationRequest EdgeApplicationRequest
 func NewEdgeApplicationRequest(name string) *EdgeApplicationRequest {
 	this := EdgeApplicationRequest{}
 	this.Name = name
-	var active bool = true
-	this.Active = &active
-	var debug bool = false
-	this.Debug = &debug
 	return &this
 }
 
@@ -48,10 +44,6 @@ func NewEdgeApplicationRequest(name string) *EdgeApplicationRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeApplicationRequestWithDefaults() *EdgeApplicationRequest {
 	this := EdgeApplicationRequest{}
-	var active bool = true
-	this.Active = &active
-	var debug bool = false
-	this.Debug = &debug
 	return &this
 }
 

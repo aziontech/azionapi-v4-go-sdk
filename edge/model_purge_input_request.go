@@ -35,8 +35,6 @@ type _PurgeInputRequest PurgeInputRequest
 func NewPurgeInputRequest(items []string) *PurgeInputRequest {
 	this := PurgeInputRequest{}
 	this.Items = items
-	var layer string = "edge_cache"
-	this.Layer = &layer
 	return &this
 }
 
@@ -45,8 +43,6 @@ func NewPurgeInputRequest(items []string) *PurgeInputRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPurgeInputRequestWithDefaults() *PurgeInputRequest {
 	this := PurgeInputRequest{}
-	var layer string = "edge_cache"
-	this.Layer = &layer
 	return &this
 }
 

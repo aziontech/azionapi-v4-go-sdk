@@ -38,8 +38,6 @@ func NewSliceControlsModuleRequest(sliceConfigurationEnabled bool, sliceEdgeCach
 	this.SliceConfigurationEnabled = sliceConfigurationEnabled
 	this.SliceEdgeCachingEnabled = sliceEdgeCachingEnabled
 	this.SliceTieredCachingEnabled = sliceTieredCachingEnabled
-	var sliceConfigurationRange int64 = 1024
-	this.SliceConfigurationRange = &sliceConfigurationRange
 	return &this
 }
 
@@ -48,8 +46,6 @@ func NewSliceControlsModuleRequest(sliceConfigurationEnabled bool, sliceEdgeCach
 // but it doesn't guarantee that properties required by API are set
 func NewSliceControlsModuleRequestWithDefaults() *SliceControlsModuleRequest {
 	this := SliceControlsModuleRequest{}
-	var sliceConfigurationRange int64 = 1024
-	this.SliceConfigurationRange = &sliceConfigurationRange
 	return &this
 }
 

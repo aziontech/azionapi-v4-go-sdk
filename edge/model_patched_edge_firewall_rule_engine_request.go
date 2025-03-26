@@ -32,8 +32,6 @@ type PatchedEdgeFirewallRuleEngineRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedEdgeFirewallRuleEngineRequest() *PatchedEdgeFirewallRuleEngineRequest {
 	this := PatchedEdgeFirewallRuleEngineRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -42,8 +40,6 @@ func NewPatchedEdgeFirewallRuleEngineRequest() *PatchedEdgeFirewallRuleEngineReq
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedEdgeFirewallRuleEngineRequestWithDefaults() *PatchedEdgeFirewallRuleEngineRequest {
 	this := PatchedEdgeFirewallRuleEngineRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

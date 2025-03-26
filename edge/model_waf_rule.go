@@ -43,14 +43,8 @@ type _WAFRule WAFRule
 func NewWAFRule(id int64, name string, matchZones []MatchZone, lastEditor string, lastModified time.Time) *WAFRule {
 	this := WAFRule{}
 	this.Id = id
-	var ruleId int64 = 0
-	this.RuleId = &ruleId
 	this.Name = name
 	this.MatchZones = matchZones
-	var useRegex bool = false
-	this.UseRegex = &useRegex
-	var active bool = true
-	this.Active = &active
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	return &this
@@ -61,12 +55,6 @@ func NewWAFRule(id int64, name string, matchZones []MatchZone, lastEditor string
 // but it doesn't guarantee that properties required by API are set
 func NewWAFRuleWithDefaults() *WAFRule {
 	this := WAFRule{}
-	var ruleId int64 = 0
-	this.RuleId = &ruleId
-	var useRegex bool = false
-	this.UseRegex = &useRegex
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

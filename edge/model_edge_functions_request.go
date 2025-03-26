@@ -40,13 +40,7 @@ type _EdgeFunctionsRequest EdgeFunctionsRequest
 func NewEdgeFunctionsRequest(name string, code string) *EdgeFunctionsRequest {
 	this := EdgeFunctionsRequest{}
 	this.Name = name
-	var language string = "javascript"
-	this.Language = &language
 	this.Code = code
-	var initiatorType string = "edge_application"
-	this.InitiatorType = &initiatorType
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -55,12 +49,6 @@ func NewEdgeFunctionsRequest(name string, code string) *EdgeFunctionsRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeFunctionsRequestWithDefaults() *EdgeFunctionsRequest {
 	this := EdgeFunctionsRequest{}
-	var language string = "javascript"
-	this.Language = &language
-	var initiatorType string = "edge_application"
-	this.InitiatorType = &initiatorType
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

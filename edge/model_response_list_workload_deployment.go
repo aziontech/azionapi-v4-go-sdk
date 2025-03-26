@@ -38,8 +38,6 @@ func NewResponseListWorkloadDeployment(id int64, tag string, binds WorkloadDeplo
 	this.Id = id
 	this.Tag = tag
 	this.Binds = binds
-	var current bool = true
-	this.Current = &current
 	return &this
 }
 
@@ -48,8 +46,6 @@ func NewResponseListWorkloadDeployment(id int64, tag string, binds WorkloadDeplo
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListWorkloadDeploymentWithDefaults() *ResponseListWorkloadDeployment {
 	this := ResponseListWorkloadDeployment{}
-	var current bool = true
-	this.Current = &current
 	return &this
 }
 

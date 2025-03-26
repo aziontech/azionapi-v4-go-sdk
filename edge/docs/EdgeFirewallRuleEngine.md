@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**Active** | Pointer to **bool** |  | [optional] 
 **Behaviors** | [**[]EdgeFirewallBehaviorField**](EdgeFirewallBehaviorField.md) |  | 
 **Criteria** | [**[][]EdgeFirewallCriterionField**]([]EdgeFirewallCriterionField.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 

@@ -40,8 +40,6 @@ func NewEdgeApplicationRuleEngineRequest(name string, phase string, behaviors []
 	this := EdgeApplicationRuleEngineRequest{}
 	this.Name = name
 	this.Phase = phase
-	var active bool = true
-	this.Active = &active
 	this.Behaviors = behaviors
 	this.Criteria = criteria
 	return &this
@@ -52,8 +50,6 @@ func NewEdgeApplicationRuleEngineRequest(name string, phase string, behaviors []
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeApplicationRuleEngineRequestWithDefaults() *EdgeApplicationRuleEngineRequest {
 	this := EdgeApplicationRuleEngineRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Versions** | Pointer to **[]string** |  | [optional] [default to ["http1","http2"]]
-**HttpPorts** | Pointer to **[]int64** |  | [optional] [default to [80]]
-**HttpsPorts** | Pointer to **[]int64** |  | [optional] [default to [443]]
+**Versions** | Pointer to **[]string** |  | [optional] 
+**HttpPorts** | Pointer to **[]int64** |  | [optional] 
+**HttpsPorts** | Pointer to **[]int64** |  | [optional] 
 **QuicPorts** | Pointer to **[]int64** |  | [optional] 
 
 ## Methods

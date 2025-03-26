@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**AlternateDomains** | Pointer to **[]string** |  | [optional] [default to []]
+**AlternateDomains** | Pointer to **[]string** |  | [optional] 
 **EdgeApplication** | **int64** |  | 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
-**NetworkMap** | Pointer to **string** | * &#x60;1&#x60; - Edge Global Network * &#x60;2&#x60; - Staging Network | [optional] [default to "1"]
+**Active** | Pointer to **bool** |  | [optional] 
+**NetworkMap** | Pointer to **string** | * &#x60;1&#x60; - Edge Global Network * &#x60;2&#x60; - Staging Network | [optional] 
 **EdgeFirewall** | Pointer to **NullableInt64** |  | [optional] 
-**Tls** | Pointer to [**TLSRequest**](TLSRequest.md) |  | [optional] [default to {"certificate":null,"ciphers":null,"minimum_version":"tls_1_2"}]
-**Protocols** | Pointer to [**ProtocolsRequest**](ProtocolsRequest.md) |  | [optional] [default to {"http":{"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}}]
+**Tls** | Pointer to [**TLSRequest**](TLSRequest.md) |  | [optional] 
+**Protocols** | Pointer to [**ProtocolsRequest**](ProtocolsRequest.md) |  | [optional] 
 **Mtls** | Pointer to [**MTLSRequest**](MTLSRequest.md) |  | [optional] 
 **Domains** | Pointer to [**[]DomainInfoRequest**](DomainInfoRequest.md) |  | [optional] 
 

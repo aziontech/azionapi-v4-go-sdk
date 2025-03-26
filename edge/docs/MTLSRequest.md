@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verification** | Pointer to **string** | * &#x60;enforce&#x60; - Enforce * &#x60;permissive&#x60; - Permissive | [optional] [default to "enforce"]
+**Verification** | Pointer to **string** | * &#x60;enforce&#x60; - Enforce * &#x60;permissive&#x60; - Permissive | [optional] 
 **Certificate** | Pointer to **NullableInt64** |  | [optional] 
 **Crl** | Pointer to **[]int64** |  | [optional] 
 

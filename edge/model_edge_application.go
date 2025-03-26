@@ -45,10 +45,6 @@ func NewEdgeApplication(id int64, name string, lastEditor string, lastModified t
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	this.ProductVersion = productVersion
-	var active bool = true
-	this.Active = &active
-	var debug bool = false
-	this.Debug = &debug
 	return &this
 }
 
@@ -57,10 +53,6 @@ func NewEdgeApplication(id int64, name string, lastEditor string, lastModified t
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeApplicationWithDefaults() *EdgeApplication {
 	this := EdgeApplication{}
-	var active bool = true
-	this.Active = &active
-	var debug bool = false
-	this.Debug = &debug
 	return &this
 }
 

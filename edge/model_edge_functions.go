@@ -50,13 +50,7 @@ func NewEdgeFunctions(id int64, name string, code string, referenceCount int64, 
 	this := EdgeFunctions{}
 	this.Id = id
 	this.Name = name
-	var language string = "javascript"
-	this.Language = &language
 	this.Code = code
-	var initiatorType string = "edge_application"
-	this.InitiatorType = &initiatorType
-	var active bool = true
-	this.Active = &active
 	this.ReferenceCount = referenceCount
 	this.Version = version
 	this.Vendor = vendor
@@ -71,12 +65,6 @@ func NewEdgeFunctions(id int64, name string, code string, referenceCount int64, 
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeFunctionsWithDefaults() *EdgeFunctions {
 	this := EdgeFunctions{}
-	var language string = "javascript"
-	this.Language = &language
-	var initiatorType string = "edge_application"
-	this.InitiatorType = &initiatorType
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

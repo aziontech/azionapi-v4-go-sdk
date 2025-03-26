@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **Phase** | **string** | * &#x60;default&#x60; - default * &#x60;request&#x60; - request * &#x60;response&#x60; - response | 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**Active** | Pointer to **bool** |  | [optional] 
 **Behaviors** | [**[]EdgeApplicationBehaviorField**](EdgeApplicationBehaviorField.md) |  | 
 **Criteria** | [**[][]EdgeApplicationCriterionField**]([]EdgeApplicationCriterionField.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 

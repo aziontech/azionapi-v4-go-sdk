@@ -46,8 +46,6 @@ func NewResponseListEdgeApplicationRuleEngine(id int64, name string, phase strin
 	this.Id = id
 	this.Name = name
 	this.Phase = phase
-	var active bool = true
-	this.Active = &active
 	this.Behaviors = behaviors
 	this.Criteria = criteria
 	this.Order = order
@@ -61,8 +59,6 @@ func NewResponseListEdgeApplicationRuleEngine(id int64, name string, phase strin
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListEdgeApplicationRuleEngineWithDefaults() *ResponseListEdgeApplicationRuleEngine {
 	this := ResponseListEdgeApplicationRuleEngine{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

@@ -38,8 +38,6 @@ func NewWorkloadDeployment(id int64, tag string, binds WorkloadDeploymentBinds) 
 	this.Id = id
 	this.Tag = tag
 	this.Binds = binds
-	var current bool = true
-	this.Current = &current
 	return &this
 }
 
@@ -48,8 +46,6 @@ func NewWorkloadDeployment(id int64, tag string, binds WorkloadDeploymentBinds) 
 // but it doesn't guarantee that properties required by API are set
 func NewWorkloadDeploymentWithDefaults() *WorkloadDeployment {
 	this := WorkloadDeployment{}
-	var current bool = true
-	this.Current = &current
 	return &this
 }
 

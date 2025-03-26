@@ -37,8 +37,6 @@ type _EdgeFirewallRuleEngineRequest EdgeFirewallRuleEngineRequest
 func NewEdgeFirewallRuleEngineRequest(name string, behaviors []EdgeFirewallBehaviorFieldRequest, criteria [][]EdgeFirewallCriterionFieldRequest) *EdgeFirewallRuleEngineRequest {
 	this := EdgeFirewallRuleEngineRequest{}
 	this.Name = name
-	var active bool = true
-	this.Active = &active
 	this.Behaviors = behaviors
 	this.Criteria = criteria
 	return &this
@@ -49,8 +47,6 @@ func NewEdgeFirewallRuleEngineRequest(name string, behaviors []EdgeFirewallBehav
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeFirewallRuleEngineRequestWithDefaults() *EdgeFirewallRuleEngineRequest {
 	this := EdgeFirewallRuleEngineRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

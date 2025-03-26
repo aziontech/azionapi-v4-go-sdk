@@ -46,8 +46,6 @@ func NewNetworkList(id int64, name string, type_ string, items []string, lastEdi
 	this.Items = items
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -56,8 +54,6 @@ func NewNetworkList(id int64, name string, type_ string, items []string, lastEdi
 // but it doesn't guarantee that properties required by API are set
 func NewNetworkListWithDefaults() *NetworkList {
 	this := NetworkList{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

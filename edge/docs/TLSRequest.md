@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | Pointer to **NullableInt64** |  | [optional] 
 **Ciphers** | Pointer to [**NullableTLSCiphers**](TLSCiphers.md) |  | [optional] 
-**MinimumVersion** | Pointer to [**NullableTLSMinimumVersion**](TLSMinimumVersion.md) |  | [optional] [default to tls_1_2]
+**MinimumVersion** | Pointer to [**NullableTLSMinimumVersion**](TLSMinimumVersion.md) |  | [optional] 
 
 ## Methods
 

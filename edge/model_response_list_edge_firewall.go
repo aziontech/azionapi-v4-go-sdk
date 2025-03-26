@@ -42,10 +42,6 @@ func NewResponseListEdgeFirewall(id int64, name string, lastEditor string, lastM
 	this := ResponseListEdgeFirewall{}
 	this.Id = id
 	this.Name = name
-	var debugRules bool = false
-	this.DebugRules = &debugRules
-	var active bool = true
-	this.Active = &active
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	this.ProductVersion = productVersion
@@ -57,10 +53,6 @@ func NewResponseListEdgeFirewall(id int64, name string, lastEditor string, lastM
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListEdgeFirewallWithDefaults() *ResponseListEdgeFirewall {
 	this := ResponseListEdgeFirewall{}
-	var debugRules bool = false
-	this.DebugRules = &debugRules
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

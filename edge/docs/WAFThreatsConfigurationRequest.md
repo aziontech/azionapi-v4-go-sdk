@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CrossSiteScripting** | Pointer to **bool** |  | [optional] [default to true]
-**CrossSiteScriptingSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] [default to "medium"]
-**DirectoryTraversal** | Pointer to **bool** |  | [optional] [default to true]
-**DirectoryTraversalSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] [default to "medium"]
-**EvadingTricks** | Pointer to **bool** |  | [optional] [default to true]
-**EvadingTricksSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] [default to "medium"]
-**FileUpload** | Pointer to **bool** |  | [optional] [default to true]
-**FileUploadSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] [default to "medium"]
-**IdentifiedAttack** | Pointer to **bool** |  | [optional] [default to true]
-**IdentifiedAttackSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] [default to "medium"]
-**RemoteFileInclusion** | Pointer to **bool** |  | [optional] [default to true]
-**RemoteFileInclusionSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] [default to "medium"]
-**SqlInjection** | Pointer to **bool** |  | [optional] [default to true]
-**SqlInjectionSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] [default to "medium"]
-**UnwantedAccess** | Pointer to **bool** |  | [optional] [default to true]
-**UnwantedAccessSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] [default to "medium"]
+**CrossSiteScripting** | Pointer to **bool** |  | [optional] 
+**CrossSiteScriptingSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] 
+**DirectoryTraversal** | Pointer to **bool** |  | [optional] 
+**DirectoryTraversalSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] 
+**EvadingTricks** | Pointer to **bool** |  | [optional] 
+**EvadingTricksSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] 
+**FileUpload** | Pointer to **bool** |  | [optional] 
+**FileUploadSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] 
+**IdentifiedAttack** | Pointer to **bool** |  | [optional] 
+**IdentifiedAttackSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] 
+**RemoteFileInclusion** | Pointer to **bool** |  | [optional] 
+**RemoteFileInclusionSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] 
+**SqlInjection** | Pointer to **bool** |  | [optional] 
+**SqlInjectionSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] 
+**UnwantedAccess** | Pointer to **bool** |  | [optional] 
+**UnwantedAccessSensitivity** | Pointer to **string** | * &#x60;lowest&#x60; - lowest * &#x60;low&#x60; - low * &#x60;medium&#x60; - medium * &#x60;high&#x60; - high * &#x60;highest&#x60; - highest | [optional] 
 
 ## Methods
 

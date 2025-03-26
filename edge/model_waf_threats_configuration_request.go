@@ -51,38 +51,6 @@ type WAFThreatsConfigurationRequest struct {
 // will change when the set of required properties is changed
 func NewWAFThreatsConfigurationRequest() *WAFThreatsConfigurationRequest {
 	this := WAFThreatsConfigurationRequest{}
-	var crossSiteScripting bool = true
-	this.CrossSiteScripting = &crossSiteScripting
-	var crossSiteScriptingSensitivity string = "medium"
-	this.CrossSiteScriptingSensitivity = &crossSiteScriptingSensitivity
-	var directoryTraversal bool = true
-	this.DirectoryTraversal = &directoryTraversal
-	var directoryTraversalSensitivity string = "medium"
-	this.DirectoryTraversalSensitivity = &directoryTraversalSensitivity
-	var evadingTricks bool = true
-	this.EvadingTricks = &evadingTricks
-	var evadingTricksSensitivity string = "medium"
-	this.EvadingTricksSensitivity = &evadingTricksSensitivity
-	var fileUpload bool = true
-	this.FileUpload = &fileUpload
-	var fileUploadSensitivity string = "medium"
-	this.FileUploadSensitivity = &fileUploadSensitivity
-	var identifiedAttack bool = true
-	this.IdentifiedAttack = &identifiedAttack
-	var identifiedAttackSensitivity string = "medium"
-	this.IdentifiedAttackSensitivity = &identifiedAttackSensitivity
-	var remoteFileInclusion bool = true
-	this.RemoteFileInclusion = &remoteFileInclusion
-	var remoteFileInclusionSensitivity string = "medium"
-	this.RemoteFileInclusionSensitivity = &remoteFileInclusionSensitivity
-	var sqlInjection bool = true
-	this.SqlInjection = &sqlInjection
-	var sqlInjectionSensitivity string = "medium"
-	this.SqlInjectionSensitivity = &sqlInjectionSensitivity
-	var unwantedAccess bool = true
-	this.UnwantedAccess = &unwantedAccess
-	var unwantedAccessSensitivity string = "medium"
-	this.UnwantedAccessSensitivity = &unwantedAccessSensitivity
 	return &this
 }
 
@@ -91,38 +59,6 @@ func NewWAFThreatsConfigurationRequest() *WAFThreatsConfigurationRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewWAFThreatsConfigurationRequestWithDefaults() *WAFThreatsConfigurationRequest {
 	this := WAFThreatsConfigurationRequest{}
-	var crossSiteScripting bool = true
-	this.CrossSiteScripting = &crossSiteScripting
-	var crossSiteScriptingSensitivity string = "medium"
-	this.CrossSiteScriptingSensitivity = &crossSiteScriptingSensitivity
-	var directoryTraversal bool = true
-	this.DirectoryTraversal = &directoryTraversal
-	var directoryTraversalSensitivity string = "medium"
-	this.DirectoryTraversalSensitivity = &directoryTraversalSensitivity
-	var evadingTricks bool = true
-	this.EvadingTricks = &evadingTricks
-	var evadingTricksSensitivity string = "medium"
-	this.EvadingTricksSensitivity = &evadingTricksSensitivity
-	var fileUpload bool = true
-	this.FileUpload = &fileUpload
-	var fileUploadSensitivity string = "medium"
-	this.FileUploadSensitivity = &fileUploadSensitivity
-	var identifiedAttack bool = true
-	this.IdentifiedAttack = &identifiedAttack
-	var identifiedAttackSensitivity string = "medium"
-	this.IdentifiedAttackSensitivity = &identifiedAttackSensitivity
-	var remoteFileInclusion bool = true
-	this.RemoteFileInclusion = &remoteFileInclusion
-	var remoteFileInclusionSensitivity string = "medium"
-	this.RemoteFileInclusionSensitivity = &remoteFileInclusionSensitivity
-	var sqlInjection bool = true
-	this.SqlInjection = &sqlInjection
-	var sqlInjectionSensitivity string = "medium"
-	this.SqlInjectionSensitivity = &sqlInjectionSensitivity
-	var unwantedAccess bool = true
-	this.UnwantedAccess = &unwantedAccess
-	var unwantedAccessSensitivity string = "medium"
-	this.UnwantedAccessSensitivity = &unwantedAccessSensitivity
 	return &this
 }
 

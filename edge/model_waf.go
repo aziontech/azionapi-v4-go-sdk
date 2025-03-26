@@ -40,8 +40,6 @@ type _WAF WAF
 func NewWAF(id int64, name string, lastEditor string, lastModified time.Time, productVersion NullableString) *WAF {
 	this := WAF{}
 	this.Id = id
-	var active bool = true
-	this.Active = &active
 	this.Name = name
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
@@ -54,8 +52,6 @@ func NewWAF(id int64, name string, lastEditor string, lastModified time.Time, pr
 // but it doesn't guarantee that properties required by API are set
 func NewWAFWithDefaults() *WAF {
 	this := WAF{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

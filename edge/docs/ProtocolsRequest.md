@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Http** | Pointer to [**HttpProtocolRequest**](HttpProtocolRequest.md) |  | [optional] [default to {"versions":["http1","http2"],"http_ports":[80],"https_ports":[443],"quic_ports":null}]
+**Http** | Pointer to [**HttpProtocolRequest**](HttpProtocolRequest.md) |  | [optional] 
 
 ## Methods
 

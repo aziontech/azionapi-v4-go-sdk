@@ -45,8 +45,6 @@ func NewEdgeFirewallRuleEngine(id int64, name string, lastEditor string, lastMod
 	this.Name = name
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
-	var active bool = true
-	this.Active = &active
 	this.Behaviors = behaviors
 	this.Criteria = criteria
 	this.Order = order
@@ -58,8 +56,6 @@ func NewEdgeFirewallRuleEngine(id int64, name string, lastEditor string, lastMod
 // but it doesn't guarantee that properties required by API are set
 func NewEdgeFirewallRuleEngineWithDefaults() *EdgeFirewallRuleEngine {
 	this := EdgeFirewallRuleEngine{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

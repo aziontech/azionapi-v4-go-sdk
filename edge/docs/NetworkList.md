@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Items** | **[]string** |  | 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
-**Active** | Pointer to **bool** |  | [optional] [default to true]
+**Active** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

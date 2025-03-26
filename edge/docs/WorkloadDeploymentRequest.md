@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Tag** | **string** |  | 
 **Binds** | [**WorkloadDeploymentBindsRequest**](WorkloadDeploymentBindsRequest.md) |  | 
-**Current** | Pointer to **bool** |  | [optional] [default to true]
+**Current** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

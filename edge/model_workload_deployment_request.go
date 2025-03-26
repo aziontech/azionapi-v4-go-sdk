@@ -36,8 +36,6 @@ func NewWorkloadDeploymentRequest(tag string, binds WorkloadDeploymentBindsReque
 	this := WorkloadDeploymentRequest{}
 	this.Tag = tag
 	this.Binds = binds
-	var current bool = true
-	this.Current = &current
 	return &this
 }
 
@@ -46,8 +44,6 @@ func NewWorkloadDeploymentRequest(tag string, binds WorkloadDeploymentBindsReque
 // but it doesn't guarantee that properties required by API are set
 func NewWorkloadDeploymentRequestWithDefaults() *WorkloadDeploymentRequest {
 	this := WorkloadDeploymentRequest{}
-	var current bool = true
-	this.Current = &current
 	return &this
 }
 

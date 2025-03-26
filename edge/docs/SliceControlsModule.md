@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **SliceConfigurationEnabled** | **bool** |  | 
 **SliceEdgeCachingEnabled** | **bool** |  | 
 **SliceTieredCachingEnabled** | **bool** |  | 
-**SliceConfigurationRange** | Pointer to **int64** |  | [optional] [default to 1024]
+**SliceConfigurationRange** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 

@@ -43,14 +43,8 @@ type _ResponseListWAFRule ResponseListWAFRule
 func NewResponseListWAFRule(id int64, name string, matchZones []MatchZone, lastEditor string, lastModified time.Time) *ResponseListWAFRule {
 	this := ResponseListWAFRule{}
 	this.Id = id
-	var ruleId int64 = 0
-	this.RuleId = &ruleId
 	this.Name = name
 	this.MatchZones = matchZones
-	var useRegex bool = false
-	this.UseRegex = &useRegex
-	var active bool = true
-	this.Active = &active
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	return &this
@@ -61,12 +55,6 @@ func NewResponseListWAFRule(id int64, name string, matchZones []MatchZone, lastE
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListWAFRuleWithDefaults() *ResponseListWAFRule {
 	this := ResponseListWAFRule{}
-	var ruleId int64 = 0
-	this.RuleId = &ruleId
-	var useRegex bool = false
-	this.UseRegex = &useRegex
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

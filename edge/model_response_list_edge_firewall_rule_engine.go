@@ -45,8 +45,6 @@ func NewResponseListEdgeFirewallRuleEngine(id int64, name string, lastEditor str
 	this.Name = name
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
-	var active bool = true
-	this.Active = &active
 	this.Behaviors = behaviors
 	this.Criteria = criteria
 	this.Order = order
@@ -58,8 +56,6 @@ func NewResponseListEdgeFirewallRuleEngine(id int64, name string, lastEditor str
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListEdgeFirewallRuleEngineWithDefaults() *ResponseListEdgeFirewallRuleEngine {
 	this := ResponseListEdgeFirewallRuleEngine{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

@@ -30,8 +30,6 @@ type PatchedWorkloadDeploymentRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedWorkloadDeploymentRequest() *PatchedWorkloadDeploymentRequest {
 	this := PatchedWorkloadDeploymentRequest{}
-	var current bool = true
-	this.Current = &current
 	return &this
 }
 
@@ -40,8 +38,6 @@ func NewPatchedWorkloadDeploymentRequest() *PatchedWorkloadDeploymentRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedWorkloadDeploymentRequestWithDefaults() *PatchedWorkloadDeploymentRequest {
 	this := PatchedWorkloadDeploymentRequest{}
-	var current bool = true
-	this.Current = &current
 	return &this
 }
 

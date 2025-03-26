@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Domain** | Pointer to **NullableString** |  | [optional] 
-**AllowAccess** | Pointer to **bool** |  | [optional] [default to true]
+**AllowAccess** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

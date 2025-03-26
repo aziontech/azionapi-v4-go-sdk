@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | [readonly] 
 **Tag** | **string** |  | 
 **Binds** | [**WorkloadDeploymentBinds**](WorkloadDeploymentBinds.md) |  | 
-**Current** | Pointer to **bool** |  | [optional] [default to true]
+**Current** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 

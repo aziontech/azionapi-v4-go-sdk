@@ -49,12 +49,6 @@ func NewResponseListEdgeFunctions(id int64, name string, referenceCount int64, v
 	this := ResponseListEdgeFunctions{}
 	this.Id = id
 	this.Name = name
-	var language string = "javascript"
-	this.Language = &language
-	var initiatorType string = "edge_application"
-	this.InitiatorType = &initiatorType
-	var active bool = true
-	this.Active = &active
 	this.ReferenceCount = referenceCount
 	this.Version = version
 	this.Vendor = vendor
@@ -69,12 +63,6 @@ func NewResponseListEdgeFunctions(id int64, name string, referenceCount int64, v
 // but it doesn't guarantee that properties required by API are set
 func NewResponseListEdgeFunctionsWithDefaults() *ResponseListEdgeFunctions {
 	this := ResponseListEdgeFunctions{}
-	var language string = "javascript"
-	this.Language = &language
-	var initiatorType string = "edge_application"
-	this.InitiatorType = &initiatorType
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 

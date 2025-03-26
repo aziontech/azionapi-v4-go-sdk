@@ -34,8 +34,6 @@ type PatchedEdgeApplicationRuleEngineRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedEdgeApplicationRuleEngineRequest() *PatchedEdgeApplicationRuleEngineRequest {
 	this := PatchedEdgeApplicationRuleEngineRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
@@ -44,8 +42,6 @@ func NewPatchedEdgeApplicationRuleEngineRequest() *PatchedEdgeApplicationRuleEng
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedEdgeApplicationRuleEngineRequestWithDefaults() *PatchedEdgeApplicationRuleEngineRequest {
 	this := PatchedEdgeApplicationRuleEngineRequest{}
-	var active bool = true
-	this.Active = &active
 	return &this
 }
 
