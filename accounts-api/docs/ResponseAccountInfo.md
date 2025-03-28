@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | [**StateEnum**](StateEnum.md) |  | 
+**State** | **string** | * &#x60;pending&#x60; - pending * &#x60;executed&#x60; - executed | 
 **Data** | [**AccountInfo**](AccountInfo.md) |  | 
 
 ## Methods
 
 ### NewResponseAccountInfo
 
-`func NewResponseAccountInfo(state StateEnum, data AccountInfo, ) *ResponseAccountInfo`
+`func NewResponseAccountInfo(state string, data AccountInfo, ) *ResponseAccountInfo`
 
 NewResponseAccountInfo instantiates a new ResponseAccountInfo object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetState
 
-`func (o *ResponseAccountInfo) GetState() StateEnum`
+`func (o *ResponseAccountInfo) GetState() string`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *ResponseAccountInfo) GetStateOk() (*StateEnum, bool)`
+`func (o *ResponseAccountInfo) GetStateOk() (*string, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *ResponseAccountInfo) SetState(v StateEnum)`
+`func (o *ResponseAccountInfo) SetState(v string)`
 
 SetState sets State field to given value.
 

@@ -26,11 +26,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	id := int32(56) // int32 | 
+	id := int64(789) // int64 | 
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
+**id** | **int64** |  | 
 
 ### Other Parameters
 
@@ -98,11 +98,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	id := int32(56) // int32 | 
+	id := int64(789) // int64 | 
 	updateAccountInfoDetailsRequest := *openapiclient.NewUpdateAccountInfoDetailsRequest() // UpdateAccountInfoDetailsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -123,7 +123,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
+**id** | **int64** |  | 
 
 ### Other Parameters
 

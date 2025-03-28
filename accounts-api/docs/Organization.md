@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **Active** | **bool** |  | [readonly] 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
-**ParentId** | **int32** |  | [readonly] 
+**ParentId** | **int64** |  | [readonly] 
 **Created** | **time.Time** |  | [readonly] 
 **Info** | **map[string]interface{}** |  | [readonly] 
-**Status** | [**StatusEnum**](StatusEnum.md) |  | [readonly] 
-**Reason** | [**ReasonEnum**](ReasonEnum.md) |  | [readonly] 
+**Status** | **string** | * &#x60;active&#x60; - Active account status, can be used for regular operations. * &#x60;suspended&#x60; - Suspended account status, for accounts with limited access to support and payments only. * &#x60;disabled&#x60; - Disabled account status, services are offline, user can only access support. * &#x60;closed&#x60; - Closed account status, services are offline but can be reactivated. | [readonly] 
+**Reason** | **string** | * &#x60;trial&#x60; - Trial account status, currently on a trial period. * &#x60;online&#x60; - Online account status, used for online sales operations. * &#x60;regular&#x60; - Regular account status, indicates the customer has an active contract. * &#x60;overdue&#x60; - Overdue status, the account failed necessary payments after retries. * &#x60;quarantine&#x60; - Quarantine status, the account is suspended due to suspected misuse or security breach. * &#x60;violation&#x60; - Violation status, temporarily suspended due to administrative, technical, security, or policy violations. * &#x60;idle&#x60; - Idle status, the account was removed due to inactivity. * &#x60;terminated&#x60; - Terminated status, the account was shut down by the service provider. * &#x60;voluntary&#x60; - Voluntary status, the account was canceled by its owner. | [readonly] 
 
 ## Methods
 
 ### NewOrganization
 
-`func NewOrganization(id int32, name string, active bool, lastEditor string, lastModified time.Time, parentId int32, created time.Time, info map[string]interface{}, status StatusEnum, reason ReasonEnum, ) *Organization`
+`func NewOrganization(id int64, name string, active bool, lastEditor string, lastModified time.Time, parentId int64, created time.Time, info map[string]interface{}, status string, reason string, ) *Organization`
 
 NewOrganization instantiates a new Organization object
 This constructor will assign default values to properties that have it defined,
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Organization) GetId() int32`
+`func (o *Organization) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Organization) GetIdOk() (*int32, bool)`
+`func (o *Organization) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Organization) SetId(v int32)`
+`func (o *Organization) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -136,20 +136,20 @@ SetLastModified sets LastModified field to given value.
 
 ### GetParentId
 
-`func (o *Organization) GetParentId() int32`
+`func (o *Organization) GetParentId() int64`
 
 GetParentId returns the ParentId field if non-nil, zero value otherwise.
 
 ### GetParentIdOk
 
-`func (o *Organization) GetParentIdOk() (*int32, bool)`
+`func (o *Organization) GetParentIdOk() (*int64, bool)`
 
 GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParentId
 
-`func (o *Organization) SetParentId(v int32)`
+`func (o *Organization) SetParentId(v int64)`
 
 SetParentId sets ParentId field to given value.
 
@@ -196,40 +196,40 @@ SetInfo sets Info field to given value.
 
 ### GetStatus
 
-`func (o *Organization) GetStatus() StatusEnum`
+`func (o *Organization) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *Organization) GetStatusOk() (*StatusEnum, bool)`
+`func (o *Organization) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *Organization) SetStatus(v StatusEnum)`
+`func (o *Organization) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 
 
 ### GetReason
 
-`func (o *Organization) GetReason() ReasonEnum`
+`func (o *Organization) GetReason() string`
 
 GetReason returns the Reason field if non-nil, zero value otherwise.
 
 ### GetReasonOk
 
-`func (o *Organization) GetReasonOk() (*ReasonEnum, bool)`
+`func (o *Organization) GetReasonOk() (*string, bool)`
 
 GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReason
 
-`func (o *Organization) SetReason(v ReasonEnum)`
+`func (o *Organization) SetReason(v string)`
 
 SetReason sets Reason field to given value.
 

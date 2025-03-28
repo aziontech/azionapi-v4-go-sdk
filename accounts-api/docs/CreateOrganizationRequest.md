@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**ParentId** | **int32** |  | 
+**ParentId** | **int64** |  | 
 
 ## Methods
 
 ### NewCreateOrganizationRequest
 
-`func NewCreateOrganizationRequest(name string, parentId int32, ) *CreateOrganizationRequest`
+`func NewCreateOrganizationRequest(name string, parentId int64, ) *CreateOrganizationRequest`
 
 NewCreateOrganizationRequest instantiates a new CreateOrganizationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetName sets Name field to given value.
 
 ### GetParentId
 
-`func (o *CreateOrganizationRequest) GetParentId() int32`
+`func (o *CreateOrganizationRequest) GetParentId() int64`
 
 GetParentId returns the ParentId field if non-nil, zero value otherwise.
 
 ### GetParentIdOk
 
-`func (o *CreateOrganizationRequest) GetParentIdOk() (*int32, bool)`
+`func (o *CreateOrganizationRequest) GetParentIdOk() (*int64, bool)`
 
 GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParentId
 
-`func (o *CreateOrganizationRequest) SetParentId(v int32)`
+`func (o *CreateOrganizationRequest) SetParentId(v int64)`
 
 SetParentId sets ParentId field to given value.
 
