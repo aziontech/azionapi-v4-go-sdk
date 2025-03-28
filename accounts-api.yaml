@@ -1,0 +1,1418 @@
+openapi: 3.0.3
+info:
+  title: Accounts API
+  version: 1.0.0
+  description: REST API OpenAPI documentation for the Accounts API
+paths:
+  /account/account:
+    get:
+      operationId: retrieveLoggedAccountDetails
+      description: Retrieve detailed information about the currently logged-in user's
+        account.
+      summary: Retrieve logged account details
+      parameters:
+      - in: query
+        name: fields
+        schema:
+          type: string
+        description: Comma-separated list of field names to include in the response.
+      tags:
+      - Accounts - Logged In
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRetrieveAccount'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccount'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+    put:
+      operationId: updateLoggedAccount
+      description: Update the details of the currently logged-in user's account. This
+        operation allows replacing the entire account data with new values.
+      summary: Update logged account details
+      tags:
+      - Accounts - Logged In
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccount'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Accepted
+    patch:
+      operationId: partialUpdateLoggedAccount
+      description: Partially update specific fields of the currently logged-in user's
+        account. Only editable fields, such as `name`, can be updated with this operation.
+      summary: Partially update logged account details
+      tags:
+      - Accounts - Logged In
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAccountRequest'
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccount'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Accepted
+  /account/accounts:
+    get:
+      operationId: listDescendantsAccounts
+      description: List all accounts that are descendants of the logged-in user's
+        account.
+      summary: List accounts
+      parameters:
+      - in: query
+        name: fields
+        schema:
+          type: string
+        description: Comma-separated list of field names to include in the response.
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+        description: A numeric value that indicates the number of items per page.
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - Accounts - Descendants
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseListAccountList'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccount'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+    post:
+      operationId: createDescendantAccount
+      description: Create a new sub-account under the logged-in user's account.
+      summary: Create a new account
+      tags:
+      - Accounts - Descendants
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountRequest'
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccount'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Accepted
+  /account/accounts/{id}:
+    get:
+      operationId: retrieveDescendantAccount
+      description: Retrieve detailed information of a specific account under the logged-in
+        user's account.
+      summary: Retrieve account details
+      parameters:
+      - in: query
+        name: fields
+        schema:
+          type: string
+        description: Comma-separated list of field names to include in the response.
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Accounts - Descendants
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRetrieveAccount'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccount'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+    put:
+      operationId: updateDescendantAccount
+      description: Update the information of a specific account under the logged-in
+        user's account. This operation allows replacing the entire account data with
+        new values.
+      summary: Update account details
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Accounts - Descendants
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccount'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Accepted
+    patch:
+      operationId: partialUpdateDescendantAccount
+      description: Update specific fields of an account under the logged-in user's
+        account. Only editable fields, such as `name`, can be updated with this operation.
+      summary: Partially update account details
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Accounts - Descendants
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAccountRequest'
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccount'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+          description: Accepted
+  /account/accounts/{id}/info:
+    get:
+      operationId: retrieveAccountInfoDetails
+      description: Retrieve detailed information about your account or a specific
+        child account under your logged-in account.
+      summary: Retrieve account information details
+      parameters:
+      - in: query
+        name: fields
+        schema:
+          type: string
+        description: Comma-separated list of field names to include in the response.
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Accounts - Info
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRetrieveAccountInfo'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccountInfo'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+    put:
+      operationId: updateAccountInfoDetails
+      description: Update the information details about your account or a specific
+        child account under your logged-in account. This operation allows replacing
+        the entire account info data with new values. In this operation, you can also
+        clear all detailed information of an account by providing an empty dictionary
+        in the `info` field.
+      summary: Update account information details
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Accounts - Info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                info:
+                  type: object
+                  properties:
+                    industry:
+                      type: string
+                      description: The industry type.
+                      enum:
+                      - Education
+                      - Energy
+                      - Finance
+                      - Games
+                      - Health
+                      - Media
+                      - Public Sector
+                      - Retail
+                      - Services
+                      - Technology
+                      - Telecom
+                      - Transportation
+                      - Other
+                      title: IndustryEnum
+                      additionalProperties: false
+                    company_size:
+                      type: integer
+                      description: The size of the company. Must be an integer greater
+                        than or equal to 1.
+                      minimum: 1
+                  title: AccountInfoRequest
+                  additionalProperties: false
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                info:
+                  type: object
+                  properties:
+                    industry:
+                      type: string
+                      description: The industry type.
+                      enum:
+                      - Education
+                      - Energy
+                      - Finance
+                      - Games
+                      - Health
+                      - Media
+                      - Public Sector
+                      - Retail
+                      - Services
+                      - Technology
+                      - Telecom
+                      - Transportation
+                      - Other
+                      title: IndustryEnum
+                      additionalProperties: false
+                    company_size:
+                      type: integer
+                      description: The size of the company. Must be an integer greater
+                        than or equal to 1.
+                      minimum: 1
+                  title: AccountInfoRequest
+                  additionalProperties: false
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                info:
+                  type: object
+                  properties:
+                    industry:
+                      type: string
+                      description: The industry type.
+                      enum:
+                      - Education
+                      - Energy
+                      - Finance
+                      - Games
+                      - Health
+                      - Media
+                      - Public Sector
+                      - Retail
+                      - Services
+                      - Technology
+                      - Telecom
+                      - Transportation
+                      - Other
+                      title: IndustryEnum
+                      additionalProperties: false
+                    company_size:
+                      type: integer
+                      description: The size of the company. Must be an integer greater
+                        than or equal to 1.
+                      minimum: 1
+                  title: AccountInfoRequest
+                  additionalProperties: false
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountInfo'
+          description: Ok
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestAccountInfo'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountInfo'
+          description: Accepted
+components:
+  schemas:
+    Account:
+      oneOf:
+      - $ref: '#/components/schemas/Brand'
+      - $ref: '#/components/schemas/Organization'
+      - $ref: '#/components/schemas/Reseller'
+      - $ref: '#/components/schemas/Workspace'
+      discriminator:
+        propertyName: type
+        mapping:
+          Brand: '#/components/schemas/Brand'
+          Organization: '#/components/schemas/Organization'
+          Reseller: '#/components/schemas/Reseller'
+          Workspace: '#/components/schemas/Workspace'
+      title: Account
+      additionalProperties: true
+    AccountInfo:
+      type: object
+      properties:
+        info:
+          type: object
+          additionalProperties: {}
+          nullable: true
+      required:
+      - info
+      title: AccountInfo
+      additionalProperties: false
+    AccountRequest:
+      oneOf:
+      - $ref: '#/components/schemas/BrandRequest'
+      - $ref: '#/components/schemas/OrganizationRequest'
+      - $ref: '#/components/schemas/ResellerRequest'
+      - $ref: '#/components/schemas/WorkspaceRequest'
+      discriminator:
+        propertyName: type
+        mapping:
+          Brand: '#/components/schemas/BrandRequest'
+          Organization: '#/components/schemas/OrganizationRequest'
+          Reseller: '#/components/schemas/ResellerRequest'
+          Workspace: '#/components/schemas/WorkspaceRequest'
+      title: AccountRequest
+      additionalProperties: true
+    Brand:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          pattern: .*
+          maxLength: 150
+        active:
+          type: boolean
+          readOnly: true
+        last_editor:
+          type: string
+          readOnly: true
+          pattern: .*
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        parent_id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        info:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+      required:
+      - active
+      - created
+      - id
+      - info
+      - last_editor
+      - last_modified
+      - name
+      - parent_id
+      title: Brand
+      additionalProperties: false
+    BrandRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+      required:
+      - name
+      title: BrandRequest
+      additionalProperties: false
+    CreateAccountRequest:
+      oneOf:
+      - $ref: '#/components/schemas/CreateBrandRequest'
+      - $ref: '#/components/schemas/CreateOrganizationRequest'
+      - $ref: '#/components/schemas/CreateResellerRequest'
+      - $ref: '#/components/schemas/CreateWorkspaceRequest'
+      discriminator:
+        propertyName: type
+        mapping:
+          Brand: '#/components/schemas/CreateBrandRequest'
+          Organization: '#/components/schemas/CreateOrganizationRequest'
+          Reseller: '#/components/schemas/CreateResellerRequest'
+          Workspace: '#/components/schemas/CreateWorkspaceRequest'
+      title: CreateAccountRequest
+      additionalProperties: true
+    CreateBrandRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+        parent_id:
+          type: integer
+      required:
+      - name
+      - parent_id
+      title: CreateBrandRequest
+      additionalProperties: false
+    CreateOrganizationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+        parent_id:
+          type: integer
+      required:
+      - name
+      - parent_id
+      title: CreateOrganizationRequest
+      additionalProperties: false
+    CreateResellerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+        parent_id:
+          type: integer
+        currency_iso_code:
+          $ref: '#/components/schemas/CurrencyIsoCodeEnum'
+        terms_of_service_url:
+          type: string
+          minLength: 1
+          default: https://www.azion.com/pt-br/documentacao/contratos/tds/
+          pattern: .*
+          maxLength: 255
+      required:
+      - currency_iso_code
+      - name
+      - parent_id
+      title: CreateResellerRequest
+      additionalProperties: false
+    CreateWorkspaceRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+        parent_id:
+          type: integer
+      required:
+      - name
+      - parent_id
+      title: CreateWorkspaceRequest
+      additionalProperties: false
+    CurrencyIsoCodeEnum:
+      enum:
+      - USD
+      - BRL
+      type: string
+      description: |-
+        * `USD` - USD
+        * `BRL` - BRL
+      title: CurrencyIsoCodeEnum
+      additionalProperties: false
+    DefaultErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          pattern: .*
+          maxLength: 4096
+          minLength: 1
+      title: DefaultErrorResponse
+      additionalProperties: false
+    Organization:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          pattern: .*
+          maxLength: 150
+        active:
+          type: boolean
+          readOnly: true
+        last_editor:
+          type: string
+          readOnly: true
+          pattern: .*
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        parent_id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        info:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          readOnly: true
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/ReasonEnum'
+          readOnly: true
+      required:
+      - active
+      - created
+      - id
+      - info
+      - last_editor
+      - last_modified
+      - name
+      - parent_id
+      - reason
+      - status
+      title: Organization
+      additionalProperties: false
+    OrganizationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+      required:
+      - name
+      title: OrganizationRequest
+      additionalProperties: false
+    PaginatedResponseListAccountList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+          example: 123
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseListAccount'
+      title: PaginatedResponseListAccountList
+      additionalProperties: false
+    PatchedAccountRequest:
+      oneOf:
+      - $ref: '#/components/schemas/PatchedBrandRequest'
+      - $ref: '#/components/schemas/PatchedOrganizationRequest'
+      - $ref: '#/components/schemas/PatchedResellerRequest'
+      - $ref: '#/components/schemas/PatchedWorkspaceRequest'
+      discriminator:
+        propertyName: type
+        mapping:
+          Brand: '#/components/schemas/PatchedBrandRequest'
+          Organization: '#/components/schemas/PatchedOrganizationRequest'
+          Reseller: '#/components/schemas/PatchedResellerRequest'
+          Workspace: '#/components/schemas/PatchedWorkspaceRequest'
+      title: PatchedAccountRequest
+      additionalProperties: true
+    PatchedBrandRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+      title: PatchedBrandRequest
+      additionalProperties: false
+    PatchedOrganizationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+      title: PatchedOrganizationRequest
+      additionalProperties: false
+    PatchedResellerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+        currency_iso_code:
+          $ref: '#/components/schemas/CurrencyIsoCodeEnum'
+        terms_of_service_url:
+          type: string
+          minLength: 1
+          default: https://www.azion.com/pt-br/documentacao/contratos/tds/
+          pattern: .*
+          maxLength: 255
+      title: PatchedResellerRequest
+      additionalProperties: false
+    PatchedWorkspaceRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+      title: PatchedWorkspaceRequest
+      additionalProperties: false
+    ReasonEnum:
+      enum:
+      - trial
+      - online
+      - regular
+      - overdue
+      - quarantine
+      - violation
+      - idle
+      - terminated
+      - voluntary
+      type: string
+      description: |-
+        * `trial` - Trial account status, currently on a trial period.
+        * `online` - Online account status, used for online sales operations.
+        * `regular` - Regular account status, indicates the customer has an active contract.
+        * `overdue` - Overdue status, the account failed necessary payments after retries.
+        * `quarantine` - Quarantine status, the account is suspended due to suspected misuse or security breach.
+        * `violation` - Violation status, temporarily suspended due to administrative, technical, security, or policy violations.
+        * `idle` - Idle status, the account was removed due to inactivity.
+        * `terminated` - Terminated status, the account was shut down by the service provider.
+        * `voluntary` - Voluntary status, the account was canceled by its owner.
+      title: ReasonEnum
+      additionalProperties: false
+    Reseller:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          pattern: .*
+          maxLength: 150
+        active:
+          type: boolean
+          readOnly: true
+        last_editor:
+          type: string
+          readOnly: true
+          pattern: .*
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        parent_id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        info:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        currency_iso_code:
+          $ref: '#/components/schemas/CurrencyIsoCodeEnum'
+        terms_of_service_url:
+          type: string
+          default: https://www.azion.com/pt-br/documentacao/contratos/tds/
+          pattern: .*
+          maxLength: 255
+      required:
+      - active
+      - created
+      - currency_iso_code
+      - id
+      - info
+      - last_editor
+      - last_modified
+      - name
+      - parent_id
+      title: Reseller
+      additionalProperties: false
+    ResellerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+        currency_iso_code:
+          $ref: '#/components/schemas/CurrencyIsoCodeEnum'
+        terms_of_service_url:
+          type: string
+          minLength: 1
+          default: https://www.azion.com/pt-br/documentacao/contratos/tds/
+          pattern: .*
+          maxLength: 255
+      required:
+      - currency_iso_code
+      - name
+      title: ResellerRequest
+      additionalProperties: false
+    ResponseAccount:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        data:
+          $ref: '#/components/schemas/Account'
+      required:
+      - data
+      - state
+      title: ResponseAccount
+      additionalProperties: false
+    ResponseAccountInfo:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        data:
+          $ref: '#/components/schemas/AccountInfo'
+      required:
+      - data
+      - state
+      title: ResponseAccountInfo
+      additionalProperties: false
+    ResponseBadRequestAccount:
+      type: object
+      properties:
+        type:
+          type: array
+          items:
+            type: string
+        detail:
+          type: string
+          pattern: .*
+          maxLength: 4096
+          minLength: 1
+      title: ResponseBadRequestAccount
+      additionalProperties: false
+    ResponseBadRequestAccountInfo:
+      type: object
+      properties:
+        info:
+          type: array
+          items:
+            type: string
+        detail:
+          type: string
+          pattern: .*
+          maxLength: 4096
+          minLength: 1
+      title: ResponseBadRequestAccountInfo
+      additionalProperties: false
+    ResponseListAccount:
+      oneOf:
+      - $ref: '#/components/schemas/Brand'
+      - $ref: '#/components/schemas/Organization'
+      - $ref: '#/components/schemas/Reseller'
+      - $ref: '#/components/schemas/Workspace'
+      discriminator:
+        propertyName: type
+        mapping:
+          Brand: '#/components/schemas/Brand'
+          Organization: '#/components/schemas/Organization'
+          Reseller: '#/components/schemas/Reseller'
+          Workspace: '#/components/schemas/Workspace'
+      title: ResponseListAccount
+      additionalProperties: true
+    ResponseRetrieveAccount:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Account'
+      required:
+      - data
+      title: ResponseRetrieveAccount
+      additionalProperties: false
+    ResponseRetrieveAccountInfo:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AccountInfo'
+      required:
+      - data
+      title: ResponseRetrieveAccountInfo
+      additionalProperties: false
+    StateEnum:
+      enum:
+      - pending
+      - executed
+      type: string
+      description: |-
+        * `pending` - pending
+        * `executed` - executed
+      title: StateEnum
+      additionalProperties: false
+    StatusEnum:
+      enum:
+      - active
+      - suspended
+      - disabled
+      - closed
+      type: string
+      description: |-
+        * `active` - Active account status, can be used for regular operations.
+        * `suspended` - Suspended account status, for accounts with limited access to support and payments only.
+        * `disabled` - Disabled account status, services are offline, user can only access support.
+        * `closed` - Closed account status, services are offline but can be reactivated.
+      title: StatusEnum
+      additionalProperties: false
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          pattern: .*
+          maxLength: 150
+        active:
+          type: boolean
+          readOnly: true
+        last_editor:
+          type: string
+          readOnly: true
+          pattern: .*
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        parent_id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        info:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        workspace_id:
+          type: string
+          readOnly: true
+          pattern: ^[0-9]{4}[A-Z]$
+      required:
+      - active
+      - created
+      - id
+      - info
+      - last_editor
+      - last_modified
+      - name
+      - parent_id
+      - workspace_id
+      title: Workspace
+      additionalProperties: false
+    WorkspaceRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: .*
+          maxLength: 150
+      required:
+      - name
+      title: WorkspaceRequest
+      additionalProperties: false
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
