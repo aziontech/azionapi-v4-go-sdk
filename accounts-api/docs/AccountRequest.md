@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**CurrencyIsoCode** | [**CurrencyIsoCodeEnum**](CurrencyIsoCodeEnum.md) |  | 
-**TermsOfServiceUrl** | Pointer to **string** |  | [optional] [default to "https://www.azion.com/pt-br/documentacao/contratos/tds/"]
+**CurrencyIsoCode** | **string** | * &#x60;USD&#x60; - USD * &#x60;BRL&#x60; - BRL | 
+**TermsOfServiceUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewAccountRequest
 
-`func NewAccountRequest(name string, currencyIsoCode CurrencyIsoCodeEnum, ) *AccountRequest`
+`func NewAccountRequest(name string, currencyIsoCode string, ) *AccountRequest`
 
 NewAccountRequest instantiates a new AccountRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetName sets Name field to given value.
 
 ### GetCurrencyIsoCode
 
-`func (o *AccountRequest) GetCurrencyIsoCode() CurrencyIsoCodeEnum`
+`func (o *AccountRequest) GetCurrencyIsoCode() string`
 
 GetCurrencyIsoCode returns the CurrencyIsoCode field if non-nil, zero value otherwise.
 
 ### GetCurrencyIsoCodeOk
 
-`func (o *AccountRequest) GetCurrencyIsoCodeOk() (*CurrencyIsoCodeEnum, bool)`
+`func (o *AccountRequest) GetCurrencyIsoCodeOk() (*string, bool)`
 
 GetCurrencyIsoCodeOk returns a tuple with the CurrencyIsoCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrencyIsoCode
 
-`func (o *AccountRequest) SetCurrencyIsoCode(v CurrencyIsoCodeEnum)`
+`func (o *AccountRequest) SetCurrencyIsoCode(v string)`
 
 SetCurrencyIsoCode sets CurrencyIsoCode field to given value.
 

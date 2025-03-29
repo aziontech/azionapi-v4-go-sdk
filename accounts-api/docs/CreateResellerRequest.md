@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**ParentId** | **int32** |  | 
-**CurrencyIsoCode** | [**CurrencyIsoCodeEnum**](CurrencyIsoCodeEnum.md) |  | 
-**TermsOfServiceUrl** | Pointer to **string** |  | [optional] [default to "https://www.azion.com/pt-br/documentacao/contratos/tds/"]
+**ParentId** | **int64** |  | 
+**CurrencyIsoCode** | **string** | * &#x60;USD&#x60; - USD * &#x60;BRL&#x60; - BRL | 
+**TermsOfServiceUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewCreateResellerRequest
 
-`func NewCreateResellerRequest(name string, parentId int32, currencyIsoCode CurrencyIsoCodeEnum, ) *CreateResellerRequest`
+`func NewCreateResellerRequest(name string, parentId int64, currencyIsoCode string, ) *CreateResellerRequest`
 
 NewCreateResellerRequest instantiates a new CreateResellerRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,40 +50,40 @@ SetName sets Name field to given value.
 
 ### GetParentId
 
-`func (o *CreateResellerRequest) GetParentId() int32`
+`func (o *CreateResellerRequest) GetParentId() int64`
 
 GetParentId returns the ParentId field if non-nil, zero value otherwise.
 
 ### GetParentIdOk
 
-`func (o *CreateResellerRequest) GetParentIdOk() (*int32, bool)`
+`func (o *CreateResellerRequest) GetParentIdOk() (*int64, bool)`
 
 GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParentId
 
-`func (o *CreateResellerRequest) SetParentId(v int32)`
+`func (o *CreateResellerRequest) SetParentId(v int64)`
 
 SetParentId sets ParentId field to given value.
 
 
 ### GetCurrencyIsoCode
 
-`func (o *CreateResellerRequest) GetCurrencyIsoCode() CurrencyIsoCodeEnum`
+`func (o *CreateResellerRequest) GetCurrencyIsoCode() string`
 
 GetCurrencyIsoCode returns the CurrencyIsoCode field if non-nil, zero value otherwise.
 
 ### GetCurrencyIsoCodeOk
 
-`func (o *CreateResellerRequest) GetCurrencyIsoCodeOk() (*CurrencyIsoCodeEnum, bool)`
+`func (o *CreateResellerRequest) GetCurrencyIsoCodeOk() (*string, bool)`
 
 GetCurrencyIsoCodeOk returns a tuple with the CurrencyIsoCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrencyIsoCode
 
-`func (o *CreateResellerRequest) SetCurrencyIsoCode(v CurrencyIsoCodeEnum)`
+`func (o *CreateResellerRequest) SetCurrencyIsoCode(v string)`
 
 SetCurrencyIsoCode sets CurrencyIsoCode field to given value.
 

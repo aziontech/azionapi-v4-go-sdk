@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**ParentId** | **int32** |  | 
+**ParentId** | **int64** |  | 
 
 ## Methods
 
 ### NewCreateBrandRequest
 
-`func NewCreateBrandRequest(name string, parentId int32, ) *CreateBrandRequest`
+`func NewCreateBrandRequest(name string, parentId int64, ) *CreateBrandRequest`
 
 NewCreateBrandRequest instantiates a new CreateBrandRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetName sets Name field to given value.
 
 ### GetParentId
 
-`func (o *CreateBrandRequest) GetParentId() int32`
+`func (o *CreateBrandRequest) GetParentId() int64`
 
 GetParentId returns the ParentId field if non-nil, zero value otherwise.
 
 ### GetParentIdOk
 
-`func (o *CreateBrandRequest) GetParentIdOk() (*int32, bool)`
+`func (o *CreateBrandRequest) GetParentIdOk() (*int64, bool)`
 
 GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParentId
 
-`func (o *CreateBrandRequest) SetParentId(v int32)`
+`func (o *CreateBrandRequest) SetParentId(v int64)`
 
 SetParentId sets ParentId field to given value.
 

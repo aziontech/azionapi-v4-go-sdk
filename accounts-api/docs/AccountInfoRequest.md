@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Industry** | Pointer to **map[string]interface{}** | The industry type. | [optional] 
-**CompanySize** | Pointer to **int32** | The size of the company. Must be an integer greater than or equal to 1. | [optional] 
+**Industry** | Pointer to **string** | The industry type. | [optional] 
+**CompanySize** | Pointer to **int64** | The size of the company. Must be an integer greater than or equal to 1. | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIndustry
 
-`func (o *AccountInfoRequest) GetIndustry() map[string]interface{}`
+`func (o *AccountInfoRequest) GetIndustry() string`
 
 GetIndustry returns the Industry field if non-nil, zero value otherwise.
 
 ### GetIndustryOk
 
-`func (o *AccountInfoRequest) GetIndustryOk() (*map[string]interface{}, bool)`
+`func (o *AccountInfoRequest) GetIndustryOk() (*string, bool)`
 
 GetIndustryOk returns a tuple with the Industry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIndustry
 
-`func (o *AccountInfoRequest) SetIndustry(v map[string]interface{})`
+`func (o *AccountInfoRequest) SetIndustry(v string)`
 
 SetIndustry sets Industry field to given value.
 
@@ -53,20 +53,20 @@ HasIndustry returns a boolean if a field has been set.
 
 ### GetCompanySize
 
-`func (o *AccountInfoRequest) GetCompanySize() int32`
+`func (o *AccountInfoRequest) GetCompanySize() int64`
 
 GetCompanySize returns the CompanySize field if non-nil, zero value otherwise.
 
 ### GetCompanySizeOk
 
-`func (o *AccountInfoRequest) GetCompanySizeOk() (*int32, bool)`
+`func (o *AccountInfoRequest) GetCompanySizeOk() (*int64, bool)`
 
 GetCompanySizeOk returns a tuple with the CompanySize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompanySize
 
-`func (o *AccountInfoRequest) SetCompanySize(v int32)`
+`func (o *AccountInfoRequest) SetCompanySize(v int64)`
 
 SetCompanySize sets CompanySize field to given value.
 

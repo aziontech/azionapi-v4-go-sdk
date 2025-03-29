@@ -4,72 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteLoggedAccount**](AccountsLoggedInAPI.md#DeleteLoggedAccount) | **Delete** /account/account | Delete logged account
 [**PartialUpdateLoggedAccount**](AccountsLoggedInAPI.md#PartialUpdateLoggedAccount) | **Patch** /account/account | Partially update logged account details
 [**RetrieveLoggedAccountDetails**](AccountsLoggedInAPI.md#RetrieveLoggedAccountDetails) | **Get** /account/account | Retrieve logged account details
 [**UpdateLoggedAccount**](AccountsLoggedInAPI.md#UpdateLoggedAccount) | **Put** /account/account | Update logged account details
 
-
-
-## DeleteLoggedAccount
-
-> ResponseDeleteAccount DeleteLoggedAccount(ctx).Execute()
-
-Delete logged account
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccountsLoggedInAPI.DeleteLoggedAccount(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountsLoggedInAPI.DeleteLoggedAccount``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteLoggedAccount`: ResponseDeleteAccount
-	fmt.Fprintf(os.Stdout, "Response from `AccountsLoggedInAPI.DeleteLoggedAccount`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteLoggedAccountRequest struct via the builder pattern
-
-
-### Return type
-
-[**ResponseDeleteAccount**](ResponseDeleteAccount.md)
-
-### Authorization
-
-[TokenAuth](../README.md#TokenAuth), [BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## PartialUpdateLoggedAccount
@@ -89,7 +27,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -130,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -155,7 +93,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -221,7 +159,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/aziontech/azionapi-v4-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -262,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**CurrencyIsoCode** | [**CurrencyIsoCodeEnum**](CurrencyIsoCodeEnum.md) |  | 
-**TermsOfServiceUrl** | Pointer to **string** |  | [optional] [default to "https://www.azion.com/pt-br/documentacao/contratos/tds/"]
+**CurrencyIsoCode** | **string** | * &#x60;USD&#x60; - USD * &#x60;BRL&#x60; - BRL | 
+**TermsOfServiceUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewResellerRequest
 
-`func NewResellerRequest(name string, currencyIsoCode CurrencyIsoCodeEnum, ) *ResellerRequest`
+`func NewResellerRequest(name string, currencyIsoCode string, ) *ResellerRequest`
 
 NewResellerRequest instantiates a new ResellerRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetName sets Name field to given value.
 
 ### GetCurrencyIsoCode
 
-`func (o *ResellerRequest) GetCurrencyIsoCode() CurrencyIsoCodeEnum`
+`func (o *ResellerRequest) GetCurrencyIsoCode() string`
 
 GetCurrencyIsoCode returns the CurrencyIsoCode field if non-nil, zero value otherwise.
 
 ### GetCurrencyIsoCodeOk
 
-`func (o *ResellerRequest) GetCurrencyIsoCodeOk() (*CurrencyIsoCodeEnum, bool)`
+`func (o *ResellerRequest) GetCurrencyIsoCodeOk() (*string, bool)`
 
 GetCurrencyIsoCodeOk returns a tuple with the CurrencyIsoCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrencyIsoCode
 
-`func (o *ResellerRequest) SetCurrencyIsoCode(v CurrencyIsoCodeEnum)`
+`func (o *ResellerRequest) SetCurrencyIsoCode(v string)`
 
 SetCurrencyIsoCode sets CurrencyIsoCode field to given value.
 

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | [readonly] 
+**Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **Active** | **bool** |  | [readonly] 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
-**ParentId** | **int32** |  | [readonly] 
+**ParentId** | **int64** |  | [readonly] 
 **Created** | **time.Time** |  | [readonly] 
 **Info** | **map[string]interface{}** |  | [readonly] 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewBrand
 
-`func NewBrand(id int32, name string, active bool, lastEditor string, lastModified time.Time, parentId int32, created time.Time, info map[string]interface{}, ) *Brand`
+`func NewBrand(id int64, name string, active bool, lastEditor string, lastModified time.Time, parentId int64, created time.Time, info map[string]interface{}, ) *Brand`
 
 NewBrand instantiates a new Brand object
 This constructor will assign default values to properties that have it defined,
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Brand) GetId() int32`
+`func (o *Brand) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Brand) GetIdOk() (*int32, bool)`
+`func (o *Brand) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Brand) SetId(v int32)`
+`func (o *Brand) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -134,20 +134,20 @@ SetLastModified sets LastModified field to given value.
 
 ### GetParentId
 
-`func (o *Brand) GetParentId() int32`
+`func (o *Brand) GetParentId() int64`
 
 GetParentId returns the ParentId field if non-nil, zero value otherwise.
 
 ### GetParentIdOk
 
-`func (o *Brand) GetParentIdOk() (*int32, bool)`
+`func (o *Brand) GetParentIdOk() (*int64, bool)`
 
 GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParentId
 
-`func (o *Brand) SetParentId(v int32)`
+`func (o *Brand) SetParentId(v int64)`
 
 SetParentId sets ParentId field to given value.
 
