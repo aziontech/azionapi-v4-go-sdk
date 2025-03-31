@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**CurrencyIsoCode** | Pointer to [**CurrencyIsoCodeEnum**](CurrencyIsoCodeEnum.md) |  | [optional] 
-**TermsOfServiceUrl** | Pointer to **string** |  | [optional] [default to "https://www.azion.com/pt-br/documentacao/contratos/tds/"]
+**CurrencyIsoCode** | Pointer to **string** | * &#x60;USD&#x60; - USD * &#x60;BRL&#x60; - BRL | [optional] 
+**TermsOfServiceUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCurrencyIsoCode
 
-`func (o *PatchedAccountRequest) GetCurrencyIsoCode() CurrencyIsoCodeEnum`
+`func (o *PatchedAccountRequest) GetCurrencyIsoCode() string`
 
 GetCurrencyIsoCode returns the CurrencyIsoCode field if non-nil, zero value otherwise.
 
 ### GetCurrencyIsoCodeOk
 
-`func (o *PatchedAccountRequest) GetCurrencyIsoCodeOk() (*CurrencyIsoCodeEnum, bool)`
+`func (o *PatchedAccountRequest) GetCurrencyIsoCodeOk() (*string, bool)`
 
 GetCurrencyIsoCodeOk returns a tuple with the CurrencyIsoCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrencyIsoCode
 
-`func (o *PatchedAccountRequest) SetCurrencyIsoCode(v CurrencyIsoCodeEnum)`
+`func (o *PatchedAccountRequest) SetCurrencyIsoCode(v string)`
 
 SetCurrencyIsoCode sets CurrencyIsoCode field to given value.
 

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**ParentId** | **int32** |  | 
+**ParentId** | **int64** |  | 
 
 ## Methods
 
 ### NewCreateWorkspaceRequest
 
-`func NewCreateWorkspaceRequest(name string, parentId int32, ) *CreateWorkspaceRequest`
+`func NewCreateWorkspaceRequest(name string, parentId int64, ) *CreateWorkspaceRequest`
 
 NewCreateWorkspaceRequest instantiates a new CreateWorkspaceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetName sets Name field to given value.
 
 ### GetParentId
 
-`func (o *CreateWorkspaceRequest) GetParentId() int32`
+`func (o *CreateWorkspaceRequest) GetParentId() int64`
 
 GetParentId returns the ParentId field if non-nil, zero value otherwise.
 
 ### GetParentIdOk
 
-`func (o *CreateWorkspaceRequest) GetParentIdOk() (*int32, bool)`
+`func (o *CreateWorkspaceRequest) GetParentIdOk() (*int64, bool)`
 
 GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParentId
 
-`func (o *CreateWorkspaceRequest) SetParentId(v int32)`
+`func (o *CreateWorkspaceRequest) SetParentId(v int64)`
 
 SetParentId sets ParentId field to given value.
 
