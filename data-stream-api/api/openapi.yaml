@@ -1,0 +1,2487 @@
+openapi: 3.0.3
+info:
+  description: REST API OpenAPI documentation for the Data Stream
+  title: data-stream-api
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /data_stream/data_sets:
+    get:
+      description: List all Data Sets owned by your account.
+      operationId: listDataSets
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A numeric value that indicates the number of items per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseListDataSetList'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataSet'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: List Data Sets
+      tags:
+      - Data Stream - Data Sets
+    post:
+      description: Create a new custom Data Set in your account.
+      operationId: createDataSet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSetRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataSet'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataSet'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataSet'
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Create a Data Set
+      tags:
+      - Data Stream - Data Sets
+  /data_stream/data_sets/{id}:
+    delete:
+      description: Destruction of a specific custom Data Set in your account.
+      operationId: destroyDataSet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteDataSet'
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteDataSet'
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataSet'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Destroy a Data Set
+      tags:
+      - Data Stream - Data Sets
+    get:
+      description: Retrieve details from a specific Data Set in your account.
+      operationId: retrieveDataSet
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRetrieveDataSet'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataSet'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Retrieve details of a Data Set
+      tags:
+      - Data Stream - Data Sets
+    patch:
+      description: Update one or more fields of an existing custom Data Set.
+      operationId: partialUpdateDataSet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataSetRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataSet'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataSet'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataSet'
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Partially update a Data Set
+      tags:
+      - Data Stream - Data Sets
+    put:
+      description: Update an existing custom Data Set.
+      operationId: updateDataSet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSetRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataSet'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataSet'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataSet'
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Update a Data Set
+      tags:
+      - Data Stream - Data Sets
+  /data_stream/data_sources:
+    get:
+      description: List all Data Sources.
+      operationId: listDataSources
+      parameters:
+      - explode: true
+        in: query
+        name: active
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A numeric value that indicates the number of items per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseListDataSourceList'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataSource'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: List of Data Sources
+      tags:
+      - Data Stream - Data Sources
+  /data_stream/streams:
+    get:
+      description: List all Data Streams owned by your account.
+      operationId: listDataStreams
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A numeric value that indicates the number of items per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseListDataStreamList'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataStream'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: List Data Streams
+      tags:
+      - Data Stream - Data Streams
+    post:
+      description: Create a new Data Stream in your account.
+      operationId: createDataStream
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataStreamRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataStream'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataStream'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataStream'
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Create a Data Stream
+      tags:
+      - Data Stream - Data Streams
+  /data_stream/streams/{id}:
+    delete:
+      description: Destruction of a specific Data Stream in your account.
+      operationId: destroyDataStream
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteDataStream'
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteDataStream'
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataStream'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Destroy a Data Stream
+      tags:
+      - Data Stream - Data Streams
+    get:
+      description: Retrieve details from a specific Data Stream in your account.
+      operationId: retrieveDataStream
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRetrieveDataStream'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataStream'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Retrieve details of a Data Stream
+      tags:
+      - Data Stream - Data Streams
+    patch:
+      description: Update one or more fields of an existing Data Stream.
+      operationId: partialUpdateDataStream
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataStreamRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataStream'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataStream'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataStream'
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Partially update a Data Stream
+      tags:
+      - Data Stream - Data Streams
+    put:
+      description: Update an existing Data Stream.
+      operationId: updateDataStream
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataStreamRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataStream'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestDataStream'
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataStream'
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Update a Data Stream
+      tags:
+      - Data Stream - Data Streams
+components:
+  schemas:
+    AWSKinesisFirehoseEndpoint:
+      additionalProperties: false
+      properties:
+        access_key:
+          maxLength: 150
+          type: string
+        stream_name:
+          maxLength: 64
+          type: string
+        region:
+          maxLength: 50
+          type: string
+        secret_key:
+          maxLength: 150
+          type: string
+      required:
+      - access_key
+      - region
+      - secret_key
+      - stream_name
+      title: AWSKinesisFirehoseEndpoint
+      type: object
+    AWSKinesisFirehoseEndpointRequest:
+      additionalProperties: false
+      properties:
+        access_key:
+          maxLength: 150
+          minLength: 1
+          type: string
+        stream_name:
+          maxLength: 64
+          minLength: 1
+          type: string
+        region:
+          maxLength: 50
+          minLength: 1
+          type: string
+        secret_key:
+          maxLength: 150
+          minLength: 1
+          type: string
+      required:
+      - access_key
+      - region
+      - secret_key
+      - stream_name
+      title: AWSKinesisFirehoseEndpointRequest
+      type: object
+    AzureBlobStorageEndpoint:
+      additionalProperties: false
+      properties:
+        storage_account:
+          maxLength: 100
+          type: string
+        container_name:
+          maxLength: 150
+          type: string
+        blob_sas_token:
+          maxLength: 250
+          type: string
+      required:
+      - blob_sas_token
+      - container_name
+      - storage_account
+      title: AzureBlobStorageEndpoint
+      type: object
+    AzureBlobStorageEndpointRequest:
+      additionalProperties: false
+      properties:
+        storage_account:
+          maxLength: 100
+          minLength: 1
+          type: string
+        container_name:
+          maxLength: 150
+          minLength: 1
+          type: string
+        blob_sas_token:
+          maxLength: 250
+          minLength: 1
+          type: string
+      required:
+      - blob_sas_token
+      - container_name
+      - storage_account
+      title: AzureBlobStorageEndpointRequest
+      type: object
+    AzureMonitorEndpoint:
+      additionalProperties: false
+      properties:
+        log_type:
+          maxLength: 100
+          type: string
+        shared_key:
+          maxLength: 150
+          type: string
+        time_generated_field:
+          maxLength: 50
+          nullable: true
+          type: string
+        workspace_id:
+          maxLength: 150
+          type: string
+      required:
+      - log_type
+      - shared_key
+      - workspace_id
+      title: AzureMonitorEndpoint
+      type: object
+    AzureMonitorEndpointRequest:
+      additionalProperties: false
+      properties:
+        log_type:
+          maxLength: 100
+          minLength: 1
+          type: string
+        shared_key:
+          maxLength: 150
+          minLength: 1
+          type: string
+        time_generated_field:
+          maxLength: 50
+          minLength: 1
+          nullable: true
+          type: string
+        workspace_id:
+          maxLength: 150
+          minLength: 1
+          type: string
+      required:
+      - log_type
+      - shared_key
+      - workspace_id
+      title: AzureMonitorEndpointRequest
+      type: object
+    BigQueryEndpoint:
+      additionalProperties: false
+      properties:
+        dataset_id:
+          maxLength: 1024
+          type: string
+        project_id:
+          maxLength: 100
+          type: string
+        table_id:
+          maxLength: 1024
+          type: string
+        service_account_key:
+          type: string
+      required:
+      - dataset_id
+      - project_id
+      - service_account_key
+      - table_id
+      title: BigQueryEndpoint
+      type: object
+    BigQueryEndpointRequest:
+      additionalProperties: false
+      properties:
+        dataset_id:
+          maxLength: 1024
+          minLength: 1
+          type: string
+        project_id:
+          maxLength: 100
+          minLength: 1
+          type: string
+        table_id:
+          maxLength: 1024
+          minLength: 1
+          type: string
+        service_account_key:
+          minLength: 1
+          type: string
+      required:
+      - dataset_id
+      - project_id
+      - service_account_key
+      - table_id
+      title: BigQueryEndpointRequest
+      type: object
+    ContentTypeEnum:
+      description: |-
+        * `plain/text` - plain/text
+        * `application/gzip` - application/gzip
+      title: ContentTypeEnum
+      type: string
+    DataSet:
+      additionalProperties: false
+      example:
+        last_editor: last_editor
+        custom: true
+        name: name
+        active: true
+        data_set: data_set
+        id: 0
+        last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        last_editor:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        custom:
+          readOnly: true
+          type: boolean
+        active:
+          type: boolean
+        data_set:
+          type: string
+      required:
+      - custom
+      - data_set
+      - id
+      - last_editor
+      - last_modified
+      - name
+      title: DataSet
+      type: object
+    DataSetRequest:
+      additionalProperties: false
+      example:
+        name: name
+        active: true
+        data_set: data_set
+      properties:
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        active:
+          type: boolean
+        data_set:
+          minLength: 1
+          type: string
+      required:
+      - data_set
+      - name
+      title: DataSetRequest
+      type: object
+    DataSourceEnum:
+      description: |-
+        * `http` - Edge Applications
+        * `waf` - WAF Events
+        * `cells_console` - Edge Functions
+        * `rtm_activity` - Activity History
+      title: DataSourceEnum
+      type: string
+    DataStream:
+      additionalProperties: false
+      example:
+        product_version: product_version
+        endpoint:
+          headers:
+            key: headers
+          log_line_separator: log_line_separator
+          payload_format: payload_format
+          url: https://openapi-generator.tech
+          max_size: 1211053680
+        last_editor: last_editor
+        name: name
+        active: true
+        id: 0
+        filters:
+          sampling_rate: 15
+          sampling_enable: true
+          workloads:
+          - 5
+          - 5
+        data_set_id: 6
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        data_source: data_source
+      properties:
+        id:
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 100
+          pattern: .*
+          type: string
+        data_source:
+          description: |-
+            * `http` - Edge Applications
+            * `waf` - WAF Events
+            * `cells_console` - Edge Functions
+            * `rtm_activity` - Activity History
+          title: DataSourceEnum
+          type: string
+        data_set_id:
+          format: int64
+          type: integer
+        active:
+          type: boolean
+        filters:
+          $ref: '#/components/schemas/DataStreamFilter'
+        last_editor:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        product_version:
+          readOnly: true
+          type: string
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
+      required:
+      - data_set_id
+      - data_source
+      - endpoint
+      - filters
+      - id
+      - last_editor
+      - last_modified
+      - name
+      - product_version
+      title: DataStream
+      type: object
+    DataStreamFilter:
+      additionalProperties: false
+      example:
+        sampling_rate: 15
+        sampling_enable: true
+        workloads:
+        - 5
+        - 5
+      properties:
+        sampling_enable:
+          type: boolean
+        sampling_rate:
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
+        workloads:
+          items:
+            format: int64
+            type: integer
+          type: array
+      title: DataStreamFilter
+      type: object
+    DataStreamFilterRequest:
+      additionalProperties: false
+      example:
+        sampling_rate: 60
+        sampling_enable: true
+        workloads:
+        - 1
+        - 1
+      properties:
+        sampling_enable:
+          type: boolean
+        sampling_rate:
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
+        workloads:
+          items:
+            format: int64
+            type: integer
+          type: array
+      title: DataStreamFilterRequest
+      type: object
+    DataStreamRequest:
+      additionalProperties: false
+      example:
+        endpoint:
+          headers:
+            key: headers
+          log_line_separator: log_line_separator
+          payload_format: payload_format
+          url: https://openapi-generator.tech
+          max_size: 1280762295
+        name: name
+        active: true
+        filters:
+          sampling_rate: 60
+          sampling_enable: true
+          workloads:
+          - 1
+          - 1
+        data_set_id: 0
+        data_source: data_source
+      properties:
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        data_source:
+          description: |-
+            * `http` - Edge Applications
+            * `waf` - WAF Events
+            * `cells_console` - Edge Functions
+            * `rtm_activity` - Activity History
+          title: DataSourceEnum
+          type: string
+        data_set_id:
+          format: int64
+          type: integer
+        active:
+          type: boolean
+        filters:
+          $ref: '#/components/schemas/DataStreamFilterRequest'
+        endpoint:
+          $ref: '#/components/schemas/EndpointRequest'
+      required:
+      - data_set_id
+      - data_source
+      - endpoint
+      - filters
+      - name
+      title: DataStreamRequest
+      type: object
+    DatadogEndpoint:
+      additionalProperties: false
+      properties:
+        url:
+          format: uri
+          maxLength: 1024
+          type: string
+        api_key:
+          maxLength: 255
+          type: string
+      required:
+      - api_key
+      - url
+      title: DatadogEndpoint
+      type: object
+    DatadogEndpointRequest:
+      additionalProperties: false
+      properties:
+        url:
+          format: uri
+          maxLength: 1024
+          minLength: 1
+          type: string
+        api_key:
+          maxLength: 255
+          minLength: 1
+          type: string
+      required:
+      - api_key
+      - url
+      title: DatadogEndpointRequest
+      type: object
+    DefaultErrorResponse:
+      additionalProperties: false
+      example:
+        detail: detail
+      properties:
+        detail:
+          maxLength: 4096
+          minLength: 1
+          pattern: .*
+          type: string
+      title: DefaultErrorResponse
+      type: object
+    ElasticsearchEndpoint:
+      additionalProperties: false
+      properties:
+        url:
+          format: uri
+          maxLength: 1024
+          type: string
+        api_key:
+          maxLength: 255
+          type: string
+      required:
+      - api_key
+      - url
+      title: ElasticsearchEndpoint
+      type: object
+    ElasticsearchEndpointRequest:
+      additionalProperties: false
+      properties:
+        url:
+          format: uri
+          maxLength: 1024
+          minLength: 1
+          type: string
+        api_key:
+          maxLength: 255
+          minLength: 1
+          type: string
+      required:
+      - api_key
+      - url
+      title: ElasticsearchEndpointRequest
+      type: object
+    Endpoint:
+      additionalProperties: true
+      discriminator:
+        mapping:
+          standard: '#/components/schemas/HttpPostEndpoint'
+          kafka: '#/components/schemas/KafkaEndpoint'
+          s3: '#/components/schemas/S3Endpoint'
+          big_query: '#/components/schemas/BigQueryEndpoint'
+          elasticsearch: '#/components/schemas/ElasticsearchEndpoint'
+          aws_kinesis_firehose: '#/components/schemas/AWSKinesisFirehoseEndpoint'
+          datadog: '#/components/schemas/DatadogEndpoint'
+          qradar: '#/components/schemas/QRadarEndpoint'
+          azure_monitor: '#/components/schemas/AzureMonitorEndpoint'
+          azure_blob_storage: '#/components/schemas/AzureBlobStorageEndpoint'
+          splunk: '#/components/schemas/SplunkEndpoint'
+        propertyName: endpoint_type
+      oneOf:
+      - $ref: '#/components/schemas/HttpPostEndpoint'
+      - $ref: '#/components/schemas/KafkaEndpoint'
+      - $ref: '#/components/schemas/S3Endpoint'
+      - $ref: '#/components/schemas/BigQueryEndpoint'
+      - $ref: '#/components/schemas/ElasticsearchEndpoint'
+      - $ref: '#/components/schemas/AWSKinesisFirehoseEndpoint'
+      - $ref: '#/components/schemas/DatadogEndpoint'
+      - $ref: '#/components/schemas/QRadarEndpoint'
+      - $ref: '#/components/schemas/AzureMonitorEndpoint'
+      - $ref: '#/components/schemas/AzureBlobStorageEndpoint'
+      - $ref: '#/components/schemas/SplunkEndpoint'
+      title: Endpoint
+    EndpointRequest:
+      additionalProperties: true
+      discriminator:
+        mapping:
+          standard: '#/components/schemas/HttpPostEndpointRequest'
+          kafka: '#/components/schemas/KafkaEndpointRequest'
+          s3: '#/components/schemas/S3EndpointRequest'
+          big_query: '#/components/schemas/BigQueryEndpointRequest'
+          elasticsearch: '#/components/schemas/ElasticsearchEndpointRequest'
+          aws_kinesis_firehose: '#/components/schemas/AWSKinesisFirehoseEndpointRequest'
+          datadog: '#/components/schemas/DatadogEndpointRequest'
+          qradar: '#/components/schemas/QRadarEndpointRequest'
+          azure_monitor: '#/components/schemas/AzureMonitorEndpointRequest'
+          azure_blob_storage: '#/components/schemas/AzureBlobStorageEndpointRequest'
+          splunk: '#/components/schemas/SplunkEndpointRequest'
+        propertyName: endpoint_type
+      oneOf:
+      - $ref: '#/components/schemas/HttpPostEndpointRequest'
+      - $ref: '#/components/schemas/KafkaEndpointRequest'
+      - $ref: '#/components/schemas/S3EndpointRequest'
+      - $ref: '#/components/schemas/BigQueryEndpointRequest'
+      - $ref: '#/components/schemas/ElasticsearchEndpointRequest'
+      - $ref: '#/components/schemas/AWSKinesisFirehoseEndpointRequest'
+      - $ref: '#/components/schemas/DatadogEndpointRequest'
+      - $ref: '#/components/schemas/QRadarEndpointRequest'
+      - $ref: '#/components/schemas/AzureMonitorEndpointRequest'
+      - $ref: '#/components/schemas/AzureBlobStorageEndpointRequest'
+      - $ref: '#/components/schemas/SplunkEndpointRequest'
+      title: EndpointRequest
+    HttpPostEndpoint:
+      additionalProperties: false
+      example:
+        headers:
+          key: headers
+        log_line_separator: log_line_separator
+        payload_format: payload_format
+        url: https://openapi-generator.tech
+        max_size: 1211053680
+      properties:
+        url:
+          format: uri
+          maxLength: 200
+          type: string
+        log_line_separator:
+          maxLength: 100
+          type: string
+        payload_format:
+          maxLength: 250
+          type: string
+        max_size:
+          format: int64
+          maximum: 2147483647
+          minimum: 1000000
+          nullable: true
+          type: integer
+        headers:
+          additionalProperties:
+            maxLength: 1024
+            type: string
+          type: object
+      required:
+      - headers
+      - url
+      title: HttpPostEndpoint
+      type: object
+    HttpPostEndpointRequest:
+      additionalProperties: false
+      example:
+        headers:
+          key: headers
+        log_line_separator: log_line_separator
+        payload_format: payload_format
+        url: https://openapi-generator.tech
+        max_size: 1280762295
+      properties:
+        url:
+          format: uri
+          maxLength: 200
+          minLength: 1
+          type: string
+        log_line_separator:
+          maxLength: 100
+          type: string
+        payload_format:
+          maxLength: 250
+          minLength: 1
+          type: string
+        max_size:
+          format: int64
+          maximum: 2147483647
+          minimum: 1000000
+          nullable: true
+          type: integer
+        headers:
+          additionalProperties:
+            maxLength: 1024
+            minLength: 1
+            type: string
+          type: object
+      required:
+      - headers
+      - url
+      title: HttpPostEndpointRequest
+      type: object
+    KafkaEndpoint:
+      additionalProperties: false
+      properties:
+        bootstrap_servers:
+          maxLength: 150
+          type: string
+        kafka_topic:
+          maxLength: 150
+          type: string
+        use_tls:
+          type: boolean
+      required:
+      - bootstrap_servers
+      - kafka_topic
+      - use_tls
+      title: KafkaEndpoint
+      type: object
+    KafkaEndpointRequest:
+      additionalProperties: false
+      properties:
+        bootstrap_servers:
+          maxLength: 150
+          minLength: 1
+          type: string
+        kafka_topic:
+          maxLength: 150
+          minLength: 1
+          type: string
+        use_tls:
+          type: boolean
+      required:
+      - bootstrap_servers
+      - kafka_topic
+      - use_tls
+      title: KafkaEndpointRequest
+      type: object
+    PaginatedResponseListDataSetList:
+      additionalProperties: false
+      example:
+        count: 123
+        results:
+        - last_editor: last_editor
+          custom: true
+          name: name
+          active: true
+          data_set: data_set
+          id: 0
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        - last_editor: last_editor
+          custom: true
+          name: name
+          active: true
+          data_set: data_set
+          id: 0
+          last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        count:
+          example: 123
+          format: int64
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseListDataSet'
+          type: array
+      title: PaginatedResponseListDataSetList
+      type: object
+    PaginatedResponseListDataSourceList:
+      additionalProperties: false
+      example:
+        count: 123
+        results:
+        - name: name
+          active: true
+          slug: slug
+        - name: name
+          active: true
+          slug: slug
+      properties:
+        count:
+          example: 123
+          format: int64
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseListDataSource'
+          type: array
+      title: PaginatedResponseListDataSourceList
+      type: object
+    PaginatedResponseListDataStreamList:
+      additionalProperties: false
+      example:
+        count: 123
+        results:
+        - product_version: product_version
+          endpoint:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 1211053680
+          last_editor: last_editor
+          name: name
+          active: true
+          id: 0
+          filters:
+            sampling_rate: 15
+            sampling_enable: true
+            workloads:
+            - 5
+            - 5
+          data_set_id: 6
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          data_source: data_source
+        - product_version: product_version
+          endpoint:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 1211053680
+          last_editor: last_editor
+          name: name
+          active: true
+          id: 0
+          filters:
+            sampling_rate: 15
+            sampling_enable: true
+            workloads:
+            - 5
+            - 5
+          data_set_id: 6
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          data_source: data_source
+      properties:
+        count:
+          example: 123
+          format: int64
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseListDataStream'
+          type: array
+      title: PaginatedResponseListDataStreamList
+      type: object
+    PatchedDataSetRequest:
+      additionalProperties: false
+      example:
+        name: name
+        active: true
+        data_set: data_set
+      properties:
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        active:
+          type: boolean
+        data_set:
+          minLength: 1
+          type: string
+      title: PatchedDataSetRequest
+      type: object
+    PatchedDataStreamRequest:
+      additionalProperties: false
+      example:
+        name: name
+        active: true
+        filters:
+          sampling_rate: 60
+          sampling_enable: true
+          workloads:
+          - 1
+          - 1
+        data_set_id: 0
+        data_source: data_source
+      properties:
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        data_source:
+          description: |-
+            * `http` - Edge Applications
+            * `waf` - WAF Events
+            * `cells_console` - Edge Functions
+            * `rtm_activity` - Activity History
+          title: DataSourceEnum
+          type: string
+        data_set_id:
+          format: int64
+          type: integer
+        active:
+          type: boolean
+        filters:
+          $ref: '#/components/schemas/DataStreamFilterRequest'
+      title: PatchedDataStreamRequest
+      type: object
+    QRadarEndpoint:
+      additionalProperties: false
+      properties:
+        url:
+          maxLength: 1024
+          type: string
+      required:
+      - url
+      title: QRadarEndpoint
+      type: object
+    QRadarEndpointRequest:
+      additionalProperties: false
+      properties:
+        url:
+          maxLength: 1024
+          minLength: 1
+          type: string
+      required:
+      - url
+      title: QRadarEndpointRequest
+      type: object
+    ResponseBadRequestDataSet:
+      additionalProperties: false
+      example:
+        custom:
+        - custom
+        - custom
+        last_editor:
+        - last_editor
+        - last_editor
+        name:
+        - name
+        - name
+        active:
+        - active
+        - active
+        data_set:
+        - data_set
+        - data_set
+        detail: detail
+        last_modified:
+        - last_modified
+        - last_modified
+      properties:
+        name:
+          items:
+            type: string
+          type: array
+        active:
+          items:
+            type: string
+          type: array
+        data_set:
+          items:
+            type: string
+          type: array
+        custom:
+          items:
+            type: string
+          type: array
+        last_editor:
+          items:
+            type: string
+          type: array
+        last_modified:
+          items:
+            type: string
+          type: array
+        detail:
+          maxLength: 4096
+          minLength: 1
+          pattern: .*
+          type: string
+      title: ResponseBadRequestDataSet
+      type: object
+    ResponseBadRequestDataSource:
+      additionalProperties: false
+      example:
+        detail: detail
+      properties:
+        detail:
+          maxLength: 4096
+          minLength: 1
+          pattern: .*
+          type: string
+      title: ResponseBadRequestDataSource
+      type: object
+    ResponseBadRequestDataStream:
+      additionalProperties: false
+      example:
+        product_version:
+        - product_version
+        - product_version
+        last_editor:
+        - last_editor
+        - last_editor
+        name:
+        - name
+        - name
+        active:
+        - active
+        - active
+        filters:
+          sampling_rate:
+          - sampling_rate
+          - sampling_rate
+          sampling_enable:
+          - sampling_enable
+          - sampling_enable
+          workloads:
+          - ResponseBadRequestSerializerMetaclassFiltersField_workloads
+          - ResponseBadRequestSerializerMetaclassFiltersField_workloads
+        detail: detail
+        data_set_id:
+        - data_set_id
+        - data_set_id
+        last_modified:
+        - last_modified
+        - last_modified
+        data_source:
+        - data_source
+        - data_source
+      properties:
+        name:
+          items:
+            type: string
+          type: array
+        data_source:
+          items:
+            type: string
+          type: array
+        data_set_id:
+          items:
+            type: string
+          type: array
+        active:
+          items:
+            type: string
+          type: array
+        filters:
+          $ref: '#/components/schemas/ResponseBadRequestSerializerMetaclassFiltersField'
+        product_version:
+          items:
+            type: string
+          type: array
+        last_editor:
+          items:
+            type: string
+          type: array
+        last_modified:
+          items:
+            type: string
+          type: array
+        detail:
+          maxLength: 4096
+          minLength: 1
+          pattern: .*
+          type: string
+      title: ResponseBadRequestDataStream
+      type: object
+    ResponseBadRequestSerializerMetaclassFiltersField:
+      additionalProperties: false
+      example:
+        sampling_rate:
+        - sampling_rate
+        - sampling_rate
+        sampling_enable:
+        - sampling_enable
+        - sampling_enable
+        workloads:
+        - ResponseBadRequestSerializerMetaclassFiltersField_workloads
+        - ResponseBadRequestSerializerMetaclassFiltersField_workloads
+      properties:
+        sampling_enable:
+          items:
+            type: string
+          type: array
+        sampling_rate:
+          items:
+            type: string
+          type: array
+        workloads:
+          $ref: '#/components/schemas/ResponseBadRequestSerializerMetaclassFiltersField_workloads'
+      title: ResponseBadRequestSerializerMetaclassFiltersField
+      type: object
+    ResponseDataSet:
+      additionalProperties: false
+      example:
+        data:
+          last_editor: last_editor
+          custom: true
+          name: name
+          active: true
+          data_set: data_set
+          id: 0
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        state: state
+      properties:
+        state:
+          description: |-
+            * `pending` - pending
+            * `executed` - executed
+          title: StateEnum
+          type: string
+        data:
+          $ref: '#/components/schemas/DataSet'
+      required:
+      - data
+      - state
+      title: ResponseDataSet
+      type: object
+    ResponseDataStream:
+      additionalProperties: false
+      example:
+        data:
+          product_version: product_version
+          endpoint:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 1211053680
+          last_editor: last_editor
+          name: name
+          active: true
+          id: 0
+          filters:
+            sampling_rate: 15
+            sampling_enable: true
+            workloads:
+            - 5
+            - 5
+          data_set_id: 6
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          data_source: data_source
+        state: state
+      properties:
+        state:
+          description: |-
+            * `pending` - pending
+            * `executed` - executed
+          title: StateEnum
+          type: string
+        data:
+          $ref: '#/components/schemas/DataStream'
+      required:
+      - data
+      - state
+      title: ResponseDataStream
+      type: object
+    ResponseDeleteDataSet:
+      additionalProperties: false
+      example:
+        data: ""
+        state: state
+      properties:
+        state:
+          description: |-
+            * `pending` - pending
+            * `executed` - executed
+          title: StateEnum
+          type: string
+        data:
+          allOf:
+          - $ref: '#/components/schemas/DataSet'
+          nullable: true
+      required:
+      - data
+      - state
+      title: ResponseDeleteDataSet
+      type: object
+    ResponseDeleteDataStream:
+      additionalProperties: false
+      example:
+        data: ""
+        state: state
+      properties:
+        state:
+          description: |-
+            * `pending` - pending
+            * `executed` - executed
+          title: StateEnum
+          type: string
+        data:
+          allOf:
+          - $ref: '#/components/schemas/DataStream'
+          nullable: true
+      required:
+      - data
+      - state
+      title: ResponseDeleteDataStream
+      type: object
+    ResponseListDataSet:
+      additionalProperties: false
+      example:
+        last_editor: last_editor
+        custom: true
+        name: name
+        active: true
+        data_set: data_set
+        id: 0
+        last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        last_editor:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        custom:
+          readOnly: true
+          type: boolean
+        active:
+          type: boolean
+        data_set:
+          type: string
+      required:
+      - custom
+      - data_set
+      - id
+      - last_editor
+      - last_modified
+      - name
+      title: ResponseListDataSet
+      type: object
+    ResponseListDataSource:
+      additionalProperties: false
+      example:
+        name: name
+        active: true
+        slug: slug
+      properties:
+        slug:
+          pattern: "^[-a-zA-Z0-9_]+$"
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          title: DataSource Name
+          type: string
+        active:
+          readOnly: true
+          title: Is Active
+          type: boolean
+      required:
+      - active
+      - name
+      - slug
+      title: ResponseListDataSource
+      type: object
+    ResponseListDataStream:
+      additionalProperties: false
+      example:
+        product_version: product_version
+        endpoint:
+          headers:
+            key: headers
+          log_line_separator: log_line_separator
+          payload_format: payload_format
+          url: https://openapi-generator.tech
+          max_size: 1211053680
+        last_editor: last_editor
+        name: name
+        active: true
+        id: 0
+        filters:
+          sampling_rate: 15
+          sampling_enable: true
+          workloads:
+          - 5
+          - 5
+        data_set_id: 6
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        data_source: data_source
+      properties:
+        id:
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 100
+          pattern: .*
+          type: string
+        data_source:
+          description: |-
+            * `http` - Edge Applications
+            * `waf` - WAF Events
+            * `cells_console` - Edge Functions
+            * `rtm_activity` - Activity History
+          title: DataSourceEnum
+          type: string
+        data_set_id:
+          format: int64
+          type: integer
+        active:
+          type: boolean
+        filters:
+          $ref: '#/components/schemas/DataStreamFilter'
+        last_editor:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        product_version:
+          readOnly: true
+          type: string
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
+      required:
+      - data_set_id
+      - data_source
+      - endpoint
+      - filters
+      - id
+      - last_editor
+      - last_modified
+      - name
+      - product_version
+      title: ResponseListDataStream
+      type: object
+    ResponseRetrieveDataSet:
+      additionalProperties: false
+      example:
+        data:
+          last_editor: last_editor
+          custom: true
+          name: name
+          active: true
+          data_set: data_set
+          id: 0
+          last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        data:
+          $ref: '#/components/schemas/DataSet'
+      required:
+      - data
+      title: ResponseRetrieveDataSet
+      type: object
+    ResponseRetrieveDataStream:
+      additionalProperties: false
+      example:
+        data:
+          product_version: product_version
+          endpoint:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 1211053680
+          last_editor: last_editor
+          name: name
+          active: true
+          id: 0
+          filters:
+            sampling_rate: 15
+            sampling_enable: true
+            workloads:
+            - 5
+            - 5
+          data_set_id: 6
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          data_source: data_source
+      properties:
+        data:
+          $ref: '#/components/schemas/DataStream'
+      required:
+      - data
+      title: ResponseRetrieveDataStream
+      type: object
+    S3Endpoint:
+      additionalProperties: false
+      properties:
+        access_key:
+          maxLength: 150
+          type: string
+        region:
+          maxLength: 50
+          type: string
+        object_key_prefix:
+          maxLength: 150
+          nullable: true
+          type: string
+        bucket_name:
+          maxLength: 150
+          type: string
+        content_type:
+          description: |-
+            * `plain/text` - plain/text
+            * `application/gzip` - application/gzip
+          title: ContentTypeEnum
+          type: string
+        host_url:
+          format: uri
+          maxLength: 200
+          type: string
+      required:
+      - access_key
+      - bucket_name
+      - content_type
+      - host_url
+      - region
+      title: S3Endpoint
+      type: object
+    S3EndpointRequest:
+      additionalProperties: false
+      properties:
+        access_key:
+          maxLength: 150
+          minLength: 1
+          type: string
+        region:
+          maxLength: 50
+          minLength: 1
+          type: string
+        object_key_prefix:
+          maxLength: 150
+          minLength: 1
+          nullable: true
+          type: string
+        bucket_name:
+          maxLength: 150
+          minLength: 1
+          type: string
+        content_type:
+          description: |-
+            * `plain/text` - plain/text
+            * `application/gzip` - application/gzip
+          title: ContentTypeEnum
+          type: string
+        host_url:
+          format: uri
+          maxLength: 200
+          minLength: 1
+          type: string
+      required:
+      - access_key
+      - bucket_name
+      - content_type
+      - host_url
+      - region
+      title: S3EndpointRequest
+      type: object
+    SplunkEndpoint:
+      additionalProperties: false
+      properties:
+        url:
+          format: uri
+          maxLength: 1024
+          type: string
+        api_key:
+          maxLength: 255
+          type: string
+      required:
+      - api_key
+      - url
+      title: SplunkEndpoint
+      type: object
+    SplunkEndpointRequest:
+      additionalProperties: false
+      properties:
+        url:
+          format: uri
+          maxLength: 1024
+          minLength: 1
+          type: string
+        api_key:
+          maxLength: 255
+          minLength: 1
+          type: string
+      required:
+      - api_key
+      - url
+      title: SplunkEndpointRequest
+      type: object
+    StateEnum:
+      description: |-
+        * `pending` - pending
+        * `executed` - executed
+      title: StateEnum
+      type: string
+    ResponseBadRequestSerializerMetaclassFiltersField_workloads:
+      oneOf:
+      - items:
+          type: string
+        type: array
+      - additionalProperties:
+          items:
+            type: string
+          type: array
+        type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http
+    TokenAuth:
+      description: Token-based authentication with required prefix "Token"
+      in: header
+      name: Authorization
+      type: apiKey
