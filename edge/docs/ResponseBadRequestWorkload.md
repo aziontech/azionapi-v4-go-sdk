@@ -11,12 +11,12 @@ Name | Type | Description | Notes
 **LastEditor** | Pointer to **[]string** |  | [optional] 
 **LastModified** | Pointer to **[]string** |  | [optional] 
 **Active** | Pointer to **[]string** |  | [optional] 
-**AlternateDomains** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
+**AlternateDomains** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
 **NetworkMap** | Pointer to **[]string** |  | [optional] 
 **Tls** | Pointer to [**ResponseBadRequestSerializerMetaclassTlsField**](ResponseBadRequestSerializerMetaclassTlsField.md) |  | [optional] 
 **Protocols** | Pointer to [**ResponseBadRequestSerializerMetaclassProtocolsField**](ResponseBadRequestSerializerMetaclassProtocolsField.md) |  | [optional] 
 **Mtls** | Pointer to [**ResponseBadRequestSerializerMetaclassMtlsField**](ResponseBadRequestSerializerMetaclassMtlsField.md) |  | [optional] 
-**Domains** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
+**Domains** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
 **ProductVersion** | Pointer to **[]string** |  | [optional] 
 **Detail** | Pointer to **string** |  | [optional] 
 
@@ -216,20 +216,20 @@ HasActive returns a boolean if a field has been set.
 
 ### GetAlternateDomains
 
-`func (o *ResponseBadRequestWorkload) GetAlternateDomains() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestWorkload) GetAlternateDomains() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetAlternateDomains returns the AlternateDomains field if non-nil, zero value otherwise.
 
 ### GetAlternateDomainsOk
 
-`func (o *ResponseBadRequestWorkload) GetAlternateDomainsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestWorkload) GetAlternateDomainsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetAlternateDomainsOk returns a tuple with the AlternateDomains field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlternateDomains
 
-`func (o *ResponseBadRequestWorkload) SetAlternateDomains(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestWorkload) SetAlternateDomains(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetAlternateDomains sets AlternateDomains field to given value.
 
@@ -341,20 +341,20 @@ HasMtls returns a boolean if a field has been set.
 
 ### GetDomains
 
-`func (o *ResponseBadRequestWorkload) GetDomains() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestWorkload) GetDomains() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetDomains returns the Domains field if non-nil, zero value otherwise.
 
 ### GetDomainsOk
 
-`func (o *ResponseBadRequestWorkload) GetDomainsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestWorkload) GetDomainsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetDomainsOk returns a tuple with the Domains field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDomains
 
-`func (o *ResponseBadRequestWorkload) SetDomains(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestWorkload) SetDomains(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetDomains sets Domains field to given value.
 

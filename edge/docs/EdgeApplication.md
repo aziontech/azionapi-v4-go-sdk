@@ -8,16 +8,16 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
-**ProductVersion** | **NullableString** |  | [readonly] 
 **Modules** | Pointer to [**EdgeApplicationModules**](EdgeApplicationModules.md) |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
+**ProductVersion** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewEdgeApplication
 
-`func NewEdgeApplication(id int64, name string, lastEditor string, lastModified time.Time, productVersion NullableString, ) *EdgeApplication`
+`func NewEdgeApplication(id int64, name string, lastEditor string, lastModified time.Time, productVersion string, ) *EdgeApplication`
 
 NewEdgeApplication instantiates a new EdgeApplication object
 This constructor will assign default values to properties that have it defined,
@@ -112,36 +112,6 @@ and a boolean to check if the value has been set.
 SetLastModified sets LastModified field to given value.
 
 
-### GetProductVersion
-
-`func (o *EdgeApplication) GetProductVersion() string`
-
-GetProductVersion returns the ProductVersion field if non-nil, zero value otherwise.
-
-### GetProductVersionOk
-
-`func (o *EdgeApplication) GetProductVersionOk() (*string, bool)`
-
-GetProductVersionOk returns a tuple with the ProductVersion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProductVersion
-
-`func (o *EdgeApplication) SetProductVersion(v string)`
-
-SetProductVersion sets ProductVersion field to given value.
-
-
-### SetProductVersionNil
-
-`func (o *EdgeApplication) SetProductVersionNil(b bool)`
-
- SetProductVersionNil sets the value for ProductVersion to be an explicit nil
-
-### UnsetProductVersion
-`func (o *EdgeApplication) UnsetProductVersion()`
-
-UnsetProductVersion ensures that no value is present for ProductVersion, not even an explicit nil
 ### GetModules
 
 `func (o *EdgeApplication) GetModules() EdgeApplicationModules`
@@ -216,6 +186,26 @@ SetDebug sets Debug field to given value.
 `func (o *EdgeApplication) HasDebug() bool`
 
 HasDebug returns a boolean if a field has been set.
+
+### GetProductVersion
+
+`func (o *EdgeApplication) GetProductVersion() string`
+
+GetProductVersion returns the ProductVersion field if non-nil, zero value otherwise.
+
+### GetProductVersionOk
+
+`func (o *EdgeApplication) GetProductVersionOk() (*string, bool)`
+
+GetProductVersionOk returns a tuple with the ProductVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductVersion
+
+`func (o *EdgeApplication) SetProductVersion(v string)`
+
+SetProductVersion sets ProductVersion field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **[]string** |  | [optional] 
 **Id** | Pointer to **[]string** |  | [optional] 
 **Type** | Pointer to **[]string** |  | [optional] 
-**Items** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
+**Items** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
 **LastEditor** | Pointer to **[]string** |  | [optional] 
 **LastModified** | Pointer to **[]string** |  | [optional] 
 **Active** | Pointer to **[]string** |  | [optional] 
@@ -109,20 +109,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetItems
 
-`func (o *ResponseBadRequestNetworkList) GetItems() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestNetworkList) GetItems() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *ResponseBadRequestNetworkList) GetItemsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestNetworkList) GetItemsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *ResponseBadRequestNetworkList) SetItems(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestNetworkList) SetItems(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetItems sets Items field to given value.
 

@@ -26,10 +26,10 @@ type EdgeApplication struct {
 	Name string `json:"name" validate:"regexp=.*"`
 	LastEditor string `json:"last_editor" validate:"regexp=.*"`
 	LastModified time.Time `json:"last_modified"`
-	ProductVersion NullableString `json:"product_version" validate:"regexp=\\\\d+\\\\.\\\\d+"`
 	Modules *EdgeApplicationModules `json:"modules,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
+	ProductVersion string `json:"product_version"`
 }
 
 type _EdgeApplication EdgeApplication
@@ -38,7 +38,7 @@ type _EdgeApplication EdgeApplication
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEdgeApplication(id int64, name string, lastEditor string, lastModified time.Time, productVersion NullableString) *EdgeApplication {
+func NewEdgeApplication(id int64, name string, lastEditor string, lastModified time.Time, productVersion string) *EdgeApplication {
 	this := EdgeApplication{}
 	this.Id = id
 	this.Name = name
@@ -152,32 +152,6 @@ func (o *EdgeApplication) SetLastModified(v time.Time) {
 	o.LastModified = v
 }
 
-// GetProductVersion returns the ProductVersion field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *EdgeApplication) GetProductVersion() string {
-	if o == nil || o.ProductVersion.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.ProductVersion.Get()
-}
-
-// GetProductVersionOk returns a tuple with the ProductVersion field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EdgeApplication) GetProductVersionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ProductVersion.Get(), o.ProductVersion.IsSet()
-}
-
-// SetProductVersion sets field value
-func (o *EdgeApplication) SetProductVersion(v string) {
-	o.ProductVersion.Set(&v)
-}
-
 // GetModules returns the Modules field value if set, zero value otherwise.
 func (o *EdgeApplication) GetModules() EdgeApplicationModules {
 	if o == nil || IsNil(o.Modules) {
@@ -274,6 +248,30 @@ func (o *EdgeApplication) SetDebug(v bool) {
 	o.Debug = &v
 }
 
+// GetProductVersion returns the ProductVersion field value
+func (o *EdgeApplication) GetProductVersion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ProductVersion
+}
+
+// GetProductVersionOk returns a tuple with the ProductVersion field value
+// and a boolean to check if the value has been set.
+func (o *EdgeApplication) GetProductVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProductVersion, true
+}
+
+// SetProductVersion sets field value
+func (o *EdgeApplication) SetProductVersion(v string) {
+	o.ProductVersion = v
+}
+
 func (o EdgeApplication) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -288,7 +286,6 @@ func (o EdgeApplication) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["last_editor"] = o.LastEditor
 	toSerialize["last_modified"] = o.LastModified
-	toSerialize["product_version"] = o.ProductVersion.Get()
 	if !IsNil(o.Modules) {
 		toSerialize["modules"] = o.Modules
 	}
@@ -298,6 +295,7 @@ func (o EdgeApplication) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Debug) {
 		toSerialize["debug"] = o.Debug
 	}
+	toSerialize["product_version"] = o.ProductVersion
 	return toSerialize, nil
 }
 

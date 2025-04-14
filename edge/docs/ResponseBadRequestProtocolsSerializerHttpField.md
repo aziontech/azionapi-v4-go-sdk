@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Versions** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
-**HttpPorts** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
-**HttpsPorts** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
-**QuicPorts** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
+**Versions** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
+**HttpPorts** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
+**HttpsPorts** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
+**QuicPorts** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
 
 ## Methods
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetVersions
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersions() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersions() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetVersions returns the Versions field if non-nil, zero value otherwise.
 
 ### GetVersionsOk
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersionsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersionsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetVersionsOk returns a tuple with the Versions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersions
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) SetVersions(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) SetVersions(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetVersions sets Versions field to given value.
 
@@ -55,20 +55,20 @@ HasVersions returns a boolean if a field has been set.
 
 ### GetHttpPorts
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPorts() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPorts() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetHttpPorts returns the HttpPorts field if non-nil, zero value otherwise.
 
 ### GetHttpPortsOk
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPortsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPortsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetHttpPortsOk returns a tuple with the HttpPorts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpPorts
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) SetHttpPorts(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) SetHttpPorts(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetHttpPorts sets HttpPorts field to given value.
 
@@ -80,20 +80,20 @@ HasHttpPorts returns a boolean if a field has been set.
 
 ### GetHttpsPorts
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPorts() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPorts() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetHttpsPorts returns the HttpsPorts field if non-nil, zero value otherwise.
 
 ### GetHttpsPortsOk
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPortsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPortsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetHttpsPortsOk returns a tuple with the HttpsPorts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpsPorts
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) SetHttpsPorts(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) SetHttpsPorts(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetHttpsPorts sets HttpsPorts field to given value.
 
@@ -105,20 +105,20 @@ HasHttpsPorts returns a boolean if a field has been set.
 
 ### GetQuicPorts
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPorts() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPorts() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetQuicPorts returns the QuicPorts field if non-nil, zero value otherwise.
 
 ### GetQuicPortsOk
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPortsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPortsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetQuicPortsOk returns a tuple with the QuicPorts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuicPorts
 
-`func (o *ResponseBadRequestProtocolsSerializerHttpField) SetQuicPorts(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestProtocolsSerializerHttpField) SetQuicPorts(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetQuicPorts sets QuicPorts field to given value.
 

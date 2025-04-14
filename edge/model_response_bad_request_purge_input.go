@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseBadRequestPurgeInput{}
 
 // ResponseBadRequestPurgeInput struct for ResponseBadRequestPurgeInput
 type ResponseBadRequestPurgeInput struct {
-	Items *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"items,omitempty"`
+	Items *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"items,omitempty"`
 	Layer []string `json:"layer,omitempty"`
 	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
 }
@@ -42,9 +42,9 @@ func NewResponseBadRequestPurgeInputWithDefaults() *ResponseBadRequestPurgeInput
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
-func (o *ResponseBadRequestPurgeInput) GetItems() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestPurgeInput) GetItems() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Items) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Items
@@ -52,7 +52,7 @@ func (o *ResponseBadRequestPurgeInput) GetItems() ResponseBadRequestEdgeApplicat
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestPurgeInput) GetItemsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestPurgeInput) GetItemsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *ResponseBadRequestPurgeInput) HasItems() bool {
 	return false
 }
 
-// SetItems gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Items field.
-func (o *ResponseBadRequestPurgeInput) SetItems(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetItems gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Items field.
+func (o *ResponseBadRequestPurgeInput) SetItems(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Items = &v
 }
 

@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **Active** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **[]string** |  | [optional] 
 **Order** | Pointer to **[]string** |  | [optional] 
-**Behaviors** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
-**Criteria** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
+**Behaviors** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
+**Criteria** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
 **LastEditor** | Pointer to **[]string** |  | [optional] 
 **LastModified** | Pointer to **[]string** |  | [optional] 
 **Detail** | Pointer to **string** |  | [optional] 
@@ -161,20 +161,20 @@ HasOrder returns a boolean if a field has been set.
 
 ### GetBehaviors
 
-`func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviors() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviors() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetBehaviors returns the Behaviors field if non-nil, zero value otherwise.
 
 ### GetBehaviorsOk
 
-`func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviorsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviorsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetBehaviorsOk returns a tuple with the Behaviors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBehaviors
 
-`func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetBehaviors(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetBehaviors(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetBehaviors sets Behaviors field to given value.
 
@@ -186,20 +186,20 @@ HasBehaviors returns a boolean if a field has been set.
 
 ### GetCriteria
 
-`func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteria() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteria() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetCriteria returns the Criteria field if non-nil, zero value otherwise.
 
 ### GetCriteriaOk
 
-`func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteriaOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteriaOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetCriteriaOk returns a tuple with the Criteria field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCriteria
 
-`func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetCriteria(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetCriteria(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetCriteria sets Criteria field to given value.
 

@@ -24,8 +24,8 @@ type ResponseBadRequestEdgeApplicationRuleEngine struct {
 	Active []string `json:"active,omitempty"`
 	Description []string `json:"description,omitempty"`
 	Order []string `json:"order,omitempty"`
-	Behaviors *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"behaviors,omitempty"`
-	Criteria *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"criteria,omitempty"`
+	Behaviors *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"behaviors,omitempty"`
+	Criteria *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"criteria,omitempty"`
 	LastEditor []string `json:"last_editor,omitempty"`
 	LastModified []string `json:"last_modified,omitempty"`
 	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
@@ -209,9 +209,9 @@ func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetOrder(v []string) {
 }
 
 // GetBehaviors returns the Behaviors field value if set, zero value otherwise.
-func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviors() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviors() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Behaviors) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Behaviors
@@ -219,7 +219,7 @@ func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviors() ResponseBad
 
 // GetBehaviorsOk returns a tuple with the Behaviors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviorsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetBehaviorsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Behaviors) {
 		return nil, false
 	}
@@ -235,15 +235,15 @@ func (o *ResponseBadRequestEdgeApplicationRuleEngine) HasBehaviors() bool {
 	return false
 }
 
-// SetBehaviors gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Behaviors field.
-func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetBehaviors(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetBehaviors gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Behaviors field.
+func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetBehaviors(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Behaviors = &v
 }
 
 // GetCriteria returns the Criteria field value if set, zero value otherwise.
-func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteria() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteria() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Criteria) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Criteria
@@ -251,7 +251,7 @@ func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteria() ResponseBadR
 
 // GetCriteriaOk returns a tuple with the Criteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteriaOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestEdgeApplicationRuleEngine) GetCriteriaOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Criteria) {
 		return nil, false
 	}
@@ -267,8 +267,8 @@ func (o *ResponseBadRequestEdgeApplicationRuleEngine) HasCriteria() bool {
 	return false
 }
 
-// SetCriteria gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Criteria field.
-func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetCriteria(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetCriteria gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Criteria field.
+func (o *ResponseBadRequestEdgeApplicationRuleEngine) SetCriteria(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Criteria = &v
 }
 

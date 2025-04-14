@@ -12,6 +12,8 @@ package edge
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DomainInfoRequest type satisfies the MappedNullable interface at compile time
@@ -20,15 +22,18 @@ var _ MappedNullable = &DomainInfoRequest{}
 // DomainInfoRequest struct for DomainInfoRequest
 type DomainInfoRequest struct {
 	Domain NullableString `json:"domain,omitempty" validate:"regexp=.*"`
-	AllowAccess *bool `json:"allow_access,omitempty"`
+	AllowAccess bool `json:"allow_access"`
 }
+
+type _DomainInfoRequest DomainInfoRequest
 
 // NewDomainInfoRequest instantiates a new DomainInfoRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainInfoRequest() *DomainInfoRequest {
+func NewDomainInfoRequest(allowAccess bool) *DomainInfoRequest {
 	this := DomainInfoRequest{}
+	this.AllowAccess = allowAccess
 	return &this
 }
 
@@ -82,36 +87,28 @@ func (o *DomainInfoRequest) UnsetDomain() {
 	o.Domain.Unset()
 }
 
-// GetAllowAccess returns the AllowAccess field value if set, zero value otherwise.
+// GetAllowAccess returns the AllowAccess field value
 func (o *DomainInfoRequest) GetAllowAccess() bool {
-	if o == nil || IsNil(o.AllowAccess) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AllowAccess
+
+	return o.AllowAccess
 }
 
-// GetAllowAccessOk returns a tuple with the AllowAccess field value if set, nil otherwise
+// GetAllowAccessOk returns a tuple with the AllowAccess field value
 // and a boolean to check if the value has been set.
 func (o *DomainInfoRequest) GetAllowAccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowAccess) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AllowAccess, true
+	return &o.AllowAccess, true
 }
 
-// HasAllowAccess returns a boolean if a field has been set.
-func (o *DomainInfoRequest) HasAllowAccess() bool {
-	if o != nil && !IsNil(o.AllowAccess) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowAccess gets a reference to the given bool and assigns it to the AllowAccess field.
+// SetAllowAccess sets field value
 func (o *DomainInfoRequest) SetAllowAccess(v bool) {
-	o.AllowAccess = &v
+	o.AllowAccess = v
 }
 
 func (o DomainInfoRequest) MarshalJSON() ([]byte, error) {
@@ -127,10 +124,45 @@ func (o DomainInfoRequest) ToMap() (map[string]interface{}, error) {
 	if o.Domain.IsSet() {
 		toSerialize["domain"] = o.Domain.Get()
 	}
-	if !IsNil(o.AllowAccess) {
-		toSerialize["allow_access"] = o.AllowAccess
-	}
+	toSerialize["allow_access"] = o.AllowAccess
 	return toSerialize, nil
+}
+
+func (o *DomainInfoRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"allow_access",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDomainInfoRequest := _DomainInfoRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDomainInfoRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DomainInfoRequest(varDomainInfoRequest)
+
+	return err
 }
 
 type NullableDomainInfoRequest struct {

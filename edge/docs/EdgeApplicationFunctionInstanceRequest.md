@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**JsonArgs** | **interface{}** |  | 
+**JsonArgs** | Pointer to [**EdgeApplicationFunctionInstanceJsonArgs**](EdgeApplicationFunctionInstanceJsonArgs.md) |  | [optional] 
 **EdgeFunction** | **int64** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewEdgeApplicationFunctionInstanceRequest
 
-`func NewEdgeApplicationFunctionInstanceRequest(name string, jsonArgs interface{}, edgeFunction int64, ) *EdgeApplicationFunctionInstanceRequest`
+`func NewEdgeApplicationFunctionInstanceRequest(name string, edgeFunction int64, ) *EdgeApplicationFunctionInstanceRequest`
 
 NewEdgeApplicationFunctionInstanceRequest instantiates a new EdgeApplicationFunctionInstanceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,34 +50,29 @@ SetName sets Name field to given value.
 
 ### GetJsonArgs
 
-`func (o *EdgeApplicationFunctionInstanceRequest) GetJsonArgs() interface{}`
+`func (o *EdgeApplicationFunctionInstanceRequest) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *EdgeApplicationFunctionInstanceRequest) GetJsonArgsOk() (*interface{}, bool)`
+`func (o *EdgeApplicationFunctionInstanceRequest) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *EdgeApplicationFunctionInstanceRequest) SetJsonArgs(v interface{})`
+`func (o *EdgeApplicationFunctionInstanceRequest) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs)`
 
 SetJsonArgs sets JsonArgs field to given value.
 
+### HasJsonArgs
 
-### SetJsonArgsNil
+`func (o *EdgeApplicationFunctionInstanceRequest) HasJsonArgs() bool`
 
-`func (o *EdgeApplicationFunctionInstanceRequest) SetJsonArgsNil(b bool)`
+HasJsonArgs returns a boolean if a field has been set.
 
- SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
-
-### UnsetJsonArgs
-`func (o *EdgeApplicationFunctionInstanceRequest) UnsetJsonArgs()`
-
-UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetEdgeFunction
 
 `func (o *EdgeApplicationFunctionInstanceRequest) GetEdgeFunction() int64`

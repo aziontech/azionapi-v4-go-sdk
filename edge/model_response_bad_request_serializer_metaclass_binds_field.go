@@ -21,6 +21,7 @@ var _ MappedNullable = &ResponseBadRequestSerializerMetaclassBindsField{}
 type ResponseBadRequestSerializerMetaclassBindsField struct {
 	EdgeApplication []string `json:"edge_application,omitempty"`
 	EdgeFirewall []string `json:"edge_firewall,omitempty"`
+	CustomPage []string `json:"custom_page,omitempty"`
 }
 
 // NewResponseBadRequestSerializerMetaclassBindsField instantiates a new ResponseBadRequestSerializerMetaclassBindsField object
@@ -104,6 +105,38 @@ func (o *ResponseBadRequestSerializerMetaclassBindsField) SetEdgeFirewall(v []st
 	o.EdgeFirewall = v
 }
 
+// GetCustomPage returns the CustomPage field value if set, zero value otherwise.
+func (o *ResponseBadRequestSerializerMetaclassBindsField) GetCustomPage() []string {
+	if o == nil || IsNil(o.CustomPage) {
+		var ret []string
+		return ret
+	}
+	return o.CustomPage
+}
+
+// GetCustomPageOk returns a tuple with the CustomPage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponseBadRequestSerializerMetaclassBindsField) GetCustomPageOk() ([]string, bool) {
+	if o == nil || IsNil(o.CustomPage) {
+		return nil, false
+	}
+	return o.CustomPage, true
+}
+
+// HasCustomPage returns a boolean if a field has been set.
+func (o *ResponseBadRequestSerializerMetaclassBindsField) HasCustomPage() bool {
+	if o != nil && !IsNil(o.CustomPage) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomPage gets a reference to the given []string and assigns it to the CustomPage field.
+func (o *ResponseBadRequestSerializerMetaclassBindsField) SetCustomPage(v []string) {
+	o.CustomPage = v
+}
+
 func (o ResponseBadRequestSerializerMetaclassBindsField) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,6 +152,9 @@ func (o ResponseBadRequestSerializerMetaclassBindsField) ToMap() (map[string]int
 	}
 	if !IsNil(o.EdgeFirewall) {
 		toSerialize["edge_firewall"] = o.EdgeFirewall
+	}
+	if !IsNil(o.CustomPage) {
+		toSerialize["custom_page"] = o.CustomPage
 	}
 	return toSerialize, nil
 }

@@ -23,6 +23,7 @@ var _ MappedNullable = &WorkloadDeploymentBindsRequest{}
 type WorkloadDeploymentBindsRequest struct {
 	EdgeApplication int64 `json:"edge_application"`
 	EdgeFirewall NullableInt64 `json:"edge_firewall,omitempty"`
+	CustomPage NullableInt64 `json:"custom_page,omitempty"`
 }
 
 type _WorkloadDeploymentBindsRequest WorkloadDeploymentBindsRequest
@@ -111,6 +112,48 @@ func (o *WorkloadDeploymentBindsRequest) UnsetEdgeFirewall() {
 	o.EdgeFirewall.Unset()
 }
 
+// GetCustomPage returns the CustomPage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *WorkloadDeploymentBindsRequest) GetCustomPage() int64 {
+	if o == nil || IsNil(o.CustomPage.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.CustomPage.Get()
+}
+
+// GetCustomPageOk returns a tuple with the CustomPage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WorkloadDeploymentBindsRequest) GetCustomPageOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomPage.Get(), o.CustomPage.IsSet()
+}
+
+// HasCustomPage returns a boolean if a field has been set.
+func (o *WorkloadDeploymentBindsRequest) HasCustomPage() bool {
+	if o != nil && o.CustomPage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomPage gets a reference to the given NullableInt64 and assigns it to the CustomPage field.
+func (o *WorkloadDeploymentBindsRequest) SetCustomPage(v int64) {
+	o.CustomPage.Set(&v)
+}
+// SetCustomPageNil sets the value for CustomPage to be an explicit nil
+func (o *WorkloadDeploymentBindsRequest) SetCustomPageNil() {
+	o.CustomPage.Set(nil)
+}
+
+// UnsetCustomPage ensures that no value is present for CustomPage, not even an explicit nil
+func (o *WorkloadDeploymentBindsRequest) UnsetCustomPage() {
+	o.CustomPage.Unset()
+}
+
 func (o WorkloadDeploymentBindsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -124,6 +167,9 @@ func (o WorkloadDeploymentBindsRequest) ToMap() (map[string]interface{}, error) 
 	toSerialize["edge_application"] = o.EdgeApplication
 	if o.EdgeFirewall.IsSet() {
 		toSerialize["edge_firewall"] = o.EdgeFirewall.Get()
+	}
+	if o.CustomPage.IsSet() {
+		toSerialize["custom_page"] = o.CustomPage.Get()
 	}
 	return toSerialize, nil
 }

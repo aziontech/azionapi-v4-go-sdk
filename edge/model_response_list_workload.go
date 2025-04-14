@@ -34,7 +34,7 @@ type ResponseListWorkload struct {
 	Protocols *Protocols `json:"protocols,omitempty"`
 	Mtls *MTLS `json:"mtls,omitempty"`
 	Domains []DomainInfo `json:"domains,omitempty"`
-	ProductVersion string `json:"product_version" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	ProductVersion string `json:"product_version" validate:"regexp=^(custom|\\\\d+\\\\.\\\\d+)$"`
 }
 
 type _ResponseListWorkload ResponseListWorkload

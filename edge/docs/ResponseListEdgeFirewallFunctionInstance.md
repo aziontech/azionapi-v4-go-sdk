@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
-**JsonArgs** | **interface{}** |  | 
+**JsonArgs** | Pointer to [**EdgeApplicationFunctionInstanceJsonArgs**](EdgeApplicationFunctionInstanceJsonArgs.md) |  | [optional] 
 **EdgeFunction** | **int64** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **LastEditor** | **string** |  | [readonly] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewResponseListEdgeFirewallFunctionInstance
 
-`func NewResponseListEdgeFirewallFunctionInstance(id int64, name string, jsonArgs interface{}, edgeFunction int64, lastEditor string, lastModified time.Time, ) *ResponseListEdgeFirewallFunctionInstance`
+`func NewResponseListEdgeFirewallFunctionInstance(id int64, name string, edgeFunction int64, lastEditor string, lastModified time.Time, ) *ResponseListEdgeFirewallFunctionInstance`
 
 NewResponseListEdgeFirewallFunctionInstance instantiates a new ResponseListEdgeFirewallFunctionInstance object
 This constructor will assign default values to properties that have it defined,
@@ -73,34 +73,29 @@ SetName sets Name field to given value.
 
 ### GetJsonArgs
 
-`func (o *ResponseListEdgeFirewallFunctionInstance) GetJsonArgs() interface{}`
+`func (o *ResponseListEdgeFirewallFunctionInstance) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *ResponseListEdgeFirewallFunctionInstance) GetJsonArgsOk() (*interface{}, bool)`
+`func (o *ResponseListEdgeFirewallFunctionInstance) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *ResponseListEdgeFirewallFunctionInstance) SetJsonArgs(v interface{})`
+`func (o *ResponseListEdgeFirewallFunctionInstance) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs)`
 
 SetJsonArgs sets JsonArgs field to given value.
 
+### HasJsonArgs
 
-### SetJsonArgsNil
+`func (o *ResponseListEdgeFirewallFunctionInstance) HasJsonArgs() bool`
 
-`func (o *ResponseListEdgeFirewallFunctionInstance) SetJsonArgsNil(b bool)`
+HasJsonArgs returns a boolean if a field has been set.
 
- SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
-
-### UnsetJsonArgs
-`func (o *ResponseListEdgeFirewallFunctionInstance) UnsetJsonArgs()`
-
-UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetEdgeFunction
 
 `func (o *ResponseListEdgeFirewallFunctionInstance) GetEdgeFunction() int64`

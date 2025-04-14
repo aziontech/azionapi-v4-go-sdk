@@ -20,10 +20,10 @@ var _ MappedNullable = &ResponseBadRequestSerializerMetaclassApplicationControls
 // ResponseBadRequestSerializerMetaclassApplicationControlsField struct for ResponseBadRequestSerializerMetaclassApplicationControlsField
 type ResponseBadRequestSerializerMetaclassApplicationControlsField struct {
 	CacheByQueryString []string `json:"cache_by_query_string,omitempty"`
-	QueryStringFields *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"query_string_fields,omitempty"`
+	QueryStringFields *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"query_string_fields,omitempty"`
 	QueryStringSortEnabled []string `json:"query_string_sort_enabled,omitempty"`
 	CacheByCookies []string `json:"cache_by_cookies,omitempty"`
-	CookieNames *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"cookie_names,omitempty"`
+	CookieNames *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"cookie_names,omitempty"`
 	AdaptiveDeliveryAction []string `json:"adaptive_delivery_action,omitempty"`
 	DeviceGroup []string `json:"device_group,omitempty"`
 }
@@ -78,9 +78,9 @@ func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) SetCache
 }
 
 // GetQueryStringFields returns the QueryStringFields field value if set, zero value otherwise.
-func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetQueryStringFields() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetQueryStringFields() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.QueryStringFields) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.QueryStringFields
@@ -88,7 +88,7 @@ func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetQuery
 
 // GetQueryStringFieldsOk returns a tuple with the QueryStringFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetQueryStringFieldsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetQueryStringFieldsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.QueryStringFields) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) HasQuery
 	return false
 }
 
-// SetQueryStringFields gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the QueryStringFields field.
-func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) SetQueryStringFields(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetQueryStringFields gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the QueryStringFields field.
+func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) SetQueryStringFields(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.QueryStringFields = &v
 }
 
@@ -174,9 +174,9 @@ func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) SetCache
 }
 
 // GetCookieNames returns the CookieNames field value if set, zero value otherwise.
-func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetCookieNames() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetCookieNames() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.CookieNames) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.CookieNames
@@ -184,7 +184,7 @@ func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetCooki
 
 // GetCookieNamesOk returns a tuple with the CookieNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetCookieNamesOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) GetCookieNamesOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.CookieNames) {
 		return nil, false
 	}
@@ -200,8 +200,8 @@ func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) HasCooki
 	return false
 }
 
-// SetCookieNames gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the CookieNames field.
-func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) SetCookieNames(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetCookieNames gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the CookieNames field.
+func (o *ResponseBadRequestSerializerMetaclassApplicationControlsField) SetCookieNames(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.CookieNames = &v
 }
 
