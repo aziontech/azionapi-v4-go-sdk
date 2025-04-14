@@ -22,7 +22,7 @@ type ResponseBadRequestNetworkList struct {
 	Name []string `json:"name,omitempty"`
 	Id []string `json:"id,omitempty"`
 	Type []string `json:"type,omitempty"`
-	Items *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"items,omitempty"`
+	Items *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"items,omitempty"`
 	LastEditor []string `json:"last_editor,omitempty"`
 	LastModified []string `json:"last_modified,omitempty"`
 	Active []string `json:"active,omitempty"`
@@ -143,9 +143,9 @@ func (o *ResponseBadRequestNetworkList) SetType(v []string) {
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
-func (o *ResponseBadRequestNetworkList) GetItems() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestNetworkList) GetItems() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Items) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Items
@@ -153,7 +153,7 @@ func (o *ResponseBadRequestNetworkList) GetItems() ResponseBadRequestEdgeApplica
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestNetworkList) GetItemsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestNetworkList) GetItemsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *ResponseBadRequestNetworkList) HasItems() bool {
 	return false
 }
 
-// SetItems gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Items field.
-func (o *ResponseBadRequestNetworkList) SetItems(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetItems gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Items field.
+func (o *ResponseBadRequestNetworkList) SetItems(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Items = &v
 }
 

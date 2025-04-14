@@ -21,7 +21,7 @@ var _ MappedNullable = &CacheSettingRequest{}
 
 // CacheSettingRequest struct for CacheSettingRequest
 type CacheSettingRequest struct {
-	Name string `json:"name" validate:"regexp=^[a-zA-Z0-9 \\\\-\\\\.\\\\'\\\\,]+$"`
+	Name string `json:"name" validate:"regexp=^[a-zA-Z0-9 \\\\-\\\\.\\\\'\\\\,|]+$"`
 	BrowserCache BrowserCacheModuleRequest `json:"browser_cache"`
 	EdgeCache EdgeCacheModuleRequest `json:"edge_cache"`
 	ApplicationControls ApplicationControlsModuleRequest `json:"application_controls"`

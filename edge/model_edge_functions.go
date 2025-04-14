@@ -27,7 +27,7 @@ type EdgeFunctions struct {
 	// * `javascript` - JavaScript * `lua` - Lua
 	Language *string `json:"language,omitempty"`
 	Code string `json:"code" validate:"regexp=.*"`
-	JsonArgs interface{} `json:"json_args,omitempty"`
+	JsonArgs *EdgeApplicationFunctionInstanceJsonArgs `json:"json_args,omitempty"`
 	// * `edge_application` - Edge Application * `edge_firewall` - Edge Firewall
 	InitiatorType *string `json:"initiator_type,omitempty"`
 	Active *bool `json:"active,omitempty"`
@@ -172,23 +172,22 @@ func (o *EdgeFunctions) SetCode(v string) {
 	o.Code = v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EdgeFunctions) GetJsonArgs() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
+func (o *EdgeFunctions) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs {
+	if o == nil || IsNil(o.JsonArgs) {
+		var ret EdgeApplicationFunctionInstanceJsonArgs
 		return ret
 	}
-	return o.JsonArgs
+	return *o.JsonArgs
 }
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EdgeFunctions) GetJsonArgsOk() (*interface{}, bool) {
+func (o *EdgeFunctions) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
-	return &o.JsonArgs, true
+	return o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
@@ -200,9 +199,9 @@ func (o *EdgeFunctions) HasJsonArgs() bool {
 	return false
 }
 
-// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
-func (o *EdgeFunctions) SetJsonArgs(v interface{}) {
-	o.JsonArgs = v
+// SetJsonArgs gets a reference to the given EdgeApplicationFunctionInstanceJsonArgs and assigns it to the JsonArgs field.
+func (o *EdgeFunctions) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs) {
+	o.JsonArgs = &v
 }
 
 // GetInitiatorType returns the InitiatorType field value if set, zero value otherwise.
@@ -429,7 +428,7 @@ func (o EdgeFunctions) ToMap() (map[string]interface{}, error) {
 		toSerialize["language"] = o.Language
 	}
 	toSerialize["code"] = o.Code
-	if o.JsonArgs != nil {
+	if !IsNil(o.JsonArgs) {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	if !IsNil(o.InitiatorType) {

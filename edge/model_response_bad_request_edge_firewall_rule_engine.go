@@ -25,8 +25,8 @@ type ResponseBadRequestEdgeFirewallRuleEngine struct {
 	Active []string `json:"active,omitempty"`
 	Description []string `json:"description,omitempty"`
 	Order []string `json:"order,omitempty"`
-	Behaviors *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"behaviors,omitempty"`
-	Criteria *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"criteria,omitempty"`
+	Behaviors *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"behaviors,omitempty"`
+	Criteria *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"criteria,omitempty"`
 	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
 }
 
@@ -240,9 +240,9 @@ func (o *ResponseBadRequestEdgeFirewallRuleEngine) SetOrder(v []string) {
 }
 
 // GetBehaviors returns the Behaviors field value if set, zero value otherwise.
-func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetBehaviors() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetBehaviors() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Behaviors) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Behaviors
@@ -250,7 +250,7 @@ func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetBehaviors() ResponseBadReq
 
 // GetBehaviorsOk returns a tuple with the Behaviors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetBehaviorsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetBehaviorsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Behaviors) {
 		return nil, false
 	}
@@ -266,15 +266,15 @@ func (o *ResponseBadRequestEdgeFirewallRuleEngine) HasBehaviors() bool {
 	return false
 }
 
-// SetBehaviors gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Behaviors field.
-func (o *ResponseBadRequestEdgeFirewallRuleEngine) SetBehaviors(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetBehaviors gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Behaviors field.
+func (o *ResponseBadRequestEdgeFirewallRuleEngine) SetBehaviors(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Behaviors = &v
 }
 
 // GetCriteria returns the Criteria field value if set, zero value otherwise.
-func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetCriteria() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetCriteria() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Criteria) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Criteria
@@ -282,7 +282,7 @@ func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetCriteria() ResponseBadRequ
 
 // GetCriteriaOk returns a tuple with the Criteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetCriteriaOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestEdgeFirewallRuleEngine) GetCriteriaOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Criteria) {
 		return nil, false
 	}
@@ -298,8 +298,8 @@ func (o *ResponseBadRequestEdgeFirewallRuleEngine) HasCriteria() bool {
 	return false
 }
 
-// SetCriteria gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Criteria field.
-func (o *ResponseBadRequestEdgeFirewallRuleEngine) SetCriteria(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetCriteria gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Criteria field.
+func (o *ResponseBadRequestEdgeFirewallRuleEngine) SetCriteria(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Criteria = &v
 }
 

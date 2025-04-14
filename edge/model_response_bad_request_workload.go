@@ -26,12 +26,12 @@ type ResponseBadRequestWorkload struct {
 	LastEditor []string `json:"last_editor,omitempty"`
 	LastModified []string `json:"last_modified,omitempty"`
 	Active []string `json:"active,omitempty"`
-	AlternateDomains *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"alternate_domains,omitempty"`
+	AlternateDomains *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"alternate_domains,omitempty"`
 	NetworkMap []string `json:"network_map,omitempty"`
 	Tls *ResponseBadRequestSerializerMetaclassTlsField `json:"tls,omitempty"`
 	Protocols *ResponseBadRequestSerializerMetaclassProtocolsField `json:"protocols,omitempty"`
 	Mtls *ResponseBadRequestSerializerMetaclassMtlsField `json:"mtls,omitempty"`
-	Domains *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"domains,omitempty"`
+	Domains *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"domains,omitempty"`
 	ProductVersion []string `json:"product_version,omitempty"`
 	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
 }
@@ -278,9 +278,9 @@ func (o *ResponseBadRequestWorkload) SetActive(v []string) {
 }
 
 // GetAlternateDomains returns the AlternateDomains field value if set, zero value otherwise.
-func (o *ResponseBadRequestWorkload) GetAlternateDomains() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestWorkload) GetAlternateDomains() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.AlternateDomains) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.AlternateDomains
@@ -288,7 +288,7 @@ func (o *ResponseBadRequestWorkload) GetAlternateDomains() ResponseBadRequestEdg
 
 // GetAlternateDomainsOk returns a tuple with the AlternateDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestWorkload) GetAlternateDomainsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestWorkload) GetAlternateDomainsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.AlternateDomains) {
 		return nil, false
 	}
@@ -304,8 +304,8 @@ func (o *ResponseBadRequestWorkload) HasAlternateDomains() bool {
 	return false
 }
 
-// SetAlternateDomains gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the AlternateDomains field.
-func (o *ResponseBadRequestWorkload) SetAlternateDomains(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetAlternateDomains gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the AlternateDomains field.
+func (o *ResponseBadRequestWorkload) SetAlternateDomains(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.AlternateDomains = &v
 }
 
@@ -438,9 +438,9 @@ func (o *ResponseBadRequestWorkload) SetMtls(v ResponseBadRequestSerializerMetac
 }
 
 // GetDomains returns the Domains field value if set, zero value otherwise.
-func (o *ResponseBadRequestWorkload) GetDomains() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestWorkload) GetDomains() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Domains) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Domains
@@ -448,7 +448,7 @@ func (o *ResponseBadRequestWorkload) GetDomains() ResponseBadRequestEdgeApplicat
 
 // GetDomainsOk returns a tuple with the Domains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestWorkload) GetDomainsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestWorkload) GetDomainsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Domains) {
 		return nil, false
 	}
@@ -464,8 +464,8 @@ func (o *ResponseBadRequestWorkload) HasDomains() bool {
 	return false
 }
 
-// SetDomains gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Domains field.
-func (o *ResponseBadRequestWorkload) SetDomains(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetDomains gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Domains field.
+func (o *ResponseBadRequestWorkload) SetDomains(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Domains = &v
 }
 

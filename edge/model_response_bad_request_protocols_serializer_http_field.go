@@ -19,10 +19,10 @@ var _ MappedNullable = &ResponseBadRequestProtocolsSerializerHttpField{}
 
 // ResponseBadRequestProtocolsSerializerHttpField struct for ResponseBadRequestProtocolsSerializerHttpField
 type ResponseBadRequestProtocolsSerializerHttpField struct {
-	Versions *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"versions,omitempty"`
-	HttpPorts *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"http_ports,omitempty"`
-	HttpsPorts *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"https_ports,omitempty"`
-	QuicPorts *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"quic_ports,omitempty"`
+	Versions *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"versions,omitempty"`
+	HttpPorts *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"http_ports,omitempty"`
+	HttpsPorts *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"https_ports,omitempty"`
+	QuicPorts *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"quic_ports,omitempty"`
 }
 
 // NewResponseBadRequestProtocolsSerializerHttpField instantiates a new ResponseBadRequestProtocolsSerializerHttpField object
@@ -43,9 +43,9 @@ func NewResponseBadRequestProtocolsSerializerHttpFieldWithDefaults() *ResponseBa
 }
 
 // GetVersions returns the Versions field value if set, zero value otherwise.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersions() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersions() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Versions) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Versions
@@ -53,7 +53,7 @@ func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersions() ResponseB
 
 // GetVersionsOk returns a tuple with the Versions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersionsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestProtocolsSerializerHttpField) GetVersionsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Versions) {
 		return nil, false
 	}
@@ -69,15 +69,15 @@ func (o *ResponseBadRequestProtocolsSerializerHttpField) HasVersions() bool {
 	return false
 }
 
-// SetVersions gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Versions field.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) SetVersions(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetVersions gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Versions field.
+func (o *ResponseBadRequestProtocolsSerializerHttpField) SetVersions(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Versions = &v
 }
 
 // GetHttpPorts returns the HttpPorts field value if set, zero value otherwise.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPorts() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPorts() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.HttpPorts) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.HttpPorts
@@ -85,7 +85,7 @@ func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPorts() Response
 
 // GetHttpPortsOk returns a tuple with the HttpPorts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPortsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpPortsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.HttpPorts) {
 		return nil, false
 	}
@@ -101,15 +101,15 @@ func (o *ResponseBadRequestProtocolsSerializerHttpField) HasHttpPorts() bool {
 	return false
 }
 
-// SetHttpPorts gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the HttpPorts field.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) SetHttpPorts(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetHttpPorts gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the HttpPorts field.
+func (o *ResponseBadRequestProtocolsSerializerHttpField) SetHttpPorts(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.HttpPorts = &v
 }
 
 // GetHttpsPorts returns the HttpsPorts field value if set, zero value otherwise.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPorts() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPorts() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.HttpsPorts) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.HttpsPorts
@@ -117,7 +117,7 @@ func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPorts() Respons
 
 // GetHttpsPortsOk returns a tuple with the HttpsPorts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPortsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestProtocolsSerializerHttpField) GetHttpsPortsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.HttpsPorts) {
 		return nil, false
 	}
@@ -133,15 +133,15 @@ func (o *ResponseBadRequestProtocolsSerializerHttpField) HasHttpsPorts() bool {
 	return false
 }
 
-// SetHttpsPorts gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the HttpsPorts field.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) SetHttpsPorts(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetHttpsPorts gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the HttpsPorts field.
+func (o *ResponseBadRequestProtocolsSerializerHttpField) SetHttpsPorts(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.HttpsPorts = &v
 }
 
 // GetQuicPorts returns the QuicPorts field value if set, zero value otherwise.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPorts() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPorts() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.QuicPorts) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.QuicPorts
@@ -149,7 +149,7 @@ func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPorts() Response
 
 // GetQuicPortsOk returns a tuple with the QuicPorts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPortsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestProtocolsSerializerHttpField) GetQuicPortsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.QuicPorts) {
 		return nil, false
 	}
@@ -165,8 +165,8 @@ func (o *ResponseBadRequestProtocolsSerializerHttpField) HasQuicPorts() bool {
 	return false
 }
 
-// SetQuicPorts gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the QuicPorts field.
-func (o *ResponseBadRequestProtocolsSerializerHttpField) SetQuicPorts(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetQuicPorts gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the QuicPorts field.
+func (o *ResponseBadRequestProtocolsSerializerHttpField) SetQuicPorts(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.QuicPorts = &v
 }
 

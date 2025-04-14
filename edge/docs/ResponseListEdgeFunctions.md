@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
 **Language** | Pointer to **string** | * &#x60;javascript&#x60; - JavaScript * &#x60;lua&#x60; - Lua | [optional] 
-**JsonArgs** | Pointer to **interface{}** |  | [optional] 
+**JsonArgs** | Pointer to [**EdgeApplicationFunctionInstanceJsonArgs**](EdgeApplicationFunctionInstanceJsonArgs.md) |  | [optional] 
 **InitiatorType** | Pointer to **string** | * &#x60;edge_application&#x60; - Edge Application * &#x60;edge_firewall&#x60; - Edge Firewall | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **ReferenceCount** | **int64** |  | [readonly] 
@@ -103,20 +103,20 @@ HasLanguage returns a boolean if a field has been set.
 
 ### GetJsonArgs
 
-`func (o *ResponseListEdgeFunctions) GetJsonArgs() interface{}`
+`func (o *ResponseListEdgeFunctions) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *ResponseListEdgeFunctions) GetJsonArgsOk() (*interface{}, bool)`
+`func (o *ResponseListEdgeFunctions) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *ResponseListEdgeFunctions) SetJsonArgs(v interface{})`
+`func (o *ResponseListEdgeFunctions) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs)`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -126,16 +126,6 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
-### SetJsonArgsNil
-
-`func (o *ResponseListEdgeFunctions) SetJsonArgsNil(b bool)`
-
- SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
-
-### UnsetJsonArgs
-`func (o *ResponseListEdgeFunctions) UnsetJsonArgs()`
-
-UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetInitiatorType
 
 `func (o *ResponseListEdgeFunctions) GetInitiatorType() string`

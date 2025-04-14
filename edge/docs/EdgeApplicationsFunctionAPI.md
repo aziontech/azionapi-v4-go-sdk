@@ -35,7 +35,7 @@ import (
 
 func main() {
 	edgeApplicationId := "edgeApplicationId_example" // string | 
-	edgeApplicationFunctionInstanceRequest := *openapiclient.NewEdgeApplicationFunctionInstanceRequest("Name_example", interface{}(123), int64(123)) // EdgeApplicationFunctionInstanceRequest | 
+	edgeApplicationFunctionInstanceRequest := *openapiclient.NewEdgeApplicationFunctionInstanceRequest("Name_example", int64(123)) // EdgeApplicationFunctionInstanceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -411,7 +411,7 @@ import (
 func main() {
 	edgeApplicationId := "edgeApplicationId_example" // string | 
 	id := "id_example" // string | 
-	edgeApplicationFunctionInstanceRequest := *openapiclient.NewEdgeApplicationFunctionInstanceRequest("Name_example", interface{}(123), int64(123)) // EdgeApplicationFunctionInstanceRequest | 
+	edgeApplicationFunctionInstanceRequest := *openapiclient.NewEdgeApplicationFunctionInstanceRequest("Name_example", int64(123)) // EdgeApplicationFunctionInstanceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -8,16 +8,16 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
-**ProductVersion** | **NullableString** |  | [readonly] 
 **Modules** | Pointer to [**EdgeApplicationModules**](EdgeApplicationModules.md) |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
+**ProductVersion** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewResponseListEdgeApplication
 
-`func NewResponseListEdgeApplication(id int64, name string, lastEditor string, lastModified time.Time, productVersion NullableString, ) *ResponseListEdgeApplication`
+`func NewResponseListEdgeApplication(id int64, name string, lastEditor string, lastModified time.Time, productVersion string, ) *ResponseListEdgeApplication`
 
 NewResponseListEdgeApplication instantiates a new ResponseListEdgeApplication object
 This constructor will assign default values to properties that have it defined,
@@ -112,36 +112,6 @@ and a boolean to check if the value has been set.
 SetLastModified sets LastModified field to given value.
 
 
-### GetProductVersion
-
-`func (o *ResponseListEdgeApplication) GetProductVersion() string`
-
-GetProductVersion returns the ProductVersion field if non-nil, zero value otherwise.
-
-### GetProductVersionOk
-
-`func (o *ResponseListEdgeApplication) GetProductVersionOk() (*string, bool)`
-
-GetProductVersionOk returns a tuple with the ProductVersion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProductVersion
-
-`func (o *ResponseListEdgeApplication) SetProductVersion(v string)`
-
-SetProductVersion sets ProductVersion field to given value.
-
-
-### SetProductVersionNil
-
-`func (o *ResponseListEdgeApplication) SetProductVersionNil(b bool)`
-
- SetProductVersionNil sets the value for ProductVersion to be an explicit nil
-
-### UnsetProductVersion
-`func (o *ResponseListEdgeApplication) UnsetProductVersion()`
-
-UnsetProductVersion ensures that no value is present for ProductVersion, not even an explicit nil
 ### GetModules
 
 `func (o *ResponseListEdgeApplication) GetModules() EdgeApplicationModules`
@@ -216,6 +186,26 @@ SetDebug sets Debug field to given value.
 `func (o *ResponseListEdgeApplication) HasDebug() bool`
 
 HasDebug returns a boolean if a field has been set.
+
+### GetProductVersion
+
+`func (o *ResponseListEdgeApplication) GetProductVersion() string`
+
+GetProductVersion returns the ProductVersion field if non-nil, zero value otherwise.
+
+### GetProductVersionOk
+
+`func (o *ResponseListEdgeApplication) GetProductVersionOk() (*string, bool)`
+
+GetProductVersionOk returns a tuple with the ProductVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductVersion
+
+`func (o *ResponseListEdgeApplication) SetProductVersion(v string)`
+
+SetProductVersion sets ProductVersion field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

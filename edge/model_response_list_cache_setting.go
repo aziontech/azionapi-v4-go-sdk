@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponseListCacheSetting{}
 // ResponseListCacheSetting struct for ResponseListCacheSetting
 type ResponseListCacheSetting struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=^[a-zA-Z0-9 \\\\-\\\\.\\\\'\\\\,]+$"`
+	Name string `json:"name" validate:"regexp=^[a-zA-Z0-9 \\\\-\\\\.\\\\'\\\\,|]+$"`
 	BrowserCache BrowserCacheModule `json:"browser_cache"`
 	EdgeCache EdgeCacheModule `json:"edge_cache"`
 	ApplicationControls ApplicationControlsModule `json:"application_controls"`

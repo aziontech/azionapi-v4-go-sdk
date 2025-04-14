@@ -19,9 +19,7 @@ var _ MappedNullable = &ResponseBadRequestSerializerMetaclassTlsField{}
 
 // ResponseBadRequestSerializerMetaclassTlsField struct for ResponseBadRequestSerializerMetaclassTlsField
 type ResponseBadRequestSerializerMetaclassTlsField struct {
-	Certificate []string `json:"certificate,omitempty"`
-	Ciphers []string `json:"ciphers,omitempty"`
-	MinimumVersion []string `json:"minimum_version,omitempty"`
+	Policy []string `json:"policy,omitempty"`
 }
 
 // NewResponseBadRequestSerializerMetaclassTlsField instantiates a new ResponseBadRequestSerializerMetaclassTlsField object
@@ -41,100 +39,36 @@ func NewResponseBadRequestSerializerMetaclassTlsFieldWithDefaults() *ResponseBad
 	return &this
 }
 
-// GetCertificate returns the Certificate field value if set, zero value otherwise.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) GetCertificate() []string {
-	if o == nil || IsNil(o.Certificate) {
+// GetPolicy returns the Policy field value if set, zero value otherwise.
+func (o *ResponseBadRequestSerializerMetaclassTlsField) GetPolicy() []string {
+	if o == nil || IsNil(o.Policy) {
 		var ret []string
 		return ret
 	}
-	return o.Certificate
+	return o.Policy
 }
 
-// GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
+// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) GetCertificateOk() ([]string, bool) {
-	if o == nil || IsNil(o.Certificate) {
+func (o *ResponseBadRequestSerializerMetaclassTlsField) GetPolicyOk() ([]string, bool) {
+	if o == nil || IsNil(o.Policy) {
 		return nil, false
 	}
-	return o.Certificate, true
+	return o.Policy, true
 }
 
-// HasCertificate returns a boolean if a field has been set.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) HasCertificate() bool {
-	if o != nil && !IsNil(o.Certificate) {
+// HasPolicy returns a boolean if a field has been set.
+func (o *ResponseBadRequestSerializerMetaclassTlsField) HasPolicy() bool {
+	if o != nil && !IsNil(o.Policy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCertificate gets a reference to the given []string and assigns it to the Certificate field.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) SetCertificate(v []string) {
-	o.Certificate = v
-}
-
-// GetCiphers returns the Ciphers field value if set, zero value otherwise.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) GetCiphers() []string {
-	if o == nil || IsNil(o.Ciphers) {
-		var ret []string
-		return ret
-	}
-	return o.Ciphers
-}
-
-// GetCiphersOk returns a tuple with the Ciphers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) GetCiphersOk() ([]string, bool) {
-	if o == nil || IsNil(o.Ciphers) {
-		return nil, false
-	}
-	return o.Ciphers, true
-}
-
-// HasCiphers returns a boolean if a field has been set.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) HasCiphers() bool {
-	if o != nil && !IsNil(o.Ciphers) {
-		return true
-	}
-
-	return false
-}
-
-// SetCiphers gets a reference to the given []string and assigns it to the Ciphers field.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) SetCiphers(v []string) {
-	o.Ciphers = v
-}
-
-// GetMinimumVersion returns the MinimumVersion field value if set, zero value otherwise.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) GetMinimumVersion() []string {
-	if o == nil || IsNil(o.MinimumVersion) {
-		var ret []string
-		return ret
-	}
-	return o.MinimumVersion
-}
-
-// GetMinimumVersionOk returns a tuple with the MinimumVersion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) GetMinimumVersionOk() ([]string, bool) {
-	if o == nil || IsNil(o.MinimumVersion) {
-		return nil, false
-	}
-	return o.MinimumVersion, true
-}
-
-// HasMinimumVersion returns a boolean if a field has been set.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) HasMinimumVersion() bool {
-	if o != nil && !IsNil(o.MinimumVersion) {
-		return true
-	}
-
-	return false
-}
-
-// SetMinimumVersion gets a reference to the given []string and assigns it to the MinimumVersion field.
-func (o *ResponseBadRequestSerializerMetaclassTlsField) SetMinimumVersion(v []string) {
-	o.MinimumVersion = v
+// SetPolicy gets a reference to the given []string and assigns it to the Policy field.
+func (o *ResponseBadRequestSerializerMetaclassTlsField) SetPolicy(v []string) {
+	o.Policy = v
 }
 
 func (o ResponseBadRequestSerializerMetaclassTlsField) MarshalJSON() ([]byte, error) {
@@ -147,14 +81,8 @@ func (o ResponseBadRequestSerializerMetaclassTlsField) MarshalJSON() ([]byte, er
 
 func (o ResponseBadRequestSerializerMetaclassTlsField) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Certificate) {
-		toSerialize["certificate"] = o.Certificate
-	}
-	if !IsNil(o.Ciphers) {
-		toSerialize["ciphers"] = o.Ciphers
-	}
-	if !IsNil(o.MinimumVersion) {
-		toSerialize["minimum_version"] = o.MinimumVersion
+	if !IsNil(o.Policy) {
+		toSerialize["policy"] = o.Policy
 	}
 	return toSerialize, nil
 }

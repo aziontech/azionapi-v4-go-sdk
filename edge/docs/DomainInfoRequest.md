@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Domain** | Pointer to **NullableString** |  | [optional] 
-**AllowAccess** | Pointer to **bool** |  | [optional] 
+**AllowAccess** | **bool** |  | 
 
 ## Methods
 
 ### NewDomainInfoRequest
 
-`func NewDomainInfoRequest() *DomainInfoRequest`
+`func NewDomainInfoRequest(allowAccess bool, ) *DomainInfoRequest`
 
 NewDomainInfoRequest instantiates a new DomainInfoRequest object
 This constructor will assign default values to properties that have it defined,
@@ -80,11 +80,6 @@ and a boolean to check if the value has been set.
 
 SetAllowAccess sets AllowAccess field to given value.
 
-### HasAllowAccess
-
-`func (o *DomainInfoRequest) HasAllowAccess() bool`
-
-HasAllowAccess returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

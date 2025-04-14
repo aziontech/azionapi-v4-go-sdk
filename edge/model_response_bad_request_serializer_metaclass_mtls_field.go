@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseBadRequestSerializerMetaclassMtlsField{}
 type ResponseBadRequestSerializerMetaclassMtlsField struct {
 	Verification []string `json:"verification,omitempty"`
 	Certificate []string `json:"certificate,omitempty"`
-	Crl *ResponseBadRequestEdgeApplicationRuleEngineBehaviors `json:"crl,omitempty"`
+	Crl *ResponseBadRequestBaseEdgeConnectorConnectionPreference `json:"crl,omitempty"`
 }
 
 // NewResponseBadRequestSerializerMetaclassMtlsField instantiates a new ResponseBadRequestSerializerMetaclassMtlsField object
@@ -106,9 +106,9 @@ func (o *ResponseBadRequestSerializerMetaclassMtlsField) SetCertificate(v []stri
 }
 
 // GetCrl returns the Crl field value if set, zero value otherwise.
-func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrl() ResponseBadRequestEdgeApplicationRuleEngineBehaviors {
+func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrl() ResponseBadRequestBaseEdgeConnectorConnectionPreference {
 	if o == nil || IsNil(o.Crl) {
-		var ret ResponseBadRequestEdgeApplicationRuleEngineBehaviors
+		var ret ResponseBadRequestBaseEdgeConnectorConnectionPreference
 		return ret
 	}
 	return *o.Crl
@@ -116,7 +116,7 @@ func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrl() ResponseBadReq
 
 // GetCrlOk returns a tuple with the Crl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrlOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool) {
+func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrlOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool) {
 	if o == nil || IsNil(o.Crl) {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *ResponseBadRequestSerializerMetaclassMtlsField) HasCrl() bool {
 	return false
 }
 
-// SetCrl gets a reference to the given ResponseBadRequestEdgeApplicationRuleEngineBehaviors and assigns it to the Crl field.
-func (o *ResponseBadRequestSerializerMetaclassMtlsField) SetCrl(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors) {
+// SetCrl gets a reference to the given ResponseBadRequestBaseEdgeConnectorConnectionPreference and assigns it to the Crl field.
+func (o *ResponseBadRequestSerializerMetaclassMtlsField) SetCrl(v ResponseBadRequestBaseEdgeConnectorConnectionPreference) {
 	o.Crl = &v
 }
 

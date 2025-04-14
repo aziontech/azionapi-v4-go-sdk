@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
+**Items** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
 **Layer** | Pointer to **[]string** |  | [optional] 
 **Detail** | Pointer to **string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetItems
 
-`func (o *ResponseBadRequestPurgeInput) GetItems() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestPurgeInput) GetItems() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *ResponseBadRequestPurgeInput) GetItemsOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestPurgeInput) GetItemsOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *ResponseBadRequestPurgeInput) SetItems(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestPurgeInput) SetItems(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetItems sets Items field to given value.
 

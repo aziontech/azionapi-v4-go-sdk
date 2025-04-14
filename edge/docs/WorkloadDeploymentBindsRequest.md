@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EdgeApplication** | **int64** |  | 
 **EdgeFirewall** | Pointer to **NullableInt64** |  | [optional] 
+**CustomPage** | Pointer to **NullableInt64** |  | [optional] 
 
 ## Methods
 
@@ -81,6 +82,41 @@ HasEdgeFirewall returns a boolean if a field has been set.
 `func (o *WorkloadDeploymentBindsRequest) UnsetEdgeFirewall()`
 
 UnsetEdgeFirewall ensures that no value is present for EdgeFirewall, not even an explicit nil
+### GetCustomPage
+
+`func (o *WorkloadDeploymentBindsRequest) GetCustomPage() int64`
+
+GetCustomPage returns the CustomPage field if non-nil, zero value otherwise.
+
+### GetCustomPageOk
+
+`func (o *WorkloadDeploymentBindsRequest) GetCustomPageOk() (*int64, bool)`
+
+GetCustomPageOk returns a tuple with the CustomPage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomPage
+
+`func (o *WorkloadDeploymentBindsRequest) SetCustomPage(v int64)`
+
+SetCustomPage sets CustomPage field to given value.
+
+### HasCustomPage
+
+`func (o *WorkloadDeploymentBindsRequest) HasCustomPage() bool`
+
+HasCustomPage returns a boolean if a field has been set.
+
+### SetCustomPageNil
+
+`func (o *WorkloadDeploymentBindsRequest) SetCustomPageNil(b bool)`
+
+ SetCustomPageNil sets the value for CustomPage to be an explicit nil
+
+### UnsetCustomPage
+`func (o *WorkloadDeploymentBindsRequest) UnsetCustomPage()`
+
+UnsetCustomPage ensures that no value is present for CustomPage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

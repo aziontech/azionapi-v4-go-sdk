@@ -78,6 +78,12 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CustomPagesAPI* | [**CreateCustomPage**](docs/CustomPagesAPI.md#createcustompage) | **Post** /workspace/custom_pages | Create a Custom Page
+*CustomPagesAPI* | [**DestroyCustomPage**](docs/CustomPagesAPI.md#destroycustompage) | **Delete** /workspace/custom_pages/{id} | Destroy a Custom Page
+*CustomPagesAPI* | [**ListCustomPages**](docs/CustomPagesAPI.md#listcustompages) | **Get** /workspace/custom_pages | List Custom Pages
+*CustomPagesAPI* | [**PartialUpdateCustomPage**](docs/CustomPagesAPI.md#partialupdatecustompage) | **Patch** /workspace/custom_pages/{id} | Partially update a Custom Page
+*CustomPagesAPI* | [**RetrieveCustomPage**](docs/CustomPagesAPI.md#retrievecustompage) | **Get** /workspace/custom_pages/{id} | Retrieve details of a Custom Page
+*CustomPagesAPI* | [**UpdateCustomPage**](docs/CustomPagesAPI.md#updatecustompage) | **Put** /workspace/custom_pages/{id} | Update a Custom Page
 *EdgeApplicationsAPI* | [**CloneEdgeApplication**](docs/EdgeApplicationsAPI.md#cloneedgeapplication) | **Post** /edge_application/applications/{globalId}/clone | Clone an Edge Application
 *EdgeApplicationsAPI* | [**CreateEdgeApplication**](docs/EdgeApplicationsAPI.md#createedgeapplication) | **Post** /edge_application/applications | Create an Edge Application
 *EdgeApplicationsAPI* | [**DestroyEdgeApplication**](docs/EdgeApplicationsAPI.md#destroyedgeapplication) | **Delete** /edge_application/applications/{globalId} | Destroy an Edge Application
@@ -97,10 +103,6 @@ Class | Method | HTTP request | Description
 *EdgeApplicationsDeviceGroupsAPI* | [**PartialUpdateDeviceGroup**](docs/EdgeApplicationsDeviceGroupsAPI.md#partialupdatedevicegroup) | **Patch** /edge_application/applications/{edgeApplicationId}/device_groups/{id} | Partially update an Edge Applications Device Group
 *EdgeApplicationsDeviceGroupsAPI* | [**RetrieveDeviceGroup**](docs/EdgeApplicationsDeviceGroupsAPI.md#retrievedevicegroup) | **Get** /edge_application/applications/{edgeApplicationId}/device_groups/{id} | Retrieve details of a Device Group
 *EdgeApplicationsDeviceGroupsAPI* | [**UpdateDeviceGroup**](docs/EdgeApplicationsDeviceGroupsAPI.md#updatedevicegroup) | **Put** /edge_application/applications/{edgeApplicationId}/device_groups/{id} | Update an Edge Applications Device Group
-*EdgeApplicationsErrorResponsesAPI* | [**ListErrorResponses**](docs/EdgeApplicationsErrorResponsesAPI.md#listerrorresponses) | **Get** /edge_application/applications/{edgeApplicationId}/error_responses | List Error Responses for a Specific Edge Application
-*EdgeApplicationsErrorResponsesAPI* | [**PartialUpdateErrorResponse**](docs/EdgeApplicationsErrorResponsesAPI.md#partialupdateerrorresponse) | **Patch** /edge_application/applications/{edgeApplicationId}/error_responses/{id} | Partially Update an Error Response for a Specific Edge Application
-*EdgeApplicationsErrorResponsesAPI* | [**RetrieveErrorResponse**](docs/EdgeApplicationsErrorResponsesAPI.md#retrieveerrorresponse) | **Get** /edge_application/applications/{edgeApplicationId}/error_responses/{id} | Retrieve Details of an Error Response for a Specific Edge Application
-*EdgeApplicationsErrorResponsesAPI* | [**UpdateErrorResponse**](docs/EdgeApplicationsErrorResponsesAPI.md#updateerrorresponse) | **Put** /edge_application/applications/{edgeApplicationId}/error_responses/{id} | Update an Error Response for a Specific Edge Application
 *EdgeApplicationsFunctionAPI* | [**CreateEdgeFirewallFunctionInstance**](docs/EdgeApplicationsFunctionAPI.md#createedgefirewallfunctioninstance) | **Post** /edge_application/applications/{edgeApplicationId}/functions | Create an Edge Application Function Instance
 *EdgeApplicationsFunctionAPI* | [**DestroyEdgeApplicationFunctionInstance**](docs/EdgeApplicationsFunctionAPI.md#destroyedgeapplicationfunctioninstance) | **Delete** /edge_application/applications/{edgeApplicationId}/functions/{id} | Destroy an Edge Application Function Instance
 *EdgeApplicationsFunctionAPI* | [**ListEdgeApplicationFunctionInstances**](docs/EdgeApplicationsFunctionAPI.md#listedgeapplicationfunctioninstances) | **Get** /edge_application/applications/{edgeApplicationId}/functions | List Function Instances
@@ -114,6 +116,12 @@ Class | Method | HTTP request | Description
 *EdgeApplicationsRulesAPI* | [**PartialUpdateEdgeApplicationRule**](docs/EdgeApplicationsRulesAPI.md#partialupdateedgeapplicationrule) | **Patch** /edge_application/applications/{edgeApplicationId}/rules/{id} | Partially update an Edge Application Rule
 *EdgeApplicationsRulesAPI* | [**RetrieveEdgeApplicationRule**](docs/EdgeApplicationsRulesAPI.md#retrieveedgeapplicationrule) | **Get** /edge_application/applications/{edgeApplicationId}/rules/{id} | Retrieve details of an Edge Application Rule
 *EdgeApplicationsRulesAPI* | [**UpdateEdgeApplicationRule**](docs/EdgeApplicationsRulesAPI.md#updateedgeapplicationrule) | **Put** /edge_application/applications/{edgeApplicationId}/rules/{id} | Update an Edge Application Rule
+*EdgeConnectorsAPI* | [**CreateEdgeConnector**](docs/EdgeConnectorsAPI.md#createedgeconnector) | **Post** /edge_connector/connectors | Create an Edge Connector
+*EdgeConnectorsAPI* | [**DestroyEdgeConnector**](docs/EdgeConnectorsAPI.md#destroyedgeconnector) | **Delete** /edge_connector/connectors/{id} | Destroy an Edge Connector
+*EdgeConnectorsAPI* | [**ListEdgeConnectors**](docs/EdgeConnectorsAPI.md#listedgeconnectors) | **Get** /edge_connector/connectors | List Edge Connectors
+*EdgeConnectorsAPI* | [**PartialUpdateEdgeConnector**](docs/EdgeConnectorsAPI.md#partialupdateedgeconnector) | **Patch** /edge_connector/connectors/{id} | Partially update an Edge Connector
+*EdgeConnectorsAPI* | [**RetrieveEdgeConnector**](docs/EdgeConnectorsAPI.md#retrieveedgeconnector) | **Get** /edge_connector/connectors/{id} | Retrieve details of an Edge Connector
+*EdgeConnectorsAPI* | [**UpdateEdgeConnector**](docs/EdgeConnectorsAPI.md#updateedgeconnector) | **Put** /edge_connector/connectors/{id} | Update an Edge Connector
 *EdgeFirewallsAPI* | [**CloneEdgeFirewall**](docs/EdgeFirewallsAPI.md#cloneedgefirewall) | **Post** /edge_firewall/firewalls/{id}/clone | Clone an Edge Firewall
 *EdgeFirewallsAPI* | [**CreateEdgeFirewall**](docs/EdgeFirewallsAPI.md#createedgefirewall) | **Post** /edge_firewall/firewalls | Create an Edge Firewall
 *EdgeFirewallsAPI* | [**DestroyEdgeFirewall**](docs/EdgeFirewallsAPI.md#destroyedgefirewall) | **Delete** /edge_firewall/firewalls/{id} | Destroy an Edge Firewall
@@ -174,8 +182,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Address](docs/Address.md)
+ - [AddressRequest](docs/AddressRequest.md)
  - [ApplicationControlsModule](docs/ApplicationControlsModule.md)
  - [ApplicationControlsModuleRequest](docs/ApplicationControlsModuleRequest.md)
+ - [BaseEdgeConnector](docs/BaseEdgeConnector.md)
  - [BrowserCacheModule](docs/BrowserCacheModule.md)
  - [BrowserCacheModuleRequest](docs/BrowserCacheModuleRequest.md)
  - [CacheSetting](docs/CacheSetting.md)
@@ -185,6 +196,10 @@ Class | Method | HTTP request | Description
  - [CloneEdgeApplicationRequest](docs/CloneEdgeApplicationRequest.md)
  - [CloneEdgeFirewallRequest](docs/CloneEdgeFirewallRequest.md)
  - [CloneWAFRequest](docs/CloneWAFRequest.md)
+ - [ConnectorCustomPages](docs/ConnectorCustomPages.md)
+ - [ConnectorCustomPagesRequest](docs/ConnectorCustomPagesRequest.md)
+ - [CustomPages](docs/CustomPages.md)
+ - [CustomPagesRequest](docs/CustomPagesRequest.md)
  - [DefaultErrorResponse](docs/DefaultErrorResponse.md)
  - [DomainInfo](docs/DomainInfo.md)
  - [DomainInfoRequest](docs/DomainInfoRequest.md)
@@ -200,6 +215,7 @@ Class | Method | HTTP request | Description
  - [EdgeApplicationDeviceGroups](docs/EdgeApplicationDeviceGroups.md)
  - [EdgeApplicationDeviceGroupsRequest](docs/EdgeApplicationDeviceGroupsRequest.md)
  - [EdgeApplicationFunctionInstance](docs/EdgeApplicationFunctionInstance.md)
+ - [EdgeApplicationFunctionInstanceJsonArgs](docs/EdgeApplicationFunctionInstanceJsonArgs.md)
  - [EdgeApplicationFunctionInstanceRequest](docs/EdgeApplicationFunctionInstanceRequest.md)
  - [EdgeApplicationModules](docs/EdgeApplicationModules.md)
  - [EdgeApplicationModulesRequest](docs/EdgeApplicationModulesRequest.md)
@@ -209,6 +225,21 @@ Class | Method | HTTP request | Description
  - [EdgeApplicationRuleEngineRequest](docs/EdgeApplicationRuleEngineRequest.md)
  - [EdgeCacheModule](docs/EdgeCacheModule.md)
  - [EdgeCacheModuleRequest](docs/EdgeCacheModuleRequest.md)
+ - [EdgeConnectorHTTPRequest](docs/EdgeConnectorHTTPRequest.md)
+ - [EdgeConnectorHTTPTypePropertiesRequest](docs/EdgeConnectorHTTPTypePropertiesRequest.md)
+ - [EdgeConnectorHTTPTypedRequest](docs/EdgeConnectorHTTPTypedRequest.md)
+ - [EdgeConnectorLiveIngestRequest](docs/EdgeConnectorLiveIngestRequest.md)
+ - [EdgeConnectorLiveIngestTypePropertiesRequest](docs/EdgeConnectorLiveIngestTypePropertiesRequest.md)
+ - [EdgeConnectorLiveIngestTypedRequest](docs/EdgeConnectorLiveIngestTypedRequest.md)
+ - [EdgeConnectorModules](docs/EdgeConnectorModules.md)
+ - [EdgeConnectorModulesRequest](docs/EdgeConnectorModulesRequest.md)
+ - [EdgeConnectorPolymorphicRequest](docs/EdgeConnectorPolymorphicRequest.md)
+ - [EdgeConnectorS3Request](docs/EdgeConnectorS3Request.md)
+ - [EdgeConnectorS3TypePropertiesRequest](docs/EdgeConnectorS3TypePropertiesRequest.md)
+ - [EdgeConnectorS3TypedRequest](docs/EdgeConnectorS3TypedRequest.md)
+ - [EdgeConnectorStorageRequest](docs/EdgeConnectorStorageRequest.md)
+ - [EdgeConnectorStorageTypePropertiesRequest](docs/EdgeConnectorStorageTypePropertiesRequest.md)
+ - [EdgeConnectorStorageTypedRequest](docs/EdgeConnectorStorageTypedRequest.md)
  - [EdgeFirewall](docs/EdgeFirewall.md)
  - [EdgeFirewallBehaviorField](docs/EdgeFirewallBehaviorField.md)
  - [EdgeFirewallBehaviorFieldRequest](docs/EdgeFirewallBehaviorFieldRequest.md)
@@ -228,8 +259,6 @@ Class | Method | HTTP request | Description
  - [EdgeFirewallRuleEngineRequest](docs/EdgeFirewallRuleEngineRequest.md)
  - [EdgeFunctions](docs/EdgeFunctions.md)
  - [EdgeFunctionsRequest](docs/EdgeFunctionsRequest.md)
- - [ErrorResponses](docs/ErrorResponses.md)
- - [ErrorResponsesRequest](docs/ErrorResponsesRequest.md)
  - [HttpProtocol](docs/HttpProtocol.md)
  - [HttpProtocolRequest](docs/HttpProtocolRequest.md)
  - [MTLS](docs/MTLS.md)
@@ -237,11 +266,13 @@ Class | Method | HTTP request | Description
  - [MatchZone](docs/MatchZone.md)
  - [MatchZoneMatchesOn](docs/MatchZoneMatchesOn.md)
  - [MatchZoneRequest](docs/MatchZoneRequest.md)
- - [NestedErrorResponse](docs/NestedErrorResponse.md)
- - [NestedErrorResponseRequest](docs/NestedErrorResponseRequest.md)
  - [NetworkList](docs/NetworkList.md)
  - [NetworkListRequest](docs/NetworkListRequest.md)
+ - [Page](docs/Page.md)
+ - [PageRequest](docs/PageRequest.md)
+ - [PaginatedResponseListBaseEdgeConnectorList](docs/PaginatedResponseListBaseEdgeConnectorList.md)
  - [PaginatedResponseListCacheSettingList](docs/PaginatedResponseListCacheSettingList.md)
+ - [PaginatedResponseListCustomPagesList](docs/PaginatedResponseListCustomPagesList.md)
  - [PaginatedResponseListEdgeApplicationDeviceGroupsList](docs/PaginatedResponseListEdgeApplicationDeviceGroupsList.md)
  - [PaginatedResponseListEdgeApplicationFunctionInstanceList](docs/PaginatedResponseListEdgeApplicationFunctionInstanceList.md)
  - [PaginatedResponseListEdgeApplicationList](docs/PaginatedResponseListEdgeApplicationList.md)
@@ -250,22 +281,30 @@ Class | Method | HTTP request | Description
  - [PaginatedResponseListEdgeFirewallList](docs/PaginatedResponseListEdgeFirewallList.md)
  - [PaginatedResponseListEdgeFirewallRuleEngineList](docs/PaginatedResponseListEdgeFirewallRuleEngineList.md)
  - [PaginatedResponseListEdgeFunctionsList](docs/PaginatedResponseListEdgeFunctionsList.md)
- - [PaginatedResponseListErrorResponsesList](docs/PaginatedResponseListErrorResponsesList.md)
  - [PaginatedResponseListNetworkListList](docs/PaginatedResponseListNetworkListList.md)
  - [PaginatedResponseListWAFList](docs/PaginatedResponseListWAFList.md)
  - [PaginatedResponseListWAFRuleList](docs/PaginatedResponseListWAFRuleList.md)
  - [PaginatedResponseListWorkloadDeploymentList](docs/PaginatedResponseListWorkloadDeploymentList.md)
  - [PaginatedResponseListWorkloadList](docs/PaginatedResponseListWorkloadList.md)
  - [PatchedCacheSettingRequest](docs/PatchedCacheSettingRequest.md)
+ - [PatchedCustomPagesRequest](docs/PatchedCustomPagesRequest.md)
  - [PatchedEdgeApplicationDeviceGroupsRequest](docs/PatchedEdgeApplicationDeviceGroupsRequest.md)
  - [PatchedEdgeApplicationFunctionInstanceRequest](docs/PatchedEdgeApplicationFunctionInstanceRequest.md)
  - [PatchedEdgeApplicationRequest](docs/PatchedEdgeApplicationRequest.md)
  - [PatchedEdgeApplicationRuleEngineRequest](docs/PatchedEdgeApplicationRuleEngineRequest.md)
+ - [PatchedEdgeConnectorHTTPRequest](docs/PatchedEdgeConnectorHTTPRequest.md)
+ - [PatchedEdgeConnectorHTTPTypedRequest](docs/PatchedEdgeConnectorHTTPTypedRequest.md)
+ - [PatchedEdgeConnectorLiveIngestRequest](docs/PatchedEdgeConnectorLiveIngestRequest.md)
+ - [PatchedEdgeConnectorLiveIngestTypedRequest](docs/PatchedEdgeConnectorLiveIngestTypedRequest.md)
+ - [PatchedEdgeConnectorPolymorphicRequest](docs/PatchedEdgeConnectorPolymorphicRequest.md)
+ - [PatchedEdgeConnectorS3Request](docs/PatchedEdgeConnectorS3Request.md)
+ - [PatchedEdgeConnectorS3TypedRequest](docs/PatchedEdgeConnectorS3TypedRequest.md)
+ - [PatchedEdgeConnectorStorageRequest](docs/PatchedEdgeConnectorStorageRequest.md)
+ - [PatchedEdgeConnectorStorageTypedRequest](docs/PatchedEdgeConnectorStorageTypedRequest.md)
  - [PatchedEdgeFirewallFunctionInstanceRequest](docs/PatchedEdgeFirewallFunctionInstanceRequest.md)
  - [PatchedEdgeFirewallRequest](docs/PatchedEdgeFirewallRequest.md)
  - [PatchedEdgeFirewallRuleEngineRequest](docs/PatchedEdgeFirewallRuleEngineRequest.md)
  - [PatchedEdgeFunctionsRequest](docs/PatchedEdgeFunctionsRequest.md)
- - [PatchedErrorResponsesRequest](docs/PatchedErrorResponsesRequest.md)
  - [PatchedNetworkListRequest](docs/PatchedNetworkListRequest.md)
  - [PatchedWAFRequest](docs/PatchedWAFRequest.md)
  - [PatchedWAFRuleRequest](docs/PatchedWAFRuleRequest.md)
@@ -275,23 +314,25 @@ Class | Method | HTTP request | Description
  - [ProtocolsRequest](docs/ProtocolsRequest.md)
  - [PurgeInput](docs/PurgeInput.md)
  - [PurgeInputRequest](docs/PurgeInputRequest.md)
+ - [ResponseBadRequestBaseEdgeConnector](docs/ResponseBadRequestBaseEdgeConnector.md)
+ - [ResponseBadRequestBaseEdgeConnectorConnectionPreference](docs/ResponseBadRequestBaseEdgeConnectorConnectionPreference.md)
  - [ResponseBadRequestCacheSetting](docs/ResponseBadRequestCacheSetting.md)
+ - [ResponseBadRequestCustomPages](docs/ResponseBadRequestCustomPages.md)
  - [ResponseBadRequestEdgeApplication](docs/ResponseBadRequestEdgeApplication.md)
  - [ResponseBadRequestEdgeApplicationDeviceGroups](docs/ResponseBadRequestEdgeApplicationDeviceGroups.md)
  - [ResponseBadRequestEdgeApplicationFunctionInstance](docs/ResponseBadRequestEdgeApplicationFunctionInstance.md)
  - [ResponseBadRequestEdgeApplicationRuleEngine](docs/ResponseBadRequestEdgeApplicationRuleEngine.md)
- - [ResponseBadRequestEdgeApplicationRuleEngineBehaviors](docs/ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md)
  - [ResponseBadRequestEdgeFirewall](docs/ResponseBadRequestEdgeFirewall.md)
  - [ResponseBadRequestEdgeFirewallFunctionInstance](docs/ResponseBadRequestEdgeFirewallFunctionInstance.md)
  - [ResponseBadRequestEdgeFirewallRuleEngine](docs/ResponseBadRequestEdgeFirewallRuleEngine.md)
  - [ResponseBadRequestEdgeFunctions](docs/ResponseBadRequestEdgeFunctions.md)
- - [ResponseBadRequestErrorResponses](docs/ResponseBadRequestErrorResponses.md)
  - [ResponseBadRequestNetworkList](docs/ResponseBadRequestNetworkList.md)
  - [ResponseBadRequestProtocolsSerializerHttpField](docs/ResponseBadRequestProtocolsSerializerHttpField.md)
  - [ResponseBadRequestPurgeInput](docs/ResponseBadRequestPurgeInput.md)
  - [ResponseBadRequestSerializerMetaclassApplicationControlsField](docs/ResponseBadRequestSerializerMetaclassApplicationControlsField.md)
  - [ResponseBadRequestSerializerMetaclassBindsField](docs/ResponseBadRequestSerializerMetaclassBindsField.md)
  - [ResponseBadRequestSerializerMetaclassBrowserCacheField](docs/ResponseBadRequestSerializerMetaclassBrowserCacheField.md)
+ - [ResponseBadRequestSerializerMetaclassConnectorCustomPagesField](docs/ResponseBadRequestSerializerMetaclassConnectorCustomPagesField.md)
  - [ResponseBadRequestSerializerMetaclassEdgeCacheField](docs/ResponseBadRequestSerializerMetaclassEdgeCacheField.md)
  - [ResponseBadRequestSerializerMetaclassModulesField](docs/ResponseBadRequestSerializerMetaclassModulesField.md)
  - [ResponseBadRequestSerializerMetaclassMtlsField](docs/ResponseBadRequestSerializerMetaclassMtlsField.md)
@@ -303,8 +344,12 @@ Class | Method | HTTP request | Description
  - [ResponseBadRequestWAFRule](docs/ResponseBadRequestWAFRule.md)
  - [ResponseBadRequestWorkload](docs/ResponseBadRequestWorkload.md)
  - [ResponseBadRequestWorkloadDeployment](docs/ResponseBadRequestWorkloadDeployment.md)
+ - [ResponseBaseEdgeConnector](docs/ResponseBaseEdgeConnector.md)
  - [ResponseCacheSetting](docs/ResponseCacheSetting.md)
+ - [ResponseCustomPages](docs/ResponseCustomPages.md)
+ - [ResponseDeleteBaseEdgeConnector](docs/ResponseDeleteBaseEdgeConnector.md)
  - [ResponseDeleteCacheSetting](docs/ResponseDeleteCacheSetting.md)
+ - [ResponseDeleteCustomPages](docs/ResponseDeleteCustomPages.md)
  - [ResponseDeleteEdgeApplication](docs/ResponseDeleteEdgeApplication.md)
  - [ResponseDeleteEdgeApplicationDeviceGroups](docs/ResponseDeleteEdgeApplicationDeviceGroups.md)
  - [ResponseDeleteEdgeApplicationFunctionInstance](docs/ResponseDeleteEdgeApplicationFunctionInstance.md)
@@ -325,8 +370,9 @@ Class | Method | HTTP request | Description
  - [ResponseEdgeFirewallFunctionInstance](docs/ResponseEdgeFirewallFunctionInstance.md)
  - [ResponseEdgeFirewallRuleEngine](docs/ResponseEdgeFirewallRuleEngine.md)
  - [ResponseEdgeFunctions](docs/ResponseEdgeFunctions.md)
- - [ResponseErrorResponses](docs/ResponseErrorResponses.md)
+ - [ResponseListBaseEdgeConnector](docs/ResponseListBaseEdgeConnector.md)
  - [ResponseListCacheSetting](docs/ResponseListCacheSetting.md)
+ - [ResponseListCustomPages](docs/ResponseListCustomPages.md)
  - [ResponseListEdgeApplication](docs/ResponseListEdgeApplication.md)
  - [ResponseListEdgeApplicationDeviceGroups](docs/ResponseListEdgeApplicationDeviceGroups.md)
  - [ResponseListEdgeApplicationFunctionInstance](docs/ResponseListEdgeApplicationFunctionInstance.md)
@@ -335,7 +381,6 @@ Class | Method | HTTP request | Description
  - [ResponseListEdgeFirewallFunctionInstance](docs/ResponseListEdgeFirewallFunctionInstance.md)
  - [ResponseListEdgeFirewallRuleEngine](docs/ResponseListEdgeFirewallRuleEngine.md)
  - [ResponseListEdgeFunctions](docs/ResponseListEdgeFunctions.md)
- - [ResponseListErrorResponses](docs/ResponseListErrorResponses.md)
  - [ResponseListNetworkList](docs/ResponseListNetworkList.md)
  - [ResponseListWAF](docs/ResponseListWAF.md)
  - [ResponseListWAFRule](docs/ResponseListWAFRule.md)
@@ -343,7 +388,9 @@ Class | Method | HTTP request | Description
  - [ResponseListWorkloadDeployment](docs/ResponseListWorkloadDeployment.md)
  - [ResponseNetworkList](docs/ResponseNetworkList.md)
  - [ResponsePurgeInput](docs/ResponsePurgeInput.md)
+ - [ResponseRetrieveBaseEdgeConnector](docs/ResponseRetrieveBaseEdgeConnector.md)
  - [ResponseRetrieveCacheSetting](docs/ResponseRetrieveCacheSetting.md)
+ - [ResponseRetrieveCustomPages](docs/ResponseRetrieveCustomPages.md)
  - [ResponseRetrieveEdgeApplication](docs/ResponseRetrieveEdgeApplication.md)
  - [ResponseRetrieveEdgeApplicationDeviceGroups](docs/ResponseRetrieveEdgeApplicationDeviceGroups.md)
  - [ResponseRetrieveEdgeApplicationFunctionInstance](docs/ResponseRetrieveEdgeApplicationFunctionInstance.md)
@@ -352,7 +399,6 @@ Class | Method | HTTP request | Description
  - [ResponseRetrieveEdgeFirewallFunctionInstance](docs/ResponseRetrieveEdgeFirewallFunctionInstance.md)
  - [ResponseRetrieveEdgeFirewallRuleEngine](docs/ResponseRetrieveEdgeFirewallRuleEngine.md)
  - [ResponseRetrieveEdgeFunctions](docs/ResponseRetrieveEdgeFunctions.md)
- - [ResponseRetrieveErrorResponses](docs/ResponseRetrieveErrorResponses.md)
  - [ResponseRetrieveNetworkList](docs/ResponseRetrieveNetworkList.md)
  - [ResponseRetrieveWAF](docs/ResponseRetrieveWAF.md)
  - [ResponseRetrieveWAFRule](docs/ResponseRetrieveWAFRule.md)
@@ -371,8 +417,6 @@ Class | Method | HTTP request | Description
  - [SliceControlsModule](docs/SliceControlsModule.md)
  - [SliceControlsModuleRequest](docs/SliceControlsModuleRequest.md)
  - [TLS](docs/TLS.md)
- - [TLSCiphers](docs/TLSCiphers.md)
- - [TLSMinimumVersion](docs/TLSMinimumVersion.md)
  - [TLSRequest](docs/TLSRequest.md)
  - [WAF](docs/WAF.md)
  - [WAFRequest](docs/WAFRequest.md)

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Verification** | Pointer to **[]string** |  | [optional] 
 **Certificate** | Pointer to **[]string** |  | [optional] 
-**Crl** | Pointer to [**ResponseBadRequestEdgeApplicationRuleEngineBehaviors**](ResponseBadRequestEdgeApplicationRuleEngineBehaviors.md) |  | [optional] 
+**Crl** | Pointer to [**ResponseBadRequestBaseEdgeConnectorConnectionPreference**](ResponseBadRequestBaseEdgeConnectorConnectionPreference.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasCertificate returns a boolean if a field has been set.
 
 ### GetCrl
 
-`func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrl() ResponseBadRequestEdgeApplicationRuleEngineBehaviors`
+`func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrl() ResponseBadRequestBaseEdgeConnectorConnectionPreference`
 
 GetCrl returns the Crl field if non-nil, zero value otherwise.
 
 ### GetCrlOk
 
-`func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrlOk() (*ResponseBadRequestEdgeApplicationRuleEngineBehaviors, bool)`
+`func (o *ResponseBadRequestSerializerMetaclassMtlsField) GetCrlOk() (*ResponseBadRequestBaseEdgeConnectorConnectionPreference, bool)`
 
 GetCrlOk returns a tuple with the Crl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCrl
 
-`func (o *ResponseBadRequestSerializerMetaclassMtlsField) SetCrl(v ResponseBadRequestEdgeApplicationRuleEngineBehaviors)`
+`func (o *ResponseBadRequestSerializerMetaclassMtlsField) SetCrl(v ResponseBadRequestBaseEdgeConnectorConnectionPreference)`
 
 SetCrl sets Crl field to given value.
 

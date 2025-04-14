@@ -49,17 +49,19 @@ type APIClient struct {
 
 	// API Services
 
+	CustomPagesAPI *CustomPagesAPIService
+
 	EdgeApplicationsAPI *EdgeApplicationsAPIService
 
 	EdgeApplicationsCacheSettingsAPI *EdgeApplicationsCacheSettingsAPIService
 
 	EdgeApplicationsDeviceGroupsAPI *EdgeApplicationsDeviceGroupsAPIService
 
-	EdgeApplicationsErrorResponsesAPI *EdgeApplicationsErrorResponsesAPIService
-
 	EdgeApplicationsFunctionAPI *EdgeApplicationsFunctionAPIService
 
 	EdgeApplicationsRulesAPI *EdgeApplicationsRulesAPIService
+
+	EdgeConnectorsAPI *EdgeConnectorsAPIService
 
 	EdgeFirewallsAPI *EdgeFirewallsAPIService
 
@@ -98,12 +100,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.CustomPagesAPI = (*CustomPagesAPIService)(&c.common)
 	c.EdgeApplicationsAPI = (*EdgeApplicationsAPIService)(&c.common)
 	c.EdgeApplicationsCacheSettingsAPI = (*EdgeApplicationsCacheSettingsAPIService)(&c.common)
 	c.EdgeApplicationsDeviceGroupsAPI = (*EdgeApplicationsDeviceGroupsAPIService)(&c.common)
-	c.EdgeApplicationsErrorResponsesAPI = (*EdgeApplicationsErrorResponsesAPIService)(&c.common)
 	c.EdgeApplicationsFunctionAPI = (*EdgeApplicationsFunctionAPIService)(&c.common)
 	c.EdgeApplicationsRulesAPI = (*EdgeApplicationsRulesAPIService)(&c.common)
+	c.EdgeConnectorsAPI = (*EdgeConnectorsAPIService)(&c.common)
 	c.EdgeFirewallsAPI = (*EdgeFirewallsAPIService)(&c.common)
 	c.EdgeFirewallsFunctionAPI = (*EdgeFirewallsFunctionAPIService)(&c.common)
 	c.EdgeFirewallsRulesEngineAPI = (*EdgeFirewallsRulesEngineAPIService)(&c.common)

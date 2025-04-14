@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**JsonArgs** | Pointer to **interface{}** |  | [optional] 
+**JsonArgs** | Pointer to [**EdgeApplicationFunctionInstanceJsonArgs**](EdgeApplicationFunctionInstanceJsonArgs.md) |  | [optional] 
 **EdgeFunction** | Pointer to **int64** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 
@@ -55,20 +55,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetJsonArgs
 
-`func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetJsonArgs() interface{}`
+`func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetJsonArgsOk() (*interface{}, bool)`
+`func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *PatchedEdgeFirewallFunctionInstanceRequest) SetJsonArgs(v interface{})`
+`func (o *PatchedEdgeFirewallFunctionInstanceRequest) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs)`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -78,16 +78,6 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
-### SetJsonArgsNil
-
-`func (o *PatchedEdgeFirewallFunctionInstanceRequest) SetJsonArgsNil(b bool)`
-
- SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
-
-### UnsetJsonArgs
-`func (o *PatchedEdgeFirewallFunctionInstanceRequest) UnsetJsonArgs()`
-
-UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetEdgeFunction
 
 `func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetEdgeFunction() int64`

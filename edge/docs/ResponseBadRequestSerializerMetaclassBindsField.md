@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EdgeApplication** | Pointer to **[]string** |  | [optional] 
 **EdgeFirewall** | Pointer to **[]string** |  | [optional] 
+**CustomPage** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetEdgeFirewall sets EdgeFirewall field to given value.
 `func (o *ResponseBadRequestSerializerMetaclassBindsField) HasEdgeFirewall() bool`
 
 HasEdgeFirewall returns a boolean if a field has been set.
+
+### GetCustomPage
+
+`func (o *ResponseBadRequestSerializerMetaclassBindsField) GetCustomPage() []string`
+
+GetCustomPage returns the CustomPage field if non-nil, zero value otherwise.
+
+### GetCustomPageOk
+
+`func (o *ResponseBadRequestSerializerMetaclassBindsField) GetCustomPageOk() (*[]string, bool)`
+
+GetCustomPageOk returns a tuple with the CustomPage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomPage
+
+`func (o *ResponseBadRequestSerializerMetaclassBindsField) SetCustomPage(v []string)`
+
+SetCustomPage sets CustomPage field to given value.
+
+### HasCustomPage
+
+`func (o *ResponseBadRequestSerializerMetaclassBindsField) HasCustomPage() bool`
+
+HasCustomPage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

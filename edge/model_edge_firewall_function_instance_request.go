@@ -22,7 +22,7 @@ var _ MappedNullable = &EdgeFirewallFunctionInstanceRequest{}
 // EdgeFirewallFunctionInstanceRequest struct for EdgeFirewallFunctionInstanceRequest
 type EdgeFirewallFunctionInstanceRequest struct {
 	Name string `json:"name" validate:"regexp=.*"`
-	JsonArgs interface{} `json:"json_args"`
+	JsonArgs *EdgeApplicationFunctionInstanceJsonArgs `json:"json_args,omitempty"`
 	EdgeFunction int64 `json:"edge_function"`
 	Active *bool `json:"active,omitempty"`
 }
@@ -33,10 +33,9 @@ type _EdgeFirewallFunctionInstanceRequest EdgeFirewallFunctionInstanceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEdgeFirewallFunctionInstanceRequest(name string, jsonArgs interface{}, edgeFunction int64) *EdgeFirewallFunctionInstanceRequest {
+func NewEdgeFirewallFunctionInstanceRequest(name string, edgeFunction int64) *EdgeFirewallFunctionInstanceRequest {
 	this := EdgeFirewallFunctionInstanceRequest{}
 	this.Name = name
-	this.JsonArgs = jsonArgs
 	this.EdgeFunction = edgeFunction
 	return &this
 }
@@ -73,30 +72,36 @@ func (o *EdgeFirewallFunctionInstanceRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetJsonArgs returns the JsonArgs field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *EdgeFirewallFunctionInstanceRequest) GetJsonArgs() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
+func (o *EdgeFirewallFunctionInstanceRequest) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs {
+	if o == nil || IsNil(o.JsonArgs) {
+		var ret EdgeApplicationFunctionInstanceJsonArgs
 		return ret
 	}
-
-	return o.JsonArgs
+	return *o.JsonArgs
 }
 
-// GetJsonArgsOk returns a tuple with the JsonArgs field value
+// GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EdgeFirewallFunctionInstanceRequest) GetJsonArgsOk() (*interface{}, bool) {
+func (o *EdgeFirewallFunctionInstanceRequest) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
-	return &o.JsonArgs, true
+	return o.JsonArgs, true
 }
 
-// SetJsonArgs sets field value
-func (o *EdgeFirewallFunctionInstanceRequest) SetJsonArgs(v interface{}) {
-	o.JsonArgs = v
+// HasJsonArgs returns a boolean if a field has been set.
+func (o *EdgeFirewallFunctionInstanceRequest) HasJsonArgs() bool {
+	if o != nil && !IsNil(o.JsonArgs) {
+		return true
+	}
+
+	return false
+}
+
+// SetJsonArgs gets a reference to the given EdgeApplicationFunctionInstanceJsonArgs and assigns it to the JsonArgs field.
+func (o *EdgeFirewallFunctionInstanceRequest) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs) {
+	o.JsonArgs = &v
 }
 
 // GetEdgeFunction returns the EdgeFunction field value
@@ -166,7 +171,7 @@ func (o EdgeFirewallFunctionInstanceRequest) MarshalJSON() ([]byte, error) {
 func (o EdgeFirewallFunctionInstanceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if o.JsonArgs != nil {
+	if !IsNil(o.JsonArgs) {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	toSerialize["edge_function"] = o.EdgeFunction
@@ -182,7 +187,6 @@ func (o *EdgeFirewallFunctionInstanceRequest) UnmarshalJSON(data []byte) (err er
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"json_args",
 		"edge_function",
 	}
 

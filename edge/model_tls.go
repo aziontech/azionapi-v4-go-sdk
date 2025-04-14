@@ -19,9 +19,8 @@ var _ MappedNullable = &TLS{}
 
 // TLS struct for TLS
 type TLS struct {
-	Certificate NullableInt64 `json:"certificate,omitempty"`
-	Ciphers NullableTLSCiphers `json:"ciphers,omitempty"`
-	MinimumVersion NullableTLSMinimumVersion `json:"minimum_version,omitempty"`
+	// policy of security to access the origin Possible values: off, on, preserve. Default: preserve  * `off` - off * `on` - on * `preserve` - preserve
+	Policy *string `json:"policy,omitempty"`
 }
 
 // NewTLS instantiates a new TLS object
@@ -41,130 +40,36 @@ func NewTLSWithDefaults() *TLS {
 	return &this
 }
 
-// GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TLS) GetCertificate() int64 {
-	if o == nil || IsNil(o.Certificate.Get()) {
-		var ret int64
+// GetPolicy returns the Policy field value if set, zero value otherwise.
+func (o *TLS) GetPolicy() string {
+	if o == nil || IsNil(o.Policy) {
+		var ret string
 		return ret
 	}
-	return *o.Certificate.Get()
+	return *o.Policy
 }
 
-// GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
+// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TLS) GetCertificateOk() (*int64, bool) {
-	if o == nil {
+func (o *TLS) GetPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.Policy) {
 		return nil, false
 	}
-	return o.Certificate.Get(), o.Certificate.IsSet()
+	return o.Policy, true
 }
 
-// HasCertificate returns a boolean if a field has been set.
-func (o *TLS) HasCertificate() bool {
-	if o != nil && o.Certificate.IsSet() {
+// HasPolicy returns a boolean if a field has been set.
+func (o *TLS) HasPolicy() bool {
+	if o != nil && !IsNil(o.Policy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCertificate gets a reference to the given NullableInt64 and assigns it to the Certificate field.
-func (o *TLS) SetCertificate(v int64) {
-	o.Certificate.Set(&v)
-}
-// SetCertificateNil sets the value for Certificate to be an explicit nil
-func (o *TLS) SetCertificateNil() {
-	o.Certificate.Set(nil)
-}
-
-// UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
-func (o *TLS) UnsetCertificate() {
-	o.Certificate.Unset()
-}
-
-// GetCiphers returns the Ciphers field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TLS) GetCiphers() TLSCiphers {
-	if o == nil || IsNil(o.Ciphers.Get()) {
-		var ret TLSCiphers
-		return ret
-	}
-	return *o.Ciphers.Get()
-}
-
-// GetCiphersOk returns a tuple with the Ciphers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TLS) GetCiphersOk() (*TLSCiphers, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Ciphers.Get(), o.Ciphers.IsSet()
-}
-
-// HasCiphers returns a boolean if a field has been set.
-func (o *TLS) HasCiphers() bool {
-	if o != nil && o.Ciphers.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCiphers gets a reference to the given NullableTLSCiphers and assigns it to the Ciphers field.
-func (o *TLS) SetCiphers(v TLSCiphers) {
-	o.Ciphers.Set(&v)
-}
-// SetCiphersNil sets the value for Ciphers to be an explicit nil
-func (o *TLS) SetCiphersNil() {
-	o.Ciphers.Set(nil)
-}
-
-// UnsetCiphers ensures that no value is present for Ciphers, not even an explicit nil
-func (o *TLS) UnsetCiphers() {
-	o.Ciphers.Unset()
-}
-
-// GetMinimumVersion returns the MinimumVersion field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TLS) GetMinimumVersion() TLSMinimumVersion {
-	if o == nil || IsNil(o.MinimumVersion.Get()) {
-		var ret TLSMinimumVersion
-		return ret
-	}
-	return *o.MinimumVersion.Get()
-}
-
-// GetMinimumVersionOk returns a tuple with the MinimumVersion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TLS) GetMinimumVersionOk() (*TLSMinimumVersion, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.MinimumVersion.Get(), o.MinimumVersion.IsSet()
-}
-
-// HasMinimumVersion returns a boolean if a field has been set.
-func (o *TLS) HasMinimumVersion() bool {
-	if o != nil && o.MinimumVersion.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMinimumVersion gets a reference to the given NullableTLSMinimumVersion and assigns it to the MinimumVersion field.
-func (o *TLS) SetMinimumVersion(v TLSMinimumVersion) {
-	o.MinimumVersion.Set(&v)
-}
-// SetMinimumVersionNil sets the value for MinimumVersion to be an explicit nil
-func (o *TLS) SetMinimumVersionNil() {
-	o.MinimumVersion.Set(nil)
-}
-
-// UnsetMinimumVersion ensures that no value is present for MinimumVersion, not even an explicit nil
-func (o *TLS) UnsetMinimumVersion() {
-	o.MinimumVersion.Unset()
+// SetPolicy gets a reference to the given string and assigns it to the Policy field.
+func (o *TLS) SetPolicy(v string) {
+	o.Policy = &v
 }
 
 func (o TLS) MarshalJSON() ([]byte, error) {
@@ -177,14 +82,8 @@ func (o TLS) MarshalJSON() ([]byte, error) {
 
 func (o TLS) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Certificate.IsSet() {
-		toSerialize["certificate"] = o.Certificate.Get()
-	}
-	if o.Ciphers.IsSet() {
-		toSerialize["ciphers"] = o.Ciphers.Get()
-	}
-	if o.MinimumVersion.IsSet() {
-		toSerialize["minimum_version"] = o.MinimumVersion.Get()
+	if !IsNil(o.Policy) {
+		toSerialize["policy"] = o.Policy
 	}
 	return toSerialize, nil
 }
