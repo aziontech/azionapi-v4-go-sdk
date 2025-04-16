@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Language** | Pointer to **string** | * &#x60;javascript&#x60; - JavaScript * &#x60;lua&#x60; - Lua | [optional] 
 **Code** | **string** |  | 
-**JsonArgs** | Pointer to [**EdgeApplicationFunctionInstanceJsonArgs**](EdgeApplicationFunctionInstanceJsonArgs.md) |  | [optional] 
+**JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **InitiatorType** | Pointer to **string** | * &#x60;edge_application&#x60; - Edge Application * &#x60;edge_firewall&#x60; - Edge Firewall | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 
@@ -97,20 +97,20 @@ SetCode sets Code field to given value.
 
 ### GetJsonArgs
 
-`func (o *EdgeFunctionsRequest) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs`
+`func (o *EdgeFunctionsRequest) GetJsonArgs() interface{}`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *EdgeFunctionsRequest) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool)`
+`func (o *EdgeFunctionsRequest) GetJsonArgsOk() (*interface{}, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *EdgeFunctionsRequest) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs)`
+`func (o *EdgeFunctionsRequest) SetJsonArgs(v interface{})`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -120,6 +120,16 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
+### SetJsonArgsNil
+
+`func (o *EdgeFunctionsRequest) SetJsonArgsNil(b bool)`
+
+ SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
+
+### UnsetJsonArgs
+`func (o *EdgeFunctionsRequest) UnsetJsonArgs()`
+
+UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetInitiatorType
 
 `func (o *EdgeFunctionsRequest) GetInitiatorType() string`

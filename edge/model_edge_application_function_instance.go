@@ -24,7 +24,7 @@ var _ MappedNullable = &EdgeApplicationFunctionInstance{}
 type EdgeApplicationFunctionInstance struct {
 	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
-	JsonArgs *EdgeApplicationFunctionInstanceJsonArgs `json:"json_args,omitempty"`
+	JsonArgs interface{} `json:"json_args,omitempty"`
 	EdgeFunction int64 `json:"edge_function"`
 	Active *bool `json:"active,omitempty"`
 	LastEditor string `json:"last_editor" validate:"regexp=.*"`
@@ -103,22 +103,23 @@ func (o *EdgeApplicationFunctionInstance) SetName(v string) {
 	o.Name = v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
-func (o *EdgeApplicationFunctionInstance) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs {
-	if o == nil || IsNil(o.JsonArgs) {
-		var ret EdgeApplicationFunctionInstanceJsonArgs
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EdgeApplicationFunctionInstance) GetJsonArgs() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
-	return *o.JsonArgs
+	return o.JsonArgs
 }
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeApplicationFunctionInstance) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EdgeApplicationFunctionInstance) GetJsonArgsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
-	return o.JsonArgs, true
+	return &o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
@@ -130,9 +131,9 @@ func (o *EdgeApplicationFunctionInstance) HasJsonArgs() bool {
 	return false
 }
 
-// SetJsonArgs gets a reference to the given EdgeApplicationFunctionInstanceJsonArgs and assigns it to the JsonArgs field.
-func (o *EdgeApplicationFunctionInstance) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs) {
-	o.JsonArgs = &v
+// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
+func (o *EdgeApplicationFunctionInstance) SetJsonArgs(v interface{}) {
+	o.JsonArgs = v
 }
 
 // GetEdgeFunction returns the EdgeFunction field value
@@ -251,7 +252,7 @@ func (o EdgeApplicationFunctionInstance) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	if !IsNil(o.JsonArgs) {
+	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	toSerialize["edge_function"] = o.EdgeFunction

@@ -9511,8 +9511,7 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        json_args:
-          arg_01: value_01
+        json_args: ""
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -9525,8 +9524,7 @@ components:
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -9557,16 +9555,14 @@ components:
         edge_function: 738633633822310400
         name: name
         active: true
-        json_args:
-          arg_01: value_01
+        json_args: ""
       properties:
         name:
           maxLength: 100
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -10953,8 +10949,7 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        json_args:
-          arg_01: value_01
+        json_args: ""
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -10967,8 +10962,7 @@ components:
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -10999,16 +10993,14 @@ components:
         edge_function: 738633633822310400
         name: name
         active: true
-        json_args:
-          arg_01: value_01
+        json_args: ""
       properties:
         name:
           maxLength: 100
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -11447,8 +11439,7 @@ components:
         initiator_type: ""
         vendor: vendor
         name: name
-        json_args:
-          arg_01: value_01
+        json_args: ""
         id: 0
         reference_count: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
@@ -11470,8 +11461,7 @@ components:
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         initiator_type:
           allOf:
           - $ref: '#/components/schemas/InitiatorTypeEnum'
@@ -11522,8 +11512,7 @@ components:
         name: name
         active: true
         language: ""
-        json_args:
-          arg_01: value_01
+        json_args: ""
         initiator_type: ""
       properties:
         name:
@@ -11539,8 +11528,7 @@ components:
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         initiator_type:
           allOf:
           - $ref: '#/components/schemas/InitiatorTypeEnum'
@@ -12317,16 +12305,14 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
         - edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
           active: true
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -12653,16 +12639,14 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
         - edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
           active: true
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -12987,8 +12971,7 @@ components:
           name: name
           active: true
           language: ""
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           reference_count: 6
           version: version
@@ -13000,8 +12983,7 @@ components:
           name: name
           active: true
           language: ""
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           reference_count: 6
           version: version
@@ -13385,16 +13367,14 @@ components:
         edge_function: 738633633822310400
         name: name
         active: true
-        json_args:
-          arg_01: value_01
+        json_args: ""
       properties:
         name:
           maxLength: 100
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -13911,16 +13891,14 @@ components:
         edge_function: 738633633822310400
         name: name
         active: true
-        json_args:
-          arg_01: value_01
+        json_args: ""
       properties:
         name:
           maxLength: 100
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -14111,8 +14089,7 @@ components:
         name: name
         active: true
         language: ""
-        json_args:
-          arg_01: value_01
+        json_args: ""
         initiator_type: ""
       properties:
         name:
@@ -14128,8 +14105,7 @@ components:
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         initiator_type:
           allOf:
           - $ref: '#/components/schemas/InitiatorTypeEnum'
@@ -14937,9 +14913,7 @@ components:
         active:
         - active
         - active
-        json_args:
-        - json_args
-        - json_args
+        json_args: ""
         id:
         - id
         - id
@@ -14956,10 +14930,7 @@ components:
           items:
             type: string
           type: array
-        json_args:
-          items:
-            type: string
-          type: array
+        json_args: {}
         edge_function:
           items:
             type: string
@@ -15146,9 +15117,7 @@ components:
         active:
         - active
         - active
-        json_args:
-        - json_args
-        - json_args
+        json_args: ""
         id:
         - id
         - id
@@ -15173,10 +15142,7 @@ components:
           items:
             type: string
           type: array
-        json_args:
-          items:
-            type: string
-          type: array
+        json_args: {}
         edge_function:
           items:
             type: string
@@ -15284,9 +15250,7 @@ components:
         name:
         - name
         - name
-        json_args:
-        - json_args
-        - json_args
+        json_args: ""
         id:
         - id
         - id
@@ -15318,10 +15282,7 @@ components:
           items:
             type: string
           type: array
-        json_args:
-          items:
-            type: string
-          type: array
+        json_args: {}
         last_editor:
           items:
             type: string
@@ -16719,8 +16680,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
         state: state
@@ -16916,8 +16876,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
         state: state
@@ -17086,8 +17045,7 @@ components:
           initiator_type: ""
           vendor: vendor
           name: name
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           reference_count: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
@@ -17446,8 +17404,7 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        json_args:
-          arg_01: value_01
+        json_args: ""
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -17460,8 +17417,7 @@ components:
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -17738,8 +17694,7 @@ components:
         last_editor: last_editor
         name: name
         active: true
-        json_args:
-          arg_01: value_01
+        json_args: ""
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -17752,8 +17707,7 @@ components:
           minLength: 1
           pattern: .*
           type: string
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -17967,8 +17921,7 @@ components:
         name: name
         active: true
         language: ""
-        json_args:
-          arg_01: value_01
+        json_args: ""
         id: 0
         reference_count: 6
         version: version
@@ -17987,8 +17940,7 @@ components:
         language:
           allOf:
           - $ref: '#/components/schemas/LanguageEnum'
-        json_args:
-          $ref: '#/components/schemas/EdgeApplicationFunctionInstance_json_args'
+        json_args: {}
         initiator_type:
           allOf:
           - $ref: '#/components/schemas/InitiatorTypeEnum'
@@ -18679,8 +18631,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -18852,8 +18803,7 @@ components:
           last_editor: last_editor
           name: name
           active: true
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -19006,8 +18956,7 @@ components:
           initiator_type: ""
           vendor: vendor
           name: name
-          json_args:
-            arg_01: value_01
+          json_args: ""
           id: 0
           reference_count: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
@@ -20520,17 +20469,6 @@ components:
         * `request_header` - Request Header
       title: ZoneEnum
       type: string
-    EdgeApplicationFunctionInstance_json_args:
-      description: |
-        Args to be accessed by the Edge Function.
-        - json_args must be a JSON object or an array.
-        - If there are no args being informed, an empty JSON object will be used.
-      example:
-        arg_01: value_01
-      properties:
-        arg:
-          type: object
-      type: object
     MatchZone_matches_on:
       nullable: true
       oneOf:

@@ -23,7 +23,7 @@ type ResponseBadRequestEdgeFirewallFunctionInstance struct {
 	LastEditor []string `json:"last_editor,omitempty"`
 	LastModified []string `json:"last_modified,omitempty"`
 	Name []string `json:"name,omitempty"`
-	JsonArgs []string `json:"json_args,omitempty"`
+	JsonArgs interface{} `json:"json_args,omitempty"`
 	EdgeFunction []string `json:"edge_function,omitempty"`
 	Active []string `json:"active,omitempty"`
 	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
@@ -174,10 +174,10 @@ func (o *ResponseBadRequestEdgeFirewallFunctionInstance) SetName(v []string) {
 	o.Name = v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
-func (o *ResponseBadRequestEdgeFirewallFunctionInstance) GetJsonArgs() []string {
-	if o == nil || IsNil(o.JsonArgs) {
-		var ret []string
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ResponseBadRequestEdgeFirewallFunctionInstance) GetJsonArgs() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.JsonArgs
@@ -185,11 +185,12 @@ func (o *ResponseBadRequestEdgeFirewallFunctionInstance) GetJsonArgs() []string 
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestEdgeFirewallFunctionInstance) GetJsonArgsOk() ([]string, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ResponseBadRequestEdgeFirewallFunctionInstance) GetJsonArgsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
-	return o.JsonArgs, true
+	return &o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
@@ -201,8 +202,8 @@ func (o *ResponseBadRequestEdgeFirewallFunctionInstance) HasJsonArgs() bool {
 	return false
 }
 
-// SetJsonArgs gets a reference to the given []string and assigns it to the JsonArgs field.
-func (o *ResponseBadRequestEdgeFirewallFunctionInstance) SetJsonArgs(v []string) {
+// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
+func (o *ResponseBadRequestEdgeFirewallFunctionInstance) SetJsonArgs(v interface{}) {
 	o.JsonArgs = v
 }
 
@@ -324,7 +325,7 @@ func (o ResponseBadRequestEdgeFirewallFunctionInstance) ToMap() (map[string]inte
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.JsonArgs) {
+	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	if !IsNil(o.EdgeFunction) {

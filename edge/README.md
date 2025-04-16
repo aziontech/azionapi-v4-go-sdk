@@ -215,7 +215,6 @@ Class | Method | HTTP request | Description
  - [EdgeApplicationDeviceGroups](docs/EdgeApplicationDeviceGroups.md)
  - [EdgeApplicationDeviceGroupsRequest](docs/EdgeApplicationDeviceGroupsRequest.md)
  - [EdgeApplicationFunctionInstance](docs/EdgeApplicationFunctionInstance.md)
- - [EdgeApplicationFunctionInstanceJsonArgs](docs/EdgeApplicationFunctionInstanceJsonArgs.md)
  - [EdgeApplicationFunctionInstanceRequest](docs/EdgeApplicationFunctionInstanceRequest.md)
  - [EdgeApplicationModules](docs/EdgeApplicationModules.md)
  - [EdgeApplicationModulesRequest](docs/EdgeApplicationModulesRequest.md)
