@@ -24,7 +24,7 @@ type PatchedEdgeConnectorS3TypedRequest struct {
 	Active *bool `json:"active,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Addresses []AddressRequest `json:"addresses,omitempty"`
-	Tls *TLSRequest `json:"tls,omitempty"`
+	Tls *TLSEdgeConnectorRequest `json:"tls,omitempty"`
 	// * `off` - Off * `ip_hash` - IP Hash * `least_connections` - Least Connections * `round_robin` - Round Robin
 	LoadBalanceMethod *string `json:"load_balance_method,omitempty"`
 	ConnectionPreference []string `json:"connection_preference,omitempty"`
@@ -212,9 +212,9 @@ func (o *PatchedEdgeConnectorS3TypedRequest) SetAddresses(v []AddressRequest) {
 }
 
 // GetTls returns the Tls field value if set, zero value otherwise.
-func (o *PatchedEdgeConnectorS3TypedRequest) GetTls() TLSRequest {
+func (o *PatchedEdgeConnectorS3TypedRequest) GetTls() TLSEdgeConnectorRequest {
 	if o == nil || IsNil(o.Tls) {
-		var ret TLSRequest
+		var ret TLSEdgeConnectorRequest
 		return ret
 	}
 	return *o.Tls
@@ -222,7 +222,7 @@ func (o *PatchedEdgeConnectorS3TypedRequest) GetTls() TLSRequest {
 
 // GetTlsOk returns a tuple with the Tls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEdgeConnectorS3TypedRequest) GetTlsOk() (*TLSRequest, bool) {
+func (o *PatchedEdgeConnectorS3TypedRequest) GetTlsOk() (*TLSEdgeConnectorRequest, bool) {
 	if o == nil || IsNil(o.Tls) {
 		return nil, false
 	}
@@ -238,8 +238,8 @@ func (o *PatchedEdgeConnectorS3TypedRequest) HasTls() bool {
 	return false
 }
 
-// SetTls gets a reference to the given TLSRequest and assigns it to the Tls field.
-func (o *PatchedEdgeConnectorS3TypedRequest) SetTls(v TLSRequest) {
+// SetTls gets a reference to the given TLSEdgeConnectorRequest and assigns it to the Tls field.
+func (o *PatchedEdgeConnectorS3TypedRequest) SetTls(v TLSEdgeConnectorRequest) {
 	o.Tls = &v
 }
 

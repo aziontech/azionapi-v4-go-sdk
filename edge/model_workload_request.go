@@ -28,7 +28,7 @@ type WorkloadRequest struct {
 	// * `1` - Edge Global Network * `2` - Staging Network
 	NetworkMap *string `json:"network_map,omitempty"`
 	EdgeFirewall NullableInt64 `json:"edge_firewall,omitempty"`
-	Tls *TLSRequest `json:"tls,omitempty"`
+	Tls *TLSWorkloadRequest `json:"tls,omitempty"`
 	Protocols *ProtocolsRequest `json:"protocols,omitempty"`
 	Mtls *MTLSRequest `json:"mtls,omitempty"`
 	Domains []DomainInfoRequest `json:"domains,omitempty"`
@@ -242,9 +242,9 @@ func (o *WorkloadRequest) UnsetEdgeFirewall() {
 }
 
 // GetTls returns the Tls field value if set, zero value otherwise.
-func (o *WorkloadRequest) GetTls() TLSRequest {
+func (o *WorkloadRequest) GetTls() TLSWorkloadRequest {
 	if o == nil || IsNil(o.Tls) {
-		var ret TLSRequest
+		var ret TLSWorkloadRequest
 		return ret
 	}
 	return *o.Tls
@@ -252,7 +252,7 @@ func (o *WorkloadRequest) GetTls() TLSRequest {
 
 // GetTlsOk returns a tuple with the Tls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkloadRequest) GetTlsOk() (*TLSRequest, bool) {
+func (o *WorkloadRequest) GetTlsOk() (*TLSWorkloadRequest, bool) {
 	if o == nil || IsNil(o.Tls) {
 		return nil, false
 	}
@@ -268,8 +268,8 @@ func (o *WorkloadRequest) HasTls() bool {
 	return false
 }
 
-// SetTls gets a reference to the given TLSRequest and assigns it to the Tls field.
-func (o *WorkloadRequest) SetTls(v TLSRequest) {
+// SetTls gets a reference to the given TLSWorkloadRequest and assigns it to the Tls field.
+func (o *WorkloadRequest) SetTls(v TLSWorkloadRequest) {
 	o.Tls = &v
 }
 

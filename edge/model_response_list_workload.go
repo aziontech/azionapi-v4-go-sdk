@@ -30,7 +30,7 @@ type ResponseListWorkload struct {
 	NetworkMap *string `json:"network_map,omitempty"`
 	LastEditor string `json:"last_editor" validate:"regexp=.*"`
 	LastModified time.Time `json:"last_modified"`
-	Tls *TLS `json:"tls,omitempty"`
+	Tls *TLSWorkload `json:"tls,omitempty"`
 	Protocols *Protocols `json:"protocols,omitempty"`
 	Mtls *MTLS `json:"mtls,omitempty"`
 	Domains []DomainInfo `json:"domains,omitempty"`
@@ -254,9 +254,9 @@ func (o *ResponseListWorkload) SetLastModified(v time.Time) {
 }
 
 // GetTls returns the Tls field value if set, zero value otherwise.
-func (o *ResponseListWorkload) GetTls() TLS {
+func (o *ResponseListWorkload) GetTls() TLSWorkload {
 	if o == nil || IsNil(o.Tls) {
-		var ret TLS
+		var ret TLSWorkload
 		return ret
 	}
 	return *o.Tls
@@ -264,7 +264,7 @@ func (o *ResponseListWorkload) GetTls() TLS {
 
 // GetTlsOk returns a tuple with the Tls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseListWorkload) GetTlsOk() (*TLS, bool) {
+func (o *ResponseListWorkload) GetTlsOk() (*TLSWorkload, bool) {
 	if o == nil || IsNil(o.Tls) {
 		return nil, false
 	}
@@ -280,8 +280,8 @@ func (o *ResponseListWorkload) HasTls() bool {
 	return false
 }
 
-// SetTls gets a reference to the given TLS and assigns it to the Tls field.
-func (o *ResponseListWorkload) SetTls(v TLS) {
+// SetTls gets a reference to the given TLSWorkload and assigns it to the Tls field.
+func (o *ResponseListWorkload) SetTls(v TLSWorkload) {
 	o.Tls = &v
 }
 

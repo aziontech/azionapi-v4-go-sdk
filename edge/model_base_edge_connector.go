@@ -32,7 +32,7 @@ type BaseEdgeConnector struct {
 	// * `http` - HTTP * `s3` - S3 * `edge_storage` - Edge Storage * `live_ingest` - Live Ingest
 	Type string `json:"type"`
 	Addresses []Address `json:"addresses,omitempty"`
-	Tls *TLS `json:"tls,omitempty"`
+	Tls *TLSEdgeConnector `json:"tls,omitempty"`
 	// * `off` - Off * `ip_hash` - IP Hash * `least_connections` - Least Connections * `round_robin` - Round Robin
 	LoadBalanceMethod *string `json:"load_balance_method,omitempty"`
 	ConnectionPreference []string `json:"connection_preference,omitempty"`
@@ -300,9 +300,9 @@ func (o *BaseEdgeConnector) SetAddresses(v []Address) {
 }
 
 // GetTls returns the Tls field value if set, zero value otherwise.
-func (o *BaseEdgeConnector) GetTls() TLS {
+func (o *BaseEdgeConnector) GetTls() TLSEdgeConnector {
 	if o == nil || IsNil(o.Tls) {
-		var ret TLS
+		var ret TLSEdgeConnector
 		return ret
 	}
 	return *o.Tls
@@ -310,7 +310,7 @@ func (o *BaseEdgeConnector) GetTls() TLS {
 
 // GetTlsOk returns a tuple with the Tls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseEdgeConnector) GetTlsOk() (*TLS, bool) {
+func (o *BaseEdgeConnector) GetTlsOk() (*TLSEdgeConnector, bool) {
 	if o == nil || IsNil(o.Tls) {
 		return nil, false
 	}
@@ -326,8 +326,8 @@ func (o *BaseEdgeConnector) HasTls() bool {
 	return false
 }
 
-// SetTls gets a reference to the given TLS and assigns it to the Tls field.
-func (o *BaseEdgeConnector) SetTls(v TLS) {
+// SetTls gets a reference to the given TLSEdgeConnector and assigns it to the Tls field.
+func (o *BaseEdgeConnector) SetTls(v TLSEdgeConnector) {
 	o.Tls = &v
 }
 
