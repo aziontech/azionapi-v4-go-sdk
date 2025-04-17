@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
-**JsonArgs** | Pointer to [**EdgeApplicationFunctionInstanceJsonArgs**](EdgeApplicationFunctionInstanceJsonArgs.md) |  | [optional] 
+**JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **EdgeFunction** | **int64** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **LastEditor** | **string** |  | [readonly] 
@@ -73,20 +73,20 @@ SetName sets Name field to given value.
 
 ### GetJsonArgs
 
-`func (o *ResponseListEdgeApplicationFunctionInstance) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs`
+`func (o *ResponseListEdgeApplicationFunctionInstance) GetJsonArgs() interface{}`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *ResponseListEdgeApplicationFunctionInstance) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool)`
+`func (o *ResponseListEdgeApplicationFunctionInstance) GetJsonArgsOk() (*interface{}, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *ResponseListEdgeApplicationFunctionInstance) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs)`
+`func (o *ResponseListEdgeApplicationFunctionInstance) SetJsonArgs(v interface{})`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -96,6 +96,16 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
+### SetJsonArgsNil
+
+`func (o *ResponseListEdgeApplicationFunctionInstance) SetJsonArgsNil(b bool)`
+
+ SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
+
+### UnsetJsonArgs
+`func (o *ResponseListEdgeApplicationFunctionInstance) UnsetJsonArgs()`
+
+UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetEdgeFunction
 
 `func (o *ResponseListEdgeApplicationFunctionInstance) GetEdgeFunction() int64`

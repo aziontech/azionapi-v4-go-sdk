@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **ProductVersion** | **string** |  | [readonly] 
 **Type** | **string** | * &#x60;http&#x60; - HTTP * &#x60;s3&#x60; - S3 * &#x60;edge_storage&#x60; - Edge Storage * &#x60;live_ingest&#x60; - Live Ingest | 
 **Addresses** | Pointer to [**[]Address**](Address.md) |  | [optional] 
-**Tls** | Pointer to [**TLS**](TLS.md) |  | [optional] 
+**Tls** | Pointer to [**TLSEdgeConnector**](TLSEdgeConnector.md) |  | [optional] 
 **LoadBalanceMethod** | Pointer to **string** | * &#x60;off&#x60; - Off * &#x60;ip_hash&#x60; - IP Hash * &#x60;least_connections&#x60; - Least Connections * &#x60;round_robin&#x60; - Round Robin | [optional] 
 **ConnectionPreference** | Pointer to **[]string** |  | [optional] 
 **ConnectionTimeout** | Pointer to **int64** |  | [optional] 
@@ -231,20 +231,20 @@ HasAddresses returns a boolean if a field has been set.
 
 ### GetTls
 
-`func (o *ResponseListBaseEdgeConnector) GetTls() TLS`
+`func (o *ResponseListBaseEdgeConnector) GetTls() TLSEdgeConnector`
 
 GetTls returns the Tls field if non-nil, zero value otherwise.
 
 ### GetTlsOk
 
-`func (o *ResponseListBaseEdgeConnector) GetTlsOk() (*TLS, bool)`
+`func (o *ResponseListBaseEdgeConnector) GetTlsOk() (*TLSEdgeConnector, bool)`
 
 GetTlsOk returns a tuple with the Tls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTls
 
-`func (o *ResponseListBaseEdgeConnector) SetTls(v TLS)`
+`func (o *ResponseListBaseEdgeConnector) SetTls(v TLSEdgeConnector)`
 
 SetTls sets Tls field to given value.
 

@@ -55,7 +55,6 @@ docs/EdgeApplicationCriterionPolymorphicArgumentRequest.md
 docs/EdgeApplicationDeviceGroups.md
 docs/EdgeApplicationDeviceGroupsRequest.md
 docs/EdgeApplicationFunctionInstance.md
-docs/EdgeApplicationFunctionInstanceJsonArgs.md
 docs/EdgeApplicationFunctionInstanceRequest.md
 docs/EdgeApplicationModules.md
 docs/EdgeApplicationModulesRequest.md
@@ -268,8 +267,12 @@ docs/SetWafRuleSetArgument.md
 docs/SetWafRuleSetArgumentRequest.md
 docs/SliceControlsModule.md
 docs/SliceControlsModuleRequest.md
-docs/TLS.md
-docs/TLSRequest.md
+docs/TLSEdgeConnector.md
+docs/TLSEdgeConnectorRequest.md
+docs/TLSWorkload.md
+docs/TLSWorkloadCiphers.md
+docs/TLSWorkloadMinimumVersion.md
+docs/TLSWorkloadRequest.md
 docs/WAF.md
 docs/WAFRequest.md
 docs/WAFRule.md
@@ -322,7 +325,6 @@ model_edge_application_criterion_polymorphic_argument_request.go
 model_edge_application_device_groups.go
 model_edge_application_device_groups_request.go
 model_edge_application_function_instance.go
-model_edge_application_function_instance_json_args.go
 model_edge_application_function_instance_request.go
 model_edge_application_modules.go
 model_edge_application_modules_request.go
@@ -523,8 +525,12 @@ model_set_waf_rule_set_argument.go
 model_set_waf_rule_set_argument_request.go
 model_slice_controls_module.go
 model_slice_controls_module_request.go
-model_tls.go
-model_tls_request.go
+model_tls_edge_connector.go
+model_tls_edge_connector_request.go
+model_tls_workload.go
+model_tls_workload_ciphers.go
+model_tls_workload_minimum_version.go
+model_tls_workload_request.go
 model_waf.go
 model_waf_request.go
 model_waf_rule.go
@@ -538,6 +544,4 @@ model_workload_deployment_binds_request.go
 model_workload_deployment_request.go
 model_workload_request.go
 response.go
-test/api_custom_pages_test.go
-test/api_edge_connectors_test.go
 utils.go

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **NetworkMap** | Pointer to **string** | * &#x60;1&#x60; - Edge Global Network * &#x60;2&#x60; - Staging Network | [optional] 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
-**Tls** | Pointer to [**TLS**](TLS.md) |  | [optional] 
+**Tls** | Pointer to [**TLSWorkload**](TLSWorkload.md) |  | [optional] 
 **Protocols** | Pointer to [**Protocols**](Protocols.md) |  | [optional] 
 **Mtls** | Pointer to [**MTLS**](MTLS.md) |  | [optional] 
 **Domains** | Pointer to [**[]DomainInfo**](DomainInfo.md) |  | [optional] 
@@ -193,20 +193,20 @@ SetLastModified sets LastModified field to given value.
 
 ### GetTls
 
-`func (o *Workload) GetTls() TLS`
+`func (o *Workload) GetTls() TLSWorkload`
 
 GetTls returns the Tls field if non-nil, zero value otherwise.
 
 ### GetTlsOk
 
-`func (o *Workload) GetTlsOk() (*TLS, bool)`
+`func (o *Workload) GetTlsOk() (*TLSWorkload, bool)`
 
 GetTlsOk returns a tuple with the Tls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTls
 
-`func (o *Workload) SetTls(v TLS)`
+`func (o *Workload) SetTls(v TLSWorkload)`
 
 SetTls sets Tls field to given value.
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Active** | Pointer to **bool** |  | [optional] 
 **NetworkMap** | Pointer to **string** | * &#x60;1&#x60; - Edge Global Network * &#x60;2&#x60; - Staging Network | [optional] 
 **EdgeFirewall** | Pointer to **NullableInt64** |  | [optional] 
-**Tls** | Pointer to [**TLSRequest**](TLSRequest.md) |  | [optional] 
+**Tls** | Pointer to [**TLSWorkloadRequest**](TLSWorkloadRequest.md) |  | [optional] 
 **Protocols** | Pointer to [**ProtocolsRequest**](ProtocolsRequest.md) |  | [optional] 
 **Mtls** | Pointer to [**MTLSRequest**](MTLSRequest.md) |  | [optional] 
 **Domains** | Pointer to [**[]DomainInfoRequest**](DomainInfoRequest.md) |  | [optional] 
@@ -186,20 +186,20 @@ HasEdgeFirewall returns a boolean if a field has been set.
 UnsetEdgeFirewall ensures that no value is present for EdgeFirewall, not even an explicit nil
 ### GetTls
 
-`func (o *WorkloadRequest) GetTls() TLSRequest`
+`func (o *WorkloadRequest) GetTls() TLSWorkloadRequest`
 
 GetTls returns the Tls field if non-nil, zero value otherwise.
 
 ### GetTlsOk
 
-`func (o *WorkloadRequest) GetTlsOk() (*TLSRequest, bool)`
+`func (o *WorkloadRequest) GetTlsOk() (*TLSWorkloadRequest, bool)`
 
 GetTlsOk returns a tuple with the Tls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTls
 
-`func (o *WorkloadRequest) SetTls(v TLSRequest)`
+`func (o *WorkloadRequest) SetTls(v TLSWorkloadRequest)`
 
 SetTls sets Tls field to given value.
 

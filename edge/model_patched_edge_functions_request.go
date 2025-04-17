@@ -23,7 +23,7 @@ type PatchedEdgeFunctionsRequest struct {
 	// * `javascript` - JavaScript * `lua` - Lua
 	Language *string `json:"language,omitempty"`
 	Code *string `json:"code,omitempty" validate:"regexp=.*"`
-	JsonArgs *EdgeApplicationFunctionInstanceJsonArgs `json:"json_args,omitempty"`
+	JsonArgs interface{} `json:"json_args,omitempty"`
 	// * `edge_application` - Edge Application * `edge_firewall` - Edge Firewall
 	InitiatorType *string `json:"initiator_type,omitempty"`
 	Active *bool `json:"active,omitempty"`
@@ -142,22 +142,23 @@ func (o *PatchedEdgeFunctionsRequest) SetCode(v string) {
 	o.Code = &v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
-func (o *PatchedEdgeFunctionsRequest) GetJsonArgs() EdgeApplicationFunctionInstanceJsonArgs {
-	if o == nil || IsNil(o.JsonArgs) {
-		var ret EdgeApplicationFunctionInstanceJsonArgs
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedEdgeFunctionsRequest) GetJsonArgs() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
-	return *o.JsonArgs
+	return o.JsonArgs
 }
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEdgeFunctionsRequest) GetJsonArgsOk() (*EdgeApplicationFunctionInstanceJsonArgs, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedEdgeFunctionsRequest) GetJsonArgsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
-	return o.JsonArgs, true
+	return &o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
@@ -169,9 +170,9 @@ func (o *PatchedEdgeFunctionsRequest) HasJsonArgs() bool {
 	return false
 }
 
-// SetJsonArgs gets a reference to the given EdgeApplicationFunctionInstanceJsonArgs and assigns it to the JsonArgs field.
-func (o *PatchedEdgeFunctionsRequest) SetJsonArgs(v EdgeApplicationFunctionInstanceJsonArgs) {
-	o.JsonArgs = &v
+// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
+func (o *PatchedEdgeFunctionsRequest) SetJsonArgs(v interface{}) {
+	o.JsonArgs = v
 }
 
 // GetInitiatorType returns the InitiatorType field value if set, zero value otherwise.
@@ -257,7 +258,7 @@ func (o PatchedEdgeFunctionsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.JsonArgs) {
+	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	if !IsNil(o.InitiatorType) {
