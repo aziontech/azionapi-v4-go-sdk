@@ -55,7 +55,6 @@ docs/EdgeApplicationCriterionPolymorphicArgumentRequest.md
 docs/EdgeApplicationDeviceGroups.md
 docs/EdgeApplicationDeviceGroupsRequest.md
 docs/EdgeApplicationFunctionInstance.md
-docs/EdgeApplicationFunctionInstanceJsonArgs.md
 docs/EdgeApplicationFunctionInstanceRequest.md
 docs/EdgeApplicationModules.md
 docs/EdgeApplicationModulesRequest.md
@@ -322,7 +321,6 @@ model_edge_application_criterion_polymorphic_argument_request.go
 model_edge_application_device_groups.go
 model_edge_application_device_groups_request.go
 model_edge_application_function_instance.go
-model_edge_application_function_instance_json_args.go
 model_edge_application_function_instance_request.go
 model_edge_application_modules.go
 model_edge_application_modules_request.go
@@ -538,6 +536,4 @@ model_workload_deployment_binds_request.go
 model_workload_deployment_request.go
 model_workload_request.go
 response.go
-test/api_custom_pages_test.go
-test/api_edge_connectors_test.go
 utils.go

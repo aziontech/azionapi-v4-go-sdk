@@ -24,7 +24,7 @@ type ResponseBadRequestEdgeFunctions struct {
 	Language []string `json:"language,omitempty"`
 	Code []string `json:"code,omitempty"`
 	InitiatorType []string `json:"initiator_type,omitempty"`
-	JsonArgs []string `json:"json_args,omitempty"`
+	JsonArgs interface{} `json:"json_args,omitempty"`
 	LastEditor []string `json:"last_editor,omitempty"`
 	LastModified []string `json:"last_modified,omitempty"`
 	Active []string `json:"active,omitempty"`
@@ -212,10 +212,10 @@ func (o *ResponseBadRequestEdgeFunctions) SetInitiatorType(v []string) {
 	o.InitiatorType = v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
-func (o *ResponseBadRequestEdgeFunctions) GetJsonArgs() []string {
-	if o == nil || IsNil(o.JsonArgs) {
-		var ret []string
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ResponseBadRequestEdgeFunctions) GetJsonArgs() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.JsonArgs
@@ -223,11 +223,12 @@ func (o *ResponseBadRequestEdgeFunctions) GetJsonArgs() []string {
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestEdgeFunctions) GetJsonArgsOk() ([]string, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ResponseBadRequestEdgeFunctions) GetJsonArgsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
-	return o.JsonArgs, true
+	return &o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
@@ -239,8 +240,8 @@ func (o *ResponseBadRequestEdgeFunctions) HasJsonArgs() bool {
 	return false
 }
 
-// SetJsonArgs gets a reference to the given []string and assigns it to the JsonArgs field.
-func (o *ResponseBadRequestEdgeFunctions) SetJsonArgs(v []string) {
+// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
+func (o *ResponseBadRequestEdgeFunctions) SetJsonArgs(v interface{}) {
 	o.JsonArgs = v
 }
 
@@ -525,7 +526,7 @@ func (o ResponseBadRequestEdgeFunctions) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.InitiatorType) {
 		toSerialize["initiator_type"] = o.InitiatorType
 	}
-	if !IsNil(o.JsonArgs) {
+	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	if !IsNil(o.LastEditor) {

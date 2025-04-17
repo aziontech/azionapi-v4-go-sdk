@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **[]string** |  | [optional] 
 **Name** | Pointer to **[]string** |  | [optional] 
-**JsonArgs** | Pointer to **[]string** |  | [optional] 
+**JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **EdgeFunction** | Pointer to **[]string** |  | [optional] 
 **Active** | Pointer to **[]string** |  | [optional] 
 **LastEditor** | Pointer to **[]string** |  | [optional] 
@@ -84,20 +84,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetJsonArgs
 
-`func (o *ResponseBadRequestEdgeApplicationFunctionInstance) GetJsonArgs() []string`
+`func (o *ResponseBadRequestEdgeApplicationFunctionInstance) GetJsonArgs() interface{}`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *ResponseBadRequestEdgeApplicationFunctionInstance) GetJsonArgsOk() (*[]string, bool)`
+`func (o *ResponseBadRequestEdgeApplicationFunctionInstance) GetJsonArgsOk() (*interface{}, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *ResponseBadRequestEdgeApplicationFunctionInstance) SetJsonArgs(v []string)`
+`func (o *ResponseBadRequestEdgeApplicationFunctionInstance) SetJsonArgs(v interface{})`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -107,6 +107,16 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
+### SetJsonArgsNil
+
+`func (o *ResponseBadRequestEdgeApplicationFunctionInstance) SetJsonArgsNil(b bool)`
+
+ SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
+
+### UnsetJsonArgs
+`func (o *ResponseBadRequestEdgeApplicationFunctionInstance) UnsetJsonArgs()`
+
+UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetEdgeFunction
 
 `func (o *ResponseBadRequestEdgeApplicationFunctionInstance) GetEdgeFunction() []string`
