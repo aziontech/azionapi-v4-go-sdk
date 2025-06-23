@@ -1,0 +1,765 @@
+openapi: 3.0.3
+info:
+  title: Auth API
+  version: 1.0.0
+  description: REST API OpenAPI documentation for the Auth API
+paths:
+  /auth/login:
+    post:
+      operationId: authUserLogin
+      description: Retrieve user JWT tokens
+      summary: Retrieve user JWT tokens
+      tags:
+      - Auth - Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+          description: ''
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          description: Unauthorized - Authentication credentials were not provided.
+        '403':
+          description: Forbidden - User is not allowed to access this resource.
+  /auth/login/method:
+    get:
+      operationId: authUserLoginMethod
+      description: Retrieve details of a specific user's login method
+      summary: Retrieve user login method
+      parameters:
+      - in: query
+        name: email
+        schema:
+          type: string
+          format: email
+        description: Email address of the user
+      - in: query
+        name: fields
+        schema:
+          type: string
+        description: Comma-separated list of field names to include in the response.
+      tags:
+      - Auth - Login method
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user_login_method_response'
+              examples:
+                ExampleResponseForLoginMethod.:
+                  value:
+                    method: login
+                    url: http://localhost:9999/login
+                  summary: Example response for login method.
+                ExampleResponseForFederatedLoginMethod.:
+                  value:
+                    method: federated
+                    url: http://localhost:8000/login
+                  summary: Example response for federated login method.
+          description: ''
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+  /auth/mfa/totp:
+    get:
+      operationId: listTotpDevices
+      description: List all totp devices for user account and descendant accounts.
+      summary: List of TOTP devices
+      parameters:
+      - in: query
+        name: fields
+        schema:
+          type: string
+        description: Comma-separated list of field names to include in the response.
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+        description: A numeric value that indicates the number of items per page.
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - Auth - MFA TOTP Device
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTOTPDeviceListList'
+          description: ''
+    post:
+      operationId: createTotpDevice
+      description: Create a new TOTP device for your account.
+      summary: Create a TOTP device
+      tags:
+      - Auth - MFA TOTP Device
+      security:
+      - JWT MFA Authentication: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseTOTPDeviceCreate'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestTOTPDeviceCreate'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseTOTPDeviceCreate'
+          description: Accepted
+  /auth/mfa/totp/{id}:
+    delete:
+      operationId: destroyTotpDevice
+      description: Destruction of a specific TOTP device from your account or descendant
+        account.
+      summary: Destroy a TOTP device
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Auth - MFA TOTP Device
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteTOTPDeviceCreate'
+          description: ''
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDeleteTOTPDeviceCreate'
+          description: Accepted
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestTOTPDeviceCreate'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+  /auth/revoke:
+    post:
+      operationId: authUserRevoke
+      description: Revoke refresh token via a POST request.
+      summary: Revoke user JWT refresh token
+      tags:
+      - Auth - Revoke
+      security:
+      - JWT Refresh Authentication: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          description: Unauthorized - Authentication credentials were not provided.
+        '403':
+          description: Forbidden - User is not allowed to access this resource.
+  /auth/token:
+    post:
+      operationId: authUserRefreshToken
+      description: Refresh JWT access token, via a POST request.
+      summary: Refresh user JWT access token
+      tags:
+      - Auth - Refresh Access Token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      security:
+      - JWT Refresh Authentication: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestToken'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+  /auth/verify:
+    post:
+      operationId: totpVerify
+      description: Retrieves JWT access and refresh tokens, via a POST request with
+        jwt mfa token as auth + code.
+      summary: Retrieve user JWT tokens by MFA auth
+      tags:
+      - Auth - Verify
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TOTPVerificationRequest'
+        required: true
+      security:
+      - JWT MFA Authentication: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TOTPVerification'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBadRequestTOTPVerification'
+          description: Bad Request
+        '404':
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Found
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Too Many Requests
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+          description: Forbidden
+components:
+  schemas:
+    DefaultErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          pattern: .*
+          maxLength: 4096
+          minLength: 1
+      title: DefaultErrorResponse
+      additionalProperties: false
+    EffectEnum:
+      enum:
+      - allow
+      - deny
+      type: string
+      description: |-
+        * `allow` - allow
+        * `deny` - deny
+      title: EffectEnum
+      additionalProperties: false
+    LoginRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          writeOnly: true
+          minLength: 1
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+        account_id:
+          type: integer
+          writeOnly: true
+          nullable: true
+      required:
+      - email
+      - password
+      title: LoginRequest
+      additionalProperties: false
+    LoginResponse:
+      oneOf:
+      - $ref: '#/components/schemas/MFAToken'
+      - $ref: '#/components/schemas/TokenPair'
+      discriminator:
+        propertyName: response_type
+        mapping:
+          MFAToken: '#/components/schemas/MFAToken'
+          TokenPair: '#/components/schemas/TokenPair'
+      title: LoginResponse
+      additionalProperties: true
+    MFAToken:
+      type: object
+      properties:
+        access_token:
+          type: string
+          readOnly: true
+        two_factor_required:
+          type: boolean
+          readOnly: true
+        two_factor_type:
+          type: string
+          readOnly: true
+        has_active_device:
+          type: boolean
+          readOnly: true
+      required:
+      - access_token
+      - has_active_device
+      - two_factor_required
+      - two_factor_type
+      title: MFAToken
+      additionalProperties: false
+    PaginatedTOTPDeviceListList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+          example: 123
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TOTPDeviceList'
+      title: PaginatedTOTPDeviceListList
+      additionalProperties: false
+    ResponseBadRequestTOTPDeviceCreate:
+      type: object
+      properties:
+        url:
+          type: array
+          items:
+            type: string
+        detail:
+          type: string
+          pattern: .*
+          maxLength: 4096
+          minLength: 1
+      title: ResponseBadRequestTOTPDeviceCreate
+      additionalProperties: false
+    ResponseBadRequestTOTPVerification:
+      type: object
+      properties:
+        code:
+          type: array
+          items:
+            type: string
+        access_token:
+          type: array
+          items:
+            type: string
+        refresh_token:
+          type: array
+          items:
+            type: string
+        detail:
+          type: string
+          pattern: .*
+          maxLength: 4096
+          minLength: 1
+      title: ResponseBadRequestTOTPVerification
+      additionalProperties: false
+    ResponseBadRequestToken:
+      type: object
+      properties:
+        account_id:
+          type: array
+          items:
+            type: string
+        access_token:
+          type: array
+          items:
+            type: string
+        detail:
+          type: string
+          pattern: .*
+          maxLength: 4096
+          minLength: 1
+      title: ResponseBadRequestToken
+      additionalProperties: false
+    ResponseDeleteTOTPDeviceCreate:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        data:
+          allOf:
+          - $ref: '#/components/schemas/TOTPDeviceCreate'
+          nullable: true
+      required:
+      - data
+      - state
+      title: ResponseDeleteTOTPDeviceCreate
+      additionalProperties: false
+    ResponseTOTPDeviceCreate:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        data:
+          $ref: '#/components/schemas/TOTPDeviceCreate'
+      required:
+      - data
+      - state
+      title: ResponseTOTPDeviceCreate
+      additionalProperties: false
+    StateEnum:
+      enum:
+      - pending
+      - executed
+      type: string
+      description: |-
+        * `pending` - pending
+        * `executed` - executed
+      title: StateEnum
+      additionalProperties: false
+    TOTPDeviceCreate:
+      type: object
+      properties:
+        url:
+          type: string
+          readOnly: true
+          pattern: .*
+          maxLength: 255
+          minLength: 0
+      required:
+      - url
+      title: TOTPDeviceCreate
+      additionalProperties: false
+    TOTPDeviceList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: The human-readable name of this device.
+          maxLength: 64
+        confirmed:
+          type: boolean
+          description: Is this device ready for use?
+        user_id:
+          type: integer
+          description: The user that this device belongs to.
+          readOnly: true
+      required:
+      - id
+      - name
+      - user_id
+      title: TOTPDeviceList
+      additionalProperties: false
+    TOTPVerification:
+      type: object
+      properties:
+        access_token:
+          type: string
+          readOnly: true
+        refresh_token:
+          type: string
+          readOnly: true
+      required:
+      - access_token
+      - refresh_token
+      title: TOTPVerification
+      additionalProperties: false
+    TOTPVerificationRequest:
+      type: object
+      properties:
+        code:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - code
+      title: TOTPVerificationRequest
+      additionalProperties: false
+    Token:
+      type: object
+      properties:
+        access_token:
+          type: string
+          readOnly: true
+          pattern: .*
+          maxLength: 255
+          minLength: 0
+      required:
+      - access_token
+      title: Token
+      additionalProperties: false
+    TokenPair:
+      type: object
+      properties:
+        access_token:
+          type: string
+          readOnly: true
+        refresh_token:
+          type: string
+          readOnly: true
+      required:
+      - access_token
+      - refresh_token
+      title: TokenPair
+      additionalProperties: false
+    TokenRequest:
+      type: object
+      properties:
+        account_id:
+          type: integer
+          writeOnly: true
+          nullable: true
+      title: TokenRequest
+      additionalProperties: false
+    user_login_method_response:
+      type: object
+      properties:
+        method:
+          type: string
+        url:
+          type: string
+          format: uri
+      required:
+      - method
+      - url
+      title: user_login_method_response
+      additionalProperties: false
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+    JWT MFA Authentication:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Authentication JWT MFA with Bearer Token
+    JWT Refresh Authentication:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Authentication JWT Refresh with Bearer Token
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
