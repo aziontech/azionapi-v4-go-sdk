@@ -34,7 +34,7 @@ func (r ApiCreateCredentialRequest) CredentialCreateRequest(credentialCreateRequ
 	return r
 }
 
-func (r ApiCreateCredentialRequest) Execute() (*ResponseCredential, *http.Response, error) {
+func (r ApiCreateCredentialRequest) Execute() (*CredentialCreate, *http.Response, error) {
 	return r.ApiService.CreateCredentialExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredential(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return ResponseCredential
-func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCredentialRequest) (*ResponseCredential, *http.Response, error) {
+//  @return CredentialCreate
+func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCredentialRequest) (*CredentialCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseCredential
+		localVarReturnValue  *CredentialCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageCredentialsAPIService.CreateCredential")
@@ -133,7 +133,18 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ResponseBadRequestCredential
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +155,7 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -155,7 +166,7 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -166,7 +177,7 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -177,7 +188,7 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -188,7 +199,7 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -196,7 +207,6 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -219,7 +229,7 @@ type ApiDeleteCredentialRequest struct {
 	accessKey string
 }
 
-func (r ApiDeleteCredentialRequest) Execute() (*ResponseDeleteCredential, *http.Response, error) {
+func (r ApiDeleteCredentialRequest) Execute() (*Credential, *http.Response, error) {
 	return r.ApiService.DeleteCredentialExecute(r)
 }
 
@@ -241,13 +251,13 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredential(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return ResponseDeleteCredential
-func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCredentialRequest) (*ResponseDeleteCredential, *http.Response, error) {
+//  @return Credential
+func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCredentialRequest) (*Credential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteCredential
+		localVarReturnValue  *Credential
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageCredentialsAPIService.DeleteCredential")
@@ -316,7 +326,18 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ResponseBadRequestCredential
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -327,7 +348,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -338,7 +359,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -349,7 +370,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -360,7 +381,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -371,7 +392,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

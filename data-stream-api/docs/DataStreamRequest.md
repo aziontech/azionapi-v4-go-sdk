@@ -5,17 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**DataSource** | **string** | * &#x60;http&#x60; - Edge Applications * &#x60;waf&#x60; - WAF Events * &#x60;cells_console&#x60; - Edge Functions * &#x60;rtm_activity&#x60; - Activity History | 
-**DataSetId** | **int64** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
-**Filters** | [**DataStreamFilterRequest**](DataStreamFilterRequest.md) |  | 
-**Endpoint** | [**EndpointRequest**](EndpointRequest.md) |  | 
+**Inputs** | [**[]InputPolymorphicInputDataSourceAttributesRequest**](InputPolymorphicInputDataSourceAttributesRequest.md) |  | 
+**Transform** | [**[]TransformPolymorphicRequest**](TransformPolymorphicRequest.md) |  | 
+**Outputs** | [**[]OutputRequest**](OutputRequest.md) |  | 
 
 ## Methods
 
 ### NewDataStreamRequest
 
-`func NewDataStreamRequest(name string, dataSource string, dataSetId int64, filters DataStreamFilterRequest, endpoint EndpointRequest, ) *DataStreamRequest`
+`func NewDataStreamRequest(name string, inputs []InputPolymorphicInputDataSourceAttributesRequest, transform []TransformPolymorphicRequest, outputs []OutputRequest, ) *DataStreamRequest`
 
 NewDataStreamRequest instantiates a new DataStreamRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,46 +49,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetDataSource
-
-`func (o *DataStreamRequest) GetDataSource() string`
-
-GetDataSource returns the DataSource field if non-nil, zero value otherwise.
-
-### GetDataSourceOk
-
-`func (o *DataStreamRequest) GetDataSourceOk() (*string, bool)`
-
-GetDataSourceOk returns a tuple with the DataSource field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataSource
-
-`func (o *DataStreamRequest) SetDataSource(v string)`
-
-SetDataSource sets DataSource field to given value.
-
-
-### GetDataSetId
-
-`func (o *DataStreamRequest) GetDataSetId() int64`
-
-GetDataSetId returns the DataSetId field if non-nil, zero value otherwise.
-
-### GetDataSetIdOk
-
-`func (o *DataStreamRequest) GetDataSetIdOk() (*int64, bool)`
-
-GetDataSetIdOk returns a tuple with the DataSetId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataSetId
-
-`func (o *DataStreamRequest) SetDataSetId(v int64)`
-
-SetDataSetId sets DataSetId field to given value.
-
-
 ### GetActive
 
 `func (o *DataStreamRequest) GetActive() bool`
@@ -115,44 +74,64 @@ SetActive sets Active field to given value.
 
 HasActive returns a boolean if a field has been set.
 
-### GetFilters
+### GetInputs
 
-`func (o *DataStreamRequest) GetFilters() DataStreamFilterRequest`
+`func (o *DataStreamRequest) GetInputs() []InputPolymorphicInputDataSourceAttributesRequest`
 
-GetFilters returns the Filters field if non-nil, zero value otherwise.
+GetInputs returns the Inputs field if non-nil, zero value otherwise.
 
-### GetFiltersOk
+### GetInputsOk
 
-`func (o *DataStreamRequest) GetFiltersOk() (*DataStreamFilterRequest, bool)`
+`func (o *DataStreamRequest) GetInputsOk() (*[]InputPolymorphicInputDataSourceAttributesRequest, bool)`
 
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+GetInputsOk returns a tuple with the Inputs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilters
+### SetInputs
 
-`func (o *DataStreamRequest) SetFilters(v DataStreamFilterRequest)`
+`func (o *DataStreamRequest) SetInputs(v []InputPolymorphicInputDataSourceAttributesRequest)`
 
-SetFilters sets Filters field to given value.
+SetInputs sets Inputs field to given value.
 
 
-### GetEndpoint
+### GetTransform
 
-`func (o *DataStreamRequest) GetEndpoint() EndpointRequest`
+`func (o *DataStreamRequest) GetTransform() []TransformPolymorphicRequest`
 
-GetEndpoint returns the Endpoint field if non-nil, zero value otherwise.
+GetTransform returns the Transform field if non-nil, zero value otherwise.
 
-### GetEndpointOk
+### GetTransformOk
 
-`func (o *DataStreamRequest) GetEndpointOk() (*EndpointRequest, bool)`
+`func (o *DataStreamRequest) GetTransformOk() (*[]TransformPolymorphicRequest, bool)`
 
-GetEndpointOk returns a tuple with the Endpoint field if it's non-nil, zero value otherwise
+GetTransformOk returns a tuple with the Transform field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndpoint
+### SetTransform
 
-`func (o *DataStreamRequest) SetEndpoint(v EndpointRequest)`
+`func (o *DataStreamRequest) SetTransform(v []TransformPolymorphicRequest)`
 
-SetEndpoint sets Endpoint field to given value.
+SetTransform sets Transform field to given value.
+
+
+### GetOutputs
+
+`func (o *DataStreamRequest) GetOutputs() []OutputRequest`
+
+GetOutputs returns the Outputs field if non-nil, zero value otherwise.
+
+### GetOutputsOk
+
+`func (o *DataStreamRequest) GetOutputsOk() (*[]OutputRequest, bool)`
+
+GetOutputsOk returns a tuple with the Outputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputs
+
+`func (o *DataStreamRequest) SetOutputs(v []OutputRequest)`
+
+SetOutputs sets Outputs field to given value.
 
 
 

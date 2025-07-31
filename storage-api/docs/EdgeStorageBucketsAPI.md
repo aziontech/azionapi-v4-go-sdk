@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateBucket
 
-> ResponseBucket CreateBucket(ctx).BucketCreateRequest(bucketCreateRequest).Execute()
+> SuccessBucketOperation CreateBucket(ctx).BucketCreateRequest(bucketCreateRequest).Execute()
 
 Create a new bucket
 
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageBucketsAPI.CreateBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateBucket`: ResponseBucket
+	// response from `CreateBucket`: SuccessBucketOperation
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageBucketsAPI.CreateBucket`: %v\n", resp)
 }
 ```
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseBucket**](ResponseBucket.md)
+[**SuccessBucketOperation**](SuccessBucketOperation.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ## ListBuckets
 
-> PaginatedResponseListBucketList ListBuckets(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedBucketList ListBuckets(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 List buckets
 
@@ -181,7 +181,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageBucketsAPI.ListBuckets``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListBuckets`: PaginatedResponseListBucketList
+	// response from `ListBuckets`: PaginatedBucketList
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageBucketsAPI.ListBuckets`: %v\n", resp)
 }
 ```
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedResponseListBucketList**](PaginatedResponseListBucketList.md)
+[**PaginatedBucketList**](PaginatedBucketList.md)
 
 ### Authorization
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBucket
 
-> ResponseBucket UpdateBucket(ctx, name).PatchedBucketRequest(patchedBucketRequest).Execute()
+> SuccessBucketOperation UpdateBucket(ctx, name).PatchedBucketRequest(patchedBucketRequest).Execute()
 
 Update bucket info
 
@@ -252,7 +252,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageBucketsAPI.UpdateBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateBucket`: ResponseBucket
+	// response from `UpdateBucket`: SuccessBucketOperation
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageBucketsAPI.UpdateBucket`: %v\n", resp)
 }
 ```
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseBucket**](ResponseBucket.md)
+[**SuccessBucketOperation**](SuccessBucketOperation.md)
 
 ### Authorization
 

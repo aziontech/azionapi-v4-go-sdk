@@ -1,0 +1,1941 @@
+openapi: 3.0.3
+info:
+  description: REST API OpenAPI documentation for the Auth API
+  title: Auth API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /auth/login:
+    post:
+      description: |-
+        This endpoint performs user authentication and issues the user’s JWT tokens.The response depends on whether multi-factor authentication (MFA) is enabled for the user:
+         - If the user does not have MFA enabled, the API returns a TokenPair object containing the access_token and refresh_token, allowing immediate authentication.
+         - If the user has MFA enabled, the response returns an MFAToken object.This temporary token must be used in the MFA verification endpoint to complete authentication.After successful verification of the second factor, the TokenPair is issued.
+      operationId: authUserLogin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Executed:
+                  value:
+                    state: executed
+              schema:
+                $ref: "#/components/schemas/ResponseLogin"
+          description: ""
+        "202":
+          content:
+            application/json:
+              examples:
+                Pending:
+                  value:
+                    state: pending
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncLogin"
+          description: ""
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          description: Unauthorized - Authentication credentials were not provided.
+        "403":
+          description: Forbidden - User is not allowed to access this resource.
+      summary: User Login – Generate JWT Tokens
+      tags:
+      - Auth - Login
+  /auth/login/method:
+    get:
+      description: |-
+        Returns the login type configured for the user. This indicates whether the user authenticates directly via Azion credentials (login) or via a federated Identity Provider (federated) linked to their account.
+        This endpoint allows clients to determine whether to proceed with Azion's native login flow or redirect the user to the Identity Provider (IdP) for authentication.
+      operationId: authUserLoginMethod
+      parameters:
+      - description: Email address of the user
+        explode: true
+        in: query
+        name: email
+        required: false
+        schema:
+          format: email
+          type: string
+        style: form
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                ExampleResponseForLoginMethod.:
+                  summary: Example response for login method.
+                  value:
+                    method: login
+                    url: http://localhost:9999/login
+                ExampleResponseForFederatedLoginMethod.:
+                  summary: Example response for federated login method.
+                  value:
+                    method: federated
+                    url: http://localhost:8000/login
+              schema:
+                $ref: "#/components/schemas/user_login_method_response"
+          description: ""
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+      summary: Check User Authentication Method
+      tags:
+      - Auth - Login
+  /auth/mfa/totp:
+    get:
+      description: List all totp devices for user account and descendant accounts.
+      operationId: listTotpDevices
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Which field to use when ordering the results.
+          (Valid fields: name, user_id, confirmed, id)
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A numeric value that indicates the number of items per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedTOTPDeviceListList"
+          description: ""
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: List of TOTP devices
+      tags:
+      - Auth - MFA TOTP Device
+    post:
+      description: Create a new TOTP device for your account.
+      operationId: createTotpDevice
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseTOTPDeviceCreate"
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncTOTPDeviceCreate"
+          description: ""
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+      security:
+      - JWT MFA Authentication: []
+      summary: Create a TOTP device
+      tags:
+      - Auth - MFA TOTP Device
+  /auth/mfa/totp/{id}:
+    delete:
+      description: Destruction of a specific TOTP device from your account or descendant
+        account.
+      operationId: destroyTotpDevice
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseDeleteTOTPDeviceCreate"
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncDeleteTOTPDeviceCreate"
+          description: ""
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Destroy a TOTP device
+      tags:
+      - Auth - MFA TOTP Device
+  /auth/revoke:
+    post:
+      description: Revoke refresh token via a POST request.
+      operationId: authUserRevoke
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Executed:
+                  value:
+                    state: executed
+              schema:
+                $ref: "#/components/schemas/StateExecutedResponse"
+          description: Revoke successfully executed.
+        "202":
+          content:
+            application/json:
+              examples:
+                Pending:
+                  value:
+                    state: pending
+              schema:
+                $ref: "#/components/schemas/StatePendingResponse"
+          description: "Revoke request accepted, processing pending."
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          description: Unauthorized - Authentication credentials were not provided.
+        "403":
+          description: Forbidden - User is not allowed to access this resource.
+      security:
+      - JWT Refresh Authentication: []
+      - {}
+      summary: Revoke user JWT refresh token
+      tags:
+      - Auth - Revoke
+  /auth/token:
+    post:
+      description: "Refresh JWT access token, via a POST request."
+      operationId: authUserRefreshToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TokenRequest"
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseToken"
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncToken"
+          description: ""
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+      security:
+      - JWT Refresh Authentication: []
+      - {}
+      summary: Refresh user JWT access token
+      tags:
+      - Auth - Refresh Access Token
+components:
+  schemas:
+    DefaultErrorResponse:
+      additionalProperties: false
+      properties:
+        detail:
+          maxLength: 4096
+          minLength: 1
+          pattern: .*
+          type: string
+      title: DefaultErrorResponse
+      type: object
+    EffectEnum:
+      description: |-
+        * `allow` - allow
+        * `deny` - deny
+      title: EffectEnum
+      type: string
+    JSONAPIErrorObject:
+      additionalProperties: false
+      description: Serializer for a single JSON:API error object.
+      example:
+        code: code
+        meta:
+          key: ""
+        detail: detail
+        source: ""
+        title: title
+        status: status
+      properties:
+        status:
+          description: The HTTP status code applicable to this problem
+          maxLength: 3
+          minLength: 3
+          pattern: "^\\d{3}$"
+          type: string
+        code:
+          description: An application-specific error code
+          maxLength: 5
+          minLength: 5
+          pattern: "^\\d{5}$"
+          type: string
+        title:
+          description: "A short, human-readable summary of the problem"
+          maxLength: 4096
+          minLength: 1
+          pattern: ^.*$
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem
+          maxLength: 4096
+          minLength: 1
+          pattern: ^.*$
+          type: string
+        source:
+          allOf:
+          - $ref: "#/components/schemas/JSONAPIErrorSource"
+          description: References to the primary source of the error
+        meta:
+          additionalProperties: {}
+          description: Non-standard meta-information about the error
+          type: object
+      title: JSONAPIErrorObject
+      type: object
+    JSONAPIErrorResponse:
+      additionalProperties: false
+      description: Serializer for a JSON:API error response.
+      example:
+        errors:
+        - code: code
+          meta:
+            key: ""
+          detail: detail
+          source: ""
+          title: title
+          status: status
+        - code: code
+          meta:
+            key: ""
+          detail: detail
+          source: ""
+          title: title
+          status: status
+      properties:
+        errors:
+          description: Array of error objects
+          items:
+            $ref: "#/components/schemas/JSONAPIErrorObject"
+          type: array
+      required:
+      - errors
+      title: JSONAPIErrorResponse
+      type: object
+    JSONAPIErrorSource:
+      additionalProperties: false
+      description: Serializer for the 'source' object in a JSON:API error.
+      properties:
+        pointer:
+          description: JSON Pointer to the value in the request document that caused
+            the error
+          maxLength: 4096
+          minLength: 1
+          pattern: "^(/[^/]+)+$"
+          type: string
+        parameter:
+          description: URI query parameter that caused the error
+          maxLength: 4096
+          minLength: 1
+          pattern: ^.*$
+          type: string
+        header:
+          description: Request header name that caused the error
+          maxLength: 4096
+          minLength: 1
+          pattern: ^.*$
+          type: string
+      title: JSONAPIErrorSource
+      type: object
+    LockoutPolicy:
+      additionalProperties: false
+      properties:
+        active:
+          type: boolean
+        max_attempts:
+          format: int64
+          minimum: 1
+          type: integer
+        blocking_period:
+          description: Blocking period in minutes
+          format: int64
+          type: integer
+      required:
+      - active
+      - blocking_period
+      - max_attempts
+      title: LockoutPolicy
+      type: object
+    LockoutPolicyRequest:
+      additionalProperties: false
+      properties:
+        active:
+          type: boolean
+        max_attempts:
+          format: int64
+          minimum: 1
+          type: integer
+        blocking_period:
+          description: Blocking period in minutes
+          format: int64
+          type: integer
+      required:
+      - active
+      - blocking_period
+      - max_attempts
+      title: LockoutPolicyRequest
+      type: object
+    LoginRequest:
+      additionalProperties: false
+      example:
+        password: password
+        account_id: 0
+        email: email
+      properties:
+        email:
+          format: email
+          minLength: 1
+          type: string
+          writeOnly: true
+        password:
+          minLength: 1
+          type: string
+          writeOnly: true
+        account_id:
+          format: int64
+          nullable: true
+          type: integer
+          writeOnly: true
+      required:
+      - email
+      - password
+      title: LoginRequest
+      type: object
+    LoginResponse:
+      additionalProperties: true
+      discriminator:
+        mapping:
+          TokenPair: "#/components/schemas/TokenPair"
+          MFAToken: "#/components/schemas/MFAToken"
+        propertyName: response_type
+      oneOf:
+      - $ref: "#/components/schemas/TokenPair"
+      - $ref: "#/components/schemas/MFAToken"
+      title: LoginResponse
+    MFAToken:
+      additionalProperties: false
+      description: |-
+        Used when user has MFA enabled. Returns a temporary MFA token that must be
+        verified with a TOTP code before receiving full access tokens.
+      properties:
+        access_token:
+          description: "The access_token is a short-lived token (e.g., 10 minutes)\
+            \ used for API authentication in the Authorization: Bearer <access_token>\
+            \ header."
+          readOnly: true
+          type: string
+        two_factor_required:
+          description: Specifies the type of two-factor authentication configured.
+            Currently supports 'TOTP' (Time-based One-Time Password).
+          readOnly: true
+          type: boolean
+        two_factor_type:
+          description: "Indicates whether the user has an active TOTP device configured.\
+            \ If false, the user must register a device before using MFA authentication."
+          readOnly: true
+          type: string
+        has_active_device:
+          description: "Indicates whether the user already has an active TOTP device\
+            \ configured.If false, the user needs to set up a new device before using\
+            \ MFA authentication."
+          readOnly: true
+          type: boolean
+      required:
+      - access_token
+      - has_active_device
+      - two_factor_required
+      - two_factor_type
+      title: MFAToken
+      type: object
+    PaginatedPolicyList:
+      additionalProperties: false
+      properties:
+        count:
+          example: 123
+          format: int64
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        results:
+          items:
+            $ref: "#/components/schemas/Policy"
+          type: array
+      title: PaginatedPolicyList
+      type: object
+    PaginatedTOTPDeviceListList:
+      additionalProperties: false
+      example:
+        count: 123
+        results:
+        - user_id: 6
+          name: name
+          id: 0
+          confirmed: true
+        - user_id: 6
+          name: name
+          id: 0
+          confirmed: true
+      properties:
+        count:
+          example: 123
+          format: int64
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        results:
+          items:
+            $ref: "#/components/schemas/TOTPDeviceList"
+          type: array
+      title: PaginatedTOTPDeviceListList
+      type: object
+    PatchedPolicyRequest:
+      additionalProperties: false
+      properties:
+        name:
+          maxLength: 255
+          minLength: 1
+          pattern: .*
+          type: string
+        active:
+          type: boolean
+        rules:
+          items:
+            $ref: "#/components/schemas/PolicyRuleRequest"
+          type: array
+      title: PatchedPolicyRequest
+      type: object
+    Policy:
+      additionalProperties: false
+      properties:
+        id:
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 255
+          pattern: .*
+          type: string
+        last_editor:
+          pattern: .*
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        active:
+          type: boolean
+        rules:
+          items:
+            $ref: "#/components/schemas/PolicyRule"
+          type: array
+      required:
+      - active
+      - id
+      - last_editor
+      - last_modified
+      - name
+      - rules
+      title: Policy
+      type: object
+    PolicyRequest:
+      additionalProperties: false
+      properties:
+        name:
+          maxLength: 255
+          minLength: 1
+          pattern: .*
+          type: string
+        active:
+          type: boolean
+        rules:
+          items:
+            $ref: "#/components/schemas/PolicyRuleRequest"
+          type: array
+      required:
+      - active
+      - name
+      - rules
+      title: PolicyRequest
+      type: object
+    PolicyRule:
+      additionalProperties: false
+      properties:
+        name:
+          maxLength: 255
+          pattern: .*
+          type: string
+        effect:
+          description: |-
+            * `allow` - allow
+            * `deny` - deny
+          title: EffectEnum
+          type: string
+        resource:
+          type: string
+        actions:
+          items:
+            type: string
+          type: array
+        condition:
+          $ref: "#/components/schemas/PolicyRuleCondition"
+      required:
+      - actions
+      - effect
+      - name
+      - resource
+      title: PolicyRule
+      type: object
+    PolicyRuleCondition:
+      additionalProperties: false
+      properties:
+        ip_address:
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - ip_address
+      title: PolicyRuleCondition
+      type: object
+    PolicyRuleConditionRequest:
+      additionalProperties: false
+      properties:
+        ip_address:
+          items:
+            minLength: 1
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - ip_address
+      title: PolicyRuleConditionRequest
+      type: object
+    PolicyRuleRequest:
+      additionalProperties: false
+      properties:
+        name:
+          maxLength: 255
+          minLength: 1
+          pattern: .*
+          type: string
+        effect:
+          description: |-
+            * `allow` - allow
+            * `deny` - deny
+          title: EffectEnum
+          type: string
+        resource:
+          minLength: 1
+          type: string
+        actions:
+          items:
+            minLength: 1
+            type: string
+          type: array
+        condition:
+          $ref: "#/components/schemas/PolicyRuleConditionRequest"
+      required:
+      - actions
+      - effect
+      - name
+      - resource
+      title: PolicyRuleRequest
+      type: object
+    ResponseAsyncDeletePolicy:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+      title: ResponseAsyncDeletePolicy
+      type: object
+    ResponseAsyncDeleteTOTPDeviceCreate:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+      title: ResponseAsyncDeleteTOTPDeviceCreate
+      type: object
+    ResponseAsyncLockoutPolicy:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/LockoutPolicy"
+      required:
+      - data
+      title: ResponseAsyncLockoutPolicy
+      type: object
+    ResponseAsyncLogin:
+      additionalProperties: false
+      example:
+        data:
+          access_token: access_token
+          refresh_token: refresh_token
+        state: state
+      properties:
+        data:
+          $ref: "#/components/schemas/LoginResponse"
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+      required:
+      - data
+      title: ResponseAsyncLogin
+      type: object
+    ResponseAsyncPolicy:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/Policy"
+      required:
+      - data
+      title: ResponseAsyncPolicy
+      type: object
+    ResponseAsyncSessionTimeoutPolicy:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/SessionTimeoutPolicy"
+      required:
+      - data
+      title: ResponseAsyncSessionTimeoutPolicy
+      type: object
+    ResponseAsyncTOTPDeviceCreate:
+      additionalProperties: false
+      example:
+        data:
+          url: url
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/TOTPDeviceCreate"
+      required:
+      - data
+      title: ResponseAsyncTOTPDeviceCreate
+      type: object
+    ResponseAsyncToken:
+      additionalProperties: false
+      example:
+        data:
+          access_token: access_token
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/Token"
+      required:
+      - data
+      title: ResponseAsyncToken
+      type: object
+    ResponseAsyncTokenPair:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/TokenPair"
+      required:
+      - data
+      title: ResponseAsyncTokenPair
+      type: object
+    ResponseBadRequestPolicy:
+      additionalProperties: false
+      properties:
+        name:
+          items:
+            type: string
+          type: array
+        active:
+          items:
+            type: string
+          type: array
+        rules:
+          items:
+            type: string
+          type: array
+        last_editor:
+          items:
+            type: string
+          type: array
+        last_modified:
+          items:
+            type: string
+          type: array
+        detail:
+          maxLength: 4096
+          minLength: 1
+          pattern: .*
+          type: string
+      title: ResponseBadRequestPolicy
+      type: object
+    ResponseDeletePolicy:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+      title: ResponseDeletePolicy
+      type: object
+    ResponseDeleteTOTPDeviceCreate:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+      title: ResponseDeleteTOTPDeviceCreate
+      type: object
+    ResponseLockoutPolicy:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/LockoutPolicy"
+      required:
+      - data
+      title: ResponseLockoutPolicy
+      type: object
+    ResponseLogin:
+      additionalProperties: false
+      example:
+        data:
+          access_token: access_token
+          refresh_token: refresh_token
+        state: state
+      properties:
+        data:
+          $ref: "#/components/schemas/LoginResponse"
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+      required:
+      - data
+      title: ResponseLogin
+      type: object
+    ResponsePolicy:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/Policy"
+      required:
+      - data
+      title: ResponsePolicy
+      type: object
+    ResponseRetrieveLockoutPolicy:
+      additionalProperties: false
+      properties:
+        data:
+          $ref: "#/components/schemas/LockoutPolicy"
+      required:
+      - data
+      title: ResponseRetrieveLockoutPolicy
+      type: object
+    ResponseRetrievePolicy:
+      additionalProperties: false
+      properties:
+        data:
+          $ref: "#/components/schemas/Policy"
+      required:
+      - data
+      title: ResponseRetrievePolicy
+      type: object
+    ResponseRetrieveSessionTimeoutPolicy:
+      additionalProperties: false
+      properties:
+        data:
+          $ref: "#/components/schemas/SessionTimeoutPolicy"
+      required:
+      - data
+      title: ResponseRetrieveSessionTimeoutPolicy
+      type: object
+    ResponseSessionTimeoutPolicy:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/SessionTimeoutPolicy"
+      required:
+      - data
+      title: ResponseSessionTimeoutPolicy
+      type: object
+    ResponseTOTPDeviceCreate:
+      additionalProperties: false
+      example:
+        data:
+          url: url
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/TOTPDeviceCreate"
+      required:
+      - data
+      title: ResponseTOTPDeviceCreate
+      type: object
+    ResponseToken:
+      additionalProperties: false
+      example:
+        data:
+          access_token: access_token
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/Token"
+      required:
+      - data
+      title: ResponseToken
+      type: object
+    ResponseTokenPair:
+      additionalProperties: false
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
+        data:
+          $ref: "#/components/schemas/TokenPair"
+      required:
+      - data
+      title: ResponseTokenPair
+      type: object
+    SessionTimeoutPolicy:
+      additionalProperties: false
+      properties:
+        max_idle_time:
+          format: int64
+          maximum: 1440
+          minimum: 1
+          type: integer
+        max_session_time:
+          format: int64
+          maximum: 21600
+          minimum: 5
+          type: integer
+      required:
+      - max_idle_time
+      - max_session_time
+      title: SessionTimeoutPolicy
+      type: object
+    SessionTimeoutPolicyRequest:
+      additionalProperties: false
+      properties:
+        max_idle_time:
+          format: int64
+          maximum: 1440
+          minimum: 1
+          type: integer
+        max_session_time:
+          format: int64
+          maximum: 21600
+          minimum: 5
+          type: integer
+      required:
+      - max_idle_time
+      - max_session_time
+      title: SessionTimeoutPolicyRequest
+      type: object
+    StateExecutedResponse:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          type: string
+      title: StateExecutedResponse
+      type: object
+    StatePendingResponse:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          type: string
+      title: StatePendingResponse
+      type: object
+    TOTPDeviceCreate:
+      additionalProperties: false
+      example:
+        url: url
+      properties:
+        url:
+          maxLength: 255
+          minLength: 0
+          pattern: .*
+          readOnly: true
+          type: string
+      required:
+      - url
+      title: TOTPDeviceCreate
+      type: object
+    TOTPDeviceList:
+      additionalProperties: false
+      example:
+        user_id: 6
+        name: name
+        id: 0
+        confirmed: true
+      properties:
+        id:
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          type: string
+        confirmed:
+          description: Is this device ready for use?
+          type: boolean
+        user_id:
+          description: The user that this device belongs to.
+          format: int64
+          readOnly: true
+          type: integer
+      required:
+      - id
+      - name
+      - user_id
+      title: TOTPDeviceList
+      type: object
+    TOTPVerificationRequest:
+      additionalProperties: false
+      description: |-
+        Serializer for TOTP verification process.
+
+        Handles the verification of TOTP codes for MFA-enabled users.
+        On successful verification, returns access and refresh tokens.
+      properties:
+        code:
+          minLength: 1
+          type: string
+          writeOnly: true
+      required:
+      - code
+      title: TOTPVerificationRequest
+      type: object
+    Token:
+      additionalProperties: false
+      example:
+        access_token: access_token
+      properties:
+        access_token:
+          maxLength: 255
+          minLength: 0
+          pattern: .*
+          readOnly: true
+          type: string
+      required:
+      - access_token
+      title: Token
+      type: object
+    TokenPair:
+      additionalProperties: false
+      description: |-
+        Used when user does not have MFA enabled or after successful MFA verification.
+        Returns both access and refresh tokens for API authentication.
+      example:
+        access_token: access_token
+        refresh_token: refresh_token
+      properties:
+        access_token:
+          description: "The access_token is a short-lived token (e.g., 10 minutes)\
+            \ used for API authentication in the Authorization: Bearer <access_token>\
+            \ header."
+          readOnly: true
+          type: string
+        refresh_token:
+          description: A long-lived JWT token used to refresh the access_token without
+            requiring the user to authenticate again.
+          readOnly: true
+          type: string
+      required:
+      - access_token
+      - refresh_token
+      title: TokenPair
+      type: object
+    TokenRequest:
+      additionalProperties: false
+      example:
+        account_id: 0
+      properties:
+        account_id:
+          format: int64
+          nullable: true
+          type: integer
+          writeOnly: true
+      title: TokenRequest
+      type: object
+    user_login_method_response:
+      additionalProperties: false
+      example:
+        method: method
+        url: https://openapi-generator.tech
+      properties:
+        method:
+          type: string
+        url:
+          format: uri
+          type: string
+      required:
+      - method
+      - url
+      title: user_login_method_response
+      type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http
+    JWT MFA Authentication:
+      bearerFormat: JWT
+      description: Authentication JWT MFA with Bearer Token
+      scheme: bearer
+      type: http
+    JWT Refresh Authentication:
+      bearerFormat: JWT
+      description: Authentication JWT Refresh with Bearer Token
+      scheme: bearer
+      type: http
+    TokenAuth:
+      description: Token-based authentication with required prefix "Token"
+      in: header
+      name: Authorization
+      type: apiKey

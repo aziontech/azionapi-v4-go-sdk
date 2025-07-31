@@ -45,7 +45,7 @@ def process_schema(schema, parent_key="root"):
         #change default_args to an empty dictionary
         if "default_args" in schema:
             schema["default_args"] = {}
-        
+
         # Overwrite json_args with an empty dictionary
         if "json_args" in schema:
             schema["json_args"] = {}

@@ -21,8 +21,7 @@ var _ MappedNullable = &ResponseDataStream{}
 
 // ResponseDataStream struct for ResponseDataStream
 type ResponseDataStream struct {
-	// * `pending` - pending * `executed` - executed
-	State string `json:"state"`
+	State *string `json:"state,omitempty" validate:"regexp=.*"`
 	Data DataStream `json:"data"`
 }
 
@@ -32,9 +31,8 @@ type _ResponseDataStream ResponseDataStream
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseDataStream(state string, data DataStream) *ResponseDataStream {
+func NewResponseDataStream(data DataStream) *ResponseDataStream {
 	this := ResponseDataStream{}
-	this.State = state
 	this.Data = data
 	return &this
 }
@@ -47,28 +45,36 @@ func NewResponseDataStreamWithDefaults() *ResponseDataStream {
 	return &this
 }
 
-// GetState returns the State field value
+// GetState returns the State field value if set, zero value otherwise.
 func (o *ResponseDataStream) GetState() string {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
-
-	return o.State
+	return *o.State
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResponseDataStream) GetStateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return &o.State, true
+	return o.State, true
 }
 
-// SetState sets field value
+// HasState returns a boolean if a field has been set.
+func (o *ResponseDataStream) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
 func (o *ResponseDataStream) SetState(v string) {
-	o.State = v
+	o.State = &v
 }
 
 // GetData returns the Data field value
@@ -105,7 +111,9 @@ func (o ResponseDataStream) MarshalJSON() ([]byte, error) {
 
 func (o ResponseDataStream) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["state"] = o.State
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
 	toSerialize["data"] = o.Data
 	return toSerialize, nil
 }
@@ -115,7 +123,6 @@ func (o *ResponseDataStream) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"state",
 		"data",
 	}
 

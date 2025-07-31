@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateCredential
 
-> ResponseCredential CreateCredential(ctx).CredentialCreateRequest(credentialCreateRequest).Execute()
+> CredentialCreate CreateCredential(ctx).CredentialCreateRequest(credentialCreateRequest).Execute()
 
 Create a new credential
 
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageCredentialsAPI.CreateCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateCredential`: ResponseCredential
+	// response from `CreateCredential`: CredentialCreate
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageCredentialsAPI.CreateCredential`: %v\n", resp)
 }
 ```
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseCredential**](ResponseCredential.md)
+[**CredentialCreate**](CredentialCreate.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## DeleteCredential
 
-> ResponseDeleteCredential DeleteCredential(ctx, accessKey).Execute()
+> Credential DeleteCredential(ctx, accessKey).Execute()
 
 Delete a Credential
 
@@ -107,7 +107,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageCredentialsAPI.DeleteCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteCredential`: ResponseDeleteCredential
+	// response from `DeleteCredential`: Credential
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageCredentialsAPI.DeleteCredential`: %v\n", resp)
 }
 ```
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteCredential**](ResponseDeleteCredential.md)
+[**Credential**](Credential.md)
 
 ### Authorization
 

@@ -24,15 +24,13 @@ var _ MappedNullable = &ResponseListDataStream{}
 type ResponseListDataStream struct {
 	Id int64 `json:"id"`
 	Name string `json:"name" validate:"regexp=.*"`
-	// * `http` - Edge Applications * `waf` - WAF Events * `cells_console` - Edge Functions * `rtm_activity` - Activity History
-	DataSource string `json:"data_source"`
-	DataSetId int64 `json:"data_set_id"`
-	Active *bool `json:"active,omitempty"`
-	Filters DataStreamFilter `json:"filters"`
-	LastEditor string `json:"last_editor"`
+	LastEditor string `json:"last_editor" validate:"regexp=.*"`
 	LastModified time.Time `json:"last_modified"`
-	ProductVersion string `json:"product_version"`
-	Endpoint Endpoint `json:"endpoint"`
+	ProductVersion string `json:"product_version" validate:"regexp=.*"`
+	Active *bool `json:"active,omitempty"`
+	Inputs []InputPolymorphicInputDataSourceAttributes `json:"inputs"`
+	Transform []TransformPolymorphic `json:"transform"`
+	Outputs []Output `json:"outputs"`
 }
 
 type _ResponseListDataStream ResponseListDataStream
@@ -41,17 +39,16 @@ type _ResponseListDataStream ResponseListDataStream
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseListDataStream(id int64, name string, dataSource string, dataSetId int64, filters DataStreamFilter, lastEditor string, lastModified time.Time, productVersion string, endpoint Endpoint) *ResponseListDataStream {
+func NewResponseListDataStream(id int64, name string, lastEditor string, lastModified time.Time, productVersion string, inputs []InputPolymorphicInputDataSourceAttributes, transform []TransformPolymorphic, outputs []Output) *ResponseListDataStream {
 	this := ResponseListDataStream{}
 	this.Id = id
 	this.Name = name
-	this.DataSource = dataSource
-	this.DataSetId = dataSetId
-	this.Filters = filters
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	this.ProductVersion = productVersion
-	this.Endpoint = endpoint
+	this.Inputs = inputs
+	this.Transform = transform
+	this.Outputs = outputs
 	return &this
 }
 
@@ -109,110 +106,6 @@ func (o *ResponseListDataStream) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ResponseListDataStream) SetName(v string) {
 	o.Name = v
-}
-
-// GetDataSource returns the DataSource field value
-func (o *ResponseListDataStream) GetDataSource() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DataSource
-}
-
-// GetDataSourceOk returns a tuple with the DataSource field value
-// and a boolean to check if the value has been set.
-func (o *ResponseListDataStream) GetDataSourceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DataSource, true
-}
-
-// SetDataSource sets field value
-func (o *ResponseListDataStream) SetDataSource(v string) {
-	o.DataSource = v
-}
-
-// GetDataSetId returns the DataSetId field value
-func (o *ResponseListDataStream) GetDataSetId() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.DataSetId
-}
-
-// GetDataSetIdOk returns a tuple with the DataSetId field value
-// and a boolean to check if the value has been set.
-func (o *ResponseListDataStream) GetDataSetIdOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DataSetId, true
-}
-
-// SetDataSetId sets field value
-func (o *ResponseListDataStream) SetDataSetId(v int64) {
-	o.DataSetId = v
-}
-
-// GetActive returns the Active field value if set, zero value otherwise.
-func (o *ResponseListDataStream) GetActive() bool {
-	if o == nil || IsNil(o.Active) {
-		var ret bool
-		return ret
-	}
-	return *o.Active
-}
-
-// GetActiveOk returns a tuple with the Active field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponseListDataStream) GetActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.Active) {
-		return nil, false
-	}
-	return o.Active, true
-}
-
-// HasActive returns a boolean if a field has been set.
-func (o *ResponseListDataStream) HasActive() bool {
-	if o != nil && !IsNil(o.Active) {
-		return true
-	}
-
-	return false
-}
-
-// SetActive gets a reference to the given bool and assigns it to the Active field.
-func (o *ResponseListDataStream) SetActive(v bool) {
-	o.Active = &v
-}
-
-// GetFilters returns the Filters field value
-func (o *ResponseListDataStream) GetFilters() DataStreamFilter {
-	if o == nil {
-		var ret DataStreamFilter
-		return ret
-	}
-
-	return o.Filters
-}
-
-// GetFiltersOk returns a tuple with the Filters field value
-// and a boolean to check if the value has been set.
-func (o *ResponseListDataStream) GetFiltersOk() (*DataStreamFilter, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Filters, true
-}
-
-// SetFilters sets field value
-func (o *ResponseListDataStream) SetFilters(v DataStreamFilter) {
-	o.Filters = v
 }
 
 // GetLastEditor returns the LastEditor field value
@@ -287,28 +180,108 @@ func (o *ResponseListDataStream) SetProductVersion(v string) {
 	o.ProductVersion = v
 }
 
-// GetEndpoint returns the Endpoint field value
-func (o *ResponseListDataStream) GetEndpoint() Endpoint {
+// GetActive returns the Active field value if set, zero value otherwise.
+func (o *ResponseListDataStream) GetActive() bool {
+	if o == nil || IsNil(o.Active) {
+		var ret bool
+		return ret
+	}
+	return *o.Active
+}
+
+// GetActiveOk returns a tuple with the Active field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponseListDataStream) GetActiveOk() (*bool, bool) {
+	if o == nil || IsNil(o.Active) {
+		return nil, false
+	}
+	return o.Active, true
+}
+
+// HasActive returns a boolean if a field has been set.
+func (o *ResponseListDataStream) HasActive() bool {
+	if o != nil && !IsNil(o.Active) {
+		return true
+	}
+
+	return false
+}
+
+// SetActive gets a reference to the given bool and assigns it to the Active field.
+func (o *ResponseListDataStream) SetActive(v bool) {
+	o.Active = &v
+}
+
+// GetInputs returns the Inputs field value
+func (o *ResponseListDataStream) GetInputs() []InputPolymorphicInputDataSourceAttributes {
 	if o == nil {
-		var ret Endpoint
+		var ret []InputPolymorphicInputDataSourceAttributes
 		return ret
 	}
 
-	return o.Endpoint
+	return o.Inputs
 }
 
-// GetEndpointOk returns a tuple with the Endpoint field value
+// GetInputsOk returns a tuple with the Inputs field value
 // and a boolean to check if the value has been set.
-func (o *ResponseListDataStream) GetEndpointOk() (*Endpoint, bool) {
+func (o *ResponseListDataStream) GetInputsOk() ([]InputPolymorphicInputDataSourceAttributes, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Endpoint, true
+	return o.Inputs, true
 }
 
-// SetEndpoint sets field value
-func (o *ResponseListDataStream) SetEndpoint(v Endpoint) {
-	o.Endpoint = v
+// SetInputs sets field value
+func (o *ResponseListDataStream) SetInputs(v []InputPolymorphicInputDataSourceAttributes) {
+	o.Inputs = v
+}
+
+// GetTransform returns the Transform field value
+func (o *ResponseListDataStream) GetTransform() []TransformPolymorphic {
+	if o == nil {
+		var ret []TransformPolymorphic
+		return ret
+	}
+
+	return o.Transform
+}
+
+// GetTransformOk returns a tuple with the Transform field value
+// and a boolean to check if the value has been set.
+func (o *ResponseListDataStream) GetTransformOk() ([]TransformPolymorphic, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Transform, true
+}
+
+// SetTransform sets field value
+func (o *ResponseListDataStream) SetTransform(v []TransformPolymorphic) {
+	o.Transform = v
+}
+
+// GetOutputs returns the Outputs field value
+func (o *ResponseListDataStream) GetOutputs() []Output {
+	if o == nil {
+		var ret []Output
+		return ret
+	}
+
+	return o.Outputs
+}
+
+// GetOutputsOk returns a tuple with the Outputs field value
+// and a boolean to check if the value has been set.
+func (o *ResponseListDataStream) GetOutputsOk() ([]Output, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Outputs, true
+}
+
+// SetOutputs sets field value
+func (o *ResponseListDataStream) SetOutputs(v []Output) {
+	o.Outputs = v
 }
 
 func (o ResponseListDataStream) MarshalJSON() ([]byte, error) {
@@ -323,16 +296,15 @@ func (o ResponseListDataStream) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	toSerialize["data_source"] = o.DataSource
-	toSerialize["data_set_id"] = o.DataSetId
-	if !IsNil(o.Active) {
-		toSerialize["active"] = o.Active
-	}
-	toSerialize["filters"] = o.Filters
 	toSerialize["last_editor"] = o.LastEditor
 	toSerialize["last_modified"] = o.LastModified
 	toSerialize["product_version"] = o.ProductVersion
-	toSerialize["endpoint"] = o.Endpoint
+	if !IsNil(o.Active) {
+		toSerialize["active"] = o.Active
+	}
+	toSerialize["inputs"] = o.Inputs
+	toSerialize["transform"] = o.Transform
+	toSerialize["outputs"] = o.Outputs
 	return toSerialize, nil
 }
 
@@ -343,13 +315,12 @@ func (o *ResponseListDataStream) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
-		"data_source",
-		"data_set_id",
-		"filters",
 		"last_editor",
 		"last_modified",
 		"product_version",
-		"endpoint",
+		"inputs",
+		"transform",
+		"outputs",
 	}
 
 	allProperties := make(map[string]interface{})

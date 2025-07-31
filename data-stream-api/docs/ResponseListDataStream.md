@@ -6,20 +6,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | [readonly] 
 **Name** | **string** |  | 
-**DataSource** | **string** | * &#x60;http&#x60; - Edge Applications * &#x60;waf&#x60; - WAF Events * &#x60;cells_console&#x60; - Edge Functions * &#x60;rtm_activity&#x60; - Activity History | 
-**DataSetId** | **int64** |  | 
-**Active** | Pointer to **bool** |  | [optional] 
-**Filters** | [**DataStreamFilter**](DataStreamFilter.md) |  | 
 **LastEditor** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
 **ProductVersion** | **string** |  | [readonly] 
-**Endpoint** | [**Endpoint**](Endpoint.md) |  | 
+**Active** | Pointer to **bool** |  | [optional] 
+**Inputs** | [**[]InputPolymorphicInputDataSourceAttributes**](InputPolymorphicInputDataSourceAttributes.md) |  | 
+**Transform** | [**[]TransformPolymorphic**](TransformPolymorphic.md) |  | 
+**Outputs** | [**[]Output**](Output.md) |  | 
 
 ## Methods
 
 ### NewResponseListDataStream
 
-`func NewResponseListDataStream(id int64, name string, dataSource string, dataSetId int64, filters DataStreamFilter, lastEditor string, lastModified time.Time, productVersion string, endpoint Endpoint, ) *ResponseListDataStream`
+`func NewResponseListDataStream(id int64, name string, lastEditor string, lastModified time.Time, productVersion string, inputs []InputPolymorphicInputDataSourceAttributes, transform []TransformPolymorphic, outputs []Output, ) *ResponseListDataStream`
 
 NewResponseListDataStream instantiates a new ResponseListDataStream object
 This constructor will assign default values to properties that have it defined,
@@ -72,91 +71,6 @@ and a boolean to check if the value has been set.
 `func (o *ResponseListDataStream) SetName(v string)`
 
 SetName sets Name field to given value.
-
-
-### GetDataSource
-
-`func (o *ResponseListDataStream) GetDataSource() string`
-
-GetDataSource returns the DataSource field if non-nil, zero value otherwise.
-
-### GetDataSourceOk
-
-`func (o *ResponseListDataStream) GetDataSourceOk() (*string, bool)`
-
-GetDataSourceOk returns a tuple with the DataSource field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataSource
-
-`func (o *ResponseListDataStream) SetDataSource(v string)`
-
-SetDataSource sets DataSource field to given value.
-
-
-### GetDataSetId
-
-`func (o *ResponseListDataStream) GetDataSetId() int64`
-
-GetDataSetId returns the DataSetId field if non-nil, zero value otherwise.
-
-### GetDataSetIdOk
-
-`func (o *ResponseListDataStream) GetDataSetIdOk() (*int64, bool)`
-
-GetDataSetIdOk returns a tuple with the DataSetId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataSetId
-
-`func (o *ResponseListDataStream) SetDataSetId(v int64)`
-
-SetDataSetId sets DataSetId field to given value.
-
-
-### GetActive
-
-`func (o *ResponseListDataStream) GetActive() bool`
-
-GetActive returns the Active field if non-nil, zero value otherwise.
-
-### GetActiveOk
-
-`func (o *ResponseListDataStream) GetActiveOk() (*bool, bool)`
-
-GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetActive
-
-`func (o *ResponseListDataStream) SetActive(v bool)`
-
-SetActive sets Active field to given value.
-
-### HasActive
-
-`func (o *ResponseListDataStream) HasActive() bool`
-
-HasActive returns a boolean if a field has been set.
-
-### GetFilters
-
-`func (o *ResponseListDataStream) GetFilters() DataStreamFilter`
-
-GetFilters returns the Filters field if non-nil, zero value otherwise.
-
-### GetFiltersOk
-
-`func (o *ResponseListDataStream) GetFiltersOk() (*DataStreamFilter, bool)`
-
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilters
-
-`func (o *ResponseListDataStream) SetFilters(v DataStreamFilter)`
-
-SetFilters sets Filters field to given value.
 
 
 ### GetLastEditor
@@ -219,24 +133,89 @@ and a boolean to check if the value has been set.
 SetProductVersion sets ProductVersion field to given value.
 
 
-### GetEndpoint
+### GetActive
 
-`func (o *ResponseListDataStream) GetEndpoint() Endpoint`
+`func (o *ResponseListDataStream) GetActive() bool`
 
-GetEndpoint returns the Endpoint field if non-nil, zero value otherwise.
+GetActive returns the Active field if non-nil, zero value otherwise.
 
-### GetEndpointOk
+### GetActiveOk
 
-`func (o *ResponseListDataStream) GetEndpointOk() (*Endpoint, bool)`
+`func (o *ResponseListDataStream) GetActiveOk() (*bool, bool)`
 
-GetEndpointOk returns a tuple with the Endpoint field if it's non-nil, zero value otherwise
+GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndpoint
+### SetActive
 
-`func (o *ResponseListDataStream) SetEndpoint(v Endpoint)`
+`func (o *ResponseListDataStream) SetActive(v bool)`
 
-SetEndpoint sets Endpoint field to given value.
+SetActive sets Active field to given value.
+
+### HasActive
+
+`func (o *ResponseListDataStream) HasActive() bool`
+
+HasActive returns a boolean if a field has been set.
+
+### GetInputs
+
+`func (o *ResponseListDataStream) GetInputs() []InputPolymorphicInputDataSourceAttributes`
+
+GetInputs returns the Inputs field if non-nil, zero value otherwise.
+
+### GetInputsOk
+
+`func (o *ResponseListDataStream) GetInputsOk() (*[]InputPolymorphicInputDataSourceAttributes, bool)`
+
+GetInputsOk returns a tuple with the Inputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputs
+
+`func (o *ResponseListDataStream) SetInputs(v []InputPolymorphicInputDataSourceAttributes)`
+
+SetInputs sets Inputs field to given value.
+
+
+### GetTransform
+
+`func (o *ResponseListDataStream) GetTransform() []TransformPolymorphic`
+
+GetTransform returns the Transform field if non-nil, zero value otherwise.
+
+### GetTransformOk
+
+`func (o *ResponseListDataStream) GetTransformOk() (*[]TransformPolymorphic, bool)`
+
+GetTransformOk returns a tuple with the Transform field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransform
+
+`func (o *ResponseListDataStream) SetTransform(v []TransformPolymorphic)`
+
+SetTransform sets Transform field to given value.
+
+
+### GetOutputs
+
+`func (o *ResponseListDataStream) GetOutputs() []Output`
+
+GetOutputs returns the Outputs field if non-nil, zero value otherwise.
+
+### GetOutputsOk
+
+`func (o *ResponseListDataStream) GetOutputsOk() (*[]Output, bool)`
+
+GetOutputsOk returns a tuple with the Outputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputs
+
+`func (o *ResponseListDataStream) SetOutputs(v []Output)`
+
+SetOutputs sets Outputs field to given value.
 
 
 

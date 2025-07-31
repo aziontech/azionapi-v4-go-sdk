@@ -49,11 +49,11 @@ type APIClient struct {
 
 	// API Services
 
-	DataStreamDataSetsAPI *DataStreamDataSetsAPIService
-
 	DataStreamDataSourcesAPI *DataStreamDataSourcesAPIService
 
-	DataStreamDataStreamsAPI *DataStreamDataStreamsAPIService
+	DataStreamStreamsAPI *DataStreamStreamsAPIService
+
+	DataStreamTemplatesAPI *DataStreamTemplatesAPIService
 }
 
 type service struct {
@@ -72,9 +72,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.DataStreamDataSetsAPI = (*DataStreamDataSetsAPIService)(&c.common)
 	c.DataStreamDataSourcesAPI = (*DataStreamDataSourcesAPIService)(&c.common)
-	c.DataStreamDataStreamsAPI = (*DataStreamDataStreamsAPIService)(&c.common)
+	c.DataStreamStreamsAPI = (*DataStreamStreamsAPIService)(&c.common)
+	c.DataStreamTemplatesAPI = (*DataStreamTemplatesAPIService)(&c.common)
 
 	return c
 }

@@ -34,7 +34,7 @@ func (r ApiCreateBucketRequest) BucketCreateRequest(bucketCreateRequest BucketCr
 	return r
 }
 
-func (r ApiCreateBucketRequest) Execute() (*ResponseBucket, *http.Response, error) {
+func (r ApiCreateBucketRequest) Execute() (*SuccessBucketOperation, *http.Response, error) {
 	return r.ApiService.CreateBucketExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *EdgeStorageBucketsAPIService) CreateBucket(ctx context.Context) ApiCrea
 }
 
 // Execute executes the request
-//  @return ResponseBucket
-func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequest) (*ResponseBucket, *http.Response, error) {
+//  @return SuccessBucketOperation
+func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequest) (*SuccessBucketOperation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseBucket
+		localVarReturnValue  *SuccessBucketOperation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageBucketsAPIService.CreateBucket")
@@ -133,7 +133,18 @@ func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ResponseBadRequestBucket
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +155,7 @@ func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -155,7 +166,7 @@ func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -166,7 +177,7 @@ func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -177,7 +188,7 @@ func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -188,7 +199,7 @@ func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -196,7 +207,6 @@ func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequ
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -315,8 +325,30 @@ func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequ
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -327,7 +359,7 @@ func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -338,7 +370,7 @@ func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -349,7 +381,7 @@ func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -360,7 +392,7 @@ func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -424,7 +456,7 @@ func (r ApiListBucketsRequest) Search(search string) ApiListBucketsRequest {
 	return r
 }
 
-func (r ApiListBucketsRequest) Execute() (*PaginatedResponseListBucketList, *http.Response, error) {
+func (r ApiListBucketsRequest) Execute() (*PaginatedBucketList, *http.Response, error) {
 	return r.ApiService.ListBucketsExecute(r)
 }
 
@@ -444,13 +476,13 @@ func (a *EdgeStorageBucketsAPIService) ListBuckets(ctx context.Context) ApiListB
 }
 
 // Execute executes the request
-//  @return PaginatedResponseListBucketList
-func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsRequest) (*PaginatedResponseListBucketList, *http.Response, error) {
+//  @return PaginatedBucketList
+func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsRequest) (*PaginatedBucketList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaginatedResponseListBucketList
+		localVarReturnValue  *PaginatedBucketList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageBucketsAPIService.ListBuckets")
@@ -533,7 +565,18 @@ func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsReques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ResponseBadRequestBucket
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -544,7 +587,7 @@ func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -555,7 +598,7 @@ func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -566,7 +609,7 @@ func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -577,7 +620,7 @@ func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -588,7 +631,7 @@ func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -624,7 +667,7 @@ func (r ApiUpdateBucketRequest) PatchedBucketRequest(patchedBucketRequest Patche
 	return r
 }
 
-func (r ApiUpdateBucketRequest) Execute() (*ResponseBucket, *http.Response, error) {
+func (r ApiUpdateBucketRequest) Execute() (*SuccessBucketOperation, *http.Response, error) {
 	return r.ApiService.UpdateBucketExecute(r)
 }
 
@@ -646,13 +689,13 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucket(ctx context.Context, name st
 }
 
 // Execute executes the request
-//  @return ResponseBucket
-func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequest) (*ResponseBucket, *http.Response, error) {
+//  @return SuccessBucketOperation
+func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequest) (*SuccessBucketOperation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseBucket
+		localVarReturnValue  *SuccessBucketOperation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageBucketsAPIService.UpdateBucket")
@@ -723,7 +766,18 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ResponseBadRequestBucket
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -734,7 +788,7 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -745,7 +799,7 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -756,7 +810,7 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -767,7 +821,7 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -778,7 +832,7 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -786,7 +840,6 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequ
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

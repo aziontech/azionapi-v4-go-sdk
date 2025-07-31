@@ -6,460 +6,10 @@ info:
 servers:
 - url: /
 paths:
-  /data_stream/data_sets:
-    get:
-      description: List all Data Sets owned by your account.
-      operationId: listDataSets
-      parameters:
-      - description: Comma-separated list of field names to include in the response.
-        explode: true
-        in: query
-        name: fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Which field to use when ordering the results.
-        explode: true
-        in: query
-        name: ordering
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: A page number within the paginated result set.
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: form
-      - description: A numeric value that indicates the number of items per page.
-        explode: true
-        in: query
-        name: page_size
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: form
-      - description: A search term.
-        explode: true
-        in: query
-        name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedResponseListDataSetList'
-          description: Ok
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataSet'
-          description: Bad Request
-        "404":
-          description: Not Found
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Acceptable
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
-      security:
-      - TokenAuth: []
-      - BearerAuth: []
-      summary: List Data Sets
-      tags:
-      - Data Stream - Data Sets
-    post:
-      description: Create a new custom Data Set in your account.
-      operationId: createDataSet
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DataSetRequest'
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseDataSet'
-          description: Created
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataSet'
-          description: Bad Request
-        "404":
-          description: Not Found
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Acceptable
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseDataSet'
-          description: Accepted
-      security:
-      - TokenAuth: []
-      - BearerAuth: []
-      summary: Create a Data Set
-      tags:
-      - Data Stream - Data Sets
-  /data_stream/data_sets/{id}:
-    delete:
-      description: Destruction of a specific custom Data Set in your account.
-      operationId: destroyDataSet
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseDeleteDataSet'
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseDeleteDataSet'
-          description: Accepted
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataSet'
-          description: Bad Request
-        "404":
-          description: Not Found
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Acceptable
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
-      security:
-      - TokenAuth: []
-      - BearerAuth: []
-      summary: Destroy a Data Set
-      tags:
-      - Data Stream - Data Sets
-    get:
-      description: Retrieve details from a specific Data Set in your account.
-      operationId: retrieveDataSet
-      parameters:
-      - description: Comma-separated list of field names to include in the response.
-        explode: true
-        in: query
-        name: fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseRetrieveDataSet'
-          description: Ok
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataSet'
-          description: Bad Request
-        "404":
-          description: Not Found
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Acceptable
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
-      security:
-      - TokenAuth: []
-      - BearerAuth: []
-      summary: Retrieve details of a Data Set
-      tags:
-      - Data Stream - Data Sets
-    patch:
-      description: Update one or more fields of an existing custom Data Set.
-      operationId: partialUpdateDataSet
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedDataSetRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseDataSet'
-          description: Ok
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataSet'
-          description: Bad Request
-        "404":
-          description: Not Found
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Acceptable
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseDataSet'
-          description: Accepted
-      security:
-      - TokenAuth: []
-      - BearerAuth: []
-      summary: Partially update a Data Set
-      tags:
-      - Data Stream - Data Sets
-    put:
-      description: Update an existing custom Data Set.
-      operationId: updateDataSet
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DataSetRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseDataSet'
-          description: Ok
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataSet'
-          description: Bad Request
-        "404":
-          description: Not Found
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Acceptable
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseDataSet'
-          description: Accepted
-      security:
-      - TokenAuth: []
-      - BearerAuth: []
-      summary: Update a Data Set
-      tags:
-      - Data Stream - Data Sets
   /data_stream/data_sources:
     get:
       description: List all Data Sources.
-      operationId: listDataSources
+      operationId: list_data_sources
       parameters:
       - explode: true
         in: query
@@ -529,46 +79,120 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedResponseListDataSourceList'
+                $ref: "#/components/schemas/PaginatedResponseListDataSourceList"
           description: Ok
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataSource'
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
       security:
       - TokenAuth: []
       - BearerAuth: []
@@ -578,7 +202,7 @@ paths:
   /data_stream/streams:
     get:
       description: List all Data Streams owned by your account.
-      operationId: listDataStreams
+      operationId: list_data_streams
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -627,122 +251,270 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedResponseListDataStreamList'
+                $ref: "#/components/schemas/PaginatedResponseListDataStreamList"
           description: Ok
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataStream'
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
       security:
       - TokenAuth: []
       - BearerAuth: []
       summary: List Data Streams
       tags:
-      - Data Stream - Data Streams
+      - Data Stream - Streams
     post:
       description: Create a new Data Stream in your account.
-      operationId: createDataStream
+      operationId: create_data_stream
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DataStreamRequest'
+              $ref: "#/components/schemas/DataStreamRequest"
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDataStream'
+                $ref: "#/components/schemas/ResponseDataStream"
           description: Created
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataStream'
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDataStream'
+                $ref: "#/components/schemas/ResponseAsyncDataStream"
           description: Accepted
       security:
       - TokenAuth: []
       - BearerAuth: []
       summary: Create a Data Stream
       tags:
-      - Data Stream - Data Streams
+      - Data Stream - Streams
   /data_stream/streams/{id}:
     delete:
       description: Destruction of a specific Data Stream in your account.
-      operationId: destroyDataStream
+      operationId: destroy_data_stream
       parameters:
       - explode: false
         in: path
@@ -756,61 +528,135 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDeleteDataStream'
-          description: ""
+                $ref: "#/components/schemas/ResponseDeleteDataStream"
+          description: Ok
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDeleteDataStream'
+                $ref: "#/components/schemas/ResponseAsyncDeleteDataStream"
           description: Accepted
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataStream'
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
       security:
       - TokenAuth: []
       - BearerAuth: []
       summary: Destroy a Data Stream
       tags:
-      - Data Stream - Data Streams
+      - Data Stream - Streams
     get:
       description: Retrieve details from a specific Data Stream in your account.
-      operationId: retrieveDataStream
+      operationId: retrieve_data_stream
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -832,55 +678,129 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseRetrieveDataStream'
+                $ref: "#/components/schemas/ResponseRetrieveDataStream"
           description: Ok
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataStream'
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
       security:
       - TokenAuth: []
       - BearerAuth: []
       summary: Retrieve details of a Data Stream
       tags:
-      - Data Stream - Data Streams
+      - Data Stream - Streams
     patch:
       description: Update one or more fields of an existing Data Stream.
-      operationId: partialUpdateDataStream
+      operationId: partial_update_data_stream
       parameters:
       - explode: false
         in: path
@@ -893,67 +813,141 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedDataStreamRequest'
+              $ref: "#/components/schemas/PatchedDataStreamRequest"
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDataStream'
+                $ref: "#/components/schemas/ResponseDataStream"
           description: Ok
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataStream'
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDataStream'
+                $ref: "#/components/schemas/ResponseAsyncDataStream"
           description: Accepted
       security:
       - TokenAuth: []
       - BearerAuth: []
       summary: Partially update a Data Stream
       tags:
-      - Data Stream - Data Streams
+      - Data Stream - Streams
     put:
       description: Update an existing Data Stream.
-      operationId: updateDataStream
+      operationId: update_data_stream
       parameters:
       - explode: false
         in: path
@@ -966,65 +960,1033 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DataStreamRequest'
+              $ref: "#/components/schemas/DataStreamRequest"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDataStream'
+                $ref: "#/components/schemas/ResponseDataStream"
           description: Ok
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: '#/components/schemas/ResponseBadRequestDataStream'
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: '#/components/schemas/DefaultErrorResponse'
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDataStream'
+                $ref: "#/components/schemas/ResponseAsyncDataStream"
           description: Accepted
       security:
       - TokenAuth: []
       - BearerAuth: []
       summary: Update a Data Stream
       tags:
-      - Data Stream - Data Streams
+      - Data Stream - Streams
+  /data_stream/templates:
+    get:
+      description: List all Templates owned by your account.
+      operationId: list_templates
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A numeric value that indicates the number of items per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedResponseListTemplateList"
+          description: Ok
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: List Templates
+      tags:
+      - Data Stream - Templates
+    post:
+      description: Create a new custom Template in your account.
+      operationId: create_template
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TemplateRequest"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseTemplate"
+          description: Created
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncTemplate"
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Create a Template
+      tags:
+      - Data Stream - Templates
+  /data_stream/templates/{id}:
+    delete:
+      description: Destruction of a specific custom Template in your account.
+      operationId: destroy_template
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseDeleteTemplate"
+          description: Ok
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncDeleteTemplate"
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Destroy a Template
+      tags:
+      - Data Stream - Templates
+    get:
+      description: Retrieve details from a specific Template in your account.
+      operationId: retrieve_template
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseRetrieveTemplate"
+          description: Ok
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Retrieve details of a Template
+      tags:
+      - Data Stream - Templates
+    patch:
+      description: Update one or more fields of an existing custom Template.
+      operationId: partial_update_template
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatchedTemplateRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseTemplate"
+          description: Ok
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncTemplate"
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Partially update a Template
+      tags:
+      - Data Stream - Templates
+    put:
+      description: Update an existing custom Template.
+      operationId: update_template
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TemplateRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseTemplate"
+          description: Ok
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncTemplate"
+          description: Accepted
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Update a Template
+      tags:
+      - Data Stream - Templates
 components:
   schemas:
     AWSKinesisFirehoseEndpoint:
@@ -1214,103 +2176,50 @@ components:
         * `application/gzip` - application/gzip
       title: ContentTypeEnum
       type: string
-    DataSet:
-      additionalProperties: false
-      example:
-        last_editor: last_editor
-        custom: true
-        name: name
-        active: true
-        data_set: data_set
-        id: 0
-        last_modified: 2000-01-23T04:56:07.000+00:00
-      properties:
-        id:
-          format: int64
-          readOnly: true
-          type: integer
-        name:
-          maxLength: 100
-          minLength: 1
-          pattern: .*
-          type: string
-        last_editor:
-          readOnly: true
-          type: string
-        last_modified:
-          format: date-time
-          readOnly: true
-          type: string
-        custom:
-          readOnly: true
-          type: boolean
-        active:
-          type: boolean
-        data_set:
-          type: string
-      required:
-      - custom
-      - data_set
-      - id
-      - last_editor
-      - last_modified
-      - name
-      title: DataSet
-      type: object
-    DataSetRequest:
-      additionalProperties: false
-      example:
-        name: name
-        active: true
-        data_set: data_set
-      properties:
-        name:
-          maxLength: 100
-          minLength: 1
-          pattern: .*
-          type: string
-        active:
-          type: boolean
-        data_set:
-          minLength: 1
-          type: string
-      required:
-      - data_set
-      - name
-      title: DataSetRequest
-      type: object
     DataSourceEnum:
       description: |-
         * `http` - Edge Applications
         * `waf` - WAF Events
-        * `cells_console` - Edge Functions
-        * `rtm_activity` - Activity History
+        * `functions` - Edge Functions
+        * `activity` - Activity History
       title: DataSourceEnum
       type: string
     DataStream:
       additionalProperties: false
       example:
+        outputs:
+        - attributes:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 315634359
+          type: type
+        - attributes:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 315634359
+          type: type
         product_version: product_version
-        endpoint:
-          headers:
-            key: headers
-          log_line_separator: log_line_separator
-          payload_format: payload_format
-          url: https://openapi-generator.tech
-          max_size: 1211053680
+        transform:
+        - attributes:
+            rate: 60
+          type: type
+        - attributes:
+            rate: 60
+          type: type
+        inputs:
+        - null
+        - null
         last_editor: last_editor
         name: name
         active: true
         id: 0
-        filters:
-          sampling_rate: 15
-          sampling_enable: true
-          workloads:
-          - 5
-          - 5
-        data_set_id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
-        data_source: data_source
       properties:
         id:
           format: int64
@@ -1320,22 +2229,9 @@ components:
           maxLength: 100
           pattern: .*
           type: string
-        data_source:
-          description: |-
-            * `http` - Edge Applications
-            * `waf` - WAF Events
-            * `cells_console` - Edge Functions
-            * `rtm_activity` - Activity History
-          title: DataSourceEnum
-          type: string
-        data_set_id:
-          format: int64
-          type: integer
-        active:
-          type: boolean
-        filters:
-          $ref: '#/components/schemas/DataStreamFilter'
         last_editor:
+          minLength: 1
+          pattern: .*
           readOnly: true
           type: string
         last_modified:
@@ -1343,117 +2239,92 @@ components:
           readOnly: true
           type: string
         product_version:
+          minLength: 1
+          pattern: .*
           readOnly: true
           type: string
-        endpoint:
-          $ref: '#/components/schemas/Endpoint'
+        active:
+          type: boolean
+        inputs:
+          items:
+            $ref: "#/components/schemas/InputPolymorphic"
+          type: array
+        transform:
+          items:
+            $ref: "#/components/schemas/TransformPolymorphic"
+          type: array
+        outputs:
+          items:
+            $ref: "#/components/schemas/Output"
+          type: array
       required:
-      - data_set_id
-      - data_source
-      - endpoint
-      - filters
       - id
+      - inputs
       - last_editor
       - last_modified
       - name
+      - outputs
       - product_version
+      - transform
       title: DataStream
-      type: object
-    DataStreamFilter:
-      additionalProperties: false
-      example:
-        sampling_rate: 15
-        sampling_enable: true
-        workloads:
-        - 5
-        - 5
-      properties:
-        sampling_enable:
-          type: boolean
-        sampling_rate:
-          format: int64
-          maximum: 100
-          minimum: 1
-          type: integer
-        workloads:
-          items:
-            format: int64
-            type: integer
-          type: array
-      title: DataStreamFilter
-      type: object
-    DataStreamFilterRequest:
-      additionalProperties: false
-      example:
-        sampling_rate: 60
-        sampling_enable: true
-        workloads:
-        - 1
-        - 1
-      properties:
-        sampling_enable:
-          type: boolean
-        sampling_rate:
-          format: int64
-          maximum: 100
-          minimum: 1
-          type: integer
-        workloads:
-          items:
-            format: int64
-            type: integer
-          type: array
-      title: DataStreamFilterRequest
       type: object
     DataStreamRequest:
       additionalProperties: false
       example:
-        endpoint:
-          headers:
-            key: headers
-          log_line_separator: log_line_separator
-          payload_format: payload_format
-          url: https://openapi-generator.tech
-          max_size: 1280762295
+        outputs:
+        - attributes:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 1294783612
+          type: type
+        - attributes:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 1294783612
+          type: type
+        transform:
+        - attributes:
+            rate: 8
+          type: type
+        - attributes:
+            rate: 8
+          type: type
+        inputs:
+        - null
+        - null
         name: name
         active: true
-        filters:
-          sampling_rate: 60
-          sampling_enable: true
-          workloads:
-          - 1
-          - 1
-        data_set_id: 0
-        data_source: data_source
       properties:
         name:
           maxLength: 100
           minLength: 1
           pattern: .*
           type: string
-        data_source:
-          description: |-
-            * `http` - Edge Applications
-            * `waf` - WAF Events
-            * `cells_console` - Edge Functions
-            * `rtm_activity` - Activity History
-          title: DataSourceEnum
-          type: string
-        data_set_id:
-          format: int64
-          type: integer
         active:
           type: boolean
-        filters:
-          $ref: '#/components/schemas/DataStreamFilterRequest'
-        endpoint:
-          $ref: '#/components/schemas/EndpointRequest'
+        inputs:
+          items:
+            $ref: "#/components/schemas/InputPolymorphicRequest"
+          type: array
+        transform:
+          items:
+            $ref: "#/components/schemas/TransformPolymorphicRequest"
+          type: array
+        outputs:
+          items:
+            $ref: "#/components/schemas/OutputRequest"
+          type: array
       required:
-      - data_set_id
-      - data_source
-      - endpoint
-      - filters
+      - inputs
       - name
+      - outputs
+      - transform
       title: DataStreamRequest
       type: object
     DatadogEndpoint:
@@ -1461,7 +2332,6 @@ components:
       properties:
         url:
           format: uri
-          maxLength: 1024
           type: string
         api_key:
           maxLength: 255
@@ -1476,7 +2346,6 @@ components:
       properties:
         url:
           format: uri
-          maxLength: 1024
           minLength: 1
           type: string
         api_key:
@@ -1488,24 +2357,11 @@ components:
       - url
       title: DatadogEndpointRequest
       type: object
-    DefaultErrorResponse:
-      additionalProperties: false
-      example:
-        detail: detail
-      properties:
-        detail:
-          maxLength: 4096
-          minLength: 1
-          pattern: .*
-          type: string
-      title: DefaultErrorResponse
-      type: object
     ElasticsearchEndpoint:
       additionalProperties: false
       properties:
         url:
           format: uri
-          maxLength: 1024
           type: string
         api_key:
           maxLength: 255
@@ -1520,7 +2376,6 @@ components:
       properties:
         url:
           format: uri
-          maxLength: 1024
           minLength: 1
           type: string
         api_key:
@@ -1532,64 +2387,6 @@ components:
       - url
       title: ElasticsearchEndpointRequest
       type: object
-    Endpoint:
-      additionalProperties: true
-      discriminator:
-        mapping:
-          standard: '#/components/schemas/HttpPostEndpoint'
-          kafka: '#/components/schemas/KafkaEndpoint'
-          s3: '#/components/schemas/S3Endpoint'
-          big_query: '#/components/schemas/BigQueryEndpoint'
-          elasticsearch: '#/components/schemas/ElasticsearchEndpoint'
-          aws_kinesis_firehose: '#/components/schemas/AWSKinesisFirehoseEndpoint'
-          datadog: '#/components/schemas/DatadogEndpoint'
-          qradar: '#/components/schemas/QRadarEndpoint'
-          azure_monitor: '#/components/schemas/AzureMonitorEndpoint'
-          azure_blob_storage: '#/components/schemas/AzureBlobStorageEndpoint'
-          splunk: '#/components/schemas/SplunkEndpoint'
-        propertyName: endpoint_type
-      oneOf:
-      - $ref: '#/components/schemas/HttpPostEndpoint'
-      - $ref: '#/components/schemas/KafkaEndpoint'
-      - $ref: '#/components/schemas/S3Endpoint'
-      - $ref: '#/components/schemas/BigQueryEndpoint'
-      - $ref: '#/components/schemas/ElasticsearchEndpoint'
-      - $ref: '#/components/schemas/AWSKinesisFirehoseEndpoint'
-      - $ref: '#/components/schemas/DatadogEndpoint'
-      - $ref: '#/components/schemas/QRadarEndpoint'
-      - $ref: '#/components/schemas/AzureMonitorEndpoint'
-      - $ref: '#/components/schemas/AzureBlobStorageEndpoint'
-      - $ref: '#/components/schemas/SplunkEndpoint'
-      title: Endpoint
-    EndpointRequest:
-      additionalProperties: true
-      discriminator:
-        mapping:
-          standard: '#/components/schemas/HttpPostEndpointRequest'
-          kafka: '#/components/schemas/KafkaEndpointRequest'
-          s3: '#/components/schemas/S3EndpointRequest'
-          big_query: '#/components/schemas/BigQueryEndpointRequest'
-          elasticsearch: '#/components/schemas/ElasticsearchEndpointRequest'
-          aws_kinesis_firehose: '#/components/schemas/AWSKinesisFirehoseEndpointRequest'
-          datadog: '#/components/schemas/DatadogEndpointRequest'
-          qradar: '#/components/schemas/QRadarEndpointRequest'
-          azure_monitor: '#/components/schemas/AzureMonitorEndpointRequest'
-          azure_blob_storage: '#/components/schemas/AzureBlobStorageEndpointRequest'
-          splunk: '#/components/schemas/SplunkEndpointRequest'
-        propertyName: endpoint_type
-      oneOf:
-      - $ref: '#/components/schemas/HttpPostEndpointRequest'
-      - $ref: '#/components/schemas/KafkaEndpointRequest'
-      - $ref: '#/components/schemas/S3EndpointRequest'
-      - $ref: '#/components/schemas/BigQueryEndpointRequest'
-      - $ref: '#/components/schemas/ElasticsearchEndpointRequest'
-      - $ref: '#/components/schemas/AWSKinesisFirehoseEndpointRequest'
-      - $ref: '#/components/schemas/DatadogEndpointRequest'
-      - $ref: '#/components/schemas/QRadarEndpointRequest'
-      - $ref: '#/components/schemas/AzureMonitorEndpointRequest'
-      - $ref: '#/components/schemas/AzureBlobStorageEndpointRequest'
-      - $ref: '#/components/schemas/SplunkEndpointRequest'
-      title: EndpointRequest
     HttpPostEndpoint:
       additionalProperties: false
       example:
@@ -1598,11 +2395,10 @@ components:
         log_line_separator: log_line_separator
         payload_format: payload_format
         url: https://openapi-generator.tech
-        max_size: 1211053680
+        max_size: 315634359
       properties:
         url:
           format: uri
-          maxLength: 200
           type: string
         log_line_separator:
           maxLength: 100
@@ -1619,6 +2415,8 @@ components:
         headers:
           additionalProperties:
             maxLength: 1024
+            minLength: 1
+            pattern: .*
             type: string
           type: object
       required:
@@ -1634,11 +2432,10 @@ components:
         log_line_separator: log_line_separator
         payload_format: payload_format
         url: https://openapi-generator.tech
-        max_size: 1280762295
+        max_size: 1294783612
       properties:
         url:
           format: uri
-          maxLength: 200
           minLength: 1
           type: string
         log_line_separator:
@@ -1658,12 +2455,203 @@ components:
           additionalProperties:
             maxLength: 1024
             minLength: 1
+            pattern: .*
             type: string
           type: object
       required:
       - headers
       - url
       title: HttpPostEndpointRequest
+      type: object
+    InputDataSource:
+      additionalProperties: false
+      properties:
+        data_source:
+          description: |-
+            * `http` - Edge Applications
+            * `waf` - WAF Events
+            * `functions` - Edge Functions
+            * `activity` - Activity History
+          title: DataSourceEnum
+          type: string
+      required:
+      - data_source
+      title: InputDataSource
+      type: object
+    InputDataSourceAttributes:
+      additionalProperties: true
+      properties:
+        type:
+          description: '* `raw_logs` - Raw Logs'
+          title: InputDataSourceAttributesTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/InputDataSource"
+      required:
+      - attributes
+      - type
+      title: InputDataSourceAttributes
+      type: object
+    InputDataSourceAttributesRequest:
+      additionalProperties: true
+      properties:
+        type:
+          description: '* `raw_logs` - Raw Logs'
+          title: InputDataSourceAttributesTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/InputDataSourceRequest"
+      required:
+      - attributes
+      - type
+      title: InputDataSourceAttributesRequest
+      type: object
+    InputDataSourceAttributesTypeEnum:
+      description: '* `raw_logs` - Raw Logs'
+      title: InputDataSourceAttributesTypeEnum
+      type: string
+    InputDataSourceRequest:
+      additionalProperties: false
+      properties:
+        data_source:
+          description: |-
+            * `http` - Edge Applications
+            * `waf` - WAF Events
+            * `functions` - Edge Functions
+            * `activity` - Activity History
+          title: DataSourceEnum
+          type: string
+      required:
+      - data_source
+      title: InputDataSourceRequest
+      type: object
+    InputPolymorphic:
+      $ref: "#/components/schemas/InputPolymorphicInputDataSourceAttributes"
+    InputPolymorphicInputDataSourceAttributes:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/InputPolymorphicShared"
+      - $ref: "#/components/schemas/InputDataSourceAttributes"
+      title: InputPolymorphicInputDataSourceAttributes
+    InputPolymorphicInputDataSourceAttributesRequest:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/InputPolymorphicShared"
+      - $ref: "#/components/schemas/InputDataSourceAttributesRequest"
+      title: InputPolymorphicInputDataSourceAttributesRequest
+    InputPolymorphicRequest:
+      $ref: "#/components/schemas/InputPolymorphicInputDataSourceAttributesRequest"
+    InputPolymorphicShared:
+      additionalProperties: true
+      properties:
+        type:
+          allOf:
+          - $ref: "#/components/schemas/Type4f5Enum"
+          description: ""
+      required:
+      - type
+      title: InputPolymorphicShared
+      type: object
+    JSONAPIErrorObject:
+      additionalProperties: false
+      description: Serializer for a single JSON:API error object.
+      example:
+        code: code
+        meta:
+          key: ""
+        detail: detail
+        source: ""
+        title: title
+        status: status
+      properties:
+        status:
+          description: The HTTP status code applicable to this problem
+          maxLength: 3
+          minLength: 3
+          pattern: "^\\d{3}$"
+          type: string
+        code:
+          description: An application-specific error code
+          maxLength: 5
+          minLength: 5
+          pattern: "^\\d{5}$"
+          type: string
+        title:
+          description: "A short, human-readable summary of the problem"
+          maxLength: 4096
+          minLength: 1
+          pattern: ^.*$
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem
+          maxLength: 4096
+          minLength: 1
+          pattern: ^.*$
+          type: string
+        source:
+          allOf:
+          - $ref: "#/components/schemas/JSONAPIErrorSource"
+          description: References to the primary source of the error
+        meta:
+          additionalProperties: {}
+          description: Non-standard meta-information about the error
+          type: object
+      title: JSONAPIErrorObject
+      type: object
+    JSONAPIErrorResponse:
+      additionalProperties: false
+      description: Serializer for a JSON:API error response.
+      example:
+        errors:
+        - code: code
+          meta:
+            key: ""
+          detail: detail
+          source: ""
+          title: title
+          status: status
+        - code: code
+          meta:
+            key: ""
+          detail: detail
+          source: ""
+          title: title
+          status: status
+      properties:
+        errors:
+          description: Array of error objects
+          items:
+            $ref: "#/components/schemas/JSONAPIErrorObject"
+          type: array
+      required:
+      - errors
+      title: JSONAPIErrorResponse
+      type: object
+    JSONAPIErrorSource:
+      additionalProperties: false
+      description: Serializer for the 'source' object in a JSON:API error.
+      properties:
+        pointer:
+          description: JSON Pointer to the value in the request document that caused
+            the error
+          maxLength: 4096
+          minLength: 1
+          pattern: "^(/[^/]+)+$"
+          type: string
+        parameter:
+          description: URI query parameter that caused the error
+          maxLength: 4096
+          minLength: 1
+          pattern: ^.*$
+          type: string
+        header:
+          description: Request header name that caused the error
+          maxLength: 4096
+          minLength: 1
+          pattern: ^.*$
+          type: string
+      title: JSONAPIErrorSource
       type: object
     KafkaEndpoint:
       additionalProperties: false
@@ -1701,38 +2689,147 @@ components:
       - use_tls
       title: KafkaEndpointRequest
       type: object
-    PaginatedResponseListDataSetList:
+    Output:
       additionalProperties: false
       example:
-        count: 123
-        results:
-        - last_editor: last_editor
-          custom: true
-          name: name
-          active: true
-          data_set: data_set
-          id: 0
-          last_modified: 2000-01-23T04:56:07.000+00:00
-        - last_editor: last_editor
-          custom: true
-          name: name
-          active: true
-          data_set: data_set
-          id: 0
-          last_modified: 2000-01-23T04:56:07.000+00:00
+        attributes:
+          headers:
+            key: headers
+          log_line_separator: log_line_separator
+          payload_format: payload_format
+          url: https://openapi-generator.tech
+          max_size: 315634359
+        type: type
       properties:
-        count:
-          example: 123
-          format: int64
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-        results:
-          items:
-            $ref: '#/components/schemas/ResponseListDataSet'
-          type: array
-      title: PaginatedResponseListDataSetList
+        type:
+          description: |-
+            * `standard` - Standard HTTP/HTTPS POST
+            * `kafka` - Apache Kafka
+            * `s3` - Simple Storage Service (S3)
+            * `big_query` - Google BigQuery
+            * `elasticsearch` - Elasticsearch
+            * `splunk` - Splunk
+            * `aws_kinesis_firehose` - AWS Kinesis Data Firehose
+            * `datadog` - Datadog
+            * `qradar` - IBM QRadar
+            * `azure_monitor` - Azure Monitor
+            * `azure_blob_storage` - Azure Blob Storage
+          title: OutputTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/OutputPolymorphic"
+      required:
+      - attributes
+      - type
+      title: Output
       type: object
+    OutputPolymorphic:
+      additionalProperties: true
+      discriminator:
+        mapping:
+          standard: "#/components/schemas/HttpPostEndpoint"
+          kafka: "#/components/schemas/KafkaEndpoint"
+          s3: "#/components/schemas/S3Endpoint"
+          big_query: "#/components/schemas/BigQueryEndpoint"
+          elasticsearch: "#/components/schemas/ElasticsearchEndpoint"
+          aws_kinesis_firehose: "#/components/schemas/AWSKinesisFirehoseEndpoint"
+          datadog: "#/components/schemas/DatadogEndpoint"
+          qradar: "#/components/schemas/QRadarEndpoint"
+          azure_monitor: "#/components/schemas/AzureMonitorEndpoint"
+          azure_blob_storage: "#/components/schemas/AzureBlobStorageEndpoint"
+          splunk: "#/components/schemas/SplunkEndpoint"
+        propertyName: type
+      oneOf:
+      - $ref: "#/components/schemas/HttpPostEndpoint"
+      - $ref: "#/components/schemas/KafkaEndpoint"
+      - $ref: "#/components/schemas/S3Endpoint"
+      - $ref: "#/components/schemas/BigQueryEndpoint"
+      - $ref: "#/components/schemas/ElasticsearchEndpoint"
+      - $ref: "#/components/schemas/AWSKinesisFirehoseEndpoint"
+      - $ref: "#/components/schemas/DatadogEndpoint"
+      - $ref: "#/components/schemas/QRadarEndpoint"
+      - $ref: "#/components/schemas/AzureMonitorEndpoint"
+      - $ref: "#/components/schemas/AzureBlobStorageEndpoint"
+      - $ref: "#/components/schemas/SplunkEndpoint"
+      title: OutputPolymorphic
+    OutputPolymorphicRequest:
+      additionalProperties: true
+      discriminator:
+        mapping:
+          standard: "#/components/schemas/HttpPostEndpointRequest"
+          kafka: "#/components/schemas/KafkaEndpointRequest"
+          s3: "#/components/schemas/S3EndpointRequest"
+          big_query: "#/components/schemas/BigQueryEndpointRequest"
+          elasticsearch: "#/components/schemas/ElasticsearchEndpointRequest"
+          aws_kinesis_firehose: "#/components/schemas/AWSKinesisFirehoseEndpointRequest"
+          datadog: "#/components/schemas/DatadogEndpointRequest"
+          qradar: "#/components/schemas/QRadarEndpointRequest"
+          azure_monitor: "#/components/schemas/AzureMonitorEndpointRequest"
+          azure_blob_storage: "#/components/schemas/AzureBlobStorageEndpointRequest"
+          splunk: "#/components/schemas/SplunkEndpointRequest"
+        propertyName: type
+      oneOf:
+      - $ref: "#/components/schemas/HttpPostEndpointRequest"
+      - $ref: "#/components/schemas/KafkaEndpointRequest"
+      - $ref: "#/components/schemas/S3EndpointRequest"
+      - $ref: "#/components/schemas/BigQueryEndpointRequest"
+      - $ref: "#/components/schemas/ElasticsearchEndpointRequest"
+      - $ref: "#/components/schemas/AWSKinesisFirehoseEndpointRequest"
+      - $ref: "#/components/schemas/DatadogEndpointRequest"
+      - $ref: "#/components/schemas/QRadarEndpointRequest"
+      - $ref: "#/components/schemas/AzureMonitorEndpointRequest"
+      - $ref: "#/components/schemas/AzureBlobStorageEndpointRequest"
+      - $ref: "#/components/schemas/SplunkEndpointRequest"
+      title: OutputPolymorphicRequest
+    OutputRequest:
+      additionalProperties: false
+      example:
+        attributes:
+          headers:
+            key: headers
+          log_line_separator: log_line_separator
+          payload_format: payload_format
+          url: https://openapi-generator.tech
+          max_size: 1294783612
+        type: type
+      properties:
+        type:
+          description: |-
+            * `standard` - Standard HTTP/HTTPS POST
+            * `kafka` - Apache Kafka
+            * `s3` - Simple Storage Service (S3)
+            * `big_query` - Google BigQuery
+            * `elasticsearch` - Elasticsearch
+            * `splunk` - Splunk
+            * `aws_kinesis_firehose` - AWS Kinesis Data Firehose
+            * `datadog` - Datadog
+            * `qradar` - IBM QRadar
+            * `azure_monitor` - Azure Monitor
+            * `azure_blob_storage` - Azure Blob Storage
+          title: OutputTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/OutputPolymorphicRequest"
+      required:
+      - attributes
+      - type
+      title: OutputRequest
+      type: object
+    OutputTypeEnum:
+      description: |-
+        * `standard` - Standard HTTP/HTTPS POST
+        * `kafka` - Apache Kafka
+        * `s3` - Simple Storage Service (S3)
+        * `big_query` - Google BigQuery
+        * `elasticsearch` - Elasticsearch
+        * `splunk` - Splunk
+        * `aws_kinesis_firehose` - AWS Kinesis Data Firehose
+        * `datadog` - Datadog
+        * `qradar` - IBM QRadar
+        * `azure_monitor` - Azure Monitor
+        * `azure_blob_storage` - Azure Blob Storage
+      title: OutputTypeEnum
+      type: string
     PaginatedResponseListDataSourceList:
       additionalProperties: false
       example:
@@ -1753,7 +2850,7 @@ components:
           type: integer
         results:
           items:
-            $ref: '#/components/schemas/ResponseListDataSource'
+            $ref: "#/components/schemas/ResponseListDataSource"
           type: array
       title: PaginatedResponseListDataSourceList
       type: object
@@ -1762,48 +2859,72 @@ components:
       example:
         count: 123
         results:
-        - product_version: product_version
-          endpoint:
-            headers:
-              key: headers
-            log_line_separator: log_line_separator
-            payload_format: payload_format
-            url: https://openapi-generator.tech
-            max_size: 1211053680
+        - outputs:
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          product_version: product_version
+          transform:
+          - attributes:
+              rate: 60
+            type: type
+          - attributes:
+              rate: 60
+            type: type
+          inputs:
+          - null
+          - null
           last_editor: last_editor
           name: name
           active: true
           id: 0
-          filters:
-            sampling_rate: 15
-            sampling_enable: true
-            workloads:
-            - 5
-            - 5
-          data_set_id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-          data_source: data_source
-        - product_version: product_version
-          endpoint:
-            headers:
-              key: headers
-            log_line_separator: log_line_separator
-            payload_format: payload_format
-            url: https://openapi-generator.tech
-            max_size: 1211053680
+        - outputs:
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          product_version: product_version
+          transform:
+          - attributes:
+              rate: 60
+            type: type
+          - attributes:
+              rate: 60
+            type: type
+          inputs:
+          - null
+          - null
           last_editor: last_editor
           name: name
           active: true
           id: 0
-          filters:
-            sampling_rate: 15
-            sampling_enable: true
-            workloads:
-            - 5
-            - 5
-          data_set_id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-          data_source: data_source
       properties:
         count:
           example: 123
@@ -1813,11 +2934,76 @@ components:
           type: integer
         results:
           items:
-            $ref: '#/components/schemas/ResponseListDataStream'
+            $ref: "#/components/schemas/ResponseListDataStream"
           type: array
       title: PaginatedResponseListDataStreamList
       type: object
-    PatchedDataSetRequest:
+    PaginatedResponseListTemplateList:
+      additionalProperties: false
+      example:
+        count: 123
+        results:
+        - last_editor: last_editor
+          custom: true
+          name: name
+          active: true
+          data_set: data_set
+          id: 0
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        - last_editor: last_editor
+          custom: true
+          name: name
+          active: true
+          data_set: data_set
+          id: 0
+          last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        count:
+          example: 123
+          format: int64
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        results:
+          items:
+            $ref: "#/components/schemas/ResponseListTemplate"
+          type: array
+      title: PaginatedResponseListTemplateList
+      type: object
+    PatchedDataStreamRequest:
+      additionalProperties: false
+      example:
+        transform:
+        - attributes:
+            rate: 8
+          type: type
+        - attributes:
+            rate: 8
+          type: type
+        inputs:
+        - null
+        - null
+        name: name
+        active: true
+      properties:
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        active:
+          type: boolean
+        inputs:
+          items:
+            $ref: "#/components/schemas/InputPolymorphicRequest"
+          type: array
+        transform:
+          items:
+            $ref: "#/components/schemas/TransformPolymorphicRequest"
+          type: array
+      title: PatchedDataStreamRequest
+      type: object
+    PatchedTemplateRequest:
       additionalProperties: false
       example:
         name: name
@@ -1833,50 +3019,15 @@ components:
           type: boolean
         data_set:
           minLength: 1
-          type: string
-      title: PatchedDataSetRequest
-      type: object
-    PatchedDataStreamRequest:
-      additionalProperties: false
-      example:
-        name: name
-        active: true
-        filters:
-          sampling_rate: 60
-          sampling_enable: true
-          workloads:
-          - 1
-          - 1
-        data_set_id: 0
-        data_source: data_source
-      properties:
-        name:
-          maxLength: 100
-          minLength: 1
           pattern: .*
           type: string
-        data_source:
-          description: |-
-            * `http` - Edge Applications
-            * `waf` - WAF Events
-            * `cells_console` - Edge Functions
-            * `rtm_activity` - Activity History
-          title: DataSourceEnum
-          type: string
-        data_set_id:
-          format: int64
-          type: integer
-        active:
-          type: boolean
-        filters:
-          $ref: '#/components/schemas/DataStreamFilterRequest'
-      title: PatchedDataStreamRequest
+      title: PatchedTemplateRequest
       type: object
     QRadarEndpoint:
       additionalProperties: false
       properties:
         url:
-          maxLength: 1024
+          format: uri
           type: string
       required:
       - url
@@ -1886,178 +3037,88 @@ components:
       additionalProperties: false
       properties:
         url:
-          maxLength: 1024
+          format: uri
           minLength: 1
           type: string
       required:
       - url
       title: QRadarEndpointRequest
       type: object
-    ResponseBadRequestDataSet:
+    ResponseAsyncDataStream:
       additionalProperties: false
       example:
-        custom:
-        - custom
-        - custom
-        last_editor:
-        - last_editor
-        - last_editor
-        name:
-        - name
-        - name
-        active:
-        - active
-        - active
-        data_set:
-        - data_set
-        - data_set
-        detail: detail
-        last_modified:
-        - last_modified
-        - last_modified
+        data:
+          outputs:
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          product_version: product_version
+          transform:
+          - attributes:
+              rate: 60
+            type: type
+          - attributes:
+              rate: 60
+            type: type
+          inputs:
+          - null
+          - null
+          last_editor: last_editor
+          name: name
+          active: true
+          id: 0
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        state: state
       properties:
-        name:
-          items:
-            type: string
-          type: array
-        active:
-          items:
-            type: string
-          type: array
-        data_set:
-          items:
-            type: string
-          type: array
-        custom:
-          items:
-            type: string
-          type: array
-        last_editor:
-          items:
-            type: string
-          type: array
-        last_modified:
-          items:
-            type: string
-          type: array
-        detail:
-          maxLength: 4096
+        state:
+          maxLength: 8
           minLength: 1
           pattern: .*
           type: string
-      title: ResponseBadRequestDataSet
+        data:
+          $ref: "#/components/schemas/DataStream"
+      required:
+      - data
+      title: ResponseAsyncDataStream
       type: object
-    ResponseBadRequestDataSource:
+    ResponseAsyncDeleteDataStream:
       additionalProperties: false
       example:
-        detail: detail
+        state: state
       properties:
-        detail:
-          maxLength: 4096
+        state:
+          maxLength: 8
           minLength: 1
           pattern: .*
           type: string
-      title: ResponseBadRequestDataSource
+      title: ResponseAsyncDeleteDataStream
       type: object
-    ResponseBadRequestDataStream:
+    ResponseAsyncDeleteTemplate:
       additionalProperties: false
       example:
-        product_version:
-        - product_version
-        - product_version
-        last_editor:
-        - last_editor
-        - last_editor
-        name:
-        - name
-        - name
-        active:
-        - active
-        - active
-        filters:
-          sampling_rate:
-          - sampling_rate
-          - sampling_rate
-          sampling_enable:
-          - sampling_enable
-          - sampling_enable
-          workloads:
-          - ResponseBadRequestSerializerMetaclassFiltersField_workloads
-          - ResponseBadRequestSerializerMetaclassFiltersField_workloads
-        detail: detail
-        data_set_id:
-        - data_set_id
-        - data_set_id
-        last_modified:
-        - last_modified
-        - last_modified
-        data_source:
-        - data_source
-        - data_source
+        state: state
       properties:
-        name:
-          items:
-            type: string
-          type: array
-        data_source:
-          items:
-            type: string
-          type: array
-        data_set_id:
-          items:
-            type: string
-          type: array
-        active:
-          items:
-            type: string
-          type: array
-        filters:
-          $ref: '#/components/schemas/ResponseBadRequestSerializerMetaclassFiltersField'
-        product_version:
-          items:
-            type: string
-          type: array
-        last_editor:
-          items:
-            type: string
-          type: array
-        last_modified:
-          items:
-            type: string
-          type: array
-        detail:
-          maxLength: 4096
+        state:
+          maxLength: 8
           minLength: 1
           pattern: .*
           type: string
-      title: ResponseBadRequestDataStream
+      title: ResponseAsyncDeleteTemplate
       type: object
-    ResponseBadRequestSerializerMetaclassFiltersField:
-      additionalProperties: false
-      example:
-        sampling_rate:
-        - sampling_rate
-        - sampling_rate
-        sampling_enable:
-        - sampling_enable
-        - sampling_enable
-        workloads:
-        - ResponseBadRequestSerializerMetaclassFiltersField_workloads
-        - ResponseBadRequestSerializerMetaclassFiltersField_workloads
-      properties:
-        sampling_enable:
-          items:
-            type: string
-          type: array
-        sampling_rate:
-          items:
-            type: string
-          type: array
-        workloads:
-          $ref: '#/components/schemas/ResponseBadRequestSerializerMetaclassFiltersField_workloads'
-      title: ResponseBadRequestSerializerMetaclassFiltersField
-      type: object
-    ResponseDataSet:
+    ResponseAsyncTemplate:
       additionalProperties: false
       example:
         data:
@@ -2071,142 +3132,89 @@ components:
         state: state
       properties:
         state:
-          description: |-
-            * `pending` - pending
-            * `executed` - executed
-          title: StateEnum
+          maxLength: 8
+          minLength: 1
+          pattern: .*
           type: string
         data:
-          $ref: '#/components/schemas/DataSet'
+          $ref: "#/components/schemas/Template"
       required:
       - data
-      - state
-      title: ResponseDataSet
+      title: ResponseAsyncTemplate
       type: object
     ResponseDataStream:
       additionalProperties: false
       example:
         data:
+          outputs:
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
           product_version: product_version
-          endpoint:
-            headers:
-              key: headers
-            log_line_separator: log_line_separator
-            payload_format: payload_format
-            url: https://openapi-generator.tech
-            max_size: 1211053680
+          transform:
+          - attributes:
+              rate: 60
+            type: type
+          - attributes:
+              rate: 60
+            type: type
+          inputs:
+          - null
+          - null
           last_editor: last_editor
           name: name
           active: true
           id: 0
-          filters:
-            sampling_rate: 15
-            sampling_enable: true
-            workloads:
-            - 5
-            - 5
-          data_set_id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-          data_source: data_source
         state: state
       properties:
         state:
-          description: |-
-            * `pending` - pending
-            * `executed` - executed
-          title: StateEnum
+          maxLength: 8
+          minLength: 1
+          pattern: .*
           type: string
         data:
-          $ref: '#/components/schemas/DataStream'
+          $ref: "#/components/schemas/DataStream"
       required:
       - data
-      - state
       title: ResponseDataStream
-      type: object
-    ResponseDeleteDataSet:
-      additionalProperties: false
-      example:
-        data: ""
-        state: state
-      properties:
-        state:
-          description: |-
-            * `pending` - pending
-            * `executed` - executed
-          title: StateEnum
-          type: string
-        data:
-          allOf:
-          - $ref: '#/components/schemas/DataSet'
-          nullable: true
-      required:
-      - data
-      - state
-      title: ResponseDeleteDataSet
       type: object
     ResponseDeleteDataStream:
       additionalProperties: false
       example:
-        data: ""
         state: state
       properties:
         state:
-          description: |-
-            * `pending` - pending
-            * `executed` - executed
-          title: StateEnum
-          type: string
-        data:
-          allOf:
-          - $ref: '#/components/schemas/DataStream'
-          nullable: true
-      required:
-      - data
-      - state
-      title: ResponseDeleteDataStream
-      type: object
-    ResponseListDataSet:
-      additionalProperties: false
-      example:
-        last_editor: last_editor
-        custom: true
-        name: name
-        active: true
-        data_set: data_set
-        id: 0
-        last_modified: 2000-01-23T04:56:07.000+00:00
-      properties:
-        id:
-          format: int64
-          readOnly: true
-          type: integer
-        name:
-          maxLength: 100
+          maxLength: 8
           minLength: 1
           pattern: .*
           type: string
-        last_editor:
-          readOnly: true
+      title: ResponseDeleteDataStream
+      type: object
+    ResponseDeleteTemplate:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
           type: string
-        last_modified:
-          format: date-time
-          readOnly: true
-          type: string
-        custom:
-          readOnly: true
-          type: boolean
-        active:
-          type: boolean
-        data_set:
-          type: string
-      required:
-      - custom
-      - data_set
-      - id
-      - last_editor
-      - last_modified
-      - name
-      title: ResponseListDataSet
+      title: ResponseDeleteTemplate
       type: object
     ResponseListDataSource:
       additionalProperties: false
@@ -2236,27 +3244,39 @@ components:
     ResponseListDataStream:
       additionalProperties: false
       example:
+        outputs:
+        - attributes:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 315634359
+          type: type
+        - attributes:
+            headers:
+              key: headers
+            log_line_separator: log_line_separator
+            payload_format: payload_format
+            url: https://openapi-generator.tech
+            max_size: 315634359
+          type: type
         product_version: product_version
-        endpoint:
-          headers:
-            key: headers
-          log_line_separator: log_line_separator
-          payload_format: payload_format
-          url: https://openapi-generator.tech
-          max_size: 1211053680
+        transform:
+        - attributes:
+            rate: 60
+          type: type
+        - attributes:
+            rate: 60
+          type: type
+        inputs:
+        - null
+        - null
         last_editor: last_editor
         name: name
         active: true
         id: 0
-        filters:
-          sampling_rate: 15
-          sampling_enable: true
-          workloads:
-          - 5
-          - 5
-        data_set_id: 6
         last_modified: 2000-01-23T04:56:07.000+00:00
-        data_source: data_source
       properties:
         id:
           format: int64
@@ -2266,22 +3286,9 @@ components:
           maxLength: 100
           pattern: .*
           type: string
-        data_source:
-          description: |-
-            * `http` - Edge Applications
-            * `waf` - WAF Events
-            * `cells_console` - Edge Functions
-            * `rtm_activity` - Activity History
-          title: DataSourceEnum
-          type: string
-        data_set_id:
-          format: int64
-          type: integer
-        active:
-          type: boolean
-        filters:
-          $ref: '#/components/schemas/DataStreamFilter'
         last_editor:
+          minLength: 1
+          pattern: .*
           readOnly: true
           type: string
         last_modified:
@@ -2289,23 +3296,127 @@ components:
           readOnly: true
           type: string
         product_version:
+          minLength: 1
+          pattern: .*
           readOnly: true
           type: string
-        endpoint:
-          $ref: '#/components/schemas/Endpoint'
+        active:
+          type: boolean
+        inputs:
+          items:
+            $ref: "#/components/schemas/InputPolymorphic"
+          type: array
+        transform:
+          items:
+            $ref: "#/components/schemas/TransformPolymorphic"
+          type: array
+        outputs:
+          items:
+            $ref: "#/components/schemas/Output"
+          type: array
       required:
-      - data_set_id
-      - data_source
-      - endpoint
-      - filters
+      - id
+      - inputs
+      - last_editor
+      - last_modified
+      - name
+      - outputs
+      - product_version
+      - transform
+      title: ResponseListDataStream
+      type: object
+    ResponseListTemplate:
+      additionalProperties: false
+      example:
+        last_editor: last_editor
+        custom: true
+        name: name
+        active: true
+        data_set: data_set
+        id: 0
+        last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        last_editor:
+          minLength: 1
+          pattern: .*
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        custom:
+          readOnly: true
+          type: boolean
+        active:
+          type: boolean
+        data_set:
+          minLength: 1
+          pattern: .*
+          type: string
+      required:
+      - custom
+      - data_set
       - id
       - last_editor
       - last_modified
       - name
-      - product_version
-      title: ResponseListDataStream
+      title: ResponseListTemplate
       type: object
-    ResponseRetrieveDataSet:
+    ResponseRetrieveDataStream:
+      additionalProperties: false
+      example:
+        data:
+          outputs:
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          - attributes:
+              headers:
+                key: headers
+              log_line_separator: log_line_separator
+              payload_format: payload_format
+              url: https://openapi-generator.tech
+              max_size: 315634359
+            type: type
+          product_version: product_version
+          transform:
+          - attributes:
+              rate: 60
+            type: type
+          - attributes:
+              rate: 60
+            type: type
+          inputs:
+          - null
+          - null
+          last_editor: last_editor
+          name: name
+          active: true
+          id: 0
+          last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        data:
+          $ref: "#/components/schemas/DataStream"
+      required:
+      - data
+      title: ResponseRetrieveDataStream
+      type: object
+    ResponseRetrieveTemplate:
       additionalProperties: false
       example:
         data:
@@ -2318,42 +3429,34 @@ components:
           last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         data:
-          $ref: '#/components/schemas/DataSet'
+          $ref: "#/components/schemas/Template"
       required:
       - data
-      title: ResponseRetrieveDataSet
+      title: ResponseRetrieveTemplate
       type: object
-    ResponseRetrieveDataStream:
+    ResponseTemplate:
       additionalProperties: false
       example:
         data:
-          product_version: product_version
-          endpoint:
-            headers:
-              key: headers
-            log_line_separator: log_line_separator
-            payload_format: payload_format
-            url: https://openapi-generator.tech
-            max_size: 1211053680
           last_editor: last_editor
+          custom: true
           name: name
           active: true
+          data_set: data_set
           id: 0
-          filters:
-            sampling_rate: 15
-            sampling_enable: true
-            workloads:
-            - 5
-            - 5
-          data_set_id: 6
           last_modified: 2000-01-23T04:56:07.000+00:00
-          data_source: data_source
+        state: state
       properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          pattern: .*
+          type: string
         data:
-          $ref: '#/components/schemas/DataStream'
+          $ref: "#/components/schemas/Template"
       required:
       - data
-      title: ResponseRetrieveDataStream
+      title: ResponseTemplate
       type: object
     S3Endpoint:
       additionalProperties: false
@@ -2433,7 +3536,6 @@ components:
       properties:
         url:
           format: uri
-          maxLength: 1024
           type: string
         api_key:
           maxLength: 255
@@ -2448,7 +3550,6 @@ components:
       properties:
         url:
           format: uri
-          maxLength: 1024
           minLength: 1
           type: string
         api_key:
@@ -2460,22 +3561,343 @@ components:
       - url
       title: SplunkEndpointRequest
       type: object
-    StateEnum:
-      description: |-
-        * `pending` - pending
-        * `executed` - executed
-      title: StateEnum
-      type: string
-    ResponseBadRequestSerializerMetaclassFiltersField_workloads:
-      oneOf:
-      - items:
+    Template:
+      additionalProperties: false
+      example:
+        last_editor: last_editor
+        custom: true
+        name: name
+        active: true
+        data_set: data_set
+        id: 0
+        last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
           type: string
-        type: array
-      - additionalProperties:
+        last_editor:
+          minLength: 1
+          pattern: .*
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        custom:
+          readOnly: true
+          type: boolean
+        active:
+          type: boolean
+        data_set:
+          minLength: 1
+          pattern: .*
+          type: string
+      required:
+      - custom
+      - data_set
+      - id
+      - last_editor
+      - last_modified
+      - name
+      title: Template
+      type: object
+    TemplateRequest:
+      additionalProperties: false
+      example:
+        name: name
+        active: true
+        data_set: data_set
+      properties:
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: .*
+          type: string
+        active:
+          type: boolean
+        data_set:
+          minLength: 1
+          pattern: .*
+          type: string
+      required:
+      - data_set
+      - name
+      title: TemplateRequest
+      type: object
+    TransformFilterWorkloads:
+      additionalProperties: false
+      description: Serializer for filter_workloads transform attributes.
+      properties:
+        workloads:
           items:
-            type: string
+            format: int64
+            minimum: 1
+            type: integer
+          maxItems: 600
+          minItems: 1
           type: array
-        type: object
+      required:
+      - workloads
+      title: TransformFilterWorkloads
+      type: object
+    TransformFilterWorkloadsAttributes:
+      additionalProperties: true
+      properties:
+        type:
+          description: '* `filter_workloads` - Filter Workloads'
+          title: TransformFilterWorkloadsAttributesTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/TransformFilterWorkloads"
+      required:
+      - attributes
+      - type
+      title: TransformFilterWorkloadsAttributes
+      type: object
+    TransformFilterWorkloadsAttributesRequest:
+      additionalProperties: true
+      properties:
+        type:
+          description: '* `filter_workloads` - Filter Workloads'
+          title: TransformFilterWorkloadsAttributesTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/TransformFilterWorkloadsRequest"
+      required:
+      - attributes
+      - type
+      title: TransformFilterWorkloadsAttributesRequest
+      type: object
+    TransformFilterWorkloadsAttributesTypeEnum:
+      description: '* `filter_workloads` - Filter Workloads'
+      title: TransformFilterWorkloadsAttributesTypeEnum
+      type: string
+    TransformFilterWorkloadsRequest:
+      additionalProperties: false
+      description: Serializer for filter_workloads transform attributes.
+      properties:
+        workloads:
+          items:
+            format: int64
+            minimum: 1
+            type: integer
+          maxItems: 600
+          minItems: 1
+          type: array
+      required:
+      - workloads
+      title: TransformFilterWorkloadsRequest
+      type: object
+    TransformPolymorphic:
+      additionalProperties: true
+      discriminator:
+        mapping:
+          sampling: "#/components/schemas/TransformPolymorphicTransformSamplingAttributes"
+          filter_workloads: "#/components/schemas/TransformPolymorphicTransformFilterWorkloadsAttributes"
+          render_template: "#/components/schemas/TransformPolymorphicTransformRenderTemplateAttributes"
+        propertyName: type
+      oneOf:
+      - $ref: "#/components/schemas/TransformPolymorphicTransformSamplingAttributes"
+      - $ref: "#/components/schemas/TransformPolymorphicTransformFilterWorkloadsAttributes"
+      - $ref: "#/components/schemas/TransformPolymorphicTransformRenderTemplateAttributes"
+      title: TransformPolymorphic
+    TransformPolymorphicRequest:
+      additionalProperties: true
+      discriminator:
+        mapping:
+          sampling: "#/components/schemas/TransformPolymorphicTransformSamplingAttributesRequest"
+          filter_workloads: "#/components/schemas/TransformPolymorphicTransformFilterWorkloadsAttributesRequest"
+          render_template: "#/components/schemas/TransformPolymorphicTransformRenderTemplateAttributesRequest"
+        propertyName: type
+      oneOf:
+      - $ref: "#/components/schemas/TransformPolymorphicTransformSamplingAttributesRequest"
+      - $ref: "#/components/schemas/TransformPolymorphicTransformFilterWorkloadsAttributesRequest"
+      - $ref: "#/components/schemas/TransformPolymorphicTransformRenderTemplateAttributesRequest"
+      title: TransformPolymorphicRequest
+    TransformPolymorphicShared:
+      additionalProperties: true
+      properties:
+        type:
+          allOf:
+          - $ref: "#/components/schemas/Type4f5Enum"
+          description: ""
+      required:
+      - type
+      title: TransformPolymorphicShared
+      type: object
+    TransformPolymorphicTransformFilterWorkloadsAttributes:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/TransformPolymorphicShared"
+      - $ref: "#/components/schemas/TransformFilterWorkloadsAttributes"
+      title: TransformPolymorphicTransformFilterWorkloadsAttributes
+    TransformPolymorphicTransformFilterWorkloadsAttributesRequest:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/TransformPolymorphicShared"
+      - $ref: "#/components/schemas/TransformFilterWorkloadsAttributesRequest"
+      title: TransformPolymorphicTransformFilterWorkloadsAttributesRequest
+    TransformPolymorphicTransformRenderTemplateAttributes:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/TransformPolymorphicShared"
+      - $ref: "#/components/schemas/TransformRenderTemplateAttributes"
+      title: TransformPolymorphicTransformRenderTemplateAttributes
+    TransformPolymorphicTransformRenderTemplateAttributesRequest:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/TransformPolymorphicShared"
+      - $ref: "#/components/schemas/TransformRenderTemplateAttributesRequest"
+      title: TransformPolymorphicTransformRenderTemplateAttributesRequest
+    TransformPolymorphicTransformSamplingAttributes:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/TransformPolymorphicShared"
+      - $ref: "#/components/schemas/TransformSamplingAttributes"
+      example:
+        attributes:
+          rate: 60
+        type: type
+      title: TransformPolymorphicTransformSamplingAttributes
+    TransformPolymorphicTransformSamplingAttributesRequest:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/TransformPolymorphicShared"
+      - $ref: "#/components/schemas/TransformSamplingAttributesRequest"
+      example:
+        attributes:
+          rate: 8
+        type: type
+      title: TransformPolymorphicTransformSamplingAttributesRequest
+    TransformRenderTemplate:
+      additionalProperties: false
+      description: Serializer for render_template transform attributes.
+      properties:
+        template:
+          format: int64
+          minimum: 1
+          type: integer
+      required:
+      - template
+      title: TransformRenderTemplate
+      type: object
+    TransformRenderTemplateAttributes:
+      additionalProperties: true
+      properties:
+        type:
+          description: '* `render_template` - Render Template'
+          title: TransformRenderTemplateAttributesTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/TransformRenderTemplate"
+      required:
+      - attributes
+      - type
+      title: TransformRenderTemplateAttributes
+      type: object
+    TransformRenderTemplateAttributesRequest:
+      additionalProperties: true
+      properties:
+        type:
+          description: '* `render_template` - Render Template'
+          title: TransformRenderTemplateAttributesTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/TransformRenderTemplateRequest"
+      required:
+      - attributes
+      - type
+      title: TransformRenderTemplateAttributesRequest
+      type: object
+    TransformRenderTemplateAttributesTypeEnum:
+      description: '* `render_template` - Render Template'
+      title: TransformRenderTemplateAttributesTypeEnum
+      type: string
+    TransformRenderTemplateRequest:
+      additionalProperties: false
+      description: Serializer for render_template transform attributes.
+      properties:
+        template:
+          format: int64
+          minimum: 1
+          type: integer
+      required:
+      - template
+      title: TransformRenderTemplateRequest
+      type: object
+    TransformSampling:
+      additionalProperties: false
+      description: Serializer for sampling transform attributes.
+      example:
+        rate: 60
+      properties:
+        rate:
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
+      required:
+      - rate
+      title: TransformSampling
+      type: object
+    TransformSamplingAttributes:
+      additionalProperties: true
+      properties:
+        type:
+          description: '* `sampling` - Sampling'
+          title: TransformSamplingAttributesTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/TransformSampling"
+      required:
+      - attributes
+      - type
+      title: TransformSamplingAttributes
+      type: object
+    TransformSamplingAttributesRequest:
+      additionalProperties: true
+      properties:
+        type:
+          description: '* `sampling` - Sampling'
+          title: TransformSamplingAttributesTypeEnum
+          type: string
+        attributes:
+          $ref: "#/components/schemas/TransformSamplingRequest"
+      required:
+      - attributes
+      - type
+      title: TransformSamplingAttributesRequest
+      type: object
+    TransformSamplingAttributesTypeEnum:
+      description: '* `sampling` - Sampling'
+      title: TransformSamplingAttributesTypeEnum
+      type: string
+    TransformSamplingRequest:
+      additionalProperties: false
+      description: Serializer for sampling transform attributes.
+      example:
+        rate: 8
+      properties:
+        rate:
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
+      required:
+      - rate
+      title: TransformSamplingRequest
+      type: object
+    Type4f5Enum:
+      additionalProperties: false
+      title: Type4f5Enum
+      type: object
   securitySchemes:
     BearerAuth:
       scheme: bearer
