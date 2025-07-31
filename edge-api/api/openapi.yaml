@@ -18801,7 +18801,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 255
+          maxLength: 2000
           minLength: 1
           pattern: .*
           type: string
@@ -18813,7 +18813,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 255
+          maxLength: 2000
           minLength: 1
           pattern: .*
           type: string
@@ -20794,6 +20794,7 @@ components:
           format: int64
           maximum: 2147483647
           minimum: 1
+          nullable: true
           type: integer
       required:
       - average_rate_limit
@@ -20821,6 +20822,7 @@ components:
           format: int64
           maximum: 2147483647
           minimum: 1
+          nullable: true
           type: integer
       required:
       - average_rate_limit
@@ -29511,7 +29513,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          nullable: true
           pattern: "[a-zA-Z0-9<>?()]+"
           type: string
       required:
@@ -29539,7 +29540,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          nullable: true
           pattern: "[a-zA-Z0-9<>?()]+"
           type: string
       required:
@@ -29560,7 +29560,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          nullable: true
           pattern: "[a-zA-Z0-9<>?()]+"
           type: string
       required:
@@ -29588,7 +29587,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          nullable: true
           pattern: "[a-zA-Z0-9<>?()]+"
           type: string
       required:

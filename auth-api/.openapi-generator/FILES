@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -119,8 +118,4 @@ model_totp_device_list.go
 model_totp_verification_request.go
 model_user_login_method_response.go
 response.go
-test/api_auth_login_test.go
-test/api_auth_mfatotp_device_test.go
-test/api_auth_refresh_access_token_test.go
-test/api_auth_revoke_test.go
 utils.go

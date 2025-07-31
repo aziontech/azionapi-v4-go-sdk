@@ -23,7 +23,7 @@ var _ MappedNullable = &WAFExceptionSpecificConditionOnNameRequest{}
 type WAFExceptionSpecificConditionOnNameRequest struct {
 	// * `specific_body_form_field_name` - specific_body_form_field_name * `specific_http_header_name` - specific_http_header_name * `specific_query_string_name` - specific_query_string_name
 	Match string `json:"match"`
-	Name NullableString `json:"name" validate:"regexp=[a-zA-Z0-9<>?()]+"`
+	Name string `json:"name" validate:"regexp=[a-zA-Z0-9<>?()]+"`
 }
 
 type _WAFExceptionSpecificConditionOnNameRequest WAFExceptionSpecificConditionOnNameRequest
@@ -32,7 +32,7 @@ type _WAFExceptionSpecificConditionOnNameRequest WAFExceptionSpecificConditionOn
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWAFExceptionSpecificConditionOnNameRequest(match string, name NullableString) *WAFExceptionSpecificConditionOnNameRequest {
+func NewWAFExceptionSpecificConditionOnNameRequest(match string, name string) *WAFExceptionSpecificConditionOnNameRequest {
 	this := WAFExceptionSpecificConditionOnNameRequest{}
 	this.Match = match
 	this.Name = name
@@ -72,29 +72,27 @@ func (o *WAFExceptionSpecificConditionOnNameRequest) SetMatch(v string) {
 }
 
 // GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *WAFExceptionSpecificConditionOnNameRequest) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Name.Get()
+	return o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WAFExceptionSpecificConditionOnNameRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
 // SetName sets field value
 func (o *WAFExceptionSpecificConditionOnNameRequest) SetName(v string) {
-	o.Name.Set(&v)
+	o.Name = v
 }
 
 func (o WAFExceptionSpecificConditionOnNameRequest) MarshalJSON() ([]byte, error) {
@@ -108,7 +106,7 @@ func (o WAFExceptionSpecificConditionOnNameRequest) MarshalJSON() ([]byte, error
 func (o WAFExceptionSpecificConditionOnNameRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["match"] = o.Match
-	toSerialize["name"] = o.Name.Get()
+	toSerialize["name"] = o.Name
 	return toSerialize, nil
 }
 

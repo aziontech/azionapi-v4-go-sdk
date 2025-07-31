@@ -25,7 +25,7 @@ type EdgeFirewallBehaviorSetRateLimitAttributesRequest struct {
 	// * `client_ip` - client_ip * `global` - global
 	LimitBy string `json:"limit_by"`
 	AverageRateLimit int64 `json:"average_rate_limit"`
-	MaximumBurstSize *int64 `json:"maximum_burst_size,omitempty"`
+	MaximumBurstSize NullableInt64 `json:"maximum_burst_size,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -130,36 +130,46 @@ func (o *EdgeFirewallBehaviorSetRateLimitAttributesRequest) SetAverageRateLimit(
 	o.AverageRateLimit = v
 }
 
-// GetMaximumBurstSize returns the MaximumBurstSize field value if set, zero value otherwise.
+// GetMaximumBurstSize returns the MaximumBurstSize field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EdgeFirewallBehaviorSetRateLimitAttributesRequest) GetMaximumBurstSize() int64 {
-	if o == nil || IsNil(o.MaximumBurstSize) {
+	if o == nil || IsNil(o.MaximumBurstSize.Get()) {
 		var ret int64
 		return ret
 	}
-	return *o.MaximumBurstSize
+	return *o.MaximumBurstSize.Get()
 }
 
 // GetMaximumBurstSizeOk returns a tuple with the MaximumBurstSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EdgeFirewallBehaviorSetRateLimitAttributesRequest) GetMaximumBurstSizeOk() (*int64, bool) {
-	if o == nil || IsNil(o.MaximumBurstSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaximumBurstSize, true
+	return o.MaximumBurstSize.Get(), o.MaximumBurstSize.IsSet()
 }
 
 // HasMaximumBurstSize returns a boolean if a field has been set.
 func (o *EdgeFirewallBehaviorSetRateLimitAttributesRequest) HasMaximumBurstSize() bool {
-	if o != nil && !IsNil(o.MaximumBurstSize) {
+	if o != nil && o.MaximumBurstSize.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaximumBurstSize gets a reference to the given int64 and assigns it to the MaximumBurstSize field.
+// SetMaximumBurstSize gets a reference to the given NullableInt64 and assigns it to the MaximumBurstSize field.
 func (o *EdgeFirewallBehaviorSetRateLimitAttributesRequest) SetMaximumBurstSize(v int64) {
-	o.MaximumBurstSize = &v
+	o.MaximumBurstSize.Set(&v)
+}
+// SetMaximumBurstSizeNil sets the value for MaximumBurstSize to be an explicit nil
+func (o *EdgeFirewallBehaviorSetRateLimitAttributesRequest) SetMaximumBurstSizeNil() {
+	o.MaximumBurstSize.Set(nil)
+}
+
+// UnsetMaximumBurstSize ensures that no value is present for MaximumBurstSize, not even an explicit nil
+func (o *EdgeFirewallBehaviorSetRateLimitAttributesRequest) UnsetMaximumBurstSize() {
+	o.MaximumBurstSize.Unset()
 }
 
 func (o EdgeFirewallBehaviorSetRateLimitAttributesRequest) MarshalJSON() ([]byte, error) {
@@ -177,8 +187,8 @@ func (o EdgeFirewallBehaviorSetRateLimitAttributesRequest) ToMap() (map[string]i
 	}
 	toSerialize["limit_by"] = o.LimitBy
 	toSerialize["average_rate_limit"] = o.AverageRateLimit
-	if !IsNil(o.MaximumBurstSize) {
-		toSerialize["maximum_burst_size"] = o.MaximumBurstSize
+	if o.MaximumBurstSize.IsSet() {
+		toSerialize["maximum_burst_size"] = o.MaximumBurstSize.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Match** | **string** | * &#x60;specific_body_form_field_value&#x60; - specific_body_form_field_value * &#x60;specific_http_header_value&#x60; - specific_http_header_value * &#x60;specific_query_string_value&#x60; - specific_query_string_value | 
-**Name** | **NullableString** |  | 
-**Value** | **NullableString** |  | 
+**Name** | **string** |  | 
+**Value** | **string** |  | 
 
 ## Methods
 
 ### NewWAFExceptionPolymorphicConditionRequest
 
-`func NewWAFExceptionPolymorphicConditionRequest(match string, name NullableString, value NullableString, ) *WAFExceptionPolymorphicConditionRequest`
+`func NewWAFExceptionPolymorphicConditionRequest(match string, name string, value string, ) *WAFExceptionPolymorphicConditionRequest`
 
 NewWAFExceptionPolymorphicConditionRequest instantiates a new WAFExceptionPolymorphicConditionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -67,16 +67,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### SetNameNil
-
-`func (o *WAFExceptionPolymorphicConditionRequest) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *WAFExceptionPolymorphicConditionRequest) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetValue
 
 `func (o *WAFExceptionPolymorphicConditionRequest) GetValue() string`
@@ -97,16 +87,6 @@ and a boolean to check if the value has been set.
 SetValue sets Value field to given value.
 
 
-### SetValueNil
-
-`func (o *WAFExceptionPolymorphicConditionRequest) SetValueNil(b bool)`
-
- SetValueNil sets the value for Value to be an explicit nil
-
-### UnsetValue
-`func (o *WAFExceptionPolymorphicConditionRequest) UnsetValue()`
-
-UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

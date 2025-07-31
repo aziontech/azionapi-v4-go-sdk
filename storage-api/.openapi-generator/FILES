@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -57,7 +56,4 @@ model_response_retrieve_credential.go
 model_success_bucket_operation.go
 model_success_object_operation.go
 response.go
-test/api_edge_storage_buckets_test.go
-test/api_edge_storage_credentials_test.go
-test/api_edge_storage_objects_test.go
 utils.go

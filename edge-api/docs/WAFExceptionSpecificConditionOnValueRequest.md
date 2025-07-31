@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Match** | **string** | * &#x60;specific_body_form_field_value&#x60; - specific_body_form_field_value * &#x60;specific_http_header_value&#x60; - specific_http_header_value * &#x60;specific_query_string_value&#x60; - specific_query_string_value | 
-**Value** | **NullableString** |  | 
+**Value** | **string** |  | 
 
 ## Methods
 
 ### NewWAFExceptionSpecificConditionOnValueRequest
 
-`func NewWAFExceptionSpecificConditionOnValueRequest(match string, value NullableString, ) *WAFExceptionSpecificConditionOnValueRequest`
+`func NewWAFExceptionSpecificConditionOnValueRequest(match string, value string, ) *WAFExceptionSpecificConditionOnValueRequest`
 
 NewWAFExceptionSpecificConditionOnValueRequest instantiates a new WAFExceptionSpecificConditionOnValueRequest object
 This constructor will assign default values to properties that have it defined,
@@ -66,16 +66,6 @@ and a boolean to check if the value has been set.
 SetValue sets Value field to given value.
 
 
-### SetValueNil
-
-`func (o *WAFExceptionSpecificConditionOnValueRequest) SetValueNil(b bool)`
-
- SetValueNil sets the value for Value to be an explicit nil
-
-### UnsetValue
-`func (o *WAFExceptionSpecificConditionOnValueRequest) UnsetValue()`
-
-UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

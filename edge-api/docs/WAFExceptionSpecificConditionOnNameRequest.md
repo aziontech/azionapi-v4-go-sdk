@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Match** | **string** | * &#x60;specific_body_form_field_name&#x60; - specific_body_form_field_name * &#x60;specific_http_header_name&#x60; - specific_http_header_name * &#x60;specific_query_string_name&#x60; - specific_query_string_name | 
-**Name** | **NullableString** |  | 
+**Name** | **string** |  | 
 
 ## Methods
 
 ### NewWAFExceptionSpecificConditionOnNameRequest
 
-`func NewWAFExceptionSpecificConditionOnNameRequest(match string, name NullableString, ) *WAFExceptionSpecificConditionOnNameRequest`
+`func NewWAFExceptionSpecificConditionOnNameRequest(match string, name string, ) *WAFExceptionSpecificConditionOnNameRequest`
 
 NewWAFExceptionSpecificConditionOnNameRequest instantiates a new WAFExceptionSpecificConditionOnNameRequest object
 This constructor will assign default values to properties that have it defined,
@@ -66,16 +66,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### SetNameNil
-
-`func (o *WAFExceptionSpecificConditionOnNameRequest) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *WAFExceptionSpecificConditionOnNameRequest) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

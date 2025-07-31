@@ -1,4 +1,4 @@
-# Go API client for auth-api
+# Go API client for authapi
 
 REST API OpenAPI documentation for the Auth API
 
@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import auth-api "github.com/GIT_USER_ID/GIT_REPO_ID"
+import authapi "github.com/GIT_USER_ID/GIT_REPO_ID"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -37,18 +37,18 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `auth-api.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `authapi.ContextServerIndex` of type `int`.
 
 ```go
-ctx := context.WithValue(context.Background(), auth-api.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), authapi.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `auth-api.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `authapi.ContextServerVariables` of type `map[string]string`.
 
 ```go
-ctx := context.WithValue(context.Background(), auth-api.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), authapi.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -59,13 +59,13 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `auth-api.ContextOperationServerIndices` and `auth-api.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `authapi.ContextOperationServerIndices` and `authapi.ContextOperationServerVariables` context maps.
 
 ```go
-ctx := context.WithValue(context.Background(), auth-api.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), authapi.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), auth-api.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), authapi.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -153,7 +153,7 @@ Authentication schemes defined for the API:
 Example
 
 ```go
-auth := context.WithValue(context.Background(), auth-api.ContextAccessToken, "BEARER_TOKEN_STRING")
+auth := context.WithValue(context.Background(), authapi.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -164,7 +164,7 @@ r, err := client.Service.Operation(auth, args)
 Example
 
 ```go
-auth := context.WithValue(context.Background(), auth-api.ContextAccessToken, "BEARER_TOKEN_STRING")
+auth := context.WithValue(context.Background(), authapi.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -175,7 +175,7 @@ r, err := client.Service.Operation(auth, args)
 Example
 
 ```go
-auth := context.WithValue(context.Background(), auth-api.ContextAccessToken, "BEARER_TOKEN_STRING")
+auth := context.WithValue(context.Background(), authapi.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -192,8 +192,8 @@ Example
 ```go
 auth := context.WithValue(
 		context.Background(),
-		auth-api.ContextAPIKeys,
-		map[string]auth-api.APIKey{
+		authapi.ContextAPIKeys,
+		map[string]authapi.APIKey{
 			"TokenAuth": {Key: "API_KEY_STRING"},
 		},
 	)
