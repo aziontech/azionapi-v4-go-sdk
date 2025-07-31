@@ -23,7 +23,7 @@ var _ MappedNullable = &WAFExceptionSpecificConditionOnValue{}
 type WAFExceptionSpecificConditionOnValue struct {
 	// * `specific_body_form_field_value` - specific_body_form_field_value * `specific_http_header_value` - specific_http_header_value * `specific_query_string_value` - specific_query_string_value
 	Match string `json:"match"`
-	Value NullableString `json:"value" validate:"regexp=[a-zA-Z0-9<>?()]+"`
+	Value string `json:"value" validate:"regexp=[a-zA-Z0-9<>?()]+"`
 }
 
 type _WAFExceptionSpecificConditionOnValue WAFExceptionSpecificConditionOnValue
@@ -32,7 +32,7 @@ type _WAFExceptionSpecificConditionOnValue WAFExceptionSpecificConditionOnValue
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWAFExceptionSpecificConditionOnValue(match string, value NullableString) *WAFExceptionSpecificConditionOnValue {
+func NewWAFExceptionSpecificConditionOnValue(match string, value string) *WAFExceptionSpecificConditionOnValue {
 	this := WAFExceptionSpecificConditionOnValue{}
 	this.Match = match
 	this.Value = value
@@ -72,29 +72,27 @@ func (o *WAFExceptionSpecificConditionOnValue) SetMatch(v string) {
 }
 
 // GetValue returns the Value field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *WAFExceptionSpecificConditionOnValue) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Value.Get()
+	return o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WAFExceptionSpecificConditionOnValue) GetValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Value.Get(), o.Value.IsSet()
+	return &o.Value, true
 }
 
 // SetValue sets field value
 func (o *WAFExceptionSpecificConditionOnValue) SetValue(v string) {
-	o.Value.Set(&v)
+	o.Value = v
 }
 
 func (o WAFExceptionSpecificConditionOnValue) MarshalJSON() ([]byte, error) {
@@ -108,7 +106,7 @@ func (o WAFExceptionSpecificConditionOnValue) MarshalJSON() ([]byte, error) {
 func (o WAFExceptionSpecificConditionOnValue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["match"] = o.Match
-	toSerialize["value"] = o.Value.Get()
+	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }
 

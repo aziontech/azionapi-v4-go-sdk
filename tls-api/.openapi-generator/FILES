@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -73,8 +72,4 @@ model_response_delete_certificate_revocation_list.go
 model_response_retrieve_certificate.go
 model_response_retrieve_certificate_revocation_list.go
 response.go
-test/api_digital_certificates_certificate_revocation_lists_test.go
-test/api_digital_certificates_certificate_signing_requests_test.go
-test/api_digital_certificates_certificates_test.go
-test/api_digital_certificates_request_a_certificate_test.go
 utils.go

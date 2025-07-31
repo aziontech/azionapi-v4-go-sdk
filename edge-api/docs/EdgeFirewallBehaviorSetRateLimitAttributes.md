@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | * &#x60;second&#x60; - second * &#x60;minute&#x60; - minute | [optional] 
 **LimitBy** | **string** | * &#x60;client_ip&#x60; - client_ip * &#x60;global&#x60; - global | 
 **AverageRateLimit** | **int64** |  | 
-**MaximumBurstSize** | Pointer to **int64** |  | [optional] 
+**MaximumBurstSize** | Pointer to **NullableInt64** |  | [optional] 
 
 ## Methods
 
@@ -118,6 +118,16 @@ SetMaximumBurstSize sets MaximumBurstSize field to given value.
 
 HasMaximumBurstSize returns a boolean if a field has been set.
 
+### SetMaximumBurstSizeNil
+
+`func (o *EdgeFirewallBehaviorSetRateLimitAttributes) SetMaximumBurstSizeNil(b bool)`
+
+ SetMaximumBurstSizeNil sets the value for MaximumBurstSize to be an explicit nil
+
+### UnsetMaximumBurstSize
+`func (o *EdgeFirewallBehaviorSetRateLimitAttributes) UnsetMaximumBurstSize()`
+
+UnsetMaximumBurstSize ensures that no value is present for MaximumBurstSize, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
