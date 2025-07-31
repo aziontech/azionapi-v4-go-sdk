@@ -1,4 +1,4 @@
-# Go API client for edge-api
+# Go API client for edgeapi
 
 REST API OpenAPI documentation for the edge-api
 
@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import edge-api "github.com/GIT_USER_ID/GIT_REPO_ID"
+import edgeapi "github.com/GIT_USER_ID/GIT_REPO_ID"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -37,18 +37,18 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `edge-api.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `edgeapi.ContextServerIndex` of type `int`.
 
 ```go
-ctx := context.WithValue(context.Background(), edge-api.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), edgeapi.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `edge-api.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `edgeapi.ContextServerVariables` of type `map[string]string`.
 
 ```go
-ctx := context.WithValue(context.Background(), edge-api.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), edgeapi.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -59,13 +59,13 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `edge-api.ContextOperationServerIndices` and `edge-api.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `edgeapi.ContextOperationServerIndices` and `edgeapi.ContextOperationServerVariables` context maps.
 
 ```go
-ctx := context.WithValue(context.Background(), edge-api.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), edgeapi.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), edge-api.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), edgeapi.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -654,7 +654,7 @@ Authentication schemes defined for the API:
 Example
 
 ```go
-auth := context.WithValue(context.Background(), edge-api.ContextAccessToken, "BEARER_TOKEN_STRING")
+auth := context.WithValue(context.Background(), edgeapi.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -671,8 +671,8 @@ Example
 ```go
 auth := context.WithValue(
 		context.Background(),
-		edge-api.ContextAPIKeys,
-		map[string]edge-api.APIKey{
+		edgeapi.ContextAPIKeys,
+		map[string]edgeapi.APIKey{
 			"TokenAuth": {Key: "API_KEY_STRING"},
 		},
 	)

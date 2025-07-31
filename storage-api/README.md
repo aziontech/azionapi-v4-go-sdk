@@ -1,4 +1,4 @@
-# Go API client for storage-api
+# Go API client for storageapi
 
 REST API OpenAPI documentation for the Object Storage
 
@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import storage-api "github.com/GIT_USER_ID/GIT_REPO_ID"
+import storageapi "github.com/GIT_USER_ID/GIT_REPO_ID"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -37,18 +37,18 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `storage-api.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `storageapi.ContextServerIndex` of type `int`.
 
 ```go
-ctx := context.WithValue(context.Background(), storage-api.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), storageapi.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `storage-api.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `storageapi.ContextServerVariables` of type `map[string]string`.
 
 ```go
-ctx := context.WithValue(context.Background(), storage-api.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), storageapi.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -59,13 +59,13 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `storage-api.ContextOperationServerIndices` and `storage-api.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `storageapi.ContextOperationServerIndices` and `storageapi.ContextOperationServerVariables` context maps.
 
 ```go
-ctx := context.WithValue(context.Background(), storage-api.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), storageapi.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), storage-api.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), storageapi.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -129,7 +129,7 @@ Authentication schemes defined for the API:
 Example
 
 ```go
-auth := context.WithValue(context.Background(), storage-api.ContextAccessToken, "BEARER_TOKEN_STRING")
+auth := context.WithValue(context.Background(), storageapi.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -146,8 +146,8 @@ Example
 ```go
 auth := context.WithValue(
 		context.Background(),
-		storage-api.ContextAPIKeys,
-		map[string]storage-api.APIKey{
+		storageapi.ContextAPIKeys,
+		map[string]storageapi.APIKey{
 			"TokenAuth": {Key: "API_KEY_STRING"},
 		},
 	)
