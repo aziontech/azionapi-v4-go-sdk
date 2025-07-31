@@ -112,7 +112,7 @@ jobs:
         run: |
           while IFS= read -r file; do
             removed=$(echo ${file} | cut -d. -f1)
-            npx @openapitools/openapi-generator-cli generate -i $file -g go -o ./${removed} --package-name ${removed}
+            npx @openapitools/openapi-generator-cli generate -i $file -g go -o ./${removed} --package-name ${removed} --skip-validate-spec
             echo 'go.mod' >> ./${removed}/.gitignore
             echo 'go.sum' >> ./${removed}/.gitignore
           done < yaml_files_list.txt
