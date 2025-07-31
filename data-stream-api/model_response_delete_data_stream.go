@@ -12,8 +12,6 @@ package data-stream-api
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ResponseDeleteDataStream type satisfies the MappedNullable interface at compile time
@@ -21,21 +19,15 @@ var _ MappedNullable = &ResponseDeleteDataStream{}
 
 // ResponseDeleteDataStream struct for ResponseDeleteDataStream
 type ResponseDeleteDataStream struct {
-	// * `pending` - pending * `executed` - executed
-	State string `json:"state"`
-	Data NullableDataStream `json:"data"`
+	State *string `json:"state,omitempty" validate:"regexp=.*"`
 }
-
-type _ResponseDeleteDataStream ResponseDeleteDataStream
 
 // NewResponseDeleteDataStream instantiates a new ResponseDeleteDataStream object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseDeleteDataStream(state string, data NullableDataStream) *ResponseDeleteDataStream {
+func NewResponseDeleteDataStream() *ResponseDeleteDataStream {
 	this := ResponseDeleteDataStream{}
-	this.State = state
-	this.Data = data
 	return &this
 }
 
@@ -47,54 +39,36 @@ func NewResponseDeleteDataStreamWithDefaults() *ResponseDeleteDataStream {
 	return &this
 }
 
-// GetState returns the State field value
+// GetState returns the State field value if set, zero value otherwise.
 func (o *ResponseDeleteDataStream) GetState() string {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
-
-	return o.State
+	return *o.State
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResponseDeleteDataStream) GetStateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return &o.State, true
+	return o.State, true
 }
 
-// SetState sets field value
+// HasState returns a boolean if a field has been set.
+func (o *ResponseDeleteDataStream) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
 func (o *ResponseDeleteDataStream) SetState(v string) {
-	o.State = v
-}
-
-// GetData returns the Data field value
-// If the value is explicit nil, the zero value for DataStream will be returned
-func (o *ResponseDeleteDataStream) GetData() DataStream {
-	if o == nil || o.Data.Get() == nil {
-		var ret DataStream
-		return ret
-	}
-
-	return *o.Data.Get()
-}
-
-// GetDataOk returns a tuple with the Data field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ResponseDeleteDataStream) GetDataOk() (*DataStream, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Data.Get(), o.Data.IsSet()
-}
-
-// SetData sets field value
-func (o *ResponseDeleteDataStream) SetData(v DataStream) {
-	o.Data.Set(&v)
+	o.State = &v
 }
 
 func (o ResponseDeleteDataStream) MarshalJSON() ([]byte, error) {
@@ -107,47 +81,10 @@ func (o ResponseDeleteDataStream) MarshalJSON() ([]byte, error) {
 
 func (o ResponseDeleteDataStream) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["state"] = o.State
-	toSerialize["data"] = o.Data.Get()
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
 	return toSerialize, nil
-}
-
-func (o *ResponseDeleteDataStream) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"state",
-		"data",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varResponseDeleteDataStream := _ResponseDeleteDataStream{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varResponseDeleteDataStream)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ResponseDeleteDataStream(varResponseDeleteDataStream)
-
-	return err
 }
 
 type NullableResponseDeleteDataStream struct {

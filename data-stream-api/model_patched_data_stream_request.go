@@ -20,11 +20,9 @@ var _ MappedNullable = &PatchedDataStreamRequest{}
 // PatchedDataStreamRequest struct for PatchedDataStreamRequest
 type PatchedDataStreamRequest struct {
 	Name *string `json:"name,omitempty" validate:"regexp=.*"`
-	// * `http` - Edge Applications * `waf` - WAF Events * `cells_console` - Edge Functions * `rtm_activity` - Activity History
-	DataSource *string `json:"data_source,omitempty"`
-	DataSetId *int64 `json:"data_set_id,omitempty"`
 	Active *bool `json:"active,omitempty"`
-	Filters *DataStreamFilterRequest `json:"filters,omitempty"`
+	Inputs []InputPolymorphicInputDataSourceAttributesRequest `json:"inputs,omitempty"`
+	Transform []TransformPolymorphicRequest `json:"transform,omitempty"`
 }
 
 // NewPatchedDataStreamRequest instantiates a new PatchedDataStreamRequest object
@@ -76,70 +74,6 @@ func (o *PatchedDataStreamRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDataSource returns the DataSource field value if set, zero value otherwise.
-func (o *PatchedDataStreamRequest) GetDataSource() string {
-	if o == nil || IsNil(o.DataSource) {
-		var ret string
-		return ret
-	}
-	return *o.DataSource
-}
-
-// GetDataSourceOk returns a tuple with the DataSource field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedDataStreamRequest) GetDataSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.DataSource) {
-		return nil, false
-	}
-	return o.DataSource, true
-}
-
-// HasDataSource returns a boolean if a field has been set.
-func (o *PatchedDataStreamRequest) HasDataSource() bool {
-	if o != nil && !IsNil(o.DataSource) {
-		return true
-	}
-
-	return false
-}
-
-// SetDataSource gets a reference to the given string and assigns it to the DataSource field.
-func (o *PatchedDataStreamRequest) SetDataSource(v string) {
-	o.DataSource = &v
-}
-
-// GetDataSetId returns the DataSetId field value if set, zero value otherwise.
-func (o *PatchedDataStreamRequest) GetDataSetId() int64 {
-	if o == nil || IsNil(o.DataSetId) {
-		var ret int64
-		return ret
-	}
-	return *o.DataSetId
-}
-
-// GetDataSetIdOk returns a tuple with the DataSetId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedDataStreamRequest) GetDataSetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.DataSetId) {
-		return nil, false
-	}
-	return o.DataSetId, true
-}
-
-// HasDataSetId returns a boolean if a field has been set.
-func (o *PatchedDataStreamRequest) HasDataSetId() bool {
-	if o != nil && !IsNil(o.DataSetId) {
-		return true
-	}
-
-	return false
-}
-
-// SetDataSetId gets a reference to the given int64 and assigns it to the DataSetId field.
-func (o *PatchedDataStreamRequest) SetDataSetId(v int64) {
-	o.DataSetId = &v
-}
-
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *PatchedDataStreamRequest) GetActive() bool {
 	if o == nil || IsNil(o.Active) {
@@ -172,36 +106,68 @@ func (o *PatchedDataStreamRequest) SetActive(v bool) {
 	o.Active = &v
 }
 
-// GetFilters returns the Filters field value if set, zero value otherwise.
-func (o *PatchedDataStreamRequest) GetFilters() DataStreamFilterRequest {
-	if o == nil || IsNil(o.Filters) {
-		var ret DataStreamFilterRequest
+// GetInputs returns the Inputs field value if set, zero value otherwise.
+func (o *PatchedDataStreamRequest) GetInputs() []InputPolymorphicInputDataSourceAttributesRequest {
+	if o == nil || IsNil(o.Inputs) {
+		var ret []InputPolymorphicInputDataSourceAttributesRequest
 		return ret
 	}
-	return *o.Filters
+	return o.Inputs
 }
 
-// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
+// GetInputsOk returns a tuple with the Inputs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedDataStreamRequest) GetFiltersOk() (*DataStreamFilterRequest, bool) {
-	if o == nil || IsNil(o.Filters) {
+func (o *PatchedDataStreamRequest) GetInputsOk() ([]InputPolymorphicInputDataSourceAttributesRequest, bool) {
+	if o == nil || IsNil(o.Inputs) {
 		return nil, false
 	}
-	return o.Filters, true
+	return o.Inputs, true
 }
 
-// HasFilters returns a boolean if a field has been set.
-func (o *PatchedDataStreamRequest) HasFilters() bool {
-	if o != nil && !IsNil(o.Filters) {
+// HasInputs returns a boolean if a field has been set.
+func (o *PatchedDataStreamRequest) HasInputs() bool {
+	if o != nil && !IsNil(o.Inputs) {
 		return true
 	}
 
 	return false
 }
 
-// SetFilters gets a reference to the given DataStreamFilterRequest and assigns it to the Filters field.
-func (o *PatchedDataStreamRequest) SetFilters(v DataStreamFilterRequest) {
-	o.Filters = &v
+// SetInputs gets a reference to the given []InputPolymorphicInputDataSourceAttributesRequest and assigns it to the Inputs field.
+func (o *PatchedDataStreamRequest) SetInputs(v []InputPolymorphicInputDataSourceAttributesRequest) {
+	o.Inputs = v
+}
+
+// GetTransform returns the Transform field value if set, zero value otherwise.
+func (o *PatchedDataStreamRequest) GetTransform() []TransformPolymorphicRequest {
+	if o == nil || IsNil(o.Transform) {
+		var ret []TransformPolymorphicRequest
+		return ret
+	}
+	return o.Transform
+}
+
+// GetTransformOk returns a tuple with the Transform field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedDataStreamRequest) GetTransformOk() ([]TransformPolymorphicRequest, bool) {
+	if o == nil || IsNil(o.Transform) {
+		return nil, false
+	}
+	return o.Transform, true
+}
+
+// HasTransform returns a boolean if a field has been set.
+func (o *PatchedDataStreamRequest) HasTransform() bool {
+	if o != nil && !IsNil(o.Transform) {
+		return true
+	}
+
+	return false
+}
+
+// SetTransform gets a reference to the given []TransformPolymorphicRequest and assigns it to the Transform field.
+func (o *PatchedDataStreamRequest) SetTransform(v []TransformPolymorphicRequest) {
+	o.Transform = v
 }
 
 func (o PatchedDataStreamRequest) MarshalJSON() ([]byte, error) {
@@ -217,17 +183,14 @@ func (o PatchedDataStreamRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.DataSource) {
-		toSerialize["data_source"] = o.DataSource
-	}
-	if !IsNil(o.DataSetId) {
-		toSerialize["data_set_id"] = o.DataSetId
-	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	if !IsNil(o.Filters) {
-		toSerialize["filters"] = o.Filters
+	if !IsNil(o.Inputs) {
+		toSerialize["inputs"] = o.Inputs
+	}
+	if !IsNil(o.Transform) {
+		toSerialize["transform"] = o.Transform
 	}
 	return toSerialize, nil
 }

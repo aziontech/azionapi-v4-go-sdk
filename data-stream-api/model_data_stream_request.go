@@ -22,12 +22,10 @@ var _ MappedNullable = &DataStreamRequest{}
 // DataStreamRequest struct for DataStreamRequest
 type DataStreamRequest struct {
 	Name string `json:"name" validate:"regexp=.*"`
-	// * `http` - Edge Applications * `waf` - WAF Events * `cells_console` - Edge Functions * `rtm_activity` - Activity History
-	DataSource string `json:"data_source"`
-	DataSetId int64 `json:"data_set_id"`
 	Active *bool `json:"active,omitempty"`
-	Filters DataStreamFilterRequest `json:"filters"`
-	Endpoint EndpointRequest `json:"endpoint"`
+	Inputs []InputPolymorphicInputDataSourceAttributesRequest `json:"inputs"`
+	Transform []TransformPolymorphicRequest `json:"transform"`
+	Outputs []OutputRequest `json:"outputs"`
 }
 
 type _DataStreamRequest DataStreamRequest
@@ -36,13 +34,12 @@ type _DataStreamRequest DataStreamRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataStreamRequest(name string, dataSource string, dataSetId int64, filters DataStreamFilterRequest, endpoint EndpointRequest) *DataStreamRequest {
+func NewDataStreamRequest(name string, inputs []InputPolymorphicInputDataSourceAttributesRequest, transform []TransformPolymorphicRequest, outputs []OutputRequest) *DataStreamRequest {
 	this := DataStreamRequest{}
 	this.Name = name
-	this.DataSource = dataSource
-	this.DataSetId = dataSetId
-	this.Filters = filters
-	this.Endpoint = endpoint
+	this.Inputs = inputs
+	this.Transform = transform
+	this.Outputs = outputs
 	return &this
 }
 
@@ -78,54 +75,6 @@ func (o *DataStreamRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetDataSource returns the DataSource field value
-func (o *DataStreamRequest) GetDataSource() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DataSource
-}
-
-// GetDataSourceOk returns a tuple with the DataSource field value
-// and a boolean to check if the value has been set.
-func (o *DataStreamRequest) GetDataSourceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DataSource, true
-}
-
-// SetDataSource sets field value
-func (o *DataStreamRequest) SetDataSource(v string) {
-	o.DataSource = v
-}
-
-// GetDataSetId returns the DataSetId field value
-func (o *DataStreamRequest) GetDataSetId() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.DataSetId
-}
-
-// GetDataSetIdOk returns a tuple with the DataSetId field value
-// and a boolean to check if the value has been set.
-func (o *DataStreamRequest) GetDataSetIdOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DataSetId, true
-}
-
-// SetDataSetId sets field value
-func (o *DataStreamRequest) SetDataSetId(v int64) {
-	o.DataSetId = v
-}
-
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *DataStreamRequest) GetActive() bool {
 	if o == nil || IsNil(o.Active) {
@@ -158,52 +107,76 @@ func (o *DataStreamRequest) SetActive(v bool) {
 	o.Active = &v
 }
 
-// GetFilters returns the Filters field value
-func (o *DataStreamRequest) GetFilters() DataStreamFilterRequest {
+// GetInputs returns the Inputs field value
+func (o *DataStreamRequest) GetInputs() []InputPolymorphicInputDataSourceAttributesRequest {
 	if o == nil {
-		var ret DataStreamFilterRequest
+		var ret []InputPolymorphicInputDataSourceAttributesRequest
 		return ret
 	}
 
-	return o.Filters
+	return o.Inputs
 }
 
-// GetFiltersOk returns a tuple with the Filters field value
+// GetInputsOk returns a tuple with the Inputs field value
 // and a boolean to check if the value has been set.
-func (o *DataStreamRequest) GetFiltersOk() (*DataStreamFilterRequest, bool) {
+func (o *DataStreamRequest) GetInputsOk() ([]InputPolymorphicInputDataSourceAttributesRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Filters, true
+	return o.Inputs, true
 }
 
-// SetFilters sets field value
-func (o *DataStreamRequest) SetFilters(v DataStreamFilterRequest) {
-	o.Filters = v
+// SetInputs sets field value
+func (o *DataStreamRequest) SetInputs(v []InputPolymorphicInputDataSourceAttributesRequest) {
+	o.Inputs = v
 }
 
-// GetEndpoint returns the Endpoint field value
-func (o *DataStreamRequest) GetEndpoint() EndpointRequest {
+// GetTransform returns the Transform field value
+func (o *DataStreamRequest) GetTransform() []TransformPolymorphicRequest {
 	if o == nil {
-		var ret EndpointRequest
+		var ret []TransformPolymorphicRequest
 		return ret
 	}
 
-	return o.Endpoint
+	return o.Transform
 }
 
-// GetEndpointOk returns a tuple with the Endpoint field value
+// GetTransformOk returns a tuple with the Transform field value
 // and a boolean to check if the value has been set.
-func (o *DataStreamRequest) GetEndpointOk() (*EndpointRequest, bool) {
+func (o *DataStreamRequest) GetTransformOk() ([]TransformPolymorphicRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Endpoint, true
+	return o.Transform, true
 }
 
-// SetEndpoint sets field value
-func (o *DataStreamRequest) SetEndpoint(v EndpointRequest) {
-	o.Endpoint = v
+// SetTransform sets field value
+func (o *DataStreamRequest) SetTransform(v []TransformPolymorphicRequest) {
+	o.Transform = v
+}
+
+// GetOutputs returns the Outputs field value
+func (o *DataStreamRequest) GetOutputs() []OutputRequest {
+	if o == nil {
+		var ret []OutputRequest
+		return ret
+	}
+
+	return o.Outputs
+}
+
+// GetOutputsOk returns a tuple with the Outputs field value
+// and a boolean to check if the value has been set.
+func (o *DataStreamRequest) GetOutputsOk() ([]OutputRequest, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Outputs, true
+}
+
+// SetOutputs sets field value
+func (o *DataStreamRequest) SetOutputs(v []OutputRequest) {
+	o.Outputs = v
 }
 
 func (o DataStreamRequest) MarshalJSON() ([]byte, error) {
@@ -217,13 +190,12 @@ func (o DataStreamRequest) MarshalJSON() ([]byte, error) {
 func (o DataStreamRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	toSerialize["data_source"] = o.DataSource
-	toSerialize["data_set_id"] = o.DataSetId
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	toSerialize["filters"] = o.Filters
-	toSerialize["endpoint"] = o.Endpoint
+	toSerialize["inputs"] = o.Inputs
+	toSerialize["transform"] = o.Transform
+	toSerialize["outputs"] = o.Outputs
 	return toSerialize, nil
 }
 
@@ -233,10 +205,9 @@ func (o *DataStreamRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"data_source",
-		"data_set_id",
-		"filters",
-		"endpoint",
+		"inputs",
+		"transform",
+		"outputs",
 	}
 
 	allProperties := make(map[string]interface{})

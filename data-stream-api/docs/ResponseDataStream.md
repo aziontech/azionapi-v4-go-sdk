@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | **string** | * &#x60;pending&#x60; - pending * &#x60;executed&#x60; - executed | 
+**State** | Pointer to **string** |  | [optional] 
 **Data** | [**DataStream**](DataStream.md) |  | 
 
 ## Methods
 
 ### NewResponseDataStream
 
-`func NewResponseDataStream(state string, data DataStream, ) *ResponseDataStream`
+`func NewResponseDataStream(data DataStream, ) *ResponseDataStream`
 
 NewResponseDataStream instantiates a new ResponseDataStream object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
+### HasState
+
+`func (o *ResponseDataStream) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 ### GetData
 
