@@ -102,6 +102,7 @@ jobs:
           while IFS= read -r file; do
             echo "Patching YAML file: $file"
             python3 scripts/patch.py "$file"
+            python3 scripts/rename_and_update_structures.py "$file"
           done < yaml_files_list.txt
 
       - name: Install OpenAPI Generator
