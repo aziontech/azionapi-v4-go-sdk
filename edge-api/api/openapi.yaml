@@ -18685,7 +18685,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 255
+          maxLength: 2000
           minLength: 1
           pattern: .*
           type: string
@@ -18697,7 +18697,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 255
+          maxLength: 2000
           minLength: 1
           pattern: .*
           type: string
@@ -19631,7 +19631,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 255
+          maxLength: 2000
           minLength: 1
           pattern: .*
           type: string
@@ -19643,7 +19643,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 255
+          maxLength: 2000
           minLength: 1
           pattern: .*
           type: string
@@ -20067,7 +20067,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 255
+          maxLength: 2000
           minLength: 1
           pattern: .*
           type: string
@@ -20079,7 +20079,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 255
+          maxLength: 2000
           minLength: 1
           pattern: .*
           type: string
