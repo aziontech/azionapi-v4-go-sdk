@@ -30,6 +30,14 @@ def process_schema(schema, parent_key="root"):
                     print(f"⚠️ Manual action needed: Unable to infer type for '{parent_key}' (was enum, now missing type)")
             del schema["enum"]
 
+        # Edge connector workaround
+        if "readOnly" in schema:
+            del schema["readOnly"]
+
+        # Also Edge connector workaround
+        if schema.get("type") == "string" and "pattern" in schema:
+            del schema["pattern"]
+
         # Ensure integer types have format int64 if format is missing
         if schema.get("type") == "integer" and "format" not in schema:
             schema["format"] = "int64"
