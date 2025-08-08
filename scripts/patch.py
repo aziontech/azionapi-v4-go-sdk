@@ -1,4 +1,5 @@
 import sys
+sys.path.append('/Users/pablo.diehl/Workspace/azionapi-v4-go-sdk/scripts/env/lib/python3.9/site-packages')
 import yaml
 
 def infer_type_from_enum(enum_values):
@@ -29,6 +30,14 @@ def process_schema(schema, parent_key="root"):
                 else:
                     print(f"⚠️ Manual action needed: Unable to infer type for '{parent_key}' (was enum, now missing type)")
             del schema["enum"]
+
+        # Edge connector workaround
+        if "readOnly" in schema:
+            del schema["readOnly"]
+
+        # Also Edge connector workaround
+        if schema.get("type") == "string" and "pattern" in schema:
+            del schema["pattern"]
 
         # Ensure integer types have format int64 if format is missing
         if schema.get("type") == "integer" and "format" not in schema:
