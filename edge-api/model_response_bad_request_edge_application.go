@@ -27,7 +27,7 @@ type ResponseBadRequestEdgeApplication struct {
 	Active []string `json:"active,omitempty"`
 	Debug []string `json:"debug,omitempty"`
 	ProductVersion []string `json:"product_version,omitempty"`
-	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 // NewResponseBadRequestEdgeApplication instantiates a new ResponseBadRequestEdgeApplication object

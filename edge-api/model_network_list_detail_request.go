@@ -21,7 +21,7 @@ var _ MappedNullable = &NetworkListDetailRequest{}
 
 // NetworkListDetailRequest A Network List item can be one of the following formats:   1. IP Addresses (IPv4/IPv6):      - Simple IPv4: 192.168.0.1      - IPv4 with CIDR: 192.168.0.1/24      - Simple IPv6: 2001:db8:3333:4444:5555:6666:7777:8888      - IPv6 with CIDR: 2001:db8::/32      - IP with expiration date: 192.168.0.1 --LT2025-05-29T12:25:23Z          (The expiration date format is --LT followed by ISO8601 date in UTC timezone)   2. Country Codes:      - Two-character uppercase alphanumeric country code (ISO 3166-1 alpha-2)      - Examples: BR, US, DE, JP   3. Autonomous System Numbers (ASN):      - Number composed of digits only      - Examples: 1234, 5678, 13335
 type NetworkListDetailRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	// * `asn` - ASN * `countries` - Countries * `ip_cidr` - IP/CIDR
 	Type string `json:"type"`
 	Items []string `json:"items"`

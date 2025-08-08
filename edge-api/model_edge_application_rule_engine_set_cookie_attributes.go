@@ -20,7 +20,7 @@ var _ MappedNullable = &EdgeApplicationRuleEngineSetCookieAttributes{}
 
 // EdgeApplicationRuleEngineSetCookieAttributes struct for EdgeApplicationRuleEngineSetCookieAttributes
 type EdgeApplicationRuleEngineSetCookieAttributes struct {
-	Value string `json:"value" validate:"regexp=.*"`
+	Value string `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 

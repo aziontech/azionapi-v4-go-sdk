@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedEdgeFirewallRequest{}
 
 // PatchedEdgeFirewallRequest struct for PatchedEdgeFirewallRequest
 type PatchedEdgeFirewallRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Modules *EdgeFirewallModulesRequest `json:"modules,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
 	Active *bool `json:"active,omitempty"`

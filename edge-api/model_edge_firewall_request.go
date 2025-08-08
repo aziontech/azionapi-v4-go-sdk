@@ -21,7 +21,7 @@ var _ MappedNullable = &EdgeFirewallRequest{}
 
 // EdgeFirewallRequest struct for EdgeFirewallRequest
 type EdgeFirewallRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Modules *EdgeFirewallModulesRequest `json:"modules,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
 	Active *bool `json:"active,omitempty"`

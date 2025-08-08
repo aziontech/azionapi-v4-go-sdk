@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | * &#x60;add_request_cookie&#x60; - add_request_cookie | 
-**Attributes** | [**EdgeApplicationRuleEngineAddRequestCookieAttributes**](EdgeApplicationRuleEngineAddRequestCookieAttributes.md) |  | 
+**Type** | **string** | * &#x60;redirect_to_301&#x60; - redirect_to_301 * &#x60;redirect_to_302&#x60; - redirect_to_302 | 
+**Attributes** | [**EdgeApplicationRuleEngineStringAttributes**](EdgeApplicationRuleEngineStringAttributes.md) |  | 
 
 ## Methods
 
 ### NewEdgeApplicationRuleEngineRequestPhaseBehaviors
 
-`func NewEdgeApplicationRuleEngineRequestPhaseBehaviors(type_ string, attributes EdgeApplicationRuleEngineAddRequestCookieAttributes, ) *EdgeApplicationRuleEngineRequestPhaseBehaviors`
+`func NewEdgeApplicationRuleEngineRequestPhaseBehaviors(type_ string, attributes EdgeApplicationRuleEngineStringAttributes, ) *EdgeApplicationRuleEngineRequestPhaseBehaviors`
 
 NewEdgeApplicationRuleEngineRequestPhaseBehaviors instantiates a new EdgeApplicationRuleEngineRequestPhaseBehaviors object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetType sets Type field to given value.
 
 ### GetAttributes
 
-`func (o *EdgeApplicationRuleEngineRequestPhaseBehaviors) GetAttributes() EdgeApplicationRuleEngineAddRequestCookieAttributes`
+`func (o *EdgeApplicationRuleEngineRequestPhaseBehaviors) GetAttributes() EdgeApplicationRuleEngineStringAttributes`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *EdgeApplicationRuleEngineRequestPhaseBehaviors) GetAttributesOk() (*EdgeApplicationRuleEngineAddRequestCookieAttributes, bool)`
+`func (o *EdgeApplicationRuleEngineRequestPhaseBehaviors) GetAttributesOk() (*EdgeApplicationRuleEngineStringAttributes, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *EdgeApplicationRuleEngineRequestPhaseBehaviors) SetAttributes(v EdgeApplicationRuleEngineAddRequestCookieAttributes)`
+`func (o *EdgeApplicationRuleEngineRequestPhaseBehaviors) SetAttributes(v EdgeApplicationRuleEngineStringAttributes)`
 
 SetAttributes sets Attributes field to given value.
 

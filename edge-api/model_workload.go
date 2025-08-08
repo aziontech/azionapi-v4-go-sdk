@@ -23,9 +23,9 @@ var _ MappedNullable = &Workload{}
 // Workload struct for Workload
 type Workload struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 	// * `1` - Production Infrastructure (All Edge Locations) * `2` - Staging Infrastructure
 	Infrastructure *int64 `json:"infrastructure,omitempty"`
@@ -34,8 +34,8 @@ type Workload struct {
 	Mtls *MTLS `json:"mtls,omitempty"`
 	Domains []string `json:"domains,omitempty"`
 	WorkloadDomainAllowAccess *bool `json:"workload_domain_allow_access,omitempty"`
-	WorkloadDomain string `json:"workload_domain" validate:"regexp=.*"`
-	ProductVersion string `json:"product_version" validate:"regexp=^(custom|\\\\d+\\\\.\\\\d+)$"`
+	WorkloadDomain string `json:"workload_domain"`
+	ProductVersion string `json:"product_version"`
 }
 
 type _Workload Workload

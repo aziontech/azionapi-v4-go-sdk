@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncPurgeInput{}
 
 // ResponseAsyncPurgeInput struct for ResponseAsyncPurgeInput
 type ResponseAsyncPurgeInput struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data PurgeInput `json:"data"`
 }
 

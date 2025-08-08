@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** |  | [readonly] 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** |  | 
 **Modules** | Pointer to [**EdgeApplicationModules**](EdgeApplicationModules.md) |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
-**ProductVersion** | **string** |  | [readonly] 
+**ProductVersion** | **string** |  | 
 
 ## Methods
 

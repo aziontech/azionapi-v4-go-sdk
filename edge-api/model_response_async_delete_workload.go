@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteWorkload{}
 
 // ResponseAsyncDeleteWorkload struct for ResponseAsyncDeleteWorkload
 type ResponseAsyncDeleteWorkload struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteWorkload instantiates a new ResponseAsyncDeleteWorkload object

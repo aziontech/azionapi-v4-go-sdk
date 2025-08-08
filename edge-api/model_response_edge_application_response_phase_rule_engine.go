@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseEdgeApplicationResponsePhaseRuleEngine{}
 
 // ResponseEdgeApplicationResponsePhaseRuleEngine struct for ResponseEdgeApplicationResponsePhaseRuleEngine
 type ResponseEdgeApplicationResponsePhaseRuleEngine struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data EdgeApplicationResponsePhaseRuleEngine `json:"data"`
 }
 

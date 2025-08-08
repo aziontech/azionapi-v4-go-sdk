@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseEdgeConnectorPolymorphic{}
 
 // ResponseEdgeConnectorPolymorphic struct for ResponseEdgeConnectorPolymorphic
 type ResponseEdgeConnectorPolymorphic struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data EdgeConnectorPolymorphic `json:"data"`
 }
 

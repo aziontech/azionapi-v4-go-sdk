@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseDeleteEdgeFirewall{}
 
 // ResponseDeleteEdgeFirewall struct for ResponseDeleteEdgeFirewall
 type ResponseDeleteEdgeFirewall struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseDeleteEdgeFirewall instantiates a new ResponseDeleteEdgeFirewall object

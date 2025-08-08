@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncEdgeFunctionsDoc{}
 
 // ResponseAsyncEdgeFunctionsDoc struct for ResponseAsyncEdgeFunctionsDoc
 type ResponseAsyncEdgeFunctionsDoc struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data EdgeFunctions `json:"data"`
 }
 

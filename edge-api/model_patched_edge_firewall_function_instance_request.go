@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedEdgeFirewallFunctionInstanceRequest{}
 
 // PatchedEdgeFirewallFunctionInstanceRequest Serializer for Edge Firewall Function Instances
 type PatchedEdgeFirewallFunctionInstanceRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Args *EdgeApplicationFunctionInstanceArgs `json:"args,omitempty"`
 	EdgeFunction *int64 `json:"edge_function,omitempty"`
 	Active *bool `json:"active,omitempty"`

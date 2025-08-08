@@ -922,7 +922,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -1029,7 +1028,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       requestBody:
@@ -1105,7 +1103,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -1181,7 +1178,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -1260,7 +1256,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -1342,7 +1337,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -1502,7 +1496,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -1683,7 +1676,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       requestBody:
@@ -1833,7 +1825,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -1983,7 +1974,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -2136,7 +2126,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -2292,7 +2281,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -2450,7 +2438,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -2632,7 +2619,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       requestBody:
@@ -2782,7 +2768,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -2933,7 +2918,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -3086,7 +3070,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -3242,7 +3225,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -3399,7 +3381,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -3580,7 +3561,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       requestBody:
@@ -3730,7 +3710,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -3880,7 +3859,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -4033,7 +4011,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -4189,7 +4166,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -4347,7 +4323,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: |-
@@ -4533,7 +4508,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -4714,7 +4688,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       requestBody:
@@ -4864,7 +4837,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -5014,7 +4986,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -5167,7 +5138,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -5323,7 +5293,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -5481,7 +5450,6 @@ paths:
         name: application_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: |-
@@ -6878,7 +6846,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -7060,7 +7027,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       requestBody:
@@ -7210,7 +7176,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -7361,7 +7326,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -7514,7 +7478,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -7670,7 +7633,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -7827,7 +7789,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -8008,7 +7969,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       requestBody:
@@ -8158,7 +8118,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -8308,7 +8267,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: Comma-separated list of field names to include in the response.
@@ -8461,7 +8419,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -8617,7 +8574,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - explode: false
@@ -8774,7 +8730,6 @@ paths:
         name: edge_firewall_id
         required: true
         schema:
-          pattern: "^[1-9]\\d*$"
           type: string
         style: simple
       - description: |-
@@ -10787,7 +10742,6 @@ paths:
         name: waf_id
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       responses:
@@ -10924,7 +10878,6 @@ paths:
         name: waf_id
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       requestBody:
@@ -11081,7 +11034,6 @@ paths:
         name: waf_id
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       responses:
@@ -11239,7 +11191,6 @@ paths:
         name: waf_id
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       responses:
@@ -11384,7 +11335,6 @@ paths:
         name: waf_id
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       requestBody:
@@ -11540,7 +11490,6 @@ paths:
         name: waf_id
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       requestBody:
@@ -16261,22 +16210,18 @@ components:
         region:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         service:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         access_key:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         secret_key:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - access_key
@@ -16290,22 +16235,18 @@ components:
         region:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         service:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         access_key:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         secret_key:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - access_key
@@ -16347,7 +16288,6 @@ components:
           description: IPv4/IPv6 address or CNAME to resolve
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         http_port:
           description: Port number for HTTP connections
@@ -16437,7 +16377,6 @@ components:
           description: IPv4/IPv6 address or CNAME to resolve
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         http_port:
           description: Port number for HTTP connections
@@ -16578,12 +16517,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: "^[a-zA-Z0-9 \\-\\.\\'\\,|]+$"
           type: string
         browser_cache:
           $ref: "#/components/schemas/BrowserCacheModule"
@@ -16635,7 +16572,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: "^[a-zA-Z0-9 \\-\\.\\'\\,|]+$"
           type: string
         browser_cache:
           $ref: "#/components/schemas/BrowserCacheModuleRequest"
@@ -16869,12 +16805,10 @@ components:
         behavior:
           allOf:
           - $ref: "#/components/schemas/CacheSettingsTieredCacheModuleBehaviorEnum"
-          readOnly: true
         max_age:
           format: int64
           maximum: 31536000
           minimum: 0
-          readOnly: true
           type: integer
         topology:
           description: |-
@@ -17047,7 +16981,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
       required:
       - name
@@ -17061,7 +16994,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
       required:
       - name
@@ -17075,7 +17007,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
       required:
       - name
@@ -17144,30 +17075,23 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           maxLength: 255
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         active:
           type: boolean
         product_version:
           maxLength: 50
           minLength: 3
-          pattern: \d+\.\d+
-          readOnly: true
           type: string
         pages:
           items:
@@ -17208,7 +17132,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -17297,7 +17220,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: DefaultErrorResponse
       type: object
@@ -17336,7 +17258,6 @@ components:
         type:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - type
@@ -17355,7 +17276,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -17367,7 +17287,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -17392,22 +17311,17 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           maxLength: 250
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         modules:
           $ref: "#/components/schemas/EdgeApplicationModules"
@@ -17416,7 +17330,6 @@ components:
         debug:
           type: boolean
         product_version:
-          readOnly: true
           type: string
       required:
       - id
@@ -17782,18 +17695,15 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         user_agent:
           description: Enter a valid regular expression pattern to identify user agents.
           maxLength: 512
           minLength: 1
-          pattern: .*
           type: string
       required:
       - id
@@ -17810,13 +17720,11 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         user_agent:
           description: Enter a valid regular expression pattern to identify user agents.
           maxLength: 512
           minLength: 1
-          pattern: .*
           type: string
       required:
       - name
@@ -17838,12 +17746,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         args:
           $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
@@ -17856,12 +17762,9 @@ components:
           type: boolean
         last_editor:
           maxLength: 250
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
       required:
       - edge_function
@@ -17884,7 +17787,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         args:
           $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
@@ -17968,7 +17870,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         modules:
           $ref: "#/components/schemas/EdgeApplicationModulesRequest"
@@ -18100,12 +18001,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -18128,24 +18027,19 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
         order:
           format: int64
           maximum: 199
           minimum: 0
-          readOnly: true
           type: integer
         last_editor:
           maxLength: 255
           nullable: true
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
           nullable: true
-          readOnly: true
           type: string
       required:
       - behaviors
@@ -18292,7 +18186,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -18315,7 +18208,6 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
       required:
       - behaviors
@@ -18443,12 +18335,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -18471,24 +18361,19 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
         order:
           format: int64
           maximum: 199
           minimum: 0
-          readOnly: true
           type: integer
         last_editor:
           maxLength: 255
           nullable: true
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
           nullable: true
-          readOnly: true
           type: string
       required:
       - behaviors
@@ -18635,7 +18520,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -18658,7 +18542,6 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
       required:
       - behaviors
@@ -18687,7 +18570,6 @@ components:
         value:
           maxLength: 2000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -18699,7 +18581,6 @@ components:
         value:
           maxLength: 2000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -18745,7 +18626,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -18757,7 +18637,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -18803,7 +18682,6 @@ components:
         value:
           maxLength: 2000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -18815,7 +18693,6 @@ components:
         value:
           maxLength: 2000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -18861,17 +18738,14 @@ components:
         subject:
           maxLength: 50
           minLength: 4
-          pattern: .*
           type: string
         regex:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         captured_array:
           maxLength: 10
           minLength: 1
-          pattern: .*
           type: string
       required:
       - captured_array
@@ -18885,17 +18759,14 @@ components:
         subject:
           maxLength: 50
           minLength: 4
-          pattern: .*
           type: string
         regex:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         captured_array:
           maxLength: 10
           minLength: 1
-          pattern: .*
           type: string
       required:
       - captured_array
@@ -18943,7 +18814,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -18955,7 +18825,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -19001,7 +18870,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -19013,7 +18881,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -19059,7 +18926,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -19071,7 +18937,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -19155,41 +19020,31 @@ components:
       additionalProperties: true
       discriminator:
         mapping:
-          deny: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
-          no_content: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
-          deliver: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
-          finish_request_phase: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
-          redirect_to_301: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString"
-          redirect_to_302: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString"
-          forward_cookies: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
-          optimize_images: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
-          bypass_cache: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
-          enable_gzip: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
+          deny: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
+          no_content: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
+          deliver: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
+          finish_request_phase: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
+          redirect_to_301: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithArgs"
+          redirect_to_302: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithArgs"
+          forward_cookies: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
+          optimize_images: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
+          bypass_cache: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
+          enable_gzip: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
           filter_request_cookie: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie"
           run_function: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction"
           set_origin: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin"
-          redirect_http_to_https: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
+          redirect_http_to_https: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
           set_edge_connector: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector"
           set_cache_policy: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy"
           rewrite_request: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest"
           add_request_header: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader"
           filter_request_header: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader"
-          capture_match_groups: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups"
+          capture_match_groups: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorCaptureMatchGroups"
           add_request_cookie: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie"
         propertyName: type
       oneOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie"
+      - $ref: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs"
+      - $ref: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithArgs"
       title: EdgeApplicationRuleEngineRequestPhaseBehaviors
     EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader:
       additionalProperties: true
@@ -19215,18 +19070,16 @@ components:
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineAddRequestCookieRequest"
       title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookieRequest
-    EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups:
+    EdgeApplicationRequestPhaseBehaviorCaptureMatchGroups:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineCaptureMatchGroups"
-      title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups
-    EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsRequest:
-      additionalProperties: true
-      allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineCaptureMatchGroupsRequest"
-      title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsRequest
+      title: EdgeApplicationRequestPhaseBehaviorCaptureMatchGroups
+    EdgeApplicationRequestPhaseBehaviorCaptureMatchGroupsRequest:
+      additionalProperties: true
+      allOf:
+      - $ref: "#/components/schemas/EdgeApplicationRuleEngineCaptureMatchGroupsRequest"
+      title: EdgeApplicationRequestPhaseBehaviorCaptureMatchGroupsRequest
     EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader:
       additionalProperties: true
       allOf:
@@ -19251,22 +19104,20 @@ components:
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineFilterRequestCookieRequest"
       title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookieRequest
-    EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs:
-      additionalProperties: true
+    EdgeApplicationRequestPhaseBehaviorWithoutArgs:
+      additionalProperties: false
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineNoArgs"
       example:
         type: type
-      title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs
-    EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest:
+      title: EdgeApplicationRequestPhaseBehaviorWithoutArgs
+    EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineNoArgsRequest"
+      - $ref: "#/components/schemas/EdgeApplicationRuleEngineNoArgs"
       example:
         type: type
-      title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest
+      title: EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest
     EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest:
       additionalProperties: true
       allOf:
@@ -19327,57 +19178,46 @@ components:
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineSetOriginRequest"
       title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOriginRequest
-    EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString:
+    EdgeApplicationRequestPhaseBehaviorWithArgs:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineString"
-      title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString
-    EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineStringRequest:
+      title: EdgeApplicationRequestPhaseBehaviorWithArgs
+    EdgeApplicationRequestPhaseBehaviorWithArgsRequest:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsShared"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineStringRequest"
-      title: EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineStringRequest
+      - $ref: "#/components/schemas/EdgeApplicationRuleEngineString"
+      title: EdgeApplicationRequestPhaseBehaviorWithArgsRequest
     EdgeApplicationRuleEngineRequestPhaseBehaviorsRequest:
       additionalProperties: true
       discriminator:
         mapping:
-          deny: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
-          no_content: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
-          deliver: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
-          finish_request_phase: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
-          redirect_to_301: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineStringRequest"
-          redirect_to_302: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineStringRequest"
-          forward_cookies: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
-          optimize_images: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
-          bypass_cache: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
-          enable_gzip: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
+          deny: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
+          no_content: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
+          deliver: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
+          finish_request_phase: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
+          redirect_to_301: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithArgsRequest"
+          redirect_to_302: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithArgsRequest"
+          forward_cookies: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
+          optimize_images: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
+          bypass_cache: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
+          enable_gzip: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
           filter_request_cookie: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookieRequest"
           run_function: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunctionRequest"
           set_origin: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOriginRequest"
-          redirect_http_to_https: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
+          redirect_http_to_https: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
           set_edge_connector: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnectorRequest"
           set_cache_policy: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicyRequest"
           rewrite_request: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequestRequest"
           add_request_header: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeaderRequest"
           filter_request_header: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeaderRequest"
-          capture_match_groups: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsRequest"
+          capture_match_groups: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorCaptureMatchGroupsRequest"
           add_request_cookie: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookieRequest"
         propertyName: type
       oneOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineStringRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookieRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunctionRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOriginRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnectorRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicyRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequestRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeaderRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeaderRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookieRequest"
+      - $ref: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest"
+      - $ref: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithArgsRequest"
+      - $ref: "#/components/schemas/EdgeApplicationRequestPhaseBehaviorCaptureMatchGroupsRequest"
       title: EdgeApplicationRuleEngineRequestPhaseBehaviorsRequest
     EdgeApplicationRuleEngineRequestPhaseBehaviorsShared:
       additionalProperties: true
@@ -19403,7 +19243,6 @@ components:
         type:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
       required:
       - type
@@ -19447,25 +19286,20 @@ components:
       additionalProperties: true
       discriminator:
         mapping:
-          enable_gzip: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgs"
-          deliver: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgs"
-          redirect_to_301: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseString"
-          redirect_to_302: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseString"
-          filter_response_cookie: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseString"
+          enable_gzip: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithoutArgs"
+          deliver: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithoutArgs"
+          redirect_to_301: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgs"
+          redirect_to_302: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgs"
+          filter_response_cookie: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgs"
           run_function: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineRunFunctionResponse"
           set_cookie: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineSetCookie"
           add_response_header: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineAddResponseHeader"
           filter_response_header: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineFilterResponseHeader"
-          capture_match_groups: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups"
+          capture_match_groups: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorCaptureMatchGroups"
         propertyName: type
       oneOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgs"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseString"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineRunFunctionResponse"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineSetCookie"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineAddResponseHeader"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineFilterResponseHeader"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups"
+      - $ref: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithoutArgs"
+      - $ref: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgs"
       title: EdgeApplicationRuleEngineResponsePhaseBehaviors
     EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineAddResponseHeader:
       additionalProperties: true
@@ -19479,18 +19313,16 @@ components:
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineAddResponseHeaderRequest"
       title: EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineAddResponseHeaderRequest
-    EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups:
+    EdgeApplicationResponsePhaseBehaviorCaptureMatchGroups:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineCaptureMatchGroups"
-      title: EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups
-    EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsRequest:
+      title: EdgeApplicationResponsePhaseBehaviorCaptureMatchGroups
+    EdgeApplicationResponsePhaseBehaviorCaptureMatchGroupsRequest:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsShared"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineCaptureMatchGroupsRequest"
-      title: EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsRequest
+      - $ref: "#/components/schemas/EdgeApplicationRuleEngineCaptureMatchGroups"
+      title: EdgeApplicationResponsePhaseBehaviorCaptureMatchGroupsRequest
     EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineFilterResponseHeader:
       additionalProperties: true
       allOf:
@@ -19503,34 +19335,30 @@ components:
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsShared"
       - $ref: "#/components/schemas/EdgeApplicationRuleEngineFilterResponseHeaderRequest"
       title: EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineFilterResponseHeaderRequest
-    EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgs:
-      additionalProperties: true
+    EdgeApplicationResponsePhaseBehaviorWithoutArgs:
+      additionalProperties: false
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsShared"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponseNoArgs"
+      - $ref: "#/components/schemas/EdgeApplicationRuleEngineNoArgs"
       example:
         type: type
-      title: EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgs
-    EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgsRequest:
+      title: EdgeApplicationResponsePhaseBehaviorWithoutArgs
+    EdgeApplicationResponsePhaseBehaviorWithoutArgsRequest:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsShared"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponseNoArgsRequest"
+      - $ref: "#/components/schemas/EdgeApplicationRuleEngineNoArgs"
       example:
         type: type
-      title: EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgsRequest
-    EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseString:
+      title: EdgeApplicationResponsePhaseBehaviorWithoutArgsRequest
+    EdgeApplicationResponsePhaseBehaviorWithArgs:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsShared"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponseString"
-      title: EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseString
-    EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseStringRequest:
+      - $ref: "#/components/schemas/EdgeApplicationRuleEngineString"
+      title: EdgeApplicationResponsePhaseBehaviorWithArgs
+    EdgeApplicationResponsePhaseBehaviorWithArgsRequest:
       additionalProperties: true
       allOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsShared"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponseStringRequest"
-      title: EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseStringRequest
+      - $ref: "#/components/schemas/EdgeApplicationRuleEngineString"
+      title: EdgeApplicationResponsePhaseBehaviorWithArgsRequest
     EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineRunFunctionResponse:
       additionalProperties: true
       allOf:
@@ -19559,25 +19387,21 @@ components:
       additionalProperties: true
       discriminator:
         mapping:
-          enable_gzip: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgsRequest"
-          deliver: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgsRequest"
-          redirect_to_301: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseStringRequest"
-          redirect_to_302: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseStringRequest"
-          filter_response_cookie: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseStringRequest"
+          enable_gzip: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithoutArgsRequest"
+          deliver: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithoutArgsRequest"
+          redirect_to_301: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgsRequest"
+          redirect_to_302: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgsRequest"
+          filter_response_cookie: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgsRequest"
           run_function: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineRunFunctionResponseRequest"
           set_cookie: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineSetCookieRequest"
           add_response_header: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineAddResponseHeaderRequest"
           filter_response_header: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineFilterResponseHeaderRequest"
-          capture_match_groups: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsRequest"
+          capture_match_groups: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorCaptureMatchGroupsRequest"
         propertyName: type
       oneOf:
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseNoArgsRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineResponseStringRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineRunFunctionResponseRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineSetCookieRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineAddResponseHeaderRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineFilterResponseHeaderRequest"
-      - $ref: "#/components/schemas/EdgeApplicationRuleEngineResponsePhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsRequest"
+      - $ref: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithoutArgsRequest"
+      - $ref: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgsRequest"
+      - $ref: "#/components/schemas/EdgeApplicationResponsePhaseBehaviorCaptureMatchGroupsRequest"
       title: EdgeApplicationRuleEngineResponsePhaseBehaviorsRequest
     EdgeApplicationRuleEngineResponsePhaseBehaviorsShared:
       additionalProperties: true
@@ -19603,7 +19427,6 @@ components:
         type:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
       required:
       - type
@@ -19633,7 +19456,6 @@ components:
         value:
           maxLength: 2000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -19645,7 +19467,6 @@ components:
         value:
           maxLength: 2000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -19951,7 +19772,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -19963,7 +19783,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -20067,12 +19886,7 @@ components:
       additionalProperties: true
       properties:
         value:
-          maxLength: 2000
-          minLength: 1
-          pattern: .*
-          type: string
-      required:
-      - value
+          $ref: "#/components/schemas/EdgeApplicationRuleEngineStringAttributes_value"
       title: EdgeApplicationRuleEngineStringAttributes
       type: object
     EdgeApplicationRuleEngineStringAttributesRequest:
@@ -20081,7 +19895,6 @@ components:
         value:
           maxLength: 2000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -20137,30 +19950,23 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           maxLength: 250
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         active:
           type: boolean
         product_version:
           maxLength: 50
           minLength: 3
-          pattern: \d+\.\d+
-          readOnly: true
           type: string
         type:
           allOf:
@@ -20269,7 +20075,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -20295,30 +20100,23 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           maxLength: 250
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         active:
           type: boolean
         product_version:
           maxLength: 50
           minLength: 3
-          pattern: \d+\.\d+
-          readOnly: true
           type: string
         type:
           allOf:
@@ -20379,7 +20177,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -20431,30 +20228,23 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           maxLength: 250
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         active:
           type: boolean
         product_version:
           maxLength: 50
           minLength: 3
-          pattern: \d+\.\d+
-          readOnly: true
           type: string
         type:
           allOf:
@@ -20483,12 +20273,10 @@ components:
         bucket:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         prefix:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - bucket
@@ -20500,12 +20288,10 @@ components:
         bucket:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         prefix:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - bucket
@@ -20517,7 +20303,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -20556,12 +20341,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         modules:
           $ref: "#/components/schemas/EdgeFirewallModules"
@@ -20571,18 +20354,13 @@ components:
           type: boolean
         last_editor:
           maxLength: 250
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         product_version:
           maxLength: 50
           minLength: 3
-          pattern: \d+\.\d+
-          readOnly: true
           type: string
       required:
       - id
@@ -20706,12 +20484,10 @@ components:
         content_type:
           maxLength: 255
           minLength: 0
-          pattern: .*
           type: string
         content_body:
           maxLength: 500
           minLength: 0
-          pattern: .*
           type: string
       required:
       - status_code
@@ -20728,12 +20504,10 @@ components:
         content_type:
           maxLength: 255
           minLength: 0
-          pattern: .*
           type: string
         content_body:
           maxLength: 500
           minLength: 0
-          pattern: .*
           type: string
       required:
       - status_code
@@ -20947,7 +20721,6 @@ components:
         value:
           maxLength: 128
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -20959,7 +20732,6 @@ components:
         value:
           maxLength: 128
           minLength: 1
-          pattern: .*
           type: string
       required:
       - value
@@ -21124,7 +20896,6 @@ components:
         type:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
       required:
       - type
@@ -21348,12 +21119,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         args:
           $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
@@ -21366,12 +21135,9 @@ components:
           type: boolean
         last_editor:
           maxLength: 250
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
       required:
       - edge_function
@@ -21394,7 +21160,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         args:
           $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
@@ -21443,7 +21208,6 @@ components:
         ddos_protection:
           allOf:
           - $ref: "#/components/schemas/EdgeFirewallModule"
-          readOnly: true
         edge_functions:
           allOf:
           - $ref: "#/components/schemas/EdgeFirewallModule"
@@ -21489,7 +21253,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         modules:
           $ref: "#/components/schemas/EdgeFirewallModulesRequest"
@@ -21621,21 +21384,16 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           maxLength: 255
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         active:
           type: boolean
@@ -21658,13 +21416,11 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
         order:
           format: int64
           maximum: 199
           minimum: 0
-          readOnly: true
           type: integer
       required:
       - behaviors
@@ -21811,7 +21567,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -21834,7 +21589,6 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
       required:
       - behaviors
@@ -21875,26 +21629,19 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           maxLength: 250
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         product_version:
           maxLength: 50
-          pattern: .*
-          readOnly: true
           type: string
         active:
           type: boolean
@@ -21908,20 +21655,16 @@ components:
           description: "String containing the function code. Maximum size: 20MB."
           maxLength: 52428800
           minLength: 1
-          pattern: .*
           type: string
         default_args: {}
         reference_count:
           format: int64
-          readOnly: true
           type: integer
         version:
           description: "Installed version, which may not be the latest if the vendor\
             \ has released updates since installation."
-          readOnly: true
           type: string
         vendor:
-          readOnly: true
           type: string
       required:
       - code
@@ -21948,7 +21691,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -21962,7 +21704,6 @@ components:
           description: "String containing the function code. Maximum size: 20MB."
           maxLength: 52428800
           minLength: 1
-          pattern: .*
           type: string
         default_args: {}
       required:
@@ -22039,13 +21780,11 @@ components:
             during connection.
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         path_prefix:
           description: "Optional prefix to add to all request paths (e.g., '/v1')."
           maxLength: 255
           minLength: 0
-          pattern: .*
           type: string
         following_redirect:
           description: "If true, automatically follows HTTP redirects from the target\
@@ -22055,13 +21794,11 @@ components:
           description: Header name used to forward the original client IP address.
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         real_port_header:
           description: Header name used to forward the original client port.
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
       title: HTTPConnectionOptions
       type: object
@@ -22098,13 +21835,11 @@ components:
             during connection.
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         path_prefix:
           description: "Optional prefix to add to all request paths (e.g., '/v1')."
           maxLength: 255
           minLength: 0
-          pattern: .*
           type: string
         following_redirect:
           description: "If true, automatically follows HTTP redirects from the target\
@@ -22114,13 +21849,11 @@ components:
           description: Header name used to forward the original client IP address.
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         real_port_header:
           description: Header name used to forward the original client port.
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
       title: HTTPConnectionOptionsRequest
       type: object
@@ -22254,26 +21987,22 @@ components:
           description: The HTTP status code applicable to this problem
           maxLength: 3
           minLength: 3
-          pattern: "^\\d{3}$"
           type: string
         code:
           description: An application-specific error code
           maxLength: 5
           minLength: 5
-          pattern: "^\\d{5}$"
           type: string
         title:
           description: "A short, human-readable summary of the problem"
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         source:
           allOf:
@@ -22323,19 +22052,16 @@ components:
             the error
           maxLength: 4096
           minLength: 1
-          pattern: "^(/[^/]+)+$"
           type: string
         parameter:
           description: URI query parameter that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         header:
           description: Request header name that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
       title: JSONAPIErrorSource
       type: object
@@ -22561,12 +22287,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         type:
           description: |-
@@ -22577,12 +22301,9 @@ components:
           type: string
         last_editor:
           maxLength: 250
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         active:
           type: boolean
@@ -22643,12 +22364,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         type:
           description: |-
@@ -22661,19 +22380,15 @@ components:
           items:
             maxLength: 250
             minLength: 0
-            pattern: .*
             type: string
           maxItems: 20000
           minItems: 1
           type: array
         last_editor:
           maxLength: 250
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         active:
           type: boolean
@@ -22733,7 +22448,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         type:
           description: |-
@@ -22746,7 +22460,6 @@ components:
           items:
             maxLength: 250
             minLength: 1
-            pattern: .*
             type: string
           maxItems: 20000
           minItems: 1
@@ -22890,7 +22603,6 @@ components:
         type:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         attributes:
           $ref: "#/components/schemas/PageConnectorAttributes"
@@ -22918,7 +22630,6 @@ components:
           maxLength: 250
           minLength: 1
           nullable: true
-          pattern: "^\\/[\\/a-zA-Z0-9\\-_\\.\\~@:]*$"
           type: string
         custom_status_code:
           format: int64
@@ -22950,7 +22661,6 @@ components:
           maxLength: 250
           minLength: 1
           nullable: true
-          pattern: "^\\/[\\/a-zA-Z0-9\\-_\\.\\~@:]*$"
           type: string
         custom_status_code:
           format: int64
@@ -22975,7 +22685,6 @@ components:
         type:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         attributes:
           $ref: "#/components/schemas/PageConnectorAttributesRequest"
@@ -24488,7 +24197,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: "^[a-zA-Z0-9 \\-\\.\\'\\,|]+$"
           type: string
         browser_cache:
           $ref: "#/components/schemas/BrowserCacheModuleRequest"
@@ -24522,7 +24230,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -24541,13 +24248,11 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         user_agent:
           description: Enter a valid regular expression pattern to identify user agents.
           maxLength: 512
           minLength: 1
-          pattern: .*
           type: string
       title: PatchedEdgeApplicationDeviceGroupsRequest
       type: object
@@ -24564,7 +24269,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         args:
           $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
@@ -24593,7 +24297,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         modules:
           $ref: "#/components/schemas/EdgeApplicationModulesRequest"
@@ -24720,7 +24423,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -24743,7 +24445,6 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
       title: PatchedEdgeApplicationRequestPhaseRuleEngineRequest
       type: object
@@ -24864,7 +24565,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -24887,7 +24587,6 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
       title: PatchedEdgeApplicationResponsePhaseRuleEngineRequest
       type: object
@@ -24915,7 +24614,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -24938,7 +24636,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -24974,7 +24671,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -25004,7 +24700,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         args:
           $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
@@ -25031,7 +24726,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         modules:
           $ref: "#/components/schemas/EdgeFirewallModulesRequest"
@@ -25158,7 +24852,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -25181,7 +24874,6 @@ components:
         description:
           maxLength: 1000
           minLength: 0
-          pattern: .*
           type: string
       title: PatchedEdgeFirewallRuleEngineRequest
       type: object
@@ -25198,7 +24890,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -25212,7 +24903,6 @@ components:
           description: "String containing the function code. Maximum size: 20MB."
           maxLength: 52428800
           minLength: 1
-          pattern: .*
           type: string
         default_args: {}
       title: PatchedEdgeFunctionsRequest
@@ -25264,7 +24954,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         type:
           description: |-
@@ -25277,7 +24966,6 @@ components:
           items:
             maxLength: 250
             minLength: 1
-            pattern: .*
             type: string
           maxItems: 20000
           minItems: 1
@@ -25316,13 +25004,11 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         product_version:
           maxLength: 50
           minLength: 3
           nullable: true
-          pattern: \d+\.\d+
           type: string
         engine_settings:
           $ref: "#/components/schemas/WAFEngineSettingsFieldRequest"
@@ -25474,13 +25160,11 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         path:
           maxLength: 255
           minLength: 0
           nullable: true
-          pattern: "^[^|]*$"
           type: string
         conditions:
           items:
@@ -25510,7 +25194,6 @@ components:
         name:
           maxLength: 254
           minLength: 1
-          pattern: .*
           type: string
         current:
           type: boolean
@@ -25545,7 +25228,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -25684,7 +25366,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/CacheSetting"
@@ -25724,7 +25405,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/CustomPage"
@@ -25740,7 +25420,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteCacheSetting
       type: object
@@ -25752,7 +25431,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteCustomPage
       type: object
@@ -25764,7 +25442,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeApplication
       type: object
@@ -25776,7 +25453,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeApplicationDeviceGroups
       type: object
@@ -25788,7 +25464,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeApplicationFunctionInstance
       type: object
@@ -25800,7 +25475,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeApplicationRequestPhaseRuleEngine
       type: object
@@ -25812,7 +25486,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeApplicationResponsePhaseRuleEngine
       type: object
@@ -25824,7 +25497,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeConnectorPolymorphic
       type: object
@@ -25836,7 +25508,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeFirewall
       type: object
@@ -25848,7 +25519,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeFirewallFunctionInstance
       type: object
@@ -25860,7 +25530,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeFirewallRuleEngine
       type: object
@@ -25872,7 +25541,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteEdgeFunctionsDoc
       type: object
@@ -25884,7 +25552,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteNetworkListDetail
       type: object
@@ -25896,7 +25563,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteWAF
       type: object
@@ -25908,7 +25574,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteWAFRule
       type: object
@@ -25920,7 +25585,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteWorkload
       type: object
@@ -25932,7 +25596,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteWorkloadDeployment
       type: object
@@ -25958,7 +25621,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplication"
@@ -25978,7 +25640,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplicationDeviceGroups"
@@ -26003,7 +25664,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplicationFunctionInstance"
@@ -26134,7 +25794,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplicationRequestPhaseRuleEngine"
@@ -26265,7 +25924,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplicationResponsePhaseRuleEngine"
@@ -26303,7 +25961,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeConnectorPolymorphic"
@@ -26332,7 +25989,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeFirewall"
@@ -26357,7 +26013,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeFirewallFunctionInstance"
@@ -26488,7 +26143,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeFirewallRuleEngine"
@@ -26518,7 +26172,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeFunctions"
@@ -26547,7 +26200,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/NetworkListDetail"
@@ -26568,7 +26220,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/PurgeInput"
@@ -26609,7 +26260,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/WAF"
@@ -26637,7 +26287,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/WAFRule"
@@ -26677,7 +26326,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Workload"
@@ -26706,7 +26354,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/WorkloadDeployment"
@@ -26801,7 +26448,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseBadRequestCacheSetting
       type: object
@@ -27110,7 +26756,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseBadRequestEdgeApplication
       type: object
@@ -27268,7 +26913,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseBadRequestWorkloadDeployment
       type: object
@@ -27304,7 +26948,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/CustomPage"
@@ -27320,7 +26963,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteCustomPage
       type: object
@@ -27332,7 +26974,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeApplication
       type: object
@@ -27344,7 +26985,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeApplicationFunctionInstance
       type: object
@@ -27356,7 +26996,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeApplicationRequestPhaseRuleEngine
       type: object
@@ -27368,7 +27007,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeApplicationResponsePhaseRuleEngine
       type: object
@@ -27380,7 +27018,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeConnectorPolymorphic
       type: object
@@ -27392,7 +27029,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeFirewall
       type: object
@@ -27404,7 +27040,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeFirewallFunctionInstance
       type: object
@@ -27416,7 +27051,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeFirewallRuleEngine
       type: object
@@ -27428,7 +27062,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteEdgeFunctionsDoc
       type: object
@@ -27440,7 +27073,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteNetworkListDetail
       type: object
@@ -27452,7 +27084,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteWAF
       type: object
@@ -27464,7 +27095,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteWAFRule
       type: object
@@ -27490,7 +27120,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplication"
@@ -27510,7 +27139,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplicationDeviceGroups"
@@ -27535,7 +27163,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplicationFunctionInstance"
@@ -27666,7 +27293,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplicationRequestPhaseRuleEngine"
@@ -27797,7 +27423,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeApplicationResponsePhaseRuleEngine"
@@ -27835,7 +27460,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeConnectorPolymorphic"
@@ -27864,7 +27488,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeFirewall"
@@ -27889,7 +27512,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeFirewallFunctionInstance"
@@ -28020,7 +27642,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeFirewallRuleEngine"
@@ -28050,7 +27671,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/EdgeFunctions"
@@ -28099,12 +27719,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: "^[a-zA-Z0-9 \\-\\.\\'\\,|]+$"
           type: string
         browser_cache:
           $ref: "#/components/schemas/BrowserCacheModule"
@@ -28136,7 +27754,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/NetworkListDetail"
@@ -28157,7 +27774,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/PurgeInput"
@@ -28820,7 +28436,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/WAF"
@@ -28848,7 +28463,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/WAFRule"
@@ -28888,7 +28502,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Workload"
@@ -28917,7 +28530,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/WorkloadDeployment"
@@ -29235,30 +28847,24 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         active:
           type: boolean
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           maxLength: 250
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         product_version:
           maxLength: 50
           minLength: 3
           nullable: true
-          pattern: \d+\.\d+
           type: string
         engine_settings:
           $ref: "#/components/schemas/WAFEngineSettingsField"
@@ -29513,7 +29119,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: "[a-zA-Z0-9<>?()]+"
           type: string
       required:
       - match
@@ -29540,7 +29145,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: "[a-zA-Z0-9<>?()]+"
           type: string
       required:
       - match
@@ -29560,7 +29164,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: "[a-zA-Z0-9<>?()]+"
           type: string
       required:
       - match
@@ -29587,7 +29190,6 @@ components:
         value:
           maxLength: 255
           minLength: 1
-          pattern: "[a-zA-Z0-9<>?()]+"
           type: string
       required:
       - match
@@ -29624,13 +29226,11 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         product_version:
           maxLength: 50
           minLength: 3
           nullable: true
-          pattern: \d+\.\d+
           type: string
         engine_settings:
           $ref: "#/components/schemas/WAFEngineSettingsFieldRequest"
@@ -29655,7 +29255,6 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         rule_id:
           allOf:
@@ -29791,13 +29390,11 @@ components:
         name:
           maxLength: 255
           minLength: 0
-          pattern: .*
           type: string
         path:
           maxLength: 255
           minLength: 0
           nullable: true
-          pattern: "^[^|]*$"
           type: string
         conditions:
           items:
@@ -29810,11 +29407,9 @@ components:
         active:
           type: boolean
         last_editor:
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
       required:
       - conditions
@@ -29976,13 +29571,11 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         path:
           maxLength: 255
           minLength: 0
           nullable: true
-          pattern: "^[^|]*$"
           type: string
         conditions:
           items:
@@ -30028,24 +29621,19 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
         last_editor:
           maxLength: 250
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         infrastructure:
           allOf:
@@ -30065,12 +29653,8 @@ components:
         workload_domain_allow_access:
           type: boolean
         workload_domain:
-          pattern: .*
-          readOnly: true
           type: string
         product_version:
-          pattern: ^(custom|\d+\.\d+)$
-          readOnly: true
           type: string
       required:
       - id
@@ -30099,12 +29683,10 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 254
           minLength: 1
-          pattern: .*
           type: string
         current:
           type: boolean
@@ -30115,12 +29697,9 @@ components:
         last_editor:
           maxLength: 250
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
       required:
       - id
@@ -30146,7 +29725,6 @@ components:
         name:
           maxLength: 254
           minLength: 1
-          pattern: .*
           type: string
         current:
           type: boolean
@@ -30184,7 +29762,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -30221,6 +29798,11 @@ components:
         arg:
           type: object
       type: object
+    EdgeApplicationRuleEngineStringAttributes_value:
+      oneOf:
+      - type: string
+      - format: int64
+        type: integer
     MTLS_verification:
       nullable: true
       oneOf:

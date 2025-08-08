@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseDeleteEdgeFunctionsDoc{}
 
 // ResponseDeleteEdgeFunctionsDoc struct for ResponseDeleteEdgeFunctionsDoc
 type ResponseDeleteEdgeFunctionsDoc struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseDeleteEdgeFunctionsDoc instantiates a new ResponseDeleteEdgeFunctionsDoc object

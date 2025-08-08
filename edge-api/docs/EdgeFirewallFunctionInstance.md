@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
 **Args** | Pointer to [**EdgeApplicationFunctionInstanceArgs**](EdgeApplicationFunctionInstanceArgs.md) |  | [optional] 
 **EdgeFunction** | **int64** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** |  | [readonly] 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** |  | 
 
 ## Methods
 

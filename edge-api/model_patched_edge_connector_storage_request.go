@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedEdgeConnectorStorageRequest{}
 
 // PatchedEdgeConnectorStorageRequest struct for PatchedEdgeConnectorStorageRequest
 type PatchedEdgeConnectorStorageRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	// Type of the edge connector  * `http` - HTTP * `edge_storage` - Edge Storage * `live_ingest` - Live Ingest
 	Type *string `json:"type,omitempty"`

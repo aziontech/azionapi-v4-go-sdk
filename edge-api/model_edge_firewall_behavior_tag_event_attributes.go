@@ -20,7 +20,7 @@ var _ MappedNullable = &EdgeFirewallBehaviorTagEventAttributes{}
 
 // EdgeFirewallBehaviorTagEventAttributes struct for EdgeFirewallBehaviorTagEventAttributes
 type EdgeFirewallBehaviorTagEventAttributes struct {
-	Value string `json:"value" validate:"regexp=.*"`
+	Value string `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 

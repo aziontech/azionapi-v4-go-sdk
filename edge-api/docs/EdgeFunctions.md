@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** |  | [readonly] 
-**ProductVersion** | **string** |  | [readonly] 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** |  | 
+**ProductVersion** | **string** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **Runtime** | Pointer to **string** | * &#x60;azion_js&#x60; - Azion JavaScript | [optional] 
 **ExecutionEnvironment** | Pointer to **string** | * &#x60;firewall&#x60; - Firewall * &#x60;application&#x60; - Application | [optional] 
 **Code** | **string** | String containing the function code. Maximum size: 20MB. | 
 **DefaultArgs** | Pointer to **interface{}** |  | [optional] 
-**ReferenceCount** | **int64** |  | [readonly] 
-**Version** | **string** | Installed version, which may not be the latest if the vendor has released updates since installation. | [readonly] 
-**Vendor** | **string** |  | [readonly] 
+**ReferenceCount** | **int64** |  | 
+**Version** | **string** | Installed version, which may not be the latest if the vendor has released updates since installation. | 
+**Vendor** | **string** |  | 
 
 ## Methods
 

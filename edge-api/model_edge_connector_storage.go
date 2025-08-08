@@ -23,11 +23,11 @@ var _ MappedNullable = &EdgeConnectorStorage{}
 // EdgeConnectorStorage struct for EdgeConnectorStorage
 type EdgeConnectorStorage struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	Name string `json:"name"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 	Active *bool `json:"active,omitempty"`
-	ProductVersion string `json:"product_version" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	ProductVersion string `json:"product_version"`
 	// Type of the edge connector  * `http` - HTTP * `edge_storage` - Edge Storage * `live_ingest` - Live Ingest
 	Type string `json:"type"`
 	Attributes EdgeConnectorStorageAttributes `json:"attributes"`

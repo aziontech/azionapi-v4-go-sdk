@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteEdgeApplicationResponsePhaseRuleEngin
 
 // ResponseAsyncDeleteEdgeApplicationResponsePhaseRuleEngine struct for ResponseAsyncDeleteEdgeApplicationResponsePhaseRuleEngine
 type ResponseAsyncDeleteEdgeApplicationResponsePhaseRuleEngine struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteEdgeApplicationResponsePhaseRuleEngine instantiates a new ResponseAsyncDeleteEdgeApplicationResponsePhaseRuleEngine object

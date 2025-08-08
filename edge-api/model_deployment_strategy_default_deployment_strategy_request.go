@@ -20,7 +20,7 @@ var _ MappedNullable = &DeploymentStrategyDefaultDeploymentStrategyRequest{}
 
 // DeploymentStrategyDefaultDeploymentStrategyRequest struct for DeploymentStrategyDefaultDeploymentStrategyRequest
 type DeploymentStrategyDefaultDeploymentStrategyRequest struct {
-	Type string `json:"type" validate:"regexp=.*"`
+	Type string `json:"type"`
 	Attributes DefaultDeploymentStrategyAttrsRequest `json:"attributes"`
 	AdditionalProperties map[string]interface{}
 }

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** |  | [readonly] 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
-**ProductVersion** | **string** |  | [readonly] 
+**ProductVersion** | **string** |  | 
 **Pages** | [**[]Page**](Page.md) |  | 
 
 ## Methods

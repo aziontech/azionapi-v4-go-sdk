@@ -21,7 +21,7 @@ var _ MappedNullable = &EdgeApplicationRequest{}
 
 // EdgeApplicationRequest struct for EdgeApplicationRequest
 type EdgeApplicationRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Modules *EdgeApplicationModulesRequest `json:"modules,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Debug *bool `json:"debug,omitempty"`

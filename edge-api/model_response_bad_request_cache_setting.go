@@ -23,7 +23,7 @@ type ResponseBadRequestCacheSetting struct {
 	Name []string `json:"name,omitempty"`
 	BrowserCache *ResponseBadRequestSerializerMetaclassBrowserCacheField `json:"browser_cache,omitempty"`
 	Modules *ResponseBadRequestSerializerMetaclassModulesField `json:"modules,omitempty"`
-	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 // NewResponseBadRequestCacheSetting instantiates a new ResponseBadRequestCacheSetting object

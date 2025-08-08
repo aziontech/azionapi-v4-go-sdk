@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** |  | [readonly] 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **Criteria** | [**[][]EdgeFirewallCriterionField**]([]EdgeFirewallCriterionField.md) |  | 
 **Behaviors** | [**[]EdgeFirewallBehaviors**](EdgeFirewallBehaviors.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Order** | **int64** |  | [readonly] 
+**Order** | **int64** |  | 
 
 ## Methods
 

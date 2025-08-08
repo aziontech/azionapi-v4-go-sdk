@@ -19,11 +19,11 @@ var _ MappedNullable = &PatchedEdgeApplicationResponsePhaseRuleEngineRequest{}
 
 // PatchedEdgeApplicationResponsePhaseRuleEngineRequest struct for PatchedEdgeApplicationResponsePhaseRuleEngineRequest
 type PatchedEdgeApplicationResponsePhaseRuleEngineRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Criteria [][]EdgeApplicationCriterionFieldRequest `json:"criteria,omitempty"`
 	Behaviors []EdgeApplicationRuleEngineResponsePhaseBehaviorsRequest `json:"behaviors,omitempty"`
-	Description *string `json:"description,omitempty" validate:"regexp=.*"`
+	Description *string `json:"description,omitempty"`
 }
 
 // NewPatchedEdgeApplicationResponsePhaseRuleEngineRequest instantiates a new PatchedEdgeApplicationResponsePhaseRuleEngineRequest object

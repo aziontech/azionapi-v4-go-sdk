@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **Criteria** | [**[][]EdgeApplicationCriterionField**]([]EdgeApplicationCriterionField.md) |  | 
 **Behaviors** | [**[]EdgeApplicationRuleEngineRequestPhaseBehaviors**](EdgeApplicationRuleEngineRequestPhaseBehaviors.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Order** | **int64** |  | [readonly] 
-**LastEditor** | **NullableString** |  | [readonly] 
-**LastModified** | **NullableTime** |  | [readonly] 
+**Order** | **int64** |  | 
+**LastEditor** | **NullableString** |  | 
+**LastModified** | **NullableTime** |  | 
 
 ## Methods
 

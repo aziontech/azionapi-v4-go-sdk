@@ -23,17 +23,17 @@ var _ MappedNullable = &EdgeFunctions{}
 // EdgeFunctions struct for EdgeFunctions
 type EdgeFunctions struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	Name string `json:"name"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
-	ProductVersion string `json:"product_version" validate:"regexp=.*"`
+	ProductVersion string `json:"product_version"`
 	Active *bool `json:"active,omitempty"`
 	// * `azion_js` - Azion JavaScript
 	Runtime *string `json:"runtime,omitempty"`
 	// * `firewall` - Firewall * `application` - Application
 	ExecutionEnvironment *string `json:"execution_environment,omitempty"`
 	// String containing the function code. Maximum size: 20MB.
-	Code string `json:"code" validate:"regexp=.*"`
+	Code string `json:"code"`
 	DefaultArgs interface{} `json:"default_args,omitempty"`
 	ReferenceCount int64 `json:"reference_count"`
 	// Installed version, which may not be the latest if the vendor has released updates since installation.

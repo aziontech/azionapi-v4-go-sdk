@@ -21,7 +21,7 @@ var _ MappedNullable = &PageConnector{}
 
 // PageConnector struct for PageConnector
 type PageConnector struct {
-	Type *string `json:"type,omitempty" validate:"regexp=.*"`
+	Type *string `json:"type,omitempty"`
 	Attributes PageConnectorAttributes `json:"attributes"`
 }
 

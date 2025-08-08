@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedWorkloadRequest{}
 
 // PatchedWorkloadRequest struct for PatchedWorkloadRequest
 type PatchedWorkloadRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	// * `1` - Production Infrastructure (All Edge Locations) * `2` - Staging Infrastructure
 	Infrastructure *int64 `json:"infrastructure,omitempty"`

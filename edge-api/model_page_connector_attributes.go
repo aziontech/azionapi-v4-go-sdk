@@ -23,7 +23,7 @@ var _ MappedNullable = &PageConnectorAttributes{}
 type PageConnectorAttributes struct {
 	Connector int64 `json:"connector"`
 	Ttl *int64 `json:"ttl,omitempty"`
-	Uri NullableString `json:"uri,omitempty" validate:"regexp=^\\/[\\/a-zA-Z0-9\\\\-_\\\\.\\\\~@:]*$"`
+	Uri NullableString `json:"uri,omitempty"`
 	CustomStatusCode NullableInt64 `json:"custom_status_code,omitempty"`
 }
 

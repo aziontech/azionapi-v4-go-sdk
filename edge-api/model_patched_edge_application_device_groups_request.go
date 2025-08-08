@@ -19,9 +19,9 @@ var _ MappedNullable = &PatchedEdgeApplicationDeviceGroupsRequest{}
 
 // PatchedEdgeApplicationDeviceGroupsRequest struct for PatchedEdgeApplicationDeviceGroupsRequest
 type PatchedEdgeApplicationDeviceGroupsRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	// Enter a valid regular expression pattern to identify user agents.
-	UserAgent *string `json:"user_agent,omitempty" validate:"regexp=.*"`
+	UserAgent *string `json:"user_agent,omitempty"`
 }
 
 // NewPatchedEdgeApplicationDeviceGroupsRequest instantiates a new PatchedEdgeApplicationDeviceGroupsRequest object

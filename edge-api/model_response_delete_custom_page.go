@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseDeleteCustomPage{}
 
 // ResponseDeleteCustomPage struct for ResponseDeleteCustomPage
 type ResponseDeleteCustomPage struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseDeleteCustomPage instantiates a new ResponseDeleteCustomPage object

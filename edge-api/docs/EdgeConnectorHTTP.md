@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** |  | [readonly] 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
-**ProductVersion** | **string** |  | [readonly] 
+**ProductVersion** | **string** |  | 
 **Type** | **string** | Type of the edge connector  * &#x60;http&#x60; - HTTP * &#x60;edge_storage&#x60; - Edge Storage * &#x60;live_ingest&#x60; - Live Ingest | 
 **Attributes** | [**EdgeConnectorHTTPAttributes**](EdgeConnectorHTTPAttributes.md) |  | 
 

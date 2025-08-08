@@ -23,11 +23,11 @@ var _ MappedNullable = &WorkloadDeployment{}
 // WorkloadDeployment struct for WorkloadDeployment
 type WorkloadDeployment struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Current *bool `json:"current,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Strategy DeploymentStrategyDefaultDeploymentStrategy `json:"strategy"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 }
 

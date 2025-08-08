@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Behavior** | **string** | * &#x60;override&#x60; - override | [readonly] 
-**MaxAge** | **int64** |  | [readonly] 
+**Behavior** | **string** | * &#x60;override&#x60; - override | 
+**MaxAge** | **int64** |  | 
 **Topology** | Pointer to **string** | * &#x60;near-edge&#x60; - near-edge * &#x60;br-east-1&#x60; - br-east-1 * &#x60;us-east-1&#x60; - us-east-1 | [optional] 
 
 ## Methods

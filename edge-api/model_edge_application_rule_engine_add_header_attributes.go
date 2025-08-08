@@ -20,7 +20,7 @@ var _ MappedNullable = &EdgeApplicationRuleEngineAddHeaderAttributes{}
 
 // EdgeApplicationRuleEngineAddHeaderAttributes struct for EdgeApplicationRuleEngineAddHeaderAttributes
 type EdgeApplicationRuleEngineAddHeaderAttributes struct {
-	Value string `json:"value" validate:"regexp=.*"`
+	Value string `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 

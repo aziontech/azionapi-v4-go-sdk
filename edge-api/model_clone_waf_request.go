@@ -21,7 +21,7 @@ var _ MappedNullable = &CloneWAFRequest{}
 
 // CloneWAFRequest struct for CloneWAFRequest
 type CloneWAFRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 }
 
 type _CloneWAFRequest CloneWAFRequest

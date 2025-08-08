@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncWAF{}
 
 // ResponseAsyncWAF struct for ResponseAsyncWAF
 type ResponseAsyncWAF struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data WAF `json:"data"`
 }
 

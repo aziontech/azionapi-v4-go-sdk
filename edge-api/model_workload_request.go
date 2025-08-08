@@ -21,7 +21,7 @@ var _ MappedNullable = &WorkloadRequest{}
 
 // WorkloadRequest struct for WorkloadRequest
 type WorkloadRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
 	// * `1` - Production Infrastructure (All Edge Locations) * `2` - Staging Infrastructure
 	Infrastructure *int64 `json:"infrastructure,omitempty"`

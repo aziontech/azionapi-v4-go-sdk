@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncCustomPage{}
 
 // ResponseAsyncCustomPage struct for ResponseAsyncCustomPage
 type ResponseAsyncCustomPage struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data CustomPage `json:"data"`
 }
 

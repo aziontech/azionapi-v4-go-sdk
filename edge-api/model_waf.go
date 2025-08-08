@@ -24,10 +24,10 @@ var _ MappedNullable = &WAF{}
 type WAF struct {
 	Id int64 `json:"id"`
 	Active *bool `json:"active,omitempty"`
-	Name string `json:"name" validate:"regexp=.*"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	Name string `json:"name"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
-	ProductVersion NullableString `json:"product_version,omitempty" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	ProductVersion NullableString `json:"product_version,omitempty"`
 	EngineSettings *WAFEngineSettingsField `json:"engine_settings,omitempty"`
 }
 

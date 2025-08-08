@@ -21,14 +21,14 @@ var _ MappedNullable = &EdgeFunctionsRequest{}
 
 // EdgeFunctionsRequest struct for EdgeFunctionsRequest
 type EdgeFunctionsRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
 	// * `azion_js` - Azion JavaScript
 	Runtime *string `json:"runtime,omitempty"`
 	// * `firewall` - Firewall * `application` - Application
 	ExecutionEnvironment *string `json:"execution_environment,omitempty"`
 	// String containing the function code. Maximum size: 20MB.
-	Code string `json:"code" validate:"regexp=.*"`
+	Code string `json:"code"`
 	DefaultArgs interface{} `json:"default_args,omitempty"`
 }
 

@@ -21,7 +21,7 @@ var _ MappedNullable = &EdgeApllicationRuleEngineRewriteRequestAttributesRequest
 
 // EdgeApllicationRuleEngineRewriteRequestAttributesRequest struct for EdgeApllicationRuleEngineRewriteRequestAttributesRequest
 type EdgeApllicationRuleEngineRewriteRequestAttributesRequest struct {
-	Value string `json:"value" validate:"regexp=.*"`
+	Value string `json:"value"`
 }
 
 type _EdgeApllicationRuleEngineRewriteRequestAttributesRequest EdgeApllicationRuleEngineRewriteRequestAttributesRequest
