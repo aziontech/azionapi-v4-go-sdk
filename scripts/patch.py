@@ -1,5 +1,4 @@
 import sys
-sys.path.append('/Users/pablo.diehl/Workspace/azionapi-v4-go-sdk/scripts/env/lib/python3.9/site-packages')
 import yaml
 
 def infer_type_from_enum(enum_values):
