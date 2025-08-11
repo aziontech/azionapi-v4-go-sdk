@@ -21,10 +21,10 @@ var _ MappedNullable = &AWS4HMACAttributesRequest{}
 
 // AWS4HMACAttributesRequest struct for AWS4HMACAttributesRequest
 type AWS4HMACAttributesRequest struct {
-	Region string `json:"region" validate:"regexp=.*"`
-	Service *string `json:"service,omitempty" validate:"regexp=.*"`
-	AccessKey string `json:"access_key" validate:"regexp=.*"`
-	SecretKey string `json:"secret_key" validate:"regexp=.*"`
+	Region string `json:"region"`
+	Service *string `json:"service,omitempty"`
+	AccessKey string `json:"access_key"`
+	SecretKey string `json:"secret_key"`
 }
 
 type _AWS4HMACAttributesRequest AWS4HMACAttributesRequest

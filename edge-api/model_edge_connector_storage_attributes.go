@@ -21,8 +21,8 @@ var _ MappedNullable = &EdgeConnectorStorageAttributes{}
 
 // EdgeConnectorStorageAttributes struct for EdgeConnectorStorageAttributes
 type EdgeConnectorStorageAttributes struct {
-	Bucket string `json:"bucket" validate:"regexp=.*"`
-	Prefix *string `json:"prefix,omitempty" validate:"regexp=.*"`
+	Bucket string `json:"bucket"`
+	Prefix *string `json:"prefix,omitempty"`
 }
 
 type _EdgeConnectorStorageAttributes EdgeConnectorStorageAttributes

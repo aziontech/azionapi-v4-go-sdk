@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncCacheSetting{}
 
 // ResponseAsyncCacheSetting struct for ResponseAsyncCacheSetting
 type ResponseAsyncCacheSetting struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data CacheSetting `json:"data"`
 }
 

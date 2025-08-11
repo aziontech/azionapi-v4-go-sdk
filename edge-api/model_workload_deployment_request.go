@@ -21,7 +21,7 @@ var _ MappedNullable = &WorkloadDeploymentRequest{}
 
 // WorkloadDeploymentRequest struct for WorkloadDeploymentRequest
 type WorkloadDeploymentRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Current *bool `json:"current,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Strategy DeploymentStrategyDefaultDeploymentStrategyRequest `json:"strategy"`

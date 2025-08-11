@@ -21,8 +21,8 @@ var _ MappedNullable = &EdgeFirewallBehaviorSetCustomResponseAttributesRequest{}
 // EdgeFirewallBehaviorSetCustomResponseAttributesRequest struct for EdgeFirewallBehaviorSetCustomResponseAttributesRequest
 type EdgeFirewallBehaviorSetCustomResponseAttributesRequest struct {
 	StatusCode int64 `json:"status_code"`
-	ContentType *string `json:"content_type,omitempty" validate:"regexp=.*"`
-	ContentBody *string `json:"content_body,omitempty" validate:"regexp=.*"`
+	ContentType *string `json:"content_type,omitempty"`
+	ContentBody *string `json:"content_body,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 

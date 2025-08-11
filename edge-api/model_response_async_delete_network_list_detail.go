@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteNetworkListDetail{}
 
 // ResponseAsyncDeleteNetworkListDetail struct for ResponseAsyncDeleteNetworkListDetail
 type ResponseAsyncDeleteNetworkListDetail struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteNetworkListDetail instantiates a new ResponseAsyncDeleteNetworkListDetail object

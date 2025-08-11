@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncEdgeApplicationDeviceGroups{}
 
 // ResponseAsyncEdgeApplicationDeviceGroups struct for ResponseAsyncEdgeApplicationDeviceGroups
 type ResponseAsyncEdgeApplicationDeviceGroups struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data EdgeApplicationDeviceGroups `json:"data"`
 }
 

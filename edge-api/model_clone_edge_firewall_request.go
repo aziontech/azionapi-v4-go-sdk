@@ -21,7 +21,7 @@ var _ MappedNullable = &CloneEdgeFirewallRequest{}
 
 // CloneEdgeFirewallRequest struct for CloneEdgeFirewallRequest
 type CloneEdgeFirewallRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 }
 
 type _CloneEdgeFirewallRequest CloneEdgeFirewallRequest

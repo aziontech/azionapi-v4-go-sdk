@@ -23,13 +23,13 @@ var _ MappedNullable = &EdgeApplicationResponsePhaseRuleEngine{}
 // EdgeApplicationResponsePhaseRuleEngine struct for EdgeApplicationResponsePhaseRuleEngine
 type EdgeApplicationResponsePhaseRuleEngine struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
 	Criteria [][]EdgeApplicationCriterionField `json:"criteria"`
 	Behaviors []EdgeApplicationRuleEngineResponsePhaseBehaviors `json:"behaviors"`
-	Description *string `json:"description,omitempty" validate:"regexp=.*"`
+	Description *string `json:"description,omitempty"`
 	Order int64 `json:"order"`
-	LastEditor NullableString `json:"last_editor" validate:"regexp=.*"`
+	LastEditor NullableString `json:"last_editor"`
 	LastModified NullableTime `json:"last_modified"`
 }
 

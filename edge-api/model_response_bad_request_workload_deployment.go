@@ -26,7 +26,7 @@ type ResponseBadRequestWorkloadDeployment struct {
 	LastModified []string `json:"last_modified,omitempty"`
 	Strategy *ResponseBadRequestSerializerMetaclassStrategyField `json:"strategy,omitempty"`
 	Current []string `json:"current,omitempty"`
-	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 // NewResponseBadRequestWorkloadDeployment instantiates a new ResponseBadRequestWorkloadDeployment object

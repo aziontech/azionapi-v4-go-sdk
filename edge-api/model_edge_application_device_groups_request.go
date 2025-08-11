@@ -21,9 +21,9 @@ var _ MappedNullable = &EdgeApplicationDeviceGroupsRequest{}
 
 // EdgeApplicationDeviceGroupsRequest struct for EdgeApplicationDeviceGroupsRequest
 type EdgeApplicationDeviceGroupsRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	// Enter a valid regular expression pattern to identify user agents.
-	UserAgent string `json:"user_agent" validate:"regexp=.*"`
+	UserAgent string `json:"user_agent"`
 }
 
 type _EdgeApplicationDeviceGroupsRequest EdgeApplicationDeviceGroupsRequest

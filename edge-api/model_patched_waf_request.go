@@ -20,8 +20,8 @@ var _ MappedNullable = &PatchedWAFRequest{}
 // PatchedWAFRequest struct for PatchedWAFRequest
 type PatchedWAFRequest struct {
 	Active *bool `json:"active,omitempty"`
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
-	ProductVersion NullableString `json:"product_version,omitempty" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	Name *string `json:"name,omitempty"`
+	ProductVersion NullableString `json:"product_version,omitempty"`
 	EngineSettings *WAFEngineSettingsFieldRequest `json:"engine_settings,omitempty"`
 }
 

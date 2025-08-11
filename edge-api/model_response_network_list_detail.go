@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseNetworkListDetail{}
 
 // ResponseNetworkListDetail struct for ResponseNetworkListDetail
 type ResponseNetworkListDetail struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data NetworkListDetail `json:"data"`
 }
 

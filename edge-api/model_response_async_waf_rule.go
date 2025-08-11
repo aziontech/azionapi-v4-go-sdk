@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncWAFRule{}
 
 // ResponseAsyncWAFRule struct for ResponseAsyncWAFRule
 type ResponseAsyncWAFRule struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data WAFRule `json:"data"`
 }
 

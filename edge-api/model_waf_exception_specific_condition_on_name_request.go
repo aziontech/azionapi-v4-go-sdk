@@ -23,7 +23,7 @@ var _ MappedNullable = &WAFExceptionSpecificConditionOnNameRequest{}
 type WAFExceptionSpecificConditionOnNameRequest struct {
 	// * `specific_body_form_field_name` - specific_body_form_field_name * `specific_http_header_name` - specific_http_header_name * `specific_query_string_name` - specific_query_string_name
 	Match string `json:"match"`
-	Name string `json:"name" validate:"regexp=[a-zA-Z0-9<>?()]+"`
+	Name string `json:"name"`
 }
 
 type _WAFExceptionSpecificConditionOnNameRequest WAFExceptionSpecificConditionOnNameRequest

@@ -23,13 +23,13 @@ var _ MappedNullable = &EdgeFirewall{}
 // EdgeFirewall struct for EdgeFirewall
 type EdgeFirewall struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Modules *EdgeFirewallModules `json:"modules,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
 	Active *bool `json:"active,omitempty"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
-	ProductVersion string `json:"product_version" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	ProductVersion string `json:"product_version"`
 }
 
 type _EdgeFirewall EdgeFirewall

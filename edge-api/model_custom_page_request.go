@@ -21,7 +21,7 @@ var _ MappedNullable = &CustomPageRequest{}
 
 // CustomPageRequest struct for CustomPageRequest
 type CustomPageRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
 	Pages []PageRequest `json:"pages"`
 }

@@ -26,15 +26,15 @@ type HTTPConnectionOptions struct {
 	// Defines the HTTP version preference for outbound connections (e.g., HTTP/1.1).  * `http1_1` - HTTP/1.1
 	HttpVersionPolicy *string `json:"http_version_policy,omitempty"`
 	// Optional custom host used to override the default target hostname during connection.
-	Host *string `json:"host,omitempty" validate:"regexp=.*"`
+	Host *string `json:"host,omitempty"`
 	// Optional prefix to add to all request paths (e.g., '/v1').
-	PathPrefix *string `json:"path_prefix,omitempty" validate:"regexp=.*"`
+	PathPrefix *string `json:"path_prefix,omitempty"`
 	// If true, automatically follows HTTP redirects from the target server.
 	FollowingRedirect *bool `json:"following_redirect,omitempty"`
 	// Header name used to forward the original client IP address.
-	RealIpHeader *string `json:"real_ip_header,omitempty" validate:"regexp=.*"`
+	RealIpHeader *string `json:"real_ip_header,omitempty"`
 	// Header name used to forward the original client port.
-	RealPortHeader *string `json:"real_port_header,omitempty" validate:"regexp=.*"`
+	RealPortHeader *string `json:"real_port_header,omitempty"`
 }
 
 // NewHTTPConnectionOptions instantiates a new HTTPConnectionOptions object

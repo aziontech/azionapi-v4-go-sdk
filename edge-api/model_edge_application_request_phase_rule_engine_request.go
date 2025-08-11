@@ -21,11 +21,11 @@ var _ MappedNullable = &EdgeApplicationRequestPhaseRuleEngineRequest{}
 
 // EdgeApplicationRequestPhaseRuleEngineRequest struct for EdgeApplicationRequestPhaseRuleEngineRequest
 type EdgeApplicationRequestPhaseRuleEngineRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
 	Criteria [][]EdgeApplicationCriterionFieldRequest `json:"criteria"`
 	Behaviors []EdgeApplicationRuleEngineRequestPhaseBehaviorsRequest `json:"behaviors"`
-	Description *string `json:"description,omitempty" validate:"regexp=.*"`
+	Description *string `json:"description,omitempty"`
 }
 
 type _EdgeApplicationRequestPhaseRuleEngineRequest EdgeApplicationRequestPhaseRuleEngineRequest

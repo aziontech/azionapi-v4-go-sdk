@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseDeleteEdgeApplicationFunctionInstance{}
 
 // ResponseDeleteEdgeApplicationFunctionInstance struct for ResponseDeleteEdgeApplicationFunctionInstance
 type ResponseDeleteEdgeApplicationFunctionInstance struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseDeleteEdgeApplicationFunctionInstance instantiates a new ResponseDeleteEdgeApplicationFunctionInstance object

@@ -23,13 +23,13 @@ var _ MappedNullable = &EdgeFirewallRuleEngine{}
 // EdgeFirewallRuleEngine struct for EdgeFirewallRuleEngine
 type EdgeFirewallRuleEngine struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	Name string `json:"name"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 	Active *bool `json:"active,omitempty"`
 	Criteria [][]EdgeFirewallCriterionField `json:"criteria"`
 	Behaviors []EdgeFirewallBehaviors `json:"behaviors"`
-	Description *string `json:"description,omitempty" validate:"regexp=.*"`
+	Description *string `json:"description,omitempty"`
 	Order int64 `json:"order"`
 }
 

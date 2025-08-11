@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DdosProtection** | [**EdgeFirewallModule**](EdgeFirewallModule.md) |  | [readonly] 
+**DdosProtection** | [**EdgeFirewallModule**](EdgeFirewallModule.md) |  | 
 **EdgeFunctions** | Pointer to [**EdgeFirewallModule**](EdgeFirewallModule.md) |  | [optional] 
 **NetworkProtection** | Pointer to [**EdgeFirewallModule**](EdgeFirewallModule.md) |  | [optional] 
 **Waf** | Pointer to [**EdgeFirewallModule**](EdgeFirewallModule.md) |  | [optional] 

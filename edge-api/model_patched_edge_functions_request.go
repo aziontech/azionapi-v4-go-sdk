@@ -19,14 +19,14 @@ var _ MappedNullable = &PatchedEdgeFunctionsRequest{}
 
 // PatchedEdgeFunctionsRequest struct for PatchedEdgeFunctionsRequest
 type PatchedEdgeFunctionsRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	// * `azion_js` - Azion JavaScript
 	Runtime *string `json:"runtime,omitempty"`
 	// * `firewall` - Firewall * `application` - Application
 	ExecutionEnvironment *string `json:"execution_environment,omitempty"`
 	// String containing the function code. Maximum size: 20MB.
-	Code *string `json:"code,omitempty" validate:"regexp=.*"`
+	Code *string `json:"code,omitempty"`
 	DefaultArgs interface{} `json:"default_args,omitempty"`
 }
 

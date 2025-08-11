@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedEdgeApplicationRequest{}
 
 // PatchedEdgeApplicationRequest struct for PatchedEdgeApplicationRequest
 type PatchedEdgeApplicationRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Modules *EdgeApplicationModulesRequest `json:"modules,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Debug *bool `json:"debug,omitempty"`

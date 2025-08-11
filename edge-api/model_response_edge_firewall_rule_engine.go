@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseEdgeFirewallRuleEngine{}
 
 // ResponseEdgeFirewallRuleEngine struct for ResponseEdgeFirewallRuleEngine
 type ResponseEdgeFirewallRuleEngine struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data EdgeFirewallRuleEngine `json:"data"`
 }
 

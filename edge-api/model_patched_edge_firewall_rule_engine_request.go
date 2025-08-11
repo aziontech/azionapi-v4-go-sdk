@@ -19,11 +19,11 @@ var _ MappedNullable = &PatchedEdgeFirewallRuleEngineRequest{}
 
 // PatchedEdgeFirewallRuleEngineRequest struct for PatchedEdgeFirewallRuleEngineRequest
 type PatchedEdgeFirewallRuleEngineRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Criteria [][]EdgeFirewallCriterionFieldRequest `json:"criteria,omitempty"`
 	Behaviors []EdgeFirewallBehaviorsRequest `json:"behaviors,omitempty"`
-	Description *string `json:"description,omitempty" validate:"regexp=.*"`
+	Description *string `json:"description,omitempty"`
 }
 
 // NewPatchedEdgeFirewallRuleEngineRequest instantiates a new PatchedEdgeFirewallRuleEngineRequest object

@@ -20,9 +20,9 @@ var _ MappedNullable = &EdgeApplicationRuleEngineCaptureMatchGroupsAttributes{}
 
 // EdgeApplicationRuleEngineCaptureMatchGroupsAttributes struct for EdgeApplicationRuleEngineCaptureMatchGroupsAttributes
 type EdgeApplicationRuleEngineCaptureMatchGroupsAttributes struct {
-	Subject string `json:"subject" validate:"regexp=.*"`
-	Regex string `json:"regex" validate:"regexp=.*"`
-	CapturedArray string `json:"captured_array" validate:"regexp=.*"`
+	Subject string `json:"subject"`
+	Regex string `json:"regex"`
+	CapturedArray string `json:"captured_array"`
 	AdditionalProperties map[string]interface{}
 }
 

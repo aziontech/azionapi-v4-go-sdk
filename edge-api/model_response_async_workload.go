@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncWorkload{}
 
 // ResponseAsyncWorkload struct for ResponseAsyncWorkload
 type ResponseAsyncWorkload struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data Workload `json:"data"`
 }
 

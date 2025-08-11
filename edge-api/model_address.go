@@ -24,7 +24,7 @@ type Address struct {
 	// Indicates if the address is active for use
 	Active *bool `json:"active,omitempty"`
 	// IPv4/IPv6 address or CNAME to resolve
-	Address string `json:"address" validate:"regexp=.*"`
+	Address string `json:"address"`
 	// Port number for HTTP connections
 	HttpPort *int64 `json:"http_port,omitempty"`
 	// Port number for HTTPS connections

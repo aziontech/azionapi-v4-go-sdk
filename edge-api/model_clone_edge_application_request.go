@@ -21,7 +21,7 @@ var _ MappedNullable = &CloneEdgeApplicationRequest{}
 
 // CloneEdgeApplicationRequest struct for CloneEdgeApplicationRequest
 type CloneEdgeApplicationRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 }
 
 type _CloneEdgeApplicationRequest CloneEdgeApplicationRequest

@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedCacheSettingRequest{}
 
 // PatchedCacheSettingRequest struct for PatchedCacheSettingRequest
 type PatchedCacheSettingRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=^[a-zA-Z0-9 \\\\-\\\\.\\\\'\\\\,|]+$"`
+	Name *string `json:"name,omitempty"`
 	BrowserCache *BrowserCacheModuleRequest `json:"browser_cache,omitempty"`
 	Modules *CacheSettingsModulesRequest `json:"modules,omitempty"`
 }

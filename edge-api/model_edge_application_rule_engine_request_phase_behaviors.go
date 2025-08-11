@@ -18,101 +18,21 @@ import (
 
 // EdgeApplicationRuleEngineRequestPhaseBehaviors - struct for EdgeApplicationRuleEngineRequestPhaseBehaviors
 type EdgeApplicationRuleEngineRequestPhaseBehaviors struct {
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin
-	EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString
+	EdgeApplicationRequestPhaseBehaviorWithArgs *EdgeApplicationRequestPhaseBehaviorWithArgs
+	EdgeApplicationRequestPhaseBehaviorWithoutArgs *EdgeApplicationRequestPhaseBehaviorWithoutArgs
 }
 
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeaderAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeaderAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader) EdgeApplicationRuleEngineRequestPhaseBehaviors {
+// EdgeApplicationRequestPhaseBehaviorWithArgsAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRequestPhaseBehaviorWithArgs wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
+func EdgeApplicationRequestPhaseBehaviorWithArgsAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRequestPhaseBehaviorWithArgs) EdgeApplicationRuleEngineRequestPhaseBehaviors {
 	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader: v,
+		EdgeApplicationRequestPhaseBehaviorWithArgs: v,
 	}
 }
 
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookieAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookieAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie) EdgeApplicationRuleEngineRequestPhaseBehaviors {
+// EdgeApplicationRequestPhaseBehaviorWithoutArgsAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRequestPhaseBehaviorWithoutArgs wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
+func EdgeApplicationRequestPhaseBehaviorWithoutArgsAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRequestPhaseBehaviorWithoutArgs) EdgeApplicationRuleEngineRequestPhaseBehaviors {
 	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroupsAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeaderAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeaderAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookieAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookieAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgsAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequestAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequestAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunctionAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunctionAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicyAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicyAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnectorAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnectorAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOriginAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOriginAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin: v,
-	}
-}
-
-// EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineStringAsEdgeApplicationRuleEngineRequestPhaseBehaviors is a convenience function that returns EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString wrapped in EdgeApplicationRuleEngineRequestPhaseBehaviors
-func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineStringAsEdgeApplicationRuleEngineRequestPhaseBehaviors(v *EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString) EdgeApplicationRuleEngineRequestPhaseBehaviors {
-	return EdgeApplicationRuleEngineRequestPhaseBehaviors{
-		EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString: v,
+		EdgeApplicationRequestPhaseBehaviorWithoutArgs: v,
 	}
 }
 
@@ -121,224 +41,44 @@ func EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineStri
 func (dst *EdgeApplicationRuleEngineRequestPhaseBehaviors) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader)
+	// try to unmarshal data into EdgeApplicationRequestPhaseBehaviorWithArgs
+	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRequestPhaseBehaviorWithArgs)
 	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader = nil
+		jsonEdgeApplicationRequestPhaseBehaviorWithArgs, _ := json.Marshal(dst.EdgeApplicationRequestPhaseBehaviorWithArgs)
+		if string(jsonEdgeApplicationRequestPhaseBehaviorWithArgs) == "{}" { // empty struct
+			dst.EdgeApplicationRequestPhaseBehaviorWithArgs = nil
 		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader = nil
+			if err = validator.Validate(dst.EdgeApplicationRequestPhaseBehaviorWithArgs); err != nil {
+				dst.EdgeApplicationRequestPhaseBehaviorWithArgs = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader = nil
+		dst.EdgeApplicationRequestPhaseBehaviorWithArgs = nil
 	}
 
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie)
+	// try to unmarshal data into EdgeApplicationRequestPhaseBehaviorWithoutArgs
+	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRequestPhaseBehaviorWithoutArgs)
 	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie = nil
+		jsonEdgeApplicationRequestPhaseBehaviorWithoutArgs, _ := json.Marshal(dst.EdgeApplicationRequestPhaseBehaviorWithoutArgs)
+		if string(jsonEdgeApplicationRequestPhaseBehaviorWithoutArgs) == "{}" { // empty struct
+			dst.EdgeApplicationRequestPhaseBehaviorWithoutArgs = nil
 		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie = nil
+			if err = validator.Validate(dst.EdgeApplicationRequestPhaseBehaviorWithoutArgs); err != nil {
+				dst.EdgeApplicationRequestPhaseBehaviorWithoutArgs = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin = nil
-	}
-
-	// try to unmarshal data into EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString
-	err = newStrictDecoder(data).Decode(&dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString)
-	if err == nil {
-		jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString, _ := json.Marshal(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString)
-		if string(jsonEdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString) == "{}" { // empty struct
-			dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString = nil
-		} else {
-			if err = validator.Validate(dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString); err != nil {
-				dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString = nil
+		dst.EdgeApplicationRequestPhaseBehaviorWithoutArgs = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin = nil
-		dst.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString = nil
+		dst.EdgeApplicationRequestPhaseBehaviorWithArgs = nil
+		dst.EdgeApplicationRequestPhaseBehaviorWithoutArgs = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(EdgeApplicationRuleEngineRequestPhaseBehaviors)")
 	} else if match == 1 {
@@ -350,52 +90,12 @@ func (dst *EdgeApplicationRuleEngineRequestPhaseBehaviors) UnmarshalJSON(data []
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src EdgeApplicationRuleEngineRequestPhaseBehaviors) MarshalJSON() ([]byte, error) {
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader)
+	if src.EdgeApplicationRequestPhaseBehaviorWithArgs != nil {
+		return json.Marshal(&src.EdgeApplicationRequestPhaseBehaviorWithArgs)
 	}
 
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin)
-	}
-
-	if src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString != nil {
-		return json.Marshal(&src.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString)
+	if src.EdgeApplicationRequestPhaseBehaviorWithoutArgs != nil {
+		return json.Marshal(&src.EdgeApplicationRequestPhaseBehaviorWithoutArgs)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -406,52 +106,12 @@ func (obj *EdgeApplicationRuleEngineRequestPhaseBehaviors) GetActualInstance() (
 	if obj == nil {
 		return nil
 	}
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader
+	if obj.EdgeApplicationRequestPhaseBehaviorWithArgs != nil {
+		return obj.EdgeApplicationRequestPhaseBehaviorWithArgs
 	}
 
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString != nil {
-		return obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString
+	if obj.EdgeApplicationRequestPhaseBehaviorWithoutArgs != nil {
+		return obj.EdgeApplicationRequestPhaseBehaviorWithoutArgs
 	}
 
 	// all schemas are nil
@@ -460,52 +120,12 @@ func (obj *EdgeApplicationRuleEngineRequestPhaseBehaviors) GetActualInstance() (
 
 // Get the actual instance value
 func (obj EdgeApplicationRuleEngineRequestPhaseBehaviors) GetActualInstanceValue() (interface{}) {
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddHeader
+	if obj.EdgeApplicationRequestPhaseBehaviorWithArgs != nil {
+		return *obj.EdgeApplicationRequestPhaseBehaviorWithArgs
 	}
 
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineAddRequestCookie
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineCaptureMatchGroups
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterHeader
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineFilterRequestCookie
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineNoArgs
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRewriteRequest
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineRunFunction
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetCachePolicy
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetConnector
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineSetOrigin
-	}
-
-	if obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString != nil {
-		return *obj.EdgeApplicationRuleEngineRequestPhaseBehaviorsEdgeApplicationRuleEngineString
+	if obj.EdgeApplicationRequestPhaseBehaviorWithoutArgs != nil {
+		return *obj.EdgeApplicationRequestPhaseBehaviorWithoutArgs
 	}
 
 	// all schemas are nil

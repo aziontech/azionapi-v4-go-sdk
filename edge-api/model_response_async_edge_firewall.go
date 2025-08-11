@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncEdgeFirewall{}
 
 // ResponseAsyncEdgeFirewall struct for ResponseAsyncEdgeFirewall
 type ResponseAsyncEdgeFirewall struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data EdgeFirewall `json:"data"`
 }
 

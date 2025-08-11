@@ -20,7 +20,7 @@ var _ MappedNullable = &EdgeApplicationRuleEngineResponsePhaseBehaviorsShared{}
 
 // EdgeApplicationRuleEngineResponsePhaseBehaviorsShared Polymorphic serializer base class.  Note that the discriminator field must exist at the same depth as the mapped serializer fields for the OpenAPI introspection. See https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/ for more information. As such, it's not possible to define something like:  {     \"object_type\": \"foo\",     \"polymorphic_context\": {         <foo-specific fields>     } }  without explicitly wrapping this in a parent serializer, i.e. - ``polymorphic_context`` can not be a PolymorphicSerializer itself, as it requires access to the ``object_type`` in the parent scope.
 type EdgeApplicationRuleEngineResponsePhaseBehaviorsShared struct {
-	Type string `json:"type" validate:"regexp=.*"`
+	Type string `json:"type"`
 	AdditionalProperties map[string]interface{}
 }
 

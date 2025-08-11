@@ -22,9 +22,9 @@ var _ MappedNullable = &EdgeApplicationDeviceGroups{}
 // EdgeApplicationDeviceGroups struct for EdgeApplicationDeviceGroups
 type EdgeApplicationDeviceGroups struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	// Enter a valid regular expression pattern to identify user agents.
-	UserAgent string `json:"user_agent" validate:"regexp=.*"`
+	UserAgent string `json:"user_agent"`
 }
 
 type _EdgeApplicationDeviceGroups EdgeApplicationDeviceGroups

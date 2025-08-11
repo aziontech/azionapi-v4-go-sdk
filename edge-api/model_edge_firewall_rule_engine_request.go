@@ -21,11 +21,11 @@ var _ MappedNullable = &EdgeFirewallRuleEngineRequest{}
 
 // EdgeFirewallRuleEngineRequest struct for EdgeFirewallRuleEngineRequest
 type EdgeFirewallRuleEngineRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
 	Criteria [][]EdgeFirewallCriterionFieldRequest `json:"criteria"`
 	Behaviors []EdgeFirewallBehaviorsRequest `json:"behaviors"`
-	Description *string `json:"description,omitempty" validate:"regexp=.*"`
+	Description *string `json:"description,omitempty"`
 }
 
 type _EdgeFirewallRuleEngineRequest EdgeFirewallRuleEngineRequest

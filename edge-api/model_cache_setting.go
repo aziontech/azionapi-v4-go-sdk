@@ -22,7 +22,7 @@ var _ MappedNullable = &CacheSetting{}
 // CacheSetting struct for CacheSetting
 type CacheSetting struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=^[a-zA-Z0-9 \\\\-\\\\.\\\\'\\\\,|]+$"`
+	Name string `json:"name"`
 	BrowserCache *BrowserCacheModule `json:"browser_cache,omitempty"`
 	Modules *CacheSettingsModules `json:"modules,omitempty"`
 }

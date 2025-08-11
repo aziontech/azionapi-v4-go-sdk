@@ -23,11 +23,11 @@ var _ MappedNullable = &EdgeApplicationFunctionInstance{}
 // EdgeApplicationFunctionInstance Serializer for Edge Application Function Instances
 type EdgeApplicationFunctionInstance struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Args *EdgeApplicationFunctionInstanceArgs `json:"args,omitempty"`
 	EdgeFunction int64 `json:"edge_function"`
 	Active *bool `json:"active,omitempty"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 }
 

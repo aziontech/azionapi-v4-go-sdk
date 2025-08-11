@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteWAF{}
 
 // ResponseAsyncDeleteWAF struct for ResponseAsyncDeleteWAF
 type ResponseAsyncDeleteWAF struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteWAF instantiates a new ResponseAsyncDeleteWAF object

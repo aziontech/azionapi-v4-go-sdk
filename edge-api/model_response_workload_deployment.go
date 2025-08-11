@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseWorkloadDeployment{}
 
 // ResponseWorkloadDeployment struct for ResponseWorkloadDeployment
 type ResponseWorkloadDeployment struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data WorkloadDeployment `json:"data"`
 }
 

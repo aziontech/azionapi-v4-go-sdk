@@ -23,11 +23,11 @@ var _ MappedNullable = &CustomPage{}
 // CustomPage struct for CustomPage
 type CustomPage struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	Name string `json:"name"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 	Active *bool `json:"active,omitempty"`
-	ProductVersion string `json:"product_version" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	ProductVersion string `json:"product_version"`
 	Pages []Page `json:"pages"`
 }
 

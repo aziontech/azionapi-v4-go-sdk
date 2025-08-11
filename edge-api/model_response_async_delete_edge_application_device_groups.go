@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteEdgeApplicationDeviceGroups{}
 
 // ResponseAsyncDeleteEdgeApplicationDeviceGroups struct for ResponseAsyncDeleteEdgeApplicationDeviceGroups
 type ResponseAsyncDeleteEdgeApplicationDeviceGroups struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteEdgeApplicationDeviceGroups instantiates a new ResponseAsyncDeleteEdgeApplicationDeviceGroups object

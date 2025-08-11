@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | * &#x60;capture_match_groups&#x60; - capture_match_groups | 
-**Attributes** | [**EdgeApplicationRuleEngineCaptureMatchGroupsAttributes**](EdgeApplicationRuleEngineCaptureMatchGroupsAttributes.md) |  | 
+**Type** | **string** | * &#x60;redirect_to_301&#x60; - redirect_to_301 * &#x60;redirect_to_302&#x60; - redirect_to_302 | 
+**Attributes** | [**EdgeApplicationRuleEngineStringAttributes**](EdgeApplicationRuleEngineStringAttributes.md) |  | 
 
 ## Methods
 
 ### NewEdgeApplicationRuleEngineResponsePhaseBehaviors
 
-`func NewEdgeApplicationRuleEngineResponsePhaseBehaviors(type_ string, attributes EdgeApplicationRuleEngineCaptureMatchGroupsAttributes, ) *EdgeApplicationRuleEngineResponsePhaseBehaviors`
+`func NewEdgeApplicationRuleEngineResponsePhaseBehaviors(type_ string, attributes EdgeApplicationRuleEngineStringAttributes, ) *EdgeApplicationRuleEngineResponsePhaseBehaviors`
 
 NewEdgeApplicationRuleEngineResponsePhaseBehaviors instantiates a new EdgeApplicationRuleEngineResponsePhaseBehaviors object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetType sets Type field to given value.
 
 ### GetAttributes
 
-`func (o *EdgeApplicationRuleEngineResponsePhaseBehaviors) GetAttributes() EdgeApplicationRuleEngineCaptureMatchGroupsAttributes`
+`func (o *EdgeApplicationRuleEngineResponsePhaseBehaviors) GetAttributes() EdgeApplicationRuleEngineStringAttributes`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *EdgeApplicationRuleEngineResponsePhaseBehaviors) GetAttributesOk() (*EdgeApplicationRuleEngineCaptureMatchGroupsAttributes, bool)`
+`func (o *EdgeApplicationRuleEngineResponsePhaseBehaviors) GetAttributesOk() (*EdgeApplicationRuleEngineStringAttributes, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *EdgeApplicationRuleEngineResponsePhaseBehaviors) SetAttributes(v EdgeApplicationRuleEngineCaptureMatchGroupsAttributes)`
+`func (o *EdgeApplicationRuleEngineResponsePhaseBehaviors) SetAttributes(v EdgeApplicationRuleEngineStringAttributes)`
 
 SetAttributes sets Attributes field to given value.
 
