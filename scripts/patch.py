@@ -58,6 +58,10 @@ def process_schema(schema, parent_key="root"):
         if "json_args" in schema:
             schema["json_args"] = {}
 
+         # Overwrite args with an empty dictionary
+        if "args" in schema:
+            schema["args"] = {}
+
         # Recursively process all values
         for key, value in schema.items():
             process_schema(value, parent_key=f"{parent_key}.{key}")
