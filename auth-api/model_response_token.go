@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseToken{}
 
 // ResponseToken struct for ResponseToken
 type ResponseToken struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data Token `json:"data"`
 }
 

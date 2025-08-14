@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponseAsyncLogin{}
 // ResponseAsyncLogin struct for ResponseAsyncLogin
 type ResponseAsyncLogin struct {
 	Data LoginResponse `json:"data"`
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 type _ResponseAsyncLogin ResponseAsyncLogin

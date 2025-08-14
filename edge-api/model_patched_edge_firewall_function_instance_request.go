@@ -20,7 +20,7 @@ var _ MappedNullable = &PatchedEdgeFirewallFunctionInstanceRequest{}
 // PatchedEdgeFirewallFunctionInstanceRequest Serializer for Edge Firewall Function Instances
 type PatchedEdgeFirewallFunctionInstanceRequest struct {
 	Name *string `json:"name,omitempty"`
-	Args *EdgeApplicationFunctionInstanceArgs `json:"args,omitempty"`
+	Args interface{} `json:"args,omitempty"`
 	EdgeFunction *int64 `json:"edge_function,omitempty"`
 	Active *bool `json:"active,omitempty"`
 }
@@ -74,22 +74,23 @@ func (o *PatchedEdgeFirewallFunctionInstanceRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetArgs returns the Args field value if set, zero value otherwise.
-func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetArgs() EdgeApplicationFunctionInstanceArgs {
-	if o == nil || IsNil(o.Args) {
-		var ret EdgeApplicationFunctionInstanceArgs
+// GetArgs returns the Args field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetArgs() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
-	return *o.Args
+	return o.Args
 }
 
 // GetArgsOk returns a tuple with the Args field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetArgsOk() (*EdgeApplicationFunctionInstanceArgs, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedEdgeFirewallFunctionInstanceRequest) GetArgsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Args) {
 		return nil, false
 	}
-	return o.Args, true
+	return &o.Args, true
 }
 
 // HasArgs returns a boolean if a field has been set.
@@ -101,9 +102,9 @@ func (o *PatchedEdgeFirewallFunctionInstanceRequest) HasArgs() bool {
 	return false
 }
 
-// SetArgs gets a reference to the given EdgeApplicationFunctionInstanceArgs and assigns it to the Args field.
-func (o *PatchedEdgeFirewallFunctionInstanceRequest) SetArgs(v EdgeApplicationFunctionInstanceArgs) {
-	o.Args = &v
+// SetArgs gets a reference to the given interface{} and assigns it to the Args field.
+func (o *PatchedEdgeFirewallFunctionInstanceRequest) SetArgs(v interface{}) {
+	o.Args = v
 }
 
 // GetEdgeFunction returns the EdgeFunction field value if set, zero value otherwise.
@@ -183,7 +184,7 @@ func (o PatchedEdgeFirewallFunctionInstanceRequest) ToMap() (map[string]interfac
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Args) {
+	if o.Args != nil {
 		toSerialize["args"] = o.Args
 	}
 	if !IsNil(o.EdgeFunction) {

@@ -24,7 +24,7 @@ var _ MappedNullable = &EdgeFirewallFunctionInstance{}
 type EdgeFirewallFunctionInstance struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
-	Args *EdgeApplicationFunctionInstanceArgs `json:"args,omitempty"`
+	Args interface{} `json:"args,omitempty"`
 	EdgeFunction int64 `json:"edge_function"`
 	Active *bool `json:"active,omitempty"`
 	LastEditor string `json:"last_editor"`
@@ -103,22 +103,23 @@ func (o *EdgeFirewallFunctionInstance) SetName(v string) {
 	o.Name = v
 }
 
-// GetArgs returns the Args field value if set, zero value otherwise.
-func (o *EdgeFirewallFunctionInstance) GetArgs() EdgeApplicationFunctionInstanceArgs {
-	if o == nil || IsNil(o.Args) {
-		var ret EdgeApplicationFunctionInstanceArgs
+// GetArgs returns the Args field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EdgeFirewallFunctionInstance) GetArgs() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
-	return *o.Args
+	return o.Args
 }
 
 // GetArgsOk returns a tuple with the Args field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeFirewallFunctionInstance) GetArgsOk() (*EdgeApplicationFunctionInstanceArgs, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EdgeFirewallFunctionInstance) GetArgsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Args) {
 		return nil, false
 	}
-	return o.Args, true
+	return &o.Args, true
 }
 
 // HasArgs returns a boolean if a field has been set.
@@ -130,9 +131,9 @@ func (o *EdgeFirewallFunctionInstance) HasArgs() bool {
 	return false
 }
 
-// SetArgs gets a reference to the given EdgeApplicationFunctionInstanceArgs and assigns it to the Args field.
-func (o *EdgeFirewallFunctionInstance) SetArgs(v EdgeApplicationFunctionInstanceArgs) {
-	o.Args = &v
+// SetArgs gets a reference to the given interface{} and assigns it to the Args field.
+func (o *EdgeFirewallFunctionInstance) SetArgs(v interface{}) {
+	o.Args = v
 }
 
 // GetEdgeFunction returns the EdgeFunction field value
@@ -251,7 +252,7 @@ func (o EdgeFirewallFunctionInstance) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Args) {
+	if o.Args != nil {
 		toSerialize["args"] = o.Args
 	}
 	toSerialize["edge_function"] = o.EdgeFunction

@@ -17735,8 +17735,7 @@ components:
       additionalProperties: false
       description: Serializer for Edge Application Function Instances
       example:
-        args:
-          arg_01: value_01
+        args: ""
         edge_function: 5559347081229897728
         last_editor: last_editor
         name: name
@@ -17751,8 +17750,7 @@ components:
           maxLength: 100
           minLength: 1
           type: string
-        args:
-          $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
+        args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -17778,8 +17776,7 @@ components:
       additionalProperties: false
       description: Serializer for Edge Application Function Instances
       example:
-        args:
-          arg_01: value_01
+        args: ""
         edge_function: 738633633822310400
         name: name
         active: true
@@ -17788,8 +17785,7 @@ components:
           maxLength: 100
           minLength: 1
           type: string
-        args:
-          $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
+        args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -21108,8 +21104,7 @@ components:
       additionalProperties: false
       description: Serializer for Edge Firewall Function Instances
       example:
-        args:
-          arg_01: value_01
+        args: ""
         edge_function: 5559347081229897728
         last_editor: last_editor
         name: name
@@ -21124,8 +21119,7 @@ components:
           maxLength: 100
           minLength: 1
           type: string
-        args:
-          $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
+        args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -21151,8 +21145,7 @@ components:
       additionalProperties: false
       description: Serializer for Edge Firewall Function Instances
       example:
-        args:
-          arg_01: value_01
+        args: ""
         edge_function: 738633633822310400
         name: name
         active: true
@@ -21161,8 +21154,7 @@ components:
           maxLength: 100
           minLength: 1
           type: string
-        args:
-          $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
+        args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -22835,16 +22827,14 @@ components:
       example:
         count: 123
         results:
-        - args:
-            arg_01: value_01
+        - args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-        - args:
-            arg_01: value_01
+        - args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
@@ -23465,16 +23455,14 @@ components:
       example:
         count: 123
         results:
-        - args:
-            arg_01: value_01
+        - args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-        - args:
-            arg_01: value_01
+        - args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
@@ -24260,8 +24248,7 @@ components:
       additionalProperties: false
       description: Serializer for Edge Application Function Instances
       example:
-        args:
-          arg_01: value_01
+        args: ""
         edge_function: 738633633822310400
         name: name
         active: true
@@ -24270,8 +24257,7 @@ components:
           maxLength: 100
           minLength: 1
           type: string
-        args:
-          $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
+        args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -24691,8 +24677,7 @@ components:
       additionalProperties: false
       description: Serializer for Edge Firewall Function Instances
       example:
-        args:
-          arg_01: value_01
+        args: ""
         edge_function: 738633633822310400
         name: name
         active: true
@@ -24701,8 +24686,7 @@ components:
           maxLength: 100
           minLength: 1
           type: string
-        args:
-          $ref: "#/components/schemas/EdgeApplicationFunctionInstance_args"
+        args: {}
         edge_function:
           format: int64
           maximum: 9223372036854775807
@@ -25651,8 +25635,7 @@ components:
       additionalProperties: false
       example:
         data:
-          args:
-            arg_01: value_01
+          args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
@@ -26000,8 +25983,7 @@ components:
       additionalProperties: false
       example:
         data:
-          args:
-            arg_01: value_01
+          args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
@@ -27150,8 +27132,7 @@ components:
       additionalProperties: false
       example:
         data:
-          args:
-            arg_01: value_01
+          args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
@@ -27499,8 +27480,7 @@ components:
       additionalProperties: false
       example:
         data:
-          args:
-            arg_01: value_01
+          args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
@@ -27903,8 +27883,7 @@ components:
       additionalProperties: false
       example:
         data:
-          args:
-            arg_01: value_01
+          args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
@@ -28102,8 +28081,7 @@ components:
       additionalProperties: false
       example:
         data:
-          args:
-            arg_01: value_01
+          args: ""
           edge_function: 5559347081229897728
           last_editor: last_editor
           name: name
@@ -29786,17 +29764,6 @@ components:
       required:
       - name
       title: WorkloadRequest
-      type: object
-    EdgeApplicationFunctionInstance_args:
-      description: |
-        Args to be accessed by the Edge Function.
-        - args must be a JSON object or an array.
-        - If there are no args being informed, the function default_args will be used.
-      example:
-        arg_01: value_01
-      properties:
-        arg:
-          type: object
       type: object
     EdgeApplicationRuleEngineStringAttributes_value:
       oneOf:

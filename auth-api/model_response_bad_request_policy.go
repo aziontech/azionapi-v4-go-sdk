@@ -24,7 +24,7 @@ type ResponseBadRequestPolicy struct {
 	Rules []string `json:"rules,omitempty"`
 	LastEditor []string `json:"last_editor,omitempty"`
 	LastModified []string `json:"last_modified,omitempty"`
-	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 // NewResponseBadRequestPolicy instantiates a new ResponseBadRequestPolicy object

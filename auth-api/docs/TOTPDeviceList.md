@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** | The human-readable name of this device. | 
 **Confirmed** | Pointer to **bool** | Is this device ready for use? | [optional] 
-**UserId** | **int64** | The user that this device belongs to. | [readonly] 
+**UserId** | **int64** | The user that this device belongs to. | 
 
 ## Methods
 

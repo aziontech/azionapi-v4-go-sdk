@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseTokenPair{}
 
 // ResponseTokenPair struct for ResponseTokenPair
 type ResponseTokenPair struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data TokenPair `json:"data"`
 }
 

@@ -23,8 +23,8 @@ var _ MappedNullable = &Policy{}
 // Policy struct for Policy
 type Policy struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	Name string `json:"name"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 	Active bool `json:"active"`
 	Rules []PolicyRule `json:"rules"`
