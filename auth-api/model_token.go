@@ -21,7 +21,7 @@ var _ MappedNullable = &Token{}
 
 // Token struct for Token
 type Token struct {
-	AccessToken string `json:"access_token" validate:"regexp=.*"`
+	AccessToken string `json:"access_token"`
 }
 
 type _Token Token

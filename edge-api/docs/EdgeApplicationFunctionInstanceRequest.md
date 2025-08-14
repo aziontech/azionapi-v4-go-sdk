@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Args** | Pointer to [**EdgeApplicationFunctionInstanceArgs**](EdgeApplicationFunctionInstanceArgs.md) |  | [optional] 
+**Args** | Pointer to **interface{}** |  | [optional] 
 **EdgeFunction** | **int64** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 
@@ -50,20 +50,20 @@ SetName sets Name field to given value.
 
 ### GetArgs
 
-`func (o *EdgeApplicationFunctionInstanceRequest) GetArgs() EdgeApplicationFunctionInstanceArgs`
+`func (o *EdgeApplicationFunctionInstanceRequest) GetArgs() interface{}`
 
 GetArgs returns the Args field if non-nil, zero value otherwise.
 
 ### GetArgsOk
 
-`func (o *EdgeApplicationFunctionInstanceRequest) GetArgsOk() (*EdgeApplicationFunctionInstanceArgs, bool)`
+`func (o *EdgeApplicationFunctionInstanceRequest) GetArgsOk() (*interface{}, bool)`
 
 GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArgs
 
-`func (o *EdgeApplicationFunctionInstanceRequest) SetArgs(v EdgeApplicationFunctionInstanceArgs)`
+`func (o *EdgeApplicationFunctionInstanceRequest) SetArgs(v interface{})`
 
 SetArgs sets Args field to given value.
 
@@ -73,6 +73,16 @@ SetArgs sets Args field to given value.
 
 HasArgs returns a boolean if a field has been set.
 
+### SetArgsNil
+
+`func (o *EdgeApplicationFunctionInstanceRequest) SetArgsNil(b bool)`
+
+ SetArgsNil sets the value for Args to be an explicit nil
+
+### UnsetArgs
+`func (o *EdgeApplicationFunctionInstanceRequest) UnsetArgs()`
+
+UnsetArgs ensures that no value is present for Args, not even an explicit nil
 ### GetEdgeFunction
 
 `func (o *EdgeApplicationFunctionInstanceRequest) GetEdgeFunction() int64`

@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseDeleteTOTPDeviceCreate{}
 
 // ResponseDeleteTOTPDeviceCreate struct for ResponseDeleteTOTPDeviceCreate
 type ResponseDeleteTOTPDeviceCreate struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseDeleteTOTPDeviceCreate instantiates a new ResponseDeleteTOTPDeviceCreate object

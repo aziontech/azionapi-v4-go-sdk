@@ -36,6 +36,29 @@ def modify_request_phase_behaviors(data):
     Modify request phase behaviors
     """
     
+    # Check if the required schemas exist before proceeding
+    if 'components' not in data or 'schemas' not in data['components']:
+        print("⚠️ No components.schemas found in YAML, skipping request phase behaviors modification")
+        return
+        
+    # Check if the specific schemas we need to modify exist
+    required_schemas = [
+        'EdgeApplicationRuleEngineRequestPhaseBehaviors',
+        'EdgeApplicationRuleEngineRequestPhaseBehaviorsRequest',
+        'EdgeApplicationRequestPhaseBehaviorWithoutArgs',
+        'EdgeApplicationRequestPhaseBehaviorWithArgs',
+        'EdgeApplicationRequestPhaseBehaviorCaptureMatchGroups',
+        'EdgeApplicationRequestPhaseBehaviorWithoutArgsRequest',
+        'EdgeApplicationRequestPhaseBehaviorWithArgsRequest',
+        'EdgeApplicationRequestPhaseBehaviorCaptureMatchGroupsRequest',
+        'EdgeApplicationRuleEngineStringAttributes'
+    ]
+    
+    for schema in required_schemas:
+        if schema not in data['components']['schemas']:
+            print(f"⚠️ Schema {schema} not found in YAML, skipping request phase behaviors modification")
+            return
+    
     allowed_refs = [
         {'$ref': '#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithoutArgs'},
         {'$ref': '#/components/schemas/EdgeApplicationRequestPhaseBehaviorWithArgs'},
@@ -53,7 +76,7 @@ def modify_request_phase_behaviors(data):
     data['components']['schemas']['EdgeApplicationRuleEngineRequestPhaseBehaviorsRequest']['oneOf'] = allowed_refs_request
     
     # Remove additionalProperties from withoutArgs struct to prevent problems
-    if data['components']['schemas']['EdgeApplicationRequestPhaseBehaviorWithoutArgs']['additionalProperties']:
+    if data['components']['schemas']['EdgeApplicationRequestPhaseBehaviorWithoutArgs'].get('additionalProperties', False):
         data['components']['schemas']['EdgeApplicationRequestPhaseBehaviorWithoutArgs']['additionalProperties'] = False
     
     # Adapt allOf behavior schema
@@ -84,6 +107,28 @@ def modify_response_phase_behaviors(data):
     Modify response phase behaviors
     """
     
+    # Check if the required schemas exist before proceeding
+    if 'components' not in data or 'schemas' not in data['components']:
+        print("⚠️ No components.schemas found in YAML, skipping response phase behaviors modification")
+        return
+        
+    # Check if the specific schemas we need to modify exist
+    required_schemas = [
+        'EdgeApplicationRuleEngineResponsePhaseBehaviors',
+        'EdgeApplicationRuleEngineResponsePhaseBehaviorsRequest',
+        'EdgeApplicationResponsePhaseBehaviorWithoutArgs',
+        'EdgeApplicationResponsePhaseBehaviorWithArgs',
+        'EdgeApplicationResponsePhaseBehaviorCaptureMatchGroups',
+        'EdgeApplicationResponsePhaseBehaviorWithoutArgsRequest',
+        'EdgeApplicationResponsePhaseBehaviorWithArgsRequest',
+        'EdgeApplicationResponsePhaseBehaviorCaptureMatchGroupsRequest'
+    ]
+    
+    for schema in required_schemas:
+        if schema not in data['components']['schemas']:
+            print(f"⚠️ Schema {schema} not found in YAML, skipping response phase behaviors modification")
+            return
+    
     allowed_refs = [
         {'$ref': '#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithoutArgs'},
         {'$ref': '#/components/schemas/EdgeApplicationResponsePhaseBehaviorWithArgs'},
@@ -101,7 +146,7 @@ def modify_response_phase_behaviors(data):
     data['components']['schemas']['EdgeApplicationRuleEngineResponsePhaseBehaviorsRequest']['oneOf'] = allowed_refs_request
     
     # Remove additionalProperties from withoutArgs struct to prevent problems
-    if data['components']['schemas']['EdgeApplicationResponsePhaseBehaviorWithoutArgs']['additionalProperties']:
+    if data['components']['schemas']['EdgeApplicationResponsePhaseBehaviorWithoutArgs'].get('additionalProperties', False):
         data['components']['schemas']['EdgeApplicationResponsePhaseBehaviorWithoutArgs']['additionalProperties'] = False
     
     # Adapt allOf behavior schema

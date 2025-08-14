@@ -21,7 +21,7 @@ var _ MappedNullable = &PolicyRuleRequest{}
 
 // PolicyRuleRequest struct for PolicyRuleRequest
 type PolicyRuleRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	// * `allow` - allow * `deny` - deny
 	Effect string `json:"effect"`
 	Resource string `json:"resource"`

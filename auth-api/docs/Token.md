@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessToken** | **string** |  | [readonly] 
+**AccessToken** | **string** |  | 
 
 ## Methods
 

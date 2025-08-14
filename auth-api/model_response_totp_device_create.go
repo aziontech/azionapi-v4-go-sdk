@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseTOTPDeviceCreate{}
 
 // ResponseTOTPDeviceCreate struct for ResponseTOTPDeviceCreate
 type ResponseTOTPDeviceCreate struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data TOTPDeviceCreate `json:"data"`
 }
 

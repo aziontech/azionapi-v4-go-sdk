@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessToken** | **string** | The access_token is a short-lived token (e.g., 10 minutes) used for API authentication in the Authorization: Bearer &lt;access_token&gt; header. | [readonly] 
-**RefreshToken** | **string** | A long-lived JWT token used to refresh the access_token without requiring the user to authenticate again. | [readonly] 
-**TwoFactorRequired** | **bool** | Specifies the type of two-factor authentication configured. Currently supports &#39;TOTP&#39; (Time-based One-Time Password). | [readonly] 
-**TwoFactorType** | **string** | Indicates whether the user has an active TOTP device configured. If false, the user must register a device before using MFA authentication. | [readonly] 
-**HasActiveDevice** | **bool** | Indicates whether the user already has an active TOTP device configured.If false, the user needs to set up a new device before using MFA authentication. | [readonly] 
+**AccessToken** | **string** | The access_token is a short-lived token (e.g., 10 minutes) used for API authentication in the Authorization: Bearer &lt;access_token&gt; header. | 
+**RefreshToken** | **string** | A long-lived JWT token used to refresh the access_token without requiring the user to authenticate again. | 
+**TwoFactorRequired** | **bool** | Specifies the type of two-factor authentication configured. Currently supports &#39;TOTP&#39; (Time-based One-Time Password). | 
+**TwoFactorType** | **string** | Indicates whether the user has an active TOTP device configured. If false, the user must register a device before using MFA authentication. | 
+**HasActiveDevice** | **bool** | Indicates whether the user already has an active TOTP device configured.If false, the user needs to set up a new device before using MFA authentication. | 
 
 ## Methods
 

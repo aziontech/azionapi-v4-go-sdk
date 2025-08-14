@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedPolicyRequest{}
 
 // PatchedPolicyRequest struct for PatchedPolicyRequest
 type PatchedPolicyRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Rules []PolicyRuleRequest `json:"rules,omitempty"`
 }

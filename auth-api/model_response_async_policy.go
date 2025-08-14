@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncPolicy{}
 
 // ResponseAsyncPolicy struct for ResponseAsyncPolicy
 type ResponseAsyncPolicy struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data Policy `json:"data"`
 }
 

@@ -998,7 +998,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: DefaultErrorResponse
       type: object
@@ -1024,26 +1023,22 @@ components:
           description: The HTTP status code applicable to this problem
           maxLength: 3
           minLength: 3
-          pattern: "^\\d{3}$"
           type: string
         code:
           description: An application-specific error code
           maxLength: 5
           minLength: 5
-          pattern: "^\\d{5}$"
           type: string
         title:
           description: "A short, human-readable summary of the problem"
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         source:
           allOf:
@@ -1093,19 +1088,16 @@ components:
             the error
           maxLength: 4096
           minLength: 1
-          pattern: "^(/[^/]+)+$"
           type: string
         parameter:
           description: URI query parameter that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         header:
           description: Request header name that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
       title: JSONAPIErrorSource
       type: object
@@ -1194,23 +1186,19 @@ components:
           description: "The access_token is a short-lived token (e.g., 10 minutes)\
             \ used for API authentication in the Authorization: Bearer <access_token>\
             \ header."
-          readOnly: true
           type: string
         two_factor_required:
           description: Specifies the type of two-factor authentication configured.
             Currently supports 'TOTP' (Time-based One-Time Password).
-          readOnly: true
           type: boolean
         two_factor_type:
           description: "Indicates whether the user has an active TOTP device configured.\
             \ If false, the user must register a device before using MFA authentication."
-          readOnly: true
           type: string
         has_active_device:
           description: "Indicates whether the user already has an active TOTP device\
             \ configured.If false, the user needs to set up a new device before using\
             \ MFA authentication."
-          readOnly: true
           type: boolean
       required:
       - access_token
@@ -1266,7 +1254,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -1281,19 +1268,14 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 255
-          pattern: .*
           type: string
         last_editor:
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         active:
           type: boolean
@@ -1316,7 +1298,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -1335,7 +1316,6 @@ components:
       properties:
         name:
           maxLength: 255
-          pattern: .*
           type: string
         effect:
           description: |-
@@ -1389,7 +1369,6 @@ components:
         name:
           maxLength: 255
           minLength: 1
-          pattern: .*
           type: string
         effect:
           description: |-
@@ -1420,7 +1399,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeletePolicy
       type: object
@@ -1432,7 +1410,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteTOTPDeviceCreate
       type: object
@@ -1442,7 +1419,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/LockoutPolicy"
@@ -1463,7 +1439,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       required:
       - data
@@ -1475,7 +1450,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Policy"
@@ -1489,7 +1463,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/SessionTimeoutPolicy"
@@ -1507,7 +1480,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/TOTPDeviceCreate"
@@ -1525,7 +1497,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Token"
@@ -1539,7 +1510,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/TokenPair"
@@ -1573,7 +1543,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseBadRequestPolicy
       type: object
@@ -1583,7 +1552,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeletePolicy
       type: object
@@ -1595,7 +1563,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteTOTPDeviceCreate
       type: object
@@ -1605,7 +1572,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/LockoutPolicy"
@@ -1626,7 +1592,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       required:
       - data
@@ -1638,7 +1603,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Policy"
@@ -1679,7 +1643,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/SessionTimeoutPolicy"
@@ -1697,7 +1660,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/TOTPDeviceCreate"
@@ -1715,7 +1677,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Token"
@@ -1729,7 +1690,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/TokenPair"
@@ -1799,8 +1759,6 @@ components:
         url:
           maxLength: 255
           minLength: 0
-          pattern: .*
-          readOnly: true
           type: string
       required:
       - url
@@ -1816,7 +1774,6 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           description: The human-readable name of this device.
@@ -1828,7 +1785,6 @@ components:
         user_id:
           description: The user that this device belongs to.
           format: int64
-          readOnly: true
           type: integer
       required:
       - id
@@ -1860,8 +1816,6 @@ components:
         access_token:
           maxLength: 255
           minLength: 0
-          pattern: .*
-          readOnly: true
           type: string
       required:
       - access_token
@@ -1880,12 +1834,10 @@ components:
           description: "The access_token is a short-lived token (e.g., 10 minutes)\
             \ used for API authentication in the Authorization: Bearer <access_token>\
             \ header."
-          readOnly: true
           type: string
         refresh_token:
           description: A long-lived JWT token used to refresh the access_token without
             requiring the user to authenticate again.
-          readOnly: true
           type: string
       required:
       - access_token

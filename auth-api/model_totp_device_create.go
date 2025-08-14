@@ -21,7 +21,7 @@ var _ MappedNullable = &TOTPDeviceCreate{}
 
 // TOTPDeviceCreate struct for TOTPDeviceCreate
 type TOTPDeviceCreate struct {
-	Url string `json:"url" validate:"regexp=.*"`
+	Url string `json:"url"`
 }
 
 type _TOTPDeviceCreate TOTPDeviceCreate

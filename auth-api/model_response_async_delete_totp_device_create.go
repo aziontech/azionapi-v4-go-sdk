@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteTOTPDeviceCreate{}
 
 // ResponseAsyncDeleteTOTPDeviceCreate struct for ResponseAsyncDeleteTOTPDeviceCreate
 type ResponseAsyncDeleteTOTPDeviceCreate struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteTOTPDeviceCreate instantiates a new ResponseAsyncDeleteTOTPDeviceCreate object

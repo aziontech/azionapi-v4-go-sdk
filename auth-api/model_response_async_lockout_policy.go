@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncLockoutPolicy{}
 
 // ResponseAsyncLockoutPolicy struct for ResponseAsyncLockoutPolicy
 type ResponseAsyncLockoutPolicy struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data LockoutPolicy `json:"data"`
 }
 

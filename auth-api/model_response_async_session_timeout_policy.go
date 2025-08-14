@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncSessionTimeoutPolicy{}
 
 // ResponseAsyncSessionTimeoutPolicy struct for ResponseAsyncSessionTimeoutPolicy
 type ResponseAsyncSessionTimeoutPolicy struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data SessionTimeoutPolicy `json:"data"`
 }
 
