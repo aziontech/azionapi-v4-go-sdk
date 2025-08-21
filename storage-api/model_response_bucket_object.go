@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseBucketObject{}
 
 // ResponseBucketObject struct for ResponseBucketObject
 type ResponseBucketObject struct {
-	ContinuationToken string `json:"continuation_token" validate:"regexp=.{0,255}"`
+	ContinuationToken NullableString `json:"continuation_token"`
 	Results []BucketObject `json:"results"`
 }
 
@@ -31,7 +31,7 @@ type _ResponseBucketObject ResponseBucketObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseBucketObject(continuationToken string, results []BucketObject) *ResponseBucketObject {
+func NewResponseBucketObject(continuationToken NullableString, results []BucketObject) *ResponseBucketObject {
 	this := ResponseBucketObject{}
 	this.ContinuationToken = continuationToken
 	this.Results = results
@@ -47,27 +47,29 @@ func NewResponseBucketObjectWithDefaults() *ResponseBucketObject {
 }
 
 // GetContinuationToken returns the ContinuationToken field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ResponseBucketObject) GetContinuationToken() string {
-	if o == nil {
+	if o == nil || o.ContinuationToken.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ContinuationToken
+	return *o.ContinuationToken.Get()
 }
 
 // GetContinuationTokenOk returns a tuple with the ContinuationToken field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseBucketObject) GetContinuationTokenOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ContinuationToken, true
+	return o.ContinuationToken.Get(), o.ContinuationToken.IsSet()
 }
 
 // SetContinuationToken sets field value
 func (o *ResponseBucketObject) SetContinuationToken(v string) {
-	o.ContinuationToken = v
+	o.ContinuationToken.Set(&v)
 }
 
 // GetResults returns the Results field value
@@ -104,7 +106,7 @@ func (o ResponseBucketObject) MarshalJSON() ([]byte, error) {
 
 func (o ResponseBucketObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["continuation_token"] = o.ContinuationToken
+	toSerialize["continuation_token"] = o.ContinuationToken.Get()
 	toSerialize["results"] = o.Results
 	return toSerialize, nil
 }

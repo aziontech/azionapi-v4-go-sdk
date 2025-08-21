@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncCertificateRevocationList{}
 
 // ResponseAsyncCertificateRevocationList struct for ResponseAsyncCertificateRevocationList
 type ResponseAsyncCertificateRevocationList struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data CertificateRevocationList `json:"data"`
 }
 

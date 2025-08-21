@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseDNSSEC{}
 
 // ResponseDNSSEC struct for ResponseDNSSEC
 type ResponseDNSSEC struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data DNSSEC `json:"data"`
 }
 

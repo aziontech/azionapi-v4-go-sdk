@@ -21,7 +21,7 @@ var _ MappedNullable = &DatabaseRequest{}
 
 // DatabaseRequest struct for DatabaseRequest
 type DatabaseRequest struct {
-	Name string `json:"name" validate:"regexp=^[A-Za-z0-9-]{6,50}$"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
 }
 

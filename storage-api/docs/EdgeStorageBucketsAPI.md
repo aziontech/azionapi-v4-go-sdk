@@ -7,13 +7,14 @@ Method | HTTP request | Description
 [**CreateBucket**](EdgeStorageBucketsAPI.md#CreateBucket) | **Post** /edge_storage/buckets | Create a new bucket
 [**DeleteBucket**](EdgeStorageBucketsAPI.md#DeleteBucket) | **Delete** /edge_storage/buckets/{name} | Delete a bucket
 [**ListBuckets**](EdgeStorageBucketsAPI.md#ListBuckets) | **Get** /edge_storage/buckets | List buckets
+[**RetrieveBucket**](EdgeStorageBucketsAPI.md#RetrieveBucket) | **Get** /edge_storage/buckets/{name} | Retrieve details from a bucket
 [**UpdateBucket**](EdgeStorageBucketsAPI.md#UpdateBucket) | **Patch** /edge_storage/buckets/{name} | Update bucket info
 
 
 
 ## CreateBucket
 
-> SuccessBucketOperation CreateBucket(ctx).BucketCreateRequest(bucketCreateRequest).Execute()
+> ResponseBucketCreate CreateBucket(ctx).BucketCreateRequest(bucketCreateRequest).Execute()
 
 Create a new bucket
 
@@ -41,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageBucketsAPI.CreateBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateBucket`: SuccessBucketOperation
+	// response from `CreateBucket`: ResponseBucketCreate
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageBucketsAPI.CreateBucket`: %v\n", resp)
 }
 ```
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessBucketOperation**](SuccessBucketOperation.md)
+[**ResponseBucketCreate**](ResponseBucketCreate.md)
 
 ### Authorization
 
@@ -79,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## DeleteBucket
 
-> SuccessBucketOperation DeleteBucket(ctx, name).Execute()
+> ResponseDeleteBucketCreate DeleteBucket(ctx, name).Execute()
 
 Delete a bucket
 
@@ -107,7 +108,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageBucketsAPI.DeleteBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteBucket`: SuccessBucketOperation
+	// response from `DeleteBucket`: ResponseDeleteBucketCreate
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageBucketsAPI.DeleteBucket`: %v\n", resp)
 }
 ```
@@ -131,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessBucketOperation**](SuccessBucketOperation.md)
+[**ResponseDeleteBucketCreate**](ResponseDeleteBucketCreate.md)
 
 ### Authorization
 
@@ -221,9 +222,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RetrieveBucket
+
+> ResponseRetrieveBucket RetrieveBucket(ctx, name).Fields(fields).Execute()
+
+Retrieve details from a bucket
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	name := "name_example" // string | 
+	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeStorageBucketsAPI.RetrieveBucket(context.Background(), name).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageBucketsAPI.RetrieveBucket``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RetrieveBucket`: ResponseRetrieveBucket
+	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageBucketsAPI.RetrieveBucket`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRetrieveBucketRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **fields** | **string** | Comma-separated list of field names to include in the response. | 
+
+### Return type
+
+[**ResponseRetrieveBucket**](ResponseRetrieveBucket.md)
+
+### Authorization
+
+[TokenAuth](../README.md#TokenAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateBucket
 
-> SuccessBucketOperation UpdateBucket(ctx, name).PatchedBucketRequest(patchedBucketRequest).Execute()
+> ResponseBucketCreate UpdateBucket(ctx, name).PatchedBucketRequest(patchedBucketRequest).Execute()
 
 Update bucket info
 
@@ -252,7 +325,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageBucketsAPI.UpdateBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateBucket`: SuccessBucketOperation
+	// response from `UpdateBucket`: ResponseBucketCreate
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageBucketsAPI.UpdateBucket`: %v\n", resp)
 }
 ```
@@ -277,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessBucketOperation**](SuccessBucketOperation.md)
+[**ResponseBucketCreate**](ResponseBucketCreate.md)
 
 ### Authorization
 

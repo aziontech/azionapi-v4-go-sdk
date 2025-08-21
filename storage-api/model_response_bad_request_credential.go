@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -21,10 +21,10 @@ var _ MappedNullable = &ResponseBadRequestCredential{}
 type ResponseBadRequestCredential struct {
 	Name []string `json:"name,omitempty"`
 	ExpirationDate []string `json:"expiration_date,omitempty"`
-	CreatedAt []string `json:"created_at,omitempty"`
+	LastModified []string `json:"last_modified,omitempty"`
 	Capabilities *ResponseBadRequestCredentialCapabilities `json:"capabilities,omitempty"`
 	Bucket []string `json:"bucket,omitempty"`
-	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 // NewResponseBadRequestCredential instantiates a new ResponseBadRequestCredential object
@@ -108,36 +108,36 @@ func (o *ResponseBadRequestCredential) SetExpirationDate(v []string) {
 	o.ExpirationDate = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ResponseBadRequestCredential) GetCreatedAt() []string {
-	if o == nil || IsNil(o.CreatedAt) {
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
+func (o *ResponseBadRequestCredential) GetLastModified() []string {
+	if o == nil || IsNil(o.LastModified) {
 		var ret []string
 		return ret
 	}
-	return o.CreatedAt
+	return o.LastModified
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseBadRequestCredential) GetCreatedAtOk() ([]string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+func (o *ResponseBadRequestCredential) GetLastModifiedOk() ([]string, bool) {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.LastModified, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *ResponseBadRequestCredential) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+// HasLastModified returns a boolean if a field has been set.
+func (o *ResponseBadRequestCredential) HasLastModified() bool {
+	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given []string and assigns it to the CreatedAt field.
-func (o *ResponseBadRequestCredential) SetCreatedAt(v []string) {
-	o.CreatedAt = v
+// SetLastModified gets a reference to the given []string and assigns it to the LastModified field.
+func (o *ResponseBadRequestCredential) SetLastModified(v []string) {
+	o.LastModified = v
 }
 
 // GetCapabilities returns the Capabilities field value if set, zero value otherwise.
@@ -252,8 +252,8 @@ func (o ResponseBadRequestCredential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExpirationDate) {
 		toSerialize["expiration_date"] = o.ExpirationDate
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.LastModified) {
+		toSerialize["last_modified"] = o.LastModified
 	}
 	if !IsNil(o.Capabilities) {
 		toSerialize["capabilities"] = o.Capabilities
