@@ -2223,25 +2223,18 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 100
-          pattern: .*
           type: string
         last_editor:
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         product_version:
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         active:
           type: boolean
@@ -2304,7 +2297,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -2416,7 +2408,6 @@ components:
           additionalProperties:
             maxLength: 1024
             minLength: 1
-            pattern: .*
             type: string
           type: object
       required:
@@ -2455,7 +2446,6 @@ components:
           additionalProperties:
             maxLength: 1024
             minLength: 1
-            pattern: .*
             type: string
           type: object
       required:
@@ -2568,26 +2558,22 @@ components:
           description: The HTTP status code applicable to this problem
           maxLength: 3
           minLength: 3
-          pattern: "^\\d{3}$"
           type: string
         code:
           description: An application-specific error code
           maxLength: 5
           minLength: 5
-          pattern: "^\\d{5}$"
           type: string
         title:
           description: "A short, human-readable summary of the problem"
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         source:
           allOf:
@@ -2637,19 +2623,16 @@ components:
             the error
           maxLength: 4096
           minLength: 1
-          pattern: "^(/[^/]+)+$"
           type: string
         parameter:
           description: URI query parameter that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         header:
           description: Request header name that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
       title: JSONAPIErrorSource
       type: object
@@ -2989,7 +2972,6 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -3013,13 +2995,11 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
         data_set:
           minLength: 1
-          pattern: .*
           type: string
       title: PatchedTemplateRequest
       type: object
@@ -3086,7 +3066,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/DataStream"
@@ -3102,7 +3081,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteDataStream
       type: object
@@ -3114,7 +3092,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteTemplate
       type: object
@@ -3134,7 +3111,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Template"
@@ -3184,7 +3160,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/DataStream"
@@ -3200,7 +3175,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteDataStream
       type: object
@@ -3212,7 +3186,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteTemplate
       type: object
@@ -3224,15 +3197,11 @@ components:
         slug: slug
       properties:
         slug:
-          pattern: "^[-a-zA-Z0-9_]+$"
-          readOnly: true
           type: string
         name:
-          readOnly: true
           title: DataSource Name
           type: string
         active:
-          readOnly: true
           title: Is Active
           type: boolean
       required:
@@ -3280,25 +3249,18 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 100
-          pattern: .*
           type: string
         last_editor:
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         product_version:
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         active:
           type: boolean
@@ -3338,30 +3300,23 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         custom:
-          readOnly: true
           type: boolean
         active:
           type: boolean
         data_set:
           minLength: 1
-          pattern: .*
           type: string
       required:
       - custom
@@ -3450,7 +3405,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Template"
@@ -3574,30 +3528,23 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         last_editor:
           minLength: 1
-          pattern: .*
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         custom:
-          readOnly: true
           type: boolean
         active:
           type: boolean
         data_set:
           minLength: 1
-          pattern: .*
           type: string
       required:
       - custom
@@ -3618,13 +3565,11 @@ components:
         name:
           maxLength: 100
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
         data_set:
           minLength: 1
-          pattern: .*
           type: string
       required:
       - data_set

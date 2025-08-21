@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
 **Active** | Pointer to **bool** | Indicates if the certificate revocation list is active. This field cannot be set to false. | [optional] 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** | Timestamp of the last modification made to the certificate content on the platform. | [readonly] 
-**ProductVersion** | **string** |  | [readonly] 
-**Issuer** | **string** |  | [readonly] 
-**LastUpdate** | **time.Time** | Timestamp of the last update issued by the certification revocation list issuer. | [readonly] 
-**NextUpdate** | **time.Time** | Timestamp of the next scheduled update from the certification revocation list issuer. | [readonly] 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** | Timestamp of the last modification made to the certificate content on the platform. | 
+**ProductVersion** | **string** |  | 
+**Issuer** | **string** |  | 
+**LastUpdate** | **time.Time** | Timestamp of the last update issued by the certification revocation list issuer. | 
+**NextUpdate** | **time.Time** | Timestamp of the next scheduled update from the certification revocation list issuer. | 
 **Crl** | **string** |  | 
 
 ## Methods

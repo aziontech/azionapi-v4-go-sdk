@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseSQLResult{}
 
 // ResponseSQLResult struct for ResponseSQLResult
 type ResponseSQLResult struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data SQLResult `json:"data"`
 }
 

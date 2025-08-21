@@ -21,9 +21,9 @@ var _ MappedNullable = &TemplateRequest{}
 
 // TemplateRequest struct for TemplateRequest
 type TemplateRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
-	DataSet string `json:"data_set" validate:"regexp=.*"`
+	DataSet string `json:"data_set"`
 }
 
 type _TemplateRequest TemplateRequest

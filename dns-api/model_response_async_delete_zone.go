@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteZone{}
 
 // ResponseAsyncDeleteZone struct for ResponseAsyncDeleteZone
 type ResponseAsyncDeleteZone struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteZone instantiates a new ResponseAsyncDeleteZone object

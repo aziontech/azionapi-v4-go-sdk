@@ -19,7 +19,7 @@ var _ MappedNullable = &DefaultErrorResponse{}
 
 // DefaultErrorResponse struct for DefaultErrorResponse
 type DefaultErrorResponse struct {
-	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 // NewDefaultErrorResponse instantiates a new DefaultErrorResponse object

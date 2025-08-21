@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -34,7 +34,7 @@ func (r ApiCreateBucketRequest) BucketCreateRequest(bucketCreateRequest BucketCr
 	return r
 }
 
-func (r ApiCreateBucketRequest) Execute() (*SuccessBucketOperation, *http.Response, error) {
+func (r ApiCreateBucketRequest) Execute() (*ResponseBucketCreate, *http.Response, error) {
 	return r.ApiService.CreateBucketExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *EdgeStorageBucketsAPIService) CreateBucket(ctx context.Context) ApiCrea
 }
 
 // Execute executes the request
-//  @return SuccessBucketOperation
-func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequest) (*SuccessBucketOperation, *http.Response, error) {
+//  @return ResponseBucketCreate
+func (a *EdgeStorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequest) (*ResponseBucketCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SuccessBucketOperation
+		localVarReturnValue  *ResponseBucketCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageBucketsAPIService.CreateBucket")
@@ -229,7 +229,7 @@ type ApiDeleteBucketRequest struct {
 	name string
 }
 
-func (r ApiDeleteBucketRequest) Execute() (*SuccessBucketOperation, *http.Response, error) {
+func (r ApiDeleteBucketRequest) Execute() (*ResponseDeleteBucketCreate, *http.Response, error) {
 	return r.ApiService.DeleteBucketExecute(r)
 }
 
@@ -251,13 +251,13 @@ func (a *EdgeStorageBucketsAPIService) DeleteBucket(ctx context.Context, name st
 }
 
 // Execute executes the request
-//  @return SuccessBucketOperation
-func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequest) (*SuccessBucketOperation, *http.Response, error) {
+//  @return ResponseDeleteBucketCreate
+func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequest) (*ResponseDeleteBucketCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SuccessBucketOperation
+		localVarReturnValue  *ResponseDeleteBucketCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageBucketsAPIService.DeleteBucket")
@@ -325,6 +325,28 @@ func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequ
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -370,28 +392,6 @@ func (a *EdgeStorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
 			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -655,6 +655,198 @@ func (a *EdgeStorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiRetrieveBucketRequest struct {
+	ctx context.Context
+	ApiService *EdgeStorageBucketsAPIService
+	name string
+	fields *string
+}
+
+// Comma-separated list of field names to include in the response.
+func (r ApiRetrieveBucketRequest) Fields(fields string) ApiRetrieveBucketRequest {
+	r.fields = &fields
+	return r
+}
+
+func (r ApiRetrieveBucketRequest) Execute() (*ResponseRetrieveBucket, *http.Response, error) {
+	return r.ApiService.RetrieveBucketExecute(r)
+}
+
+/*
+RetrieveBucket Retrieve details from a bucket
+
+Retrieve details from a specific bucket.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param name
+ @return ApiRetrieveBucketRequest
+*/
+func (a *EdgeStorageBucketsAPIService) RetrieveBucket(ctx context.Context, name string) ApiRetrieveBucketRequest {
+	return ApiRetrieveBucketRequest{
+		ApiService: a,
+		ctx: ctx,
+		name: name,
+	}
+}
+
+// Execute executes the request
+//  @return ResponseRetrieveBucket
+func (a *EdgeStorageBucketsAPIService) RetrieveBucketExecute(r ApiRetrieveBucketRequest) (*ResponseRetrieveBucket, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ResponseRetrieveBucket
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageBucketsAPIService.RetrieveBucket")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/edge_storage/buckets/{name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterValueToString(r.name, "name")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.fields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["TokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ResponseBadRequestBucket
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 405 {
+			var v DefaultErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 406 {
+			var v DefaultErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v DefaultErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v DefaultErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v DefaultErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiUpdateBucketRequest struct {
 	ctx context.Context
 	ApiService *EdgeStorageBucketsAPIService
@@ -667,7 +859,7 @@ func (r ApiUpdateBucketRequest) PatchedBucketRequest(patchedBucketRequest Patche
 	return r
 }
 
-func (r ApiUpdateBucketRequest) Execute() (*SuccessBucketOperation, *http.Response, error) {
+func (r ApiUpdateBucketRequest) Execute() (*ResponseBucketCreate, *http.Response, error) {
 	return r.ApiService.UpdateBucketExecute(r)
 }
 
@@ -689,13 +881,13 @@ func (a *EdgeStorageBucketsAPIService) UpdateBucket(ctx context.Context, name st
 }
 
 // Execute executes the request
-//  @return SuccessBucketOperation
-func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequest) (*SuccessBucketOperation, *http.Response, error) {
+//  @return ResponseBucketCreate
+func (a *EdgeStorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequest) (*ResponseBucketCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SuccessBucketOperation
+		localVarReturnValue  *ResponseBucketCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageBucketsAPIService.UpdateBucket")

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 **Ttl** | Pointer to **int64** |  | [optional] 

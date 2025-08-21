@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -12,6 +12,7 @@ package storageapi
 
 import (
 	"encoding/json"
+	"time"
 	"bytes"
 	"fmt"
 )
@@ -24,6 +25,9 @@ type Bucket struct {
 	Name string `json:"name"`
 	// * `read_only` - read_only * `read_write` - read_write * `restricted` - restricted
 	EdgeAccess string `json:"edge_access"`
+	LastEditor string `json:"last_editor"`
+	LastModified time.Time `json:"last_modified"`
+	ProductVersion string `json:"product_version"`
 }
 
 type _Bucket Bucket
@@ -32,10 +36,13 @@ type _Bucket Bucket
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBucket(name string, edgeAccess string) *Bucket {
+func NewBucket(name string, edgeAccess string, lastEditor string, lastModified time.Time, productVersion string) *Bucket {
 	this := Bucket{}
 	this.Name = name
 	this.EdgeAccess = edgeAccess
+	this.LastEditor = lastEditor
+	this.LastModified = lastModified
+	this.ProductVersion = productVersion
 	return &this
 }
 
@@ -95,6 +102,78 @@ func (o *Bucket) SetEdgeAccess(v string) {
 	o.EdgeAccess = v
 }
 
+// GetLastEditor returns the LastEditor field value
+func (o *Bucket) GetLastEditor() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LastEditor
+}
+
+// GetLastEditorOk returns a tuple with the LastEditor field value
+// and a boolean to check if the value has been set.
+func (o *Bucket) GetLastEditorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastEditor, true
+}
+
+// SetLastEditor sets field value
+func (o *Bucket) SetLastEditor(v string) {
+	o.LastEditor = v
+}
+
+// GetLastModified returns the LastModified field value
+func (o *Bucket) GetLastModified() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastModified
+}
+
+// GetLastModifiedOk returns a tuple with the LastModified field value
+// and a boolean to check if the value has been set.
+func (o *Bucket) GetLastModifiedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastModified, true
+}
+
+// SetLastModified sets field value
+func (o *Bucket) SetLastModified(v time.Time) {
+	o.LastModified = v
+}
+
+// GetProductVersion returns the ProductVersion field value
+func (o *Bucket) GetProductVersion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ProductVersion
+}
+
+// GetProductVersionOk returns a tuple with the ProductVersion field value
+// and a boolean to check if the value has been set.
+func (o *Bucket) GetProductVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProductVersion, true
+}
+
+// SetProductVersion sets field value
+func (o *Bucket) SetProductVersion(v string) {
+	o.ProductVersion = v
+}
+
 func (o Bucket) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -107,6 +186,9 @@ func (o Bucket) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["edge_access"] = o.EdgeAccess
+	toSerialize["last_editor"] = o.LastEditor
+	toSerialize["last_modified"] = o.LastModified
+	toSerialize["product_version"] = o.ProductVersion
 	return toSerialize, nil
 }
 
@@ -117,6 +199,9 @@ func (o *Bucket) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"name",
 		"edge_access",
+		"last_editor",
+		"last_modified",
+		"product_version",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -19,9 +19,9 @@ var _ MappedNullable = &PatchedTemplateRequest{}
 
 // PatchedTemplateRequest struct for PatchedTemplateRequest
 type PatchedTemplateRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
-	DataSet *string `json:"data_set,omitempty" validate:"regexp=.*"`
+	DataSet *string `json:"data_set,omitempty"`
 }
 
 // NewPatchedTemplateRequest instantiates a new PatchedTemplateRequest object

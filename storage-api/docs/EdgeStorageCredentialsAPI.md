@@ -4,16 +4,16 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCredential**](EdgeStorageCredentialsAPI.md#CreateCredential) | **Post** /edge_storage/s3-credentials | Create a new credential
-[**DeleteCredential**](EdgeStorageCredentialsAPI.md#DeleteCredential) | **Delete** /edge_storage/s3-credentials/{accessKey} | Delete a Credential
-[**ListCredentials**](EdgeStorageCredentialsAPI.md#ListCredentials) | **Get** /edge_storage/s3-credentials | List credentials
-[**RetriveCredential**](EdgeStorageCredentialsAPI.md#RetriveCredential) | **Get** /edge_storage/s3-credentials/{accessKey} | Retrieve details from a credential
+[**CreateCredential**](EdgeStorageCredentialsAPI.md#CreateCredential) | **Post** /edge_storage/credentials | Create a new credential
+[**DeleteCredential**](EdgeStorageCredentialsAPI.md#DeleteCredential) | **Delete** /edge_storage/credentials/{id} | Delete a credential
+[**ListCredentials**](EdgeStorageCredentialsAPI.md#ListCredentials) | **Get** /edge_storage/credentials | List credentials
+[**RetrieveCredential**](EdgeStorageCredentialsAPI.md#RetrieveCredential) | **Get** /edge_storage/credentials/{id} | Retrieve details from a credential
 
 
 
 ## CreateCredential
 
-> CredentialCreate CreateCredential(ctx).CredentialCreateRequest(credentialCreateRequest).Execute()
+> ResponseCredential CreateCredential(ctx).CredentialCreateRequest(credentialCreateRequest).Execute()
 
 Create a new credential
 
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageCredentialsAPI.CreateCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateCredential`: CredentialCreate
+	// response from `CreateCredential`: ResponseCredential
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageCredentialsAPI.CreateCredential`: %v\n", resp)
 }
 ```
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CredentialCreate**](CredentialCreate.md)
+[**ResponseCredential**](ResponseCredential.md)
 
 ### Authorization
 
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 
 ## DeleteCredential
 
-> Credential DeleteCredential(ctx, accessKey).Execute()
+> ResponseAsyncDeleteCredential DeleteCredential(ctx, id).Execute()
 
-Delete a Credential
+Delete a credential
 
 
 
@@ -98,16 +98,16 @@ import (
 )
 
 func main() {
-	accessKey := "accessKey_example" // string | The credential access key
+	id := "id_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EdgeStorageCredentialsAPI.DeleteCredential(context.Background(), accessKey).Execute()
+	resp, r, err := apiClient.EdgeStorageCredentialsAPI.DeleteCredential(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageCredentialsAPI.DeleteCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteCredential`: Credential
+	// response from `DeleteCredential`: ResponseAsyncDeleteCredential
 	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageCredentialsAPI.DeleteCredential`: %v\n", resp)
 }
 ```
@@ -118,7 +118,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accessKey** | **string** | The credential access key | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Credential**](Credential.md)
+[**ResponseAsyncDeleteCredential**](ResponseAsyncDeleteCredential.md)
 
 ### Authorization
 
@@ -221,9 +221,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RetriveCredential
+## RetrieveCredential
 
-> ResponseRetrieveCredential RetriveCredential(ctx, accessKey).Fields(fields).Execute()
+> ResponseRetrieveCredential RetrieveCredential(ctx, id).Fields(fields).Execute()
 
 Retrieve details from a credential
 
@@ -242,18 +242,18 @@ import (
 )
 
 func main() {
-	accessKey := "accessKey_example" // string | 
+	id := "id_example" // string | 
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EdgeStorageCredentialsAPI.RetriveCredential(context.Background(), accessKey).Fields(fields).Execute()
+	resp, r, err := apiClient.EdgeStorageCredentialsAPI.RetrieveCredential(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageCredentialsAPI.RetriveCredential``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeStorageCredentialsAPI.RetrieveCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetriveCredential`: ResponseRetrieveCredential
-	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageCredentialsAPI.RetriveCredential`: %v\n", resp)
+	// response from `RetrieveCredential`: ResponseRetrieveCredential
+	fmt.Fprintf(os.Stdout, "Response from `EdgeStorageCredentialsAPI.RetrieveCredential`: %v\n", resp)
 }
 ```
 
@@ -263,11 +263,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accessKey** | **string** |  | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRetriveCredentialRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRetrieveCredentialRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

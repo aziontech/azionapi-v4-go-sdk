@@ -21,9 +21,9 @@ var _ MappedNullable = &CertificateRequestRequest{}
 
 // CertificateRequestRequest struct for CertificateRequestRequest
 type CertificateRequestRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
-	Certificate NullableString `json:"certificate,omitempty" validate:"regexp=.*"`
-	PrivateKey NullableString `json:"private_key,omitempty" validate:"regexp=.*"`
+	Name string `json:"name"`
+	Certificate NullableString `json:"certificate,omitempty"`
+	PrivateKey NullableString `json:"private_key,omitempty"`
 	// The value can't be changed after the certificate creation.  * `edge_certificate` - Edge Certificate * `trusted_ca_certificate` - Trusted CA Certificate
 	Type *string `json:"type,omitempty"`
 	// * `dns` - Uses DNS to solve the ACME challenge. * `http` - Uses HTTP to solve the ACME challenge.
@@ -33,7 +33,7 @@ type CertificateRequestRequest struct {
 	// * `rsa_2048` - 2048-bit RSA * `rsa_4096` - 4096-bit RSA * `ecc_384` - 384-bit Prime Field Curve
 	KeyAlgorithm *string `json:"key_algorithm,omitempty"`
 	Active *bool `json:"active,omitempty"`
-	CommonName string `json:"common_name" validate:"regexp=^(((\\\\*\\\\.)?[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\\\.)+[a-zA-Z](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$"`
+	CommonName string `json:"common_name"`
 	AlternativeNames []string `json:"alternative_names,omitempty"`
 	SourceCertificate NullableInt64 `json:"source_certificate,omitempty"`
 }

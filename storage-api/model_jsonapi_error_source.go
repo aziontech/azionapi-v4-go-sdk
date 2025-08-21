@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -20,11 +20,11 @@ var _ MappedNullable = &JSONAPIErrorSource{}
 // JSONAPIErrorSource Serializer for the 'source' object in a JSON:API error.
 type JSONAPIErrorSource struct {
 	// JSON Pointer to the value in the request document that caused the error
-	Pointer *string `json:"pointer,omitempty" validate:"regexp=^(\\/[^\\/]+)+$"`
+	Pointer *string `json:"pointer,omitempty"`
 	// URI query parameter that caused the error
-	Parameter *string `json:"parameter,omitempty" validate:"regexp=^.*$"`
+	Parameter *string `json:"parameter,omitempty"`
 	// Request header name that caused the error
-	Header *string `json:"header,omitempty" validate:"regexp=^.*$"`
+	Header *string `json:"header,omitempty"`
 }
 
 // NewJSONAPIErrorSource instantiates a new JSONAPIErrorSource object

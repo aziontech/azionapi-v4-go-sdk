@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteOpenAPISchema{}
 
 // ResponseAsyncDeleteOpenAPISchema struct for ResponseAsyncDeleteOpenAPISchema
 type ResponseAsyncDeleteOpenAPISchema struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteOpenAPISchema instantiates a new ResponseAsyncDeleteOpenAPISchema object

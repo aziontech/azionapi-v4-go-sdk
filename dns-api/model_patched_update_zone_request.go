@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedUpdateZoneRequest{}
 
 // PatchedUpdateZoneRequest struct for PatchedUpdateZoneRequest
 type PatchedUpdateZoneRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 }
 

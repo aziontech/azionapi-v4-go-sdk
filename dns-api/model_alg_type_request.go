@@ -22,7 +22,7 @@ var _ MappedNullable = &AlgTypeRequest{}
 // AlgTypeRequest struct for AlgTypeRequest
 type AlgTypeRequest struct {
 	Id int64 `json:"id"`
-	Slug string `json:"slug" validate:"regexp=\\\\w"`
+	Slug string `json:"slug"`
 }
 
 type _AlgTypeRequest AlgTypeRequest

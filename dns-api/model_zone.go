@@ -22,11 +22,11 @@ var _ MappedNullable = &Zone{}
 // Zone struct for Zone
 type Zone struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	Domain string `json:"domain" validate:"regexp=(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{0,62}[a-zA-Z0-9]\\\\.)+[a-zA-Z]{2,63}$)"`
+	Name string `json:"name"`
+	Domain string `json:"domain"`
 	Active bool `json:"active"`
 	Nameservers []string `json:"nameservers"`
-	ProductVersion string `json:"product_version" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	ProductVersion string `json:"product_version"`
 }
 
 type _Zone Zone

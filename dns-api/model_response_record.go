@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseRecord{}
 
 // ResponseRecord struct for ResponseRecord
 type ResponseRecord struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data Record `json:"data"`
 }
 

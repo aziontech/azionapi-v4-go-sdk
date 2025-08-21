@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &DefaultErrorResponse{}
 
 // DefaultErrorResponse struct for DefaultErrorResponse
 type DefaultErrorResponse struct {
-	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 // NewDefaultErrorResponse instantiates a new DefaultErrorResponse object

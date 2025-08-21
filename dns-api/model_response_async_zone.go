@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncZone{}
 
 // ResponseAsyncZone struct for ResponseAsyncZone
 type ResponseAsyncZone struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data Zone `json:"data"`
 }
 

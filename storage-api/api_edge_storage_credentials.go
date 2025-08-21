@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -34,7 +34,7 @@ func (r ApiCreateCredentialRequest) CredentialCreateRequest(credentialCreateRequ
 	return r
 }
 
-func (r ApiCreateCredentialRequest) Execute() (*CredentialCreate, *http.Response, error) {
+func (r ApiCreateCredentialRequest) Execute() (*ResponseCredential, *http.Response, error) {
 	return r.ApiService.CreateCredentialExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredential(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return CredentialCreate
-func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCredentialRequest) (*CredentialCreate, *http.Response, error) {
+//  @return ResponseCredential
+func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCredentialRequest) (*ResponseCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CredentialCreate
+		localVarReturnValue  *ResponseCredential
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageCredentialsAPIService.CreateCredential")
@@ -68,7 +68,7 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_storage/s3-credentials"
+	localVarPath := localBasePath + "/edge_storage/credentials"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -226,38 +226,38 @@ func (a *EdgeStorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCr
 type ApiDeleteCredentialRequest struct {
 	ctx context.Context
 	ApiService *EdgeStorageCredentialsAPIService
-	accessKey string
+	id string
 }
 
-func (r ApiDeleteCredentialRequest) Execute() (*Credential, *http.Response, error) {
+func (r ApiDeleteCredentialRequest) Execute() (*ResponseAsyncDeleteCredential, *http.Response, error) {
 	return r.ApiService.DeleteCredentialExecute(r)
 }
 
 /*
-DeleteCredential Delete a Credential
+DeleteCredential Delete a credential
 
 Delete a specific credential.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accessKey The credential access key
+ @param id
  @return ApiDeleteCredentialRequest
 */
-func (a *EdgeStorageCredentialsAPIService) DeleteCredential(ctx context.Context, accessKey string) ApiDeleteCredentialRequest {
+func (a *EdgeStorageCredentialsAPIService) DeleteCredential(ctx context.Context, id string) ApiDeleteCredentialRequest {
 	return ApiDeleteCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
-		accessKey: accessKey,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//  @return Credential
-func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCredentialRequest) (*Credential, *http.Response, error) {
+//  @return ResponseAsyncDeleteCredential
+func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCredentialRequest) (*ResponseAsyncDeleteCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Credential
+		localVarReturnValue  *ResponseAsyncDeleteCredential
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageCredentialsAPIService.DeleteCredential")
@@ -265,8 +265,8 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_storage/s3-credentials/{accessKey}"
-	localVarPath = strings.Replace(localVarPath, "{"+"accessKey"+"}", url.PathEscape(parameterValueToString(r.accessKey, "accessKey")), -1)
+	localVarPath := localBasePath + "/edge_storage/credentials/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -326,18 +326,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v JSONAPIErrorResponse
+			var v ResponseBadRequestCredential
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -348,7 +337,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v JSONAPIErrorResponse
+			var v DefaultErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -359,7 +348,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v JSONAPIErrorResponse
+			var v DefaultErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -370,7 +359,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v JSONAPIErrorResponse
+			var v DefaultErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -381,7 +370,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v JSONAPIErrorResponse
+			var v DefaultErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -392,7 +381,7 @@ func (a *EdgeStorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v JSONAPIErrorResponse
+			var v DefaultErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -490,7 +479,7 @@ func (a *EdgeStorageCredentialsAPIService) ListCredentialsExecute(r ApiListCrede
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_storage/s3-credentials"
+	localVarPath := localBasePath + "/edge_storage/credentials"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -644,43 +633,43 @@ func (a *EdgeStorageCredentialsAPIService) ListCredentialsExecute(r ApiListCrede
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRetriveCredentialRequest struct {
+type ApiRetrieveCredentialRequest struct {
 	ctx context.Context
 	ApiService *EdgeStorageCredentialsAPIService
-	accessKey string
+	id string
 	fields *string
 }
 
 // Comma-separated list of field names to include in the response.
-func (r ApiRetriveCredentialRequest) Fields(fields string) ApiRetriveCredentialRequest {
+func (r ApiRetrieveCredentialRequest) Fields(fields string) ApiRetrieveCredentialRequest {
 	r.fields = &fields
 	return r
 }
 
-func (r ApiRetriveCredentialRequest) Execute() (*ResponseRetrieveCredential, *http.Response, error) {
-	return r.ApiService.RetriveCredentialExecute(r)
+func (r ApiRetrieveCredentialRequest) Execute() (*ResponseRetrieveCredential, *http.Response, error) {
+	return r.ApiService.RetrieveCredentialExecute(r)
 }
 
 /*
-RetriveCredential Retrieve details from a credential
+RetrieveCredential Retrieve details from a credential
 
 Retrieve details from a specific credential.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accessKey
- @return ApiRetriveCredentialRequest
+ @param id
+ @return ApiRetrieveCredentialRequest
 */
-func (a *EdgeStorageCredentialsAPIService) RetriveCredential(ctx context.Context, accessKey string) ApiRetriveCredentialRequest {
-	return ApiRetriveCredentialRequest{
+func (a *EdgeStorageCredentialsAPIService) RetrieveCredential(ctx context.Context, id string) ApiRetrieveCredentialRequest {
+	return ApiRetrieveCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
-		accessKey: accessKey,
+		id: id,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseRetrieveCredential
-func (a *EdgeStorageCredentialsAPIService) RetriveCredentialExecute(r ApiRetriveCredentialRequest) (*ResponseRetrieveCredential, *http.Response, error) {
+func (a *EdgeStorageCredentialsAPIService) RetrieveCredentialExecute(r ApiRetrieveCredentialRequest) (*ResponseRetrieveCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -688,13 +677,13 @@ func (a *EdgeStorageCredentialsAPIService) RetriveCredentialExecute(r ApiRetrive
 		localVarReturnValue  *ResponseRetrieveCredential
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageCredentialsAPIService.RetriveCredential")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageCredentialsAPIService.RetrieveCredential")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_storage/s3-credentials/{accessKey}"
-	localVarPath = strings.Replace(localVarPath, "{"+"accessKey"+"}", url.PathEscape(parameterValueToString(r.accessKey, "accessKey")), -1)
+	localVarPath := localBasePath + "/edge_storage/credentials/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **[]string** |  | [optional] 
 **ExpirationDate** | Pointer to **[]string** |  | [optional] 
-**CreatedAt** | Pointer to **[]string** |  | [optional] 
+**LastModified** | Pointer to **[]string** |  | [optional] 
 **Capabilities** | Pointer to [**ResponseBadRequestCredentialCapabilities**](ResponseBadRequestCredentialCapabilities.md) |  | [optional] 
 **Bucket** | Pointer to **[]string** |  | [optional] 
 **Detail** | Pointer to **string** |  | [optional] 
@@ -80,30 +80,30 @@ SetExpirationDate sets ExpirationDate field to given value.
 
 HasExpirationDate returns a boolean if a field has been set.
 
-### GetCreatedAt
+### GetLastModified
 
-`func (o *ResponseBadRequestCredential) GetCreatedAt() []string`
+`func (o *ResponseBadRequestCredential) GetLastModified() []string`
 
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+GetLastModified returns the LastModified field if non-nil, zero value otherwise.
 
-### GetCreatedAtOk
+### GetLastModifiedOk
 
-`func (o *ResponseBadRequestCredential) GetCreatedAtOk() (*[]string, bool)`
+`func (o *ResponseBadRequestCredential) GetLastModifiedOk() (*[]string, bool)`
 
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+GetLastModifiedOk returns a tuple with the LastModified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedAt
+### SetLastModified
 
-`func (o *ResponseBadRequestCredential) SetCreatedAt(v []string)`
+`func (o *ResponseBadRequestCredential) SetLastModified(v []string)`
 
-SetCreatedAt sets CreatedAt field to given value.
+SetLastModified sets LastModified field to given value.
 
-### HasCreatedAt
+### HasLastModified
 
-`func (o *ResponseBadRequestCredential) HasCreatedAt() bool`
+`func (o *ResponseBadRequestCredential) HasLastModified() bool`
 
-HasCreatedAt returns a boolean if a field has been set.
+HasLastModified returns a boolean if a field has been set.
 
 ### GetCapabilities
 

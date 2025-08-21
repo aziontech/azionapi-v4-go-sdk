@@ -39,7 +39,7 @@ type ResponseBadRequestCertificate struct {
 	LastEditor []string `json:"last_editor,omitempty"`
 	LastModified []string `json:"last_modified,omitempty"`
 	RenewedAt []string `json:"renewed_at,omitempty"`
-	Detail *string `json:"detail,omitempty" validate:"regexp=.*"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 // NewResponseBadRequestCertificate instantiates a new ResponseBadRequestCertificate object

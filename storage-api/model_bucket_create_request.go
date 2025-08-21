@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &BucketCreateRequest{}
 
 // BucketCreateRequest struct for BucketCreateRequest
 type BucketCreateRequest struct {
-	Name string `json:"name" validate:"regexp=.{6,63}"`
+	Name string `json:"name"`
 	// * `read_only` - read_only * `read_write` - read_write * `restricted` - restricted
 	EdgeAccess string `json:"edge_access"`
 }

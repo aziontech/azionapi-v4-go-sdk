@@ -23,19 +23,19 @@ var _ MappedNullable = &CertificateRevocationList{}
 // CertificateRevocationList struct for CertificateRevocationList
 type CertificateRevocationList struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	// Indicates if the certificate revocation list is active. This field cannot be set to false.
 	Active *bool `json:"active,omitempty"`
 	LastEditor string `json:"last_editor"`
 	// Timestamp of the last modification made to the certificate content on the platform.
 	LastModified time.Time `json:"last_modified"`
-	ProductVersion string `json:"product_version" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	ProductVersion string `json:"product_version"`
 	Issuer string `json:"issuer"`
 	// Timestamp of the last update issued by the certification revocation list issuer.
 	LastUpdate time.Time `json:"last_update"`
 	// Timestamp of the next scheduled update from the certification revocation list issuer.
 	NextUpdate time.Time `json:"next_update"`
-	Crl string `json:"crl" validate:"regexp=.*"`
+	Crl string `json:"crl"`
 }
 
 type _CertificateRevocationList CertificateRevocationList

@@ -21,7 +21,7 @@ var _ MappedNullable = &DataStreamRequest{}
 
 // DataStreamRequest struct for DataStreamRequest
 type DataStreamRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active *bool `json:"active,omitempty"`
 	Inputs []InputPolymorphicInputDataSourceAttributesRequest `json:"inputs"`
 	Transform []TransformPolymorphicRequest `json:"transform"`

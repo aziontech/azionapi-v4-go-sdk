@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -21,8 +21,7 @@ var _ MappedNullable = &SuccessObjectOperation{}
 
 // SuccessObjectOperation struct for SuccessObjectOperation
 type SuccessObjectOperation struct {
-	// * `pending` - pending * `executed` - executed
-	State string `json:"state"`
+	State *string `json:"state,omitempty"`
 	Data ObjectResponseData `json:"data"`
 }
 
@@ -32,9 +31,8 @@ type _SuccessObjectOperation SuccessObjectOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSuccessObjectOperation(state string, data ObjectResponseData) *SuccessObjectOperation {
+func NewSuccessObjectOperation(data ObjectResponseData) *SuccessObjectOperation {
 	this := SuccessObjectOperation{}
-	this.State = state
 	this.Data = data
 	return &this
 }
@@ -47,28 +45,36 @@ func NewSuccessObjectOperationWithDefaults() *SuccessObjectOperation {
 	return &this
 }
 
-// GetState returns the State field value
+// GetState returns the State field value if set, zero value otherwise.
 func (o *SuccessObjectOperation) GetState() string {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
-
-	return o.State
+	return *o.State
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SuccessObjectOperation) GetStateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return &o.State, true
+	return o.State, true
 }
 
-// SetState sets field value
+// HasState returns a boolean if a field has been set.
+func (o *SuccessObjectOperation) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
 func (o *SuccessObjectOperation) SetState(v string) {
-	o.State = v
+	o.State = &v
 }
 
 // GetData returns the Data field value
@@ -105,7 +111,9 @@ func (o SuccessObjectOperation) MarshalJSON() ([]byte, error) {
 
 func (o SuccessObjectOperation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["state"] = o.State
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
 	toSerialize["data"] = o.Data
 	return toSerialize, nil
 }
@@ -115,7 +123,6 @@ func (o *SuccessObjectOperation) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"state",
 		"data",
 	}
 

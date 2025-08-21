@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
 **Domain** | **string** |  | 
 **Active** | **bool** |  | 
-**Nameservers** | **[]string** |  | [readonly] 
-**ProductVersion** | **string** |  | [readonly] 
+**Nameservers** | **[]string** |  | 
+**ProductVersion** | **string** |  | 
 
 ## Methods
 

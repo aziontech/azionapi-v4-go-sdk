@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseListDataSource{}
 
 // ResponseListDataSource struct for ResponseListDataSource
 type ResponseListDataSource struct {
-	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Slug string `json:"slug"`
 	Name string `json:"name"`
 	Active bool `json:"active"`
 }

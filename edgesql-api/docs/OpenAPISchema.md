@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
-**Status** | **string** | * &#x60;creating&#x60; - creating * &#x60;created&#x60; - created * &#x60;deleting&#x60; - deleting | [readonly] 
+**Status** | **string** | * &#x60;creating&#x60; - creating * &#x60;created&#x60; - created * &#x60;deleting&#x60; - deleting | 
 **Active** | Pointer to **bool** |  | [optional] 
-**LastModified** | **time.Time** |  | [readonly] 
-**LastEditor** | **NullableString** | Last editor of the schema. | [readonly] 
-**ProductVersion** | **string** |  | [readonly] 
+**LastModified** | **time.Time** |  | 
+**LastEditor** | **NullableString** | Last editor of the schema. | 
+**ProductVersion** | **string** |  | 
 
 ## Methods
 

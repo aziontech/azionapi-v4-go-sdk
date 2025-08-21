@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchedDataStreamRequest{}
 
 // PatchedDataStreamRequest struct for PatchedDataStreamRequest
 type PatchedDataStreamRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Inputs []InputPolymorphicInputDataSourceAttributesRequest `json:"inputs,omitempty"`
 	Transform []TransformPolymorphicRequest `json:"transform,omitempty"`

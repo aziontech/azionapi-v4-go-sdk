@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** |  | [readonly] 
-**Custom** | **bool** |  | [readonly] 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** |  | 
+**Custom** | **bool** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **DataSet** | **string** |  | 
 

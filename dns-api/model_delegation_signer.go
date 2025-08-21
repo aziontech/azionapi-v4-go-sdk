@@ -22,7 +22,7 @@ var _ MappedNullable = &DelegationSigner{}
 // DelegationSigner struct for DelegationSigner
 type DelegationSigner struct {
 	AlgorithmType AlgType `json:"algorithm_type"`
-	Digest string `json:"digest" validate:"regexp=\\\\w"`
+	Digest string `json:"digest"`
 	DigestType AlgType `json:"digest_type"`
 	KeyTag int64 `json:"key_tag"`
 }

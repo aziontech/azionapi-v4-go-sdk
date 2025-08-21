@@ -330,7 +330,6 @@ paths:
         name: id
         required: true
         schema:
-          pattern: "^[1-9][0-9]*$"
           type: string
         style: simple
       responses:
@@ -481,7 +480,6 @@ paths:
         name: id
         required: true
         schema:
-          pattern: "^[1-9][0-9]*$"
           type: string
         style: simple
       responses:
@@ -619,7 +617,6 @@ paths:
         name: id
         required: true
         schema:
-          pattern: "^[1-9][0-9]*$"
           type: string
         style: simple
       requestBody:
@@ -694,7 +691,6 @@ paths:
         name: id
         required: true
         schema:
-          pattern: "^[1-9][0-9]*$"
           type: string
         style: simple
       requestBody:
@@ -1963,32 +1959,25 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         certificate:
           maxLength: 600000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
         issuer:
           nullable: true
-          pattern: .*
-          readOnly: true
           type: string
         subject_name:
           items:
             type: string
-          readOnly: true
           type: array
         validity:
           nullable: true
-          readOnly: true
           type: string
         type:
           allOf:
@@ -1999,54 +1988,41 @@ components:
             * `edge_certificate` - Edge Certificate
             * `trusted_ca_certificate` - Trusted CA Certificate
         managed:
-          readOnly: true
           type: boolean
         status:
           allOf:
           - $ref: "#/components/schemas/StatusEnum"
-          readOnly: true
         status_detail:
           maxLength: 500
           minLength: 0
-          pattern: .*
-          readOnly: true
           type: string
         csr:
           nullable: true
-          pattern: .*
-          readOnly: true
           type: string
         challenge:
           $ref: "#/components/schemas/Certificate_challenge"
         authority:
           $ref: "#/components/schemas/Certificate_authority"
         key_algorithm:
-          pattern: .*
-          readOnly: true
           type: string
         active:
           type: boolean
         product_version:
           maxLength: 50
           minLength: 3
-          pattern: \d+\.\d+
-          readOnly: true
           type: string
         last_editor:
-          readOnly: true
           type: string
         last_modified:
           description: Timestamp of the last modification made to the certificate
             content on the platform.
           format: date-time
-          readOnly: true
           type: string
         renewed_at:
           description: Timestamp indicating when the managed certificate was renewed
             on our platform.
           format: date-time
           nullable: true
-          readOnly: true
           type: string
       required:
       - authority
@@ -2079,19 +2055,16 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         certificate:
           maxLength: 600000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
         private_key:
           maxLength: 64000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
           writeOnly: true
         type:
@@ -2128,19 +2101,16 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         certificate:
           maxLength: 600000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
         private_key:
           maxLength: 64000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
           writeOnly: true
         type:
@@ -2169,15 +2139,12 @@ components:
         common_name:
           maxLength: 64
           minLength: 1
-          pattern: "^(((\\*\\.)?[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$"
           type: string
           writeOnly: true
         alternative_names:
           items:
             maxLength: 250
             minLength: 1
-            pattern: "^(((\\*\\.)?[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\\
-              .)+[a-zA-Z](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$"
             type: string
           type: array
           writeOnly: true
@@ -2211,52 +2178,42 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           description: Indicates if the certificate revocation list is active. This
             field cannot be set to false.
           type: boolean
         last_editor:
-          readOnly: true
           type: string
         last_modified:
           description: Timestamp of the last modification made to the certificate
             content on the platform.
           format: date-time
-          readOnly: true
           type: string
         product_version:
           maxLength: 50
           minLength: 3
-          pattern: \d+\.\d+
-          readOnly: true
           type: string
         issuer:
           minLength: 1
-          readOnly: true
           type: string
         last_update:
           description: Timestamp of the last update issued by the certification revocation
             list issuer.
           format: date-time
-          readOnly: true
           type: string
         next_update:
           description: Timestamp of the next scheduled update from the certification
             revocation list issuer.
           format: date-time
-          readOnly: true
           type: string
         crl:
           maxLength: 30720000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - crl
@@ -2280,7 +2237,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           description: Indicates if the certificate revocation list is active. This
@@ -2289,7 +2245,6 @@ components:
         crl:
           maxLength: 30720000
           minLength: 1
-          pattern: .*
           type: string
       required:
       - crl
@@ -2319,19 +2274,16 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         certificate:
           maxLength: 600000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
         private_key:
           maxLength: 64000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
           writeOnly: true
         type:
@@ -2350,46 +2302,38 @@ components:
         common_name:
           maxLength: 250
           minLength: 1
-          pattern: "^(((\\*\\.)?[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$"
           type: string
           writeOnly: true
         alternative_names:
           items:
             maxLength: 250
             minLength: 1
-            pattern: "^(((\\*\\.)?[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\\
-              .)+[a-zA-Z](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$"
             type: string
           type: array
           writeOnly: true
         country:
           maxLength: 2
           minLength: 2
-          pattern: "[a-zA-Z]{2}"
           type: string
           writeOnly: true
         state:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
           writeOnly: true
         locality:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
           writeOnly: true
         organization:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
           writeOnly: true
         organization_unity:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
           writeOnly: true
         email:
@@ -2422,7 +2366,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: DefaultErrorResponse
       type: object
@@ -2441,26 +2384,22 @@ components:
           description: The HTTP status code applicable to this problem
           maxLength: 3
           minLength: 3
-          pattern: "^\\d{3}$"
           type: string
         code:
           description: An application-specific error code
           maxLength: 5
           minLength: 5
-          pattern: "^\\d{5}$"
           type: string
         title:
           description: "A short, human-readable summary of the problem"
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         source:
           allOf:
@@ -2506,19 +2445,16 @@ components:
             the error
           maxLength: 4096
           minLength: 1
-          pattern: "^(/[^/]+)+$"
           type: string
         parameter:
           description: URI query parameter that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         header:
           description: Request header name that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
       title: JSONAPIErrorSource
       type: object
@@ -2643,19 +2579,16 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         certificate:
           maxLength: 600000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
         private_key:
           maxLength: 64000
           minLength: 1
           nullable: true
-          pattern: .*
           type: string
           writeOnly: true
         type:
@@ -2680,7 +2613,6 @@ components:
         name:
           maxLength: 250
           minLength: 1
-          pattern: .*
           type: string
         active:
           description: Indicates if the certificate revocation list is active. This
@@ -2689,7 +2621,6 @@ components:
         crl:
           maxLength: 30720000
           minLength: 1
-          pattern: .*
           type: string
       title: PatchedCertificateRevocationListRequest
       type: object
@@ -2723,7 +2654,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Certificate"
@@ -2750,7 +2680,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/CertificateRevocationList"
@@ -2766,7 +2695,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteCertificate
       type: object
@@ -2778,7 +2706,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteCertificateRevocationList
       type: object
@@ -2928,7 +2855,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseBadRequestCertificate
       type: object
@@ -2962,7 +2888,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Certificate"
@@ -2989,7 +2914,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/CertificateRevocationList"
@@ -3005,7 +2929,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteCertificate
       type: object
@@ -3017,7 +2940,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteCertificateRevocationList
       type: object
@@ -3093,13 +3015,11 @@ components:
       oneOf:
       - $ref: "#/components/schemas/ChallengeEnum"
       - $ref: "#/components/schemas/NullEnum"
-      readOnly: true
     Certificate_authority:
       nullable: true
       oneOf:
       - $ref: "#/components/schemas/AuthorityEnum"
       - $ref: "#/components/schemas/NullEnum"
-      readOnly: true
     ResponseBadRequestCertificate_subject_name:
       oneOf:
       - items:

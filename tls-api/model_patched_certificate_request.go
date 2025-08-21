@@ -19,9 +19,9 @@ var _ MappedNullable = &PatchedCertificateRequest{}
 
 // PatchedCertificateRequest struct for PatchedCertificateRequest
 type PatchedCertificateRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
-	Certificate NullableString `json:"certificate,omitempty" validate:"regexp=.*"`
-	PrivateKey NullableString `json:"private_key,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
+	Certificate NullableString `json:"certificate,omitempty"`
+	PrivateKey NullableString `json:"private_key,omitempty"`
 	// The value can't be changed after the certificate creation.  * `edge_certificate` - Edge Certificate * `trusted_ca_certificate` - Trusted CA Certificate
 	Type *string `json:"type,omitempty"`
 	Active *bool `json:"active,omitempty"`

@@ -21,21 +21,21 @@ var _ MappedNullable = &CertificateSigningRequestRequest{}
 
 // CertificateSigningRequestRequest struct for CertificateSigningRequestRequest
 type CertificateSigningRequestRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
-	Certificate NullableString `json:"certificate,omitempty" validate:"regexp=.*"`
-	PrivateKey NullableString `json:"private_key,omitempty" validate:"regexp=.*"`
+	Name string `json:"name"`
+	Certificate NullableString `json:"certificate,omitempty"`
+	PrivateKey NullableString `json:"private_key,omitempty"`
 	// The value can't be changed after the certificate creation.  * `edge_certificate` - Edge Certificate * `trusted_ca_certificate` - Trusted CA Certificate
 	Type *string `json:"type,omitempty"`
 	// * `rsa_2048` - 2048-bit RSA * `rsa_4096` - 4096-bit RSA * `ecc_384` - 384-bit Prime Field Curve
 	KeyAlgorithm *string `json:"key_algorithm,omitempty"`
 	Active *bool `json:"active,omitempty"`
-	CommonName string `json:"common_name" validate:"regexp=^(((\\\\*\\\\.)?[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\\\.)+[a-zA-Z](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$"`
+	CommonName string `json:"common_name"`
 	AlternativeNames []string `json:"alternative_names,omitempty"`
-	Country string `json:"country" validate:"regexp=[a-zA-Z]{2}"`
-	State string `json:"state" validate:"regexp=.*"`
-	Locality string `json:"locality" validate:"regexp=.*"`
-	Organization string `json:"organization" validate:"regexp=.*"`
-	OrganizationUnity string `json:"organization_unity" validate:"regexp=.*"`
+	Country string `json:"country"`
+	State string `json:"state"`
+	Locality string `json:"locality"`
+	Organization string `json:"organization"`
+	OrganizationUnity string `json:"organization_unity"`
 	Email string `json:"email"`
 }
 

@@ -19,8 +19,8 @@ var _ MappedNullable = &PatchedRecordRequest{}
 
 // PatchedRecordRequest struct for PatchedRecordRequest
 type PatchedRecordRequest struct {
-	Description *string `json:"description,omitempty" validate:"regexp=.*"`
-	Name *string `json:"name,omitempty" validate:"regexp=^(?:(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_])\\\\.)*(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_]))|@)$"`
+	Description *string `json:"description,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Ttl *int64 `json:"ttl,omitempty"`
 	// * `A` - A * `AAAA` - AAAA * `ANAME` - ANAME * `CNAME` - CNAME * `MX` - MX * `NS` - NS * `PTR` - PTR * `SRV` - SRV * `TXT` - TXT * `CAA` - CAA * `DS` - DS
 	Type *string `json:"type,omitempty"`

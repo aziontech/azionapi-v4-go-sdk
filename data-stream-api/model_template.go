@@ -23,12 +23,12 @@ var _ MappedNullable = &Template{}
 // Template struct for Template
 type Template struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	Name string `json:"name"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 	Custom bool `json:"custom"`
 	Active *bool `json:"active,omitempty"`
-	DataSet string `json:"data_set" validate:"regexp=.*"`
+	DataSet string `json:"data_set"`
 }
 
 type _Template Template

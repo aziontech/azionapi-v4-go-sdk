@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateZoneRequest{}
 
 // UpdateZoneRequest struct for UpdateZoneRequest
 type UpdateZoneRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	Active bool `json:"active"`
 }
 

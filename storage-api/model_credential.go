@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -22,13 +22,14 @@ var _ MappedNullable = &Credential{}
 
 // Credential struct for Credential
 type Credential struct {
-	Name string `json:"name" validate:"regexp=^[a-zA-Z0-9\\\\-]+$"`
+	Name string `json:"name"`
 	AccessKey string `json:"access_key"`
 	SecretKey string `json:"secret_key"`
 	Capabilities []string `json:"capabilities"`
-	Bucket *string `json:"bucket,omitempty" validate:"regexp=.{0,63}"`
+	Bucket *string `json:"bucket,omitempty"`
 	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
-	CreatedAt time.Time `json:"created_at"`
+	LastEditor NullableString `json:"last_editor"`
+	LastModified time.Time `json:"last_modified"`
 }
 
 type _Credential Credential
@@ -37,13 +38,14 @@ type _Credential Credential
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCredential(name string, accessKey string, secretKey string, capabilities []string, createdAt time.Time) *Credential {
+func NewCredential(name string, accessKey string, secretKey string, capabilities []string, lastEditor NullableString, lastModified time.Time) *Credential {
 	this := Credential{}
 	this.Name = name
 	this.AccessKey = accessKey
 	this.SecretKey = secretKey
 	this.Capabilities = capabilities
-	this.CreatedAt = createdAt
+	this.LastEditor = lastEditor
+	this.LastModified = lastModified
 	return &this
 }
 
@@ -215,28 +217,54 @@ func (o *Credential) SetExpirationDate(v time.Time) {
 	o.ExpirationDate = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value
-func (o *Credential) GetCreatedAt() time.Time {
+// GetLastEditor returns the LastEditor field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *Credential) GetLastEditor() string {
+	if o == nil || o.LastEditor.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.LastEditor.Get()
+}
+
+// GetLastEditorOk returns a tuple with the LastEditor field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Credential) GetLastEditorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastEditor.Get(), o.LastEditor.IsSet()
+}
+
+// SetLastEditor sets field value
+func (o *Credential) SetLastEditor(v string) {
+	o.LastEditor.Set(&v)
+}
+
+// GetLastModified returns the LastModified field value
+func (o *Credential) GetLastModified() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
 	}
 
-	return o.CreatedAt
+	return o.LastModified
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
-func (o *Credential) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Credential) GetLastModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	return &o.LastModified, true
 }
 
-// SetCreatedAt sets field value
-func (o *Credential) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
+// SetLastModified sets field value
+func (o *Credential) SetLastModified(v time.Time) {
+	o.LastModified = v
 }
 
 func (o Credential) MarshalJSON() ([]byte, error) {
@@ -259,7 +287,8 @@ func (o Credential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExpirationDate) {
 		toSerialize["expiration_date"] = o.ExpirationDate
 	}
-	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["last_editor"] = o.LastEditor.Get()
+	toSerialize["last_modified"] = o.LastModified
 	return toSerialize, nil
 }
 
@@ -272,7 +301,8 @@ func (o *Credential) UnmarshalJSON(data []byte) (err error) {
 		"access_key",
 		"secret_key",
 		"capabilities",
-		"created_at",
+		"last_editor",
+		"last_modified",
 	}
 
 	allProperties := make(map[string]interface{})
