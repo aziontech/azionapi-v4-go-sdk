@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseDeleteRecord{}
 
 // ResponseDeleteRecord struct for ResponseDeleteRecord
 type ResponseDeleteRecord struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseDeleteRecord instantiates a new ResponseDeleteRecord object

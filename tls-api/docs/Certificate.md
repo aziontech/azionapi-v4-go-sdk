@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [readonly] 
+**Id** | **int64** |  | 
 **Name** | **string** |  | 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
-**Issuer** | **NullableString** |  | [readonly] 
-**SubjectName** | **[]string** |  | [readonly] 
-**Validity** | **NullableString** |  | [readonly] 
+**Issuer** | **NullableString** |  | 
+**SubjectName** | **[]string** |  | 
+**Validity** | **NullableString** |  | 
 **Type** | Pointer to **string** | The value can&#39;t be changed after the certificate creation.  * &#x60;edge_certificate&#x60; - Edge Certificate * &#x60;trusted_ca_certificate&#x60; - Trusted CA Certificate | [optional] 
-**Managed** | **bool** |  | [readonly] 
-**Status** | **string** | * &#x60;challenge_verification&#x60; - Challenge Verification * &#x60;active&#x60; - Active * &#x60;pending&#x60; - Pending * &#x60;failed&#x60; - Failed | [readonly] 
-**StatusDetail** | **string** |  | [readonly] 
-**Csr** | **NullableString** |  | [readonly] 
+**Managed** | **bool** |  | 
+**Status** | **string** | * &#x60;challenge_verification&#x60; - Challenge Verification * &#x60;active&#x60; - Active * &#x60;pending&#x60; - Pending * &#x60;failed&#x60; - Failed | 
+**StatusDetail** | **string** |  | 
+**Csr** | **NullableString** |  | 
 **Challenge** | [**NullableCertificateChallenge**](CertificateChallenge.md) |  | 
 **Authority** | [**NullableCertificateAuthority**](CertificateAuthority.md) |  | 
-**KeyAlgorithm** | **string** |  | [readonly] 
+**KeyAlgorithm** | **string** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
-**ProductVersion** | **string** |  | [readonly] 
-**LastEditor** | **string** |  | [readonly] 
-**LastModified** | **time.Time** | Timestamp of the last modification made to the certificate content on the platform. | [readonly] 
-**RenewedAt** | **NullableTime** | Timestamp indicating when the managed certificate was renewed on our platform. | [readonly] 
+**ProductVersion** | **string** |  | 
+**LastEditor** | **string** |  | 
+**LastModified** | **time.Time** | Timestamp of the last modification made to the certificate content on the platform. | 
+**RenewedAt** | **NullableTime** | Timestamp indicating when the managed certificate was renewed on our platform. | 
 
 ## Methods
 

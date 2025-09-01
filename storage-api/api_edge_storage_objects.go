@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -29,7 +29,14 @@ type ApiCreateObjectKeyRequest struct {
 	ApiService *EdgeStorageObjectsAPIService
 	bucketName string
 	objectKey string
+	contentType *string
 	body *os.File
+}
+
+// The content type of the file (Example: application/octet-stream).
+func (r ApiCreateObjectKeyRequest) ContentType(contentType string) ApiCreateObjectKeyRequest {
+	r.contentType = &contentType
+	return r
 }
 
 func (r ApiCreateObjectKeyRequest) Body(body *os.File) ApiCreateObjectKeyRequest {
@@ -42,9 +49,9 @@ func (r ApiCreateObjectKeyRequest) Execute() (*SuccessObjectOperation, *http.Res
 }
 
 /*
-CreateObjectKey Create new object key
+CreateObjectKey Create new object key.
 
-Create a new object key in the bucket.
+Create a new object key in the bucket. The object's Content-Type is defined by the Content-Type header. If this header is not included, the Content-Type will be automatically detected.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param bucketName
@@ -99,6 +106,9 @@ func (a *EdgeStorageObjectsAPIService) CreateObjectKeyExecute(r ApiCreateObjectK
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.contentType != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -236,14 +246,14 @@ type ApiDeleteObjectKeyRequest struct {
 	objectKey string
 }
 
-func (r ApiDeleteObjectKeyRequest) Execute() (*SuccessObjectOperation, *http.Response, error) {
+func (r ApiDeleteObjectKeyRequest) Execute() (*ResponseDeleteBucketObject, *http.Response, error) {
 	return r.ApiService.DeleteObjectKeyExecute(r)
 }
 
 /*
 DeleteObjectKey Delete object key
 
-Delete an object key from bucket
+Upon a successful deletion request, the object will be permanentlydeleted after a 24-hour grace period.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param bucketName
@@ -260,13 +270,13 @@ func (a *EdgeStorageObjectsAPIService) DeleteObjectKey(ctx context.Context, buck
 }
 
 // Execute executes the request
-//  @return SuccessObjectOperation
-func (a *EdgeStorageObjectsAPIService) DeleteObjectKeyExecute(r ApiDeleteObjectKeyRequest) (*SuccessObjectOperation, *http.Response, error) {
+//  @return ResponseDeleteBucketObject
+func (a *EdgeStorageObjectsAPIService) DeleteObjectKeyExecute(r ApiDeleteObjectKeyRequest) (*ResponseDeleteBucketObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SuccessObjectOperation
+		localVarReturnValue  *ResponseDeleteBucketObject
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeStorageObjectsAPIService.DeleteObjectKey")
@@ -861,7 +871,14 @@ type ApiUpdateObjectKeyRequest struct {
 	ApiService *EdgeStorageObjectsAPIService
 	bucketName string
 	objectKey string
+	contentType *string
 	body *os.File
+}
+
+// The content type of the file (Example: application/octet-stream).
+func (r ApiUpdateObjectKeyRequest) ContentType(contentType string) ApiUpdateObjectKeyRequest {
+	r.contentType = &contentType
+	return r
 }
 
 func (r ApiUpdateObjectKeyRequest) Body(body *os.File) ApiUpdateObjectKeyRequest {
@@ -874,9 +891,9 @@ func (r ApiUpdateObjectKeyRequest) Execute() (*SuccessObjectOperation, *http.Res
 }
 
 /*
-UpdateObjectKey Update the object key
+UpdateObjectKey Update the object key.
 
-Update the object key from bucket.
+Update the object key from bucket. The object's Content-Type is defined by the Content-Type header. If this header is not included, the Content-Type will be automatically detected.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param bucketName
@@ -931,6 +948,9 @@ func (a *EdgeStorageObjectsAPIService) UpdateObjectKeyExecute(r ApiUpdateObjectK
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.contentType != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.body

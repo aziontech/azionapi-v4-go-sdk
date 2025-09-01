@@ -21,8 +21,8 @@ var _ MappedNullable = &DefaultDeploymentStrategyAttrsRequest{}
 
 // DefaultDeploymentStrategyAttrsRequest struct for DefaultDeploymentStrategyAttrsRequest
 type DefaultDeploymentStrategyAttrsRequest struct {
-	EdgeApplication int64 `json:"edge_application"`
-	EdgeFirewall NullableInt64 `json:"edge_firewall,omitempty"`
+	Application int64 `json:"application"`
+	Firewall NullableInt64 `json:"firewall,omitempty"`
 	CustomPage NullableInt64 `json:"custom_page,omitempty"`
 }
 
@@ -32,9 +32,9 @@ type _DefaultDeploymentStrategyAttrsRequest DefaultDeploymentStrategyAttrsReques
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDefaultDeploymentStrategyAttrsRequest(edgeApplication int64) *DefaultDeploymentStrategyAttrsRequest {
+func NewDefaultDeploymentStrategyAttrsRequest(application int64) *DefaultDeploymentStrategyAttrsRequest {
 	this := DefaultDeploymentStrategyAttrsRequest{}
-	this.EdgeApplication = edgeApplication
+	this.Application = application
 	return &this
 }
 
@@ -46,70 +46,70 @@ func NewDefaultDeploymentStrategyAttrsRequestWithDefaults() *DefaultDeploymentSt
 	return &this
 }
 
-// GetEdgeApplication returns the EdgeApplication field value
-func (o *DefaultDeploymentStrategyAttrsRequest) GetEdgeApplication() int64 {
+// GetApplication returns the Application field value
+func (o *DefaultDeploymentStrategyAttrsRequest) GetApplication() int64 {
 	if o == nil {
 		var ret int64
 		return ret
 	}
 
-	return o.EdgeApplication
+	return o.Application
 }
 
-// GetEdgeApplicationOk returns a tuple with the EdgeApplication field value
+// GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
-func (o *DefaultDeploymentStrategyAttrsRequest) GetEdgeApplicationOk() (*int64, bool) {
+func (o *DefaultDeploymentStrategyAttrsRequest) GetApplicationOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.EdgeApplication, true
+	return &o.Application, true
 }
 
-// SetEdgeApplication sets field value
-func (o *DefaultDeploymentStrategyAttrsRequest) SetEdgeApplication(v int64) {
-	o.EdgeApplication = v
+// SetApplication sets field value
+func (o *DefaultDeploymentStrategyAttrsRequest) SetApplication(v int64) {
+	o.Application = v
 }
 
-// GetEdgeFirewall returns the EdgeFirewall field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DefaultDeploymentStrategyAttrsRequest) GetEdgeFirewall() int64 {
-	if o == nil || IsNil(o.EdgeFirewall.Get()) {
+// GetFirewall returns the Firewall field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DefaultDeploymentStrategyAttrsRequest) GetFirewall() int64 {
+	if o == nil || IsNil(o.Firewall.Get()) {
 		var ret int64
 		return ret
 	}
-	return *o.EdgeFirewall.Get()
+	return *o.Firewall.Get()
 }
 
-// GetEdgeFirewallOk returns a tuple with the EdgeFirewall field value if set, nil otherwise
+// GetFirewallOk returns a tuple with the Firewall field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DefaultDeploymentStrategyAttrsRequest) GetEdgeFirewallOk() (*int64, bool) {
+func (o *DefaultDeploymentStrategyAttrsRequest) GetFirewallOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EdgeFirewall.Get(), o.EdgeFirewall.IsSet()
+	return o.Firewall.Get(), o.Firewall.IsSet()
 }
 
-// HasEdgeFirewall returns a boolean if a field has been set.
-func (o *DefaultDeploymentStrategyAttrsRequest) HasEdgeFirewall() bool {
-	if o != nil && o.EdgeFirewall.IsSet() {
+// HasFirewall returns a boolean if a field has been set.
+func (o *DefaultDeploymentStrategyAttrsRequest) HasFirewall() bool {
+	if o != nil && o.Firewall.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEdgeFirewall gets a reference to the given NullableInt64 and assigns it to the EdgeFirewall field.
-func (o *DefaultDeploymentStrategyAttrsRequest) SetEdgeFirewall(v int64) {
-	o.EdgeFirewall.Set(&v)
+// SetFirewall gets a reference to the given NullableInt64 and assigns it to the Firewall field.
+func (o *DefaultDeploymentStrategyAttrsRequest) SetFirewall(v int64) {
+	o.Firewall.Set(&v)
 }
-// SetEdgeFirewallNil sets the value for EdgeFirewall to be an explicit nil
-func (o *DefaultDeploymentStrategyAttrsRequest) SetEdgeFirewallNil() {
-	o.EdgeFirewall.Set(nil)
+// SetFirewallNil sets the value for Firewall to be an explicit nil
+func (o *DefaultDeploymentStrategyAttrsRequest) SetFirewallNil() {
+	o.Firewall.Set(nil)
 }
 
-// UnsetEdgeFirewall ensures that no value is present for EdgeFirewall, not even an explicit nil
-func (o *DefaultDeploymentStrategyAttrsRequest) UnsetEdgeFirewall() {
-	o.EdgeFirewall.Unset()
+// UnsetFirewall ensures that no value is present for Firewall, not even an explicit nil
+func (o *DefaultDeploymentStrategyAttrsRequest) UnsetFirewall() {
+	o.Firewall.Unset()
 }
 
 // GetCustomPage returns the CustomPage field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -164,9 +164,9 @@ func (o DefaultDeploymentStrategyAttrsRequest) MarshalJSON() ([]byte, error) {
 
 func (o DefaultDeploymentStrategyAttrsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["edge_application"] = o.EdgeApplication
-	if o.EdgeFirewall.IsSet() {
-		toSerialize["edge_firewall"] = o.EdgeFirewall.Get()
+	toSerialize["application"] = o.Application
+	if o.Firewall.IsSet() {
+		toSerialize["firewall"] = o.Firewall.Get()
 	}
 	if o.CustomPage.IsSet() {
 		toSerialize["custom_page"] = o.CustomPage.Get()
@@ -179,7 +179,7 @@ func (o *DefaultDeploymentStrategyAttrsRequest) UnmarshalJSON(data []byte) (err 
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"edge_application",
+		"application",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** |  | [readonly] 
-**LastModified** | **time.Time** |  | [readonly] 
-**Size** | **int64** |  | [readonly] 
+**Key** | **string** |  | 
+**LastModified** | **time.Time** |  | 
+**Size** | **int64** | Size of the object in bytes | 
 
 ## Methods
 

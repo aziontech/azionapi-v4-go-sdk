@@ -30,6 +30,7 @@ type EdgeFunctionsRequest struct {
 	// String containing the function code. Maximum size: 20MB.
 	Code string `json:"code"`
 	DefaultArgs interface{} `json:"default_args,omitempty"`
+	AzionForm *ApplicationFunctionInstanceAzionForm `json:"azion_form,omitempty"`
 }
 
 type _EdgeFunctionsRequest EdgeFunctionsRequest
@@ -230,6 +231,38 @@ func (o *EdgeFunctionsRequest) SetDefaultArgs(v interface{}) {
 	o.DefaultArgs = v
 }
 
+// GetAzionForm returns the AzionForm field value if set, zero value otherwise.
+func (o *EdgeFunctionsRequest) GetAzionForm() ApplicationFunctionInstanceAzionForm {
+	if o == nil || IsNil(o.AzionForm) {
+		var ret ApplicationFunctionInstanceAzionForm
+		return ret
+	}
+	return *o.AzionForm
+}
+
+// GetAzionFormOk returns a tuple with the AzionForm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EdgeFunctionsRequest) GetAzionFormOk() (*ApplicationFunctionInstanceAzionForm, bool) {
+	if o == nil || IsNil(o.AzionForm) {
+		return nil, false
+	}
+	return o.AzionForm, true
+}
+
+// HasAzionForm returns a boolean if a field has been set.
+func (o *EdgeFunctionsRequest) HasAzionForm() bool {
+	if o != nil && !IsNil(o.AzionForm) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzionForm gets a reference to the given ApplicationFunctionInstanceAzionForm and assigns it to the AzionForm field.
+func (o *EdgeFunctionsRequest) SetAzionForm(v ApplicationFunctionInstanceAzionForm) {
+	o.AzionForm = &v
+}
+
 func (o EdgeFunctionsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -253,6 +286,9 @@ func (o EdgeFunctionsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["code"] = o.Code
 	if o.DefaultArgs != nil {
 		toSerialize["default_args"] = o.DefaultArgs
+	}
+	if !IsNil(o.AzionForm) {
+		toSerialize["azion_form"] = o.AzionForm
 	}
 	return toSerialize, nil
 }

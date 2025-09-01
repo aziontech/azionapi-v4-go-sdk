@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ContinuationToken** | **string** |  | 
+**ContinuationToken** | **NullableString** |  | 
 **Results** | [**[]BucketObject**](BucketObject.md) |  | 
 
 ## Methods
 
 ### NewResponseBucketObject
 
-`func NewResponseBucketObject(continuationToken string, results []BucketObject, ) *ResponseBucketObject`
+`func NewResponseBucketObject(continuationToken NullableString, results []BucketObject, ) *ResponseBucketObject`
 
 NewResponseBucketObject instantiates a new ResponseBucketObject object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,16 @@ and a boolean to check if the value has been set.
 SetContinuationToken sets ContinuationToken field to given value.
 
 
+### SetContinuationTokenNil
+
+`func (o *ResponseBucketObject) SetContinuationTokenNil(b bool)`
+
+ SetContinuationTokenNil sets the value for ContinuationToken to be an explicit nil
+
+### UnsetContinuationToken
+`func (o *ResponseBucketObject) UnsetContinuationToken()`
+
+UnsetContinuationToken ensures that no value is present for ContinuationToken, not even an explicit nil
 ### GetResults
 
 `func (o *ResponseBucketObject) GetResults() []BucketObject`

@@ -22,8 +22,8 @@ var _ MappedNullable = &Record{}
 // Record struct for Record
 type Record struct {
 	Id int64 `json:"id"`
-	Description *string `json:"description,omitempty" validate:"regexp=.*"`
-	Name string `json:"name" validate:"regexp=^(?:(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_])\\\\.)*(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_]))|@)$"`
+	Description *string `json:"description,omitempty"`
+	Name string `json:"name"`
 	Ttl *int64 `json:"ttl,omitempty"`
 	// * `A` - A * `AAAA` - AAAA * `ANAME` - ANAME * `CNAME` - CNAME * `MX` - MX * `NS` - NS * `PTR` - PTR * `SRV` - SRV * `TXT` - TXT * `CAA` - CAA * `DS` - DS
 	Type string `json:"type"`
