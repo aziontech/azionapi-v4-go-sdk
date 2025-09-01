@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ExecutionEnvironment** | Pointer to **string** | * &#x60;firewall&#x60; - Firewall * &#x60;application&#x60; - Application | [optional] 
 **Code** | **string** | String containing the function code. Maximum size: 20MB. | 
 **DefaultArgs** | Pointer to **interface{}** |  | [optional] 
+**AzionForm** | Pointer to [**ApplicationFunctionInstanceAzionForm**](ApplicationFunctionInstanceAzionForm.md) |  | [optional] 
 **ReferenceCount** | **int64** |  | 
 **Version** | **string** | Installed version, which may not be the latest if the vendor has released updates since installation. | 
 **Vendor** | **string** |  | 
@@ -267,6 +268,31 @@ HasDefaultArgs returns a boolean if a field has been set.
 `func (o *EdgeFunctions) UnsetDefaultArgs()`
 
 UnsetDefaultArgs ensures that no value is present for DefaultArgs, not even an explicit nil
+### GetAzionForm
+
+`func (o *EdgeFunctions) GetAzionForm() ApplicationFunctionInstanceAzionForm`
+
+GetAzionForm returns the AzionForm field if non-nil, zero value otherwise.
+
+### GetAzionFormOk
+
+`func (o *EdgeFunctions) GetAzionFormOk() (*ApplicationFunctionInstanceAzionForm, bool)`
+
+GetAzionFormOk returns a tuple with the AzionForm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzionForm
+
+`func (o *EdgeFunctions) SetAzionForm(v ApplicationFunctionInstanceAzionForm)`
+
+SetAzionForm sets AzionForm field to given value.
+
+### HasAzionForm
+
+`func (o *EdgeFunctions) HasAzionForm() bool`
+
+HasAzionForm returns a boolean if a field has been set.
+
 ### GetReferenceCount
 
 `func (o *EdgeFunctions) GetReferenceCount() int64`

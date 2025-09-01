@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncDataStream{}
 
 // ResponseAsyncDataStream struct for ResponseAsyncDataStream
 type ResponseAsyncDataStream struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data DataStream `json:"data"`
 }
 

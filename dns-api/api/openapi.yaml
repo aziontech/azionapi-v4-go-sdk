@@ -206,7 +206,7 @@ paths:
       - BearerAuth: []
       summary: List DNS Zones
       tags:
-      - Edge DNS - Zones
+      - DNS - Zones
     post:
       description: Create a new DNS Zone for your account.
       operationId: createDnsZone
@@ -346,7 +346,7 @@ paths:
       - BearerAuth: []
       summary: Create a DNS Zone
       tags:
-      - Edge DNS - Zones
+      - DNS - Zones
   /edge_dns/zones/{zoneId}:
     delete:
       description: Destruction of a specific a DNS Zone in your account.
@@ -489,7 +489,7 @@ paths:
       - BearerAuth: []
       summary: Destroy a DNS Zone
       tags:
-      - Edge DNS - Zones
+      - DNS - Zones
     get:
       description: Retrieve details of a specific DNS Zone in your account.
       operationId: retrieveDnsZone
@@ -633,7 +633,7 @@ paths:
       - BearerAuth: []
       summary: Retrieve details of a DNS Zone
       tags:
-      - Edge DNS - Zones
+      - DNS - Zones
     patch:
       description: Update one or more fields of an existing DNS Zone without affecting
         other fields.
@@ -781,7 +781,7 @@ paths:
       - BearerAuth: []
       summary: Partially update a DNS Zone
       tags:
-      - Edge DNS - Zones
+      - DNS - Zones
     put:
       description: Update an existing a DNS Zone. This replaces the entire DNS Zone
         with the new data provided.
@@ -930,7 +930,7 @@ paths:
       - BearerAuth: []
       summary: Update a DNS Zone
       tags:
-      - Edge DNS - Zones
+      - DNS - Zones
   /edge_dns/zones/{zoneId}/dnssec:
     get:
       description: Retrieve details of a specific DNSSEC from a DNS Zone in your account.
@@ -1076,7 +1076,7 @@ paths:
       - BearerAuth: []
       summary: Retrieve details of a DNSSEC
       tags:
-      - Edge DNS - DNSSEC
+      - DNS - DNSSEC
     patch:
       description: Update one or more fields of an existing DNSSEC without affecting
         other fields.
@@ -1225,7 +1225,7 @@ paths:
       - BearerAuth: []
       summary: Partially update a DNSSEC
       tags:
-      - Edge DNS - DNSSEC
+      - DNS - DNSSEC
     put:
       description: Update an existing a DNSSEC. This replaces the entire DNSSEC with
         the new data provided.
@@ -1375,7 +1375,7 @@ paths:
       - BearerAuth: []
       summary: Update a DNSSEC
       tags:
-      - Edge DNS - DNSSEC
+      - DNS - DNSSEC
   /edge_dns/zones/{zoneId}/records:
     get:
       description: List all DNS Records from a DNS Zone owned by your account.
@@ -1430,7 +1430,6 @@ paths:
         name: zoneId
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       responses:
@@ -1557,7 +1556,7 @@ paths:
       - BearerAuth: []
       summary: List DNS Records
       tags:
-      - Edge DNS - Records
+      - DNS - Records
     post:
       description: Create a new DNS Record in a DNS Zone for your account.
       operationId: createDnsRecord
@@ -1567,7 +1566,6 @@ paths:
         name: zoneId
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       requestBody:
@@ -1706,7 +1704,7 @@ paths:
       - BearerAuth: []
       summary: Create a DNS Record
       tags:
-      - Edge DNS - Records
+      - DNS - Records
   /edge_dns/zones/{zoneId}/records/{recordId}:
     delete:
       description: Destruction of a specific a DNS Record from a DNS Zone in your
@@ -1725,7 +1723,6 @@ paths:
         name: zoneId
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       responses:
@@ -1858,7 +1855,7 @@ paths:
       - BearerAuth: []
       summary: Destroy a DNS Record
       tags:
-      - Edge DNS - Records
+      - DNS - Records
     get:
       description: Retrieve details of a specific DNS Record from a DNS Zone in your
         account.
@@ -1884,7 +1881,6 @@ paths:
         name: zoneId
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       responses:
@@ -2011,7 +2007,7 @@ paths:
       - BearerAuth: []
       summary: Retrieve details of a DNS Record
       tags:
-      - Edge DNS - Records
+      - DNS - Records
     patch:
       description: Update one or more fields of an existing DNS Record without affecting
         other fields.
@@ -2029,7 +2025,6 @@ paths:
         name: zoneId
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       requestBody:
@@ -2167,7 +2162,7 @@ paths:
       - BearerAuth: []
       summary: Partially update a DNS Record
       tags:
-      - Edge DNS - Records
+      - DNS - Records
     put:
       description: Update an existing a DNS Record. This replaces the entire DNS Record
         with the new data provided.
@@ -2185,7 +2180,6 @@ paths:
         name: zoneId
         required: true
         schema:
-          pattern: ^\d+$
           type: string
         style: simple
       requestBody:
@@ -2324,7 +2318,7 @@ paths:
       - BearerAuth: []
       summary: Update a DNS Record
       tags:
-      - Edge DNS - Records
+      - DNS - Records
 components:
   schemas:
     AlgType:
@@ -2338,7 +2332,6 @@ components:
         slug:
           maxLength: 100
           minLength: 1
-          pattern: \w
           type: string
       required:
       - id
@@ -2356,7 +2349,6 @@ components:
         slug:
           maxLength: 100
           minLength: 1
-          pattern: \w
           type: string
       required:
       - id
@@ -2375,12 +2367,10 @@ components:
         status:
           allOf:
           - $ref: "#/components/schemas/StatusEnum"
-          readOnly: true
         delegation_signer:
           allOf:
           - $ref: "#/components/schemas/DelegationSigner"
           nullable: true
-          readOnly: true
       required:
       - delegation_signer
       - enabled
@@ -2406,7 +2396,6 @@ components:
         digest:
           maxLength: 100
           minLength: 1
-          pattern: \w
           type: string
         digest_type:
           $ref: "#/components/schemas/AlgType"
@@ -2430,7 +2419,6 @@ components:
         digest:
           maxLength: 100
           minLength: 1
-          pattern: \w
           type: string
         digest_type:
           $ref: "#/components/schemas/AlgTypeRequest"
@@ -2461,26 +2449,22 @@ components:
           description: The HTTP status code applicable to this problem
           maxLength: 3
           minLength: 3
-          pattern: "^\\d{3}$"
           type: string
         code:
           description: An application-specific error code
           maxLength: 5
           minLength: 5
-          pattern: "^\\d{5}$"
           type: string
         title:
           description: "A short, human-readable summary of the problem"
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         source:
           allOf:
@@ -2526,19 +2510,16 @@ components:
             the error
           maxLength: 4096
           minLength: 1
-          pattern: "^(/[^/]+)+$"
           type: string
         parameter:
           description: URI query parameter that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         header:
           description: Request header name that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
       title: JSONAPIErrorSource
       type: object
@@ -2639,12 +2620,10 @@ components:
         description:
           maxLength: 45
           minLength: 0
-          pattern: .*
           type: string
         name:
           maxLength: 255
           minLength: 1
-          pattern: "^(?:(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_])\\.)*(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_]))|@)$"
           type: string
         ttl:
           format: int64
@@ -2690,7 +2669,6 @@ components:
         name:
           maxLength: 50
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -2718,17 +2696,14 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         description:
           maxLength: 45
           minLength: 0
-          pattern: .*
           type: string
         name:
           maxLength: 255
           minLength: 1
-          pattern: "^(?:(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_])\\.)*(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_]))|@)$"
           type: string
         ttl:
           format: int64
@@ -2785,12 +2760,10 @@ components:
         description:
           maxLength: 45
           minLength: 0
-          pattern: .*
           type: string
         name:
           maxLength: 255
           minLength: 1
-          pattern: "^(?:(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_])\\.)*(?:(?!-)[a-zA-Z0-9-_*]{1,63}(?<![-_]))|@)$"
           type: string
         ttl:
           format: int64
@@ -2843,7 +2816,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/DNSSEC"
@@ -2859,7 +2831,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteRecord
       type: object
@@ -2871,7 +2842,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseAsyncDeleteZone
       type: object
@@ -2894,7 +2864,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Record"
@@ -2919,7 +2888,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Zone"
@@ -2939,7 +2907,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/DNSSEC"
@@ -2955,7 +2922,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteRecord
       type: object
@@ -2967,7 +2933,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseDeleteZone
       type: object
@@ -2990,7 +2955,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Record"
@@ -3069,7 +3033,6 @@ components:
         state:
           maxLength: 8
           minLength: 1
-          pattern: .*
           type: string
         data:
           $ref: "#/components/schemas/Zone"
@@ -3108,7 +3071,6 @@ components:
         name:
           maxLength: 50
           minLength: 1
-          pattern: .*
           type: string
         active:
           type: boolean
@@ -3131,30 +3093,24 @@ components:
       properties:
         id:
           format: int64
-          readOnly: true
           type: integer
         name:
           maxLength: 50
           minLength: 1
-          pattern: .*
           type: string
         domain:
           maxLength: 200
           minLength: 1
-          pattern: "(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{0,62}[a-zA-Z0-9]\\.)+[a-zA-Z]{2,63}$)"
           type: string
         active:
           type: boolean
         nameservers:
           items:
             type: string
-          readOnly: true
           type: array
         product_version:
           maxLength: 50
           minLength: 3
-          pattern: \d+\.\d+
-          readOnly: true
           type: string
       required:
       - active
@@ -3175,12 +3131,10 @@ components:
         name:
           maxLength: 50
           minLength: 1
-          pattern: .*
           type: string
         domain:
           maxLength: 200
           minLength: 1
-          pattern: "(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{0,62}[a-zA-Z0-9]\\.)+[a-zA-Z]{2,63}$)"
           type: string
         active:
           type: boolean

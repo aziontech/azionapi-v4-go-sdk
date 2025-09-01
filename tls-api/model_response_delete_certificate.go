@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseDeleteCertificate{}
 
 // ResponseDeleteCertificate struct for ResponseDeleteCertificate
 type ResponseDeleteCertificate struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseDeleteCertificate instantiates a new ResponseDeleteCertificate object

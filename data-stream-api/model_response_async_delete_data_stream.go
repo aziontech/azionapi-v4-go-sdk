@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteDataStream{}
 
 // ResponseAsyncDeleteDataStream struct for ResponseAsyncDeleteDataStream
 type ResponseAsyncDeleteDataStream struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteDataStream instantiates a new ResponseAsyncDeleteDataStream object

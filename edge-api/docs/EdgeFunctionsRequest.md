@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ExecutionEnvironment** | Pointer to **string** | * &#x60;firewall&#x60; - Firewall * &#x60;application&#x60; - Application | [optional] 
 **Code** | **string** | String containing the function code. Maximum size: 20MB. | 
 **DefaultArgs** | Pointer to **interface{}** |  | [optional] 
+**AzionForm** | Pointer to [**ApplicationFunctionInstanceAzionForm**](ApplicationFunctionInstanceAzionForm.md) |  | [optional] 
 
 ## Methods
 
@@ -180,6 +181,31 @@ HasDefaultArgs returns a boolean if a field has been set.
 `func (o *EdgeFunctionsRequest) UnsetDefaultArgs()`
 
 UnsetDefaultArgs ensures that no value is present for DefaultArgs, not even an explicit nil
+### GetAzionForm
+
+`func (o *EdgeFunctionsRequest) GetAzionForm() ApplicationFunctionInstanceAzionForm`
+
+GetAzionForm returns the AzionForm field if non-nil, zero value otherwise.
+
+### GetAzionFormOk
+
+`func (o *EdgeFunctionsRequest) GetAzionFormOk() (*ApplicationFunctionInstanceAzionForm, bool)`
+
+GetAzionFormOk returns a tuple with the AzionForm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzionForm
+
+`func (o *EdgeFunctionsRequest) SetAzionForm(v ApplicationFunctionInstanceAzionForm)`
+
+SetAzionForm sets AzionForm field to given value.
+
+### HasAzionForm
+
+`func (o *EdgeFunctionsRequest) HasAzionForm() bool`
+
+HasAzionForm returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

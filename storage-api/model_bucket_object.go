@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -24,6 +24,7 @@ var _ MappedNullable = &BucketObject{}
 type BucketObject struct {
 	Key string `json:"key"`
 	LastModified time.Time `json:"last_modified"`
+	// Size of the object in bytes
 	Size int64 `json:"size"`
 }
 

@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseAsyncDeleteTemplate{}
 
 // ResponseAsyncDeleteTemplate struct for ResponseAsyncDeleteTemplate
 type ResponseAsyncDeleteTemplate struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewResponseAsyncDeleteTemplate instantiates a new ResponseAsyncDeleteTemplate object

@@ -23,10 +23,10 @@ var _ MappedNullable = &DataStream{}
 // DataStream struct for DataStream
 type DataStream struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	LastEditor string `json:"last_editor" validate:"regexp=.*"`
+	Name string `json:"name"`
+	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
-	ProductVersion string `json:"product_version" validate:"regexp=.*"`
+	ProductVersion string `json:"product_version"`
 	Active *bool `json:"active,omitempty"`
 	Inputs []InputPolymorphicInputDataSourceAttributes `json:"inputs"`
 	Transform []TransformPolymorphic `json:"transform"`

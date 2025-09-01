@@ -21,8 +21,8 @@ var _ MappedNullable = &ZoneRequest{}
 
 // ZoneRequest struct for ZoneRequest
 type ZoneRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
-	Domain string `json:"domain" validate:"regexp=(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{0,62}[a-zA-Z0-9]\\\\.)+[a-zA-Z]{2,63}$)"`
+	Name string `json:"name"`
+	Domain string `json:"domain"`
 	Active bool `json:"active"`
 }
 

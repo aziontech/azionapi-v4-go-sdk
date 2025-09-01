@@ -35,6 +35,7 @@ type EdgeFunctions struct {
 	// String containing the function code. Maximum size: 20MB.
 	Code string `json:"code"`
 	DefaultArgs interface{} `json:"default_args,omitempty"`
+	AzionForm *ApplicationFunctionInstanceAzionForm `json:"azion_form,omitempty"`
 	ReferenceCount int64 `json:"reference_count"`
 	// Installed version, which may not be the latest if the vendor has released updates since installation.
 	Version string `json:"version"`
@@ -342,6 +343,38 @@ func (o *EdgeFunctions) SetDefaultArgs(v interface{}) {
 	o.DefaultArgs = v
 }
 
+// GetAzionForm returns the AzionForm field value if set, zero value otherwise.
+func (o *EdgeFunctions) GetAzionForm() ApplicationFunctionInstanceAzionForm {
+	if o == nil || IsNil(o.AzionForm) {
+		var ret ApplicationFunctionInstanceAzionForm
+		return ret
+	}
+	return *o.AzionForm
+}
+
+// GetAzionFormOk returns a tuple with the AzionForm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EdgeFunctions) GetAzionFormOk() (*ApplicationFunctionInstanceAzionForm, bool) {
+	if o == nil || IsNil(o.AzionForm) {
+		return nil, false
+	}
+	return o.AzionForm, true
+}
+
+// HasAzionForm returns a boolean if a field has been set.
+func (o *EdgeFunctions) HasAzionForm() bool {
+	if o != nil && !IsNil(o.AzionForm) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzionForm gets a reference to the given ApplicationFunctionInstanceAzionForm and assigns it to the AzionForm field.
+func (o *EdgeFunctions) SetAzionForm(v ApplicationFunctionInstanceAzionForm) {
+	o.AzionForm = &v
+}
+
 // GetReferenceCount returns the ReferenceCount field value
 func (o *EdgeFunctions) GetReferenceCount() int64 {
 	if o == nil {
@@ -441,6 +474,9 @@ func (o EdgeFunctions) ToMap() (map[string]interface{}, error) {
 	toSerialize["code"] = o.Code
 	if o.DefaultArgs != nil {
 		toSerialize["default_args"] = o.DefaultArgs
+	}
+	if !IsNil(o.AzionForm) {
+		toSerialize["azion_form"] = o.AzionForm
 	}
 	toSerialize["reference_count"] = o.ReferenceCount
 	toSerialize["version"] = o.Version

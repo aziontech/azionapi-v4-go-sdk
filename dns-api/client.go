@@ -49,11 +49,11 @@ type APIClient struct {
 
 	// API Services
 
-	EdgeDNSDNSSECAPI *EdgeDNSDNSSECAPIService
+	DNSDNSSECAPI *DNSDNSSECAPIService
 
-	EdgeDNSRecordsAPI *EdgeDNSRecordsAPIService
+	DNSRecordsAPI *DNSRecordsAPIService
 
-	EdgeDNSZonesAPI *EdgeDNSZonesAPIService
+	DNSZonesAPI *DNSZonesAPIService
 }
 
 type service struct {
@@ -72,9 +72,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.EdgeDNSDNSSECAPI = (*EdgeDNSDNSSECAPIService)(&c.common)
-	c.EdgeDNSRecordsAPI = (*EdgeDNSRecordsAPIService)(&c.common)
-	c.EdgeDNSZonesAPI = (*EdgeDNSZonesAPIService)(&c.common)
+	c.DNSDNSSECAPI = (*DNSDNSSECAPIService)(&c.common)
+	c.DNSRecordsAPI = (*DNSRecordsAPIService)(&c.common)
+	c.DNSZonesAPI = (*DNSZonesAPIService)(&c.common)
 
 	return c
 }

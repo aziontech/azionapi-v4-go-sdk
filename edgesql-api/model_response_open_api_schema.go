@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseOpenAPISchema{}
 
 // ResponseOpenAPISchema struct for ResponseOpenAPISchema
 type ResponseOpenAPISchema struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data OpenAPISchema `json:"data"`
 }
 
