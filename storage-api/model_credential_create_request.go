@@ -1,7 +1,7 @@
 /*
-object-storage-api
+storage-api
 
-REST API OpenAPI documentation for the Object Storage
+REST API OpenAPI documentation for the Storage
 
 API version: 1.0.0 (v1)
 */
@@ -22,9 +22,9 @@ var _ MappedNullable = &CredentialCreateRequest{}
 
 // CredentialCreateRequest struct for CredentialCreateRequest
 type CredentialCreateRequest struct {
-	Name string `json:"name" validate:"regexp=^[a-zA-Z0-9\\\\-]+$"`
+	Name string `json:"name"`
 	Capabilities []string `json:"capabilities"`
-	Bucket *string `json:"bucket,omitempty" validate:"regexp=.{0,63}"`
+	Bucket *string `json:"bucket,omitempty"`
 	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
 }
 

@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseTemplate{}
 
 // ResponseTemplate struct for ResponseTemplate
 type ResponseTemplate struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data Template `json:"data"`
 }
 

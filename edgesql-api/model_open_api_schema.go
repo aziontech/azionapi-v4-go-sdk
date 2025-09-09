@@ -23,7 +23,7 @@ var _ MappedNullable = &OpenAPISchema{}
 // OpenAPISchema struct for OpenAPISchema
 type OpenAPISchema struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=^[A-Za-z0-9-]{6,50}$"`
+	Name string `json:"name"`
 	// * `creating` - creating * `created` - created * `deleting` - deleting
 	Status string `json:"status"`
 	Active *bool `json:"active,omitempty"`

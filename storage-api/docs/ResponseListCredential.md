@@ -5,18 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**AccessKey** | **string** |  | [readonly] 
-**SecretKey** | **string** |  | [readonly] 
+**AccessKey** | **string** |  | 
+**SecretKey** | **string** |  | 
 **Capabilities** | **[]string** |  | 
 **Bucket** | Pointer to **string** |  | [optional] 
 **ExpirationDate** | Pointer to **time.Time** |  | [optional] 
-**CreatedAt** | **time.Time** |  | 
+**LastEditor** | **NullableString** |  | 
+**LastModified** | **time.Time** |  | 
 
 ## Methods
 
 ### NewResponseListCredential
 
-`func NewResponseListCredential(name string, accessKey string, secretKey string, capabilities []string, createdAt time.Time, ) *ResponseListCredential`
+`func NewResponseListCredential(name string, accessKey string, secretKey string, capabilities []string, lastEditor NullableString, lastModified time.Time, ) *ResponseListCredential`
 
 NewResponseListCredential instantiates a new ResponseListCredential object
 This constructor will assign default values to properties that have it defined,
@@ -161,24 +162,54 @@ SetExpirationDate sets ExpirationDate field to given value.
 
 HasExpirationDate returns a boolean if a field has been set.
 
-### GetCreatedAt
+### GetLastEditor
 
-`func (o *ResponseListCredential) GetCreatedAt() time.Time`
+`func (o *ResponseListCredential) GetLastEditor() string`
 
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+GetLastEditor returns the LastEditor field if non-nil, zero value otherwise.
 
-### GetCreatedAtOk
+### GetLastEditorOk
 
-`func (o *ResponseListCredential) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *ResponseListCredential) GetLastEditorOk() (*string, bool)`
 
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+GetLastEditorOk returns a tuple with the LastEditor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedAt
+### SetLastEditor
 
-`func (o *ResponseListCredential) SetCreatedAt(v time.Time)`
+`func (o *ResponseListCredential) SetLastEditor(v string)`
 
-SetCreatedAt sets CreatedAt field to given value.
+SetLastEditor sets LastEditor field to given value.
+
+
+### SetLastEditorNil
+
+`func (o *ResponseListCredential) SetLastEditorNil(b bool)`
+
+ SetLastEditorNil sets the value for LastEditor to be an explicit nil
+
+### UnsetLastEditor
+`func (o *ResponseListCredential) UnsetLastEditor()`
+
+UnsetLastEditor ensures that no value is present for LastEditor, not even an explicit nil
+### GetLastModified
+
+`func (o *ResponseListCredential) GetLastModified() time.Time`
+
+GetLastModified returns the LastModified field if non-nil, zero value otherwise.
+
+### GetLastModifiedOk
+
+`func (o *ResponseListCredential) GetLastModifiedOk() (*time.Time, bool)`
+
+GetLastModifiedOk returns a tuple with the LastModified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModified
+
+`func (o *ResponseListCredential) SetLastModified(v time.Time)`
+
+SetLastModified sets LastModified field to given value.
 
 
 

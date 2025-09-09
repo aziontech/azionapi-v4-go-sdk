@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Slug** | **string** |  | [readonly] 
-**Name** | **string** |  | [readonly] 
-**Active** | **bool** |  | [readonly] 
+**Slug** | **string** |  | 
+**Name** | **string** |  | 
+**Active** | **bool** |  | 
 
 ## Methods
 

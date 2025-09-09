@@ -1,10 +1,10 @@
 openapi: 3.0.3
 info:
-  description: REST API OpenAPI documentation for the Object Storage
+  description: REST API OpenAPI documentation for the Storage
   license:
     name: MIT
-    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
-  title: object-storage-api
+    url: https://github.com/aziontech/azionapi-v4-openapi/blob/main/LICENSE
+  title: storage-api
   version: 1.0.0 (v1)
 servers:
 - url: /
@@ -12,7 +12,7 @@ paths:
   /edge_storage/buckets:
     get:
       description: List all buckets.
-      operationId: list buckets
+      operationId: listBuckets
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -183,7 +183,7 @@ paths:
       - Edge Storage - Buckets
     post:
       description: Create a new bucket.
-      operationId: create bucket
+      operationId: createBucket
       requestBody:
         content:
           application/json:
@@ -195,7 +195,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SuccessBucketOperation"
+                $ref: "#/components/schemas/ResponseBucketCreate"
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncBucketCreate"
           description: ""
         "400":
           content:
@@ -318,7 +324,7 @@ paths:
   /edge_storage/buckets/{bucketName}/objects:
     get:
       description: List buckets objects
-      operationId: list object keys
+      operationId: listObjectKeys
       parameters:
       - explode: false
         in: path
@@ -480,8 +486,9 @@ paths:
       - Edge Storage - Objects
   /edge_storage/buckets/{bucketName}/objects/{objectKey}:
     delete:
-      description: Delete an object key from bucket
-      operationId: delete object key
+      description: "Upon a successful deletion request, the object will be permanentlydeleted\
+        \ after a 24-hour grace period."
+      operationId: deleteObjectKey
       parameters:
       - explode: false
         in: path
@@ -502,7 +509,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SuccessObjectOperation"
+                $ref: "#/components/schemas/ResponseDeleteBucketObject"
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncDeleteBucketObject"
           description: ""
         "400":
           content:
@@ -624,7 +637,7 @@ paths:
       - Edge Storage - Objects
     get:
       description: Download the object key from bucket.
-      operationId: download object
+      operationId: downloadObject
       parameters:
       - explode: false
         in: path
@@ -775,9 +788,19 @@ paths:
       tags:
       - Edge Storage - Objects
     post:
-      description: Create a new object key in the bucket.
-      operationId: create object key
+      description: "Create a new object key in the bucket. The object's Content-Type\
+        \ is defined by the Content-Type header. If this header is not included, the\
+        \ Content-Type will be automatically detected."
+      operationId: createObjectKey
       parameters:
+      - description: "The content type of the file (Example: application/octet-stream)."
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
       - explode: false
         in: path
         name: bucketName
@@ -805,6 +828,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/SuccessObjectOperation"
           description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessObjectOperationAsync"
+          description: ""
         "400":
           content:
             application/json:
@@ -920,13 +949,23 @@ paths:
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Create new object key
+      summary: Create new object key.
       tags:
       - Edge Storage - Objects
     put:
-      description: Update the object key from bucket.
-      operationId: update object key
+      description: "Update the object key from bucket. The object's Content-Type is\
+        \ defined by the Content-Type header. If this header is not included, the\
+        \ Content-Type will be automatically detected."
+      operationId: updateObjectKey
       parameters:
+      - description: "The content type of the file (Example: application/octet-stream)."
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
       - explode: false
         in: path
         name: bucketName
@@ -954,142 +993,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/SuccessObjectOperation"
           description: ""
-        "400":
-          content:
-            application/json:
-              examples:
-                Error-10000:
-                  description: Invalid data provided in the request.
-                  summary: Validation Error
-                  value:
-                    errors:
-                    - status: "400"
-                      code: "10000"
-                      title: Validation Error
-                      detail: Invalid data provided in the request.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Validation Error
-        "404":
-          content:
-            application/json:
-              examples:
-                Error-10004:
-                  description: Not found.
-                  summary: Not Found
-                  value:
-                    errors:
-                    - status: "404"
-                      code: "10004"
-                      title: Not Found
-                      detail: Not found.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Not Found
-        "405":
-          content:
-            application/json:
-              examples:
-                Error-10007:
-                  description: "Method \"{method}\" not allowed."
-                  summary: Method Not Allowed
-                  value:
-                    errors:
-                    - status: "405"
-                      code: "10007"
-                      title: Method Not Allowed
-                      detail: "Method \"{method}\" not allowed."
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Method Not Allowed
-        "406":
-          content:
-            application/json:
-              examples:
-                Error-10005:
-                  description: Could not satisfy the request Accept header.
-                  summary: Not Acceptable
-                  value:
-                    errors:
-                    - status: "406"
-                      code: "10005"
-                      title: Not Acceptable
-                      detail: Could not satisfy the request Accept header.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Not Acceptable
-        "429":
-          content:
-            application/json:
-              examples:
-                Error-10010:
-                  description: Request was throttled.
-                  summary: Throttled
-                  value:
-                    errors:
-                    - status: "429"
-                      code: "10010"
-                      title: Throttled
-                      detail: Request was throttled.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Throttled
-        "401":
-          content:
-            application/json:
-              examples:
-                Error-10001:
-                  description: Invalid authentication credentials.
-                  summary: Authentication Failed
-                  value:
-                    errors:
-                    - status: "401"
-                      code: "10001"
-                      title: Authentication Failed
-                      detail: Invalid authentication credentials.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Authentication Failed
-        "403":
-          content:
-            application/json:
-              examples:
-                Error-10003:
-                  description: You do not have permission to perform this action.
-                  summary: Permission Denied
-                  value:
-                    errors:
-                    - status: "403"
-                      code: "10003"
-                      title: Permission Denied
-                      detail: You do not have permission to perform this action.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Permission Denied
-      security:
-      - TokenAuth: []
-      - BearerAuth: []
-      summary: Update the object key
-      tags:
-      - Edge Storage - Objects
-  /edge_storage/buckets/{name}:
-    delete:
-      description: Delete a specific bucket.
-      operationId: delete bucket
-      parameters:
-      - explode: false
-        in: path
-        name: name
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
+        "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SuccessBucketOperation"
+                $ref: "#/components/schemas/SuccessObjectOperationAsync"
           description: ""
         "400":
           content:
@@ -1206,12 +1114,225 @@ paths:
       security:
       - TokenAuth: []
       - BearerAuth: []
+      summary: Update the object key.
+      tags:
+      - Edge Storage - Objects
+  /edge_storage/buckets/{name}:
+    delete:
+      description: Delete a specific bucket.
+      operationId: deleteBucket
+      parameters:
+      - explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseDeleteBucketCreate"
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncDeleteBucketCreate"
+          description: ""
+        "401":
+          content:
+            application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
+        "403":
+          content:
+            application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
+        "400":
+          content:
+            application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
+        "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
+        "406":
+          content:
+            application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
       summary: Delete a bucket
+      tags:
+      - Edge Storage - Buckets
+    get:
+      description: Retrieve details from a specific bucket.
+      operationId: retrieveBucket
+      parameters:
+      - description: Comma-separated list of field names to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseRetrieveBucket"
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseBadRequestBucket"
+          description: Bad Request
+        "404":
+          description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Not Acceptable
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Too Many Requests
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Forbidden
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Retrieve details from a bucket
       tags:
       - Edge Storage - Buckets
     patch:
       description: Update bucket information (bucket name cannot be changed)
-      operationId: update bucket
+      operationId: updateBucket
       parameters:
       - explode: false
         in: path
@@ -1230,7 +1351,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SuccessBucketOperation"
+                $ref: "#/components/schemas/ResponseBucketCreate"
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncBucketCreate"
           description: ""
         "400":
           content:
@@ -1350,10 +1477,10 @@ paths:
       summary: Update bucket info
       tags:
       - Edge Storage - Buckets
-  /edge_storage/s3-credentials:
+  /edge_storage/credentials:
     get:
       description: List all credentials.
-      operationId: list credentials
+      operationId: listCredentials
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -1450,7 +1577,7 @@ paths:
       - Edge Storage - Credentials
     post:
       description: Create a new credential.
-      operationId: create credential
+      operationId: createCredential
       requestBody:
         content:
           application/json:
@@ -1462,7 +1589,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CredentialCreate"
+                $ref: "#/components/schemas/ResponseCredential"
+          description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncCredential"
           description: ""
         "400":
           content:
@@ -1582,15 +1715,14 @@ paths:
       summary: Create a new credential
       tags:
       - Edge Storage - Credentials
-  /edge_storage/s3-credentials/{accessKey}:
+  /edge_storage/credentials/{id}:
     delete:
       description: Delete a specific credential.
-      operationId: delete credential
+      operationId: deleteCredential
       parameters:
-      - description: The credential access key
-        explode: false
+      - explode: false
         in: path
-        name: accessKey
+        name: id
         required: true
         schema:
           type: string
@@ -1600,137 +1732,62 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Credential"
+                $ref: "#/components/schemas/ResponseAsyncDeleteCredential"
           description: ""
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAsyncDeleteCredential"
+          description: Accepted
         "400":
           content:
             application/json:
-              examples:
-                Error-10000:
-                  description: Invalid data provided in the request.
-                  summary: Validation Error
-                  value:
-                    errors:
-                    - status: "400"
-                      code: "10000"
-                      title: Validation Error
-                      detail: Invalid data provided in the request.
               schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Validation Error
+                $ref: "#/components/schemas/ResponseBadRequestCredential"
+          description: Bad Request
         "404":
-          content:
-            application/json:
-              examples:
-                Error-10004:
-                  description: Not found.
-                  summary: Not Found
-                  value:
-                    errors:
-                    - status: "404"
-                      code: "10004"
-                      title: Not Found
-                      detail: Not found.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
-              examples:
-                Error-10007:
-                  description: "Method \"{method}\" not allowed."
-                  summary: Method Not Allowed
-                  value:
-                    errors:
-                    - status: "405"
-                      code: "10007"
-                      title: Method Not Allowed
-                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Method Not Allowed
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Not Found
         "406":
           content:
             application/json:
-              examples:
-                Error-10005:
-                  description: Could not satisfy the request Accept header.
-                  summary: Not Acceptable
-                  value:
-                    errors:
-                    - status: "406"
-                      code: "10005"
-                      title: Not Acceptable
-                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
+                $ref: "#/components/schemas/DefaultErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
-              examples:
-                Error-10010:
-                  description: Request was throttled.
-                  summary: Throttled
-                  value:
-                    errors:
-                    - status: "429"
-                      code: "10010"
-                      title: Throttled
-                      detail: Request was throttled.
               schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Throttled
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Too Many Requests
         "401":
           content:
             application/json:
-              examples:
-                Error-10001:
-                  description: Invalid authentication credentials.
-                  summary: Authentication Failed
-                  value:
-                    errors:
-                    - status: "401"
-                      code: "10001"
-                      title: Authentication Failed
-                      detail: Invalid authentication credentials.
               schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Authentication Failed
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Unauthorized
         "403":
           content:
             application/json:
-              examples:
-                Error-10003:
-                  description: You do not have permission to perform this action.
-                  summary: Permission Denied
-                  value:
-                    errors:
-                    - status: "403"
-                      code: "10003"
-                      title: Permission Denied
-                      detail: You do not have permission to perform this action.
               schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Permission Denied
+                $ref: "#/components/schemas/DefaultErrorResponse"
+          description: Forbidden
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Delete a Credential
+      summary: Delete a credential
       tags:
       - Edge Storage - Credentials
     get:
       description: Retrieve details from a specific credential.
-      operationId: retrive credential
+      operationId: retrieveCredential
       parameters:
-      - explode: false
-        in: path
-        name: accessKey
-        required: true
-        schema:
-          type: string
-        style: simple
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -1739,6 +1796,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -1795,13 +1859,15 @@ components:
     Bucket:
       additionalProperties: false
       example:
+        product_version: product_version
         edge_access: edge_access
+        last_editor: last_editor
         name: name
+        last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         name:
           maxLength: 63
           minLength: 6
-          readOnly: true
           type: string
         edge_access:
           description: |-
@@ -1810,10 +1876,59 @@ components:
             * `restricted` - restricted
           title: EdgeAccessEnum
           type: string
+        last_editor:
+          type: string
+        last_modified:
+          format: date-time
+          type: string
+        product_version:
+          maxLength: 50
+          minLength: 3
+          type: string
       required:
       - edge_access
+      - last_editor
+      - last_modified
       - name
+      - product_version
       title: Bucket
+      type: object
+    BucketCreate:
+      additionalProperties: false
+      example:
+        product_version: product_version
+        edge_access: edge_access
+        last_editor: last_editor
+        name: name
+        last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          maxLength: 63
+          minLength: 6
+          type: string
+        edge_access:
+          description: |-
+            * `read_only` - read_only
+            * `read_write` - read_write
+            * `restricted` - restricted
+          title: EdgeAccessEnum
+          type: string
+        last_editor:
+          type: string
+        last_modified:
+          format: date-time
+          type: string
+        product_version:
+          maxLength: 50
+          minLength: 3
+          type: string
+      required:
+      - edge_access
+      - last_editor
+      - last_modified
+      - name
+      - product_version
+      title: BucketCreate
       type: object
     BucketCreateRequest:
       additionalProperties: false
@@ -1824,7 +1939,6 @@ components:
         name:
           maxLength: 63
           minLength: 6
-          pattern: ".{6,63}"
           type: string
         edge_access:
           description: |-
@@ -1846,15 +1960,13 @@ components:
         key: key
       properties:
         key:
-          readOnly: true
           type: string
         last_modified:
           format: date-time
-          readOnly: true
           type: string
         size:
+          description: Size of the object in bytes
           format: int64
-          readOnly: true
           type: integer
       required:
       - key
@@ -1862,109 +1974,78 @@ components:
       - size
       title: BucketObject
       type: object
+    CapabilitiesEnum:
+      title: CapabilitiesEnum
+      type: string
     Credential:
       additionalProperties: false
       example:
         bucket: bucket
         secret_key: secret_key
         capabilities:
-        - capabilities
-        - capabilities
+        - null
+        - null
         access_key: access_key
+        last_editor: last_editor
         name: name
-        created_at: 2000-01-23T04:56:07.000+00:00
         expiration_date: 2000-01-23T04:56:07.000+00:00
+        last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         name:
           maxLength: 100
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-]+$"
           type: string
         access_key:
-          readOnly: true
           type: string
         secret_key:
-          readOnly: true
           type: string
         capabilities:
           items:
-            type: string
+            $ref: "#/components/schemas/CapabilitiesEnum"
           type: array
         bucket:
           maxLength: 63
-          minLength: 1
-          pattern: ".{0,63}"
+          minLength: 6
           type: string
         expiration_date:
           format: date-time
           type: string
-        created_at:
+        last_editor:
+          nullable: true
+          type: string
+        last_modified:
           format: date-time
           type: string
       required:
       - access_key
       - capabilities
-      - created_at
+      - last_editor
+      - last_modified
       - name
       - secret_key
       title: Credential
-      type: object
-    CredentialCreate:
-      additionalProperties: false
-      example:
-        bucket: bucket
-        capabilities:
-        - capabilities
-        - capabilities
-        name: name
-        expiration_date: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          maxLength: 100
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-]+$"
-          type: string
-        capabilities:
-          items:
-            type: string
-          type: array
-        bucket:
-          maxLength: 63
-          minLength: 1
-          pattern: ".{0,63}"
-          type: string
-        expiration_date:
-          format: date-time
-          type: string
-      required:
-      - capabilities
-      - name
-      title: CredentialCreate
       type: object
     CredentialCreateRequest:
       additionalProperties: false
       example:
         bucket: bucket
         capabilities:
-        - capabilities
-        - capabilities
+        - null
+        - null
         name: name
         expiration_date: 2000-01-23T04:56:07.000+00:00
       properties:
         name:
           maxLength: 100
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-]+$"
           type: string
         capabilities:
           items:
-            minLength: 1
-            type: string
+            $ref: "#/components/schemas/CapabilitiesEnum"
           type: array
         bucket:
           maxLength: 63
-          minLength: 1
-          pattern: ".{0,63}"
+          minLength: 6
           type: string
         expiration_date:
           format: date-time
@@ -1982,7 +2063,6 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: DefaultErrorResponse
       type: object
@@ -2008,26 +2088,22 @@ components:
           description: The HTTP status code applicable to this problem
           maxLength: 3
           minLength: 3
-          pattern: "^\\d{3}$"
           type: string
         code:
           description: An application-specific error code
           maxLength: 5
           minLength: 5
-          pattern: "^\\d{5}$"
           type: string
         title:
           description: "A short, human-readable summary of the problem"
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         source:
           allOf:
@@ -2073,21 +2149,31 @@ components:
             the error
           maxLength: 4096
           minLength: 1
-          pattern: "^(/[^/]+)+$"
           type: string
         parameter:
           description: URI query parameter that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
         header:
           description: Request header name that caused the error
           maxLength: 4096
           minLength: 1
-          pattern: ^.*$
           type: string
       title: JSONAPIErrorSource
+      type: object
+    ObjectResponseAsyncData:
+      additionalProperties: false
+      example:
+        object_key: object_key
+      properties:
+        object_key:
+          maxLength: 1024
+          minLength: 1
+          type: string
+      required:
+      - object_key
+      title: ObjectResponseAsyncData
       type: object
     ObjectResponseData:
       additionalProperties: false
@@ -2097,13 +2183,6 @@ components:
         object_key:
           maxLength: 1024
           minLength: 1
-          pattern: "^[0-9a-zA-Z!\\\"\\~\\-\\_\\.\\*\\'\\(\\)\\&\\$\\@\\=\\;\\/\\:\\\
-            +\\,\\\\\\{\\}\\^\\`\\[\\]\\>\\<\\|\\ \\%\\u00c0\\u00c1\\u00c2\\u00c3\\\
-            u00c4\\u00c7\\u00c8\\u00c9\\u00ca\\u00cb\\u00cc\\u00cd\\u00ce\\u00cf\\\
-            u00d1\\u00d2\\u00d3\\u00d4\\u00d5\\u00d6\\u00d9\\u00da\\u00db\\u00dc\\\
-            u00dd\\u00e0\\u00e1\\u00e2\\u00e3\\u00e4\\u00e7\\u00e8\\u00e9\\u00ea\\\
-            u00ec\\u00ed\\u00ee\\u00f1\\u00f2\\u00f3\\u00f4\\u00f5\\u00f6\\u00f9\\\
-            u00fa\\u00fb\\u00fc\\u00fd\\u00eb\\u00ef]+$"
           type: string
       required:
       - object_key
@@ -2114,10 +2193,16 @@ components:
       example:
         count: 123
         results:
-        - edge_access: edge_access
+        - product_version: product_version
+          edge_access: edge_access
+          last_editor: last_editor
           name: name
-        - edge_access: edge_access
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        - product_version: product_version
+          edge_access: edge_access
+          last_editor: last_editor
           name: name
+          last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         count:
           example: 123
@@ -2145,21 +2230,23 @@ components:
         - bucket: bucket
           secret_key: secret_key
           capabilities:
-          - capabilities
-          - capabilities
+          - null
+          - null
           access_key: access_key
+          last_editor: last_editor
           name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
           expiration_date: 2000-01-23T04:56:07.000+00:00
+          last_modified: 2000-01-23T04:56:07.000+00:00
         - bucket: bucket
           secret_key: secret_key
           capabilities:
-          - capabilities
-          - capabilities
+          - null
+          - null
           access_key: access_key
+          last_editor: last_editor
           name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
           expiration_date: 2000-01-23T04:56:07.000+00:00
+          last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         count:
           example: 123
@@ -2187,6 +2274,132 @@ components:
           type: string
       title: PatchedBucketRequest
       type: object
+    ResponseAsyncBucketCreate:
+      additionalProperties: false
+      example:
+        data:
+          product_version: product_version
+          edge_access: edge_access
+          last_editor: last_editor
+          name: name
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+        data:
+          $ref: "#/components/schemas/BucketCreate"
+      required:
+      - data
+      title: ResponseAsyncBucketCreate
+      type: object
+    ResponseAsyncCredential:
+      additionalProperties: false
+      example:
+        data:
+          bucket: bucket
+          secret_key: secret_key
+          capabilities:
+          - null
+          - null
+          access_key: access_key
+          last_editor: last_editor
+          name: name
+          expiration_date: 2000-01-23T04:56:07.000+00:00
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+        data:
+          $ref: "#/components/schemas/Credential"
+      required:
+      - data
+      title: ResponseAsyncCredential
+      type: object
+    ResponseAsyncDeleteBucketCreate:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+      title: ResponseAsyncDeleteBucketCreate
+      type: object
+    ResponseAsyncDeleteBucketObject:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+      title: ResponseAsyncDeleteBucketObject
+      type: object
+    ResponseAsyncDeleteCredential:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+      title: ResponseAsyncDeleteCredential
+      type: object
+    ResponseBadRequestBucket:
+      additionalProperties: false
+      example:
+        product_version:
+        - product_version
+        - product_version
+        edge_access:
+        - edge_access
+        - edge_access
+        last_editor:
+        - last_editor
+        - last_editor
+        name:
+        - name
+        - name
+        detail: detail
+        last_modified:
+        - last_modified
+        - last_modified
+      properties:
+        name:
+          items:
+            type: string
+          type: array
+        edge_access:
+          items:
+            type: string
+          type: array
+        last_editor:
+          items:
+            type: string
+          type: array
+        last_modified:
+          items:
+            type: string
+          type: array
+        product_version:
+          items:
+            type: string
+          type: array
+        detail:
+          maxLength: 4096
+          minLength: 1
+          type: string
+      title: ResponseBadRequestBucket
+      type: object
     ResponseBadRequestCredential:
       additionalProperties: false
       example:
@@ -2199,13 +2412,13 @@ components:
         name:
         - name
         - name
-        created_at:
-        - created_at
-        - created_at
         detail: detail
         expiration_date:
         - expiration_date
         - expiration_date
+        last_modified:
+        - last_modified
+        - last_modified
       properties:
         name:
           items:
@@ -2215,7 +2428,7 @@ components:
           items:
             type: string
           type: array
-        created_at:
+        last_modified:
           items:
             type: string
           type: array
@@ -2228,9 +2441,29 @@ components:
         detail:
           maxLength: 4096
           minLength: 1
-          pattern: .*
           type: string
       title: ResponseBadRequestCredential
+      type: object
+    ResponseBucketCreate:
+      additionalProperties: false
+      example:
+        data:
+          product_version: product_version
+          edge_access: edge_access
+          last_editor: last_editor
+          name: name
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+        data:
+          $ref: "#/components/schemas/BucketCreate"
+      required:
+      - data
+      title: ResponseBucketCreate
       type: object
     ResponseBucketObject:
       additionalProperties: false
@@ -2247,7 +2480,7 @@ components:
         continuation_token:
           maxLength: 255
           minLength: 0
-          pattern: ".{0,255}"
+          nullable: true
           type: string
         results:
           items:
@@ -2258,52 +2491,117 @@ components:
       - results
       title: ResponseBucketObject
       type: object
+    ResponseCredential:
+      additionalProperties: false
+      example:
+        data:
+          bucket: bucket
+          secret_key: secret_key
+          capabilities:
+          - null
+          - null
+          access_key: access_key
+          last_editor: last_editor
+          name: name
+          expiration_date: 2000-01-23T04:56:07.000+00:00
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+        data:
+          $ref: "#/components/schemas/Credential"
+      required:
+      - data
+      title: ResponseCredential
+      type: object
+    ResponseDeleteBucketCreate:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+      title: ResponseDeleteBucketCreate
+      type: object
+    ResponseDeleteBucketObject:
+      additionalProperties: false
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+      title: ResponseDeleteBucketObject
+      type: object
     ResponseListCredential:
       additionalProperties: false
       example:
         bucket: bucket
         secret_key: secret_key
         capabilities:
-        - capabilities
-        - capabilities
+        - null
+        - null
         access_key: access_key
+        last_editor: last_editor
         name: name
-        created_at: 2000-01-23T04:56:07.000+00:00
         expiration_date: 2000-01-23T04:56:07.000+00:00
+        last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         name:
           maxLength: 100
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-]+$"
           type: string
         access_key:
-          readOnly: true
           type: string
         secret_key:
-          readOnly: true
           type: string
         capabilities:
           items:
-            type: string
+            $ref: "#/components/schemas/CapabilitiesEnum"
           type: array
         bucket:
           maxLength: 63
-          minLength: 1
-          pattern: ".{0,63}"
+          minLength: 6
           type: string
         expiration_date:
           format: date-time
           type: string
-        created_at:
+        last_editor:
+          nullable: true
+          type: string
+        last_modified:
           format: date-time
           type: string
       required:
       - access_key
       - capabilities
-      - created_at
+      - last_editor
+      - last_modified
       - name
       - secret_key
       title: ResponseListCredential
+      type: object
+    ResponseRetrieveBucket:
+      additionalProperties: false
+      example:
+        data:
+          product_version: product_version
+          edge_access: edge_access
+          last_editor: last_editor
+          name: name
+          last_modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        data:
+          $ref: "#/components/schemas/Bucket"
+      required:
+      - data
+      title: ResponseRetrieveBucket
       type: object
     ResponseRetrieveCredential:
       additionalProperties: false
@@ -2312,12 +2610,13 @@ components:
           bucket: bucket
           secret_key: secret_key
           capabilities:
-          - capabilities
-          - capabilities
+          - null
+          - null
           access_key: access_key
+          last_editor: last_editor
           name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
           expiration_date: 2000-01-23T04:56:07.000+00:00
+          last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
         data:
           $ref: "#/components/schemas/Credential"
@@ -2325,48 +2624,39 @@ components:
       - data
       title: ResponseRetrieveCredential
       type: object
-    StateEnum:
-      description: |-
-        * `pending` - pending
-        * `executed` - executed
-      title: StateEnum
-      type: string
-    SuccessBucketOperation:
-      additionalProperties: false
-      example:
-        data:
-          edge_access: edge_access
-          name: name
-        state: ""
-      properties:
-        state:
-          allOf:
-          - $ref: "#/components/schemas/StateEnum"
-          title: BucketStateEnum
-        data:
-          $ref: "#/components/schemas/Bucket"
-      required:
-      - data
-      - state
-      title: SuccessBucketOperation
-      type: object
     SuccessObjectOperation:
       additionalProperties: false
       example:
         data:
           object_key: object_key
-        state: ""
+        state: state
       properties:
         state:
-          allOf:
-          - $ref: "#/components/schemas/StateEnum"
-          title: ObjectStateEnum
+          maxLength: 8
+          minLength: 1
+          type: string
         data:
           $ref: "#/components/schemas/ObjectResponseData"
       required:
       - data
-      - state
       title: SuccessObjectOperation
+      type: object
+    SuccessObjectOperationAsync:
+      additionalProperties: false
+      example:
+        data:
+          object_key: object_key
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+        data:
+          $ref: "#/components/schemas/ObjectResponseAsyncData"
+      required:
+      - data
+      title: SuccessObjectOperationAsync
       type: object
     ResponseBadRequestCredential_capabilities:
       oneOf:

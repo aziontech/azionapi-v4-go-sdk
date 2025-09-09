@@ -21,10 +21,10 @@ var _ MappedNullable = &CertificateRevocationListRequest{}
 
 // CertificateRevocationListRequest struct for CertificateRevocationListRequest
 type CertificateRevocationListRequest struct {
-	Name string `json:"name" validate:"regexp=.*"`
+	Name string `json:"name"`
 	// Indicates if the certificate revocation list is active. This field cannot be set to false.
 	Active *bool `json:"active,omitempty"`
-	Crl string `json:"crl" validate:"regexp=.*"`
+	Crl string `json:"crl"`
 }
 
 type _CertificateRevocationListRequest CertificateRevocationListRequest
