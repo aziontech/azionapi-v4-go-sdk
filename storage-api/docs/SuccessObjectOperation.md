@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | **string** | * &#x60;pending&#x60; - pending * &#x60;executed&#x60; - executed | 
+**State** | Pointer to **string** |  | [optional] 
 **Data** | [**ObjectResponseData**](ObjectResponseData.md) |  | 
 
 ## Methods
 
 ### NewSuccessObjectOperation
 
-`func NewSuccessObjectOperation(state string, data ObjectResponseData, ) *SuccessObjectOperation`
+`func NewSuccessObjectOperation(data ObjectResponseData, ) *SuccessObjectOperation`
 
 NewSuccessObjectOperation instantiates a new SuccessObjectOperation object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
+### HasState
+
+`func (o *SuccessObjectOperation) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 ### GetData
 

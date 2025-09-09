@@ -19,10 +19,10 @@ var _ MappedNullable = &PatchedCertificateRevocationListRequest{}
 
 // PatchedCertificateRevocationListRequest struct for PatchedCertificateRevocationListRequest
 type PatchedCertificateRevocationListRequest struct {
-	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	Name *string `json:"name,omitempty"`
 	// Indicates if the certificate revocation list is active. This field cannot be set to false.
 	Active *bool `json:"active,omitempty"`
-	Crl *string `json:"crl,omitempty" validate:"regexp=.*"`
+	Crl *string `json:"crl,omitempty"`
 }
 
 // NewPatchedCertificateRevocationListRequest instantiates a new PatchedCertificateRevocationListRequest object

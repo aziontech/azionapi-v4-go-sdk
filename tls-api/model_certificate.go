@@ -23,9 +23,9 @@ var _ MappedNullable = &Certificate{}
 // Certificate struct for Certificate
 type Certificate struct {
 	Id int64 `json:"id"`
-	Name string `json:"name" validate:"regexp=.*"`
-	Certificate NullableString `json:"certificate,omitempty" validate:"regexp=.*"`
-	Issuer NullableString `json:"issuer" validate:"regexp=.*"`
+	Name string `json:"name"`
+	Certificate NullableString `json:"certificate,omitempty"`
+	Issuer NullableString `json:"issuer"`
 	SubjectName []string `json:"subject_name"`
 	Validity NullableString `json:"validity"`
 	// The value can't be changed after the certificate creation.  * `edge_certificate` - Edge Certificate * `trusted_ca_certificate` - Trusted CA Certificate
@@ -33,13 +33,13 @@ type Certificate struct {
 	Managed bool `json:"managed"`
 	// * `challenge_verification` - Challenge Verification * `active` - Active * `pending` - Pending * `failed` - Failed
 	Status string `json:"status"`
-	StatusDetail string `json:"status_detail" validate:"regexp=.*"`
-	Csr NullableString `json:"csr" validate:"regexp=.*"`
+	StatusDetail string `json:"status_detail"`
+	Csr NullableString `json:"csr"`
 	Challenge NullableCertificateChallenge `json:"challenge"`
 	Authority NullableCertificateAuthority `json:"authority"`
-	KeyAlgorithm string `json:"key_algorithm" validate:"regexp=.*"`
+	KeyAlgorithm string `json:"key_algorithm"`
 	Active *bool `json:"active,omitempty"`
-	ProductVersion string `json:"product_version" validate:"regexp=\\\\d+\\\\.\\\\d+"`
+	ProductVersion string `json:"product_version"`
 	LastEditor string `json:"last_editor"`
 	// Timestamp of the last modification made to the certificate content on the platform.
 	LastModified time.Time `json:"last_modified"`

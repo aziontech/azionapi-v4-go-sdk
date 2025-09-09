@@ -78,21 +78,21 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EdgeDNSDNSSECAPI* | [**PartialUpdateDnssec**](docs/EdgeDNSDNSSECAPI.md#partialupdatednssec) | **Patch** /edge_dns/zones/{zoneId}/dnssec | Partially update a DNSSEC
-*EdgeDNSDNSSECAPI* | [**RetrieveDnssec**](docs/EdgeDNSDNSSECAPI.md#retrievednssec) | **Get** /edge_dns/zones/{zoneId}/dnssec | Retrieve details of a DNSSEC
-*EdgeDNSDNSSECAPI* | [**UpdateDnssec**](docs/EdgeDNSDNSSECAPI.md#updatednssec) | **Put** /edge_dns/zones/{zoneId}/dnssec | Update a DNSSEC
-*EdgeDNSRecordsAPI* | [**CreateDnsRecord**](docs/EdgeDNSRecordsAPI.md#creatednsrecord) | **Post** /edge_dns/zones/{zoneId}/records | Create a DNS Record
-*EdgeDNSRecordsAPI* | [**DestroyDnsRecord**](docs/EdgeDNSRecordsAPI.md#destroydnsrecord) | **Delete** /edge_dns/zones/{zoneId}/records/{recordId} | Destroy a DNS Record
-*EdgeDNSRecordsAPI* | [**ListDnsRecords**](docs/EdgeDNSRecordsAPI.md#listdnsrecords) | **Get** /edge_dns/zones/{zoneId}/records | List DNS Records
-*EdgeDNSRecordsAPI* | [**PartialUpdateDnsRecord**](docs/EdgeDNSRecordsAPI.md#partialupdatednsrecord) | **Patch** /edge_dns/zones/{zoneId}/records/{recordId} | Partially update a DNS Record
-*EdgeDNSRecordsAPI* | [**RetrieveDnsRecord**](docs/EdgeDNSRecordsAPI.md#retrievednsrecord) | **Get** /edge_dns/zones/{zoneId}/records/{recordId} | Retrieve details of a DNS Record
-*EdgeDNSRecordsAPI* | [**UpdateDnsRecord**](docs/EdgeDNSRecordsAPI.md#updatednsrecord) | **Put** /edge_dns/zones/{zoneId}/records/{recordId} | Update a DNS Record
-*EdgeDNSZonesAPI* | [**CreateDnsZone**](docs/EdgeDNSZonesAPI.md#creatednszone) | **Post** /edge_dns/zones | Create a DNS Zone
-*EdgeDNSZonesAPI* | [**DestroyDnsZone**](docs/EdgeDNSZonesAPI.md#destroydnszone) | **Delete** /edge_dns/zones/{zoneId} | Destroy a DNS Zone
-*EdgeDNSZonesAPI* | [**ListDnsZones**](docs/EdgeDNSZonesAPI.md#listdnszones) | **Get** /edge_dns/zones | List DNS Zones
-*EdgeDNSZonesAPI* | [**PartialUpdateDnsZone**](docs/EdgeDNSZonesAPI.md#partialupdatednszone) | **Patch** /edge_dns/zones/{zoneId} | Partially update a DNS Zone
-*EdgeDNSZonesAPI* | [**RetrieveDnsZone**](docs/EdgeDNSZonesAPI.md#retrievednszone) | **Get** /edge_dns/zones/{zoneId} | Retrieve details of a DNS Zone
-*EdgeDNSZonesAPI* | [**UpdateDnsZone**](docs/EdgeDNSZonesAPI.md#updatednszone) | **Put** /edge_dns/zones/{zoneId} | Update a DNS Zone
+*DNSDNSSECAPI* | [**PartialUpdateDnssec**](docs/DNSDNSSECAPI.md#partialupdatednssec) | **Patch** /edge_dns/zones/{zoneId}/dnssec | Partially update a DNSSEC
+*DNSDNSSECAPI* | [**RetrieveDnssec**](docs/DNSDNSSECAPI.md#retrievednssec) | **Get** /edge_dns/zones/{zoneId}/dnssec | Retrieve details of a DNSSEC
+*DNSDNSSECAPI* | [**UpdateDnssec**](docs/DNSDNSSECAPI.md#updatednssec) | **Put** /edge_dns/zones/{zoneId}/dnssec | Update a DNSSEC
+*DNSRecordsAPI* | [**CreateDnsRecord**](docs/DNSRecordsAPI.md#creatednsrecord) | **Post** /edge_dns/zones/{zoneId}/records | Create a DNS Record
+*DNSRecordsAPI* | [**DestroyDnsRecord**](docs/DNSRecordsAPI.md#destroydnsrecord) | **Delete** /edge_dns/zones/{zoneId}/records/{recordId} | Destroy a DNS Record
+*DNSRecordsAPI* | [**ListDnsRecords**](docs/DNSRecordsAPI.md#listdnsrecords) | **Get** /edge_dns/zones/{zoneId}/records | List DNS Records
+*DNSRecordsAPI* | [**PartialUpdateDnsRecord**](docs/DNSRecordsAPI.md#partialupdatednsrecord) | **Patch** /edge_dns/zones/{zoneId}/records/{recordId} | Partially update a DNS Record
+*DNSRecordsAPI* | [**RetrieveDnsRecord**](docs/DNSRecordsAPI.md#retrievednsrecord) | **Get** /edge_dns/zones/{zoneId}/records/{recordId} | Retrieve details of a DNS Record
+*DNSRecordsAPI* | [**UpdateDnsRecord**](docs/DNSRecordsAPI.md#updatednsrecord) | **Put** /edge_dns/zones/{zoneId}/records/{recordId} | Update a DNS Record
+*DNSZonesAPI* | [**CreateDnsZone**](docs/DNSZonesAPI.md#creatednszone) | **Post** /edge_dns/zones | Create a DNS Zone
+*DNSZonesAPI* | [**DestroyDnsZone**](docs/DNSZonesAPI.md#destroydnszone) | **Delete** /edge_dns/zones/{zoneId} | Destroy a DNS Zone
+*DNSZonesAPI* | [**ListDnsZones**](docs/DNSZonesAPI.md#listdnszones) | **Get** /edge_dns/zones | List DNS Zones
+*DNSZonesAPI* | [**PartialUpdateDnsZone**](docs/DNSZonesAPI.md#partialupdatednszone) | **Patch** /edge_dns/zones/{zoneId} | Partially update a DNS Zone
+*DNSZonesAPI* | [**RetrieveDnsZone**](docs/DNSZonesAPI.md#retrievednszone) | **Get** /edge_dns/zones/{zoneId} | Retrieve details of a DNS Zone
+*DNSZonesAPI* | [**UpdateDnsZone**](docs/DNSZonesAPI.md#updatednszone) | **Put** /edge_dns/zones/{zoneId} | Update a DNS Zone
 
 
 ## Documentation For Models

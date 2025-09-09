@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseCertificate{}
 
 // ResponseCertificate struct for ResponseCertificate
 type ResponseCertificate struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data Certificate `json:"data"`
 }
 

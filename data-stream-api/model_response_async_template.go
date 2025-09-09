@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponseAsyncTemplate{}
 
 // ResponseAsyncTemplate struct for ResponseAsyncTemplate
 type ResponseAsyncTemplate struct {
-	State *string `json:"state,omitempty" validate:"regexp=.*"`
+	State *string `json:"state,omitempty"`
 	Data Template `json:"data"`
 }
 

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EdgeApplication** | **int64** |  | 
-**EdgeFirewall** | Pointer to **NullableInt64** |  | [optional] 
+**Application** | **int64** |  | 
+**Firewall** | Pointer to **NullableInt64** |  | [optional] 
 **CustomPage** | Pointer to **NullableInt64** |  | [optional] 
 
 ## Methods
 
 ### NewDefaultDeploymentStrategyAttrs
 
-`func NewDefaultDeploymentStrategyAttrs(edgeApplication int64, ) *DefaultDeploymentStrategyAttrs`
+`func NewDefaultDeploymentStrategyAttrs(application int64, ) *DefaultDeploymentStrategyAttrs`
 
 NewDefaultDeploymentStrategyAttrs instantiates a new DefaultDeploymentStrategyAttrs object
 This constructor will assign default values to properties that have it defined,
@@ -27,61 +27,61 @@ NewDefaultDeploymentStrategyAttrsWithDefaults instantiates a new DefaultDeployme
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEdgeApplication
+### GetApplication
 
-`func (o *DefaultDeploymentStrategyAttrs) GetEdgeApplication() int64`
+`func (o *DefaultDeploymentStrategyAttrs) GetApplication() int64`
 
-GetEdgeApplication returns the EdgeApplication field if non-nil, zero value otherwise.
+GetApplication returns the Application field if non-nil, zero value otherwise.
 
-### GetEdgeApplicationOk
+### GetApplicationOk
 
-`func (o *DefaultDeploymentStrategyAttrs) GetEdgeApplicationOk() (*int64, bool)`
+`func (o *DefaultDeploymentStrategyAttrs) GetApplicationOk() (*int64, bool)`
 
-GetEdgeApplicationOk returns a tuple with the EdgeApplication field if it's non-nil, zero value otherwise
+GetApplicationOk returns a tuple with the Application field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEdgeApplication
+### SetApplication
 
-`func (o *DefaultDeploymentStrategyAttrs) SetEdgeApplication(v int64)`
+`func (o *DefaultDeploymentStrategyAttrs) SetApplication(v int64)`
 
-SetEdgeApplication sets EdgeApplication field to given value.
+SetApplication sets Application field to given value.
 
 
-### GetEdgeFirewall
+### GetFirewall
 
-`func (o *DefaultDeploymentStrategyAttrs) GetEdgeFirewall() int64`
+`func (o *DefaultDeploymentStrategyAttrs) GetFirewall() int64`
 
-GetEdgeFirewall returns the EdgeFirewall field if non-nil, zero value otherwise.
+GetFirewall returns the Firewall field if non-nil, zero value otherwise.
 
-### GetEdgeFirewallOk
+### GetFirewallOk
 
-`func (o *DefaultDeploymentStrategyAttrs) GetEdgeFirewallOk() (*int64, bool)`
+`func (o *DefaultDeploymentStrategyAttrs) GetFirewallOk() (*int64, bool)`
 
-GetEdgeFirewallOk returns a tuple with the EdgeFirewall field if it's non-nil, zero value otherwise
+GetFirewallOk returns a tuple with the Firewall field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEdgeFirewall
+### SetFirewall
 
-`func (o *DefaultDeploymentStrategyAttrs) SetEdgeFirewall(v int64)`
+`func (o *DefaultDeploymentStrategyAttrs) SetFirewall(v int64)`
 
-SetEdgeFirewall sets EdgeFirewall field to given value.
+SetFirewall sets Firewall field to given value.
 
-### HasEdgeFirewall
+### HasFirewall
 
-`func (o *DefaultDeploymentStrategyAttrs) HasEdgeFirewall() bool`
+`func (o *DefaultDeploymentStrategyAttrs) HasFirewall() bool`
 
-HasEdgeFirewall returns a boolean if a field has been set.
+HasFirewall returns a boolean if a field has been set.
 
-### SetEdgeFirewallNil
+### SetFirewallNil
 
-`func (o *DefaultDeploymentStrategyAttrs) SetEdgeFirewallNil(b bool)`
+`func (o *DefaultDeploymentStrategyAttrs) SetFirewallNil(b bool)`
 
- SetEdgeFirewallNil sets the value for EdgeFirewall to be an explicit nil
+ SetFirewallNil sets the value for Firewall to be an explicit nil
 
-### UnsetEdgeFirewall
-`func (o *DefaultDeploymentStrategyAttrs) UnsetEdgeFirewall()`
+### UnsetFirewall
+`func (o *DefaultDeploymentStrategyAttrs) UnsetFirewall()`
 
-UnsetEdgeFirewall ensures that no value is present for EdgeFirewall, not even an explicit nil
+UnsetFirewall ensures that no value is present for Firewall, not even an explicit nil
 ### GetCustomPage
 
 `func (o *DefaultDeploymentStrategyAttrs) GetCustomPage() int64`

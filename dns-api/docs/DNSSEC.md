@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** |  | 
-**Status** | **string** | * &#x60;unconfigured&#x60; - unconfigured * &#x60;waiting&#x60; - waiting * &#x60;ready&#x60; - ready | [readonly] 
-**DelegationSigner** | [**NullableDelegationSigner**](DelegationSigner.md) |  | [readonly] 
+**Status** | **string** | * &#x60;unconfigured&#x60; - unconfigured * &#x60;waiting&#x60; - waiting * &#x60;ready&#x60; - ready | 
+**DelegationSigner** | [**NullableDelegationSigner**](DelegationSigner.md) |  | 
 
 ## Methods
 
