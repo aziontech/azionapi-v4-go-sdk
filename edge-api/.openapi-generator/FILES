@@ -944,15 +944,4 @@ model_workload_deployment.go
 model_workload_deployment_request.go
 model_workload_request.go
 response.go
-test/api_applications_cache_settings_test.go
-test/api_applications_device_groups_test.go
-test/api_applications_function_test.go
-test/api_applications_request_rules_test.go
-test/api_applications_response_rules_test.go
-test/api_applications_test.go
-test/api_connectors_test.go
-test/api_firewalls_function_test.go
-test/api_firewalls_rules_engine_test.go
-test/api_firewalls_test.go
-test/api_functions_test.go
 utils.go
