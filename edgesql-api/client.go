@@ -49,7 +49,7 @@ type APIClient struct {
 
 	// API Services
 
-	EdgeSQLAPI *EdgeSQLAPIService
+	SQLAPI *SQLAPIService
 }
 
 type service struct {
@@ -68,7 +68,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.EdgeSQLAPI = (*EdgeSQLAPIService)(&c.common)
+	c.SQLAPI = (*SQLAPIService)(&c.common)
 
 	return c
 }

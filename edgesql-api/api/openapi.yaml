@@ -179,7 +179,7 @@ paths:
       - BearerAuth: []
       summary: List databases
       tags:
-      - Edge SQL
+      - SQL
     post:
       description: Create a new database for your account.
       operationId: create database
@@ -335,7 +335,7 @@ paths:
       - BearerAuth: []
       summary: Create a database
       tags:
-      - Edge SQL
+      - SQL
   /edge_sql/databases/{id}:
     delete:
       description: Schedule the destruction of a specific database in your account.
@@ -478,7 +478,7 @@ paths:
       - BearerAuth: []
       summary: Destroy a database
       tags:
-      - Edge SQL
+      - SQL
     get:
       description: Retrieve details from a specific database in your account.
       operationId: retrieve database
@@ -622,7 +622,7 @@ paths:
       - BearerAuth: []
       summary: Retrieve details from a database
       tags:
-      - Edge SQL
+      - SQL
   /edge_sql/databases/{id}/query:
     post:
       description: Execute a query into a database for your account.
@@ -788,7 +788,7 @@ paths:
       - BearerAuth: []
       summary: Execute a query into a database
       tags:
-      - Edge SQL
+      - SQL
 components:
   schemas:
     DatabaseRequest:

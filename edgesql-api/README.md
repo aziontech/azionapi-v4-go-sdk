@@ -78,11 +78,11 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EdgeSQLAPI* | [**CreateDatabase**](docs/EdgeSQLAPI.md#createdatabase) | **Post** /edge_sql/databases | Create a database
-*EdgeSQLAPI* | [**DestroyDatabase**](docs/EdgeSQLAPI.md#destroydatabase) | **Delete** /edge_sql/databases/{id} | Destroy a database
-*EdgeSQLAPI* | [**ExecuteQuery**](docs/EdgeSQLAPI.md#executequery) | **Post** /edge_sql/databases/{id}/query | Execute a query into a database
-*EdgeSQLAPI* | [**ListDatabases**](docs/EdgeSQLAPI.md#listdatabases) | **Get** /edge_sql/databases | List databases
-*EdgeSQLAPI* | [**RetrieveDatabase**](docs/EdgeSQLAPI.md#retrievedatabase) | **Get** /edge_sql/databases/{id} | Retrieve details from a database
+*SQLAPI* | [**CreateDatabase**](docs/SQLAPI.md#createdatabase) | **Post** /edge_sql/databases | Create a database
+*SQLAPI* | [**DestroyDatabase**](docs/SQLAPI.md#destroydatabase) | **Delete** /edge_sql/databases/{id} | Destroy a database
+*SQLAPI* | [**ExecuteQuery**](docs/SQLAPI.md#executequery) | **Post** /edge_sql/databases/{id}/query | Execute a query into a database
+*SQLAPI* | [**ListDatabases**](docs/SQLAPI.md#listdatabases) | **Get** /edge_sql/databases | List databases
+*SQLAPI* | [**RetrieveDatabase**](docs/SQLAPI.md#retrievedatabase) | **Get** /edge_sql/databases/{id} | Retrieve details from a database
 
 
 ## Documentation For Models
