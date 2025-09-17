@@ -2,11 +2,10 @@
 .travis.yml
 README.md
 api/openapi.yaml
-api_edge_sql.go
+api_sql.go
 client.go
 configuration.go
 docs/DatabaseRequest.md
-docs/EdgeSQLAPI.md
 docs/JSONAPIErrorObject.md
 docs/JSONAPIErrorResponse.md
 docs/JSONAPIErrorSource.md
@@ -19,6 +18,7 @@ docs/ResponseDeleteOpenAPISchema.md
 docs/ResponseOpenAPISchema.md
 docs/ResponseRetrieveOpenAPISchema.md
 docs/ResponseSQLResult.md
+docs/SQLAPI.md
 docs/SQLResult.md
 docs/SQLStatementsRequest.md
 git_push.sh
@@ -40,4 +40,5 @@ model_response_sql_result.go
 model_sql_result.go
 model_sql_statements_request.go
 response.go
+test/api_sql_test.go
 utils.go
