@@ -40,5 +40,4 @@ model_response_sql_result.go
 model_sql_result.go
 model_sql_statements_request.go
 response.go
-test/api_sql_test.go
 utils.go

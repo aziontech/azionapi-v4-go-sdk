@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Key** | **string** |  | 
 **LastModified** | **time.Time** |  | 
 **Size** | **int64** | Size of the object in bytes | 
+**IsFolder** | **bool** | Whether this entry represents a folder | 
 
 ## Methods
 
 ### NewBucketObject
 
-`func NewBucketObject(key string, lastModified time.Time, size int64, ) *BucketObject`
+`func NewBucketObject(key string, lastModified time.Time, size int64, isFolder bool, ) *BucketObject`
 
 NewBucketObject instantiates a new BucketObject object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *BucketObject) SetSize(v int64)`
 
 SetSize sets Size field to given value.
+
+
+### GetIsFolder
+
+`func (o *BucketObject) GetIsFolder() bool`
+
+GetIsFolder returns the IsFolder field if non-nil, zero value otherwise.
+
+### GetIsFolderOk
+
+`func (o *BucketObject) GetIsFolderOk() (*bool, bool)`
+
+GetIsFolderOk returns a tuple with the IsFolder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFolder
+
+`func (o *BucketObject) SetIsFolder(v bool)`
+
+SetIsFolder sets IsFolder field to given value.
 
 
 

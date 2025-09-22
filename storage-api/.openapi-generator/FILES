@@ -2,9 +2,9 @@
 .travis.yml
 README.md
 api/openapi.yaml
-api_edge_storage_buckets.go
-api_edge_storage_credentials.go
-api_edge_storage_objects.go
+api_storage_buckets.go
+api_storage_credentials.go
+api_storage_objects.go
 client.go
 configuration.go
 docs/Bucket.md
@@ -14,9 +14,6 @@ docs/BucketObject.md
 docs/Credential.md
 docs/CredentialCreateRequest.md
 docs/DefaultErrorResponse.md
-docs/EdgeStorageBucketsAPI.md
-docs/EdgeStorageCredentialsAPI.md
-docs/EdgeStorageObjectsAPI.md
 docs/JSONAPIErrorObject.md
 docs/JSONAPIErrorResponse.md
 docs/JSONAPIErrorSource.md
@@ -41,6 +38,9 @@ docs/ResponseDeleteBucketObject.md
 docs/ResponseListCredential.md
 docs/ResponseRetrieveBucket.md
 docs/ResponseRetrieveCredential.md
+docs/StorageBucketsAPI.md
+docs/StorageCredentialsAPI.md
+docs/StorageObjectsAPI.md
 docs/SuccessObjectOperation.md
 docs/SuccessObjectOperationAsync.md
 git_push.sh
@@ -80,4 +80,7 @@ model_response_retrieve_credential.go
 model_success_object_operation.go
 model_success_object_operation_async.go
 response.go
+test/api_storage_buckets_test.go
+test/api_storage_credentials_test.go
+test/api_storage_objects_test.go
 utils.go

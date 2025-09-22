@@ -26,6 +26,8 @@ type BucketObject struct {
 	LastModified time.Time `json:"last_modified"`
 	// Size of the object in bytes
 	Size int64 `json:"size"`
+	// Whether this entry represents a folder
+	IsFolder bool `json:"is_folder"`
 }
 
 type _BucketObject BucketObject
@@ -34,11 +36,12 @@ type _BucketObject BucketObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBucketObject(key string, lastModified time.Time, size int64) *BucketObject {
+func NewBucketObject(key string, lastModified time.Time, size int64, isFolder bool) *BucketObject {
 	this := BucketObject{}
 	this.Key = key
 	this.LastModified = lastModified
 	this.Size = size
+	this.IsFolder = isFolder
 	return &this
 }
 
@@ -122,6 +125,30 @@ func (o *BucketObject) SetSize(v int64) {
 	o.Size = v
 }
 
+// GetIsFolder returns the IsFolder field value
+func (o *BucketObject) GetIsFolder() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsFolder
+}
+
+// GetIsFolderOk returns a tuple with the IsFolder field value
+// and a boolean to check if the value has been set.
+func (o *BucketObject) GetIsFolderOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsFolder, true
+}
+
+// SetIsFolder sets field value
+func (o *BucketObject) SetIsFolder(v bool) {
+	o.IsFolder = v
+}
+
 func (o BucketObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -135,6 +162,7 @@ func (o BucketObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["key"] = o.Key
 	toSerialize["last_modified"] = o.LastModified
 	toSerialize["size"] = o.Size
+	toSerialize["is_folder"] = o.IsFolder
 	return toSerialize, nil
 }
 
@@ -146,6 +174,7 @@ func (o *BucketObject) UnmarshalJSON(data []byte) (err error) {
 		"key",
 		"last_modified",
 		"size",
+		"is_folder",
 	}
 
 	allProperties := make(map[string]interface{})
