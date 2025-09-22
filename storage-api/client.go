@@ -49,11 +49,11 @@ type APIClient struct {
 
 	// API Services
 
-	EdgeStorageBucketsAPI *EdgeStorageBucketsAPIService
+	StorageBucketsAPI *StorageBucketsAPIService
 
-	EdgeStorageCredentialsAPI *EdgeStorageCredentialsAPIService
+	StorageCredentialsAPI *StorageCredentialsAPIService
 
-	EdgeStorageObjectsAPI *EdgeStorageObjectsAPIService
+	StorageObjectsAPI *StorageObjectsAPIService
 }
 
 type service struct {
@@ -72,9 +72,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.EdgeStorageBucketsAPI = (*EdgeStorageBucketsAPIService)(&c.common)
-	c.EdgeStorageCredentialsAPI = (*EdgeStorageCredentialsAPIService)(&c.common)
-	c.EdgeStorageObjectsAPI = (*EdgeStorageObjectsAPIService)(&c.common)
+	c.StorageBucketsAPI = (*StorageBucketsAPIService)(&c.common)
+	c.StorageCredentialsAPI = (*StorageCredentialsAPIService)(&c.common)
+	c.StorageObjectsAPI = (*StorageObjectsAPIService)(&c.common)
 
 	return c
 }

@@ -180,7 +180,7 @@ paths:
       - BearerAuth: []
       summary: List buckets
       tags:
-      - Edge Storage - Buckets
+      - Storage - Buckets
     post:
       description: Create a new bucket.
       operationId: createBucket
@@ -320,12 +320,21 @@ paths:
       - BearerAuth: []
       summary: Create a new bucket
       tags:
-      - Edge Storage - Buckets
+      - Storage - Buckets
   /edge_storage/buckets/{bucketName}/objects:
     get:
-      description: List buckets objects
-      operationId: listObjectKeys
+      description: List objects from bucket
+      operationId: listObjects
       parameters:
+      - description: "If true, lists objects recursively. If false, lists only the\
+          \ first level using Delimiter='/' (default: true)."
+        explode: true
+        in: query
+        name: all_levels
+        required: false
+        schema:
+          type: boolean
+        style: form
       - explode: false
         in: path
         name: bucketName
@@ -359,12 +368,21 @@ paths:
           format: int64
           type: integer
         style: form
+      - description: "Filter objects by key prefix. If empty, lists from the bucket\
+          \ root (default: empty)."
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PaginatedResponseBucketObjectList"
+                $ref: "#/components/schemas/ResponseBucketObject"
           description: ""
         "400":
           content:
@@ -481,9 +499,9 @@ paths:
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: List buckets objects
+      summary: List objects from bucket
       tags:
-      - Edge Storage - Objects
+      - Storage - Objects
   /edge_storage/buckets/{bucketName}/objects/{objectKey}:
     delete:
       description: "Upon a successful deletion request, the object will be permanentlydeleted\
@@ -634,7 +652,7 @@ paths:
       - BearerAuth: []
       summary: Delete object key
       tags:
-      - Edge Storage - Objects
+      - Storage - Objects
     get:
       description: Download the object key from bucket.
       operationId: downloadObject
@@ -786,7 +804,7 @@ paths:
       - BearerAuth: []
       summary: Download object
       tags:
-      - Edge Storage - Objects
+      - Storage - Objects
     post:
       description: "Create a new object key in the bucket. The object's Content-Type\
         \ is defined by the Content-Type header. If this header is not included, the\
@@ -951,7 +969,7 @@ paths:
       - BearerAuth: []
       summary: Create new object key.
       tags:
-      - Edge Storage - Objects
+      - Storage - Objects
     put:
       description: "Update the object key from bucket. The object's Content-Type is\
         \ defined by the Content-Type header. If this header is not included, the\
@@ -1116,7 +1134,7 @@ paths:
       - BearerAuth: []
       summary: Update the object key.
       tags:
-      - Edge Storage - Objects
+      - Storage - Objects
   /edge_storage/buckets/{name}:
     delete:
       description: Delete a specific bucket.
@@ -1259,7 +1277,7 @@ paths:
       - BearerAuth: []
       summary: Delete a bucket
       tags:
-      - Edge Storage - Buckets
+      - Storage - Buckets
     get:
       description: Retrieve details from a specific bucket.
       operationId: retrieveBucket
@@ -1329,7 +1347,7 @@ paths:
       - BearerAuth: []
       summary: Retrieve details from a bucket
       tags:
-      - Edge Storage - Buckets
+      - Storage - Buckets
     patch:
       description: Update bucket information (bucket name cannot be changed)
       operationId: updateBucket
@@ -1476,7 +1494,7 @@ paths:
       - BearerAuth: []
       summary: Update bucket info
       tags:
-      - Edge Storage - Buckets
+      - Storage - Buckets
   /edge_storage/credentials:
     get:
       description: List all credentials.
@@ -1574,7 +1592,7 @@ paths:
       - BearerAuth: []
       summary: List credentials
       tags:
-      - Edge Storage - Credentials
+      - Storage - Credentials
     post:
       description: Create a new credential.
       operationId: createCredential
@@ -1714,7 +1732,7 @@ paths:
       - BearerAuth: []
       summary: Create a new credential
       tags:
-      - Edge Storage - Credentials
+      - Storage - Credentials
   /edge_storage/credentials/{id}:
     delete:
       description: Delete a specific credential.
@@ -1783,7 +1801,7 @@ paths:
       - BearerAuth: []
       summary: Delete a credential
       tags:
-      - Edge Storage - Credentials
+      - Storage - Credentials
     get:
       description: Retrieve details from a specific credential.
       operationId: retrieveCredential
@@ -1853,7 +1871,7 @@ paths:
       - BearerAuth: []
       summary: Retrieve details from a credential
       tags:
-      - Edge Storage - Credentials
+      - Storage - Credentials
 components:
   schemas:
     Bucket:
@@ -1956,6 +1974,7 @@ components:
       additionalProperties: false
       example:
         size: 0
+        is_folder: true
         last_modified: 2000-01-23T04:56:07.000+00:00
         key: key
       properties:
@@ -1968,7 +1987,11 @@ components:
           description: Size of the object in bytes
           format: int64
           type: integer
+        is_folder:
+          description: Whether this entry represents a folder
+          type: boolean
       required:
+      - is_folder
       - key
       - last_modified
       - size
@@ -2216,12 +2239,6 @@ components:
           type: array
       title: PaginatedBucketList
       type: object
-    PaginatedResponseBucketObjectList:
-      additionalProperties: false
-      items:
-        $ref: "#/components/schemas/ResponseBucketObject"
-      title: PaginatedResponseBucketObjectList
-      type: array
     PaginatedResponseListCredentialList:
       additionalProperties: false
       example:
@@ -2471,9 +2488,11 @@ components:
         continuation_token: continuation_token
         results:
         - size: 0
+          is_folder: true
           last_modified: 2000-01-23T04:56:07.000+00:00
           key: key
         - size: 0
+          is_folder: true
           last_modified: 2000-01-23T04:56:07.000+00:00
           key: key
       properties:

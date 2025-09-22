@@ -78,20 +78,20 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EdgeStorageBucketsAPI* | [**CreateBucket**](docs/EdgeStorageBucketsAPI.md#createbucket) | **Post** /edge_storage/buckets | Create a new bucket
-*EdgeStorageBucketsAPI* | [**DeleteBucket**](docs/EdgeStorageBucketsAPI.md#deletebucket) | **Delete** /edge_storage/buckets/{name} | Delete a bucket
-*EdgeStorageBucketsAPI* | [**ListBuckets**](docs/EdgeStorageBucketsAPI.md#listbuckets) | **Get** /edge_storage/buckets | List buckets
-*EdgeStorageBucketsAPI* | [**RetrieveBucket**](docs/EdgeStorageBucketsAPI.md#retrievebucket) | **Get** /edge_storage/buckets/{name} | Retrieve details from a bucket
-*EdgeStorageBucketsAPI* | [**UpdateBucket**](docs/EdgeStorageBucketsAPI.md#updatebucket) | **Patch** /edge_storage/buckets/{name} | Update bucket info
-*EdgeStorageCredentialsAPI* | [**CreateCredential**](docs/EdgeStorageCredentialsAPI.md#createcredential) | **Post** /edge_storage/credentials | Create a new credential
-*EdgeStorageCredentialsAPI* | [**DeleteCredential**](docs/EdgeStorageCredentialsAPI.md#deletecredential) | **Delete** /edge_storage/credentials/{id} | Delete a credential
-*EdgeStorageCredentialsAPI* | [**ListCredentials**](docs/EdgeStorageCredentialsAPI.md#listcredentials) | **Get** /edge_storage/credentials | List credentials
-*EdgeStorageCredentialsAPI* | [**RetrieveCredential**](docs/EdgeStorageCredentialsAPI.md#retrievecredential) | **Get** /edge_storage/credentials/{id} | Retrieve details from a credential
-*EdgeStorageObjectsAPI* | [**CreateObjectKey**](docs/EdgeStorageObjectsAPI.md#createobjectkey) | **Post** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Create new object key.
-*EdgeStorageObjectsAPI* | [**DeleteObjectKey**](docs/EdgeStorageObjectsAPI.md#deleteobjectkey) | **Delete** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Delete object key
-*EdgeStorageObjectsAPI* | [**DownloadObject**](docs/EdgeStorageObjectsAPI.md#downloadobject) | **Get** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Download object
-*EdgeStorageObjectsAPI* | [**ListObjectKeys**](docs/EdgeStorageObjectsAPI.md#listobjectkeys) | **Get** /edge_storage/buckets/{bucketName}/objects | List buckets objects
-*EdgeStorageObjectsAPI* | [**UpdateObjectKey**](docs/EdgeStorageObjectsAPI.md#updateobjectkey) | **Put** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Update the object key.
+*StorageBucketsAPI* | [**CreateBucket**](docs/StorageBucketsAPI.md#createbucket) | **Post** /edge_storage/buckets | Create a new bucket
+*StorageBucketsAPI* | [**DeleteBucket**](docs/StorageBucketsAPI.md#deletebucket) | **Delete** /edge_storage/buckets/{name} | Delete a bucket
+*StorageBucketsAPI* | [**ListBuckets**](docs/StorageBucketsAPI.md#listbuckets) | **Get** /edge_storage/buckets | List buckets
+*StorageBucketsAPI* | [**RetrieveBucket**](docs/StorageBucketsAPI.md#retrievebucket) | **Get** /edge_storage/buckets/{name} | Retrieve details from a bucket
+*StorageBucketsAPI* | [**UpdateBucket**](docs/StorageBucketsAPI.md#updatebucket) | **Patch** /edge_storage/buckets/{name} | Update bucket info
+*StorageCredentialsAPI* | [**CreateCredential**](docs/StorageCredentialsAPI.md#createcredential) | **Post** /edge_storage/credentials | Create a new credential
+*StorageCredentialsAPI* | [**DeleteCredential**](docs/StorageCredentialsAPI.md#deletecredential) | **Delete** /edge_storage/credentials/{id} | Delete a credential
+*StorageCredentialsAPI* | [**ListCredentials**](docs/StorageCredentialsAPI.md#listcredentials) | **Get** /edge_storage/credentials | List credentials
+*StorageCredentialsAPI* | [**RetrieveCredential**](docs/StorageCredentialsAPI.md#retrievecredential) | **Get** /edge_storage/credentials/{id} | Retrieve details from a credential
+*StorageObjectsAPI* | [**CreateObjectKey**](docs/StorageObjectsAPI.md#createobjectkey) | **Post** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Create new object key.
+*StorageObjectsAPI* | [**DeleteObjectKey**](docs/StorageObjectsAPI.md#deleteobjectkey) | **Delete** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Delete object key
+*StorageObjectsAPI* | [**DownloadObject**](docs/StorageObjectsAPI.md#downloadobject) | **Get** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Download object
+*StorageObjectsAPI* | [**ListObjects**](docs/StorageObjectsAPI.md#listobjects) | **Get** /edge_storage/buckets/{bucketName}/objects | List objects from bucket
+*StorageObjectsAPI* | [**UpdateObjectKey**](docs/StorageObjectsAPI.md#updateobjectkey) | **Put** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Update the object key.
 
 
 ## Documentation For Models
