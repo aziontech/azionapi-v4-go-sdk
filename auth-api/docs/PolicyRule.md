@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Effect** | **string** | * &#x60;allow&#x60; - allow * &#x60;deny&#x60; - deny | 
 **Resource** | **string** |  | 
 **Actions** | **[]string** |  | 
-**Condition** | Pointer to [**PolicyRuleCondition**](PolicyRuleCondition.md) |  | [optional] 
+**Condition** | [**PolicyRuleCondition**](PolicyRuleCondition.md) |  | 
 
 ## Methods
 
 ### NewPolicyRule
 
-`func NewPolicyRule(name string, effect string, resource string, actions []string, ) *PolicyRule`
+`func NewPolicyRule(name string, effect string, resource string, actions []string, condition PolicyRuleCondition, ) *PolicyRule`
 
 NewPolicyRule instantiates a new PolicyRule object
 This constructor will assign default values to properties that have it defined,
@@ -128,11 +128,6 @@ and a boolean to check if the value has been set.
 
 SetCondition sets Condition field to given value.
 
-### HasCondition
-
-`func (o *PolicyRule) HasCondition() bool`
-
-HasCondition returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
