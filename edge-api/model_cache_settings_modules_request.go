@@ -19,8 +19,7 @@ var _ MappedNullable = &CacheSettingsModulesRequest{}
 
 // CacheSettingsModulesRequest struct for CacheSettingsModulesRequest
 type CacheSettingsModulesRequest struct {
-	EdgeCache *CacheSettingsEdgeCacheModuleRequest `json:"edge_cache,omitempty"`
-	TieredCache NullableCacheSettingsTieredCacheModuleRequest `json:"tiered_cache,omitempty"`
+	Cache *CacheSettingsEdgeCacheModuleRequest `json:"cache,omitempty"`
 	ApplicationAccelerator *CacheSettingsApplicationAcceleratorModuleRequest `json:"application_accelerator,omitempty"`
 }
 
@@ -41,78 +40,36 @@ func NewCacheSettingsModulesRequestWithDefaults() *CacheSettingsModulesRequest {
 	return &this
 }
 
-// GetEdgeCache returns the EdgeCache field value if set, zero value otherwise.
-func (o *CacheSettingsModulesRequest) GetEdgeCache() CacheSettingsEdgeCacheModuleRequest {
-	if o == nil || IsNil(o.EdgeCache) {
+// GetCache returns the Cache field value if set, zero value otherwise.
+func (o *CacheSettingsModulesRequest) GetCache() CacheSettingsEdgeCacheModuleRequest {
+	if o == nil || IsNil(o.Cache) {
 		var ret CacheSettingsEdgeCacheModuleRequest
 		return ret
 	}
-	return *o.EdgeCache
+	return *o.Cache
 }
 
-// GetEdgeCacheOk returns a tuple with the EdgeCache field value if set, nil otherwise
+// GetCacheOk returns a tuple with the Cache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CacheSettingsModulesRequest) GetEdgeCacheOk() (*CacheSettingsEdgeCacheModuleRequest, bool) {
-	if o == nil || IsNil(o.EdgeCache) {
+func (o *CacheSettingsModulesRequest) GetCacheOk() (*CacheSettingsEdgeCacheModuleRequest, bool) {
+	if o == nil || IsNil(o.Cache) {
 		return nil, false
 	}
-	return o.EdgeCache, true
+	return o.Cache, true
 }
 
-// HasEdgeCache returns a boolean if a field has been set.
-func (o *CacheSettingsModulesRequest) HasEdgeCache() bool {
-	if o != nil && !IsNil(o.EdgeCache) {
+// HasCache returns a boolean if a field has been set.
+func (o *CacheSettingsModulesRequest) HasCache() bool {
+	if o != nil && !IsNil(o.Cache) {
 		return true
 	}
 
 	return false
 }
 
-// SetEdgeCache gets a reference to the given CacheSettingsEdgeCacheModuleRequest and assigns it to the EdgeCache field.
-func (o *CacheSettingsModulesRequest) SetEdgeCache(v CacheSettingsEdgeCacheModuleRequest) {
-	o.EdgeCache = &v
-}
-
-// GetTieredCache returns the TieredCache field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CacheSettingsModulesRequest) GetTieredCache() CacheSettingsTieredCacheModuleRequest {
-	if o == nil || IsNil(o.TieredCache.Get()) {
-		var ret CacheSettingsTieredCacheModuleRequest
-		return ret
-	}
-	return *o.TieredCache.Get()
-}
-
-// GetTieredCacheOk returns a tuple with the TieredCache field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CacheSettingsModulesRequest) GetTieredCacheOk() (*CacheSettingsTieredCacheModuleRequest, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TieredCache.Get(), o.TieredCache.IsSet()
-}
-
-// HasTieredCache returns a boolean if a field has been set.
-func (o *CacheSettingsModulesRequest) HasTieredCache() bool {
-	if o != nil && o.TieredCache.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTieredCache gets a reference to the given NullableCacheSettingsTieredCacheModuleRequest and assigns it to the TieredCache field.
-func (o *CacheSettingsModulesRequest) SetTieredCache(v CacheSettingsTieredCacheModuleRequest) {
-	o.TieredCache.Set(&v)
-}
-// SetTieredCacheNil sets the value for TieredCache to be an explicit nil
-func (o *CacheSettingsModulesRequest) SetTieredCacheNil() {
-	o.TieredCache.Set(nil)
-}
-
-// UnsetTieredCache ensures that no value is present for TieredCache, not even an explicit nil
-func (o *CacheSettingsModulesRequest) UnsetTieredCache() {
-	o.TieredCache.Unset()
+// SetCache gets a reference to the given CacheSettingsEdgeCacheModuleRequest and assigns it to the Cache field.
+func (o *CacheSettingsModulesRequest) SetCache(v CacheSettingsEdgeCacheModuleRequest) {
+	o.Cache = &v
 }
 
 // GetApplicationAccelerator returns the ApplicationAccelerator field value if set, zero value otherwise.
@@ -157,11 +114,8 @@ func (o CacheSettingsModulesRequest) MarshalJSON() ([]byte, error) {
 
 func (o CacheSettingsModulesRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EdgeCache) {
-		toSerialize["edge_cache"] = o.EdgeCache
-	}
-	if o.TieredCache.IsSet() {
-		toSerialize["tiered_cache"] = o.TieredCache.Get()
+	if !IsNil(o.Cache) {
+		toSerialize["cache"] = o.Cache
 	}
 	if !IsNil(o.ApplicationAccelerator) {
 		toSerialize["application_accelerator"] = o.ApplicationAccelerator

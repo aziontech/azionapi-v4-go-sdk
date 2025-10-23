@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DnsResolution** | Pointer to **string** | DNS resolution policy: preserve, force IPv4, or force IPv6 usage when connecting.  * &#x60;preserve&#x60; - Preserve * &#x60;force_ipv4&#x60; - Force IPv4 * &#x60;force_ipv6&#x60; - Force IPv6 | [optional] 
+**DnsResolution** | Pointer to **string** | DNS resolution policy: force IPv4 or both (IPv4 and IPv6) when connecting.  * &#x60;both&#x60; - Both * &#x60;force_ipv4&#x60; - Force IPv4 | [optional] 
 **TransportPolicy** | Pointer to **string** | Transport protocol policy: preserve current scheme, force HTTP, or force HTTPS.  * &#x60;preserve&#x60; - Preserve * &#x60;force_https&#x60; - Force HTTPS * &#x60;force_http&#x60; - Force HTTP | [optional] 
 **HttpVersionPolicy** | Pointer to **string** | Defines the HTTP version preference for outbound connections (e.g., HTTP/1.1).  * &#x60;http1_1&#x60; - HTTP/1.1 | [optional] 
 **Host** | Pointer to **string** | Optional custom host used to override the default target hostname during connection. | [optional] 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **MaxAge** | Pointer to **int64** | To use a value lower than 60s, the Application Acceleration module must be enabled on the Edge Application. | [optional] 
 **StaleCache** | Pointer to [**StateCacheModuleRequest**](StateCacheModuleRequest.md) |  | [optional] 
 **LargeFileCache** | Pointer to [**LargeFileCacheModuleRequest**](LargeFileCacheModuleRequest.md) |  | [optional] 
+**TieredCache** | Pointer to [**NullableCacheSettingsTieredCacheModuleRequest**](CacheSettingsTieredCacheModuleRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -128,6 +129,41 @@ SetLargeFileCache sets LargeFileCache field to given value.
 
 HasLargeFileCache returns a boolean if a field has been set.
 
+### GetTieredCache
+
+`func (o *CacheSettingsEdgeCacheModuleRequest) GetTieredCache() CacheSettingsTieredCacheModuleRequest`
+
+GetTieredCache returns the TieredCache field if non-nil, zero value otherwise.
+
+### GetTieredCacheOk
+
+`func (o *CacheSettingsEdgeCacheModuleRequest) GetTieredCacheOk() (*CacheSettingsTieredCacheModuleRequest, bool)`
+
+GetTieredCacheOk returns a tuple with the TieredCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTieredCache
+
+`func (o *CacheSettingsEdgeCacheModuleRequest) SetTieredCache(v CacheSettingsTieredCacheModuleRequest)`
+
+SetTieredCache sets TieredCache field to given value.
+
+### HasTieredCache
+
+`func (o *CacheSettingsEdgeCacheModuleRequest) HasTieredCache() bool`
+
+HasTieredCache returns a boolean if a field has been set.
+
+### SetTieredCacheNil
+
+`func (o *CacheSettingsEdgeCacheModuleRequest) SetTieredCacheNil(b bool)`
+
+ SetTieredCacheNil sets the value for TieredCache to be an explicit nil
+
+### UnsetTieredCache
+`func (o *CacheSettingsEdgeCacheModuleRequest) UnsetTieredCache()`
+
+UnsetTieredCache ensures that no value is present for TieredCache, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

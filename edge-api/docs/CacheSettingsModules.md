@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EdgeCache** | Pointer to [**CacheSettingsEdgeCacheModule**](CacheSettingsEdgeCacheModule.md) |  | [optional] 
-**TieredCache** | Pointer to [**NullableCacheSettingsTieredCacheModule**](CacheSettingsTieredCacheModule.md) |  | [optional] 
+**Cache** | Pointer to [**CacheSettingsEdgeCacheModule**](CacheSettingsEdgeCacheModule.md) |  | [optional] 
 **ApplicationAccelerator** | Pointer to [**CacheSettingsApplicationAcceleratorModule**](CacheSettingsApplicationAcceleratorModule.md) |  | [optional] 
 
 ## Methods
@@ -27,66 +26,31 @@ NewCacheSettingsModulesWithDefaults instantiates a new CacheSettingsModules obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEdgeCache
+### GetCache
 
-`func (o *CacheSettingsModules) GetEdgeCache() CacheSettingsEdgeCacheModule`
+`func (o *CacheSettingsModules) GetCache() CacheSettingsEdgeCacheModule`
 
-GetEdgeCache returns the EdgeCache field if non-nil, zero value otherwise.
+GetCache returns the Cache field if non-nil, zero value otherwise.
 
-### GetEdgeCacheOk
+### GetCacheOk
 
-`func (o *CacheSettingsModules) GetEdgeCacheOk() (*CacheSettingsEdgeCacheModule, bool)`
+`func (o *CacheSettingsModules) GetCacheOk() (*CacheSettingsEdgeCacheModule, bool)`
 
-GetEdgeCacheOk returns a tuple with the EdgeCache field if it's non-nil, zero value otherwise
+GetCacheOk returns a tuple with the Cache field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEdgeCache
+### SetCache
 
-`func (o *CacheSettingsModules) SetEdgeCache(v CacheSettingsEdgeCacheModule)`
+`func (o *CacheSettingsModules) SetCache(v CacheSettingsEdgeCacheModule)`
 
-SetEdgeCache sets EdgeCache field to given value.
+SetCache sets Cache field to given value.
 
-### HasEdgeCache
+### HasCache
 
-`func (o *CacheSettingsModules) HasEdgeCache() bool`
+`func (o *CacheSettingsModules) HasCache() bool`
 
-HasEdgeCache returns a boolean if a field has been set.
+HasCache returns a boolean if a field has been set.
 
-### GetTieredCache
-
-`func (o *CacheSettingsModules) GetTieredCache() CacheSettingsTieredCacheModule`
-
-GetTieredCache returns the TieredCache field if non-nil, zero value otherwise.
-
-### GetTieredCacheOk
-
-`func (o *CacheSettingsModules) GetTieredCacheOk() (*CacheSettingsTieredCacheModule, bool)`
-
-GetTieredCacheOk returns a tuple with the TieredCache field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTieredCache
-
-`func (o *CacheSettingsModules) SetTieredCache(v CacheSettingsTieredCacheModule)`
-
-SetTieredCache sets TieredCache field to given value.
-
-### HasTieredCache
-
-`func (o *CacheSettingsModules) HasTieredCache() bool`
-
-HasTieredCache returns a boolean if a field has been set.
-
-### SetTieredCacheNil
-
-`func (o *CacheSettingsModules) SetTieredCacheNil(b bool)`
-
- SetTieredCacheNil sets the value for TieredCache to be an explicit nil
-
-### UnsetTieredCache
-`func (o *CacheSettingsModules) UnsetTieredCache()`
-
-UnsetTieredCache ensures that no value is present for TieredCache, not even an explicit nil
 ### GetApplicationAccelerator
 
 `func (o *CacheSettingsModules) GetApplicationAccelerator() CacheSettingsApplicationAcceleratorModule`

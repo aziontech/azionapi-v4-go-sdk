@@ -26,7 +26,7 @@ type PolicyRuleRequest struct {
 	Effect string `json:"effect"`
 	Resource string `json:"resource"`
 	Actions []string `json:"actions"`
-	Condition *PolicyRuleConditionRequest `json:"condition,omitempty"`
+	Condition PolicyRuleConditionRequest `json:"condition"`
 }
 
 type _PolicyRuleRequest PolicyRuleRequest
@@ -35,12 +35,13 @@ type _PolicyRuleRequest PolicyRuleRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyRuleRequest(name string, effect string, resource string, actions []string) *PolicyRuleRequest {
+func NewPolicyRuleRequest(name string, effect string, resource string, actions []string, condition PolicyRuleConditionRequest) *PolicyRuleRequest {
 	this := PolicyRuleRequest{}
 	this.Name = name
 	this.Effect = effect
 	this.Resource = resource
 	this.Actions = actions
+	this.Condition = condition
 	return &this
 }
 
@@ -148,36 +149,28 @@ func (o *PolicyRuleRequest) SetActions(v []string) {
 	o.Actions = v
 }
 
-// GetCondition returns the Condition field value if set, zero value otherwise.
+// GetCondition returns the Condition field value
 func (o *PolicyRuleRequest) GetCondition() PolicyRuleConditionRequest {
-	if o == nil || IsNil(o.Condition) {
+	if o == nil {
 		var ret PolicyRuleConditionRequest
 		return ret
 	}
-	return *o.Condition
+
+	return o.Condition
 }
 
-// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
+// GetConditionOk returns a tuple with the Condition field value
 // and a boolean to check if the value has been set.
 func (o *PolicyRuleRequest) GetConditionOk() (*PolicyRuleConditionRequest, bool) {
-	if o == nil || IsNil(o.Condition) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Condition, true
+	return &o.Condition, true
 }
 
-// HasCondition returns a boolean if a field has been set.
-func (o *PolicyRuleRequest) HasCondition() bool {
-	if o != nil && !IsNil(o.Condition) {
-		return true
-	}
-
-	return false
-}
-
-// SetCondition gets a reference to the given PolicyRuleConditionRequest and assigns it to the Condition field.
+// SetCondition sets field value
 func (o *PolicyRuleRequest) SetCondition(v PolicyRuleConditionRequest) {
-	o.Condition = &v
+	o.Condition = v
 }
 
 func (o PolicyRuleRequest) MarshalJSON() ([]byte, error) {
@@ -194,9 +187,7 @@ func (o PolicyRuleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["effect"] = o.Effect
 	toSerialize["resource"] = o.Resource
 	toSerialize["actions"] = o.Actions
-	if !IsNil(o.Condition) {
-		toSerialize["condition"] = o.Condition
-	}
+	toSerialize["condition"] = o.Condition
 	return toSerialize, nil
 }
 
@@ -209,6 +200,7 @@ func (o *PolicyRuleRequest) UnmarshalJSON(data []byte) (err error) {
 		"effect",
 		"resource",
 		"actions",
+		"condition",
 	}
 
 	allProperties := make(map[string]interface{})

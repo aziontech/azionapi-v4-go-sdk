@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Items** | **[]string** |  | 
-**Layer** | Pointer to **string** | * &#x60;edge_cache&#x60; - Edge Cache * &#x60;tiered_cache&#x60; - Tiered Cache | [optional] 
+**Layer** | Pointer to **string** | * &#x60;cache&#x60; - Cache * &#x60;tiered_cache&#x60; - Tiered Cache | [optional] 
 
 ## Methods
 

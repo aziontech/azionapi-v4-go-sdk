@@ -80,7 +80,4 @@ model_response_retrieve_credential.go
 model_success_object_operation.go
 model_success_object_operation_async.go
 response.go
-test/api_storage_buckets_test.go
-test/api_storage_credentials_test.go
-test/api_storage_objects_test.go
 utils.go

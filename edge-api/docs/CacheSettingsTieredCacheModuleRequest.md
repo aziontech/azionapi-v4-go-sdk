@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Topology** | Pointer to **string** | * &#x60;near-edge&#x60; - near-edge * &#x60;br-east-1&#x60; - br-east-1 * &#x60;us-east-1&#x60; - us-east-1 | [optional] 
+**Topology** | Pointer to **string** | * &#x60;nearest-region&#x60; - nearest-region * &#x60;br-east-1&#x60; - br-east-1 * &#x60;us-east-1&#x60; - us-east-1 | [optional] 
+**Enabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetTopology sets Topology field to given value.
 `func (o *CacheSettingsTieredCacheModuleRequest) HasTopology() bool`
 
 HasTopology returns a boolean if a field has been set.
+
+### GetEnabled
+
+`func (o *CacheSettingsTieredCacheModuleRequest) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *CacheSettingsTieredCacheModuleRequest) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *CacheSettingsTieredCacheModuleRequest) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
+### HasEnabled
+
+`func (o *CacheSettingsTieredCacheModuleRequest) HasEnabled() bool`
+
+HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

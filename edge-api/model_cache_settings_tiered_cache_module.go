@@ -12,8 +12,6 @@ package edgeapi
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CacheSettingsTieredCacheModule type satisfies the MappedNullable interface at compile time
@@ -21,23 +19,17 @@ var _ MappedNullable = &CacheSettingsTieredCacheModule{}
 
 // CacheSettingsTieredCacheModule struct for CacheSettingsTieredCacheModule
 type CacheSettingsTieredCacheModule struct {
-	// * `override` - override
-	Behavior string `json:"behavior"`
-	MaxAge int64 `json:"max_age"`
-	// * `near-edge` - near-edge * `br-east-1` - br-east-1 * `us-east-1` - us-east-1
+	// * `nearest-region` - nearest-region * `br-east-1` - br-east-1 * `us-east-1` - us-east-1
 	Topology *string `json:"topology,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
-
-type _CacheSettingsTieredCacheModule CacheSettingsTieredCacheModule
 
 // NewCacheSettingsTieredCacheModule instantiates a new CacheSettingsTieredCacheModule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCacheSettingsTieredCacheModule(behavior string, maxAge int64) *CacheSettingsTieredCacheModule {
+func NewCacheSettingsTieredCacheModule() *CacheSettingsTieredCacheModule {
 	this := CacheSettingsTieredCacheModule{}
-	this.Behavior = behavior
-	this.MaxAge = maxAge
 	return &this
 }
 
@@ -47,54 +39,6 @@ func NewCacheSettingsTieredCacheModule(behavior string, maxAge int64) *CacheSett
 func NewCacheSettingsTieredCacheModuleWithDefaults() *CacheSettingsTieredCacheModule {
 	this := CacheSettingsTieredCacheModule{}
 	return &this
-}
-
-// GetBehavior returns the Behavior field value
-func (o *CacheSettingsTieredCacheModule) GetBehavior() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Behavior
-}
-
-// GetBehaviorOk returns a tuple with the Behavior field value
-// and a boolean to check if the value has been set.
-func (o *CacheSettingsTieredCacheModule) GetBehaviorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Behavior, true
-}
-
-// SetBehavior sets field value
-func (o *CacheSettingsTieredCacheModule) SetBehavior(v string) {
-	o.Behavior = v
-}
-
-// GetMaxAge returns the MaxAge field value
-func (o *CacheSettingsTieredCacheModule) GetMaxAge() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.MaxAge
-}
-
-// GetMaxAgeOk returns a tuple with the MaxAge field value
-// and a boolean to check if the value has been set.
-func (o *CacheSettingsTieredCacheModule) GetMaxAgeOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.MaxAge, true
-}
-
-// SetMaxAge sets field value
-func (o *CacheSettingsTieredCacheModule) SetMaxAge(v int64) {
-	o.MaxAge = v
 }
 
 // GetTopology returns the Topology field value if set, zero value otherwise.
@@ -129,6 +73,38 @@ func (o *CacheSettingsTieredCacheModule) SetTopology(v string) {
 	o.Topology = &v
 }
 
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *CacheSettingsTieredCacheModule) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CacheSettingsTieredCacheModule) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *CacheSettingsTieredCacheModule) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *CacheSettingsTieredCacheModule) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
 func (o CacheSettingsTieredCacheModule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -139,50 +115,13 @@ func (o CacheSettingsTieredCacheModule) MarshalJSON() ([]byte, error) {
 
 func (o CacheSettingsTieredCacheModule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["behavior"] = o.Behavior
-	toSerialize["max_age"] = o.MaxAge
 	if !IsNil(o.Topology) {
 		toSerialize["topology"] = o.Topology
 	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	return toSerialize, nil
-}
-
-func (o *CacheSettingsTieredCacheModule) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"behavior",
-		"max_age",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCacheSettingsTieredCacheModule := _CacheSettingsTieredCacheModule{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCacheSettingsTieredCacheModule)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CacheSettingsTieredCacheModule(varCacheSettingsTieredCacheModule)
-
-	return err
 }
 
 type NullableCacheSettingsTieredCacheModule struct {
