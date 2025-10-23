@@ -25,6 +25,7 @@ type CacheSettingsEdgeCacheModuleRequest struct {
 	MaxAge *int64 `json:"max_age,omitempty"`
 	StaleCache *StateCacheModuleRequest `json:"stale_cache,omitempty"`
 	LargeFileCache *LargeFileCacheModuleRequest `json:"large_file_cache,omitempty"`
+	TieredCache NullableCacheSettingsTieredCacheModuleRequest `json:"tiered_cache,omitempty"`
 }
 
 // NewCacheSettingsEdgeCacheModuleRequest instantiates a new CacheSettingsEdgeCacheModuleRequest object
@@ -172,6 +173,48 @@ func (o *CacheSettingsEdgeCacheModuleRequest) SetLargeFileCache(v LargeFileCache
 	o.LargeFileCache = &v
 }
 
+// GetTieredCache returns the TieredCache field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CacheSettingsEdgeCacheModuleRequest) GetTieredCache() CacheSettingsTieredCacheModuleRequest {
+	if o == nil || IsNil(o.TieredCache.Get()) {
+		var ret CacheSettingsTieredCacheModuleRequest
+		return ret
+	}
+	return *o.TieredCache.Get()
+}
+
+// GetTieredCacheOk returns a tuple with the TieredCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CacheSettingsEdgeCacheModuleRequest) GetTieredCacheOk() (*CacheSettingsTieredCacheModuleRequest, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TieredCache.Get(), o.TieredCache.IsSet()
+}
+
+// HasTieredCache returns a boolean if a field has been set.
+func (o *CacheSettingsEdgeCacheModuleRequest) HasTieredCache() bool {
+	if o != nil && o.TieredCache.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTieredCache gets a reference to the given NullableCacheSettingsTieredCacheModuleRequest and assigns it to the TieredCache field.
+func (o *CacheSettingsEdgeCacheModuleRequest) SetTieredCache(v CacheSettingsTieredCacheModuleRequest) {
+	o.TieredCache.Set(&v)
+}
+// SetTieredCacheNil sets the value for TieredCache to be an explicit nil
+func (o *CacheSettingsEdgeCacheModuleRequest) SetTieredCacheNil() {
+	o.TieredCache.Set(nil)
+}
+
+// UnsetTieredCache ensures that no value is present for TieredCache, not even an explicit nil
+func (o *CacheSettingsEdgeCacheModuleRequest) UnsetTieredCache() {
+	o.TieredCache.Unset()
+}
+
 func (o CacheSettingsEdgeCacheModuleRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -193,6 +236,9 @@ func (o CacheSettingsEdgeCacheModuleRequest) ToMap() (map[string]interface{}, er
 	}
 	if !IsNil(o.LargeFileCache) {
 		toSerialize["large_file_cache"] = o.LargeFileCache
+	}
+	if o.TieredCache.IsSet() {
+		toSerialize["tiered_cache"] = o.TieredCache.Get()
 	}
 	return toSerialize, nil
 }

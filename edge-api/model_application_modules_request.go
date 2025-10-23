@@ -19,11 +19,10 @@ var _ MappedNullable = &ApplicationModulesRequest{}
 
 // ApplicationModulesRequest struct for ApplicationModulesRequest
 type ApplicationModulesRequest struct {
-	EdgeCache *CacheModuleRequest `json:"edge_cache,omitempty"`
+	Cache *CacheModuleRequest `json:"cache,omitempty"`
 	Functions *EdgeFunctionModuleRequest `json:"functions,omitempty"`
 	ApplicationAccelerator *ApplicationAcceleratorModuleRequest `json:"application_accelerator,omitempty"`
 	ImageProcessor *ImageProcessorModuleRequest `json:"image_processor,omitempty"`
-	TieredCache *TieredCacheModuleRequest `json:"tiered_cache,omitempty"`
 }
 
 // NewApplicationModulesRequest instantiates a new ApplicationModulesRequest object
@@ -43,36 +42,36 @@ func NewApplicationModulesRequestWithDefaults() *ApplicationModulesRequest {
 	return &this
 }
 
-// GetEdgeCache returns the EdgeCache field value if set, zero value otherwise.
-func (o *ApplicationModulesRequest) GetEdgeCache() CacheModuleRequest {
-	if o == nil || IsNil(o.EdgeCache) {
+// GetCache returns the Cache field value if set, zero value otherwise.
+func (o *ApplicationModulesRequest) GetCache() CacheModuleRequest {
+	if o == nil || IsNil(o.Cache) {
 		var ret CacheModuleRequest
 		return ret
 	}
-	return *o.EdgeCache
+	return *o.Cache
 }
 
-// GetEdgeCacheOk returns a tuple with the EdgeCache field value if set, nil otherwise
+// GetCacheOk returns a tuple with the Cache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationModulesRequest) GetEdgeCacheOk() (*CacheModuleRequest, bool) {
-	if o == nil || IsNil(o.EdgeCache) {
+func (o *ApplicationModulesRequest) GetCacheOk() (*CacheModuleRequest, bool) {
+	if o == nil || IsNil(o.Cache) {
 		return nil, false
 	}
-	return o.EdgeCache, true
+	return o.Cache, true
 }
 
-// HasEdgeCache returns a boolean if a field has been set.
-func (o *ApplicationModulesRequest) HasEdgeCache() bool {
-	if o != nil && !IsNil(o.EdgeCache) {
+// HasCache returns a boolean if a field has been set.
+func (o *ApplicationModulesRequest) HasCache() bool {
+	if o != nil && !IsNil(o.Cache) {
 		return true
 	}
 
 	return false
 }
 
-// SetEdgeCache gets a reference to the given CacheModuleRequest and assigns it to the EdgeCache field.
-func (o *ApplicationModulesRequest) SetEdgeCache(v CacheModuleRequest) {
-	o.EdgeCache = &v
+// SetCache gets a reference to the given CacheModuleRequest and assigns it to the Cache field.
+func (o *ApplicationModulesRequest) SetCache(v CacheModuleRequest) {
+	o.Cache = &v
 }
 
 // GetFunctions returns the Functions field value if set, zero value otherwise.
@@ -171,38 +170,6 @@ func (o *ApplicationModulesRequest) SetImageProcessor(v ImageProcessorModuleRequ
 	o.ImageProcessor = &v
 }
 
-// GetTieredCache returns the TieredCache field value if set, zero value otherwise.
-func (o *ApplicationModulesRequest) GetTieredCache() TieredCacheModuleRequest {
-	if o == nil || IsNil(o.TieredCache) {
-		var ret TieredCacheModuleRequest
-		return ret
-	}
-	return *o.TieredCache
-}
-
-// GetTieredCacheOk returns a tuple with the TieredCache field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationModulesRequest) GetTieredCacheOk() (*TieredCacheModuleRequest, bool) {
-	if o == nil || IsNil(o.TieredCache) {
-		return nil, false
-	}
-	return o.TieredCache, true
-}
-
-// HasTieredCache returns a boolean if a field has been set.
-func (o *ApplicationModulesRequest) HasTieredCache() bool {
-	if o != nil && !IsNil(o.TieredCache) {
-		return true
-	}
-
-	return false
-}
-
-// SetTieredCache gets a reference to the given TieredCacheModuleRequest and assigns it to the TieredCache field.
-func (o *ApplicationModulesRequest) SetTieredCache(v TieredCacheModuleRequest) {
-	o.TieredCache = &v
-}
-
 func (o ApplicationModulesRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -213,8 +180,8 @@ func (o ApplicationModulesRequest) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationModulesRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EdgeCache) {
-		toSerialize["edge_cache"] = o.EdgeCache
+	if !IsNil(o.Cache) {
+		toSerialize["cache"] = o.Cache
 	}
 	if !IsNil(o.Functions) {
 		toSerialize["functions"] = o.Functions
@@ -224,9 +191,6 @@ func (o ApplicationModulesRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ImageProcessor) {
 		toSerialize["image_processor"] = o.ImageProcessor
-	}
-	if !IsNil(o.TieredCache) {
-		toSerialize["tiered_cache"] = o.TieredCache
 	}
 	return toSerialize, nil
 }

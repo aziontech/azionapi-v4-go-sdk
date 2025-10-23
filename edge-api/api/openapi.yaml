@@ -6833,19 +6833,12 @@ paths:
       summary: Create an Firewall
       tags:
       - Firewalls
-  /edge_firewall/firewalls/{edge_firewall_id}/functions:
+  /edge_firewall/firewalls/{firewall_id}/functions:
     get:
       description: List all Function Instances for a specific Firewall owned by your
         account.
       operationId: List Firewall Function
       parameters:
-      - explode: false
-        in: path
-        name: edge_firewall_id
-        required: true
-        schema:
-          type: string
-        style: simple
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -6854,6 +6847,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: false
+        in: path
+        name: firewall_id
+        required: true
+        schema:
+          type: string
+        style: simple
       - description: |-
           Which field to use when ordering the results.
           (Valid fields: id, last_editor, last_modified, name, args, azion_form, function, active)
@@ -7022,7 +7022,7 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -7164,14 +7164,14 @@ paths:
       summary: Create an Firewall Function
       tags:
       - Firewalls - Function
-  /edge_firewall/firewalls/{edge_firewall_id}/functions/{id}:
+  /edge_firewall/firewalls/{firewall_id}/functions/{id}:
     delete:
       description: Destroy a specific Firewall Function Instance in your account.
       operationId: Destroy Firewall Function
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -7319,13 +7319,6 @@ paths:
         account.
       operationId: Retrieve Firewall Function
       parameters:
-      - explode: false
-        in: path
-        name: edge_firewall_id
-        required: true
-        schema:
-          type: string
-        style: simple
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -7334,6 +7327,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: false
+        in: path
+        name: firewall_id
+        required: true
+        schema:
+          type: string
+        style: simple
       - explode: false
         in: path
         name: id
@@ -7473,7 +7473,7 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -7628,7 +7628,7 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -7777,18 +7777,11 @@ paths:
       summary: Update an Firewall Function
       tags:
       - Firewalls - Function
-  /edge_firewall/firewalls/{edge_firewall_id}/request_rules:
+  /edge_firewall/firewalls/{firewall_id}/request_rules:
     get:
       description: List all Rules for a specific Firewall owned by your account.
       operationId: List Firewall Rules
       parameters:
-      - explode: false
-        in: path
-        name: edge_firewall_id
-        required: true
-        schema:
-          type: string
-        style: simple
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -7797,6 +7790,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: false
+        in: path
+        name: firewall_id
+        required: true
+        schema:
+          type: string
+        style: simple
       - description: |-
           Which field to use when ordering the results.
           (Valid fields: name, last_editor, last_modified, active, description, order, behaviors, criteria)
@@ -7964,7 +7964,7 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -8106,14 +8106,14 @@ paths:
       summary: Create an Firewall Rule
       tags:
       - Firewalls - Rules Engine
-  /edge_firewall/firewalls/{edge_firewall_id}/request_rules/{id}:
+  /edge_firewall/firewalls/{firewall_id}/request_rules/{id}:
     delete:
       description: Destroy a specific Rule in your account.
       operationId: Destroy Firewall Rule
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -8260,13 +8260,6 @@ paths:
       description: Retrieve details of a specific Rule in your account.
       operationId: Retrieve Firewall Rule
       parameters:
-      - explode: false
-        in: path
-        name: edge_firewall_id
-        required: true
-        schema:
-          type: string
-        style: simple
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -8275,6 +8268,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: false
+        in: path
+        name: firewall_id
+        required: true
+        schema:
+          type: string
+        style: simple
       - explode: false
         in: path
         name: id
@@ -8414,7 +8414,7 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -8569,7 +8569,7 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -8718,14 +8718,14 @@ paths:
       summary: Update an Firewall Rule
       tags:
       - Firewalls - Rules Engine
-  /edge_firewall/firewalls/{edge_firewall_id}/request_rules/order:
+  /edge_firewall/firewalls/{firewall_id}/request_rules/order:
     put:
       description: Reoder all Rules for a specific Firewall owned by your account.
       operationId: Order Firewall Rules
       parameters:
       - explode: false
         in: path
-        name: edge_firewall_id
+        name: firewall_id
         required: true
         schema:
           type: string
@@ -16407,10 +16407,9 @@ components:
         id: 0
         last_modified: 2000-01-23T04:56:07.000+00:00
         modules:
-          edge_cache: ""
           application_accelerator: ""
+          cache: ""
           functions: ""
-          tiered_cache: ""
           image_processor: ""
       properties:
         id:
@@ -16678,13 +16677,12 @@ components:
     ApplicationModules:
       additionalProperties: false
       example:
-        edge_cache: ""
         application_accelerator: ""
+        cache: ""
         functions: ""
-        tiered_cache: ""
         image_processor: ""
       properties:
-        edge_cache:
+        cache:
           allOf:
           - $ref: "#/components/schemas/CacheModule"
         functions:
@@ -16696,21 +16694,17 @@ components:
         image_processor:
           allOf:
           - $ref: "#/components/schemas/ImageProcessorModule"
-        tiered_cache:
-          allOf:
-          - $ref: "#/components/schemas/TieredCacheModule"
       title: ApplicationModules
       type: object
     ApplicationModulesRequest:
       additionalProperties: false
       example:
-        edge_cache: ""
         application_accelerator: ""
+        cache: ""
         functions: ""
-        tiered_cache: ""
         image_processor: ""
       properties:
-        edge_cache:
+        cache:
           allOf:
           - $ref: "#/components/schemas/CacheModuleRequest"
         functions:
@@ -16722,9 +16716,6 @@ components:
         image_processor:
           allOf:
           - $ref: "#/components/schemas/ImageProcessorModuleRequest"
-        tiered_cache:
-          allOf:
-          - $ref: "#/components/schemas/TieredCacheModuleRequest"
       title: ApplicationModulesRequest
       type: object
     ApplicationRequest:
@@ -16734,10 +16725,9 @@ components:
         name: name
         active: true
         modules:
-          edge_cache: ""
           application_accelerator: ""
+          cache: ""
           functions: ""
-          tiered_cache: ""
           image_processor: ""
       properties:
         name:
@@ -18935,14 +18925,6 @@ components:
         name: name
         id: 0
         modules:
-          edge_cache:
-            max_age: 4622587
-            large_file_cache:
-              offset: 1024
-              enabled: true
-            behavior: ""
-            stale_cache:
-              enabled: true
           application_accelerator:
             cache_vary_by_querystring:
               behavior: ""
@@ -18963,7 +18945,15 @@ components:
               - cookie_names
               - cookie_names
               behavior: ""
-          tiered_cache: ""
+          cache:
+            max_age: 4622587
+            large_file_cache:
+              offset: 1024
+              enabled: true
+            tiered_cache: ""
+            behavior: ""
+            stale_cache:
+              enabled: true
       properties:
         id:
           format: int64
@@ -18989,14 +18979,6 @@ components:
           behavior: ""
         name: name
         modules:
-          edge_cache:
-            max_age: 19008185
-            large_file_cache:
-              offset: 1024
-              enabled: true
-            behavior: ""
-            stale_cache:
-              enabled: true
           application_accelerator:
             cache_vary_by_querystring:
               behavior: ""
@@ -19017,7 +18999,15 @@ components:
               - cookie_names
               - cookie_names
               behavior: ""
-          tiered_cache: ""
+          cache:
+            max_age: 19008185
+            large_file_cache:
+              offset: 1024
+              enabled: true
+            tiered_cache: ""
+            behavior: ""
+            stale_cache:
+              enabled: true
       properties:
         name:
           maxLength: 250
@@ -19110,6 +19100,7 @@ components:
         large_file_cache:
           offset: 1024
           enabled: true
+        tiered_cache: ""
         behavior: ""
         stale_cache:
           enabled: true
@@ -19128,6 +19119,10 @@ components:
           $ref: "#/components/schemas/StateCacheModule"
         large_file_cache:
           $ref: "#/components/schemas/LargeFileCacheModule"
+        tiered_cache:
+          allOf:
+          - $ref: "#/components/schemas/CacheSettingsTieredCacheModule"
+          nullable: true
       title: CacheSettingsEdgeCacheModule
       type: object
     CacheSettingsEdgeCacheModuleBehaviorEnum:
@@ -19143,6 +19138,7 @@ components:
         large_file_cache:
           offset: 1024
           enabled: true
+        tiered_cache: ""
         behavior: ""
         stale_cache:
           enabled: true
@@ -19161,19 +19157,15 @@ components:
           $ref: "#/components/schemas/StateCacheModuleRequest"
         large_file_cache:
           $ref: "#/components/schemas/LargeFileCacheModuleRequest"
+        tiered_cache:
+          allOf:
+          - $ref: "#/components/schemas/CacheSettingsTieredCacheModuleRequest"
+          nullable: true
       title: CacheSettingsEdgeCacheModuleRequest
       type: object
     CacheSettingsModules:
       additionalProperties: false
       example:
-        edge_cache:
-          max_age: 4622587
-          large_file_cache:
-            offset: 1024
-            enabled: true
-          behavior: ""
-          stale_cache:
-            enabled: true
         application_accelerator:
           cache_vary_by_querystring:
             behavior: ""
@@ -19194,14 +19186,18 @@ components:
             - cookie_names
             - cookie_names
             behavior: ""
-        tiered_cache: ""
+        cache:
+          max_age: 4622587
+          large_file_cache:
+            offset: 1024
+            enabled: true
+          tiered_cache: ""
+          behavior: ""
+          stale_cache:
+            enabled: true
       properties:
-        edge_cache:
+        cache:
           $ref: "#/components/schemas/CacheSettingsEdgeCacheModule"
-        tiered_cache:
-          allOf:
-          - $ref: "#/components/schemas/CacheSettingsTieredCacheModule"
-          nullable: true
         application_accelerator:
           $ref: "#/components/schemas/CacheSettingsApplicationAcceleratorModule"
       title: CacheSettingsModules
@@ -19209,14 +19205,6 @@ components:
     CacheSettingsModulesRequest:
       additionalProperties: false
       example:
-        edge_cache:
-          max_age: 19008185
-          large_file_cache:
-            offset: 1024
-            enabled: true
-          behavior: ""
-          stale_cache:
-            enabled: true
         application_accelerator:
           cache_vary_by_querystring:
             behavior: ""
@@ -19237,14 +19225,18 @@ components:
             - cookie_names
             - cookie_names
             behavior: ""
-        tiered_cache: ""
+        cache:
+          max_age: 19008185
+          large_file_cache:
+            offset: 1024
+            enabled: true
+          tiered_cache: ""
+          behavior: ""
+          stale_cache:
+            enabled: true
       properties:
-        edge_cache:
+        cache:
           $ref: "#/components/schemas/CacheSettingsEdgeCacheModuleRequest"
-        tiered_cache:
-          allOf:
-          - $ref: "#/components/schemas/CacheSettingsTieredCacheModuleRequest"
-          nullable: true
         application_accelerator:
           $ref: "#/components/schemas/CacheSettingsApplicationAcceleratorModuleRequest"
       title: CacheSettingsModulesRequest
@@ -19252,40 +19244,29 @@ components:
     CacheSettingsTieredCacheModule:
       additionalProperties: false
       properties:
-        behavior:
-          allOf:
-          - $ref: "#/components/schemas/CacheSettingsTieredCacheModuleBehaviorEnum"
-        max_age:
-          format: int64
-          maximum: 31536000
-          minimum: 0
-          type: integer
         topology:
           description: |-
-            * `near-edge` - near-edge
+            * `nearest-region` - nearest-region
             * `br-east-1` - br-east-1
             * `us-east-1` - us-east-1
           title: TopologyEnum
           type: string
-      required:
-      - behavior
-      - max_age
+        enabled:
+          type: boolean
       title: CacheSettingsTieredCacheModule
       type: object
-    CacheSettingsTieredCacheModuleBehaviorEnum:
-      description: '* `override` - override'
-      title: CacheSettingsTieredCacheModuleBehaviorEnum
-      type: string
     CacheSettingsTieredCacheModuleRequest:
       additionalProperties: false
       properties:
         topology:
           description: |-
-            * `near-edge` - near-edge
+            * `nearest-region` - nearest-region
             * `br-east-1` - br-east-1
             * `us-east-1` - us-east-1
           title: TopologyEnum
           type: string
+        enabled:
+          type: boolean
       title: CacheSettingsTieredCacheModuleRequest
       type: object
     CacheVaryByCookiesModule:
@@ -20115,9 +20096,8 @@ components:
       type: object
     DnsResolutionEnum:
       description: |-
-        * `preserve` - Preserve
+        * `both` - Both
         * `force_ipv4` - Force IPv4
-        * `force_ipv6` - Force IPv6
       title: DnsResolutionEnum
       type: string
     EdgeApplicationCriterionField:
@@ -22106,11 +22086,10 @@ components:
           allOf:
           - $ref: "#/components/schemas/DnsResolutionEnum"
           description: |-
-            DNS resolution policy: preserve, force IPv4, or force IPv6 usage when connecting.
+            DNS resolution policy: force IPv4 or both (IPv4 and IPv6) when connecting.
 
-            * `preserve` - Preserve
+            * `both` - Both
             * `force_ipv4` - Force IPv4
-            * `force_ipv6` - Force IPv6
         transport_policy:
           allOf:
           - $ref: "#/components/schemas/TransportPolicyEnum"
@@ -22161,11 +22140,10 @@ components:
           allOf:
           - $ref: "#/components/schemas/DnsResolutionEnum"
           description: |-
-            DNS resolution policy: preserve, force IPv4, or force IPv6 usage when connecting.
+            DNS resolution policy: force IPv4 or both (IPv4 and IPv6) when connecting.
 
-            * `preserve` - Preserve
+            * `both` - Both
             * `force_ipv4` - Force IPv4
-            * `force_ipv6` - Force IPv6
         transport_policy:
           allOf:
           - $ref: "#/components/schemas/TransportPolicyEnum"
@@ -22449,7 +22427,7 @@ components:
       type: object
     LayerEnum:
       description: |-
-        * `edge_cache` - Edge Cache
+        * `cache` - Cache
         * `tiered_cache` - Tiered Cache
       title: LayerEnum
       type: string
@@ -23265,10 +23243,9 @@ components:
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            edge_cache: ""
             application_accelerator: ""
+            cache: ""
             functions: ""
-            tiered_cache: ""
             image_processor: ""
         - product_version: product_version
           debug: true
@@ -23278,10 +23255,9 @@ components:
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            edge_cache: ""
             application_accelerator: ""
+            cache: ""
             functions: ""
-            tiered_cache: ""
             image_processor: ""
       properties:
         count:
@@ -24521,14 +24497,6 @@ components:
           name: name
           id: 0
           modules:
-            edge_cache:
-              max_age: 4622587
-              large_file_cache:
-                offset: 1024
-                enabled: true
-              behavior: ""
-              stale_cache:
-                enabled: true
             application_accelerator:
               cache_vary_by_querystring:
                 behavior: ""
@@ -24549,21 +24517,21 @@ components:
                 - cookie_names
                 - cookie_names
                 behavior: ""
-            tiered_cache: ""
+            cache:
+              max_age: 4622587
+              large_file_cache:
+                offset: 1024
+                enabled: true
+              tiered_cache: ""
+              behavior: ""
+              stale_cache:
+                enabled: true
         - browser_cache:
             max_age: 19008185
             behavior: ""
           name: name
           id: 0
           modules:
-            edge_cache:
-              max_age: 4622587
-              large_file_cache:
-                offset: 1024
-                enabled: true
-              behavior: ""
-              stale_cache:
-                enabled: true
             application_accelerator:
               cache_vary_by_querystring:
                 behavior: ""
@@ -24584,7 +24552,15 @@ components:
                 - cookie_names
                 - cookie_names
                 behavior: ""
-            tiered_cache: ""
+            cache:
+              max_age: 4622587
+              large_file_cache:
+                offset: 1024
+                enabled: true
+              tiered_cache: ""
+              behavior: ""
+              stale_cache:
+                enabled: true
       properties:
         count:
           example: 123
@@ -24910,10 +24886,9 @@ components:
         name: name
         active: true
         modules:
-          edge_cache: ""
           application_accelerator: ""
+          cache: ""
           functions: ""
-          tiered_cache: ""
           image_processor: ""
       properties:
         name:
@@ -25220,14 +25195,6 @@ components:
           behavior: ""
         name: name
         modules:
-          edge_cache:
-            max_age: 19008185
-            large_file_cache:
-              offset: 1024
-              enabled: true
-            behavior: ""
-            stale_cache:
-              enabled: true
           application_accelerator:
             cache_vary_by_querystring:
               behavior: ""
@@ -25248,7 +25215,15 @@ components:
               - cookie_names
               - cookie_names
               behavior: ""
-          tiered_cache: ""
+          cache:
+            max_age: 19008185
+            large_file_cache:
+              offset: 1024
+              enabled: true
+            tiered_cache: ""
+            behavior: ""
+            stale_cache:
+              enabled: true
       properties:
         name:
           maxLength: 250
@@ -26143,10 +26118,9 @@ components:
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            edge_cache: ""
             application_accelerator: ""
+            cache: ""
             functions: ""
-            tiered_cache: ""
             image_processor: ""
         state: state
       properties:
@@ -26525,10 +26499,9 @@ components:
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            edge_cache: ""
             application_accelerator: ""
+            cache: ""
             functions: ""
-            tiered_cache: ""
             image_processor: ""
         state: state
       properties:
@@ -26905,14 +26878,6 @@ components:
           name: name
           id: 0
           modules:
-            edge_cache:
-              max_age: 4622587
-              large_file_cache:
-                offset: 1024
-                enabled: true
-              behavior: ""
-              stale_cache:
-                enabled: true
             application_accelerator:
               cache_vary_by_querystring:
                 behavior: ""
@@ -26933,7 +26898,15 @@ components:
                 - cookie_names
                 - cookie_names
                 behavior: ""
-            tiered_cache: ""
+            cache:
+              max_age: 4622587
+              large_file_cache:
+                offset: 1024
+                enabled: true
+              tiered_cache: ""
+              behavior: ""
+              stale_cache:
+                enabled: true
         state: state
       properties:
         state:
@@ -27729,24 +27702,6 @@ components:
         - last_modified
         - last_modified
         modules:
-          edge_cache:
-            max_age:
-            - max_age
-            - max_age
-            large_file_cache:
-              offset:
-              - offset
-              - offset
-              enabled:
-              - enabled
-              - enabled
-            behavior:
-            - behavior
-            - behavior
-            stale_cache:
-              enabled:
-              - enabled
-              - enabled
           application_accelerator:
             cache_vary_by_querystring:
               behavior:
@@ -27769,19 +27724,31 @@ components:
               behavior:
               - behavior
               - behavior
-          tiered_cache:
+          cache:
             max_age:
             - max_age
             - max_age
-            topology:
-            - topology
-            - topology
+            large_file_cache:
+              offset:
+              - offset
+              - offset
+              enabled:
+              - enabled
+              - enabled
+            tiered_cache:
+              topology:
+              - topology
+              - topology
+              enabled:
+              - enabled
+              - enabled
             behavior:
             - behavior
             - behavior
-            tiered_cache_enabled:
-            - tiered_cache_enabled
-            - tiered_cache_enabled
+            stale_cache:
+              enabled:
+              - enabled
+              - enabled
       properties:
         name:
           items:
@@ -27837,24 +27804,6 @@ components:
         - id
         detail: detail
         modules:
-          edge_cache:
-            max_age:
-            - max_age
-            - max_age
-            large_file_cache:
-              offset:
-              - offset
-              - offset
-              enabled:
-              - enabled
-              - enabled
-            behavior:
-            - behavior
-            - behavior
-            stale_cache:
-              enabled:
-              - enabled
-              - enabled
           application_accelerator:
             cache_vary_by_querystring:
               behavior:
@@ -27877,19 +27826,31 @@ components:
               behavior:
               - behavior
               - behavior
-          tiered_cache:
+          cache:
             max_age:
             - max_age
             - max_age
-            topology:
-            - topology
-            - topology
+            large_file_cache:
+              offset:
+              - offset
+              - offset
+              enabled:
+              - enabled
+              - enabled
+            tiered_cache:
+              topology:
+              - topology
+              - topology
+              enabled:
+              - enabled
+              - enabled
             behavior:
             - behavior
             - behavior
-            tiered_cache_enabled:
-            - tiered_cache_enabled
-            - tiered_cache_enabled
+            stale_cache:
+              enabled:
+              - enabled
+              - enabled
       properties:
         id:
           items:
@@ -27997,6 +27958,26 @@ components:
           type: array
       title: ResponseBadRequestCacheSettingsEdgeCacheModuleStale_cacheField
       type: object
+    ResponseBadRequestCacheSettingsEdgeCacheModuleTiered_cacheField:
+      additionalProperties: false
+      example:
+        topology:
+        - topology
+        - topology
+        enabled:
+        - enabled
+        - enabled
+      properties:
+        topology:
+          items:
+            type: string
+          type: array
+        enabled:
+          items:
+            type: string
+          type: array
+      title: ResponseBadRequestCacheSettingsEdgeCacheModuleTiered_cacheField
+      type: object
     ResponseBadRequestCacheSettingsModulesApplication_acceleratorField:
       additionalProperties: false
       example:
@@ -28032,7 +28013,7 @@ components:
           $ref: "#/components/schemas/ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCache_vary_by_devicesField"
       title: ResponseBadRequestCacheSettingsModulesApplication_acceleratorField
       type: object
-    ResponseBadRequestCacheSettingsModulesEdge_cacheField:
+    ResponseBadRequestCacheSettingsModulesCacheField:
       additionalProperties: false
       example:
         max_age:
@@ -28042,6 +28023,13 @@ components:
           offset:
           - offset
           - offset
+          enabled:
+          - enabled
+          - enabled
+        tiered_cache:
+          topology:
+          - topology
+          - topology
           enabled:
           - enabled
           - enabled
@@ -28065,41 +28053,9 @@ components:
           $ref: "#/components/schemas/ResponseBadRequestCacheSettingsEdgeCacheModuleStale_cacheField"
         large_file_cache:
           $ref: "#/components/schemas/ResponseBadRequestCacheSettingsEdgeCacheModuleLarge_file_cacheField"
-      title: ResponseBadRequestCacheSettingsModulesEdge_cacheField
-      type: object
-    ResponseBadRequestCacheSettingsModulesTiered_cacheField:
-      additionalProperties: false
-      example:
-        max_age:
-        - max_age
-        - max_age
-        topology:
-        - topology
-        - topology
-        behavior:
-        - behavior
-        - behavior
-        tiered_cache_enabled:
-        - tiered_cache_enabled
-        - tiered_cache_enabled
-      properties:
-        behavior:
-          items:
-            type: string
-          type: array
-        max_age:
-          items:
-            type: string
-          type: array
-        topology:
-          items:
-            type: string
-          type: array
-        tiered_cache_enabled:
-          items:
-            type: string
-          type: array
-      title: ResponseBadRequestCacheSettingsModulesTiered_cacheField
+        tiered_cache:
+          $ref: "#/components/schemas/ResponseBadRequestCacheSettingsEdgeCacheModuleTiered_cacheField"
+      title: ResponseBadRequestCacheSettingsModulesCacheField
       type: object
     ResponseBadRequestSerializerMetaclassBrowser_cacheField:
       additionalProperties: false
@@ -28124,24 +28080,6 @@ components:
     ResponseBadRequestSerializerMetaclassModulesField:
       additionalProperties: false
       example:
-        edge_cache:
-          max_age:
-          - max_age
-          - max_age
-          large_file_cache:
-            offset:
-            - offset
-            - offset
-            enabled:
-            - enabled
-            - enabled
-          behavior:
-          - behavior
-          - behavior
-          stale_cache:
-            enabled:
-            - enabled
-            - enabled
         application_accelerator:
           cache_vary_by_querystring:
             behavior:
@@ -28164,24 +28102,34 @@ components:
             behavior:
             - behavior
             - behavior
-        tiered_cache:
+        cache:
           max_age:
           - max_age
           - max_age
-          topology:
-          - topology
-          - topology
+          large_file_cache:
+            offset:
+            - offset
+            - offset
+            enabled:
+            - enabled
+            - enabled
+          tiered_cache:
+            topology:
+            - topology
+            - topology
+            enabled:
+            - enabled
+            - enabled
           behavior:
           - behavior
           - behavior
-          tiered_cache_enabled:
-          - tiered_cache_enabled
-          - tiered_cache_enabled
+          stale_cache:
+            enabled:
+            - enabled
+            - enabled
       properties:
-        edge_cache:
-          $ref: "#/components/schemas/ResponseBadRequestCacheSettingsModulesEdge_cacheField"
-        tiered_cache:
-          $ref: "#/components/schemas/ResponseBadRequestCacheSettingsModulesTiered_cacheField"
+        cache:
+          $ref: "#/components/schemas/ResponseBadRequestCacheSettingsModulesCacheField"
         application_accelerator:
           $ref: "#/components/schemas/ResponseBadRequestCacheSettingsModulesApplication_acceleratorField"
       title: ResponseBadRequestSerializerMetaclassModulesField
@@ -28798,14 +28746,6 @@ components:
         name: name
         id: 0
         modules:
-          edge_cache:
-            max_age: 4622587
-            large_file_cache:
-              offset: 1024
-              enabled: true
-            behavior: ""
-            stale_cache:
-              enabled: true
           application_accelerator:
             cache_vary_by_querystring:
               behavior: ""
@@ -28826,7 +28766,15 @@ components:
               - cookie_names
               - cookie_names
               behavior: ""
-          tiered_cache: ""
+          cache:
+            max_age: 4622587
+            large_file_cache:
+              offset: 1024
+              enabled: true
+            tiered_cache: ""
+            behavior: ""
+            stale_cache:
+              enabled: true
       properties:
         id:
           format: int64
@@ -28904,10 +28852,9 @@ components:
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
           modules:
-            edge_cache: ""
             application_accelerator: ""
+            cache: ""
             functions: ""
-            tiered_cache: ""
             image_processor: ""
       properties:
         data:
@@ -29134,14 +29081,6 @@ components:
           name: name
           id: 0
           modules:
-            edge_cache:
-              max_age: 4622587
-              large_file_cache:
-                offset: 1024
-                enabled: true
-              behavior: ""
-              stale_cache:
-                enabled: true
             application_accelerator:
               cache_vary_by_querystring:
                 behavior: ""
@@ -29162,7 +29101,15 @@ components:
                 - cookie_names
                 - cookie_names
                 behavior: ""
-            tiered_cache: ""
+            cache:
+              max_age: 4622587
+              large_file_cache:
+                offset: 1024
+                enabled: true
+              tiered_cache: ""
+              behavior: ""
+              stale_cache:
+                enabled: true
       properties:
         data:
           $ref: "#/components/schemas/CacheSetting"
@@ -30023,23 +29970,9 @@ components:
       - threat
       title: ThresholdsConfigFieldRequest
       type: object
-    TieredCacheModule:
-      additionalProperties: false
-      properties:
-        enabled:
-          type: boolean
-      title: TieredCacheModule
-      type: object
-    TieredCacheModuleRequest:
-      additionalProperties: false
-      properties:
-        enabled:
-          type: boolean
-      title: TieredCacheModuleRequest
-      type: object
     TopologyEnum:
       description: |-
-        * `near-edge` - near-edge
+        * `nearest-region` - nearest-region
         * `br-east-1` - br-east-1
         * `us-east-1` - us-east-1
       title: TopologyEnum

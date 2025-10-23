@@ -19,8 +19,9 @@ var _ MappedNullable = &CacheSettingsTieredCacheModuleRequest{}
 
 // CacheSettingsTieredCacheModuleRequest struct for CacheSettingsTieredCacheModuleRequest
 type CacheSettingsTieredCacheModuleRequest struct {
-	// * `near-edge` - near-edge * `br-east-1` - br-east-1 * `us-east-1` - us-east-1
+	// * `nearest-region` - nearest-region * `br-east-1` - br-east-1 * `us-east-1` - us-east-1
 	Topology *string `json:"topology,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // NewCacheSettingsTieredCacheModuleRequest instantiates a new CacheSettingsTieredCacheModuleRequest object
@@ -72,6 +73,38 @@ func (o *CacheSettingsTieredCacheModuleRequest) SetTopology(v string) {
 	o.Topology = &v
 }
 
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *CacheSettingsTieredCacheModuleRequest) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CacheSettingsTieredCacheModuleRequest) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *CacheSettingsTieredCacheModuleRequest) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *CacheSettingsTieredCacheModuleRequest) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
 func (o CacheSettingsTieredCacheModuleRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -84,6 +117,9 @@ func (o CacheSettingsTieredCacheModuleRequest) ToMap() (map[string]interface{}, 
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Topology) {
 		toSerialize["topology"] = o.Topology
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
 	}
 	return toSerialize, nil
 }

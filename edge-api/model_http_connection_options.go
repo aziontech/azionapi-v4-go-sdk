@@ -19,7 +19,7 @@ var _ MappedNullable = &HTTPConnectionOptions{}
 
 // HTTPConnectionOptions struct for HTTPConnectionOptions
 type HTTPConnectionOptions struct {
-	// DNS resolution policy: preserve, force IPv4, or force IPv6 usage when connecting.  * `preserve` - Preserve * `force_ipv4` - Force IPv4 * `force_ipv6` - Force IPv6
+	// DNS resolution policy: force IPv4 or both (IPv4 and IPv6) when connecting.  * `both` - Both * `force_ipv4` - Force IPv4
 	DnsResolution *string `json:"dns_resolution,omitempty"`
 	// Transport protocol policy: preserve current scheme, force HTTP, or force HTTPS.  * `preserve` - Preserve * `force_https` - Force HTTPS * `force_http` - Force HTTP
 	TransportPolicy *string `json:"transport_policy,omitempty"`

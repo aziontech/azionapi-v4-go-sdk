@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EdgeCache** | Pointer to [**CacheModuleRequest**](CacheModuleRequest.md) |  | [optional] 
+**Cache** | Pointer to [**CacheModuleRequest**](CacheModuleRequest.md) |  | [optional] 
 **Functions** | Pointer to [**EdgeFunctionModuleRequest**](EdgeFunctionModuleRequest.md) |  | [optional] 
 **ApplicationAccelerator** | Pointer to [**ApplicationAcceleratorModuleRequest**](ApplicationAcceleratorModuleRequest.md) |  | [optional] 
 **ImageProcessor** | Pointer to [**ImageProcessorModuleRequest**](ImageProcessorModuleRequest.md) |  | [optional] 
-**TieredCache** | Pointer to [**TieredCacheModuleRequest**](TieredCacheModuleRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -29,30 +28,30 @@ NewApplicationModulesRequestWithDefaults instantiates a new ApplicationModulesRe
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEdgeCache
+### GetCache
 
-`func (o *ApplicationModulesRequest) GetEdgeCache() CacheModuleRequest`
+`func (o *ApplicationModulesRequest) GetCache() CacheModuleRequest`
 
-GetEdgeCache returns the EdgeCache field if non-nil, zero value otherwise.
+GetCache returns the Cache field if non-nil, zero value otherwise.
 
-### GetEdgeCacheOk
+### GetCacheOk
 
-`func (o *ApplicationModulesRequest) GetEdgeCacheOk() (*CacheModuleRequest, bool)`
+`func (o *ApplicationModulesRequest) GetCacheOk() (*CacheModuleRequest, bool)`
 
-GetEdgeCacheOk returns a tuple with the EdgeCache field if it's non-nil, zero value otherwise
+GetCacheOk returns a tuple with the Cache field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEdgeCache
+### SetCache
 
-`func (o *ApplicationModulesRequest) SetEdgeCache(v CacheModuleRequest)`
+`func (o *ApplicationModulesRequest) SetCache(v CacheModuleRequest)`
 
-SetEdgeCache sets EdgeCache field to given value.
+SetCache sets Cache field to given value.
 
-### HasEdgeCache
+### HasCache
 
-`func (o *ApplicationModulesRequest) HasEdgeCache() bool`
+`func (o *ApplicationModulesRequest) HasCache() bool`
 
-HasEdgeCache returns a boolean if a field has been set.
+HasCache returns a boolean if a field has been set.
 
 ### GetFunctions
 
@@ -128,31 +127,6 @@ SetImageProcessor sets ImageProcessor field to given value.
 `func (o *ApplicationModulesRequest) HasImageProcessor() bool`
 
 HasImageProcessor returns a boolean if a field has been set.
-
-### GetTieredCache
-
-`func (o *ApplicationModulesRequest) GetTieredCache() TieredCacheModuleRequest`
-
-GetTieredCache returns the TieredCache field if non-nil, zero value otherwise.
-
-### GetTieredCacheOk
-
-`func (o *ApplicationModulesRequest) GetTieredCacheOk() (*TieredCacheModuleRequest, bool)`
-
-GetTieredCacheOk returns a tuple with the TieredCache field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTieredCache
-
-`func (o *ApplicationModulesRequest) SetTieredCache(v TieredCacheModuleRequest)`
-
-SetTieredCache sets TieredCache field to given value.
-
-### HasTieredCache
-
-`func (o *ApplicationModulesRequest) HasTieredCache() bool`
-
-HasTieredCache returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
