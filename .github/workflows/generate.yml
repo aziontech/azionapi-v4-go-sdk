@@ -6,6 +6,9 @@ on:
 
 jobs:
   generate-sdk:
+    permissions:
+        contents: write
+        pull-requests: write
     runs-on: ubuntu-latest
     container:
       image: ubuntu:22.04
