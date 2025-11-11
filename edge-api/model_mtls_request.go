@@ -19,9 +19,8 @@ var _ MappedNullable = &MTLSRequest{}
 
 // MTLSRequest struct for MTLSRequest
 type MTLSRequest struct {
-	Verification NullableMTLSVerification `json:"verification,omitempty"`
-	Certificate NullableInt64 `json:"certificate,omitempty"`
-	Crl []int64 `json:"crl,omitempty"`
+	Enabled NullableBool `json:"enabled,omitempty"`
+	Config NullableMTLSConfigRequest `json:"config,omitempty"`
 }
 
 // NewMTLSRequest instantiates a new MTLSRequest object
@@ -41,121 +40,88 @@ func NewMTLSRequestWithDefaults() *MTLSRequest {
 	return &this
 }
 
-// GetVerification returns the Verification field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MTLSRequest) GetVerification() MTLSVerification {
-	if o == nil || IsNil(o.Verification.Get()) {
-		var ret MTLSVerification
+// GetEnabled returns the Enabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MTLSRequest) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled.Get()) {
+		var ret bool
 		return ret
 	}
-	return *o.Verification.Get()
+	return *o.Enabled.Get()
 }
 
-// GetVerificationOk returns a tuple with the Verification field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MTLSRequest) GetVerificationOk() (*MTLSVerification, bool) {
+func (o *MTLSRequest) GetEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Verification.Get(), o.Verification.IsSet()
+	return o.Enabled.Get(), o.Enabled.IsSet()
 }
 
-// HasVerification returns a boolean if a field has been set.
-func (o *MTLSRequest) HasVerification() bool {
-	if o != nil && o.Verification.IsSet() {
+// HasEnabled returns a boolean if a field has been set.
+func (o *MTLSRequest) HasEnabled() bool {
+	if o != nil && o.Enabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVerification gets a reference to the given NullableMTLSVerification and assigns it to the Verification field.
-func (o *MTLSRequest) SetVerification(v MTLSVerification) {
-	o.Verification.Set(&v)
+// SetEnabled gets a reference to the given NullableBool and assigns it to the Enabled field.
+func (o *MTLSRequest) SetEnabled(v bool) {
+	o.Enabled.Set(&v)
 }
-// SetVerificationNil sets the value for Verification to be an explicit nil
-func (o *MTLSRequest) SetVerificationNil() {
-	o.Verification.Set(nil)
-}
-
-// UnsetVerification ensures that no value is present for Verification, not even an explicit nil
-func (o *MTLSRequest) UnsetVerification() {
-	o.Verification.Unset()
+// SetEnabledNil sets the value for Enabled to be an explicit nil
+func (o *MTLSRequest) SetEnabledNil() {
+	o.Enabled.Set(nil)
 }
 
-// GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MTLSRequest) GetCertificate() int64 {
-	if o == nil || IsNil(o.Certificate.Get()) {
-		var ret int64
+// UnsetEnabled ensures that no value is present for Enabled, not even an explicit nil
+func (o *MTLSRequest) UnsetEnabled() {
+	o.Enabled.Unset()
+}
+
+// GetConfig returns the Config field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MTLSRequest) GetConfig() MTLSConfigRequest {
+	if o == nil || IsNil(o.Config.Get()) {
+		var ret MTLSConfigRequest
 		return ret
 	}
-	return *o.Certificate.Get()
+	return *o.Config.Get()
 }
 
-// GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MTLSRequest) GetCertificateOk() (*int64, bool) {
+func (o *MTLSRequest) GetConfigOk() (*MTLSConfigRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Certificate.Get(), o.Certificate.IsSet()
+	return o.Config.Get(), o.Config.IsSet()
 }
 
-// HasCertificate returns a boolean if a field has been set.
-func (o *MTLSRequest) HasCertificate() bool {
-	if o != nil && o.Certificate.IsSet() {
+// HasConfig returns a boolean if a field has been set.
+func (o *MTLSRequest) HasConfig() bool {
+	if o != nil && o.Config.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCertificate gets a reference to the given NullableInt64 and assigns it to the Certificate field.
-func (o *MTLSRequest) SetCertificate(v int64) {
-	o.Certificate.Set(&v)
+// SetConfig gets a reference to the given NullableMTLSConfigRequest and assigns it to the Config field.
+func (o *MTLSRequest) SetConfig(v MTLSConfigRequest) {
+	o.Config.Set(&v)
 }
-// SetCertificateNil sets the value for Certificate to be an explicit nil
-func (o *MTLSRequest) SetCertificateNil() {
-	o.Certificate.Set(nil)
-}
-
-// UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
-func (o *MTLSRequest) UnsetCertificate() {
-	o.Certificate.Unset()
+// SetConfigNil sets the value for Config to be an explicit nil
+func (o *MTLSRequest) SetConfigNil() {
+	o.Config.Set(nil)
 }
 
-// GetCrl returns the Crl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MTLSRequest) GetCrl() []int64 {
-	if o == nil {
-		var ret []int64
-		return ret
-	}
-	return o.Crl
-}
-
-// GetCrlOk returns a tuple with the Crl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MTLSRequest) GetCrlOk() ([]int64, bool) {
-	if o == nil || IsNil(o.Crl) {
-		return nil, false
-	}
-	return o.Crl, true
-}
-
-// HasCrl returns a boolean if a field has been set.
-func (o *MTLSRequest) HasCrl() bool {
-	if o != nil && !IsNil(o.Crl) {
-		return true
-	}
-
-	return false
-}
-
-// SetCrl gets a reference to the given []int64 and assigns it to the Crl field.
-func (o *MTLSRequest) SetCrl(v []int64) {
-	o.Crl = v
+// UnsetConfig ensures that no value is present for Config, not even an explicit nil
+func (o *MTLSRequest) UnsetConfig() {
+	o.Config.Unset()
 }
 
 func (o MTLSRequest) MarshalJSON() ([]byte, error) {
@@ -168,14 +134,11 @@ func (o MTLSRequest) MarshalJSON() ([]byte, error) {
 
 func (o MTLSRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Verification.IsSet() {
-		toSerialize["verification"] = o.Verification.Get()
+	if o.Enabled.IsSet() {
+		toSerialize["enabled"] = o.Enabled.Get()
 	}
-	if o.Certificate.IsSet() {
-		toSerialize["certificate"] = o.Certificate.Get()
-	}
-	if o.Crl != nil {
-		toSerialize["crl"] = o.Crl
+	if o.Config.IsSet() {
+		toSerialize["config"] = o.Config.Get()
 	}
 	return toSerialize, nil
 }

@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verification** | Pointer to [**NullableMTLSVerification**](MTLSVerification.md) |  | [optional] 
-**Certificate** | Pointer to **NullableInt64** |  | [optional] 
-**Crl** | Pointer to **[]int64** |  | [optional] 
+**Enabled** | Pointer to **NullableBool** |  | [optional] 
+**Config** | Pointer to [**NullableMTLSConfigRequest**](MTLSConfigRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -27,111 +26,76 @@ NewMTLSRequestWithDefaults instantiates a new MTLSRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetVerification
+### GetEnabled
 
-`func (o *MTLSRequest) GetVerification() MTLSVerification`
+`func (o *MTLSRequest) GetEnabled() bool`
 
-GetVerification returns the Verification field if non-nil, zero value otherwise.
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
-### GetVerificationOk
+### GetEnabledOk
 
-`func (o *MTLSRequest) GetVerificationOk() (*MTLSVerification, bool)`
+`func (o *MTLSRequest) GetEnabledOk() (*bool, bool)`
 
-GetVerificationOk returns a tuple with the Verification field if it's non-nil, zero value otherwise
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVerification
+### SetEnabled
 
-`func (o *MTLSRequest) SetVerification(v MTLSVerification)`
+`func (o *MTLSRequest) SetEnabled(v bool)`
 
-SetVerification sets Verification field to given value.
+SetEnabled sets Enabled field to given value.
 
-### HasVerification
+### HasEnabled
 
-`func (o *MTLSRequest) HasVerification() bool`
+`func (o *MTLSRequest) HasEnabled() bool`
 
-HasVerification returns a boolean if a field has been set.
+HasEnabled returns a boolean if a field has been set.
 
-### SetVerificationNil
+### SetEnabledNil
 
-`func (o *MTLSRequest) SetVerificationNil(b bool)`
+`func (o *MTLSRequest) SetEnabledNil(b bool)`
 
- SetVerificationNil sets the value for Verification to be an explicit nil
+ SetEnabledNil sets the value for Enabled to be an explicit nil
 
-### UnsetVerification
-`func (o *MTLSRequest) UnsetVerification()`
+### UnsetEnabled
+`func (o *MTLSRequest) UnsetEnabled()`
 
-UnsetVerification ensures that no value is present for Verification, not even an explicit nil
-### GetCertificate
+UnsetEnabled ensures that no value is present for Enabled, not even an explicit nil
+### GetConfig
 
-`func (o *MTLSRequest) GetCertificate() int64`
+`func (o *MTLSRequest) GetConfig() MTLSConfigRequest`
 
-GetCertificate returns the Certificate field if non-nil, zero value otherwise.
+GetConfig returns the Config field if non-nil, zero value otherwise.
 
-### GetCertificateOk
+### GetConfigOk
 
-`func (o *MTLSRequest) GetCertificateOk() (*int64, bool)`
+`func (o *MTLSRequest) GetConfigOk() (*MTLSConfigRequest, bool)`
 
-GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCertificate
+### SetConfig
 
-`func (o *MTLSRequest) SetCertificate(v int64)`
+`func (o *MTLSRequest) SetConfig(v MTLSConfigRequest)`
 
-SetCertificate sets Certificate field to given value.
+SetConfig sets Config field to given value.
 
-### HasCertificate
+### HasConfig
 
-`func (o *MTLSRequest) HasCertificate() bool`
+`func (o *MTLSRequest) HasConfig() bool`
 
-HasCertificate returns a boolean if a field has been set.
+HasConfig returns a boolean if a field has been set.
 
-### SetCertificateNil
+### SetConfigNil
 
-`func (o *MTLSRequest) SetCertificateNil(b bool)`
+`func (o *MTLSRequest) SetConfigNil(b bool)`
 
- SetCertificateNil sets the value for Certificate to be an explicit nil
+ SetConfigNil sets the value for Config to be an explicit nil
 
-### UnsetCertificate
-`func (o *MTLSRequest) UnsetCertificate()`
+### UnsetConfig
+`func (o *MTLSRequest) UnsetConfig()`
 
-UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
-### GetCrl
-
-`func (o *MTLSRequest) GetCrl() []int64`
-
-GetCrl returns the Crl field if non-nil, zero value otherwise.
-
-### GetCrlOk
-
-`func (o *MTLSRequest) GetCrlOk() (*[]int64, bool)`
-
-GetCrlOk returns a tuple with the Crl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCrl
-
-`func (o *MTLSRequest) SetCrl(v []int64)`
-
-SetCrl sets Crl field to given value.
-
-### HasCrl
-
-`func (o *MTLSRequest) HasCrl() bool`
-
-HasCrl returns a boolean if a field has been set.
-
-### SetCrlNil
-
-`func (o *MTLSRequest) SetCrlNil(b bool)`
-
- SetCrlNil sets the value for Crl to be an explicit nil
-
-### UnsetCrl
-`func (o *MTLSRequest) UnsetCrl()`
-
-UnsetCrl ensures that no value is present for Crl, not even an explicit nil
+UnsetConfig ensures that no value is present for Config, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

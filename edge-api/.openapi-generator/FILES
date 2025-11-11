@@ -300,8 +300,10 @@ docs/LoadBalancerModuleConfig.md
 docs/LoadBalancerModuleConfigRequest.md
 docs/LoadBalancerModuleRequest.md
 docs/MTLS.md
+docs/MTLSConfig.md
+docs/MTLSConfigRequest.md
+docs/MTLSConfigVerification.md
 docs/MTLSRequest.md
-docs/MTLSVerification.md
 docs/NetworkList.md
 docs/NetworkListDetail.md
 docs/NetworkListDetailRequest.md
@@ -757,8 +759,10 @@ model_load_balancer_module_config.go
 model_load_balancer_module_config_request.go
 model_load_balancer_module_request.go
 model_mtls.go
+model_mtls_config.go
+model_mtls_config_request.go
+model_mtls_config_verification.go
 model_mtls_request.go
-model_mtls_verification.go
 model_network_list.go
 model_network_list_detail.go
 model_network_list_detail_request.go
