@@ -407,7 +407,7 @@ func (r ApiListTotpDevicesRequest) Fields(fields string) ApiListTotpDevicesReque
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: name, user_id, confirmed, id)
+// Which field to use when ordering the results.
 func (r ApiListTotpDevicesRequest) Ordering(ordering string) ApiListTotpDevicesRequest {
 	r.ordering = &ordering
 	return r
