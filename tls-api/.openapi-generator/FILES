@@ -16,7 +16,6 @@ docs/CertificateRequestRequest.md
 docs/CertificateRevocationList.md
 docs/CertificateRevocationListRequest.md
 docs/CertificateSigningRequestRequest.md
-docs/DefaultErrorResponse.md
 docs/DigitalCertificatesCertificateRevocationListsAPI.md
 docs/DigitalCertificatesCertificateSigningRequestsAPI.md
 docs/DigitalCertificatesCertificatesAPI.md
@@ -32,8 +31,6 @@ docs/ResponseAsyncCertificate.md
 docs/ResponseAsyncCertificateRevocationList.md
 docs/ResponseAsyncDeleteCertificate.md
 docs/ResponseAsyncDeleteCertificateRevocationList.md
-docs/ResponseBadRequestCertificate.md
-docs/ResponseBadRequestCertificateSubjectName.md
 docs/ResponseCertificate.md
 docs/ResponseCertificateRevocationList.md
 docs/ResponseDeleteCertificate.md
@@ -51,7 +48,6 @@ model_certificate_request_request.go
 model_certificate_revocation_list.go
 model_certificate_revocation_list_request.go
 model_certificate_signing_request_request.go
-model_default_error_response.go
 model_jsonapi_error_object.go
 model_jsonapi_error_response.go
 model_jsonapi_error_source.go
@@ -63,8 +59,6 @@ model_response_async_certificate.go
 model_response_async_certificate_revocation_list.go
 model_response_async_delete_certificate.go
 model_response_async_delete_certificate_revocation_list.go
-model_response_bad_request_certificate.go
-model_response_bad_request_certificate_subject_name.go
 model_response_certificate.go
 model_response_certificate_revocation_list.go
 model_response_delete_certificate.go

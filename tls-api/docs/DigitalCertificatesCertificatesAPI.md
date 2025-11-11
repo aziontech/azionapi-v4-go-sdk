@@ -171,7 +171,7 @@ import (
 
 func main() {
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, certificate, issuer, validity, subject_name, type, managed, status, status_detail, csr, key_algorithm, challenge, authority, active, product_version, last_editor, last_modified, renewed_at) (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
 	search := "search_example" // string | A search term. (optional)
@@ -200,7 +200,7 @@ Other parameters are passed through a pointer to a apiListCertificatesRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
- **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, certificate, issuer, validity, subject_name, type, managed, status, status_detail, csr, key_algorithm, challenge, authority, active, product_version, last_editor, last_modified, renewed_at) | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
  **search** | **string** | A search term. | 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateCertificate
 
-> ResponseAsyncCertificate PartialUpdateCertificate(ctx, id).PatchedCertificateRequest(patchedCertificateRequest).Execute()
+> ResponseCertificate PartialUpdateCertificate(ctx, id).PatchedCertificateRequest(patchedCertificateRequest).Execute()
 
 Partially update a certificate
 
@@ -254,7 +254,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.PartialUpdateCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateCertificate`: ResponseAsyncCertificate
+	// response from `PartialUpdateCertificate`: ResponseCertificate
 	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesCertificatesAPI.PartialUpdateCertificate`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncCertificate**](ResponseAsyncCertificate.md)
+[**ResponseCertificate**](ResponseCertificate.md)
 
 ### Authorization
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCertificate
 
-> ResponseAsyncCertificate UpdateCertificate(ctx, id).CertificateRequest(certificateRequest).Execute()
+> ResponseCertificate UpdateCertificate(ctx, id).CertificateRequest(certificateRequest).Execute()
 
 Update a certificate
 
@@ -398,7 +398,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.UpdateCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateCertificate`: ResponseAsyncCertificate
+	// response from `UpdateCertificate`: ResponseCertificate
 	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesCertificatesAPI.UpdateCertificate`: %v\n", resp)
 }
 ```
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncCertificate**](ResponseAsyncCertificate.md)
+[**ResponseCertificate**](ResponseCertificate.md)
 
 ### Authorization
 

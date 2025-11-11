@@ -432,7 +432,7 @@ func (r ApiListCertificatesRequest) Fields(fields string) ApiListCertificatesReq
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: id, name, certificate, issuer, validity, subject_name, type, managed, status, status_detail, csr, key_algorithm, challenge, authority, active, product_version, last_editor, last_modified, renewed_at)
+// Which field to use when ordering the results.
 func (r ApiListCertificatesRequest) Ordering(ordering string) ApiListCertificatesRequest {
 	r.ordering = &ordering
 	return r
@@ -667,7 +667,7 @@ func (r ApiPartialUpdateCertificateRequest) PatchedCertificateRequest(patchedCer
 	return r
 }
 
-func (r ApiPartialUpdateCertificateRequest) Execute() (*ResponseAsyncCertificate, *http.Response, error) {
+func (r ApiPartialUpdateCertificateRequest) Execute() (*ResponseCertificate, *http.Response, error) {
 	return r.ApiService.PartialUpdateCertificateExecute(r)
 }
 
@@ -689,13 +689,13 @@ func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificate(ctx
 }
 
 // Execute executes the request
-//  @return ResponseAsyncCertificate
-func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificateExecute(r ApiPartialUpdateCertificateRequest) (*ResponseAsyncCertificate, *http.Response, error) {
+//  @return ResponseCertificate
+func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificateExecute(r ApiPartialUpdateCertificateRequest) (*ResponseCertificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseAsyncCertificate
+		localVarReturnValue  *ResponseCertificate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalCertificatesCertificatesAPIService.PartialUpdateCertificate")
@@ -766,7 +766,18 @@ func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificateExec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ResponseBadRequestCertificate
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -777,7 +788,7 @@ func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificateExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -788,7 +799,7 @@ func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificateExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -799,7 +810,7 @@ func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificateExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -810,7 +821,7 @@ func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificateExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -821,7 +832,7 @@ func (a *DigitalCertificatesCertificatesAPIService) PartialUpdateCertificateExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1061,7 +1072,7 @@ func (r ApiUpdateCertificateRequest) CertificateRequest(certificateRequest Certi
 	return r
 }
 
-func (r ApiUpdateCertificateRequest) Execute() (*ResponseAsyncCertificate, *http.Response, error) {
+func (r ApiUpdateCertificateRequest) Execute() (*ResponseCertificate, *http.Response, error) {
 	return r.ApiService.UpdateCertificateExecute(r)
 }
 
@@ -1083,13 +1094,13 @@ func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificate(ctx contex
 }
 
 // Execute executes the request
-//  @return ResponseAsyncCertificate
-func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificateExecute(r ApiUpdateCertificateRequest) (*ResponseAsyncCertificate, *http.Response, error) {
+//  @return ResponseCertificate
+func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificateExecute(r ApiUpdateCertificateRequest) (*ResponseCertificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseAsyncCertificate
+		localVarReturnValue  *ResponseCertificate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalCertificatesCertificatesAPIService.UpdateCertificate")
@@ -1163,7 +1174,18 @@ func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificateExecute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ResponseBadRequestCertificate
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1174,7 +1196,7 @@ func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificateExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1185,7 +1207,7 @@ func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificateExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1196,7 +1218,7 @@ func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificateExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1207,7 +1229,7 @@ func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificateExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1218,7 +1240,7 @@ func (a *DigitalCertificatesCertificatesAPIService) UpdateCertificateExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

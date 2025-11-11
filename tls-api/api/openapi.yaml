@@ -19,9 +19,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: |-
-          Which field to use when ordering the results.
-          (Valid fields: id, name, certificate, issuer, validity, subject_name, type, managed, status, status_detail, csr, key_algorithm, challenge, authority, active, product_version, last_editor, last_modified, renewed_at)
+      - description: Which field to use when ordering the results.
         explode: true
         in: query
         name: ordering
@@ -629,46 +627,120 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncCertificate"
+                $ref: "#/components/schemas/ResponseCertificate"
           description: Ok
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: "#/components/schemas/ResponseBadRequestCertificate"
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
         "202":
           content:
             application/json:
@@ -704,46 +776,120 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncCertificate"
+                $ref: "#/components/schemas/ResponseCertificate"
           description: Ok
         "400":
           content:
             application/json:
+              examples:
+                Error-10000:
+                  description: Invalid data provided in the request.
+                  summary: Validation Error
+                  value:
+                    errors:
+                    - status: "400"
+                      code: "10000"
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
               schema:
-                $ref: "#/components/schemas/ResponseBadRequestCertificate"
-          description: Bad Request
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Validation Error
         "404":
+          content:
+            application/json:
+              examples:
+                Error-10004:
+                  description: Not found.
+                  summary: Not Found
+                  value:
+                    errors:
+                    - status: "404"
+                      code: "10004"
+                      title: Not Found
+                      detail: Not found.
+              schema:
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Found
         "405":
           content:
             application/json:
+              examples:
+                Error-10007:
+                  description: "Method \"{method}\" not allowed."
+                  summary: Method Not Allowed
+                  value:
+                    errors:
+                    - status: "405"
+                      code: "10007"
+                      title: Method Not Allowed
+                      detail: "Method \"{method}\" not allowed."
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
-          description: Not Found
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Method Not Allowed
         "406":
           content:
             application/json:
+              examples:
+                Error-10005:
+                  description: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  value:
+                    errors:
+                    - status: "406"
+                      code: "10005"
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Not Acceptable
         "429":
           content:
             application/json:
+              examples:
+                Error-10010:
+                  description: Request was throttled.
+                  summary: Throttled
+                  value:
+                    errors:
+                    - status: "429"
+                      code: "10010"
+                      title: Throttled
+                      detail: Request was throttled.
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
-          description: Too Many Requests
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Throttled
         "401":
           content:
             application/json:
+              examples:
+                Error-10001:
+                  description: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  value:
+                    errors:
+                    - status: "401"
+                      code: "10001"
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
-          description: Unauthorized
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Authentication Failed
         "403":
           content:
             application/json:
+              examples:
+                Error-10003:
+                  description: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  value:
+                    errors:
+                    - status: "403"
+                      code: "10003"
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
               schema:
-                $ref: "#/components/schemas/DefaultErrorResponse"
-          description: Forbidden
+                $ref: "#/components/schemas/JSONAPIErrorResponse"
+          description: Permission Denied
         "202":
           content:
             application/json:
@@ -904,9 +1050,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: |-
-          Which field to use when ordering the results.
-          (Valid fields: name, active, last_editor, last_modified, product_version, issuer, last_update, next_update, crl)
+      - description: Which field to use when ordering the results.
         explode: true
         in: query
         name: ordering
@@ -2358,23 +2502,13 @@ components:
         * `http` - Uses HTTP to solve the ACME challenge.
       title: ChallengeEnum
       type: string
-    DefaultErrorResponse:
-      additionalProperties: false
-      example:
-        detail: detail
-      properties:
-        detail:
-          maxLength: 4096
-          minLength: 1
-          type: string
-      title: DefaultErrorResponse
-      type: object
     JSONAPIErrorObject:
       additionalProperties: false
       description: Serializer for a single JSON:API error object.
       example:
         code: code
-        meta: ""
+        meta:
+          key: ""
         detail: detail
         source: ""
         title: title
@@ -2406,7 +2540,9 @@ components:
           - $ref: "#/components/schemas/JSONAPIErrorSource"
           description: References to the primary source of the error
         meta:
+          additionalProperties: {}
           description: Non-standard meta-information about the error
+          type: object
       title: JSONAPIErrorObject
       type: object
     JSONAPIErrorResponse:
@@ -2415,13 +2551,15 @@ components:
       example:
         errors:
         - code: code
-          meta: ""
+          meta:
+            key: ""
           detail: detail
           source: ""
           title: title
           status: status
         - code: code
-          meta: ""
+          meta:
+            key: ""
           detail: detail
           source: ""
           title: title
@@ -2709,155 +2847,6 @@ components:
           type: string
       title: ResponseAsyncDeleteCertificateRevocationList
       type: object
-    ResponseBadRequestCertificate:
-      additionalProperties: false
-      example:
-        product_version:
-        - product_version
-        - product_version
-        csr:
-        - csr
-        - csr
-        last_editor:
-        - last_editor
-        - last_editor
-        certificate:
-        - certificate
-        - certificate
-        active:
-        - active
-        - active
-        private_key:
-        - private_key
-        - private_key
-        key_algorithm:
-        - key_algorithm
-        - key_algorithm
-        type:
-        - type
-        - type
-        issuer:
-        - issuer
-        - issuer
-        status_detail:
-        - status_detail
-        - status_detail
-        managed:
-        - managed
-        - managed
-        authority:
-        - authority
-        - authority
-        name:
-        - name
-        - name
-        subject_name:
-        - ResponseBadRequestCertificate_subject_name
-        - ResponseBadRequestCertificate_subject_name
-        challenge:
-        - challenge
-        - challenge
-        id:
-        - id
-        - id
-        validity:
-        - validity
-        - validity
-        detail: detail
-        last_modified:
-        - last_modified
-        - last_modified
-        status:
-        - status
-        - status
-        renewed_at:
-        - renewed_at
-        - renewed_at
-      properties:
-        id:
-          items:
-            type: string
-          type: array
-        name:
-          items:
-            type: string
-          type: array
-        certificate:
-          items:
-            type: string
-          type: array
-        private_key:
-          items:
-            type: string
-          type: array
-        issuer:
-          items:
-            type: string
-          type: array
-        validity:
-          items:
-            type: string
-          type: array
-        subject_name:
-          $ref: "#/components/schemas/ResponseBadRequestCertificate_subject_name"
-        type:
-          items:
-            type: string
-          type: array
-        managed:
-          items:
-            type: string
-          type: array
-        status:
-          items:
-            type: string
-          type: array
-        status_detail:
-          items:
-            type: string
-          type: array
-        csr:
-          items:
-            type: string
-          type: array
-        key_algorithm:
-          items:
-            type: string
-          type: array
-        challenge:
-          items:
-            type: string
-          type: array
-        authority:
-          items:
-            type: string
-          type: array
-        active:
-          items:
-            type: string
-          type: array
-        product_version:
-          items:
-            type: string
-          type: array
-        last_editor:
-          items:
-            type: string
-          type: array
-        last_modified:
-          items:
-            type: string
-          type: array
-        renewed_at:
-          items:
-            type: string
-          type: array
-        detail:
-          maxLength: 4096
-          minLength: 1
-          type: string
-      title: ResponseBadRequestCertificate
-      type: object
     ResponseCertificate:
       additionalProperties: false
       example:
@@ -3020,16 +3009,6 @@ components:
       oneOf:
       - $ref: "#/components/schemas/AuthorityEnum"
       - $ref: "#/components/schemas/NullEnum"
-    ResponseBadRequestCertificate_subject_name:
-      oneOf:
-      - items:
-          type: string
-        type: array
-      - additionalProperties:
-          items:
-            type: string
-          type: array
-        type: object
   securitySchemes:
     BearerAuth:
       scheme: bearer
