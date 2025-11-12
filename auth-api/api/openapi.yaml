@@ -297,9 +297,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: |-
-          Which field to use when ordering the results.
-          (Valid fields: name, user_id, confirmed, id)
+      - description: Which field to use when ordering the results.
         explode: true
         in: query
         name: ordering
@@ -1231,10 +1229,12 @@ components:
           name: name
           id: 0
           confirmed: true
+          email: email
         - user_id: 6
           name: name
           id: 0
           confirmed: true
+          email: email
       properties:
         count:
           example: 123
@@ -1773,13 +1773,14 @@ components:
         name: name
         id: 0
         confirmed: true
+        email: email
       properties:
         id:
           format: int64
           type: integer
         name:
-          description: The human-readable name of this device.
-          maxLength: 64
+          type: string
+        email:
           type: string
         confirmed:
           description: Is this device ready for use?
@@ -1789,6 +1790,7 @@ components:
           format: int64
           type: integer
       required:
+      - email
       - id
       - name
       - user_id

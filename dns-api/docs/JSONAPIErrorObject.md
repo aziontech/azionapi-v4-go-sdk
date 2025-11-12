@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Title** | Pointer to **string** | A short, human-readable summary of the problem | [optional] 
 **Detail** | Pointer to **string** | A human-readable explanation specific to this occurrence of the problem | [optional] 
 **Source** | Pointer to [**JSONAPIErrorSource**](JSONAPIErrorSource.md) | References to the primary source of the error | [optional] 
-**Meta** | Pointer to **interface{}** | Non-standard meta-information about the error | [optional] 
+**Meta** | Pointer to **map[string]interface{}** | Non-standard meta-information about the error | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasSource returns a boolean if a field has been set.
 
 ### GetMeta
 
-`func (o *JSONAPIErrorObject) GetMeta() interface{}`
+`func (o *JSONAPIErrorObject) GetMeta() map[string]interface{}`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *JSONAPIErrorObject) GetMetaOk() (*interface{}, bool)`
+`func (o *JSONAPIErrorObject) GetMetaOk() (*map[string]interface{}, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *JSONAPIErrorObject) SetMeta(v interface{})`
+`func (o *JSONAPIErrorObject) SetMeta(v map[string]interface{})`
 
 SetMeta sets Meta field to given value.
 
@@ -180,16 +180,6 @@ SetMeta sets Meta field to given value.
 
 HasMeta returns a boolean if a field has been set.
 
-### SetMetaNil
-
-`func (o *JSONAPIErrorObject) SetMetaNil(b bool)`
-
- SetMetaNil sets the value for Meta to be an explicit nil
-
-### UnsetMeta
-`func (o *JSONAPIErrorObject) UnsetMeta()`
-
-UnsetMeta ensures that no value is present for Meta, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
