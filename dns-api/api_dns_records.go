@@ -227,29 +227,29 @@ func (a *DNSRecordsAPIService) CreateDnsRecordExecute(r ApiCreateDnsRecordReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyDnsRecordRequest struct {
+type ApiDeleteDnsRecordRequest struct {
 	ctx context.Context
 	ApiService *DNSRecordsAPIService
 	recordId string
 	zoneId string
 }
 
-func (r ApiDestroyDnsRecordRequest) Execute() (*ResponseDeleteRecord, *http.Response, error) {
-	return r.ApiService.DestroyDnsRecordExecute(r)
+func (r ApiDeleteDnsRecordRequest) Execute() (*ResponseDeleteRecord, *http.Response, error) {
+	return r.ApiService.DeleteDnsRecordExecute(r)
 }
 
 /*
-DestroyDnsRecord Destroy a DNS Record
+DeleteDnsRecord Delete a DNS Record
 
-Destruction of a specific a DNS Record from a DNS Zone in your account.
+Delete a specific DNS Record from a DNS Zone in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param recordId
  @param zoneId
- @return ApiDestroyDnsRecordRequest
+ @return ApiDeleteDnsRecordRequest
 */
-func (a *DNSRecordsAPIService) DestroyDnsRecord(ctx context.Context, recordId string, zoneId string) ApiDestroyDnsRecordRequest {
-	return ApiDestroyDnsRecordRequest{
+func (a *DNSRecordsAPIService) DeleteDnsRecord(ctx context.Context, recordId string, zoneId string) ApiDeleteDnsRecordRequest {
+	return ApiDeleteDnsRecordRequest{
 		ApiService: a,
 		ctx: ctx,
 		recordId: recordId,
@@ -259,7 +259,7 @@ func (a *DNSRecordsAPIService) DestroyDnsRecord(ctx context.Context, recordId st
 
 // Execute executes the request
 //  @return ResponseDeleteRecord
-func (a *DNSRecordsAPIService) DestroyDnsRecordExecute(r ApiDestroyDnsRecordRequest) (*ResponseDeleteRecord, *http.Response, error) {
+func (a *DNSRecordsAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*ResponseDeleteRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -267,7 +267,7 @@ func (a *DNSRecordsAPIService) DestroyDnsRecordExecute(r ApiDestroyDnsRecordRequ
 		localVarReturnValue  *ResponseDeleteRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSRecordsAPIService.DestroyDnsRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSRecordsAPIService.DeleteDnsRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

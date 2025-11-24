@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | 
-**Name** | **string** | The human-readable name of this device. | 
+**Name** | **string** |  | 
+**Email** | **string** |  | 
 **Confirmed** | Pointer to **bool** | Is this device ready for use? | [optional] 
 **UserId** | **int64** | The user that this device belongs to. | 
 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewTOTPDeviceList
 
-`func NewTOTPDeviceList(id int64, name string, userId int64, ) *TOTPDeviceList`
+`func NewTOTPDeviceList(id int64, name string, email string, userId int64, ) *TOTPDeviceList`
 
 NewTOTPDeviceList instantiates a new TOTPDeviceList object
 This constructor will assign default values to properties that have it defined,
@@ -66,6 +67,26 @@ and a boolean to check if the value has been set.
 `func (o *TOTPDeviceList) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetEmail
+
+`func (o *TOTPDeviceList) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *TOTPDeviceList) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *TOTPDeviceList) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
 
 
 ### GetConfirmed
