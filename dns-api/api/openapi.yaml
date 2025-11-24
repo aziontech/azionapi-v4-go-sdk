@@ -349,8 +349,8 @@ paths:
       - DNS - Zones
   /edge_dns/zones/{zoneId}:
     delete:
-      description: Destruction of a specific a DNS Zone in your account.
-      operationId: destroyDnsZone
+      description: Delete a specific DNS Zone in your account.
+      operationId: deleteDnsZone
       parameters:
       - explode: false
         in: path
@@ -487,7 +487,7 @@ paths:
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Destroy a DNS Zone
+      summary: Delete a DNS Zone
       tags:
       - DNS - Zones
     get:
@@ -1707,9 +1707,8 @@ paths:
       - DNS - Records
   /edge_dns/zones/{zoneId}/records/{recordId}:
     delete:
-      description: Destruction of a specific a DNS Record from a DNS Zone in your
-        account.
-      operationId: destroyDnsRecord
+      description: Delete a specific DNS Record from a DNS Zone in your account.
+      operationId: deleteDnsRecord
       parameters:
       - explode: false
         in: path
@@ -1853,7 +1852,7 @@ paths:
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Destroy a DNS Record
+      summary: Delete a DNS Record
       tags:
       - DNS - Records
     get:
@@ -2439,7 +2438,8 @@ components:
       description: Serializer for a single JSON:API error object.
       example:
         code: code
-        meta: ""
+        meta:
+          key: ""
         detail: detail
         source: ""
         title: title
@@ -2471,7 +2471,9 @@ components:
           - $ref: "#/components/schemas/JSONAPIErrorSource"
           description: References to the primary source of the error
         meta:
+          additionalProperties: {}
           description: Non-standard meta-information about the error
+          type: object
       title: JSONAPIErrorObject
       type: object
     JSONAPIErrorResponse:
@@ -2480,13 +2482,15 @@ components:
       example:
         errors:
         - code: code
-          meta: ""
+          meta:
+            key: ""
           detail: detail
           source: ""
           title: title
           status: status
         - code: code
-          meta: ""
+          meta:
+            key: ""
           detail: detail
           source: ""
           title: title

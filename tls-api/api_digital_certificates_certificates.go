@@ -432,7 +432,7 @@ func (r ApiListCertificatesRequest) Fields(fields string) ApiListCertificatesReq
 	return r
 }
 
-// Which field to use when ordering the results.
+// Which field to use when ordering the results. (Valid fields: id, name, certificate, issuer, validity, subject_name, type, managed, status, status_detail, csr, key_algorithm, challenge, authority, active, product_version, last_editor, last_modified, renewed_at)
 func (r ApiListCertificatesRequest) Ordering(ordering string) ApiListCertificatesRequest {
 	r.ordering = &ordering
 	return r

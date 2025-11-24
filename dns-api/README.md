@@ -82,13 +82,13 @@ Class | Method | HTTP request | Description
 *DNSDNSSECAPI* | [**RetrieveDnssec**](docs/DNSDNSSECAPI.md#retrievednssec) | **Get** /edge_dns/zones/{zoneId}/dnssec | Retrieve details of a DNSSEC
 *DNSDNSSECAPI* | [**UpdateDnssec**](docs/DNSDNSSECAPI.md#updatednssec) | **Put** /edge_dns/zones/{zoneId}/dnssec | Update a DNSSEC
 *DNSRecordsAPI* | [**CreateDnsRecord**](docs/DNSRecordsAPI.md#creatednsrecord) | **Post** /edge_dns/zones/{zoneId}/records | Create a DNS Record
-*DNSRecordsAPI* | [**DestroyDnsRecord**](docs/DNSRecordsAPI.md#destroydnsrecord) | **Delete** /edge_dns/zones/{zoneId}/records/{recordId} | Destroy a DNS Record
+*DNSRecordsAPI* | [**DeleteDnsRecord**](docs/DNSRecordsAPI.md#deletednsrecord) | **Delete** /edge_dns/zones/{zoneId}/records/{recordId} | Delete a DNS Record
 *DNSRecordsAPI* | [**ListDnsRecords**](docs/DNSRecordsAPI.md#listdnsrecords) | **Get** /edge_dns/zones/{zoneId}/records | List DNS Records
 *DNSRecordsAPI* | [**PartialUpdateDnsRecord**](docs/DNSRecordsAPI.md#partialupdatednsrecord) | **Patch** /edge_dns/zones/{zoneId}/records/{recordId} | Partially update a DNS Record
 *DNSRecordsAPI* | [**RetrieveDnsRecord**](docs/DNSRecordsAPI.md#retrievednsrecord) | **Get** /edge_dns/zones/{zoneId}/records/{recordId} | Retrieve details of a DNS Record
 *DNSRecordsAPI* | [**UpdateDnsRecord**](docs/DNSRecordsAPI.md#updatednsrecord) | **Put** /edge_dns/zones/{zoneId}/records/{recordId} | Update a DNS Record
 *DNSZonesAPI* | [**CreateDnsZone**](docs/DNSZonesAPI.md#creatednszone) | **Post** /edge_dns/zones | Create a DNS Zone
-*DNSZonesAPI* | [**DestroyDnsZone**](docs/DNSZonesAPI.md#destroydnszone) | **Delete** /edge_dns/zones/{zoneId} | Destroy a DNS Zone
+*DNSZonesAPI* | [**DeleteDnsZone**](docs/DNSZonesAPI.md#deletednszone) | **Delete** /edge_dns/zones/{zoneId} | Delete a DNS Zone
 *DNSZonesAPI* | [**ListDnsZones**](docs/DNSZonesAPI.md#listdnszones) | **Get** /edge_dns/zones | List DNS Zones
 *DNSZonesAPI* | [**PartialUpdateDnsZone**](docs/DNSZonesAPI.md#partialupdatednszone) | **Patch** /edge_dns/zones/{zoneId} | Partially update a DNS Zone
 *DNSZonesAPI* | [**RetrieveDnsZone**](docs/DNSZonesAPI.md#retrievednszone) | **Get** /edge_dns/zones/{zoneId} | Retrieve details of a DNS Zone

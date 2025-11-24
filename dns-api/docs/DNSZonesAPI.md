@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateDnsZone**](DNSZonesAPI.md#CreateDnsZone) | **Post** /edge_dns/zones | Create a DNS Zone
-[**DestroyDnsZone**](DNSZonesAPI.md#DestroyDnsZone) | **Delete** /edge_dns/zones/{zoneId} | Destroy a DNS Zone
+[**DeleteDnsZone**](DNSZonesAPI.md#DeleteDnsZone) | **Delete** /edge_dns/zones/{zoneId} | Delete a DNS Zone
 [**ListDnsZones**](DNSZonesAPI.md#ListDnsZones) | **Get** /edge_dns/zones | List DNS Zones
 [**PartialUpdateDnsZone**](DNSZonesAPI.md#PartialUpdateDnsZone) | **Patch** /edge_dns/zones/{zoneId} | Partially update a DNS Zone
 [**RetrieveDnsZone**](DNSZonesAPI.md#RetrieveDnsZone) | **Get** /edge_dns/zones/{zoneId} | Retrieve details of a DNS Zone
@@ -79,11 +79,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyDnsZone
+## DeleteDnsZone
 
-> ResponseDeleteZone DestroyDnsZone(ctx, zoneId).Execute()
+> ResponseDeleteZone DeleteDnsZone(ctx, zoneId).Execute()
 
-Destroy a DNS Zone
+Delete a DNS Zone
 
 
 
@@ -104,13 +104,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DNSZonesAPI.DestroyDnsZone(context.Background(), zoneId).Execute()
+	resp, r, err := apiClient.DNSZonesAPI.DeleteDnsZone(context.Background(), zoneId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DNSZonesAPI.DestroyDnsZone``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DNSZonesAPI.DeleteDnsZone``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyDnsZone`: ResponseDeleteZone
-	fmt.Fprintf(os.Stdout, "Response from `DNSZonesAPI.DestroyDnsZone`: %v\n", resp)
+	// response from `DeleteDnsZone`: ResponseDeleteZone
+	fmt.Fprintf(os.Stdout, "Response from `DNSZonesAPI.DeleteDnsZone`: %v\n", resp)
 }
 ```
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyDnsZoneRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteDnsZoneRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
