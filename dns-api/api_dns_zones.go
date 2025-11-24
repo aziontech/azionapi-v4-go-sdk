@@ -223,27 +223,27 @@ func (a *DNSZonesAPIService) CreateDnsZoneExecute(r ApiCreateDnsZoneRequest) (*R
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyDnsZoneRequest struct {
+type ApiDeleteDnsZoneRequest struct {
 	ctx context.Context
 	ApiService *DNSZonesAPIService
 	zoneId string
 }
 
-func (r ApiDestroyDnsZoneRequest) Execute() (*ResponseDeleteZone, *http.Response, error) {
-	return r.ApiService.DestroyDnsZoneExecute(r)
+func (r ApiDeleteDnsZoneRequest) Execute() (*ResponseDeleteZone, *http.Response, error) {
+	return r.ApiService.DeleteDnsZoneExecute(r)
 }
 
 /*
-DestroyDnsZone Destroy a DNS Zone
+DeleteDnsZone Delete a DNS Zone
 
-Destruction of a specific a DNS Zone in your account.
+Delete a specific DNS Zone in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param zoneId
- @return ApiDestroyDnsZoneRequest
+ @return ApiDeleteDnsZoneRequest
 */
-func (a *DNSZonesAPIService) DestroyDnsZone(ctx context.Context, zoneId string) ApiDestroyDnsZoneRequest {
-	return ApiDestroyDnsZoneRequest{
+func (a *DNSZonesAPIService) DeleteDnsZone(ctx context.Context, zoneId string) ApiDeleteDnsZoneRequest {
+	return ApiDeleteDnsZoneRequest{
 		ApiService: a,
 		ctx: ctx,
 		zoneId: zoneId,
@@ -252,7 +252,7 @@ func (a *DNSZonesAPIService) DestroyDnsZone(ctx context.Context, zoneId string) 
 
 // Execute executes the request
 //  @return ResponseDeleteZone
-func (a *DNSZonesAPIService) DestroyDnsZoneExecute(r ApiDestroyDnsZoneRequest) (*ResponseDeleteZone, *http.Response, error) {
+func (a *DNSZonesAPIService) DeleteDnsZoneExecute(r ApiDeleteDnsZoneRequest) (*ResponseDeleteZone, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -260,7 +260,7 @@ func (a *DNSZonesAPIService) DestroyDnsZoneExecute(r ApiDestroyDnsZoneRequest) (
 		localVarReturnValue  *ResponseDeleteZone
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSZonesAPIService.DestroyDnsZone")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSZonesAPIService.DeleteDnsZone")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

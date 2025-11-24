@@ -432,7 +432,7 @@ func (r ApiListCertificateRevocationListsCRLRequest) Fields(fields string) ApiLi
 	return r
 }
 
-// Which field to use when ordering the results.
+// Which field to use when ordering the results. (Valid fields: name, active, last_editor, last_modified, product_version, issuer, last_update, next_update, crl)
 func (r ApiListCertificateRevocationListsCRLRequest) Ordering(ordering string) ApiListCertificateRevocationListsCRLRequest {
 	r.ordering = &ordering
 	return r

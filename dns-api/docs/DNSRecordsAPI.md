@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateDnsRecord**](DNSRecordsAPI.md#CreateDnsRecord) | **Post** /edge_dns/zones/{zoneId}/records | Create a DNS Record
-[**DestroyDnsRecord**](DNSRecordsAPI.md#DestroyDnsRecord) | **Delete** /edge_dns/zones/{zoneId}/records/{recordId} | Destroy a DNS Record
+[**DeleteDnsRecord**](DNSRecordsAPI.md#DeleteDnsRecord) | **Delete** /edge_dns/zones/{zoneId}/records/{recordId} | Delete a DNS Record
 [**ListDnsRecords**](DNSRecordsAPI.md#ListDnsRecords) | **Get** /edge_dns/zones/{zoneId}/records | List DNS Records
 [**PartialUpdateDnsRecord**](DNSRecordsAPI.md#PartialUpdateDnsRecord) | **Patch** /edge_dns/zones/{zoneId}/records/{recordId} | Partially update a DNS Record
 [**RetrieveDnsRecord**](DNSRecordsAPI.md#RetrieveDnsRecord) | **Get** /edge_dns/zones/{zoneId}/records/{recordId} | Retrieve details of a DNS Record
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyDnsRecord
+## DeleteDnsRecord
 
-> ResponseDeleteRecord DestroyDnsRecord(ctx, recordId, zoneId).Execute()
+> ResponseDeleteRecord DeleteDnsRecord(ctx, recordId, zoneId).Execute()
 
-Destroy a DNS Record
+Delete a DNS Record
 
 
 
@@ -111,13 +111,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DNSRecordsAPI.DestroyDnsRecord(context.Background(), recordId, zoneId).Execute()
+	resp, r, err := apiClient.DNSRecordsAPI.DeleteDnsRecord(context.Background(), recordId, zoneId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DNSRecordsAPI.DestroyDnsRecord``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DNSRecordsAPI.DeleteDnsRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyDnsRecord`: ResponseDeleteRecord
-	fmt.Fprintf(os.Stdout, "Response from `DNSRecordsAPI.DestroyDnsRecord`: %v\n", resp)
+	// response from `DeleteDnsRecord`: ResponseDeleteRecord
+	fmt.Fprintf(os.Stdout, "Response from `DNSRecordsAPI.DeleteDnsRecord`: %v\n", resp)
 }
 ```
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyDnsRecordRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteDnsRecordRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

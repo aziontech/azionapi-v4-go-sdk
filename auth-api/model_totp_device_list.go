@@ -22,8 +22,8 @@ var _ MappedNullable = &TOTPDeviceList{}
 // TOTPDeviceList struct for TOTPDeviceList
 type TOTPDeviceList struct {
 	Id int64 `json:"id"`
-	// The human-readable name of this device.
 	Name string `json:"name"`
+	Email string `json:"email"`
 	// Is this device ready for use?
 	Confirmed *bool `json:"confirmed,omitempty"`
 	// The user that this device belongs to.
@@ -36,10 +36,11 @@ type _TOTPDeviceList TOTPDeviceList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTOTPDeviceList(id int64, name string, userId int64) *TOTPDeviceList {
+func NewTOTPDeviceList(id int64, name string, email string, userId int64) *TOTPDeviceList {
 	this := TOTPDeviceList{}
 	this.Id = id
 	this.Name = name
+	this.Email = email
 	this.UserId = userId
 	return &this
 }
@@ -98,6 +99,30 @@ func (o *TOTPDeviceList) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *TOTPDeviceList) SetName(v string) {
 	o.Name = v
+}
+
+// GetEmail returns the Email field value
+func (o *TOTPDeviceList) GetEmail() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value
+// and a boolean to check if the value has been set.
+func (o *TOTPDeviceList) GetEmailOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Email, true
+}
+
+// SetEmail sets field value
+func (o *TOTPDeviceList) SetEmail(v string) {
+	o.Email = v
 }
 
 // GetConfirmed returns the Confirmed field value if set, zero value otherwise.
@@ -168,6 +193,7 @@ func (o TOTPDeviceList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
+	toSerialize["email"] = o.Email
 	if !IsNil(o.Confirmed) {
 		toSerialize["confirmed"] = o.Confirmed
 	}
@@ -182,6 +208,7 @@ func (o *TOTPDeviceList) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
+		"email",
 		"user_id",
 	}
 
