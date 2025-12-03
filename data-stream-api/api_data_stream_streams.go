@@ -433,7 +433,7 @@ func (r ApiListDataStreamsRequest) Fields(fields string) ApiListDataStreamsReque
 	return r
 }
 
-// Which field to use when ordering the results.
+// Which field to use when ordering the results. (Valid fields: id, name, data_source, data_set_id, active, last_editor, last_modified)
 func (r ApiListDataStreamsRequest) Ordering(ordering string) ApiListDataStreamsRequest {
 	r.ordering = &ordering
 	return r

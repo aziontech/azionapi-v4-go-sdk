@@ -32,7 +32,7 @@ func main() {
 	active := true // bool |  (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: slug, name, active) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
 	search := "search_example" // string | A search term. (optional)
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
  **active** | **bool** |  | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
  **name** | **string** |  | 
- **ordering** | **string** | Which field to use when ordering the results. | 
+ **ordering** | **string** | Which field to use when ordering the results. (Valid fields: slug, name, active) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
  **search** | **string** | A search term. | 

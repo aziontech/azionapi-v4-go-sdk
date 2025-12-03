@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **KafkaTopic** | **string** |  | 
 **UseTls** | **bool** |  | 
 **AccessKey** | **string** |  | 
+**SecretKey** | **string** |  | 
 **Region** | **string** |  | 
 **ObjectKeyPrefix** | Pointer to **NullableString** |  | [optional] 
 **BucketName** | **string** |  | 
@@ -24,7 +25,6 @@ Name | Type | Description | Notes
 **ServiceAccountKey** | **string** |  | 
 **ApiKey** | **string** |  | 
 **StreamName** | **string** |  | 
-**SecretKey** | **string** |  | 
 **LogType** | **string** |  | 
 **SharedKey** | **string** |  | 
 **TimeGeneratedField** | Pointer to **NullableString** |  | [optional] 
@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewOutputPolymorphic
 
-`func NewOutputPolymorphic(url string, headers map[string]string, bootstrapServers string, kafkaTopic string, useTls bool, accessKey string, region string, bucketName string, contentType string, hostUrl string, datasetId string, projectId string, tableId string, serviceAccountKey string, apiKey string, streamName string, secretKey string, logType string, sharedKey string, workspaceId string, storageAccount string, containerName string, blobSasToken string, ) *OutputPolymorphic`
+`func NewOutputPolymorphic(url string, headers map[string]string, bootstrapServers string, kafkaTopic string, useTls bool, accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string, datasetId string, projectId string, tableId string, serviceAccountKey string, apiKey string, streamName string, logType string, sharedKey string, workspaceId string, storageAccount string, containerName string, blobSasToken string, ) *OutputPolymorphic`
 
 NewOutputPolymorphic instantiates a new OutputPolymorphic object
 This constructor will assign default values to properties that have it defined,
@@ -255,6 +255,26 @@ and a boolean to check if the value has been set.
 `func (o *OutputPolymorphic) SetAccessKey(v string)`
 
 SetAccessKey sets AccessKey field to given value.
+
+
+### GetSecretKey
+
+`func (o *OutputPolymorphic) GetSecretKey() string`
+
+GetSecretKey returns the SecretKey field if non-nil, zero value otherwise.
+
+### GetSecretKeyOk
+
+`func (o *OutputPolymorphic) GetSecretKeyOk() (*string, bool)`
+
+GetSecretKeyOk returns a tuple with the SecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretKey
+
+`func (o *OutputPolymorphic) SetSecretKey(v string)`
+
+SetSecretKey sets SecretKey field to given value.
 
 
 ### GetRegion
@@ -490,26 +510,6 @@ and a boolean to check if the value has been set.
 `func (o *OutputPolymorphic) SetStreamName(v string)`
 
 SetStreamName sets StreamName field to given value.
-
-
-### GetSecretKey
-
-`func (o *OutputPolymorphic) GetSecretKey() string`
-
-GetSecretKey returns the SecretKey field if non-nil, zero value otherwise.
-
-### GetSecretKeyOk
-
-`func (o *OutputPolymorphic) GetSecretKeyOk() (*string, bool)`
-
-GetSecretKeyOk returns a tuple with the SecretKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSecretKey
-
-`func (o *OutputPolymorphic) SetSecretKey(v string)`
-
-SetSecretKey sets SecretKey field to given value.
 
 
 ### GetLogType
