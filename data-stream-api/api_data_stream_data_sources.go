@@ -51,7 +51,7 @@ func (r ApiListDataSourcesRequest) Name(name string) ApiListDataSourcesRequest {
 	return r
 }
 
-// Which field to use when ordering the results.
+// Which field to use when ordering the results. (Valid fields: slug, name, active)
 func (r ApiListDataSourcesRequest) Ordering(ordering string) ApiListDataSourcesRequest {
 	r.ordering = &ordering
 	return r

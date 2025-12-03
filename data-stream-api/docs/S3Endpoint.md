@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessKey** | **string** |  | 
+**SecretKey** | **string** |  | 
 **Region** | **string** |  | 
 **ObjectKeyPrefix** | Pointer to **NullableString** |  | [optional] 
 **BucketName** | **string** |  | 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewS3Endpoint
 
-`func NewS3Endpoint(accessKey string, region string, bucketName string, contentType string, hostUrl string, ) *S3Endpoint`
+`func NewS3Endpoint(accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string, ) *S3Endpoint`
 
 NewS3Endpoint instantiates a new S3Endpoint object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +49,26 @@ and a boolean to check if the value has been set.
 `func (o *S3Endpoint) SetAccessKey(v string)`
 
 SetAccessKey sets AccessKey field to given value.
+
+
+### GetSecretKey
+
+`func (o *S3Endpoint) GetSecretKey() string`
+
+GetSecretKey returns the SecretKey field if non-nil, zero value otherwise.
+
+### GetSecretKeyOk
+
+`func (o *S3Endpoint) GetSecretKeyOk() (*string, bool)`
+
+GetSecretKeyOk returns a tuple with the SecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretKey
+
+`func (o *S3Endpoint) SetSecretKey(v string)`
+
+SetSecretKey sets SecretKey field to given value.
 
 
 ### GetRegion

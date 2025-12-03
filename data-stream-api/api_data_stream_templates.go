@@ -433,7 +433,7 @@ func (r ApiListTemplatesRequest) Fields(fields string) ApiListTemplatesRequest {
 	return r
 }
 
-// Which field to use when ordering the results.
+// Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, custom, active, data_set)
 func (r ApiListTemplatesRequest) Ordering(ordering string) ApiListTemplatesRequest {
 	r.ordering = &ordering
 	return r

@@ -22,6 +22,7 @@ var _ MappedNullable = &S3Endpoint{}
 // S3Endpoint struct for S3Endpoint
 type S3Endpoint struct {
 	AccessKey string `json:"access_key"`
+	SecretKey string `json:"secret_key"`
 	Region string `json:"region"`
 	ObjectKeyPrefix NullableString `json:"object_key_prefix,omitempty"`
 	BucketName string `json:"bucket_name"`
@@ -36,9 +37,10 @@ type _S3Endpoint S3Endpoint
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewS3Endpoint(accessKey string, region string, bucketName string, contentType string, hostUrl string) *S3Endpoint {
+func NewS3Endpoint(accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string) *S3Endpoint {
 	this := S3Endpoint{}
 	this.AccessKey = accessKey
+	this.SecretKey = secretKey
 	this.Region = region
 	this.BucketName = bucketName
 	this.ContentType = contentType
@@ -76,6 +78,30 @@ func (o *S3Endpoint) GetAccessKeyOk() (*string, bool) {
 // SetAccessKey sets field value
 func (o *S3Endpoint) SetAccessKey(v string) {
 	o.AccessKey = v
+}
+
+// GetSecretKey returns the SecretKey field value
+func (o *S3Endpoint) GetSecretKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SecretKey
+}
+
+// GetSecretKeyOk returns a tuple with the SecretKey field value
+// and a boolean to check if the value has been set.
+func (o *S3Endpoint) GetSecretKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SecretKey, true
+}
+
+// SetSecretKey sets field value
+func (o *S3Endpoint) SetSecretKey(v string) {
+	o.SecretKey = v
 }
 
 // GetRegion returns the Region field value
@@ -227,6 +253,7 @@ func (o S3Endpoint) MarshalJSON() ([]byte, error) {
 func (o S3Endpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["access_key"] = o.AccessKey
+	toSerialize["secret_key"] = o.SecretKey
 	toSerialize["region"] = o.Region
 	if o.ObjectKeyPrefix.IsSet() {
 		toSerialize["object_key_prefix"] = o.ObjectKeyPrefix.Get()
@@ -243,6 +270,7 @@ func (o *S3Endpoint) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"access_key",
+		"secret_key",
 		"region",
 		"bucket_name",
 		"content_type",

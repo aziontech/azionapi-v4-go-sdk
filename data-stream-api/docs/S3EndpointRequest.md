@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessKey** | **string** |  | 
+**SecretKey** | **string** |  | 
 **Region** | **string** |  | 
 **ObjectKeyPrefix** | Pointer to **NullableString** |  | [optional] 
 **BucketName** | **string** |  | 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewS3EndpointRequest
 
-`func NewS3EndpointRequest(accessKey string, region string, bucketName string, contentType string, hostUrl string, ) *S3EndpointRequest`
+`func NewS3EndpointRequest(accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string, ) *S3EndpointRequest`
 
 NewS3EndpointRequest instantiates a new S3EndpointRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +49,26 @@ and a boolean to check if the value has been set.
 `func (o *S3EndpointRequest) SetAccessKey(v string)`
 
 SetAccessKey sets AccessKey field to given value.
+
+
+### GetSecretKey
+
+`func (o *S3EndpointRequest) GetSecretKey() string`
+
+GetSecretKey returns the SecretKey field if non-nil, zero value otherwise.
+
+### GetSecretKeyOk
+
+`func (o *S3EndpointRequest) GetSecretKeyOk() (*string, bool)`
+
+GetSecretKeyOk returns a tuple with the SecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretKey
+
+`func (o *S3EndpointRequest) SetSecretKey(v string)`
+
+SetSecretKey sets SecretKey field to given value.
 
 
 ### GetRegion
