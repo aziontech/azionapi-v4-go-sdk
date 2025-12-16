@@ -1,0 +1,1092 @@
+openapi: 3.0.3
+info:
+  title: edgesql-api
+  version: 1.0.0
+  description: REST API OpenAPI documentation for the EdgeSQL API
+paths:
+  /workspace/sql/databases:
+    get:
+      operationId: list_databases
+      description: List all databases owned by your account.
+      summary: List databases
+      parameters:
+      - in: query
+        name: active
+        schema:
+          type: boolean
+        description: Filter by active status.
+      - in: query
+        name: created_at__gte
+        schema:
+          type: string
+          format: date-time
+        description: Filter by created_at (greater than or equal).
+      - in: query
+        name: created_at__lte
+        schema:
+          type: string
+          format: date-time
+        description: Filter by created_at (less than or equal).
+      - in: query
+        name: fields
+        schema:
+          type: string
+        description: Comma-separated list of field names to include in the response.
+      - in: query
+        name: id
+        schema:
+          type: integer
+        description: Filter by id (accepts comma-separated values).
+      - in: query
+        name: last_editor
+        schema:
+          type: string
+        description: Filter by last editor (case-insensitive, partial match).
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: Filter by name (case-insensitive, partial match).
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+        description: A numeric value that indicates the number of items per page.
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: status
+        schema:
+          type: string
+        description: Filter by status (accepts comma-separated values).
+      - in: query
+        name: updated_at__gte
+        schema:
+          type: string
+          format: date-time
+        description: Filter by updated_at (greater than or equal).
+      - in: query
+        name: updated_at__lte
+        schema:
+          type: string
+          format: date-time
+        description: Filter by updated_at (less than or equal).
+      tags:
+      - SQL
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDatabaseDetailList'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10001:
+                  value:
+                    errors:
+                    - status: '401'
+                      code: '10001'
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  description: Invalid authentication credentials.
+          description: Authentication Failed
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10003:
+                  value:
+                    errors:
+                    - status: '403'
+                      code: '10003'
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  description: You do not have permission to perform this action.
+          description: Permission Denied
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10000:
+                  value:
+                    errors:
+                    - status: '400'
+                      code: '10000'
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+                  summary: Validation Error
+                  description: Invalid data provided in the request.
+          description: Validation Error
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10004:
+                  value:
+                    errors:
+                    - status: '404'
+                      code: '10004'
+                      title: Not Found
+                      detail: Not found.
+                  summary: Not Found
+                  description: Not found.
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10007:
+                  value:
+                    errors:
+                    - status: '405'
+                      code: '10007'
+                      title: Method Not Allowed
+                      detail: Method "{method}" not allowed.
+                  summary: Method Not Allowed
+                  description: Method "{method}" not allowed.
+          description: Method Not Allowed
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10005:
+                  value:
+                    errors:
+                    - status: '406'
+                      code: '10005'
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  description: Could not satisfy the request Accept header.
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10010:
+                  value:
+                    errors:
+                    - status: '429'
+                      code: '10010'
+                      title: Throttled
+                      detail: Request was throttled.
+                  summary: Throttled
+                  description: Request was throttled.
+          description: Throttled
+    post:
+      operationId: create_database
+      description: Create a new database for your account.
+      summary: Create a database
+      tags:
+      - SQL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseRequest'
+        required: true
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDatabaseDetail'
+          description: ''
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAsyncDatabaseDetail'
+          description: ''
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10073:
+                  value:
+                    errors:
+                    - status: '422'
+                      code: '10073'
+                      title: Unprocessable Entity
+                      detail: Unprocessable entity.
+                  summary: Unprocessable Entity
+                  description: Unprocessable entity.
+          description: Unprocessable Entity
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10001:
+                  value:
+                    errors:
+                    - status: '401'
+                      code: '10001'
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  description: Invalid authentication credentials.
+          description: Authentication Failed
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10003:
+                  value:
+                    errors:
+                    - status: '403'
+                      code: '10003'
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  description: You do not have permission to perform this action.
+          description: Permission Denied
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10000:
+                  value:
+                    errors:
+                    - status: '400'
+                      code: '10000'
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+                  summary: Validation Error
+                  description: Invalid data provided in the request.
+          description: Validation Error
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10004:
+                  value:
+                    errors:
+                    - status: '404'
+                      code: '10004'
+                      title: Not Found
+                      detail: Not found.
+                  summary: Not Found
+                  description: Not found.
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10007:
+                  value:
+                    errors:
+                    - status: '405'
+                      code: '10007'
+                      title: Method Not Allowed
+                      detail: Method "{method}" not allowed.
+                  summary: Method Not Allowed
+                  description: Method "{method}" not allowed.
+          description: Method Not Allowed
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10005:
+                  value:
+                    errors:
+                    - status: '406'
+                      code: '10005'
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  description: Could not satisfy the request Accept header.
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10010:
+                  value:
+                    errors:
+                    - status: '429'
+                      code: '10010'
+                      title: Throttled
+                      detail: Request was throttled.
+                  summary: Throttled
+                  description: Request was throttled.
+          description: Throttled
+  /workspace/sql/databases/{database_id}:
+    get:
+      operationId: retrieve_database
+      description: Retrieve details from a specific database in your account.
+      summary: Retrieve details from a database
+      parameters:
+      - in: path
+        name: database_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this database.
+        required: true
+      - in: query
+        name: fields
+        schema:
+          type: string
+        description: Comma-separated list of field names to include in the response.
+      tags:
+      - SQL
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRetrieveDatabaseDetail'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10001:
+                  value:
+                    errors:
+                    - status: '401'
+                      code: '10001'
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  description: Invalid authentication credentials.
+          description: Authentication Failed
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10003:
+                  value:
+                    errors:
+                    - status: '403'
+                      code: '10003'
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  description: You do not have permission to perform this action.
+          description: Permission Denied
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10000:
+                  value:
+                    errors:
+                    - status: '400'
+                      code: '10000'
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+                  summary: Validation Error
+                  description: Invalid data provided in the request.
+          description: Validation Error
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10004:
+                  value:
+                    errors:
+                    - status: '404'
+                      code: '10004'
+                      title: Not Found
+                      detail: Not found.
+                  summary: Not Found
+                  description: Not found.
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10007:
+                  value:
+                    errors:
+                    - status: '405'
+                      code: '10007'
+                      title: Method Not Allowed
+                      detail: Method "{method}" not allowed.
+                  summary: Method Not Allowed
+                  description: Method "{method}" not allowed.
+          description: Method Not Allowed
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10005:
+                  value:
+                    errors:
+                    - status: '406'
+                      code: '10005'
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  description: Could not satisfy the request Accept header.
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10010:
+                  value:
+                    errors:
+                    - status: '429'
+                      code: '10010'
+                      title: Throttled
+                      detail: Request was throttled.
+                  summary: Throttled
+                  description: Request was throttled.
+          description: Throttled
+    delete:
+      operationId: delete_database
+      description: Schedule the deletion of a specific database in your account.
+      summary: Delete a database
+      parameters:
+      - in: path
+        name: database_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this database.
+        required: true
+      tags:
+      - SQL
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '204':
+          description: No response body
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAsyncDeleteDatabaseDetail'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10001:
+                  value:
+                    errors:
+                    - status: '401'
+                      code: '10001'
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  description: Invalid authentication credentials.
+          description: Authentication Failed
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10003:
+                  value:
+                    errors:
+                    - status: '403'
+                      code: '10003'
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  description: You do not have permission to perform this action.
+          description: Permission Denied
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10000:
+                  value:
+                    errors:
+                    - status: '400'
+                      code: '10000'
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+                  summary: Validation Error
+                  description: Invalid data provided in the request.
+          description: Validation Error
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10004:
+                  value:
+                    errors:
+                    - status: '404'
+                      code: '10004'
+                      title: Not Found
+                      detail: Not found.
+                  summary: Not Found
+                  description: Not found.
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10007:
+                  value:
+                    errors:
+                    - status: '405'
+                      code: '10007'
+                      title: Method Not Allowed
+                      detail: Method "{method}" not allowed.
+                  summary: Method Not Allowed
+                  description: Method "{method}" not allowed.
+          description: Method Not Allowed
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10005:
+                  value:
+                    errors:
+                    - status: '406'
+                      code: '10005'
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  description: Could not satisfy the request Accept header.
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10010:
+                  value:
+                    errors:
+                    - status: '429'
+                      code: '10010'
+                      title: Throttled
+                      detail: Request was throttled.
+                  summary: Throttled
+                  description: Request was throttled.
+          description: Throttled
+  /workspace/sql/databases/{database_id}/query:
+    post:
+      operationId: execute_query
+      description: Execute a query into a database for your account.
+      summary: Execute a query into a database
+      parameters:
+      - in: path
+        name: database_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this database.
+        required: true
+      tags:
+      - SQL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SQLStatementsRequest'
+        required: true
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSQLResult'
+          description: ''
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAsyncSQLResult'
+          description: ''
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10073:
+                  value:
+                    errors:
+                    - status: '422'
+                      code: '10073'
+                      title: Unprocessable Entity
+                      detail: Unprocessable entity.
+                  summary: Unprocessable Entity
+                  description: Unprocessable entity.
+          description: Unprocessable Entity
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10001:
+                  value:
+                    errors:
+                    - status: '401'
+                      code: '10001'
+                      title: Authentication Failed
+                      detail: Invalid authentication credentials.
+                  summary: Authentication Failed
+                  description: Invalid authentication credentials.
+          description: Authentication Failed
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10003:
+                  value:
+                    errors:
+                    - status: '403'
+                      code: '10003'
+                      title: Permission Denied
+                      detail: You do not have permission to perform this action.
+                  summary: Permission Denied
+                  description: You do not have permission to perform this action.
+          description: Permission Denied
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10000:
+                  value:
+                    errors:
+                    - status: '400'
+                      code: '10000'
+                      title: Validation Error
+                      detail: Invalid data provided in the request.
+                  summary: Validation Error
+                  description: Invalid data provided in the request.
+          description: Validation Error
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10004:
+                  value:
+                    errors:
+                    - status: '404'
+                      code: '10004'
+                      title: Not Found
+                      detail: Not found.
+                  summary: Not Found
+                  description: Not found.
+          description: Not Found
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10007:
+                  value:
+                    errors:
+                    - status: '405'
+                      code: '10007'
+                      title: Method Not Allowed
+                      detail: Method "{method}" not allowed.
+                  summary: Method Not Allowed
+                  description: Method "{method}" not allowed.
+          description: Method Not Allowed
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10005:
+                  value:
+                    errors:
+                    - status: '406'
+                      code: '10005'
+                      title: Not Acceptable
+                      detail: Could not satisfy the request Accept header.
+                  summary: Not Acceptable
+                  description: Could not satisfy the request Accept header.
+          description: Not Acceptable
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONAPIErrorResponse'
+              examples:
+                Error-10010:
+                  value:
+                    errors:
+                    - status: '429'
+                      code: '10010'
+                      title: Throttled
+                      detail: Request was throttled.
+                  summary: Throttled
+                  description: Request was throttled.
+          description: Throttled
+components:
+  schemas:
+    DatabaseDetail:
+      type: object
+      description: Detailed database representation with extended status information.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          description: Unique identifier for the database
+        name:
+          type: string
+          description: Name of the database
+          pattern: ^[A-Za-z0-9-]{6,50}$
+          maxLength: 50
+          minLength: 6
+        status:
+          enum:
+          - creating
+          - created
+          - deleting
+          type: string
+          readOnly: true
+          default: creating
+          description: 'Current status of the database
+
+
+            * `creating` - creating
+
+            * `created` - created
+
+            * `deleting` - deleting'
+          x-extensible-enum:
+          - creating
+          - created
+          - deleting
+        active:
+          type: boolean
+          default: true
+          description: Whether the database is active
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Last modification timestamp
+        last_editor:
+          type: string
+          readOnly: true
+          nullable: true
+          description: Last editor of the schema.
+        product_version:
+          type: string
+          readOnly: true
+          description: Product version
+      required:
+      - id
+      - last_editor
+      - last_modified
+      - name
+      - product_version
+      - status
+    DatabaseRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 6
+          description: Name of the database
+          pattern: ^[A-Za-z0-9-]{6,50}$
+          maxLength: 50
+        active:
+          type: boolean
+          default: true
+          description: Whether the database is active
+      required:
+      - name
+    JSONAPIErrorObject:
+      type: object
+      description: Serializer for a single JSON:API error object.
+      properties:
+        status:
+          type: string
+          description: The HTTP status code applicable to this problem
+          pattern: ^\d{3}$
+          maxLength: 3
+          minLength: 3
+        code:
+          type: string
+          description: An application-specific error code
+          pattern: ^\d{5}$
+          maxLength: 5
+          minLength: 5
+        title:
+          type: string
+          description: A short, human-readable summary of the problem
+          pattern: ^.*$
+          maxLength: 4096
+          minLength: 1
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of
+            the problem
+          pattern: ^.*$
+          maxLength: 4096
+          minLength: 1
+        source:
+          allOf:
+          - $ref: '#/components/schemas/JSONAPIErrorSource'
+          description: References to the primary source of the error
+        meta:
+          type: object
+          additionalProperties: {}
+          description: Non-standard meta-information about the error
+    JSONAPIErrorResponse:
+      type: object
+      description: Serializer for a JSON:API error response.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/JSONAPIErrorObject'
+          description: Array of error objects
+      required:
+      - errors
+    JSONAPIErrorSource:
+      type: object
+      description: Serializer for the 'source' object in a JSON:API error.
+      properties:
+        pointer:
+          type: string
+          description: JSON Pointer to the value in the request document that caused
+            the error
+          pattern: ^(/[^/]+)+$
+          maxLength: 4096
+          minLength: 1
+        parameter:
+          type: string
+          description: URI query parameter that caused the error
+          pattern: ^.*$
+          maxLength: 4096
+          minLength: 1
+        header:
+          type: string
+          description: Request header name that caused the error
+          pattern: ^.*$
+          maxLength: 4096
+          minLength: 1
+    PaginatedDatabaseDetailList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+          example: 123
+          description: Total number of items
+        total_pages:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+          example: 10
+          description: Total number of pages
+        page:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+          example: 1
+          description: Current page number
+        page_size:
+          type: integer
+          minimum: 1
+          maximum: 100
+          example: 10
+          description: Number of items per page
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatabaseDetail'
+    ResponseAsyncDatabaseDetail:
+      type: object
+      properties:
+        state:
+          type: string
+          default: pending
+          pattern: .*
+          maxLength: 8
+          minLength: 1
+        data:
+          $ref: '#/components/schemas/DatabaseDetail'
+      required:
+      - data
+    ResponseAsyncDeleteDatabaseDetail:
+      type: object
+      properties:
+        state:
+          type: string
+          default: pending
+          pattern: .*
+          maxLength: 8
+          minLength: 1
+    ResponseAsyncSQLResult:
+      type: object
+      properties:
+        state:
+          type: string
+          default: pending
+          pattern: .*
+          maxLength: 8
+          minLength: 1
+        data:
+          $ref: '#/components/schemas/SQLResult'
+      required:
+      - data
+    ResponseDatabaseDetail:
+      type: object
+      properties:
+        state:
+          type: string
+          default: executed
+          pattern: .*
+          maxLength: 8
+          minLength: 1
+        data:
+          $ref: '#/components/schemas/DatabaseDetail'
+      required:
+      - data
+    ResponseRetrieveDatabaseDetail:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DatabaseDetail'
+      required:
+      - data
+    ResponseSQLResult:
+      type: object
+      properties:
+        state:
+          type: string
+          default: executed
+          pattern: .*
+          maxLength: 8
+          minLength: 1
+        data:
+          $ref: '#/components/schemas/SQLResult'
+      required:
+      - data
+    SQLResult:
+      type: object
+      properties:
+        columns:
+          type: array
+          items: {}
+          description: List of column names
+        rows:
+          type: array
+          items: {}
+          description: List of result rows
+      required:
+      - columns
+      - rows
+    SQLStatementsRequest:
+      type: object
+      properties:
+        statements:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          description: List of SQL statements to execute
+          maxItems: 1000
+      required:
+      - statements
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
