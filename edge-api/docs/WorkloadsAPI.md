@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWorkload**](WorkloadsAPI.md#CreateWorkload) | **Post** /workspace/workloads | Create an Workload
-[**DestroyWorkload**](WorkloadsAPI.md#DestroyWorkload) | **Delete** /workspace/workloads/{workload_id} | Destroy an Workload
+[**DeleteWorkload**](WorkloadsAPI.md#DeleteWorkload) | **Delete** /workspace/workloads/{workload_id} | Delete an Workload
 [**ListWorkloads**](WorkloadsAPI.md#ListWorkloads) | **Get** /workspace/workloads | List Workloads
 [**PartialUpdateWorkload**](WorkloadsAPI.md#PartialUpdateWorkload) | **Patch** /workspace/workloads/{workload_id} | Partially update an Workload
 [**RetrieveWorkload**](WorkloadsAPI.md#RetrieveWorkload) | **Get** /workspace/workloads/{workload_id} | Retrieve details of an Workload
@@ -79,11 +79,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyWorkload
+## DeleteWorkload
 
-> ResponseAsyncDeleteWorkload DestroyWorkload(ctx, workloadId).Execute()
+> ResponseAsyncDeleteWorkload DeleteWorkload(ctx, workloadId).Execute()
 
-Destroy an Workload
+Delete an Workload
 
 
 
@@ -104,13 +104,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkloadsAPI.DestroyWorkload(context.Background(), workloadId).Execute()
+	resp, r, err := apiClient.WorkloadsAPI.DeleteWorkload(context.Background(), workloadId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.DestroyWorkload``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.DeleteWorkload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyWorkload`: ResponseAsyncDeleteWorkload
-	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.DestroyWorkload`: %v\n", resp)
+	// response from `DeleteWorkload`: ResponseAsyncDeleteWorkload
+	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.DeleteWorkload`: %v\n", resp)
 }
 ```
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyWorkloadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteWorkloadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -68,7 +68,7 @@ func (a *ConnectorsAPIService) CreateConnectorExecute(r ApiCreateConnectorReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_connector/connectors"
+	localVarPath := localBasePath + "/workspace/connectors"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -220,36 +220,36 @@ func (a *ConnectorsAPIService) CreateConnectorExecute(r ApiCreateConnectorReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyConnectorRequest struct {
+type ApiDeleteConnectorRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
-	id string
+	connectorId string
 }
 
-func (r ApiDestroyConnectorRequest) Execute() (*ResponseDeleteConnectorPolymorphic, *http.Response, error) {
-	return r.ApiService.DestroyConnectorExecute(r)
+func (r ApiDeleteConnectorRequest) Execute() (*ResponseDeleteConnectorPolymorphic, *http.Response, error) {
+	return r.ApiService.DeleteConnectorExecute(r)
 }
 
 /*
-DestroyConnector Destroy an Connector
+DeleteConnector Delete an Connector
 
-Destruction of a specific Connector in your account.
+Delete a specific Connector in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDestroyConnectorRequest
+ @param connectorId
+ @return ApiDeleteConnectorRequest
 */
-func (a *ConnectorsAPIService) DestroyConnector(ctx context.Context, id string) ApiDestroyConnectorRequest {
-	return ApiDestroyConnectorRequest{
+func (a *ConnectorsAPIService) DeleteConnector(ctx context.Context, connectorId string) ApiDeleteConnectorRequest {
+	return ApiDeleteConnectorRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		connectorId: connectorId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseDeleteConnectorPolymorphic
-func (a *ConnectorsAPIService) DestroyConnectorExecute(r ApiDestroyConnectorRequest) (*ResponseDeleteConnectorPolymorphic, *http.Response, error) {
+func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorRequest) (*ResponseDeleteConnectorPolymorphic, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -257,13 +257,13 @@ func (a *ConnectorsAPIService) DestroyConnectorExecute(r ApiDestroyConnectorRequ
 		localVarReturnValue  *ResponseDeleteConnectorPolymorphic
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.DestroyConnector")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.DeleteConnector")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_connector/connectors/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/connectors/{connector_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_id"+"}", url.PathEscape(parameterValueToString(r.connectorId, "connectorId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -487,7 +487,7 @@ func (a *ConnectorsAPIService) ListConnectorsExecute(r ApiListConnectorsRequest)
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_connector/connectors"
+	localVarPath := localBasePath + "/workspace/connectors"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -655,7 +655,7 @@ func (a *ConnectorsAPIService) ListConnectorsExecute(r ApiListConnectorsRequest)
 type ApiPartialUpdateConnectorRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
-	id string
+	connectorId string
 	patchedConnectorPolymorphicRequest *PatchedConnectorPolymorphicRequest
 }
 
@@ -674,14 +674,14 @@ PartialUpdateConnector Partially update an Connector
 Update one or more fields of an existing Connector without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param connectorId
  @return ApiPartialUpdateConnectorRequest
 */
-func (a *ConnectorsAPIService) PartialUpdateConnector(ctx context.Context, id string) ApiPartialUpdateConnectorRequest {
+func (a *ConnectorsAPIService) PartialUpdateConnector(ctx context.Context, connectorId string) ApiPartialUpdateConnectorRequest {
 	return ApiPartialUpdateConnectorRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		connectorId: connectorId,
 	}
 }
 
@@ -700,8 +700,8 @@ func (a *ConnectorsAPIService) PartialUpdateConnectorExecute(r ApiPartialUpdateC
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_connector/connectors/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/connectors/{connector_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_id"+"}", url.PathEscape(parameterValueToString(r.connectorId, "connectorId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -856,7 +856,7 @@ func (a *ConnectorsAPIService) PartialUpdateConnectorExecute(r ApiPartialUpdateC
 type ApiRetrieveConnectorRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
-	id string
+	connectorId string
 	fields *string
 }
 
@@ -876,14 +876,14 @@ RetrieveConnector Retrieve details of an Connector
 Retrieve details of a specific Connector in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param connectorId
  @return ApiRetrieveConnectorRequest
 */
-func (a *ConnectorsAPIService) RetrieveConnector(ctx context.Context, id string) ApiRetrieveConnectorRequest {
+func (a *ConnectorsAPIService) RetrieveConnector(ctx context.Context, connectorId string) ApiRetrieveConnectorRequest {
 	return ApiRetrieveConnectorRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		connectorId: connectorId,
 	}
 }
 
@@ -902,8 +902,8 @@ func (a *ConnectorsAPIService) RetrieveConnectorExecute(r ApiRetrieveConnectorRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_connector/connectors/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/connectors/{connector_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_id"+"}", url.PathEscape(parameterValueToString(r.connectorId, "connectorId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1059,7 +1059,7 @@ func (a *ConnectorsAPIService) RetrieveConnectorExecute(r ApiRetrieveConnectorRe
 type ApiUpdateConnectorRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
-	id string
+	connectorId string
 	connectorPolymorphicRequest *ConnectorPolymorphicRequest
 }
 
@@ -1078,14 +1078,14 @@ UpdateConnector Update an Connector
 Update an existing Connector. This replaces the entire Connector with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param connectorId
  @return ApiUpdateConnectorRequest
 */
-func (a *ConnectorsAPIService) UpdateConnector(ctx context.Context, id string) ApiUpdateConnectorRequest {
+func (a *ConnectorsAPIService) UpdateConnector(ctx context.Context, connectorId string) ApiUpdateConnectorRequest {
 	return ApiUpdateConnectorRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		connectorId: connectorId,
 	}
 }
 
@@ -1104,8 +1104,8 @@ func (a *ConnectorsAPIService) UpdateConnectorExecute(r ApiUpdateConnectorReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_connector/connectors/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/connectors/{connector_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_id"+"}", url.PathEscape(parameterValueToString(r.connectorId, "connectorId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

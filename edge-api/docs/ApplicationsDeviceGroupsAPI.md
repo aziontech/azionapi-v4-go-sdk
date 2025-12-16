@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDeviceGroup**](ApplicationsDeviceGroupsAPI.md#CreateDeviceGroup) | **Post** /edge_application/applications/{application_id}/device_groups | Create an Applications Device Group
-[**DestroyDeviceGroups**](ApplicationsDeviceGroupsAPI.md#DestroyDeviceGroups) | **Delete** /edge_application/applications/{application_id}/device_groups/{id} | Destroy an Applications Device Group
-[**ListDeviceGroups**](ApplicationsDeviceGroupsAPI.md#ListDeviceGroups) | **Get** /edge_application/applications/{application_id}/device_groups | List Applications Device Groups
-[**PartialUpdateDeviceGroup**](ApplicationsDeviceGroupsAPI.md#PartialUpdateDeviceGroup) | **Patch** /edge_application/applications/{application_id}/device_groups/{id} | Partially update an Applications Device Group
-[**RetrieveDeviceGroup**](ApplicationsDeviceGroupsAPI.md#RetrieveDeviceGroup) | **Get** /edge_application/applications/{application_id}/device_groups/{id} | Retrieve details of a Device Group
-[**UpdateDeviceGroup**](ApplicationsDeviceGroupsAPI.md#UpdateDeviceGroup) | **Put** /edge_application/applications/{application_id}/device_groups/{id} | Update an Applications Device Group
+[**CreateDeviceGroup**](ApplicationsDeviceGroupsAPI.md#CreateDeviceGroup) | **Post** /workspace/applications/{application_id}/device_groups | Create an Applications Device Group
+[**DeleteDeviceGroups**](ApplicationsDeviceGroupsAPI.md#DeleteDeviceGroups) | **Delete** /workspace/applications/{application_id}/device_groups/{device_group_id} | Delete an Applications Device Group
+[**ListDeviceGroups**](ApplicationsDeviceGroupsAPI.md#ListDeviceGroups) | **Get** /workspace/applications/{application_id}/device_groups | List Applications Device Groups
+[**PartialUpdateDeviceGroup**](ApplicationsDeviceGroupsAPI.md#PartialUpdateDeviceGroup) | **Patch** /workspace/applications/{application_id}/device_groups/{device_group_id} | Partially update an Applications Device Group
+[**RetrieveDeviceGroup**](ApplicationsDeviceGroupsAPI.md#RetrieveDeviceGroup) | **Get** /workspace/applications/{application_id}/device_groups/{device_group_id} | Retrieve details of a Device Group
+[**UpdateDeviceGroup**](ApplicationsDeviceGroupsAPI.md#UpdateDeviceGroup) | **Put** /workspace/applications/{application_id}/device_groups/{device_group_id} | Update an Applications Device Group
 
 
 
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyDeviceGroups
+## DeleteDeviceGroups
 
-> ResponseApplicationDeviceGroups DestroyDeviceGroups(ctx, applicationId, id).Execute()
+> ResponseApplicationDeviceGroups DeleteDeviceGroups(ctx, applicationId, deviceGroupId).Execute()
 
-Destroy an Applications Device Group
+Delete an Applications Device Group
 
 
 
@@ -107,17 +107,17 @@ import (
 
 func main() {
 	applicationId := "applicationId_example" // string | 
-	id := "id_example" // string | 
+	deviceGroupId := "deviceGroupId_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsDeviceGroupsAPI.DestroyDeviceGroups(context.Background(), applicationId, id).Execute()
+	resp, r, err := apiClient.ApplicationsDeviceGroupsAPI.DeleteDeviceGroups(context.Background(), applicationId, deviceGroupId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsDeviceGroupsAPI.DestroyDeviceGroups``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsDeviceGroupsAPI.DeleteDeviceGroups``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyDeviceGroups`: ResponseApplicationDeviceGroups
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationsDeviceGroupsAPI.DestroyDeviceGroups`: %v\n", resp)
+	// response from `DeleteDeviceGroups`: ResponseApplicationDeviceGroups
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsDeviceGroupsAPI.DeleteDeviceGroups`: %v\n", resp)
 }
 ```
 
@@ -128,11 +128,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **applicationId** | **string** |  | 
-**id** | **string** |  | 
+**deviceGroupId** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyDeviceGroupsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteDeviceGroupsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateDeviceGroup
 
-> ResponseApplicationDeviceGroups PartialUpdateDeviceGroup(ctx, applicationId, id).PatchedApplicationDeviceGroupsRequest(patchedApplicationDeviceGroupsRequest).Execute()
+> ResponseApplicationDeviceGroups PartialUpdateDeviceGroup(ctx, applicationId, deviceGroupId).PatchedApplicationDeviceGroupsRequest(patchedApplicationDeviceGroupsRequest).Execute()
 
 Partially update an Applications Device Group
 
@@ -260,12 +260,12 @@ import (
 
 func main() {
 	applicationId := "applicationId_example" // string | 
-	id := "id_example" // string | 
+	deviceGroupId := "deviceGroupId_example" // string | 
 	patchedApplicationDeviceGroupsRequest := *openapiclient.NewPatchedApplicationDeviceGroupsRequest() // PatchedApplicationDeviceGroupsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsDeviceGroupsAPI.PartialUpdateDeviceGroup(context.Background(), applicationId, id).PatchedApplicationDeviceGroupsRequest(patchedApplicationDeviceGroupsRequest).Execute()
+	resp, r, err := apiClient.ApplicationsDeviceGroupsAPI.PartialUpdateDeviceGroup(context.Background(), applicationId, deviceGroupId).PatchedApplicationDeviceGroupsRequest(patchedApplicationDeviceGroupsRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsDeviceGroupsAPI.PartialUpdateDeviceGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **applicationId** | **string** |  | 
-**id** | **string** |  | 
+**deviceGroupId** | **string** |  | 
 
 ### Other Parameters
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveDeviceGroup
 
-> ResponseRetrieveApplicationDeviceGroups RetrieveDeviceGroup(ctx, applicationId, id).Fields(fields).Execute()
+> ResponseRetrieveApplicationDeviceGroups RetrieveDeviceGroup(ctx, applicationId, deviceGroupId).Fields(fields).Execute()
 
 Retrieve details of a Device Group
 
@@ -335,12 +335,12 @@ import (
 
 func main() {
 	applicationId := "applicationId_example" // string | 
-	id := "id_example" // string | 
+	deviceGroupId := "deviceGroupId_example" // string | 
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsDeviceGroupsAPI.RetrieveDeviceGroup(context.Background(), applicationId, id).Fields(fields).Execute()
+	resp, r, err := apiClient.ApplicationsDeviceGroupsAPI.RetrieveDeviceGroup(context.Background(), applicationId, deviceGroupId).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsDeviceGroupsAPI.RetrieveDeviceGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **applicationId** | **string** |  | 
-**id** | **string** |  | 
+**deviceGroupId** | **string** |  | 
 
 ### Other Parameters
 
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDeviceGroup
 
-> ResponseApplicationDeviceGroups UpdateDeviceGroup(ctx, applicationId, id).ApplicationDeviceGroupsRequest(applicationDeviceGroupsRequest).Execute()
+> ResponseApplicationDeviceGroups UpdateDeviceGroup(ctx, applicationId, deviceGroupId).ApplicationDeviceGroupsRequest(applicationDeviceGroupsRequest).Execute()
 
 Update an Applications Device Group
 
@@ -410,12 +410,12 @@ import (
 
 func main() {
 	applicationId := "applicationId_example" // string | 
-	id := "id_example" // string | 
+	deviceGroupId := "deviceGroupId_example" // string | 
 	applicationDeviceGroupsRequest := *openapiclient.NewApplicationDeviceGroupsRequest("Name_example", "UserAgent_example") // ApplicationDeviceGroupsRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsDeviceGroupsAPI.UpdateDeviceGroup(context.Background(), applicationId, id).ApplicationDeviceGroupsRequest(applicationDeviceGroupsRequest).Execute()
+	resp, r, err := apiClient.ApplicationsDeviceGroupsAPI.UpdateDeviceGroup(context.Background(), applicationId, deviceGroupId).ApplicationDeviceGroupsRequest(applicationDeviceGroupsRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsDeviceGroupsAPI.UpdateDeviceGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **applicationId** | **string** |  | 
-**id** | **string** |  | 
+**deviceGroupId** | **string** |  | 
 
 ### Other Parameters
 

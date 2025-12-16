@@ -71,7 +71,7 @@ func (a *ApplicationsFunctionAPIService) CreateApplicationFunctionInstanceExecut
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/functions"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/functions"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,29 +227,29 @@ func (a *ApplicationsFunctionAPIService) CreateApplicationFunctionInstanceExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyApplicationFunctionInstanceRequest struct {
+type ApiDeleteApplicationFunctionInstanceRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsFunctionAPIService
 	applicationId string
 	functionId string
 }
 
-func (r ApiDestroyApplicationFunctionInstanceRequest) Execute() (*ResponseDeleteApplicationFunctionInstance, *http.Response, error) {
-	return r.ApiService.DestroyApplicationFunctionInstanceExecute(r)
+func (r ApiDeleteApplicationFunctionInstanceRequest) Execute() (*ResponseDeleteApplicationFunctionInstance, *http.Response, error) {
+	return r.ApiService.DeleteApplicationFunctionInstanceExecute(r)
 }
 
 /*
-DestroyApplicationFunctionInstance Destroy an Application Function Instance
+DeleteApplicationFunctionInstance Delete an Application Function Instance
 
-Destroy a specific Application Function Instance in your account.
+Delete a specific Application Function Instance in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId
  @param functionId
- @return ApiDestroyApplicationFunctionInstanceRequest
+ @return ApiDeleteApplicationFunctionInstanceRequest
 */
-func (a *ApplicationsFunctionAPIService) DestroyApplicationFunctionInstance(ctx context.Context, applicationId string, functionId string) ApiDestroyApplicationFunctionInstanceRequest {
-	return ApiDestroyApplicationFunctionInstanceRequest{
+func (a *ApplicationsFunctionAPIService) DeleteApplicationFunctionInstance(ctx context.Context, applicationId string, functionId string) ApiDeleteApplicationFunctionInstanceRequest {
+	return ApiDeleteApplicationFunctionInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
@@ -259,7 +259,7 @@ func (a *ApplicationsFunctionAPIService) DestroyApplicationFunctionInstance(ctx 
 
 // Execute executes the request
 //  @return ResponseDeleteApplicationFunctionInstance
-func (a *ApplicationsFunctionAPIService) DestroyApplicationFunctionInstanceExecute(r ApiDestroyApplicationFunctionInstanceRequest) (*ResponseDeleteApplicationFunctionInstance, *http.Response, error) {
+func (a *ApplicationsFunctionAPIService) DeleteApplicationFunctionInstanceExecute(r ApiDeleteApplicationFunctionInstanceRequest) (*ResponseDeleteApplicationFunctionInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -267,12 +267,12 @@ func (a *ApplicationsFunctionAPIService) DestroyApplicationFunctionInstanceExecu
 		localVarReturnValue  *ResponseDeleteApplicationFunctionInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsFunctionAPIService.DestroyApplicationFunctionInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsFunctionAPIService.DeleteApplicationFunctionInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/functions/{function_id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/functions/{function_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
@@ -501,7 +501,7 @@ func (a *ApplicationsFunctionAPIService) ListApplicationFunctionInstancesExecute
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/functions"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/functions"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -718,7 +718,7 @@ func (a *ApplicationsFunctionAPIService) PartialUpdateApplicationFunctionInstanc
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/functions/{function_id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/functions/{function_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
@@ -924,7 +924,7 @@ func (a *ApplicationsFunctionAPIService) RetrieveApplicationFunctionInstanceExec
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/functions/{function_id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/functions/{function_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
@@ -1130,7 +1130,7 @@ func (a *ApplicationsFunctionAPIService) UpdateApplicationFunctionInstanceExecut
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/functions/{function_id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/functions/{function_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 

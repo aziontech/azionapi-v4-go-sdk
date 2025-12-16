@@ -223,36 +223,36 @@ func (a *NetworkListsAPIService) CreateNetworkListExecute(r ApiCreateNetworkList
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyNetworkListRequest struct {
+type ApiDeleteNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	id string
+	networkListId string
 }
 
-func (r ApiDestroyNetworkListRequest) Execute() (*ResponseDeleteNetworkListDetail, *http.Response, error) {
-	return r.ApiService.DestroyNetworkListExecute(r)
+func (r ApiDeleteNetworkListRequest) Execute() (*ResponseDeleteNetworkListDetail, *http.Response, error) {
+	return r.ApiService.DeleteNetworkListExecute(r)
 }
 
 /*
-DestroyNetworkList Destroy a Network List
+DeleteNetworkList Delete a Network List
 
-Destroy a specific Network List in your account.
+Delete a specific Network List in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDestroyNetworkListRequest
+ @param networkListId
+ @return ApiDeleteNetworkListRequest
 */
-func (a *NetworkListsAPIService) DestroyNetworkList(ctx context.Context, id string) ApiDestroyNetworkListRequest {
-	return ApiDestroyNetworkListRequest{
+func (a *NetworkListsAPIService) DeleteNetworkList(ctx context.Context, networkListId string) ApiDeleteNetworkListRequest {
+	return ApiDeleteNetworkListRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		networkListId: networkListId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseDeleteNetworkListDetail
-func (a *NetworkListsAPIService) DestroyNetworkListExecute(r ApiDestroyNetworkListRequest) (*ResponseDeleteNetworkListDetail, *http.Response, error) {
+func (a *NetworkListsAPIService) DeleteNetworkListExecute(r ApiDeleteNetworkListRequest) (*ResponseDeleteNetworkListDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -260,13 +260,13 @@ func (a *NetworkListsAPIService) DestroyNetworkListExecute(r ApiDestroyNetworkLi
 		localVarReturnValue  *ResponseDeleteNetworkListDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.DestroyNetworkList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.DeleteNetworkList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/network_lists/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/network_lists/{network_list_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network_list_id"+"}", url.PathEscape(parameterValueToString(r.networkListId, "networkListId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -658,7 +658,7 @@ func (a *NetworkListsAPIService) ListNetworkListsExecute(r ApiListNetworkListsRe
 type ApiPartialUpdateNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	id string
+	networkListId string
 	patchedNetworkListDetailRequest *PatchedNetworkListDetailRequest
 }
 
@@ -677,14 +677,14 @@ PartialUpdateNetworkList Partially update a Network List
 Update one or more fields of an existing Network List without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param networkListId
  @return ApiPartialUpdateNetworkListRequest
 */
-func (a *NetworkListsAPIService) PartialUpdateNetworkList(ctx context.Context, id string) ApiPartialUpdateNetworkListRequest {
+func (a *NetworkListsAPIService) PartialUpdateNetworkList(ctx context.Context, networkListId string) ApiPartialUpdateNetworkListRequest {
 	return ApiPartialUpdateNetworkListRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		networkListId: networkListId,
 	}
 }
 
@@ -703,8 +703,8 @@ func (a *NetworkListsAPIService) PartialUpdateNetworkListExecute(r ApiPartialUpd
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/network_lists/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/network_lists/{network_list_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network_list_id"+"}", url.PathEscape(parameterValueToString(r.networkListId, "networkListId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -859,7 +859,7 @@ func (a *NetworkListsAPIService) PartialUpdateNetworkListExecute(r ApiPartialUpd
 type ApiRetrieveNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	id string
+	networkListId string
 	fields *string
 	ipv4 *bool
 	ipv6 *bool
@@ -893,14 +893,14 @@ RetrieveNetworkList Retrieve details of a Network List
 Retrieve details of a specific Network List in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param networkListId
  @return ApiRetrieveNetworkListRequest
 */
-func (a *NetworkListsAPIService) RetrieveNetworkList(ctx context.Context, id string) ApiRetrieveNetworkListRequest {
+func (a *NetworkListsAPIService) RetrieveNetworkList(ctx context.Context, networkListId string) ApiRetrieveNetworkListRequest {
 	return ApiRetrieveNetworkListRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		networkListId: networkListId,
 	}
 }
 
@@ -919,8 +919,8 @@ func (a *NetworkListsAPIService) RetrieveNetworkListExecute(r ApiRetrieveNetwork
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/network_lists/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/network_lists/{network_list_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network_list_id"+"}", url.PathEscape(parameterValueToString(r.networkListId, "networkListId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,7 +1082,7 @@ func (a *NetworkListsAPIService) RetrieveNetworkListExecute(r ApiRetrieveNetwork
 type ApiUpdateNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	id string
+	networkListId string
 	networkListDetailRequest *NetworkListDetailRequest
 }
 
@@ -1101,14 +1101,14 @@ UpdateNetworkList Update a Network List
 Update an existing Network List. This replaces the entire Network List with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param networkListId
  @return ApiUpdateNetworkListRequest
 */
-func (a *NetworkListsAPIService) UpdateNetworkList(ctx context.Context, id string) ApiUpdateNetworkListRequest {
+func (a *NetworkListsAPIService) UpdateNetworkList(ctx context.Context, networkListId string) ApiUpdateNetworkListRequest {
 	return ApiUpdateNetworkListRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		networkListId: networkListId,
 	}
 }
 
@@ -1127,8 +1127,8 @@ func (a *NetworkListsAPIService) UpdateNetworkListExecute(r ApiUpdateNetworkList
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/network_lists/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/network_lists/{network_list_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network_list_id"+"}", url.PathEscape(parameterValueToString(r.networkListId, "networkListId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

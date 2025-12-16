@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
@@ -24,6 +24,7 @@ type PolicyRuleRequest struct {
 	Name string `json:"name"`
 	// * `allow` - allow * `deny` - deny
 	Effect string `json:"effect"`
+	// Resource pattern (regex supported)
 	Resource string `json:"resource"`
 	Actions []string `json:"actions"`
 	Condition PolicyRuleConditionRequest `json:"condition"`

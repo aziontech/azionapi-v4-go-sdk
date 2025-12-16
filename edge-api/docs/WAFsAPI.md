@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CloneWAF**](WAFsAPI.md#CloneWAF) | **Post** /edge_firewall/wafs/{waf_id}/clone | Clone a Web Application Firewall (WAF)
-[**CreateWAF**](WAFsAPI.md#CreateWAF) | **Post** /edge_firewall/wafs | Create a Web Application Firewall (WAF)
-[**DestroyWAF**](WAFsAPI.md#DestroyWAF) | **Delete** /edge_firewall/wafs/{waf_id} | Destroy a Web Application Firewall (WAF)
-[**ListWAFs**](WAFsAPI.md#ListWAFs) | **Get** /edge_firewall/wafs | List Web Application Firewalls (WAFs)
-[**PartialUpdateWAF**](WAFsAPI.md#PartialUpdateWAF) | **Patch** /edge_firewall/wafs/{waf_id} | Partially update a Web Application Firewall (WAF)
-[**RetrieveWAF**](WAFsAPI.md#RetrieveWAF) | **Get** /edge_firewall/wafs/{waf_id} | Retrieve details from a Web Application Firewall (WAF)
-[**UpdateWAF**](WAFsAPI.md#UpdateWAF) | **Put** /edge_firewall/wafs/{waf_id} | Update a Web Application Firewall (WAF)
+[**CloneWAF**](WAFsAPI.md#CloneWAF) | **Post** /workspace/wafs/{waf_id}/clone | Clone a Web Application Firewall (WAF)
+[**CreateWAF**](WAFsAPI.md#CreateWAF) | **Post** /workspace/wafs | Create a Web Application Firewall (WAF)
+[**DeleteWAF**](WAFsAPI.md#DeleteWAF) | **Delete** /workspace/wafs/{waf_id} | Delete a Web Application Firewall (WAF)
+[**ListWAFs**](WAFsAPI.md#ListWAFs) | **Get** /workspace/wafs | List Web Application Firewalls (WAFs)
+[**PartialUpdateWAF**](WAFsAPI.md#PartialUpdateWAF) | **Patch** /workspace/wafs/{waf_id} | Partially update a Web Application Firewall (WAF)
+[**RetrieveWAF**](WAFsAPI.md#RetrieveWAF) | **Get** /workspace/wafs/{waf_id} | Retrieve details from a Web Application Firewall (WAF)
+[**UpdateWAF**](WAFsAPI.md#UpdateWAF) | **Put** /workspace/wafs/{waf_id} | Update a Web Application Firewall (WAF)
 
 
 
@@ -152,11 +152,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyWAF
+## DeleteWAF
 
-> ResponseDeleteWAF DestroyWAF(ctx, wafId).Execute()
+> ResponseDeleteWAF DeleteWAF(ctx, wafId).Execute()
 
-Destroy a Web Application Firewall (WAF)
+Delete a Web Application Firewall (WAF)
 
 
 
@@ -177,13 +177,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WAFsAPI.DestroyWAF(context.Background(), wafId).Execute()
+	resp, r, err := apiClient.WAFsAPI.DeleteWAF(context.Background(), wafId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WAFsAPI.DestroyWAF``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WAFsAPI.DeleteWAF``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyWAF`: ResponseDeleteWAF
-	fmt.Fprintf(os.Stdout, "Response from `WAFsAPI.DestroyWAF`: %v\n", resp)
+	// response from `DeleteWAF`: ResponseDeleteWAF
+	fmt.Fprintf(os.Stdout, "Response from `WAFsAPI.DeleteWAF`: %v\n", resp)
 }
 ```
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyWAFRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteWAFRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

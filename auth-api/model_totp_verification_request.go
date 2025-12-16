@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
@@ -21,6 +21,7 @@ var _ MappedNullable = &TOTPVerificationRequest{}
 
 // TOTPVerificationRequest Serializer for TOTP verification process.  Handles the verification of TOTP codes for MFA-enabled users. On successful verification, returns access and refresh tokens.
 type TOTPVerificationRequest struct {
+	// 6-digit TOTP code
 	Code string `json:"code"`
 }
 

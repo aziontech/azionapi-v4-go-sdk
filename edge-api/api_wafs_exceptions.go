@@ -71,7 +71,7 @@ func (a *WAFsExceptionsAPIService) CreateWAFExceptionExecute(r ApiCreateWAFExcep
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,29 +227,29 @@ func (a *WAFsExceptionsAPIService) CreateWAFExceptionExecute(r ApiCreateWAFExcep
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyWAFExceptionRequest struct {
+type ApiDeleteWAFExceptionRequest struct {
 	ctx context.Context
 	ApiService *WAFsExceptionsAPIService
 	exceptionId string
 	wafId string
 }
 
-func (r ApiDestroyWAFExceptionRequest) Execute() (*ResponseDeleteWAFRule, *http.Response, error) {
-	return r.ApiService.DestroyWAFExceptionExecute(r)
+func (r ApiDeleteWAFExceptionRequest) Execute() (*ResponseDeleteWAFRule, *http.Response, error) {
+	return r.ApiService.DeleteWAFExceptionExecute(r)
 }
 
 /*
-DestroyWAFException Destroy an Exception from a Web Application Firewall (WAF)
+DeleteWAFException Delete an Exception from a Web Application Firewall (WAF)
 
 Remove a specific Exception from a WAF in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param exceptionId
  @param wafId
- @return ApiDestroyWAFExceptionRequest
+ @return ApiDeleteWAFExceptionRequest
 */
-func (a *WAFsExceptionsAPIService) DestroyWAFException(ctx context.Context, exceptionId string, wafId string) ApiDestroyWAFExceptionRequest {
-	return ApiDestroyWAFExceptionRequest{
+func (a *WAFsExceptionsAPIService) DeleteWAFException(ctx context.Context, exceptionId string, wafId string) ApiDeleteWAFExceptionRequest {
+	return ApiDeleteWAFExceptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		exceptionId: exceptionId,
@@ -259,7 +259,7 @@ func (a *WAFsExceptionsAPIService) DestroyWAFException(ctx context.Context, exce
 
 // Execute executes the request
 //  @return ResponseDeleteWAFRule
-func (a *WAFsExceptionsAPIService) DestroyWAFExceptionExecute(r ApiDestroyWAFExceptionRequest) (*ResponseDeleteWAFRule, *http.Response, error) {
+func (a *WAFsExceptionsAPIService) DeleteWAFExceptionExecute(r ApiDeleteWAFExceptionRequest) (*ResponseDeleteWAFRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -267,12 +267,12 @@ func (a *WAFsExceptionsAPIService) DestroyWAFExceptionExecute(r ApiDestroyWAFExc
 		localVarReturnValue  *ResponseDeleteWAFRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.DestroyWAFException")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.DeleteWAFException")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions/{exception_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions/{exception_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"exception_id"+"}", url.PathEscape(parameterValueToString(r.exceptionId, "exceptionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
@@ -501,7 +501,7 @@ func (a *WAFsExceptionsAPIService) ListWAFExceptionsExecute(r ApiListWAFExceptio
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -718,7 +718,7 @@ func (a *WAFsExceptionsAPIService) PartialUpdateWAFExceptionExecute(r ApiPartial
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions/{exception_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions/{exception_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"exception_id"+"}", url.PathEscape(parameterValueToString(r.exceptionId, "exceptionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
@@ -924,7 +924,7 @@ func (a *WAFsExceptionsAPIService) RetrieveWAFExceptionExecute(r ApiRetrieveWAFE
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions/{exception_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions/{exception_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"exception_id"+"}", url.PathEscape(parameterValueToString(r.exceptionId, "exceptionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
@@ -1130,7 +1130,7 @@ func (a *WAFsExceptionsAPIService) UpdateWAFExceptionExecute(r ApiUpdateWAFExcep
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions/{exception_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions/{exception_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"exception_id"+"}", url.PathEscape(parameterValueToString(r.exceptionId, "exceptionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 

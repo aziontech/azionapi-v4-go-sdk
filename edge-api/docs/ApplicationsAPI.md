@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CloneApplication**](ApplicationsAPI.md#CloneApplication) | **Post** /edge_application/applications/{application_id}/clone | Clone an Application
-[**CreateApplication**](ApplicationsAPI.md#CreateApplication) | **Post** /edge_application/applications | Create an Application
-[**DestroyApplication**](ApplicationsAPI.md#DestroyApplication) | **Delete** /edge_application/applications/{application_id} | Destroy an Application
-[**ListApplications**](ApplicationsAPI.md#ListApplications) | **Get** /edge_application/applications | List Applications
-[**PartialUpdateApplication**](ApplicationsAPI.md#PartialUpdateApplication) | **Patch** /edge_application/applications/{application_id} | Partially update an Application
-[**RetrieveApplication**](ApplicationsAPI.md#RetrieveApplication) | **Get** /edge_application/applications/{application_id} | Retrieve details of an Application
-[**UpdateApplication**](ApplicationsAPI.md#UpdateApplication) | **Put** /edge_application/applications/{application_id} | Update an Application
+[**CloneApplication**](ApplicationsAPI.md#CloneApplication) | **Post** /workspace/applications/{application_id}/clone | Clone an Application
+[**CreateApplication**](ApplicationsAPI.md#CreateApplication) | **Post** /workspace/applications | Create an Application
+[**DeleteApplication**](ApplicationsAPI.md#DeleteApplication) | **Delete** /workspace/applications/{application_id} | Delete an Application
+[**ListApplications**](ApplicationsAPI.md#ListApplications) | **Get** /workspace/applications | List Applications
+[**PartialUpdateApplication**](ApplicationsAPI.md#PartialUpdateApplication) | **Patch** /workspace/applications/{application_id} | Partially update an Application
+[**RetrieveApplication**](ApplicationsAPI.md#RetrieveApplication) | **Get** /workspace/applications/{application_id} | Retrieve details of an Application
+[**UpdateApplication**](ApplicationsAPI.md#UpdateApplication) | **Put** /workspace/applications/{application_id} | Update an Application
 
 
 
@@ -152,11 +152,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyApplication
+## DeleteApplication
 
-> ResponseDeleteApplication DestroyApplication(ctx, applicationId).Execute()
+> ResponseDeleteApplication DeleteApplication(ctx, applicationId).Execute()
 
-Destroy an Application
+Delete an Application
 
 
 
@@ -177,13 +177,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsAPI.DestroyApplication(context.Background(), applicationId).Execute()
+	resp, r, err := apiClient.ApplicationsAPI.DeleteApplication(context.Background(), applicationId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.DestroyApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.DeleteApplication``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyApplication`: ResponseDeleteApplication
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationsAPI.DestroyApplication`: %v\n", resp)
+	// response from `DeleteApplication`: ResponseDeleteApplication
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsAPI.DeleteApplication`: %v\n", resp)
 }
 ```
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyApplicationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteApplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
