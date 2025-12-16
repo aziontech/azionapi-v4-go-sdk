@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -26,7 +27,7 @@ type FirewallsRulesEngineAPIService service
 type ApiCreateFirewallRuleRequest struct {
 	ctx context.Context
 	ApiService *FirewallsRulesEngineAPIService
-	firewallId string
+	firewallId int64
 	firewallRuleEngineRequest *FirewallRuleEngineRequest
 }
 
@@ -45,10 +46,10 @@ CreateFirewallRule Create an Firewall Rule
 Create a new Rule for a specific Firewall in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
+ @param firewallId A unique integer value identifying the firewall.
  @return ApiCreateFirewallRuleRequest
 */
-func (a *FirewallsRulesEngineAPIService) CreateFirewallRule(ctx context.Context, firewallId string) ApiCreateFirewallRuleRequest {
+func (a *FirewallsRulesEngineAPIService) CreateFirewallRule(ctx context.Context, firewallId int64) ApiCreateFirewallRuleRequest {
 	return ApiCreateFirewallRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,7 +72,7 @@ func (a *FirewallsRulesEngineAPIService) CreateFirewallRuleExecute(r ApiCreateFi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/request_rules"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/request_rules"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,54 +228,54 @@ func (a *FirewallsRulesEngineAPIService) CreateFirewallRuleExecute(r ApiCreateFi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyFirewallRuleRequest struct {
+type ApiDeleteFirewallRuleRequest struct {
 	ctx context.Context
 	ApiService *FirewallsRulesEngineAPIService
-	firewallId string
-	id string
+	firewallId int64
+	requestRuleId int64
 }
 
-func (r ApiDestroyFirewallRuleRequest) Execute() (*ResponseDeleteFirewallRuleEngine, *http.Response, error) {
-	return r.ApiService.DestroyFirewallRuleExecute(r)
+func (r ApiDeleteFirewallRuleRequest) Execute() (*ResponseAsyncDeleteFirewallRuleEngine, *http.Response, error) {
+	return r.ApiService.DeleteFirewallRuleExecute(r)
 }
 
 /*
-DestroyFirewallRule Destroy an Firewall Rule
+DeleteFirewallRule Delete an Firewall Rule
 
-Destroy a specific Rule in your account.
+Delete a specific Rule in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
- @param id
- @return ApiDestroyFirewallRuleRequest
+ @param firewallId A unique integer value identifying the firewall.
+ @param requestRuleId A unique integer value identifying the request rule.
+ @return ApiDeleteFirewallRuleRequest
 */
-func (a *FirewallsRulesEngineAPIService) DestroyFirewallRule(ctx context.Context, firewallId string, id string) ApiDestroyFirewallRuleRequest {
-	return ApiDestroyFirewallRuleRequest{
+func (a *FirewallsRulesEngineAPIService) DeleteFirewallRule(ctx context.Context, firewallId int64, requestRuleId int64) ApiDeleteFirewallRuleRequest {
+	return ApiDeleteFirewallRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		firewallId: firewallId,
-		id: id,
+		requestRuleId: requestRuleId,
 	}
 }
 
 // Execute executes the request
-//  @return ResponseDeleteFirewallRuleEngine
-func (a *FirewallsRulesEngineAPIService) DestroyFirewallRuleExecute(r ApiDestroyFirewallRuleRequest) (*ResponseDeleteFirewallRuleEngine, *http.Response, error) {
+//  @return ResponseAsyncDeleteFirewallRuleEngine
+func (a *FirewallsRulesEngineAPIService) DeleteFirewallRuleExecute(r ApiDeleteFirewallRuleRequest) (*ResponseAsyncDeleteFirewallRuleEngine, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteFirewallRuleEngine
+		localVarReturnValue  *ResponseAsyncDeleteFirewallRuleEngine
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsRulesEngineAPIService.DestroyFirewallRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsRulesEngineAPIService.DeleteFirewallRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/request_rules/{request_rule_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"request_rule_id"+"}", url.PathEscape(parameterValueToString(r.requestRuleId, "requestRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,17 +428,73 @@ func (a *FirewallsRulesEngineAPIService) DestroyFirewallRuleExecute(r ApiDestroy
 type ApiListFirewallRulesRequest struct {
 	ctx context.Context
 	ApiService *FirewallsRulesEngineAPIService
-	firewallId string
+	firewallId int64
+	description *string
 	fields *string
+	id *int64
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
+	name *string
+	orderGte *int64
+	orderLte *int64
 	ordering *string
 	page *int64
 	pageSize *int64
 	search *string
 }
 
+// Filter by description (case-insensitive, partial match).
+func (r ApiListFirewallRulesRequest) Description(description string) ApiListFirewallRulesRequest {
+	r.description = &description
+	return r
+}
+
 // Comma-separated list of field names to include in the response.
 func (r ApiListFirewallRulesRequest) Fields(fields string) ApiListFirewallRulesRequest {
 	r.fields = &fields
+	return r
+}
+
+// Filter by id (accepts comma-separated values).
+func (r ApiListFirewallRulesRequest) Id(id int64) ApiListFirewallRulesRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListFirewallRulesRequest) LastEditor(lastEditor string) ApiListFirewallRulesRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListFirewallRulesRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListFirewallRulesRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListFirewallRulesRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListFirewallRulesRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListFirewallRulesRequest) Name(name string) ApiListFirewallRulesRequest {
+	r.name = &name
+	return r
+}
+
+// Filter by order (greater than or equal).
+func (r ApiListFirewallRulesRequest) OrderGte(orderGte int64) ApiListFirewallRulesRequest {
+	r.orderGte = &orderGte
+	return r
+}
+
+// Filter by order (less than or equal).
+func (r ApiListFirewallRulesRequest) OrderLte(orderLte int64) ApiListFirewallRulesRequest {
+	r.orderLte = &orderLte
 	return r
 }
 
@@ -475,10 +532,10 @@ ListFirewallRules List Firewall Rules
 List all Rules for a specific Firewall owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
+ @param firewallId A unique integer value identifying the firewall.
  @return ApiListFirewallRulesRequest
 */
-func (a *FirewallsRulesEngineAPIService) ListFirewallRules(ctx context.Context, firewallId string) ApiListFirewallRulesRequest {
+func (a *FirewallsRulesEngineAPIService) ListFirewallRules(ctx context.Context, firewallId int64) ApiListFirewallRulesRequest {
 	return ApiListFirewallRulesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -501,15 +558,39 @@ func (a *FirewallsRulesEngineAPIService) ListFirewallRulesExecute(r ApiListFirew
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/request_rules"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/request_rules"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.description != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
+	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	}
+	if r.orderGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order__gte", r.orderGte, "form", "")
+	}
+	if r.orderLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order__lte", r.orderLte, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -670,7 +751,7 @@ func (a *FirewallsRulesEngineAPIService) ListFirewallRulesExecute(r ApiListFirew
 type ApiOrderFirewallRulesRequest struct {
 	ctx context.Context
 	ApiService *FirewallsRulesEngineAPIService
-	firewallId string
+	firewallId int64
 	firewallRuleEngineOrderRequest *FirewallRuleEngineOrderRequest
 	ordering *string
 	page *int64
@@ -717,10 +798,10 @@ OrderFirewallRules Ordering Firewall Rules
 Reoder all Rules for a specific Firewall owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
+ @param firewallId A unique integer value identifying the firewall.
  @return ApiOrderFirewallRulesRequest
 */
-func (a *FirewallsRulesEngineAPIService) OrderFirewallRules(ctx context.Context, firewallId string) ApiOrderFirewallRulesRequest {
+func (a *FirewallsRulesEngineAPIService) OrderFirewallRules(ctx context.Context, firewallId int64) ApiOrderFirewallRulesRequest {
 	return ApiOrderFirewallRulesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -743,7 +824,7 @@ func (a *FirewallsRulesEngineAPIService) OrderFirewallRulesExecute(r ApiOrderFir
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/request_rules/order"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/request_rules/order"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -914,8 +995,8 @@ func (a *FirewallsRulesEngineAPIService) OrderFirewallRulesExecute(r ApiOrderFir
 type ApiPartialUpdateFirewallRuleRequest struct {
 	ctx context.Context
 	ApiService *FirewallsRulesEngineAPIService
-	firewallId string
-	id string
+	firewallId int64
+	requestRuleId int64
 	patchedFirewallRuleEngineRequest *PatchedFirewallRuleEngineRequest
 }
 
@@ -934,16 +1015,16 @@ PartialUpdateFirewallRule Partially update an Firewall Rule
 Update one or more fields of an existing Firewall Rule without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
- @param id
+ @param firewallId A unique integer value identifying the firewall.
+ @param requestRuleId A unique integer value identifying the request rule.
  @return ApiPartialUpdateFirewallRuleRequest
 */
-func (a *FirewallsRulesEngineAPIService) PartialUpdateFirewallRule(ctx context.Context, firewallId string, id string) ApiPartialUpdateFirewallRuleRequest {
+func (a *FirewallsRulesEngineAPIService) PartialUpdateFirewallRule(ctx context.Context, firewallId int64, requestRuleId int64) ApiPartialUpdateFirewallRuleRequest {
 	return ApiPartialUpdateFirewallRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		firewallId: firewallId,
-		id: id,
+		requestRuleId: requestRuleId,
 	}
 }
 
@@ -962,9 +1043,9 @@ func (a *FirewallsRulesEngineAPIService) PartialUpdateFirewallRuleExecute(r ApiP
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/request_rules/{request_rule_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"request_rule_id"+"}", url.PathEscape(parameterValueToString(r.requestRuleId, "requestRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1119,8 +1200,8 @@ func (a *FirewallsRulesEngineAPIService) PartialUpdateFirewallRuleExecute(r ApiP
 type ApiRetrieveFirewallRuleRequest struct {
 	ctx context.Context
 	ApiService *FirewallsRulesEngineAPIService
-	firewallId string
-	id string
+	firewallId int64
+	requestRuleId int64
 	fields *string
 }
 
@@ -1140,16 +1221,16 @@ RetrieveFirewallRule Retrieve details of an Firewall Rule
 Retrieve details of a specific Rule in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
- @param id
+ @param firewallId A unique integer value identifying the firewall.
+ @param requestRuleId A unique integer value identifying the request rule.
  @return ApiRetrieveFirewallRuleRequest
 */
-func (a *FirewallsRulesEngineAPIService) RetrieveFirewallRule(ctx context.Context, firewallId string, id string) ApiRetrieveFirewallRuleRequest {
+func (a *FirewallsRulesEngineAPIService) RetrieveFirewallRule(ctx context.Context, firewallId int64, requestRuleId int64) ApiRetrieveFirewallRuleRequest {
 	return ApiRetrieveFirewallRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		firewallId: firewallId,
-		id: id,
+		requestRuleId: requestRuleId,
 	}
 }
 
@@ -1168,9 +1249,9 @@ func (a *FirewallsRulesEngineAPIService) RetrieveFirewallRuleExecute(r ApiRetrie
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/request_rules/{request_rule_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"request_rule_id"+"}", url.PathEscape(parameterValueToString(r.requestRuleId, "requestRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1326,8 +1407,8 @@ func (a *FirewallsRulesEngineAPIService) RetrieveFirewallRuleExecute(r ApiRetrie
 type ApiUpdateFirewallRuleRequest struct {
 	ctx context.Context
 	ApiService *FirewallsRulesEngineAPIService
-	firewallId string
-	id string
+	firewallId int64
+	requestRuleId int64
 	firewallRuleEngineRequest *FirewallRuleEngineRequest
 }
 
@@ -1346,16 +1427,16 @@ UpdateFirewallRule Update an Firewall Rule
 Update an existing Rule. This replaces the entire Rule with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
- @param id
+ @param firewallId A unique integer value identifying the firewall.
+ @param requestRuleId A unique integer value identifying the request rule.
  @return ApiUpdateFirewallRuleRequest
 */
-func (a *FirewallsRulesEngineAPIService) UpdateFirewallRule(ctx context.Context, firewallId string, id string) ApiUpdateFirewallRuleRequest {
+func (a *FirewallsRulesEngineAPIService) UpdateFirewallRule(ctx context.Context, firewallId int64, requestRuleId int64) ApiUpdateFirewallRuleRequest {
 	return ApiUpdateFirewallRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		firewallId: firewallId,
-		id: id,
+		requestRuleId: requestRuleId,
 	}
 }
 
@@ -1374,9 +1455,9 @@ func (a *FirewallsRulesEngineAPIService) UpdateFirewallRuleExecute(r ApiUpdateFi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/request_rules/{request_rule_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"request_rule_id"+"}", url.PathEscape(parameterValueToString(r.requestRuleId, "requestRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

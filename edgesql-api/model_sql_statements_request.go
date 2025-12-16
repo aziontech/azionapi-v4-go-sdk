@@ -21,6 +21,7 @@ var _ MappedNullable = &SQLStatementsRequest{}
 
 // SQLStatementsRequest struct for SQLStatementsRequest
 type SQLStatementsRequest struct {
+	// List of SQL statements to execute
 	Statements []string `json:"statements"`
 }
 

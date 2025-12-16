@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **string** |  | 
+**Code** | **string** | 6-digit TOTP code | 
 
 ## Methods
 

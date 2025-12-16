@@ -30,7 +30,7 @@ type JSONAPIErrorObject struct {
 	// References to the primary source of the error
 	Source *JSONAPIErrorSource `json:"source,omitempty"`
 	// Non-standard meta-information about the error
-	Meta interface{} `json:"meta,omitempty"`
+	Meta map[string]interface{} `json:"meta,omitempty"`
 }
 
 // NewJSONAPIErrorObject instantiates a new JSONAPIErrorObject object
@@ -210,10 +210,10 @@ func (o *JSONAPIErrorObject) SetSource(v JSONAPIErrorSource) {
 	o.Source = &v
 }
 
-// GetMeta returns the Meta field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *JSONAPIErrorObject) GetMeta() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetMeta returns the Meta field value if set, zero value otherwise.
+func (o *JSONAPIErrorObject) GetMeta() map[string]interface{} {
+	if o == nil || IsNil(o.Meta) {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Meta
@@ -221,12 +221,11 @@ func (o *JSONAPIErrorObject) GetMeta() interface{} {
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *JSONAPIErrorObject) GetMetaOk() (*interface{}, bool) {
+func (o *JSONAPIErrorObject) GetMetaOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Meta) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Meta, true
+	return o.Meta, true
 }
 
 // HasMeta returns a boolean if a field has been set.
@@ -238,8 +237,8 @@ func (o *JSONAPIErrorObject) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given interface{} and assigns it to the Meta field.
-func (o *JSONAPIErrorObject) SetMeta(v interface{}) {
+// SetMeta gets a reference to the given map[string]interface{} and assigns it to the Meta field.
+func (o *JSONAPIErrorObject) SetMeta(v map[string]interface{}) {
 	o.Meta = v
 }
 
@@ -268,7 +267,7 @@ func (o JSONAPIErrorObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if o.Meta != nil {
+	if !IsNil(o.Meta) {
 		toSerialize["meta"] = o.Meta
 	}
 	return toSerialize, nil

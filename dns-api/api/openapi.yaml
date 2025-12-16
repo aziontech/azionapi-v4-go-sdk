@@ -12,17 +12,17 @@ paths:
   /edge_dns/zones:
     get:
       description: List all DNS Zones owned by your account.
-      operationId: listDnsZones
+      operationId: list_dns_zones
       parameters:
-      - description: Search by active
+      - description: Filter by active status.
         explode: true
         in: query
         name: active
         required: false
         schema:
-          type: string
+          type: boolean
         style: form
-      - description: Search by domain
+      - description: Filter by domain (exact match).
         explode: true
         in: query
         name: domain
@@ -38,7 +38,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Search by name
+      - description: Filter by name (exact match).
         explode: true
         in: query
         name: name
@@ -74,7 +74,8 @@ paths:
           format: int64
           type: integer
         style: form
-      - description: A search term.
+      - description: "Search in name and domain fields (case-insensitive, partial\
+          \ match)."
         explode: true
         in: query
         name: search
@@ -209,7 +210,7 @@ paths:
       - DNS - Zones
     post:
       description: Create a new DNS Zone for your account.
-      operationId: createDnsZone
+      operationId: create_dns_zone
       requestBody:
         content:
           application/json:
@@ -347,25 +348,23 @@ paths:
       summary: Create a DNS Zone
       tags:
       - DNS - Zones
-  /edge_dns/zones/{zoneId}:
+  /edge_dns/zones/{zone_id}:
     delete:
       description: Delete a specific DNS Zone in your account.
-      operationId: deleteDnsZone
+      operationId: delete_dns_zone
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseDeleteZone"
-          description: ""
+        "204":
+          description: No response body
         "202":
           content:
             application/json:
@@ -492,7 +491,7 @@ paths:
       - DNS - Zones
     get:
       description: Retrieve details of a specific DNS Zone in your account.
-      operationId: retrieveDnsZone
+      operationId: retrieve_dns_zone
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -502,12 +501,14 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
         "200":
@@ -637,14 +638,16 @@ paths:
     patch:
       description: Update one or more fields of an existing DNS Zone without affecting
         other fields.
-      operationId: partialUpdateDnsZone
+      operationId: partial_update_dns_zone
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -785,14 +788,16 @@ paths:
     put:
       description: Update an existing a DNS Zone. This replaces the entire DNS Zone
         with the new data provided.
-      operationId: updateDnsZone
+      operationId: update_dns_zone
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -931,10 +936,10 @@ paths:
       summary: Update a DNS Zone
       tags:
       - DNS - Zones
-  /edge_dns/zones/{zoneId}/dnssec:
+  /edge_dns/zones/{zone_id}/dnssec:
     get:
       description: Retrieve details of a specific DNSSEC from a DNS Zone in your account.
-      operationId: retrieveDnssec
+      operationId: retrieve_dnssec
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -944,9 +949,10 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
           format: int64
@@ -1080,11 +1086,12 @@ paths:
     patch:
       description: Update one or more fields of an existing DNSSEC without affecting
         other fields.
-      operationId: partialUpdateDnssec
+      operationId: partial_update_dnssec
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
           format: int64
@@ -1229,11 +1236,12 @@ paths:
     put:
       description: Update an existing a DNSSEC. This replaces the entire DNSSEC with
         the new data provided.
-      operationId: updateDnssec
+      operationId: update_dnssec
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
           format: int64
@@ -1376,10 +1384,10 @@ paths:
       summary: Update a DNSSEC
       tags:
       - DNS - DNSSEC
-  /edge_dns/zones/{zoneId}/records:
+  /edge_dns/zones/{zone_id}/records:
     get:
       description: List all DNS Records from a DNS Zone owned by your account.
-      operationId: listDnsRecords
+      operationId: list_dns_records
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -1417,7 +1425,8 @@ paths:
           format: int64
           type: integer
         style: form
-      - description: A search term.
+      - description: "Search in answers, entry, ttl, and type fields (case-insensitive,\
+          \ partial match)."
         explode: true
         in: query
         name: search
@@ -1425,12 +1434,14 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
         "200":
@@ -1559,14 +1570,16 @@ paths:
       - DNS - Records
     post:
       description: Create a new DNS Record in a DNS Zone for your account.
-      operationId: createDnsRecord
+      operationId: create_dns_record
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -1705,32 +1718,32 @@ paths:
       summary: Create a DNS Record
       tags:
       - DNS - Records
-  /edge_dns/zones/{zoneId}/records/{recordId}:
+  /edge_dns/zones/{zone_id}/records/{record_id}:
     delete:
       description: Delete a specific DNS Record from a DNS Zone in your account.
-      operationId: deleteDnsRecord
+      operationId: delete_dns_record
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Record.
+        explode: false
         in: path
-        name: recordId
+        name: record_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseDeleteRecord"
-          description: ""
+        "204":
+          description: No response body
         "202":
           content:
             application/json:
@@ -1858,7 +1871,7 @@ paths:
     get:
       description: Retrieve details of a specific DNS Record from a DNS Zone in your
         account.
-      operationId: retrieveDnsRecord
+      operationId: retrieve_dns_record
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -1868,19 +1881,23 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
+      - description: A unique integer value identifying the DNS Record.
+        explode: false
         in: path
-        name: recordId
+        name: record_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
         "200":
@@ -2010,21 +2027,25 @@ paths:
     patch:
       description: Update one or more fields of an existing DNS Record without affecting
         other fields.
-      operationId: partialUpdateDnsRecord
+      operationId: partial_update_dns_record
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Record.
+        explode: false
         in: path
-        name: recordId
+        name: record_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -2165,21 +2186,25 @@ paths:
     put:
       description: Update an existing a DNS Record. This replaces the entire DNS Record
         with the new data provided.
-      operationId: updateDnsRecord
+      operationId: update_dns_record
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the DNS Record.
+        explode: false
         in: path
-        name: recordId
+        name: record_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-      - explode: false
+      - description: A unique integer value identifying the DNS Zone.
+        explode: false
         in: path
-        name: zoneId
+        name: zone_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -2321,7 +2346,6 @@ paths:
 components:
   schemas:
     AlgType:
-      additionalProperties: false
       properties:
         id:
           format: int64
@@ -2335,10 +2359,8 @@ components:
       required:
       - id
       - slug
-      title: AlgType
       type: object
     AlgTypeRequest:
-      additionalProperties: false
       properties:
         id:
           format: int64
@@ -2352,20 +2374,25 @@ components:
       required:
       - id
       - slug
-      title: AlgTypeRequest
       type: object
     DNSSEC:
-      additionalProperties: false
       example:
         delegation_signer: ""
         enabled: true
-        status: ""
+        status: status
       properties:
         enabled:
           type: boolean
         status:
-          allOf:
-          - $ref: "#/components/schemas/StatusEnum"
+          description: |-
+            * `unconfigured` - unconfigured
+            * `waiting` - waiting
+            * `ready` - ready
+          type: string
+          x-extensible-enum:
+          - unconfigured
+          - waiting
+          - ready
         delegation_signer:
           allOf:
           - $ref: "#/components/schemas/DelegationSigner"
@@ -2374,10 +2401,8 @@ components:
       - delegation_signer
       - enabled
       - status
-      title: DNSSEC
       type: object
     DNSSECRequest:
-      additionalProperties: false
       example:
         enabled: true
       properties:
@@ -2385,10 +2410,8 @@ components:
           type: boolean
       required:
       - enabled
-      title: DNSSECRequest
       type: object
     DelegationSigner:
-      additionalProperties: false
       properties:
         algorithm_type:
           $ref: "#/components/schemas/AlgType"
@@ -2408,33 +2431,8 @@ components:
       - digest
       - digest_type
       - key_tag
-      title: DelegationSigner
-      type: object
-    DelegationSignerRequest:
-      additionalProperties: false
-      properties:
-        algorithm_type:
-          $ref: "#/components/schemas/AlgTypeRequest"
-        digest:
-          maxLength: 100
-          minLength: 1
-          type: string
-        digest_type:
-          $ref: "#/components/schemas/AlgTypeRequest"
-        key_tag:
-          format: int64
-          maximum: 65535
-          minimum: 1
-          type: integer
-      required:
-      - algorithm_type
-      - digest
-      - digest_type
-      - key_tag
-      title: DelegationSignerRequest
       type: object
     JSONAPIErrorObject:
-      additionalProperties: false
       description: Serializer for a single JSON:API error object.
       example:
         code: code
@@ -2474,10 +2472,8 @@ components:
           additionalProperties: {}
           description: Non-standard meta-information about the error
           type: object
-      title: JSONAPIErrorObject
       type: object
     JSONAPIErrorResponse:
-      additionalProperties: false
       description: Serializer for a JSON:API error response.
       example:
         errors:
@@ -2503,10 +2499,8 @@ components:
           type: array
       required:
       - errors
-      title: JSONAPIErrorResponse
       type: object
     JSONAPIErrorSource:
-      additionalProperties: false
       description: Serializer for the 'source' object in a JSON:API error.
       properties:
         pointer:
@@ -2525,12 +2519,12 @@ components:
           maxLength: 4096
           minLength: 1
           type: string
-      title: JSONAPIErrorSource
       type: object
     PaginatedRecordList:
-      additionalProperties: false
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - name: name
           description: description
@@ -2541,7 +2535,7 @@ components:
           id: 0
           type: type
           ttl: 1294386359
-          policy: ""
+          policy: policy
         - name: name
           description: description
           rdata:
@@ -2551,24 +2545,47 @@ components:
           id: 0
           type: type
           ttl: 1294386359
-          policy: ""
+          policy: policy
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
+          type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
           type: integer
         results:
           items:
             $ref: "#/components/schemas/Record"
           type: array
-      title: PaginatedRecordList
       type: object
     PaginatedZoneList:
-      additionalProperties: false
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - product_version: product_version
           nameservers:
@@ -2586,30 +2603,49 @@ components:
           name: name
           active: true
           id: 0
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
           type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
         results:
           items:
             $ref: "#/components/schemas/Zone"
           type: array
-      title: PaginatedZoneList
       type: object
     PatchedDNSSECRequest:
-      additionalProperties: false
       example:
         enabled: true
       properties:
         enabled:
           type: boolean
-      title: PatchedDNSSECRequest
       type: object
     PatchedRecordRequest:
-      additionalProperties: false
       example:
         name: name
         description: description
@@ -2619,7 +2655,7 @@ components:
         weight: 153
         type: type
         ttl: 171976545
-        policy: ""
+        policy: policy
       properties:
         description:
           maxLength: 45
@@ -2647,25 +2683,39 @@ components:
             * `TXT` - TXT
             * `CAA` - CAA
             * `DS` - DS
-          title: TypeEnum
           type: string
+          x-extensible-enum:
+          - A
+          - AAAA
+          - ANAME
+          - CNAME
+          - MX
+          - NS
+          - PTR
+          - SRV
+          - TXT
+          - CAA
+          - DS
         rdata:
           items:
             minLength: 1
             type: string
           type: array
         policy:
-          allOf:
-          - $ref: "#/components/schemas/PolicyEnum"
+          description: |-
+            * `simple` - simple
+            * `weighted` - weighted
+          type: string
+          x-extensible-enum:
+          - simple
+          - weighted
         weight:
           format: int64
           maximum: 255
           minimum: 0
           type: integer
-      title: PatchedRecordRequest
       type: object
     PatchedUpdateZoneRequest:
-      additionalProperties: false
       example:
         name: name
         active: true
@@ -2676,16 +2726,8 @@ components:
           type: string
         active:
           type: boolean
-      title: PatchedUpdateZoneRequest
       type: object
-    PolicyEnum:
-      description: |-
-        * `simple` - simple
-        * `weighted` - weighted
-      title: PolicyEnum
-      type: string
     Record:
-      additionalProperties: false
       example:
         name: name
         description: description
@@ -2696,7 +2738,7 @@ components:
         id: 0
         type: type
         ttl: 1294386359
-        policy: ""
+        policy: policy
       properties:
         id:
           format: int64
@@ -2727,15 +2769,31 @@ components:
             * `TXT` - TXT
             * `CAA` - CAA
             * `DS` - DS
-          title: TypeEnum
           type: string
+          x-extensible-enum:
+          - A
+          - AAAA
+          - ANAME
+          - CNAME
+          - MX
+          - NS
+          - PTR
+          - SRV
+          - TXT
+          - CAA
+          - DS
         rdata:
           items:
             type: string
           type: array
         policy:
-          allOf:
-          - $ref: "#/components/schemas/PolicyEnum"
+          description: |-
+            * `simple` - simple
+            * `weighted` - weighted
+          type: string
+          x-extensible-enum:
+          - simple
+          - weighted
         weight:
           format: int64
           maximum: 255
@@ -2746,10 +2804,8 @@ components:
       - name
       - rdata
       - type
-      title: Record
       type: object
     RecordRequest:
-      additionalProperties: false
       example:
         name: name
         description: description
@@ -2759,7 +2815,7 @@ components:
         weight: 153
         type: type
         ttl: 171976545
-        policy: ""
+        policy: policy
       properties:
         description:
           maxLength: 45
@@ -2787,16 +2843,32 @@ components:
             * `TXT` - TXT
             * `CAA` - CAA
             * `DS` - DS
-          title: TypeEnum
           type: string
+          x-extensible-enum:
+          - A
+          - AAAA
+          - ANAME
+          - CNAME
+          - MX
+          - NS
+          - PTR
+          - SRV
+          - TXT
+          - CAA
+          - DS
         rdata:
           items:
             minLength: 1
             type: string
           type: array
         policy:
-          allOf:
-          - $ref: "#/components/schemas/PolicyEnum"
+          description: |-
+            * `simple` - simple
+            * `weighted` - weighted
+          type: string
+          x-extensible-enum:
+          - simple
+          - weighted
         weight:
           format: int64
           maximum: 255
@@ -2806,15 +2878,13 @@ components:
       - name
       - rdata
       - type
-      title: RecordRequest
       type: object
     ResponseAsyncDNSSEC:
-      additionalProperties: false
       example:
         data:
           delegation_signer: ""
           enabled: true
-          status: ""
+          status: status
         state: state
       properties:
         state:
@@ -2825,10 +2895,8 @@ components:
           $ref: "#/components/schemas/DNSSEC"
       required:
       - data
-      title: ResponseAsyncDNSSEC
       type: object
     ResponseAsyncDeleteRecord:
-      additionalProperties: false
       example:
         state: state
       properties:
@@ -2836,10 +2904,8 @@ components:
           maxLength: 8
           minLength: 1
           type: string
-      title: ResponseAsyncDeleteRecord
       type: object
     ResponseAsyncDeleteZone:
-      additionalProperties: false
       example:
         state: state
       properties:
@@ -2847,10 +2913,8 @@ components:
           maxLength: 8
           minLength: 1
           type: string
-      title: ResponseAsyncDeleteZone
       type: object
     ResponseAsyncRecord:
-      additionalProperties: false
       example:
         data:
           name: name
@@ -2862,7 +2926,7 @@ components:
           id: 0
           type: type
           ttl: 1294386359
-          policy: ""
+          policy: policy
         state: state
       properties:
         state:
@@ -2873,10 +2937,8 @@ components:
           $ref: "#/components/schemas/Record"
       required:
       - data
-      title: ResponseAsyncRecord
       type: object
     ResponseAsyncZone:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -2897,15 +2959,13 @@ components:
           $ref: "#/components/schemas/Zone"
       required:
       - data
-      title: ResponseAsyncZone
       type: object
     ResponseDNSSEC:
-      additionalProperties: false
       example:
         data:
           delegation_signer: ""
           enabled: true
-          status: ""
+          status: status
         state: state
       properties:
         state:
@@ -2916,32 +2976,8 @@ components:
           $ref: "#/components/schemas/DNSSEC"
       required:
       - data
-      title: ResponseDNSSEC
-      type: object
-    ResponseDeleteRecord:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeleteRecord
-      type: object
-    ResponseDeleteZone:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeleteZone
       type: object
     ResponseRecord:
-      additionalProperties: false
       example:
         data:
           name: name
@@ -2953,7 +2989,7 @@ components:
           id: 0
           type: type
           ttl: 1294386359
-          policy: ""
+          policy: policy
         state: state
       properties:
         state:
@@ -2964,24 +3000,20 @@ components:
           $ref: "#/components/schemas/Record"
       required:
       - data
-      title: ResponseRecord
       type: object
     ResponseRetrieveDNSSEC:
-      additionalProperties: false
       example:
         data:
           delegation_signer: ""
           enabled: true
-          status: ""
+          status: status
       properties:
         data:
           $ref: "#/components/schemas/DNSSEC"
       required:
       - data
-      title: ResponseRetrieveDNSSEC
       type: object
     ResponseRetrieveRecord:
-      additionalProperties: false
       example:
         data:
           name: name
@@ -2993,16 +3025,14 @@ components:
           id: 0
           type: type
           ttl: 1294386359
-          policy: ""
+          policy: policy
       properties:
         data:
           $ref: "#/components/schemas/Record"
       required:
       - data
-      title: ResponseRetrieveRecord
       type: object
     ResponseRetrieveZone:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -3018,10 +3048,8 @@ components:
           $ref: "#/components/schemas/Zone"
       required:
       - data
-      title: ResponseRetrieveZone
       type: object
     ResponseZone:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -3042,32 +3070,8 @@ components:
           $ref: "#/components/schemas/Zone"
       required:
       - data
-      title: ResponseZone
       type: object
-    StatusEnum:
-      description: |-
-        * `unconfigured` - unconfigured
-        * `waiting` - waiting
-        * `ready` - ready
-      title: StatusEnum
-      type: string
-    TypeEnum:
-      description: |-
-        * `A` - A
-        * `AAAA` - AAAA
-        * `ANAME` - ANAME
-        * `CNAME` - CNAME
-        * `MX` - MX
-        * `NS` - NS
-        * `PTR` - PTR
-        * `SRV` - SRV
-        * `TXT` - TXT
-        * `CAA` - CAA
-        * `DS` - DS
-      title: TypeEnum
-      type: string
     UpdateZoneRequest:
-      additionalProperties: false
       example:
         name: name
         active: true
@@ -3081,10 +3085,8 @@ components:
       required:
       - active
       - name
-      title: UpdateZoneRequest
       type: object
     Zone:
-      additionalProperties: false
       example:
         product_version: product_version
         nameservers:
@@ -3123,10 +3125,8 @@ components:
       - name
       - nameservers
       - product_version
-      title: Zone
       type: object
     ZoneRequest:
-      additionalProperties: false
       example:
         domain: domain
         name: name
@@ -3146,7 +3146,6 @@ components:
       - active
       - domain
       - name
-      title: ZoneRequest
       type: object
   securitySchemes:
     BearerAuth:
