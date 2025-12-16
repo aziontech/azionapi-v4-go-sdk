@@ -5,11 +5,11 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCustomPage**](CustomPagesAPI.md#CreateCustomPage) | **Post** /workspace/custom_pages | Create a Custom Page
-[**DestroyCustomPage**](CustomPagesAPI.md#DestroyCustomPage) | **Delete** /workspace/custom_pages/{id} | Destroy a Custom Page
+[**DeleteCustomPage**](CustomPagesAPI.md#DeleteCustomPage) | **Delete** /workspace/custom_pages/{custom_page_id} | Delete a Custom Page
 [**ListCustomPages**](CustomPagesAPI.md#ListCustomPages) | **Get** /workspace/custom_pages | List Custom Pages
-[**PartialUpdateCustomPage**](CustomPagesAPI.md#PartialUpdateCustomPage) | **Patch** /workspace/custom_pages/{id} | Partially update a Custom Page
-[**RetrieveCustomPage**](CustomPagesAPI.md#RetrieveCustomPage) | **Get** /workspace/custom_pages/{id} | Retrieve details of a Custom Page
-[**UpdateCustomPage**](CustomPagesAPI.md#UpdateCustomPage) | **Put** /workspace/custom_pages/{id} | Update a Custom Page
+[**PartialUpdateCustomPage**](CustomPagesAPI.md#PartialUpdateCustomPage) | **Patch** /workspace/custom_pages/{custom_page_id} | Partially update a Custom Page
+[**RetrieveCustomPage**](CustomPagesAPI.md#RetrieveCustomPage) | **Get** /workspace/custom_pages/{custom_page_id} | Retrieve details of a Custom Page
+[**UpdateCustomPage**](CustomPagesAPI.md#UpdateCustomPage) | **Put** /workspace/custom_pages/{custom_page_id} | Update a Custom Page
 
 
 
@@ -79,11 +79,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyCustomPage
+## DeleteCustomPage
 
-> ResponseDeleteCustomPage DestroyCustomPage(ctx, id).Execute()
+> ResponseDeleteCustomPage DeleteCustomPage(ctx, customPageId).Execute()
 
-Destroy a Custom Page
+Delete a Custom Page
 
 
 
@@ -100,17 +100,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	customPageId := "customPageId_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomPagesAPI.DestroyCustomPage(context.Background(), id).Execute()
+	resp, r, err := apiClient.CustomPagesAPI.DeleteCustomPage(context.Background(), customPageId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CustomPagesAPI.DestroyCustomPage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomPagesAPI.DeleteCustomPage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyCustomPage`: ResponseDeleteCustomPage
-	fmt.Fprintf(os.Stdout, "Response from `CustomPagesAPI.DestroyCustomPage`: %v\n", resp)
+	// response from `DeleteCustomPage`: ResponseDeleteCustomPage
+	fmt.Fprintf(os.Stdout, "Response from `CustomPagesAPI.DeleteCustomPage`: %v\n", resp)
 }
 ```
 
@@ -120,11 +120,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**customPageId** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyCustomPageRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteCustomPageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateCustomPage
 
-> ResponseCustomPage PartialUpdateCustomPage(ctx, id).PatchedCustomPageRequest(patchedCustomPageRequest).Execute()
+> ResponseCustomPage PartialUpdateCustomPage(ctx, customPageId).PatchedCustomPageRequest(patchedCustomPageRequest).Execute()
 
 Partially update a Custom Page
 
@@ -244,12 +244,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	customPageId := "customPageId_example" // string | 
 	patchedCustomPageRequest := *openapiclient.NewPatchedCustomPageRequest() // PatchedCustomPageRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomPagesAPI.PartialUpdateCustomPage(context.Background(), id).PatchedCustomPageRequest(patchedCustomPageRequest).Execute()
+	resp, r, err := apiClient.CustomPagesAPI.PartialUpdateCustomPage(context.Background(), customPageId).PatchedCustomPageRequest(patchedCustomPageRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomPagesAPI.PartialUpdateCustomPage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,7 +265,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**customPageId** | **string** |  | 
 
 ### Other Parameters
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveCustomPage
 
-> ResponseRetrieveCustomPage RetrieveCustomPage(ctx, id).Fields(fields).Execute()
+> ResponseRetrieveCustomPage RetrieveCustomPage(ctx, customPageId).Fields(fields).Execute()
 
 Retrieve details of a Custom Page
 
@@ -316,12 +316,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	customPageId := "customPageId_example" // string | 
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomPagesAPI.RetrieveCustomPage(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.CustomPagesAPI.RetrieveCustomPage(context.Background(), customPageId).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomPagesAPI.RetrieveCustomPage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,7 +337,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**customPageId** | **string** |  | 
 
 ### Other Parameters
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCustomPage
 
-> ResponseCustomPage UpdateCustomPage(ctx, id).CustomPageRequest(customPageRequest).Execute()
+> ResponseCustomPage UpdateCustomPage(ctx, customPageId).CustomPageRequest(customPageRequest).Execute()
 
 Update a Custom Page
 
@@ -388,12 +388,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	customPageId := "customPageId_example" // string | 
 	customPageRequest := *openapiclient.NewCustomPageRequest("Name_example", []openapiclient.PageRequest{*openapiclient.NewPageRequest("Code_example", *openapiclient.NewPageConnectorRequest(*openapiclient.NewPageConnectorAttributesRequest(int64(123))))}) // CustomPageRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomPagesAPI.UpdateCustomPage(context.Background(), id).CustomPageRequest(customPageRequest).Execute()
+	resp, r, err := apiClient.CustomPagesAPI.UpdateCustomPage(context.Background(), customPageId).CustomPageRequest(customPageRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomPagesAPI.UpdateCustomPage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,7 +409,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**customPageId** | **string** |  | 
 
 ### Other Parameters
 

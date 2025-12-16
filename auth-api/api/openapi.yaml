@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   description: REST API OpenAPI documentation for the Auth API
-  title: Auth API
+  title: auth-api
   version: 1.0.0
 servers:
 - url: /
@@ -12,7 +12,7 @@ paths:
         This endpoint performs user authentication and issues the user’s JWT tokens.The response depends on whether multi-factor authentication (MFA) is enabled for the user:
          - If the user does not have MFA enabled, the API returns a TokenPair object containing the access_token and refresh_token, allowing immediate authentication.
          - If the user has MFA enabled, the response returns an MFAToken object.This temporary token must be used in the MFA verification endpoint to complete authentication.After successful verification of the second factor, the TokenPair is issued.
-      operationId: authUserLogin
+      operationId: auth_user_login
       requestBody:
         content:
           application/json:
@@ -23,20 +23,12 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                Executed:
-                  value:
-                    state: executed
               schema:
                 $ref: "#/components/schemas/ResponseLogin"
           description: ""
         "202":
           content:
             application/json:
-              examples:
-                Pending:
-                  value:
-                    state: pending
               schema:
                 $ref: "#/components/schemas/ResponseAsyncLogin"
           description: ""
@@ -124,6 +116,7 @@ paths:
           description: Unauthorized - Authentication credentials were not provided.
         "403":
           description: Forbidden - User is not allowed to access this resource.
+      security: []
       summary: User Login – Generate JWT Tokens
       tags:
       - Auth - Login
@@ -132,7 +125,7 @@ paths:
       description: |-
         Returns the login type configured for the user. This indicates whether the user authenticates directly via Azion credentials (login) or via a federated Identity Provider (federated) linked to their account.
         This endpoint allows clients to determine whether to proceed with Azion's native login flow or redirect the user to the Identity Provider (IdP) for authentication.
-      operationId: authUserLoginMethod
+      operationId: auth_user_login_method
       parameters:
       - description: Email address of the user
         explode: true
@@ -167,7 +160,7 @@ paths:
                     method: federated
                     url: http://localhost:8000/login
               schema:
-                $ref: "#/components/schemas/user_login_method_response"
+                $ref: "#/components/schemas/UserLoginMethodResponse"
           description: ""
         "400":
           content:
@@ -281,18 +274,51 @@ paths:
               schema:
                 $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Permission Denied
+      security: []
       summary: Check User Authentication Method
       tags:
       - Auth - Login
   /auth/mfa/totp:
     get:
       description: List all totp devices for user account and descendant accounts.
-      operationId: listTotpDevices
+      operationId: list_totp_devices
       parameters:
+      - description: Filter by confirmed status.
+        explode: true
+        in: query
+        name: confirmed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: "Filter by user's email (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: email
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
         name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by id (accepts comma-separated values).
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Filter by user's first name (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: name
         required: false
         schema:
           type: string
@@ -458,7 +484,11 @@ paths:
       - Auth - MFA TOTP Device
     post:
       description: Create a new TOTP device for your account.
-      operationId: createTotpDevice
+      operationId: create_totp_device
+      requestBody:
+        content:
+          application/json:
+            schema: {}
       responses:
         "201":
           content:
@@ -585,158 +615,18 @@ paths:
                 $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Throttled
       security:
-      - JWT MFA Authentication: []
+      - JwtMfaAuthentication: []
       summary: Create a TOTP device
-      tags:
-      - Auth - MFA TOTP Device
-  /auth/mfa/totp/{id}:
-    delete:
-      description: Destruction of a specific TOTP device from your account or descendant
-        account.
-      operationId: destroyTotpDevice
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseDeleteTOTPDeviceCreate"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncDeleteTOTPDeviceCreate"
-          description: ""
-        "401":
-          content:
-            application/json:
-              examples:
-                Error-10001:
-                  description: Invalid authentication credentials.
-                  summary: Authentication Failed
-                  value:
-                    errors:
-                    - status: "401"
-                      code: "10001"
-                      title: Authentication Failed
-                      detail: Invalid authentication credentials.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Authentication Failed
-        "403":
-          content:
-            application/json:
-              examples:
-                Error-10003:
-                  description: You do not have permission to perform this action.
-                  summary: Permission Denied
-                  value:
-                    errors:
-                    - status: "403"
-                      code: "10003"
-                      title: Permission Denied
-                      detail: You do not have permission to perform this action.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Permission Denied
-        "400":
-          content:
-            application/json:
-              examples:
-                Error-10000:
-                  description: Invalid data provided in the request.
-                  summary: Validation Error
-                  value:
-                    errors:
-                    - status: "400"
-                      code: "10000"
-                      title: Validation Error
-                      detail: Invalid data provided in the request.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Validation Error
-        "404":
-          content:
-            application/json:
-              examples:
-                Error-10004:
-                  description: Not found.
-                  summary: Not Found
-                  value:
-                    errors:
-                    - status: "404"
-                      code: "10004"
-                      title: Not Found
-                      detail: Not found.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Not Found
-        "405":
-          content:
-            application/json:
-              examples:
-                Error-10007:
-                  description: "Method \"{method}\" not allowed."
-                  summary: Method Not Allowed
-                  value:
-                    errors:
-                    - status: "405"
-                      code: "10007"
-                      title: Method Not Allowed
-                      detail: "Method \"{method}\" not allowed."
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Method Not Allowed
-        "406":
-          content:
-            application/json:
-              examples:
-                Error-10005:
-                  description: Could not satisfy the request Accept header.
-                  summary: Not Acceptable
-                  value:
-                    errors:
-                    - status: "406"
-                      code: "10005"
-                      title: Not Acceptable
-                      detail: Could not satisfy the request Accept header.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Not Acceptable
-        "429":
-          content:
-            application/json:
-              examples:
-                Error-10010:
-                  description: Request was throttled.
-                  summary: Throttled
-                  value:
-                    errors:
-                    - status: "429"
-                      code: "10010"
-                      title: Throttled
-                      detail: Request was throttled.
-              schema:
-                $ref: "#/components/schemas/JSONAPIErrorResponse"
-          description: Throttled
-      security:
-      - TokenAuth: []
-      - BearerAuth: []
-      summary: Destroy a TOTP device
       tags:
       - Auth - MFA TOTP Device
   /auth/revoke:
     post:
       description: Revoke refresh token via a POST request.
-      operationId: authUserRevoke
+      operationId: auth_user_revoke
+      requestBody:
+        content:
+          application/json:
+            schema: {}
       responses:
         "200":
           content:
@@ -843,7 +733,7 @@ paths:
         "403":
           description: Forbidden - User is not allowed to access this resource.
       security:
-      - JWT Refresh Authentication: []
+      - JwtRefreshAuthentication: []
       - {}
       summary: Revoke user JWT refresh token
       tags:
@@ -851,7 +741,7 @@ paths:
   /auth/token:
     post:
       description: "Refresh JWT access token, via a POST request."
-      operationId: authUserRefreshToken
+      operationId: auth_user_refresh_token
       requestBody:
         content:
           application/json:
@@ -983,30 +873,14 @@ paths:
                 $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Throttled
       security:
-      - JWT Refresh Authentication: []
+      - JwtRefreshAuthentication: []
       - {}
       summary: Refresh user JWT access token
       tags:
       - Auth - Refresh Access Token
 components:
   schemas:
-    DefaultErrorResponse:
-      additionalProperties: false
-      properties:
-        detail:
-          maxLength: 4096
-          minLength: 1
-          type: string
-      title: DefaultErrorResponse
-      type: object
-    EffectEnum:
-      description: |-
-        * `allow` - allow
-        * `deny` - deny
-      title: EffectEnum
-      type: string
     JSONAPIErrorObject:
-      additionalProperties: false
       description: Serializer for a single JSON:API error object.
       example:
         code: code
@@ -1046,10 +920,8 @@ components:
           additionalProperties: {}
           description: Non-standard meta-information about the error
           type: object
-      title: JSONAPIErrorObject
       type: object
     JSONAPIErrorResponse:
-      additionalProperties: false
       description: Serializer for a JSON:API error response.
       example:
         errors:
@@ -1075,10 +947,8 @@ components:
           type: array
       required:
       - errors
-      title: JSONAPIErrorResponse
       type: object
     JSONAPIErrorSource:
-      additionalProperties: false
       description: Serializer for the 'source' object in a JSON:API error.
       properties:
         pointer:
@@ -1097,15 +967,15 @@ components:
           maxLength: 4096
           minLength: 1
           type: string
-      title: JSONAPIErrorSource
       type: object
     LockoutPolicy:
-      additionalProperties: false
       properties:
         active:
           type: boolean
         max_attempts:
+          description: Maximum number of failed login attempts before lockout
           format: int64
+          maximum: 100
           minimum: 1
           type: integer
         blocking_period:
@@ -1116,15 +986,15 @@ components:
       - active
       - blocking_period
       - max_attempts
-      title: LockoutPolicy
       type: object
     LockoutPolicyRequest:
-      additionalProperties: false
       properties:
         active:
           type: boolean
         max_attempts:
+          description: Maximum number of failed login attempts before lockout
           format: int64
+          maximum: 100
           minimum: 1
           type: integer
         blocking_period:
@@ -1135,10 +1005,8 @@ components:
       - active
       - blocking_period
       - max_attempts
-      title: LockoutPolicyRequest
       type: object
     LoginRequest:
-      additionalProperties: false
       example:
         password: password
         account_id: 0
@@ -1150,6 +1018,8 @@ components:
           type: string
           writeOnly: true
         password:
+          description: User password
+          maxLength: 128
           minLength: 1
           type: string
           writeOnly: true
@@ -1161,7 +1031,6 @@ components:
       required:
       - email
       - password
-      title: LoginRequest
       type: object
     LoginResponse:
       additionalProperties: true
@@ -1173,9 +1042,7 @@ components:
       oneOf:
       - $ref: "#/components/schemas/TokenPair"
       - $ref: "#/components/schemas/MFAToken"
-      title: LoginResponse
     MFAToken:
-      additionalProperties: false
       description: |-
         Used when user has MFA enabled. Returns a temporary MFA token that must be
         verified with a TOTP code before receiving full access tokens.
@@ -1203,27 +1070,47 @@ components:
       - has_active_device
       - two_factor_required
       - two_factor_type
-      title: MFAToken
       type: object
     PaginatedPolicyList:
-      additionalProperties: false
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
+          type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
           type: integer
         results:
           items:
             $ref: "#/components/schemas/Policy"
           type: array
-      title: PaginatedPolicyList
       type: object
     PaginatedTOTPDeviceListList:
-      additionalProperties: false
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - user_id: 6
           name: name
@@ -1235,21 +1122,42 @@ components:
           id: 0
           confirmed: true
           email: email
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
           type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
         results:
           items:
             $ref: "#/components/schemas/TOTPDeviceList"
           type: array
-      title: PaginatedTOTPDeviceListList
       type: object
     PatchedPolicyRequest:
-      additionalProperties: false
       properties:
         name:
           maxLength: 255
@@ -1261,16 +1169,15 @@ components:
           items:
             $ref: "#/components/schemas/PolicyRuleRequest"
           type: array
-      title: PatchedPolicyRequest
       type: object
     Policy:
-      additionalProperties: false
       properties:
         id:
           format: int64
           type: integer
         name:
           maxLength: 255
+          minLength: 1
           type: string
         last_editor:
           type: string
@@ -1290,10 +1197,8 @@ components:
       - last_modified
       - name
       - rules
-      title: Policy
       type: object
     PolicyRequest:
-      additionalProperties: false
       properties:
         name:
           maxLength: 255
@@ -1309,21 +1214,25 @@ components:
       - active
       - name
       - rules
-      title: PolicyRequest
       type: object
     PolicyRule:
-      additionalProperties: false
       properties:
         name:
           maxLength: 255
+          minLength: 1
           type: string
         effect:
           description: |-
             * `allow` - allow
             * `deny` - deny
-          title: EffectEnum
           type: string
+          x-extensible-enum:
+          - allow
+          - deny
         resource:
+          description: Resource pattern (regex supported)
+          maxLength: 500
+          minLength: 1
           type: string
         actions:
           items:
@@ -1337,10 +1246,8 @@ components:
       - effect
       - name
       - resource
-      title: PolicyRule
       type: object
     PolicyRuleCondition:
-      additionalProperties: false
       properties:
         ip_address:
           items:
@@ -1349,10 +1256,8 @@ components:
           type: array
       required:
       - ip_address
-      title: PolicyRuleCondition
       type: object
     PolicyRuleConditionRequest:
-      additionalProperties: false
       properties:
         ip_address:
           items:
@@ -1362,10 +1267,8 @@ components:
           type: array
       required:
       - ip_address
-      title: PolicyRuleConditionRequest
       type: object
     PolicyRuleRequest:
-      additionalProperties: false
       properties:
         name:
           maxLength: 255
@@ -1375,9 +1278,13 @@ components:
           description: |-
             * `allow` - allow
             * `deny` - deny
-          title: EffectEnum
           type: string
+          x-extensible-enum:
+          - allow
+          - deny
         resource:
+          description: Resource pattern (regex supported)
+          maxLength: 500
           minLength: 1
           type: string
         actions:
@@ -1393,30 +1300,22 @@ components:
       - effect
       - name
       - resource
-      title: PolicyRuleRequest
       type: object
     ResponseAsyncDeletePolicy:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
           minLength: 1
           type: string
-      title: ResponseAsyncDeletePolicy
       type: object
     ResponseAsyncDeleteTOTPDeviceCreate:
-      additionalProperties: false
-      example:
-        state: state
       properties:
         state:
           maxLength: 8
           minLength: 1
           type: string
-      title: ResponseAsyncDeleteTOTPDeviceCreate
       type: object
     ResponseAsyncLockoutPolicy:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
@@ -1426,10 +1325,8 @@ components:
           $ref: "#/components/schemas/LockoutPolicy"
       required:
       - data
-      title: ResponseAsyncLockoutPolicy
       type: object
     ResponseAsyncLogin:
-      additionalProperties: false
       example:
         data:
           access_token: access_token
@@ -1444,10 +1341,8 @@ components:
           type: string
       required:
       - data
-      title: ResponseAsyncLogin
       type: object
     ResponseAsyncPolicy:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
@@ -1457,10 +1352,8 @@ components:
           $ref: "#/components/schemas/Policy"
       required:
       - data
-      title: ResponseAsyncPolicy
       type: object
     ResponseAsyncSessionTimeoutPolicy:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
@@ -1470,10 +1363,8 @@ components:
           $ref: "#/components/schemas/SessionTimeoutPolicy"
       required:
       - data
-      title: ResponseAsyncSessionTimeoutPolicy
       type: object
     ResponseAsyncTOTPDeviceCreate:
-      additionalProperties: false
       example:
         data:
           url: url
@@ -1487,10 +1378,8 @@ components:
           $ref: "#/components/schemas/TOTPDeviceCreate"
       required:
       - data
-      title: ResponseAsyncTOTPDeviceCreate
       type: object
     ResponseAsyncToken:
-      additionalProperties: false
       example:
         data:
           access_token: access_token
@@ -1504,10 +1393,8 @@ components:
           $ref: "#/components/schemas/Token"
       required:
       - data
-      title: ResponseAsyncToken
       type: object
     ResponseAsyncTokenPair:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
@@ -1517,59 +1404,8 @@ components:
           $ref: "#/components/schemas/TokenPair"
       required:
       - data
-      title: ResponseAsyncTokenPair
-      type: object
-    ResponseBadRequestPolicy:
-      additionalProperties: false
-      properties:
-        name:
-          items:
-            type: string
-          type: array
-        active:
-          items:
-            type: string
-          type: array
-        rules:
-          items:
-            type: string
-          type: array
-        last_editor:
-          items:
-            type: string
-          type: array
-        last_modified:
-          items:
-            type: string
-          type: array
-        detail:
-          maxLength: 4096
-          minLength: 1
-          type: string
-      title: ResponseBadRequestPolicy
-      type: object
-    ResponseDeletePolicy:
-      additionalProperties: false
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeletePolicy
-      type: object
-    ResponseDeleteTOTPDeviceCreate:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeleteTOTPDeviceCreate
       type: object
     ResponseLockoutPolicy:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
@@ -1579,10 +1415,8 @@ components:
           $ref: "#/components/schemas/LockoutPolicy"
       required:
       - data
-      title: ResponseLockoutPolicy
       type: object
     ResponseLogin:
-      additionalProperties: false
       example:
         data:
           access_token: access_token
@@ -1597,10 +1431,8 @@ components:
           type: string
       required:
       - data
-      title: ResponseLogin
       type: object
     ResponsePolicy:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
@@ -1610,37 +1442,29 @@ components:
           $ref: "#/components/schemas/Policy"
       required:
       - data
-      title: ResponsePolicy
       type: object
     ResponseRetrieveLockoutPolicy:
-      additionalProperties: false
       properties:
         data:
           $ref: "#/components/schemas/LockoutPolicy"
       required:
       - data
-      title: ResponseRetrieveLockoutPolicy
       type: object
     ResponseRetrievePolicy:
-      additionalProperties: false
       properties:
         data:
           $ref: "#/components/schemas/Policy"
       required:
       - data
-      title: ResponseRetrievePolicy
       type: object
     ResponseRetrieveSessionTimeoutPolicy:
-      additionalProperties: false
       properties:
         data:
           $ref: "#/components/schemas/SessionTimeoutPolicy"
       required:
       - data
-      title: ResponseRetrieveSessionTimeoutPolicy
       type: object
     ResponseSessionTimeoutPolicy:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
@@ -1650,10 +1474,8 @@ components:
           $ref: "#/components/schemas/SessionTimeoutPolicy"
       required:
       - data
-      title: ResponseSessionTimeoutPolicy
       type: object
     ResponseTOTPDeviceCreate:
-      additionalProperties: false
       example:
         data:
           url: url
@@ -1667,10 +1489,8 @@ components:
           $ref: "#/components/schemas/TOTPDeviceCreate"
       required:
       - data
-      title: ResponseTOTPDeviceCreate
       type: object
     ResponseToken:
-      additionalProperties: false
       example:
         data:
           access_token: access_token
@@ -1684,10 +1504,8 @@ components:
           $ref: "#/components/schemas/Token"
       required:
       - data
-      title: ResponseToken
       type: object
     ResponseTokenPair:
-      additionalProperties: false
       properties:
         state:
           maxLength: 8
@@ -1697,10 +1515,8 @@ components:
           $ref: "#/components/schemas/TokenPair"
       required:
       - data
-      title: ResponseTokenPair
       type: object
     SessionTimeoutPolicy:
-      additionalProperties: false
       properties:
         max_idle_time:
           format: int64
@@ -1715,10 +1531,8 @@ components:
       required:
       - max_idle_time
       - max_session_time
-      title: SessionTimeoutPolicy
       type: object
     SessionTimeoutPolicyRequest:
-      additionalProperties: false
       properties:
         max_idle_time:
           format: int64
@@ -1733,28 +1547,28 @@ components:
       required:
       - max_idle_time
       - max_session_time
-      title: SessionTimeoutPolicyRequest
       type: object
     StateExecutedResponse:
-      additionalProperties: false
       example:
         state: state
       properties:
         state:
+          description: State of the operation (lowercase with underscores)
+          maxLength: 50
+          minLength: 1
           type: string
-      title: StateExecutedResponse
       type: object
     StatePendingResponse:
-      additionalProperties: false
       example:
         state: state
       properties:
         state:
+          description: State of the operation (lowercase with underscores)
+          maxLength: 50
+          minLength: 1
           type: string
-      title: StatePendingResponse
       type: object
     TOTPDeviceCreate:
-      additionalProperties: false
       example:
         url: url
       properties:
@@ -1764,10 +1578,8 @@ components:
           type: string
       required:
       - url
-      title: TOTPDeviceCreate
       type: object
     TOTPDeviceList:
-      additionalProperties: false
       example:
         user_id: 6
         name: name
@@ -1779,8 +1591,15 @@ components:
           format: int64
           type: integer
         name:
+          description: "User's full name (alphanumeric, spaces, hyphens, dots)"
+          maxLength: 255
+          minLength: 1
           type: string
         email:
+          description: User's email address
+          format: email
+          maxLength: 255
+          minLength: 5
           type: string
         confirmed:
           description: Is this device ready for use?
@@ -1794,10 +1613,8 @@ components:
       - id
       - name
       - user_id
-      title: TOTPDeviceList
       type: object
     TOTPVerificationRequest:
-      additionalProperties: false
       description: |-
         Serializer for TOTP verification process.
 
@@ -1805,15 +1622,15 @@ components:
         On successful verification, returns access and refresh tokens.
       properties:
         code:
-          minLength: 1
+          description: 6-digit TOTP code
+          maxLength: 6
+          minLength: 6
           type: string
           writeOnly: true
       required:
       - code
-      title: TOTPVerificationRequest
       type: object
     Token:
-      additionalProperties: false
       example:
         access_token: access_token
       properties:
@@ -1823,10 +1640,8 @@ components:
           type: string
       required:
       - access_token
-      title: Token
       type: object
     TokenPair:
-      additionalProperties: false
       description: |-
         Used when user does not have MFA enabled or after successful MFA verification.
         Returns both access and refresh tokens for API authentication.
@@ -1846,10 +1661,8 @@ components:
       required:
       - access_token
       - refresh_token
-      title: TokenPair
       type: object
     TokenRequest:
-      additionalProperties: false
       example:
         account_id: 0
       properties:
@@ -1858,15 +1671,16 @@ components:
           nullable: true
           type: integer
           writeOnly: true
-      title: TokenRequest
       type: object
-    user_login_method_response:
-      additionalProperties: false
+    UserLoginMethodResponse:
       example:
         method: method
         url: https://openapi-generator.tech
       properties:
         method:
+          description: Login method type (lowercase with underscores)
+          maxLength: 50
+          minLength: 1
           type: string
         url:
           format: uri
@@ -1874,18 +1688,17 @@ components:
       required:
       - method
       - url
-      title: user_login_method_response
       type: object
   securitySchemes:
     BearerAuth:
       scheme: bearer
       type: http
-    JWT MFA Authentication:
+    JwtMfaAuthentication:
       bearerFormat: JWT
       description: Authentication JWT MFA with Bearer Token
       scheme: bearer
       type: http
-    JWT Refresh Authentication:
+    JwtRefreshAuthentication:
       bearerFormat: JWT
       description: Authentication JWT Refresh with Bearer Token
       scheme: bearer

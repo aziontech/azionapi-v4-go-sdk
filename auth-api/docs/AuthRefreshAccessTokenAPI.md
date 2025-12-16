@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT Refresh Authentication](../README.md#JWT Refresh Authentication)
+[JwtRefreshAuthentication](../README.md#JwtRefreshAuthentication)
 
 ### HTTP request headers
 

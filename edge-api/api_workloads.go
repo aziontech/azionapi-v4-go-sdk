@@ -223,27 +223,27 @@ func (a *WorkloadsAPIService) CreateWorkloadExecute(r ApiCreateWorkloadRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyWorkloadRequest struct {
+type ApiDeleteWorkloadRequest struct {
 	ctx context.Context
 	ApiService *WorkloadsAPIService
 	workloadId int64
 }
 
-func (r ApiDestroyWorkloadRequest) Execute() (*ResponseAsyncDeleteWorkload, *http.Response, error) {
-	return r.ApiService.DestroyWorkloadExecute(r)
+func (r ApiDeleteWorkloadRequest) Execute() (*ResponseAsyncDeleteWorkload, *http.Response, error) {
+	return r.ApiService.DeleteWorkloadExecute(r)
 }
 
 /*
-DestroyWorkload Destroy an Workload
+DeleteWorkload Delete an Workload
 
-Destruction of a specific Workload in your account.
+Delete a specific Workload in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param workloadId
- @return ApiDestroyWorkloadRequest
+ @return ApiDeleteWorkloadRequest
 */
-func (a *WorkloadsAPIService) DestroyWorkload(ctx context.Context, workloadId int64) ApiDestroyWorkloadRequest {
-	return ApiDestroyWorkloadRequest{
+func (a *WorkloadsAPIService) DeleteWorkload(ctx context.Context, workloadId int64) ApiDeleteWorkloadRequest {
+	return ApiDeleteWorkloadRequest{
 		ApiService: a,
 		ctx: ctx,
 		workloadId: workloadId,
@@ -252,7 +252,7 @@ func (a *WorkloadsAPIService) DestroyWorkload(ctx context.Context, workloadId in
 
 // Execute executes the request
 //  @return ResponseAsyncDeleteWorkload
-func (a *WorkloadsAPIService) DestroyWorkloadExecute(r ApiDestroyWorkloadRequest) (*ResponseAsyncDeleteWorkload, *http.Response, error) {
+func (a *WorkloadsAPIService) DeleteWorkloadExecute(r ApiDeleteWorkloadRequest) (*ResponseAsyncDeleteWorkload, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -260,7 +260,7 @@ func (a *WorkloadsAPIService) DestroyWorkloadExecute(r ApiDestroyWorkloadRequest
 		localVarReturnValue  *ResponseAsyncDeleteWorkload
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.DestroyWorkload")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.DeleteWorkload")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

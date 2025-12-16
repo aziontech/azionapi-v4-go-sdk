@@ -25,6 +25,8 @@ type AzureMonitorEndpointRequest struct {
 	SharedKey string `json:"shared_key"`
 	TimeGeneratedField NullableString `json:"time_generated_field,omitempty"`
 	WorkspaceId string `json:"workspace_id"`
+	// Type identifier for this endpoint (azure_monitor)
+	Type string `json:"type"`
 }
 
 type _AzureMonitorEndpointRequest AzureMonitorEndpointRequest
@@ -33,11 +35,12 @@ type _AzureMonitorEndpointRequest AzureMonitorEndpointRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureMonitorEndpointRequest(logType string, sharedKey string, workspaceId string) *AzureMonitorEndpointRequest {
+func NewAzureMonitorEndpointRequest(logType string, sharedKey string, workspaceId string, type_ string) *AzureMonitorEndpointRequest {
 	this := AzureMonitorEndpointRequest{}
 	this.LogType = logType
 	this.SharedKey = sharedKey
 	this.WorkspaceId = workspaceId
+	this.Type = type_
 	return &this
 }
 
@@ -163,6 +166,30 @@ func (o *AzureMonitorEndpointRequest) SetWorkspaceId(v string) {
 	o.WorkspaceId = v
 }
 
+// GetType returns the Type field value
+func (o *AzureMonitorEndpointRequest) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AzureMonitorEndpointRequest) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AzureMonitorEndpointRequest) SetType(v string) {
+	o.Type = v
+}
+
 func (o AzureMonitorEndpointRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -179,6 +206,7 @@ func (o AzureMonitorEndpointRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["time_generated_field"] = o.TimeGeneratedField.Get()
 	}
 	toSerialize["workspace_id"] = o.WorkspaceId
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -190,6 +218,7 @@ func (o *AzureMonitorEndpointRequest) UnmarshalJSON(data []byte) (err error) {
 		"log_type",
 		"shared_key",
 		"workspace_id",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

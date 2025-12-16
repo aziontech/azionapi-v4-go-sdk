@@ -4,21 +4,21 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CloneFirewall**](FirewallsAPI.md#CloneFirewall) | **Post** /edge_firewall/firewalls/{id}/clone | Clone an Firewall
-[**CreateFirewall**](FirewallsAPI.md#CreateFirewall) | **Post** /edge_firewall/firewalls | Create an Firewall
-[**DestroyFirewall**](FirewallsAPI.md#DestroyFirewall) | **Delete** /edge_firewall/firewalls/{id} | Destroy an Firewall
-[**ListFirewalls**](FirewallsAPI.md#ListFirewalls) | **Get** /edge_firewall/firewalls | List Firewalls
-[**PartialUpdateFirewall**](FirewallsAPI.md#PartialUpdateFirewall) | **Patch** /edge_firewall/firewalls/{id} | Partially update an Firewall
-[**RetrieveFirewall**](FirewallsAPI.md#RetrieveFirewall) | **Get** /edge_firewall/firewalls/{id} | Retrieve details from an Firewall
-[**UpdateFirewall**](FirewallsAPI.md#UpdateFirewall) | **Put** /edge_firewall/firewalls/{id} | Update an Firewall
+[**CloneFirewall**](FirewallsAPI.md#CloneFirewall) | **Post** /workspace/firewalls/{firewall_id}/clone | Clone a Firewall
+[**CreateFirewall**](FirewallsAPI.md#CreateFirewall) | **Post** /workspace/firewalls | Create a Firewall
+[**DeleteFirewall**](FirewallsAPI.md#DeleteFirewall) | **Delete** /workspace/firewalls/{firewall_id} | Delete a Firewall
+[**ListFirewalls**](FirewallsAPI.md#ListFirewalls) | **Get** /workspace/firewalls | List Firewalls
+[**PartialUpdateFirewall**](FirewallsAPI.md#PartialUpdateFirewall) | **Patch** /workspace/firewalls/{firewall_id} | Partially update a Firewall
+[**RetrieveFirewall**](FirewallsAPI.md#RetrieveFirewall) | **Get** /workspace/firewalls/{firewall_id} | Retrieve details from a Firewall
+[**UpdateFirewall**](FirewallsAPI.md#UpdateFirewall) | **Put** /workspace/firewalls/{firewall_id} | Update a Firewall
 
 
 
 ## CloneFirewall
 
-> ResponseFirewall CloneFirewall(ctx, id).CloneFirewallRequest(cloneFirewallRequest).Execute()
+> ResponseFirewall CloneFirewall(ctx, firewallId).CloneFirewallRequest(cloneFirewallRequest).Execute()
 
-Clone an Firewall
+Clone a Firewall
 
 
 
@@ -35,12 +35,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	firewallId := "firewallId_example" // string | 
 	cloneFirewallRequest := *openapiclient.NewCloneFirewallRequest("Name_example") // CloneFirewallRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsAPI.CloneFirewall(context.Background(), id).CloneFirewallRequest(cloneFirewallRequest).Execute()
+	resp, r, err := apiClient.FirewallsAPI.CloneFirewall(context.Background(), firewallId).CloneFirewallRequest(cloneFirewallRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsAPI.CloneFirewall``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,7 +56,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**firewallId** | **string** |  | 
 
 ### Other Parameters
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 > ResponseFirewall CreateFirewall(ctx).FirewallRequest(firewallRequest).Execute()
 
-Create an Firewall
+Create a Firewall
 
 
 
@@ -152,11 +152,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyFirewall
+## DeleteFirewall
 
-> ResponseDeleteFirewall DestroyFirewall(ctx, id).Execute()
+> ResponseDeleteFirewall DeleteFirewall(ctx, firewallId).Execute()
 
-Destroy an Firewall
+Delete a Firewall
 
 
 
@@ -173,17 +173,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	firewallId := "firewallId_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsAPI.DestroyFirewall(context.Background(), id).Execute()
+	resp, r, err := apiClient.FirewallsAPI.DeleteFirewall(context.Background(), firewallId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsAPI.DestroyFirewall``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsAPI.DeleteFirewall``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyFirewall`: ResponseDeleteFirewall
-	fmt.Fprintf(os.Stdout, "Response from `FirewallsAPI.DestroyFirewall`: %v\n", resp)
+	// response from `DeleteFirewall`: ResponseDeleteFirewall
+	fmt.Fprintf(os.Stdout, "Response from `FirewallsAPI.DeleteFirewall`: %v\n", resp)
 }
 ```
 
@@ -193,11 +193,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**firewallId** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyFirewallRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteFirewallRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -298,9 +298,9 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateFirewall
 
-> ResponseFirewall PartialUpdateFirewall(ctx, id).PatchedFirewallRequest(patchedFirewallRequest).Execute()
+> ResponseFirewall PartialUpdateFirewall(ctx, firewallId).PatchedFirewallRequest(patchedFirewallRequest).Execute()
 
-Partially update an Firewall
+Partially update a Firewall
 
 
 
@@ -317,12 +317,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	firewallId := "firewallId_example" // string | 
 	patchedFirewallRequest := *openapiclient.NewPatchedFirewallRequest() // PatchedFirewallRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsAPI.PartialUpdateFirewall(context.Background(), id).PatchedFirewallRequest(patchedFirewallRequest).Execute()
+	resp, r, err := apiClient.FirewallsAPI.PartialUpdateFirewall(context.Background(), firewallId).PatchedFirewallRequest(patchedFirewallRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsAPI.PartialUpdateFirewall``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -338,7 +338,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**firewallId** | **string** |  | 
 
 ### Other Parameters
 
@@ -370,9 +370,9 @@ Name | Type | Description  | Notes
 
 ## RetrieveFirewall
 
-> ResponseRetrieveFirewall RetrieveFirewall(ctx, id).Fields(fields).Execute()
+> ResponseRetrieveFirewall RetrieveFirewall(ctx, firewallId).Fields(fields).Execute()
 
-Retrieve details from an Firewall
+Retrieve details from a Firewall
 
 
 
@@ -389,12 +389,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	firewallId := "firewallId_example" // string | 
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsAPI.RetrieveFirewall(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.FirewallsAPI.RetrieveFirewall(context.Background(), firewallId).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsAPI.RetrieveFirewall``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -410,7 +410,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**firewallId** | **string** |  | 
 
 ### Other Parameters
 
@@ -442,9 +442,9 @@ Name | Type | Description  | Notes
 
 ## UpdateFirewall
 
-> ResponseFirewall UpdateFirewall(ctx, id).FirewallRequest(firewallRequest).Execute()
+> ResponseFirewall UpdateFirewall(ctx, firewallId).FirewallRequest(firewallRequest).Execute()
 
-Update an Firewall
+Update a Firewall
 
 
 
@@ -461,12 +461,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	firewallId := "firewallId_example" // string | 
 	firewallRequest := *openapiclient.NewFirewallRequest("Name_example") // FirewallRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsAPI.UpdateFirewall(context.Background(), id).FirewallRequest(firewallRequest).Execute()
+	resp, r, err := apiClient.FirewallsAPI.UpdateFirewall(context.Background(), firewallId).FirewallRequest(firewallRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsAPI.UpdateFirewall``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -482,7 +482,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**firewallId** | **string** |  | 
 
 ### Other Parameters
 
