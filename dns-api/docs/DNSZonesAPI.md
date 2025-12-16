@@ -5,11 +5,11 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateDnsZone**](DNSZonesAPI.md#CreateDnsZone) | **Post** /edge_dns/zones | Create a DNS Zone
-[**DeleteDnsZone**](DNSZonesAPI.md#DeleteDnsZone) | **Delete** /edge_dns/zones/{zoneId} | Delete a DNS Zone
+[**DeleteDnsZone**](DNSZonesAPI.md#DeleteDnsZone) | **Delete** /edge_dns/zones/{zone_id} | Delete a DNS Zone
 [**ListDnsZones**](DNSZonesAPI.md#ListDnsZones) | **Get** /edge_dns/zones | List DNS Zones
-[**PartialUpdateDnsZone**](DNSZonesAPI.md#PartialUpdateDnsZone) | **Patch** /edge_dns/zones/{zoneId} | Partially update a DNS Zone
-[**RetrieveDnsZone**](DNSZonesAPI.md#RetrieveDnsZone) | **Get** /edge_dns/zones/{zoneId} | Retrieve details of a DNS Zone
-[**UpdateDnsZone**](DNSZonesAPI.md#UpdateDnsZone) | **Put** /edge_dns/zones/{zoneId} | Update a DNS Zone
+[**PartialUpdateDnsZone**](DNSZonesAPI.md#PartialUpdateDnsZone) | **Patch** /edge_dns/zones/{zone_id} | Partially update a DNS Zone
+[**RetrieveDnsZone**](DNSZonesAPI.md#RetrieveDnsZone) | **Get** /edge_dns/zones/{zone_id} | Retrieve details of a DNS Zone
+[**UpdateDnsZone**](DNSZonesAPI.md#UpdateDnsZone) | **Put** /edge_dns/zones/{zone_id} | Update a DNS Zone
 
 
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDnsZone
 
-> ResponseDeleteZone DeleteDnsZone(ctx, zoneId).Execute()
+> ResponseAsyncDeleteZone DeleteDnsZone(ctx, zoneId).Execute()
 
 Delete a DNS Zone
 
@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-	zoneId := "zoneId_example" // string | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -109,7 +109,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSZonesAPI.DeleteDnsZone``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteDnsZone`: ResponseDeleteZone
+	// response from `DeleteDnsZone`: ResponseAsyncDeleteZone
 	fmt.Fprintf(os.Stdout, "Response from `DNSZonesAPI.DeleteDnsZone`: %v\n", resp)
 }
 ```
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **string** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteZone**](ResponseDeleteZone.md)
+[**ResponseAsyncDeleteZone**](ResponseAsyncDeleteZone.md)
 
 ### Authorization
 
@@ -170,14 +170,14 @@ import (
 )
 
 func main() {
-	active := "active_example" // string | Search by active (optional)
-	domain := "domain_example" // string | Search by domain (optional)
+	active := true // bool | Filter by active status. (optional)
+	domain := "domain_example" // string | Filter by domain (exact match). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
-	name := "name_example" // string | Search by name (optional)
+	name := "name_example" // string | Filter by name (exact match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, domain, active) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string | Search in name and domain fields (case-insensitive, partial match). (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -202,14 +202,14 @@ Other parameters are passed through a pointer to a apiListDnsZonesRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **active** | **string** | Search by active | 
- **domain** | **string** | Search by domain | 
+ **active** | **bool** | Filter by active status. | 
+ **domain** | **string** | Filter by domain (exact match). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
- **name** | **string** | Search by name | 
+ **name** | **string** | Filter by name (exact match). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, domain, active) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
- **search** | **string** | A search term. | 
+ **search** | **string** | Search in name and domain fields (case-insensitive, partial match). | 
 
 ### Return type
 
@@ -250,7 +250,7 @@ import (
 )
 
 func main() {
-	zoneId := "zoneId_example" // string | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	patchedUpdateZoneRequest := *openapiclient.NewPatchedUpdateZoneRequest() // PatchedUpdateZoneRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -271,7 +271,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **string** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -322,7 +322,7 @@ import (
 )
 
 func main() {
-	zoneId := "zoneId_example" // string | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -343,7 +343,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **string** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -394,7 +394,7 @@ import (
 )
 
 func main() {
-	zoneId := "zoneId_example" // string | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	updateZoneRequest := *openapiclient.NewUpdateZoneRequest("Name_example", false) // UpdateZoneRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -415,7 +415,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **string** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 

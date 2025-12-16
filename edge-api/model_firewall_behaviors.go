@@ -23,7 +23,6 @@ type FirewallBehaviors struct {
 	FirewallBehaviorsFirewallBehaviorSetCustomResponse *FirewallBehaviorsFirewallBehaviorSetCustomResponse
 	FirewallBehaviorsFirewallBehaviorSetRateLimit *FirewallBehaviorsFirewallBehaviorSetRateLimit
 	FirewallBehaviorsFirewallBehaviorSetWaf *FirewallBehaviorsFirewallBehaviorSetWaf
-	FirewallBehaviorsFirewallBehaviorTagEvent *FirewallBehaviorsFirewallBehaviorTagEvent
 }
 
 // FirewallBehaviorsFirewallBehaviorNoArgumentsAsFirewallBehaviors is a convenience function that returns FirewallBehaviorsFirewallBehaviorNoArguments wrapped in FirewallBehaviors
@@ -58,13 +57,6 @@ func FirewallBehaviorsFirewallBehaviorSetRateLimitAsFirewallBehaviors(v *Firewal
 func FirewallBehaviorsFirewallBehaviorSetWafAsFirewallBehaviors(v *FirewallBehaviorsFirewallBehaviorSetWaf) FirewallBehaviors {
 	return FirewallBehaviors{
 		FirewallBehaviorsFirewallBehaviorSetWaf: v,
-	}
-}
-
-// FirewallBehaviorsFirewallBehaviorTagEventAsFirewallBehaviors is a convenience function that returns FirewallBehaviorsFirewallBehaviorTagEvent wrapped in FirewallBehaviors
-func FirewallBehaviorsFirewallBehaviorTagEventAsFirewallBehaviors(v *FirewallBehaviorsFirewallBehaviorTagEvent) FirewallBehaviors {
-	return FirewallBehaviors{
-		FirewallBehaviorsFirewallBehaviorTagEvent: v,
 	}
 }
 
@@ -158,23 +150,6 @@ func (dst *FirewallBehaviors) UnmarshalJSON(data []byte) error {
 		dst.FirewallBehaviorsFirewallBehaviorSetWaf = nil
 	}
 
-	// try to unmarshal data into FirewallBehaviorsFirewallBehaviorTagEvent
-	err = newStrictDecoder(data).Decode(&dst.FirewallBehaviorsFirewallBehaviorTagEvent)
-	if err == nil {
-		jsonFirewallBehaviorsFirewallBehaviorTagEvent, _ := json.Marshal(dst.FirewallBehaviorsFirewallBehaviorTagEvent)
-		if string(jsonFirewallBehaviorsFirewallBehaviorTagEvent) == "{}" { // empty struct
-			dst.FirewallBehaviorsFirewallBehaviorTagEvent = nil
-		} else {
-			if err = validator.Validate(dst.FirewallBehaviorsFirewallBehaviorTagEvent); err != nil {
-				dst.FirewallBehaviorsFirewallBehaviorTagEvent = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.FirewallBehaviorsFirewallBehaviorTagEvent = nil
-	}
-
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.FirewallBehaviorsFirewallBehaviorNoArguments = nil
@@ -182,7 +157,6 @@ func (dst *FirewallBehaviors) UnmarshalJSON(data []byte) error {
 		dst.FirewallBehaviorsFirewallBehaviorSetCustomResponse = nil
 		dst.FirewallBehaviorsFirewallBehaviorSetRateLimit = nil
 		dst.FirewallBehaviorsFirewallBehaviorSetWaf = nil
-		dst.FirewallBehaviorsFirewallBehaviorTagEvent = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(FirewallBehaviors)")
 	} else if match == 1 {
@@ -214,10 +188,6 @@ func (src FirewallBehaviors) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FirewallBehaviorsFirewallBehaviorSetWaf)
 	}
 
-	if src.FirewallBehaviorsFirewallBehaviorTagEvent != nil {
-		return json.Marshal(&src.FirewallBehaviorsFirewallBehaviorTagEvent)
-	}
-
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -246,10 +216,6 @@ func (obj *FirewallBehaviors) GetActualInstance() (interface{}) {
 		return obj.FirewallBehaviorsFirewallBehaviorSetWaf
 	}
 
-	if obj.FirewallBehaviorsFirewallBehaviorTagEvent != nil {
-		return obj.FirewallBehaviorsFirewallBehaviorTagEvent
-	}
-
 	// all schemas are nil
 	return nil
 }
@@ -274,10 +240,6 @@ func (obj FirewallBehaviors) GetActualInstanceValue() (interface{}) {
 
 	if obj.FirewallBehaviorsFirewallBehaviorSetWaf != nil {
 		return *obj.FirewallBehaviorsFirewallBehaviorSetWaf
-	}
-
-	if obj.FirewallBehaviorsFirewallBehaviorTagEvent != nil {
-		return *obj.FirewallBehaviorsFirewallBehaviorTagEvent
 	}
 
 	// all schemas are nil

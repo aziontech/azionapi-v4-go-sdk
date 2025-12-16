@@ -6,11 +6,37 @@ info:
 servers:
 - url: /
 paths:
-  /edge_sql/databases:
+  /workspace/sql/databases:
     get:
       description: List all databases owned by your account.
-      operationId: list databases
+      operationId: list_databases
       parameters:
+      - description: Filter by active status.
+        explode: true
+        in: query
+        name: active
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Filter by created_at (greater than or equal).
+        explode: true
+        in: query
+        name: created_at__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by created_at (less than or equal).
+        explode: true
+        in: query
+        name: created_at__lte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -19,9 +45,32 @@ paths:
         schema:
           type: string
         style: form
-      - description: |-
-          Which field to use when ordering the results.
-          (Valid fields: id, name, status, active, last_modified)
+      - description: Filter by id (accepts comma-separated values).
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: "Filter by last editor (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: last_editor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Filter by name (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
         explode: true
         in: query
         name: ordering
@@ -55,12 +104,38 @@ paths:
         schema:
           type: string
         style: form
+      - description: Filter by status (accepts comma-separated values).
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by updated_at (greater than or equal).
+        explode: true
+        in: query
+        name: updated_at__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by updated_at (less than or equal).
+        explode: true
+        in: query
+        name: updated_at__lte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PaginatedOpenAPISchemaList"
+                $ref: "#/components/schemas/PaginatedDatabaseDetailList"
           description: ""
         "401":
           content:
@@ -182,7 +257,7 @@ paths:
       - SQL
     post:
       description: Create a new database for your account.
-      operationId: create database
+      operationId: create_database
       requestBody:
         content:
           application/json:
@@ -194,13 +269,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseOpenAPISchema"
+                $ref: "#/components/schemas/ResponseDatabaseDetail"
           description: ""
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncOpenAPISchema"
+                $ref: "#/components/schemas/ResponseAsyncDatabaseDetail"
           description: ""
         "422":
           content:
@@ -336,30 +411,28 @@ paths:
       summary: Create a database
       tags:
       - SQL
-  /edge_sql/databases/{id}:
+  /workspace/sql/databases/{database_id}:
     delete:
-      description: Schedule the destruction of a specific database in your account.
-      operationId: destroy database
+      description: Schedule the deletion of a specific database in your account.
+      operationId: delete_database
       parameters:
-      - explode: false
+      - description: A unique integer value identifying this database.
+        explode: false
         in: path
-        name: id
+        name: database_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseDeleteOpenAPISchema"
-          description: ""
+        "204":
+          description: No response body
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncDeleteOpenAPISchema"
+                $ref: "#/components/schemas/ResponseAsyncDeleteDatabaseDetail"
           description: ""
         "401":
           content:
@@ -476,13 +549,22 @@ paths:
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Destroy a database
+      summary: Delete a database
       tags:
       - SQL
     get:
       description: Retrieve details from a specific database in your account.
-      operationId: retrieve database
+      operationId: retrieve_database
       parameters:
+      - description: A unique integer value identifying this database.
+        explode: false
+        in: path
+        name: database_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -491,19 +573,12 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseRetrieveOpenAPISchema"
+                $ref: "#/components/schemas/ResponseRetrieveDatabaseDetail"
           description: ""
         "401":
           content:
@@ -623,14 +698,15 @@ paths:
       summary: Retrieve details from a database
       tags:
       - SQL
-  /edge_sql/databases/{id}/query:
+  /workspace/sql/databases/{database_id}/query:
     post:
       description: Execute a query into a database for your account.
-      operationId: execute query
+      operationId: execute_query
       parameters:
-      - explode: false
+      - description: A unique integer value identifying this database.
+        explode: false
         in: path
-        name: id
+        name: database_id
         required: true
         schema:
           format: int64
@@ -791,28 +867,82 @@ paths:
       - SQL
 components:
   schemas:
+    DatabaseDetail:
+      description: Detailed database representation with extended status information.
+      example:
+        product_version: product_version
+        last_editor: last_editor
+        name: name
+        active: true
+        id: 0
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        status: status
+      properties:
+        id:
+          description: Unique identifier for the database
+          format: int64
+          type: integer
+        name:
+          description: Name of the database
+          maxLength: 50
+          minLength: 6
+          type: string
+        status:
+          description: |-
+            Current status of the database
+
+            * `creating` - creating
+            * `created` - created
+            * `deleting` - deleting
+          type: string
+          x-extensible-enum:
+          - creating
+          - created
+          - deleting
+        active:
+          description: Whether the database is active
+          type: boolean
+        last_modified:
+          description: Last modification timestamp
+          format: date-time
+          type: string
+        last_editor:
+          description: Last editor of the schema.
+          nullable: true
+          type: string
+        product_version:
+          description: Product version
+          type: string
+      required:
+      - id
+      - last_editor
+      - last_modified
+      - name
+      - product_version
+      - status
+      type: object
     DatabaseRequest:
-      additionalProperties: false
       example:
         name: name
         active: true
       properties:
         name:
+          description: Name of the database
           maxLength: 50
           minLength: 6
           type: string
         active:
+          description: Whether the database is active
           type: boolean
       required:
       - name
-      title: DatabaseRequest
       type: object
     JSONAPIErrorObject:
-      additionalProperties: false
       description: Serializer for a single JSON:API error object.
       example:
         code: code
-        meta: ""
+        meta:
+          key: ""
         detail: detail
         source: ""
         title: title
@@ -844,22 +974,24 @@ components:
           - $ref: "#/components/schemas/JSONAPIErrorSource"
           description: References to the primary source of the error
         meta:
+          additionalProperties: {}
           description: Non-standard meta-information about the error
-      title: JSONAPIErrorObject
+          type: object
       type: object
     JSONAPIErrorResponse:
-      additionalProperties: false
       description: Serializer for a JSON:API error response.
       example:
         errors:
         - code: code
-          meta: ""
+          meta:
+            key: ""
           detail: detail
           source: ""
           title: title
           status: status
         - code: code
-          meta: ""
+          meta:
+            key: ""
           detail: detail
           source: ""
           title: title
@@ -872,10 +1004,8 @@ components:
           type: array
       required:
       - errors
-      title: JSONAPIErrorResponse
       type: object
     JSONAPIErrorSource:
-      additionalProperties: false
       description: Serializer for the 'source' object in a JSON:API error.
       properties:
         pointer:
@@ -894,53 +1024,12 @@ components:
           maxLength: 4096
           minLength: 1
           type: string
-      title: JSONAPIErrorSource
       type: object
-    OpenAPISchema:
-      additionalProperties: false
-      example:
-        product_version: product_version
-        last_editor: last_editor
-        name: name
-        active: true
-        id: 0
-        last_modified: 2000-01-23T04:56:07.000+00:00
-        status: ""
-      properties:
-        id:
-          format: int64
-          type: integer
-        name:
-          maxLength: 50
-          minLength: 6
-          type: string
-        status:
-          allOf:
-          - $ref: "#/components/schemas/StatusEnum"
-        active:
-          type: boolean
-        last_modified:
-          format: date-time
-          type: string
-        last_editor:
-          description: Last editor of the schema.
-          nullable: true
-          type: string
-        product_version:
-          type: string
-      required:
-      - id
-      - last_editor
-      - last_modified
-      - name
-      - product_version
-      - status
-      title: OpenAPISchema
-      type: object
-    PaginatedOpenAPISchemaList:
-      additionalProperties: false
+    PaginatedDatabaseDetailList:
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - product_version: product_version
           last_editor: last_editor
@@ -948,40 +1037,50 @@ components:
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
         - product_version: product_version
           last_editor: last_editor
           name: name
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
           type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
         results:
           items:
-            $ref: "#/components/schemas/OpenAPISchema"
+            $ref: "#/components/schemas/DatabaseDetail"
           type: array
-      title: PaginatedOpenAPISchemaList
       type: object
-    ResponseAsyncDeleteOpenAPISchema:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseAsyncDeleteOpenAPISchema
-      type: object
-    ResponseAsyncOpenAPISchema:
-      additionalProperties: false
+    ResponseAsyncDatabaseDetail:
       example:
         data:
           product_version: product_version
@@ -990,7 +1089,7 @@ components:
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
         state: state
       properties:
         state:
@@ -998,13 +1097,20 @@ components:
           minLength: 1
           type: string
         data:
-          $ref: "#/components/schemas/OpenAPISchema"
+          $ref: "#/components/schemas/DatabaseDetail"
       required:
       - data
-      title: ResponseAsyncOpenAPISchema
+      type: object
+    ResponseAsyncDeleteDatabaseDetail:
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
       type: object
     ResponseAsyncSQLResult:
-      additionalProperties: false
       example:
         data:
           columns:
@@ -1023,21 +1129,8 @@ components:
           $ref: "#/components/schemas/SQLResult"
       required:
       - data
-      title: ResponseAsyncSQLResult
       type: object
-    ResponseDeleteOpenAPISchema:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeleteOpenAPISchema
-      type: object
-    ResponseOpenAPISchema:
-      additionalProperties: false
+    ResponseDatabaseDetail:
       example:
         data:
           product_version: product_version
@@ -1046,7 +1139,7 @@ components:
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
         state: state
       properties:
         state:
@@ -1054,13 +1147,11 @@ components:
           minLength: 1
           type: string
         data:
-          $ref: "#/components/schemas/OpenAPISchema"
+          $ref: "#/components/schemas/DatabaseDetail"
       required:
       - data
-      title: ResponseOpenAPISchema
       type: object
-    ResponseRetrieveOpenAPISchema:
-      additionalProperties: false
+    ResponseRetrieveDatabaseDetail:
       example:
         data:
           product_version: product_version
@@ -1069,16 +1160,14 @@ components:
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
       properties:
         data:
-          $ref: "#/components/schemas/OpenAPISchema"
+          $ref: "#/components/schemas/DatabaseDetail"
       required:
       - data
-      title: ResponseRetrieveOpenAPISchema
       type: object
     ResponseSQLResult:
-      additionalProperties: false
       example:
         data:
           columns:
@@ -1097,10 +1186,8 @@ components:
           $ref: "#/components/schemas/SQLResult"
       required:
       - data
-      title: ResponseSQLResult
       type: object
     SQLResult:
-      additionalProperties: false
       example:
         columns:
         - ""
@@ -1110,18 +1197,18 @@ components:
         - ""
       properties:
         columns:
+          description: List of column names
           items: {}
           type: array
         rows:
+          description: List of result rows
           items: {}
           type: array
       required:
       - columns
       - rows
-      title: SQLResult
       type: object
     SQLStatementsRequest:
-      additionalProperties: false
       example:
         statements:
         - statements
@@ -1131,6 +1218,7 @@ components:
         - statements
       properties:
         statements:
+          description: List of SQL statements to execute
           items:
             minLength: 1
             type: string
@@ -1138,15 +1226,7 @@ components:
           type: array
       required:
       - statements
-      title: SQLStatementsRequest
       type: object
-    StatusEnum:
-      description: |-
-        * `creating` - creating
-        * `created` - created
-        * `deleting` - deleting
-      title: StatusEnum
-      type: string
   securitySchemes:
     BearerAuth:
       scheme: bearer

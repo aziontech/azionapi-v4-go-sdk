@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | * &#x60;render_template&#x60; - Render Template | 
+**Type** | **string** | Type identifier for this endpoint (render_template) | 
 **Attributes** | [**TransformRenderTemplateRequest**](TransformRenderTemplateRequest.md) |  | 
 
 ## Methods

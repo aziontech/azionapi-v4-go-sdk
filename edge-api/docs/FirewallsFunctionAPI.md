@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFirewallFunction**](FirewallsFunctionAPI.md#CreateFirewallFunction) | **Post** /edge_firewall/firewalls/{firewall_id}/functions | Create an Firewall Function
-[**DestroyFirewallFunction**](FirewallsFunctionAPI.md#DestroyFirewallFunction) | **Delete** /edge_firewall/firewalls/{firewall_id}/functions/{id} | Destroy an Firewall Function
-[**ListFirewallFunction**](FirewallsFunctionAPI.md#ListFirewallFunction) | **Get** /edge_firewall/firewalls/{firewall_id}/functions | List Firewall Function
-[**PartialUpdateFirewallFunction**](FirewallsFunctionAPI.md#PartialUpdateFirewallFunction) | **Patch** /edge_firewall/firewalls/{firewall_id}/functions/{id} | Partially update an Firewall Function
-[**RetrieveFirewallFunction**](FirewallsFunctionAPI.md#RetrieveFirewallFunction) | **Get** /edge_firewall/firewalls/{firewall_id}/functions/{id} | Retrieve details of an Firewall Function
-[**UpdateFirewallFunction**](FirewallsFunctionAPI.md#UpdateFirewallFunction) | **Put** /edge_firewall/firewalls/{firewall_id}/functions/{id} | Update an Firewall Function
+[**CreateFirewallFunction**](FirewallsFunctionAPI.md#CreateFirewallFunction) | **Post** /workspace/firewalls/{firewall_id}/functions | Create an Firewall Function
+[**DeleteFirewallFunction**](FirewallsFunctionAPI.md#DeleteFirewallFunction) | **Delete** /workspace/firewalls/{firewall_id}/functions/{function_id} | Delete an Firewall Function
+[**ListFirewallFunction**](FirewallsFunctionAPI.md#ListFirewallFunction) | **Get** /workspace/firewalls/{firewall_id}/functions | List Firewall Function
+[**PartialUpdateFirewallFunction**](FirewallsFunctionAPI.md#PartialUpdateFirewallFunction) | **Patch** /workspace/firewalls/{firewall_id}/functions/{function_id} | Partially update an Firewall Function
+[**RetrieveFirewallFunction**](FirewallsFunctionAPI.md#RetrieveFirewallFunction) | **Get** /workspace/firewalls/{firewall_id}/functions/{function_id} | Retrieve details of an Firewall Function
+[**UpdateFirewallFunction**](FirewallsFunctionAPI.md#UpdateFirewallFunction) | **Put** /workspace/firewalls/{firewall_id}/functions/{function_id} | Update an Firewall Function
 
 
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	firewallId := "firewallId_example" // string | 
+	firewallId := int64(789) // int64 | A unique integer value identifying the firewall.
 	firewallFunctionInstanceRequest := *openapiclient.NewFirewallFunctionInstanceRequest("Name_example", int64(123)) // FirewallFunctionInstanceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**firewallId** | **string** |  | 
+**firewallId** | **int64** | A unique integer value identifying the firewall. | 
 
 ### Other Parameters
 
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyFirewallFunction
+## DeleteFirewallFunction
 
-> ResponseDeleteFirewallFunctionInstance DestroyFirewallFunction(ctx, firewallId, id).Execute()
+> ResponseAsyncDeleteFirewallFunctionInstance DeleteFirewallFunction(ctx, firewallId, functionId).Execute()
 
-Destroy an Firewall Function
+Delete an Firewall Function
 
 
 
@@ -106,18 +106,18 @@ import (
 )
 
 func main() {
-	firewallId := "firewallId_example" // string | 
-	id := "id_example" // string | 
+	firewallId := int64(789) // int64 | A unique integer value identifying the firewall.
+	functionId := int64(789) // int64 | A unique integer value identifying the function instance.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsFunctionAPI.DestroyFirewallFunction(context.Background(), firewallId, id).Execute()
+	resp, r, err := apiClient.FirewallsFunctionAPI.DeleteFirewallFunction(context.Background(), firewallId, functionId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.DestroyFirewallFunction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.DeleteFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyFirewallFunction`: ResponseDeleteFirewallFunctionInstance
-	fmt.Fprintf(os.Stdout, "Response from `FirewallsFunctionAPI.DestroyFirewallFunction`: %v\n", resp)
+	// response from `DeleteFirewallFunction`: ResponseAsyncDeleteFirewallFunctionInstance
+	fmt.Fprintf(os.Stdout, "Response from `FirewallsFunctionAPI.DeleteFirewallFunction`: %v\n", resp)
 }
 ```
 
@@ -127,12 +127,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**firewallId** | **string** |  | 
-**id** | **string** |  | 
+**firewallId** | **int64** | A unique integer value identifying the firewall. | 
+**functionId** | **int64** | A unique integer value identifying the function instance. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyFirewallFunctionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteFirewallFunctionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteFirewallFunctionInstance**](ResponseDeleteFirewallFunctionInstance.md)
+[**ResponseAsyncDeleteFirewallFunctionInstance**](ResponseAsyncDeleteFirewallFunctionInstance.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## ListFirewallFunction
 
-> PaginatedFirewallFunctionInstanceList ListFirewallFunction(ctx, firewallId).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedFirewallFunctionInstanceList ListFirewallFunction(ctx, firewallId).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 List Firewall Function
 
@@ -175,12 +175,18 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	firewallId := "firewallId_example" // string | 
+	firewallId := int64(789) // int64 | A unique integer value identifying the firewall.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, last_editor, last_modified, name, args, azion_form, function, active) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
@@ -188,7 +194,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsFunctionAPI.ListFirewallFunction(context.Background(), firewallId).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.FirewallsFunctionAPI.ListFirewallFunction(context.Background(), firewallId).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.ListFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,7 +210,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**firewallId** | **string** |  | 
+**firewallId** | **int64** | A unique integer value identifying the firewall. | 
 
 ### Other Parameters
 
@@ -215,6 +221,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **id** | **int64** | Filter by id (accepts comma-separated values). | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, last_editor, last_modified, name, args, azion_form, function, active) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
@@ -240,7 +251,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateFirewallFunction
 
-> ResponseFirewallFunctionInstance PartialUpdateFirewallFunction(ctx, firewallId, id).PatchedFirewallFunctionInstanceRequest(patchedFirewallFunctionInstanceRequest).Execute()
+> ResponseFirewallFunctionInstance PartialUpdateFirewallFunction(ctx, firewallId, functionId).PatchedFirewallFunctionInstanceRequest(patchedFirewallFunctionInstanceRequest).Execute()
 
 Partially update an Firewall Function
 
@@ -259,13 +270,13 @@ import (
 )
 
 func main() {
-	firewallId := "firewallId_example" // string | 
-	id := "id_example" // string | 
+	firewallId := int64(789) // int64 | A unique integer value identifying the firewall.
+	functionId := int64(789) // int64 | A unique integer value identifying the function instance.
 	patchedFirewallFunctionInstanceRequest := *openapiclient.NewPatchedFirewallFunctionInstanceRequest() // PatchedFirewallFunctionInstanceRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsFunctionAPI.PartialUpdateFirewallFunction(context.Background(), firewallId, id).PatchedFirewallFunctionInstanceRequest(patchedFirewallFunctionInstanceRequest).Execute()
+	resp, r, err := apiClient.FirewallsFunctionAPI.PartialUpdateFirewallFunction(context.Background(), firewallId, functionId).PatchedFirewallFunctionInstanceRequest(patchedFirewallFunctionInstanceRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.PartialUpdateFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,8 +292,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**firewallId** | **string** |  | 
-**id** | **string** |  | 
+**firewallId** | **int64** | A unique integer value identifying the firewall. | 
+**functionId** | **int64** | A unique integer value identifying the function instance. | 
 
 ### Other Parameters
 
@@ -315,7 +326,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveFirewallFunction
 
-> ResponseRetrieveFirewallFunctionInstance RetrieveFirewallFunction(ctx, firewallId, id).Fields(fields).Execute()
+> ResponseRetrieveFirewallFunctionInstance RetrieveFirewallFunction(ctx, firewallId, functionId).Fields(fields).Execute()
 
 Retrieve details of an Firewall Function
 
@@ -334,13 +345,13 @@ import (
 )
 
 func main() {
-	firewallId := "firewallId_example" // string | 
-	id := "id_example" // string | 
+	firewallId := int64(789) // int64 | A unique integer value identifying the firewall.
+	functionId := int64(789) // int64 | A unique integer value identifying the function instance.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsFunctionAPI.RetrieveFirewallFunction(context.Background(), firewallId, id).Fields(fields).Execute()
+	resp, r, err := apiClient.FirewallsFunctionAPI.RetrieveFirewallFunction(context.Background(), firewallId, functionId).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.RetrieveFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -356,8 +367,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**firewallId** | **string** |  | 
-**id** | **string** |  | 
+**firewallId** | **int64** | A unique integer value identifying the firewall. | 
+**functionId** | **int64** | A unique integer value identifying the function instance. | 
 
 ### Other Parameters
 
@@ -390,7 +401,7 @@ Name | Type | Description  | Notes
 
 ## UpdateFirewallFunction
 
-> ResponseFirewallFunctionInstance UpdateFirewallFunction(ctx, firewallId, id).FirewallFunctionInstanceRequest(firewallFunctionInstanceRequest).Execute()
+> ResponseFirewallFunctionInstance UpdateFirewallFunction(ctx, firewallId, functionId).FirewallFunctionInstanceRequest(firewallFunctionInstanceRequest).Execute()
 
 Update an Firewall Function
 
@@ -409,13 +420,13 @@ import (
 )
 
 func main() {
-	firewallId := "firewallId_example" // string | 
-	id := "id_example" // string | 
+	firewallId := int64(789) // int64 | A unique integer value identifying the firewall.
+	functionId := int64(789) // int64 | A unique integer value identifying the function instance.
 	firewallFunctionInstanceRequest := *openapiclient.NewFirewallFunctionInstanceRequest("Name_example", int64(123)) // FirewallFunctionInstanceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsFunctionAPI.UpdateFirewallFunction(context.Background(), firewallId, id).FirewallFunctionInstanceRequest(firewallFunctionInstanceRequest).Execute()
+	resp, r, err := apiClient.FirewallsFunctionAPI.UpdateFirewallFunction(context.Background(), firewallId, functionId).FirewallFunctionInstanceRequest(firewallFunctionInstanceRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.UpdateFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -431,8 +442,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**firewallId** | **string** |  | 
-**id** | **string** |  | 
+**firewallId** | **int64** | A unique integer value identifying the firewall. | 
+**functionId** | **int64** | A unique integer value identifying the function instance. | 
 
 ### Other Parameters
 

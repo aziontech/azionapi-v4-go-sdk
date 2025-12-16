@@ -23,7 +23,6 @@ type FirewallBehaviorsRequest struct {
 	FirewallBehaviorsFirewallBehaviorSetCustomResponseRequest *FirewallBehaviorsFirewallBehaviorSetCustomResponseRequest
 	FirewallBehaviorsFirewallBehaviorSetRateLimitRequest *FirewallBehaviorsFirewallBehaviorSetRateLimitRequest
 	FirewallBehaviorsFirewallBehaviorSetWafRequest *FirewallBehaviorsFirewallBehaviorSetWafRequest
-	FirewallBehaviorsFirewallBehaviorTagEventRequest *FirewallBehaviorsFirewallBehaviorTagEventRequest
 }
 
 // FirewallBehaviorsFirewallBehaviorNoArgumentsRequestAsFirewallBehaviorsRequest is a convenience function that returns FirewallBehaviorsFirewallBehaviorNoArgumentsRequest wrapped in FirewallBehaviorsRequest
@@ -58,13 +57,6 @@ func FirewallBehaviorsFirewallBehaviorSetRateLimitRequestAsFirewallBehaviorsRequ
 func FirewallBehaviorsFirewallBehaviorSetWafRequestAsFirewallBehaviorsRequest(v *FirewallBehaviorsFirewallBehaviorSetWafRequest) FirewallBehaviorsRequest {
 	return FirewallBehaviorsRequest{
 		FirewallBehaviorsFirewallBehaviorSetWafRequest: v,
-	}
-}
-
-// FirewallBehaviorsFirewallBehaviorTagEventRequestAsFirewallBehaviorsRequest is a convenience function that returns FirewallBehaviorsFirewallBehaviorTagEventRequest wrapped in FirewallBehaviorsRequest
-func FirewallBehaviorsFirewallBehaviorTagEventRequestAsFirewallBehaviorsRequest(v *FirewallBehaviorsFirewallBehaviorTagEventRequest) FirewallBehaviorsRequest {
-	return FirewallBehaviorsRequest{
-		FirewallBehaviorsFirewallBehaviorTagEventRequest: v,
 	}
 }
 
@@ -158,23 +150,6 @@ func (dst *FirewallBehaviorsRequest) UnmarshalJSON(data []byte) error {
 		dst.FirewallBehaviorsFirewallBehaviorSetWafRequest = nil
 	}
 
-	// try to unmarshal data into FirewallBehaviorsFirewallBehaviorTagEventRequest
-	err = newStrictDecoder(data).Decode(&dst.FirewallBehaviorsFirewallBehaviorTagEventRequest)
-	if err == nil {
-		jsonFirewallBehaviorsFirewallBehaviorTagEventRequest, _ := json.Marshal(dst.FirewallBehaviorsFirewallBehaviorTagEventRequest)
-		if string(jsonFirewallBehaviorsFirewallBehaviorTagEventRequest) == "{}" { // empty struct
-			dst.FirewallBehaviorsFirewallBehaviorTagEventRequest = nil
-		} else {
-			if err = validator.Validate(dst.FirewallBehaviorsFirewallBehaviorTagEventRequest); err != nil {
-				dst.FirewallBehaviorsFirewallBehaviorTagEventRequest = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.FirewallBehaviorsFirewallBehaviorTagEventRequest = nil
-	}
-
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.FirewallBehaviorsFirewallBehaviorNoArgumentsRequest = nil
@@ -182,7 +157,6 @@ func (dst *FirewallBehaviorsRequest) UnmarshalJSON(data []byte) error {
 		dst.FirewallBehaviorsFirewallBehaviorSetCustomResponseRequest = nil
 		dst.FirewallBehaviorsFirewallBehaviorSetRateLimitRequest = nil
 		dst.FirewallBehaviorsFirewallBehaviorSetWafRequest = nil
-		dst.FirewallBehaviorsFirewallBehaviorTagEventRequest = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(FirewallBehaviorsRequest)")
 	} else if match == 1 {
@@ -214,10 +188,6 @@ func (src FirewallBehaviorsRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FirewallBehaviorsFirewallBehaviorSetWafRequest)
 	}
 
-	if src.FirewallBehaviorsFirewallBehaviorTagEventRequest != nil {
-		return json.Marshal(&src.FirewallBehaviorsFirewallBehaviorTagEventRequest)
-	}
-
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -246,10 +216,6 @@ func (obj *FirewallBehaviorsRequest) GetActualInstance() (interface{}) {
 		return obj.FirewallBehaviorsFirewallBehaviorSetWafRequest
 	}
 
-	if obj.FirewallBehaviorsFirewallBehaviorTagEventRequest != nil {
-		return obj.FirewallBehaviorsFirewallBehaviorTagEventRequest
-	}
-
 	// all schemas are nil
 	return nil
 }
@@ -274,10 +240,6 @@ func (obj FirewallBehaviorsRequest) GetActualInstanceValue() (interface{}) {
 
 	if obj.FirewallBehaviorsFirewallBehaviorSetWafRequest != nil {
 		return *obj.FirewallBehaviorsFirewallBehaviorSetWafRequest
-	}
-
-	if obj.FirewallBehaviorsFirewallBehaviorTagEventRequest != nil {
-		return *obj.FirewallBehaviorsFirewallBehaviorTagEventRequest
 	}
 
 	// all schemas are nil

@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PartialUpdateDnssec**](DNSDNSSECAPI.md#PartialUpdateDnssec) | **Patch** /edge_dns/zones/{zoneId}/dnssec | Partially update a DNSSEC
-[**RetrieveDnssec**](DNSDNSSECAPI.md#RetrieveDnssec) | **Get** /edge_dns/zones/{zoneId}/dnssec | Retrieve details of a DNSSEC
-[**UpdateDnssec**](DNSDNSSECAPI.md#UpdateDnssec) | **Put** /edge_dns/zones/{zoneId}/dnssec | Update a DNSSEC
+[**PartialUpdateDnssec**](DNSDNSSECAPI.md#PartialUpdateDnssec) | **Patch** /edge_dns/zones/{zone_id}/dnssec | Partially update a DNSSEC
+[**RetrieveDnssec**](DNSDNSSECAPI.md#RetrieveDnssec) | **Get** /edge_dns/zones/{zone_id}/dnssec | Retrieve details of a DNSSEC
+[**UpdateDnssec**](DNSDNSSECAPI.md#UpdateDnssec) | **Put** /edge_dns/zones/{zone_id}/dnssec | Update a DNSSEC
 
 
 
@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	zoneId := int64(789) // int64 | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	patchedDNSSECRequest := *openapiclient.NewPatchedDNSSECRequest() // PatchedDNSSECRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -52,7 +52,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **int64** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-	zoneId := int64(789) // int64 | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -124,7 +124,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **int64** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -175,7 +175,7 @@ import (
 )
 
 func main() {
-	zoneId := int64(789) // int64 | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	dNSSECRequest := *openapiclient.NewDNSSECRequest(false) // DNSSECRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -196,7 +196,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **int64** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 

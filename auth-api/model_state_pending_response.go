@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
@@ -19,6 +19,7 @@ var _ MappedNullable = &StatePendingResponse{}
 
 // StatePendingResponse struct for StatePendingResponse
 type StatePendingResponse struct {
+	// State of the operation (lowercase with underscores)
 	State *string `json:"state,omitempty"`
 }
 
