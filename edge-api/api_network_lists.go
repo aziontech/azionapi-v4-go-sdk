@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -223,50 +224,50 @@ func (a *NetworkListsAPIService) CreateNetworkListExecute(r ApiCreateNetworkList
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyNetworkListRequest struct {
+type ApiDeleteNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	id string
+	networkListId int64
 }
 
-func (r ApiDestroyNetworkListRequest) Execute() (*ResponseDeleteNetworkListDetail, *http.Response, error) {
-	return r.ApiService.DestroyNetworkListExecute(r)
+func (r ApiDeleteNetworkListRequest) Execute() (*ResponseAsyncDeleteNetworkListDetail, *http.Response, error) {
+	return r.ApiService.DeleteNetworkListExecute(r)
 }
 
 /*
-DestroyNetworkList Destroy a Network List
+DeleteNetworkList Delete a Network List
 
-Destroy a specific Network List in your account.
+Delete a specific Network List in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDestroyNetworkListRequest
+ @param networkListId A unique integer value identifying the network list.
+ @return ApiDeleteNetworkListRequest
 */
-func (a *NetworkListsAPIService) DestroyNetworkList(ctx context.Context, id string) ApiDestroyNetworkListRequest {
-	return ApiDestroyNetworkListRequest{
+func (a *NetworkListsAPIService) DeleteNetworkList(ctx context.Context, networkListId int64) ApiDeleteNetworkListRequest {
+	return ApiDeleteNetworkListRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		networkListId: networkListId,
 	}
 }
 
 // Execute executes the request
-//  @return ResponseDeleteNetworkListDetail
-func (a *NetworkListsAPIService) DestroyNetworkListExecute(r ApiDestroyNetworkListRequest) (*ResponseDeleteNetworkListDetail, *http.Response, error) {
+//  @return ResponseAsyncDeleteNetworkListDetail
+func (a *NetworkListsAPIService) DeleteNetworkListExecute(r ApiDeleteNetworkListRequest) (*ResponseAsyncDeleteNetworkListDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteNetworkListDetail
+		localVarReturnValue  *ResponseAsyncDeleteNetworkListDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.DestroyNetworkList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.DeleteNetworkList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/network_lists/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/network_lists/{network_list_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network_list_id"+"}", url.PathEscape(parameterValueToString(r.networkListId, "networkListId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -420,6 +421,12 @@ type ApiListNetworkListsRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
 	fields *string
+	id *int64
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
+	listTypeIn *string
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
@@ -429,6 +436,42 @@ type ApiListNetworkListsRequest struct {
 // Comma-separated list of field names to include in the response.
 func (r ApiListNetworkListsRequest) Fields(fields string) ApiListNetworkListsRequest {
 	r.fields = &fields
+	return r
+}
+
+// Filter by id (accepts comma-separated values).
+func (r ApiListNetworkListsRequest) Id(id int64) ApiListNetworkListsRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListNetworkListsRequest) LastEditor(lastEditor string) ApiListNetworkListsRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListNetworkListsRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListNetworkListsRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListNetworkListsRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListNetworkListsRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
+// Filter by list type (accepts comma-separated values).
+func (r ApiListNetworkListsRequest) ListTypeIn(listTypeIn string) ApiListNetworkListsRequest {
+	r.listTypeIn = &listTypeIn
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListNetworkListsRequest) Name(name string) ApiListNetworkListsRequest {
+	r.name = &name
 	return r
 }
 
@@ -498,6 +541,24 @@ func (a *NetworkListsAPIService) ListNetworkListsExecute(r ApiListNetworkListsRe
 
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
+	}
+	if r.listTypeIn != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "list_type__in", r.listTypeIn, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -658,7 +719,7 @@ func (a *NetworkListsAPIService) ListNetworkListsExecute(r ApiListNetworkListsRe
 type ApiPartialUpdateNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	id string
+	networkListId int64
 	patchedNetworkListDetailRequest *PatchedNetworkListDetailRequest
 }
 
@@ -677,14 +738,14 @@ PartialUpdateNetworkList Partially update a Network List
 Update one or more fields of an existing Network List without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param networkListId A unique integer value identifying the network list.
  @return ApiPartialUpdateNetworkListRequest
 */
-func (a *NetworkListsAPIService) PartialUpdateNetworkList(ctx context.Context, id string) ApiPartialUpdateNetworkListRequest {
+func (a *NetworkListsAPIService) PartialUpdateNetworkList(ctx context.Context, networkListId int64) ApiPartialUpdateNetworkListRequest {
 	return ApiPartialUpdateNetworkListRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		networkListId: networkListId,
 	}
 }
 
@@ -703,8 +764,8 @@ func (a *NetworkListsAPIService) PartialUpdateNetworkListExecute(r ApiPartialUpd
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/network_lists/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/network_lists/{network_list_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network_list_id"+"}", url.PathEscape(parameterValueToString(r.networkListId, "networkListId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -859,7 +920,7 @@ func (a *NetworkListsAPIService) PartialUpdateNetworkListExecute(r ApiPartialUpd
 type ApiRetrieveNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	id string
+	networkListId int64
 	fields *string
 	ipv4 *bool
 	ipv6 *bool
@@ -893,14 +954,14 @@ RetrieveNetworkList Retrieve details of a Network List
 Retrieve details of a specific Network List in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param networkListId A unique integer value identifying the network list.
  @return ApiRetrieveNetworkListRequest
 */
-func (a *NetworkListsAPIService) RetrieveNetworkList(ctx context.Context, id string) ApiRetrieveNetworkListRequest {
+func (a *NetworkListsAPIService) RetrieveNetworkList(ctx context.Context, networkListId int64) ApiRetrieveNetworkListRequest {
 	return ApiRetrieveNetworkListRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		networkListId: networkListId,
 	}
 }
 
@@ -919,8 +980,8 @@ func (a *NetworkListsAPIService) RetrieveNetworkListExecute(r ApiRetrieveNetwork
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/network_lists/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/network_lists/{network_list_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network_list_id"+"}", url.PathEscape(parameterValueToString(r.networkListId, "networkListId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,7 +1143,7 @@ func (a *NetworkListsAPIService) RetrieveNetworkListExecute(r ApiRetrieveNetwork
 type ApiUpdateNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	id string
+	networkListId int64
 	networkListDetailRequest *NetworkListDetailRequest
 }
 
@@ -1101,14 +1162,14 @@ UpdateNetworkList Update a Network List
 Update an existing Network List. This replaces the entire Network List with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param networkListId A unique integer value identifying the network list.
  @return ApiUpdateNetworkListRequest
 */
-func (a *NetworkListsAPIService) UpdateNetworkList(ctx context.Context, id string) ApiUpdateNetworkListRequest {
+func (a *NetworkListsAPIService) UpdateNetworkList(ctx context.Context, networkListId int64) ApiUpdateNetworkListRequest {
 	return ApiUpdateNetworkListRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		networkListId: networkListId,
 	}
 }
 
@@ -1127,8 +1188,8 @@ func (a *NetworkListsAPIService) UpdateNetworkListExecute(r ApiUpdateNetworkList
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/network_lists/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/network_lists/{network_list_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network_list_id"+"}", url.PathEscape(parameterValueToString(r.networkListId, "networkListId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

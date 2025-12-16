@@ -4,19 +4,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CloneApplication**](ApplicationsAPI.md#CloneApplication) | **Post** /edge_application/applications/{application_id}/clone | Clone an Application
-[**CreateApplication**](ApplicationsAPI.md#CreateApplication) | **Post** /edge_application/applications | Create an Application
-[**DestroyApplication**](ApplicationsAPI.md#DestroyApplication) | **Delete** /edge_application/applications/{application_id} | Destroy an Application
-[**ListApplications**](ApplicationsAPI.md#ListApplications) | **Get** /edge_application/applications | List Applications
-[**PartialUpdateApplication**](ApplicationsAPI.md#PartialUpdateApplication) | **Patch** /edge_application/applications/{application_id} | Partially update an Application
-[**RetrieveApplication**](ApplicationsAPI.md#RetrieveApplication) | **Get** /edge_application/applications/{application_id} | Retrieve details of an Application
-[**UpdateApplication**](ApplicationsAPI.md#UpdateApplication) | **Put** /edge_application/applications/{application_id} | Update an Application
+[**CloneApplication**](ApplicationsAPI.md#CloneApplication) | **Post** /workspace/applications/{application_id}/clone | Clone an Application
+[**CreateApplication**](ApplicationsAPI.md#CreateApplication) | **Post** /workspace/applications | Create an Application
+[**DeleteApplication**](ApplicationsAPI.md#DeleteApplication) | **Delete** /workspace/applications/{application_id} | Delete an Application
+[**ListApplications**](ApplicationsAPI.md#ListApplications) | **Get** /workspace/applications | List Applications
+[**PartialUpdateApplication**](ApplicationsAPI.md#PartialUpdateApplication) | **Patch** /workspace/applications/{application_id} | Partially update an Application
+[**RetrieveApplication**](ApplicationsAPI.md#RetrieveApplication) | **Get** /workspace/applications/{application_id} | Retrieve details of an Application
+[**UpdateApplication**](ApplicationsAPI.md#UpdateApplication) | **Put** /workspace/applications/{application_id} | Update an Application
 
 
 
 ## CloneApplication
 
-> ResponseRetrieveApplication CloneApplication(ctx, applicationId).CloneApplicationRequest(cloneApplicationRequest).Execute()
+> ResponseApplication CloneApplication(ctx, applicationId).CloneApplicationRequest(cloneApplicationRequest).Execute()
 
 Clone an Application
 
@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	applicationId := "applicationId_example" // string | 
+	applicationId := int64(789) // int64 | A unique integer value identifying the application.
 	cloneApplicationRequest := *openapiclient.NewCloneApplicationRequest("Name_example") // CloneApplicationRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.CloneApplication``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CloneApplication`: ResponseRetrieveApplication
+	// response from `CloneApplication`: ResponseApplication
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationsAPI.CloneApplication`: %v\n", resp)
 }
 ```
@@ -56,7 +56,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | **string** |  | 
+**applicationId** | **int64** | A unique integer value identifying the application. | 
 
 ### Other Parameters
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveApplication**](ResponseRetrieveApplication.md)
+[**ResponseApplication**](ResponseApplication.md)
 
 ### Authorization
 
@@ -152,11 +152,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyApplication
+## DeleteApplication
 
-> ResponseDeleteApplication DestroyApplication(ctx, applicationId).Execute()
+> ResponseAsyncDeleteApplication DeleteApplication(ctx, applicationId).Execute()
 
-Destroy an Application
+Delete an Application
 
 
 
@@ -177,13 +177,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsAPI.DestroyApplication(context.Background(), applicationId).Execute()
+	resp, r, err := apiClient.ApplicationsAPI.DeleteApplication(context.Background(), applicationId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.DestroyApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.DeleteApplication``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyApplication`: ResponseDeleteApplication
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationsAPI.DestroyApplication`: %v\n", resp)
+	// response from `DeleteApplication`: ResponseAsyncDeleteApplication
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsAPI.DeleteApplication`: %v\n", resp)
 }
 ```
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyApplicationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteApplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteApplication**](ResponseDeleteApplication.md)
+[**ResponseAsyncDeleteApplication**](ResponseAsyncDeleteApplication.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## ListApplications
 
-> PaginatedApplicationList ListApplications(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedApplicationList ListApplications(ctx).Active(active).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 List Applications
 
@@ -239,11 +239,18 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+	active := true // bool | Filter by active status. (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: name, id, last_editor, last_modified, active, debug, product_version) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
@@ -251,7 +258,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsAPI.ListApplications(context.Background()).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.ApplicationsAPI.ListApplications(context.Background()).Active(active).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.ListApplications``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -272,7 +279,13 @@ Other parameters are passed through a pointer to a apiListApplicationsRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **active** | **bool** | Filter by active status. | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **id** | **int64** | Filter by id (accepts comma-separated values). | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: name, id, last_editor, last_modified, active, debug, product_version) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 

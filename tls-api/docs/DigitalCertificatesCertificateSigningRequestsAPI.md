@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCertificateSigningRequestCSR**](DigitalCertificatesCertificateSigningRequestsAPI.md#CreateCertificateSigningRequestCSR) | **Post** /digital_certificates/csr | Create a certificate signing request (CSR)
+[**CreateCertificateSigningRequest**](DigitalCertificatesCertificateSigningRequestsAPI.md#CreateCertificateSigningRequest) | **Post** /workspace/tls/csr | Create a certificate signing request (CSR)
 
 
 
-## CreateCertificateSigningRequestCSR
+## CreateCertificateSigningRequest
 
-> ResponseCertificate CreateCertificateSigningRequestCSR(ctx).CertificateSigningRequestRequest(certificateSigningRequestRequest).Execute()
+> ResponseCertificate CreateCertificateSigningRequest(ctx).CertificateSigningRequest(certificateSigningRequest).Execute()
 
 Create a certificate signing request (CSR)
 
@@ -25,21 +25,22 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	certificateSigningRequestRequest := *openapiclient.NewCertificateSigningRequestRequest("Name_example", "CommonName_example", "Country_example", "State_example", "Locality_example", "Organization_example", "OrganizationUnity_example", "Email_example") // CertificateSigningRequestRequest | 
+	certificateSigningRequest := *openapiclient.NewCertificateSigningRequest(int64(123), "Name_example", "Issuer_example", []string{"SubjectName_example"}, "Validity_example", false, "Status_example", "StatusDetail_example", "Csr_example", "Challenge_example", "Authority_example", "ProductVersion_example", "LastEditor_example", time.Now(), time.Now(), "CommonName_example", "Country_example", "State_example", "Locality_example", "Organization_example", "OrganizationUnity_example", "Email_example") // CertificateSigningRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DigitalCertificatesCertificateSigningRequestsAPI.CreateCertificateSigningRequestCSR(context.Background()).CertificateSigningRequestRequest(certificateSigningRequestRequest).Execute()
+	resp, r, err := apiClient.DigitalCertificatesCertificateSigningRequestsAPI.CreateCertificateSigningRequest(context.Background()).CertificateSigningRequest(certificateSigningRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificateSigningRequestsAPI.CreateCertificateSigningRequestCSR``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificateSigningRequestsAPI.CreateCertificateSigningRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateCertificateSigningRequestCSR`: ResponseCertificate
-	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesCertificateSigningRequestsAPI.CreateCertificateSigningRequestCSR`: %v\n", resp)
+	// response from `CreateCertificateSigningRequest`: ResponseCertificate
+	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesCertificateSigningRequestsAPI.CreateCertificateSigningRequest`: %v\n", resp)
 }
 ```
 
@@ -49,12 +50,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateCertificateSigningRequestCSRRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateCertificateSigningRequestRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **certificateSigningRequestRequest** | [**CertificateSigningRequestRequest**](CertificateSigningRequestRequest.md) |  | 
+ **certificateSigningRequest** | [**CertificateSigningRequest**](CertificateSigningRequest.md) |  | 
 
 ### Return type
 

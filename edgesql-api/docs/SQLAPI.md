@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDatabase**](SQLAPI.md#CreateDatabase) | **Post** /edge_sql/databases | Create a database
-[**DestroyDatabase**](SQLAPI.md#DestroyDatabase) | **Delete** /edge_sql/databases/{id} | Destroy a database
-[**ExecuteQuery**](SQLAPI.md#ExecuteQuery) | **Post** /edge_sql/databases/{id}/query | Execute a query into a database
-[**ListDatabases**](SQLAPI.md#ListDatabases) | **Get** /edge_sql/databases | List databases
-[**RetrieveDatabase**](SQLAPI.md#RetrieveDatabase) | **Get** /edge_sql/databases/{id} | Retrieve details from a database
+[**CreateDatabase**](SQLAPI.md#CreateDatabase) | **Post** /workspace/sql/databases | Create a database
+[**DeleteDatabase**](SQLAPI.md#DeleteDatabase) | **Delete** /workspace/sql/databases/{database_id} | Delete a database
+[**ExecuteQuery**](SQLAPI.md#ExecuteQuery) | **Post** /workspace/sql/databases/{database_id}/query | Execute a query into a database
+[**ListDatabases**](SQLAPI.md#ListDatabases) | **Get** /workspace/sql/databases | List databases
+[**RetrieveDatabase**](SQLAPI.md#RetrieveDatabase) | **Get** /workspace/sql/databases/{database_id} | Retrieve details from a database
 
 
 
 ## CreateDatabase
 
-> ResponseOpenAPISchema CreateDatabase(ctx).DatabaseRequest(databaseRequest).Execute()
+> ResponseDatabaseDetail CreateDatabase(ctx).DatabaseRequest(databaseRequest).Execute()
 
 Create a database
 
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SQLAPI.CreateDatabase``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateDatabase`: ResponseOpenAPISchema
+	// response from `CreateDatabase`: ResponseDatabaseDetail
 	fmt.Fprintf(os.Stdout, "Response from `SQLAPI.CreateDatabase`: %v\n", resp)
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseOpenAPISchema**](ResponseOpenAPISchema.md)
+[**ResponseDatabaseDetail**](ResponseDatabaseDetail.md)
 
 ### Authorization
 
@@ -78,11 +78,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyDatabase
+## DeleteDatabase
 
-> ResponseDeleteOpenAPISchema DestroyDatabase(ctx, id).Execute()
+> ResponseAsyncDeleteDatabaseDetail DeleteDatabase(ctx, databaseId).Execute()
 
-Destroy a database
+Delete a database
 
 
 
@@ -99,17 +99,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	databaseId := int64(789) // int64 | A unique integer value identifying this database.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SQLAPI.DestroyDatabase(context.Background(), id).Execute()
+	resp, r, err := apiClient.SQLAPI.DeleteDatabase(context.Background(), databaseId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SQLAPI.DestroyDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SQLAPI.DeleteDatabase``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyDatabase`: ResponseDeleteOpenAPISchema
-	fmt.Fprintf(os.Stdout, "Response from `SQLAPI.DestroyDatabase`: %v\n", resp)
+	// response from `DeleteDatabase`: ResponseAsyncDeleteDatabaseDetail
+	fmt.Fprintf(os.Stdout, "Response from `SQLAPI.DeleteDatabase`: %v\n", resp)
 }
 ```
 
@@ -119,11 +119,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**databaseId** | **int64** | A unique integer value identifying this database. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyDatabaseRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteDatabaseRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteOpenAPISchema**](ResponseDeleteOpenAPISchema.md)
+[**ResponseAsyncDeleteDatabaseDetail**](ResponseAsyncDeleteDatabaseDetail.md)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## ExecuteQuery
 
-> ResponseSQLResult ExecuteQuery(ctx, id).SQLStatementsRequest(sQLStatementsRequest).Execute()
+> ResponseSQLResult ExecuteQuery(ctx, databaseId).SQLStatementsRequest(sQLStatementsRequest).Execute()
 
 Execute a query into a database
 
@@ -169,12 +169,12 @@ import (
 )
 
 func main() {
-	id := int64(789) // int64 | 
+	databaseId := int64(789) // int64 | A unique integer value identifying this database.
 	sQLStatementsRequest := *openapiclient.NewSQLStatementsRequest([]string{"Statements_example"}) // SQLStatementsRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SQLAPI.ExecuteQuery(context.Background(), id).SQLStatementsRequest(sQLStatementsRequest).Execute()
+	resp, r, err := apiClient.SQLAPI.ExecuteQuery(context.Background(), databaseId).SQLStatementsRequest(sQLStatementsRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SQLAPI.ExecuteQuery``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,7 +190,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**databaseId** | **int64** | A unique integer value identifying this database. | 
 
 ### Other Parameters
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## ListDatabases
 
-> PaginatedOpenAPISchemaList ListDatabases(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedDatabaseDetailList ListDatabases(ctx).Active(active).CreatedAtGte(createdAtGte).CreatedAtLte(createdAtLte).Fields(fields).Id(id).LastEditor(lastEditor).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).UpdatedAtGte(updatedAtGte).UpdatedAtLte(updatedAtLte).Execute()
 
 List databases
 
@@ -237,24 +237,34 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+	active := true // bool | Filter by active status. (optional)
+	createdAtGte := time.Now() // time.Time | Filter by created_at (greater than or equal). (optional)
+	createdAtLte := time.Now() // time.Time | Filter by created_at (less than or equal). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, status, active, last_modified) (optional)
+	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
 	search := "search_example" // string | A search term. (optional)
+	status := "status_example" // string | Filter by status (accepts comma-separated values). (optional)
+	updatedAtGte := time.Now() // time.Time | Filter by updated_at (greater than or equal). (optional)
+	updatedAtLte := time.Now() // time.Time | Filter by updated_at (less than or equal). (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SQLAPI.ListDatabases(context.Background()).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.SQLAPI.ListDatabases(context.Background()).Active(active).CreatedAtGte(createdAtGte).CreatedAtLte(createdAtLte).Fields(fields).Id(id).LastEditor(lastEditor).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).UpdatedAtGte(updatedAtGte).UpdatedAtLte(updatedAtLte).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SQLAPI.ListDatabases``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListDatabases`: PaginatedOpenAPISchemaList
+	// response from `ListDatabases`: PaginatedDatabaseDetailList
 	fmt.Fprintf(os.Stdout, "Response from `SQLAPI.ListDatabases`: %v\n", resp)
 }
 ```
@@ -270,15 +280,24 @@ Other parameters are passed through a pointer to a apiListDatabasesRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **active** | **bool** | Filter by active status. | 
+ **createdAtGte** | **time.Time** | Filter by created_at (greater than or equal). | 
+ **createdAtLte** | **time.Time** | Filter by created_at (less than or equal). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
- **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, status, active, last_modified) | 
+ **id** | **int64** | Filter by id (accepts comma-separated values). | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
  **search** | **string** | A search term. | 
+ **status** | **string** | Filter by status (accepts comma-separated values). | 
+ **updatedAtGte** | **time.Time** | Filter by updated_at (greater than or equal). | 
+ **updatedAtLte** | **time.Time** | Filter by updated_at (less than or equal). | 
 
 ### Return type
 
-[**PaginatedOpenAPISchemaList**](PaginatedOpenAPISchemaList.md)
+[**PaginatedDatabaseDetailList**](PaginatedDatabaseDetailList.md)
 
 ### Authorization
 
@@ -296,7 +315,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveDatabase
 
-> ResponseRetrieveOpenAPISchema RetrieveDatabase(ctx, id).Fields(fields).Execute()
+> ResponseRetrieveDatabaseDetail RetrieveDatabase(ctx, databaseId).Fields(fields).Execute()
 
 Retrieve details from a database
 
@@ -315,17 +334,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	databaseId := int64(789) // int64 | A unique integer value identifying this database.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SQLAPI.RetrieveDatabase(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.SQLAPI.RetrieveDatabase(context.Background(), databaseId).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SQLAPI.RetrieveDatabase``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveDatabase`: ResponseRetrieveOpenAPISchema
+	// response from `RetrieveDatabase`: ResponseRetrieveDatabaseDetail
 	fmt.Fprintf(os.Stdout, "Response from `SQLAPI.RetrieveDatabase`: %v\n", resp)
 }
 ```
@@ -336,7 +355,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**databaseId** | **int64** | A unique integer value identifying this database. | 
 
 ### Other Parameters
 
@@ -350,7 +369,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveOpenAPISchema**](ResponseRetrieveOpenAPISchema.md)
+[**ResponseRetrieveDatabaseDetail**](ResponseRetrieveDatabaseDetail.md)
 
 ### Authorization
 

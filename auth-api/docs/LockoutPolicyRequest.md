@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | **bool** |  | 
-**MaxAttempts** | **int64** |  | 
+**MaxAttempts** | **int64** | Maximum number of failed login attempts before lockout | 
 **BlockingPeriod** | **int64** | Blocking period in minutes | 
 
 ## Methods

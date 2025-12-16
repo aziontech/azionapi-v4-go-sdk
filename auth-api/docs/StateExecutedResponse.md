@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to **string** |  | [optional] 
+**State** | Pointer to **string** | State of the operation (lowercase with underscores) | [optional] 
 
 ## Methods
 

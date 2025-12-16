@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTemplate**](DataStreamTemplatesAPI.md#CreateTemplate) | **Post** /data_stream/templates | Create a Template
-[**DestroyTemplate**](DataStreamTemplatesAPI.md#DestroyTemplate) | **Delete** /data_stream/templates/{id} | Destroy a Template
-[**ListTemplates**](DataStreamTemplatesAPI.md#ListTemplates) | **Get** /data_stream/templates | List Templates
-[**PartialUpdateTemplate**](DataStreamTemplatesAPI.md#PartialUpdateTemplate) | **Patch** /data_stream/templates/{id} | Partially update a Template
-[**RetrieveTemplate**](DataStreamTemplatesAPI.md#RetrieveTemplate) | **Get** /data_stream/templates/{id} | Retrieve details of a Template
-[**UpdateTemplate**](DataStreamTemplatesAPI.md#UpdateTemplate) | **Put** /data_stream/templates/{id} | Update a Template
+[**CreateTemplate**](DataStreamTemplatesAPI.md#CreateTemplate) | **Post** /workspace/stream/templates | Create a Template
+[**DeleteTemplate**](DataStreamTemplatesAPI.md#DeleteTemplate) | **Delete** /workspace/stream/templates/{template_id} | Delete a Template
+[**ListTemplates**](DataStreamTemplatesAPI.md#ListTemplates) | **Get** /workspace/stream/templates | List Templates
+[**PartialUpdateTemplate**](DataStreamTemplatesAPI.md#PartialUpdateTemplate) | **Patch** /workspace/stream/templates/{template_id} | Partially update a Template
+[**RetrieveTemplate**](DataStreamTemplatesAPI.md#RetrieveTemplate) | **Get** /workspace/stream/templates/{template_id} | Retrieve details of a Template
+[**UpdateTemplate**](DataStreamTemplatesAPI.md#UpdateTemplate) | **Put** /workspace/stream/templates/{template_id} | Update a Template
 
 
 
@@ -79,11 +79,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyTemplate
+## DeleteTemplate
 
-> ResponseDeleteTemplate DestroyTemplate(ctx, id).Execute()
+> ResponseAsyncDeleteTemplate DeleteTemplate(ctx, templateId).Execute()
 
-Destroy a Template
+Delete a Template
 
 
 
@@ -100,17 +100,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	templateId := int64(789) // int64 | A unique integer value identifying the template.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DataStreamTemplatesAPI.DestroyTemplate(context.Background(), id).Execute()
+	resp, r, err := apiClient.DataStreamTemplatesAPI.DeleteTemplate(context.Background(), templateId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DataStreamTemplatesAPI.DestroyTemplate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DataStreamTemplatesAPI.DeleteTemplate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyTemplate`: ResponseDeleteTemplate
-	fmt.Fprintf(os.Stdout, "Response from `DataStreamTemplatesAPI.DestroyTemplate`: %v\n", resp)
+	// response from `DeleteTemplate`: ResponseAsyncDeleteTemplate
+	fmt.Fprintf(os.Stdout, "Response from `DataStreamTemplatesAPI.DeleteTemplate`: %v\n", resp)
 }
 ```
 
@@ -120,11 +120,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**templateId** | **int64** | A unique integer value identifying the template. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyTemplateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteTemplateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteTemplate**](ResponseDeleteTemplate.md)
+[**ResponseAsyncDeleteTemplate**](ResponseAsyncDeleteTemplate.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ListTemplates
 
-> PaginatedResponseListTemplateList ListTemplates(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedResponseListTemplateList ListTemplates(ctx).Active(active).Custom(custom).DataSet(dataSet).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 List Templates
 
@@ -166,11 +166,20 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+	active := true // bool | Filter by active status. (optional)
+	custom := true // bool | Filter by custom status (true for custom templates, false for default templates). (optional)
+	dataSet := "dataSet_example" // string | Filter by data set (case-insensitive, partial match). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, custom, active, data_set) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
@@ -178,7 +187,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DataStreamTemplatesAPI.ListTemplates(context.Background()).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.DataStreamTemplatesAPI.ListTemplates(context.Background()).Active(active).Custom(custom).DataSet(dataSet).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DataStreamTemplatesAPI.ListTemplates``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -199,7 +208,15 @@ Other parameters are passed through a pointer to a apiListTemplatesRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **active** | **bool** | Filter by active status. | 
+ **custom** | **bool** | Filter by custom status (true for custom templates, false for default templates). | 
+ **dataSet** | **string** | Filter by data set (case-insensitive, partial match). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **id** | **int64** | Filter by id (accepts comma-separated values). | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, custom, active, data_set) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
@@ -225,7 +242,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateTemplate
 
-> ResponseTemplate PartialUpdateTemplate(ctx, id).PatchedTemplateRequest(patchedTemplateRequest).Execute()
+> ResponseTemplate PartialUpdateTemplate(ctx, templateId).PatchedTemplateRequest(patchedTemplateRequest).Execute()
 
 Partially update a Template
 
@@ -244,12 +261,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	templateId := int64(789) // int64 | A unique integer value identifying the template.
 	patchedTemplateRequest := *openapiclient.NewPatchedTemplateRequest() // PatchedTemplateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DataStreamTemplatesAPI.PartialUpdateTemplate(context.Background(), id).PatchedTemplateRequest(patchedTemplateRequest).Execute()
+	resp, r, err := apiClient.DataStreamTemplatesAPI.PartialUpdateTemplate(context.Background(), templateId).PatchedTemplateRequest(patchedTemplateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DataStreamTemplatesAPI.PartialUpdateTemplate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,7 +282,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**templateId** | **int64** | A unique integer value identifying the template. | 
 
 ### Other Parameters
 
@@ -297,7 +314,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveTemplate
 
-> ResponseRetrieveTemplate RetrieveTemplate(ctx, id).Fields(fields).Execute()
+> ResponseRetrieveTemplate RetrieveTemplate(ctx, templateId).Fields(fields).Execute()
 
 Retrieve details of a Template
 
@@ -316,12 +333,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	templateId := int64(789) // int64 | A unique integer value identifying the template.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DataStreamTemplatesAPI.RetrieveTemplate(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.DataStreamTemplatesAPI.RetrieveTemplate(context.Background(), templateId).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DataStreamTemplatesAPI.RetrieveTemplate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,7 +354,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**templateId** | **int64** | A unique integer value identifying the template. | 
 
 ### Other Parameters
 
@@ -369,7 +386,7 @@ Name | Type | Description  | Notes
 
 ## UpdateTemplate
 
-> ResponseTemplate UpdateTemplate(ctx, id).TemplateRequest(templateRequest).Execute()
+> ResponseTemplate UpdateTemplate(ctx, templateId).TemplateRequest(templateRequest).Execute()
 
 Update a Template
 
@@ -388,12 +405,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	templateId := int64(789) // int64 | A unique integer value identifying the template.
 	templateRequest := *openapiclient.NewTemplateRequest("Name_example", "DataSet_example") // TemplateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DataStreamTemplatesAPI.UpdateTemplate(context.Background(), id).TemplateRequest(templateRequest).Execute()
+	resp, r, err := apiClient.DataStreamTemplatesAPI.UpdateTemplate(context.Background(), templateId).TemplateRequest(templateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DataStreamTemplatesAPI.UpdateTemplate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,7 +426,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**templateId** | **int64** | A unique integer value identifying the template. | 
 
 ### Other Parameters
 

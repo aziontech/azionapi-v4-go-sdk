@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
@@ -21,6 +21,7 @@ var _ MappedNullable = &UserLoginMethodResponse{}
 
 // UserLoginMethodResponse struct for UserLoginMethodResponse
 type UserLoginMethodResponse struct {
+	// Login method type (lowercase with underscores)
 	Method string `json:"method"`
 	Url string `json:"url"`
 }

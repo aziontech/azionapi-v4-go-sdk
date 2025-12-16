@@ -4,10 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCredential**](StorageCredentialsAPI.md#CreateCredential) | **Post** /edge_storage/credentials | Create a new credential
-[**DeleteCredential**](StorageCredentialsAPI.md#DeleteCredential) | **Delete** /edge_storage/credentials/{id} | Delete a credential
-[**ListCredentials**](StorageCredentialsAPI.md#ListCredentials) | **Get** /edge_storage/credentials | List credentials
-[**RetrieveCredential**](StorageCredentialsAPI.md#RetrieveCredential) | **Get** /edge_storage/credentials/{id} | Retrieve details from a credential
+[**CreateCredential**](StorageCredentialsAPI.md#CreateCredential) | **Post** /workspace/storage/credentials | Create a new credential
+[**DeleteCredential**](StorageCredentialsAPI.md#DeleteCredential) | **Delete** /workspace/storage/credentials/{credential_id} | Delete a credential
+[**ListCredentials**](StorageCredentialsAPI.md#ListCredentials) | **Get** /workspace/storage/credentials | List credentials
+[**RetrieveCredential**](StorageCredentialsAPI.md#RetrieveCredential) | **Get** /workspace/storage/credentials/{credential_id} | Retrieve details from a credential
 
 
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## DeleteCredential
 
-> ResponseAsyncDeleteCredential DeleteCredential(ctx, id).Execute()
+> ResponseAsyncDeleteCredential DeleteCredential(ctx, credentialId).Execute()
 
 Delete a credential
 
@@ -98,11 +98,11 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	credentialId := int64(789) // int64 | The unique identifier of the credential
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageCredentialsAPI.DeleteCredential(context.Background(), id).Execute()
+	resp, r, err := apiClient.StorageCredentialsAPI.DeleteCredential(context.Background(), credentialId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageCredentialsAPI.DeleteCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -118,7 +118,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**credentialId** | **int64** | The unique identifier of the credential | 
 
 ### Other Parameters
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ## ListCredentials
 
-> PaginatedResponseListCredentialList ListCredentials(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedCredentialList ListCredentials(ctx).AccessKey(accessKey).Buckets(buckets).BucketsIn(bucketsIn).Fields(fields).Id(id).LastEditor(lastEditor).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 List credentials
 
@@ -164,11 +164,21 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+	accessKey := "accessKey_example" // string | Filter by access key (exact match). (optional)
+	buckets := "buckets_example" // string | Filter by bucket name (exact match). (optional)
+	bucketsIn := "bucketsIn_example" // string | Filter by multiple bucket names (comma-separated). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	lastModified := time.Now() // time.Time | Filter by last modified date (exact match). (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
@@ -176,12 +186,12 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageCredentialsAPI.ListCredentials(context.Background()).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.StorageCredentialsAPI.ListCredentials(context.Background()).AccessKey(accessKey).Buckets(buckets).BucketsIn(bucketsIn).Fields(fields).Id(id).LastEditor(lastEditor).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageCredentialsAPI.ListCredentials``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListCredentials`: PaginatedResponseListCredentialList
+	// response from `ListCredentials`: PaginatedCredentialList
 	fmt.Fprintf(os.Stdout, "Response from `StorageCredentialsAPI.ListCredentials`: %v\n", resp)
 }
 ```
@@ -197,7 +207,16 @@ Other parameters are passed through a pointer to a apiListCredentialsRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accessKey** | **string** | Filter by access key (exact match). | 
+ **buckets** | **string** | Filter by bucket name (exact match). | 
+ **bucketsIn** | **string** | Filter by multiple bucket names (comma-separated). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **id** | **int64** | Filter by id (accepts comma-separated values). | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **lastModified** | **time.Time** | Filter by last modified date (exact match). | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
@@ -205,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedResponseListCredentialList**](PaginatedResponseListCredentialList.md)
+[**PaginatedCredentialList**](PaginatedCredentialList.md)
 
 ### Authorization
 
@@ -223,7 +242,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveCredential
 
-> ResponseRetrieveCredential RetrieveCredential(ctx, id).Fields(fields).Execute()
+> ResponseCredential RetrieveCredential(ctx, credentialId).Fields(fields).Execute()
 
 Retrieve details from a credential
 
@@ -242,17 +261,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	credentialId := int64(789) // int64 | The unique identifier of the credential
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageCredentialsAPI.RetrieveCredential(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.StorageCredentialsAPI.RetrieveCredential(context.Background(), credentialId).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageCredentialsAPI.RetrieveCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveCredential`: ResponseRetrieveCredential
+	// response from `RetrieveCredential`: ResponseCredential
 	fmt.Fprintf(os.Stdout, "Response from `StorageCredentialsAPI.RetrieveCredential`: %v\n", resp)
 }
 ```
@@ -263,7 +282,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**credentialId** | **int64** | The unique identifier of the credential | 
 
 ### Other Parameters
 
@@ -277,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveCredential**](ResponseRetrieveCredential.md)
+[**ResponseCredential**](ResponseCredential.md)
 
 ### Authorization
 

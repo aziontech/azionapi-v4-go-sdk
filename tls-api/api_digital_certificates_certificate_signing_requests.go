@@ -22,31 +22,31 @@ import (
 // DigitalCertificatesCertificateSigningRequestsAPIService DigitalCertificatesCertificateSigningRequestsAPI service
 type DigitalCertificatesCertificateSigningRequestsAPIService service
 
-type ApiCreateCertificateSigningRequestCSRRequest struct {
+type ApiCreateCertificateSigningRequestRequest struct {
 	ctx context.Context
 	ApiService *DigitalCertificatesCertificateSigningRequestsAPIService
-	certificateSigningRequestRequest *CertificateSigningRequestRequest
+	certificateSigningRequest *CertificateSigningRequest
 }
 
-func (r ApiCreateCertificateSigningRequestCSRRequest) CertificateSigningRequestRequest(certificateSigningRequestRequest CertificateSigningRequestRequest) ApiCreateCertificateSigningRequestCSRRequest {
-	r.certificateSigningRequestRequest = &certificateSigningRequestRequest
+func (r ApiCreateCertificateSigningRequestRequest) CertificateSigningRequest(certificateSigningRequest CertificateSigningRequest) ApiCreateCertificateSigningRequestRequest {
+	r.certificateSigningRequest = &certificateSigningRequest
 	return r
 }
 
-func (r ApiCreateCertificateSigningRequestCSRRequest) Execute() (*ResponseCertificate, *http.Response, error) {
-	return r.ApiService.CreateCertificateSigningRequestCSRExecute(r)
+func (r ApiCreateCertificateSigningRequestRequest) Execute() (*ResponseCertificate, *http.Response, error) {
+	return r.ApiService.CreateCertificateSigningRequestExecute(r)
 }
 
 /*
-CreateCertificateSigningRequestCSR Create a certificate signing request (CSR)
+CreateCertificateSigningRequest Create a certificate signing request (CSR)
 
 Create a new certificate signing request (CSR) for your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateCertificateSigningRequestCSRRequest
+ @return ApiCreateCertificateSigningRequestRequest
 */
-func (a *DigitalCertificatesCertificateSigningRequestsAPIService) CreateCertificateSigningRequestCSR(ctx context.Context) ApiCreateCertificateSigningRequestCSRRequest {
-	return ApiCreateCertificateSigningRequestCSRRequest{
+func (a *DigitalCertificatesCertificateSigningRequestsAPIService) CreateCertificateSigningRequest(ctx context.Context) ApiCreateCertificateSigningRequestRequest {
+	return ApiCreateCertificateSigningRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -54,7 +54,7 @@ func (a *DigitalCertificatesCertificateSigningRequestsAPIService) CreateCertific
 
 // Execute executes the request
 //  @return ResponseCertificate
-func (a *DigitalCertificatesCertificateSigningRequestsAPIService) CreateCertificateSigningRequestCSRExecute(r ApiCreateCertificateSigningRequestCSRRequest) (*ResponseCertificate, *http.Response, error) {
+func (a *DigitalCertificatesCertificateSigningRequestsAPIService) CreateCertificateSigningRequestExecute(r ApiCreateCertificateSigningRequestRequest) (*ResponseCertificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -62,18 +62,18 @@ func (a *DigitalCertificatesCertificateSigningRequestsAPIService) CreateCertific
 		localVarReturnValue  *ResponseCertificate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalCertificatesCertificateSigningRequestsAPIService.CreateCertificateSigningRequestCSR")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalCertificatesCertificateSigningRequestsAPIService.CreateCertificateSigningRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/digital_certificates/csr"
+	localVarPath := localBasePath + "/workspace/tls/csr"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.certificateSigningRequestRequest == nil {
-		return localVarReturnValue, nil, reportError("certificateSigningRequestRequest is required and must be specified")
+	if r.certificateSigningRequest == nil {
+		return localVarReturnValue, nil, reportError("certificateSigningRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -94,7 +94,7 @@ func (a *DigitalCertificatesCertificateSigningRequestsAPIService) CreateCertific
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.certificateSigningRequestRequest
+	localVarPostBody = r.certificateSigningRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -22,31 +22,31 @@ import (
 // DigitalCertificatesRequestACertificateAPIService DigitalCertificatesRequestACertificateAPI service
 type DigitalCertificatesRequestACertificateAPIService service
 
-type ApiRequestACertificateRequest struct {
+type ApiRequestCertificateRequest struct {
 	ctx context.Context
 	ApiService *DigitalCertificatesRequestACertificateAPIService
-	certificateRequestRequest *CertificateRequestRequest
+	certificateRequest *CertificateRequest
 }
 
-func (r ApiRequestACertificateRequest) CertificateRequestRequest(certificateRequestRequest CertificateRequestRequest) ApiRequestACertificateRequest {
-	r.certificateRequestRequest = &certificateRequestRequest
+func (r ApiRequestCertificateRequest) CertificateRequest(certificateRequest CertificateRequest) ApiRequestCertificateRequest {
+	r.certificateRequest = &certificateRequest
 	return r
 }
 
-func (r ApiRequestACertificateRequest) Execute() (*ResponseCertificate, *http.Response, error) {
-	return r.ApiService.RequestACertificateExecute(r)
+func (r ApiRequestCertificateRequest) Execute() (*ResponseCertificate, *http.Response, error) {
+	return r.ApiService.RequestCertificateExecute(r)
 }
 
 /*
-RequestACertificate Request a certificate
+RequestCertificate Request a certificate
 
 Request a new certificate for your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRequestACertificateRequest
+ @return ApiRequestCertificateRequest
 */
-func (a *DigitalCertificatesRequestACertificateAPIService) RequestACertificate(ctx context.Context) ApiRequestACertificateRequest {
-	return ApiRequestACertificateRequest{
+func (a *DigitalCertificatesRequestACertificateAPIService) RequestCertificate(ctx context.Context) ApiRequestCertificateRequest {
+	return ApiRequestCertificateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -54,7 +54,7 @@ func (a *DigitalCertificatesRequestACertificateAPIService) RequestACertificate(c
 
 // Execute executes the request
 //  @return ResponseCertificate
-func (a *DigitalCertificatesRequestACertificateAPIService) RequestACertificateExecute(r ApiRequestACertificateRequest) (*ResponseCertificate, *http.Response, error) {
+func (a *DigitalCertificatesRequestACertificateAPIService) RequestCertificateExecute(r ApiRequestCertificateRequest) (*ResponseCertificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -62,18 +62,18 @@ func (a *DigitalCertificatesRequestACertificateAPIService) RequestACertificateEx
 		localVarReturnValue  *ResponseCertificate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalCertificatesRequestACertificateAPIService.RequestACertificate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DigitalCertificatesRequestACertificateAPIService.RequestCertificate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/digital_certificates/certificates/request"
+	localVarPath := localBasePath + "/workspace/tls/certificates/request"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.certificateRequestRequest == nil {
-		return localVarReturnValue, nil, reportError("certificateRequestRequest is required and must be specified")
+	if r.certificateRequest == nil {
+		return localVarReturnValue, nil, reportError("certificateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -94,7 +94,7 @@ func (a *DigitalCertificatesRequestACertificateAPIService) RequestACertificateEx
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.certificateRequestRequest
+	localVarPostBody = r.certificateRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
