@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Effect** | **string** | * &#x60;allow&#x60; - allow * &#x60;deny&#x60; - deny | 
-**Resource** | **string** |  | 
+**Resource** | **string** | Resource pattern (regex supported) | 
 **Actions** | **[]string** |  | 
 **Condition** | [**PolicyRuleConditionRequest**](PolicyRuleConditionRequest.md) |  | 
 

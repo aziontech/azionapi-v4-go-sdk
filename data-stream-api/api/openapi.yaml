@@ -6,12 +6,13 @@ info:
 servers:
 - url: /
 paths:
-  /data_stream/data_sources:
+  /workspace/stream/data_sources:
     get:
       description: List all Data Sources.
       operationId: list_data_sources
       parameters:
-      - explode: true
+      - description: Filter by active status.
+        explode: true
         in: query
         name: active
         required: false
@@ -26,7 +27,8 @@ paths:
         schema:
           type: string
         style: form
-      - explode: true
+      - description: "Filter by name (case-insensitive, partial match)."
+        explode: true
         in: query
         name: name
         required: false
@@ -69,7 +71,8 @@ paths:
         schema:
           type: string
         style: form
-      - explode: true
+      - description: "Filter by slug (case-insensitive, exact match)."
+        explode: true
         in: query
         name: slug
         required: false
@@ -201,15 +204,83 @@ paths:
       summary: List of Data Sources
       tags:
       - Data Stream - Data Sources
-  /data_stream/streams:
+  /workspace/stream/streams:
     get:
       description: List all Data Streams owned by your account.
       operationId: list_data_streams
       parameters:
+      - description: Filter by active status.
+        explode: true
+        in: query
+        name: active
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Filter by data set id (accepts comma-separated values).
+        explode: true
+        in: query
+        name: data_set_id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Filter by data source (accepts comma-separated values).
+        explode: true
+        in: query
+        name: data_source
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
         name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by id (accepts comma-separated values).
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: "Filter by last editor (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: last_editor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by last modified date (greater than or equal).
+        explode: true
+        in: query
+        name: last_modified__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by last modified date (less than or equal).
+        explode: true
+        in: query
+        name: last_modified__lte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: "Filter by name (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: name
         required: false
         schema:
           type: string
@@ -515,25 +586,21 @@ paths:
       summary: Create a Data Stream
       tags:
       - Data Stream - Streams
-  /data_stream/streams/{id}:
+  /workspace/stream/streams/{stream_id}:
     delete:
-      description: Destruction of a specific Data Stream in your account.
-      operationId: destroy_data_stream
+      description: Delete a specific Data Stream in your account.
+      operationId: delete_data_stream
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the data stream.
+        explode: false
         in: path
-        name: id
+        name: stream_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseDeleteDataStream"
-          description: Ok
         "202":
           content:
             application/json:
@@ -652,10 +719,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Permission Denied
+        "204":
+          description: No Content
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Destroy a Data Stream
+      summary: Delete a Data Stream
       tags:
       - Data Stream - Streams
     get:
@@ -670,12 +739,14 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
+      - description: A unique integer value identifying the data stream.
+        explode: false
         in: path
-        name: id
+        name: stream_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
         "200":
@@ -806,12 +877,14 @@ paths:
       description: Update one or more fields of an existing Data Stream.
       operationId: partial_update_data_stream
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the data stream.
+        explode: false
         in: path
-        name: id
+        name: stream_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -953,12 +1026,14 @@ paths:
       description: Update an existing Data Stream.
       operationId: update_data_stream
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the data stream.
+        explode: false
         in: path
-        name: id
+        name: stream_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -1097,15 +1172,83 @@ paths:
       summary: Update a Data Stream
       tags:
       - Data Stream - Streams
-  /data_stream/templates:
+  /workspace/stream/templates:
     get:
       description: List all Templates owned by your account.
       operationId: list_templates
       parameters:
+      - description: Filter by active status.
+        explode: true
+        in: query
+        name: active
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: "Filter by custom status (true for custom templates, false for\
+          \ default templates)."
+        explode: true
+        in: query
+        name: custom
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: "Filter by data set (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: data_set
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
         name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by id (accepts comma-separated values).
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: "Filter by last editor (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: last_editor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by last modified date (greater than or equal).
+        explode: true
+        in: query
+        name: last_modified__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by last modified date (less than or equal).
+        explode: true
+        in: query
+        name: last_modified__lte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: "Filter by name (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: name
         required: false
         schema:
           type: string
@@ -1411,25 +1554,21 @@ paths:
       summary: Create a Template
       tags:
       - Data Stream - Templates
-  /data_stream/templates/{id}:
+  /workspace/stream/templates/{template_id}:
     delete:
-      description: Destruction of a specific custom Template in your account.
-      operationId: destroy_template
+      description: Delete a specific custom Template in your account.
+      operationId: delete_template
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the template.
+        explode: false
         in: path
-        name: id
+        name: template_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseDeleteTemplate"
-          description: Ok
         "202":
           content:
             application/json:
@@ -1548,10 +1687,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/JSONAPIErrorResponse"
           description: Permission Denied
+        "204":
+          description: No Content
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Destroy a Template
+      summary: Delete a Template
       tags:
       - Data Stream - Templates
     get:
@@ -1566,12 +1707,14 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
+      - description: A unique integer value identifying the template.
+        explode: false
         in: path
-        name: id
+        name: template_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
         "200":
@@ -1702,12 +1845,14 @@ paths:
       description: Update one or more fields of an existing custom Template.
       operationId: partial_update_template
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the template.
+        explode: false
         in: path
-        name: id
+        name: template_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -1849,12 +1994,14 @@ paths:
       description: Update an existing custom Template.
       operationId: update_template
       parameters:
-      - explode: false
+      - description: A unique integer value identifying the template.
+        explode: false
         in: path
-        name: id
+        name: template_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -2000,21 +2147,29 @@ components:
       properties:
         access_key:
           maxLength: 150
+          minLength: 1
           type: string
         stream_name:
           maxLength: 64
+          minLength: 1
           type: string
         region:
           maxLength: 50
+          minLength: 1
           type: string
         secret_key:
           maxLength: 150
+          minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (aws_kinesis_firehose)
           type: string
       required:
       - access_key
       - region
       - secret_key
       - stream_name
+      - type
       title: AWSKinesisFirehoseEndpoint
       type: object
     AWSKinesisFirehoseEndpointRequest:
@@ -2036,11 +2191,15 @@ components:
           maxLength: 150
           minLength: 1
           type: string
+        type:
+          description: Type identifier for this endpoint (aws_kinesis_firehose)
+          type: string
       required:
       - access_key
       - region
       - secret_key
       - stream_name
+      - type
       title: AWSKinesisFirehoseEndpointRequest
       type: object
     AzureBlobStorageEndpoint:
@@ -2048,17 +2207,24 @@ components:
       properties:
         storage_account:
           maxLength: 100
+          minLength: 1
           type: string
         container_name:
           maxLength: 150
+          minLength: 1
           type: string
         blob_sas_token:
           maxLength: 250
+          minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (azure_blob_storage)
           type: string
       required:
       - blob_sas_token
       - container_name
       - storage_account
+      - type
       title: AzureBlobStorageEndpoint
       type: object
     AzureBlobStorageEndpointRequest:
@@ -2076,10 +2242,14 @@ components:
           maxLength: 250
           minLength: 1
           type: string
+        type:
+          description: Type identifier for this endpoint (azure_blob_storage)
+          type: string
       required:
       - blob_sas_token
       - container_name
       - storage_account
+      - type
       title: AzureBlobStorageEndpointRequest
       type: object
     AzureMonitorEndpoint:
@@ -2087,20 +2257,28 @@ components:
       properties:
         log_type:
           maxLength: 100
+          minLength: 1
           type: string
         shared_key:
           maxLength: 150
+          minLength: 1
           type: string
         time_generated_field:
           maxLength: 50
+          minLength: 1
           nullable: true
           type: string
         workspace_id:
           maxLength: 150
+          minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (azure_monitor)
           type: string
       required:
       - log_type
       - shared_key
+      - type
       - workspace_id
       title: AzureMonitorEndpoint
       type: object
@@ -2124,9 +2302,13 @@ components:
           maxLength: 150
           minLength: 1
           type: string
+        type:
+          description: Type identifier for this endpoint (azure_monitor)
+          type: string
       required:
       - log_type
       - shared_key
+      - type
       - workspace_id
       title: AzureMonitorEndpointRequest
       type: object
@@ -2135,20 +2317,29 @@ components:
       properties:
         dataset_id:
           maxLength: 1024
+          minLength: 1
           type: string
         project_id:
           maxLength: 100
+          minLength: 1
           type: string
         table_id:
           maxLength: 1024
+          minLength: 1
           type: string
         service_account_key:
+          maxLength: 65535
+          minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (big_query)
           type: string
       required:
       - dataset_id
       - project_id
       - service_account_key
       - table_id
+      - type
       title: BigQueryEndpoint
       type: object
     BigQueryEndpointRequest:
@@ -2167,13 +2358,18 @@ components:
           minLength: 1
           type: string
         service_account_key:
+          maxLength: 65535
           minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (big_query)
           type: string
       required:
       - dataset_id
       - project_id
       - service_account_key
       - table_id
+      - type
       title: BigQueryEndpointRequest
       type: object
     ContentTypeEnum:
@@ -2182,6 +2378,9 @@ components:
         * `application/gzip` - application/gzip
       title: ContentTypeEnum
       type: string
+      x-extensible-enum:
+      - plain/text
+      - application/gzip
     DataSourceEnum:
       description: |-
         * `http` - Edge Applications
@@ -2190,6 +2389,11 @@ components:
         * `activity` - Activity History
       title: DataSourceEnum
       type: string
+      x-extensible-enum:
+      - http
+      - waf
+      - functions
+      - activity
     DataStream:
       additionalProperties: false
       example:
@@ -2199,6 +2403,7 @@ components:
               key: headers
             log_line_separator: log_line_separator
             payload_format: payload_format
+            type: type
             url: https://openapi-generator.tech
             max_size: 315634359
           type: type
@@ -2207,6 +2412,7 @@ components:
               key: headers
             log_line_separator: log_line_separator
             payload_format: payload_format
+            type: type
             url: https://openapi-generator.tech
             max_size: 315634359
           type: type
@@ -2232,14 +2438,17 @@ components:
           type: integer
         name:
           maxLength: 100
+          minLength: 1
           type: string
         last_editor:
+          maxLength: 100
           minLength: 1
           type: string
         last_modified:
           format: date-time
           type: string
         product_version:
+          maxLength: 50
           minLength: 1
           type: string
         active:
@@ -2276,6 +2485,7 @@ components:
               key: headers
             log_line_separator: log_line_separator
             payload_format: payload_format
+            type: type
             url: https://openapi-generator.tech
             max_size: 1294783612
           type: type
@@ -2284,6 +2494,7 @@ components:
               key: headers
             log_line_separator: log_line_separator
             payload_format: payload_format
+            type: type
             url: https://openapi-generator.tech
             max_size: 1294783612
           type: type
@@ -2333,9 +2544,14 @@ components:
           type: string
         api_key:
           maxLength: 255
+          minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (datadog)
           type: string
       required:
       - api_key
+      - type
       - url
       title: DatadogEndpoint
       type: object
@@ -2350,8 +2566,12 @@ components:
           maxLength: 255
           minLength: 1
           type: string
+        type:
+          description: Type identifier for this endpoint (datadog)
+          type: string
       required:
       - api_key
+      - type
       - url
       title: DatadogEndpointRequest
       type: object
@@ -2363,9 +2583,14 @@ components:
           type: string
         api_key:
           maxLength: 255
+          minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (elasticsearch)
           type: string
       required:
       - api_key
+      - type
       - url
       title: ElasticsearchEndpoint
       type: object
@@ -2380,8 +2605,12 @@ components:
           maxLength: 255
           minLength: 1
           type: string
+        type:
+          description: Type identifier for this endpoint (elasticsearch)
+          type: string
       required:
       - api_key
+      - type
       - url
       title: ElasticsearchEndpointRequest
       type: object
@@ -2392,6 +2621,7 @@ components:
           key: headers
         log_line_separator: log_line_separator
         payload_format: payload_format
+        type: type
         url: https://openapi-generator.tech
         max_size: 315634359
       properties:
@@ -2400,9 +2630,11 @@ components:
           type: string
         log_line_separator:
           maxLength: 100
+          minLength: 1
           type: string
         payload_format:
           maxLength: 250
+          minLength: 1
           type: string
         max_size:
           format: int64
@@ -2416,8 +2648,12 @@ components:
             minLength: 1
             type: string
           type: object
+        type:
+          description: Type identifier for this endpoint (standard)
+          type: string
       required:
       - headers
+      - type
       - url
       title: HttpPostEndpoint
       type: object
@@ -2428,6 +2664,7 @@ components:
           key: headers
         log_line_separator: log_line_separator
         payload_format: payload_format
+        type: type
         url: https://openapi-generator.tech
         max_size: 1294783612
       properties:
@@ -2437,6 +2674,7 @@ components:
           type: string
         log_line_separator:
           maxLength: 100
+          minLength: 1
           type: string
         payload_format:
           maxLength: 250
@@ -2454,8 +2692,12 @@ components:
             minLength: 1
             type: string
           type: object
+        type:
+          description: Type identifier for this endpoint (standard)
+          type: string
       required:
       - headers
+      - type
       - url
       title: HttpPostEndpointRequest
       type: object
@@ -2470,6 +2712,11 @@ components:
             * `activity` - Activity History
           title: DataSourceEnum
           type: string
+          x-extensible-enum:
+          - http
+          - waf
+          - functions
+          - activity
       required:
       - data_source
       title: InputDataSource
@@ -2481,6 +2728,8 @@ components:
           description: '* `raw_logs` - Raw Logs'
           title: InputDataSourceAttributesTypeEnum
           type: string
+          x-extensible-enum:
+          - raw_logs
         attributes:
           $ref: "#/components/schemas/InputDataSource"
       required:
@@ -2495,6 +2744,8 @@ components:
           description: '* `raw_logs` - Raw Logs'
           title: InputDataSourceAttributesTypeEnum
           type: string
+          x-extensible-enum:
+          - raw_logs
         attributes:
           $ref: "#/components/schemas/InputDataSourceRequest"
       required:
@@ -2506,6 +2757,8 @@ components:
       description: '* `raw_logs` - Raw Logs'
       title: InputDataSourceAttributesTypeEnum
       type: string
+      x-extensible-enum:
+      - raw_logs
     InputDataSourceRequest:
       additionalProperties: false
       properties:
@@ -2517,6 +2770,11 @@ components:
             * `activity` - Activity History
           title: DataSourceEnum
           type: string
+          x-extensible-enum:
+          - http
+          - waf
+          - functions
+          - activity
       required:
       - data_source
       title: InputDataSourceRequest
@@ -2524,26 +2782,44 @@ components:
     InputPolymorphic:
       $ref: "#/components/schemas/InputPolymorphicInputDataSourceAttributes"
     InputPolymorphicInputDataSourceAttributes:
-      additionalProperties: true
       allOf:
       - $ref: "#/components/schemas/InputPolymorphicShared"
       - $ref: "#/components/schemas/InputDataSourceAttributes"
-      title: InputPolymorphicInputDataSourceAttributes
+      - additionalProperties: true
+        properties:
+          type:
+            description: Type identifier for this endpoint (raw_logs)
+            type: string
+        required:
+        - type
+        title: InputPolymorphicInputDataSourceAttributes
+        type: object
+        example: null
+      example: null
     InputPolymorphicInputDataSourceAttributesRequest:
-      additionalProperties: true
       allOf:
       - $ref: "#/components/schemas/InputPolymorphicShared"
       - $ref: "#/components/schemas/InputDataSourceAttributesRequest"
-      title: InputPolymorphicInputDataSourceAttributesRequest
+      - additionalProperties: true
+        properties:
+          type:
+            description: Type identifier for this endpoint (raw_logs)
+            type: string
+        required:
+        - type
+        title: InputPolymorphicInputDataSourceAttributesRequest
+        type: object
+        example: null
+      example: null
     InputPolymorphicRequest:
       $ref: "#/components/schemas/InputPolymorphicInputDataSourceAttributesRequest"
     InputPolymorphicShared:
       additionalProperties: true
       properties:
         type:
-          allOf:
-          - $ref: "#/components/schemas/Type4f5Enum"
-          description: ""
+          maxLength: 255
+          minLength: 1
+          type: string
       required:
       - type
       title: InputPolymorphicShared
@@ -2647,15 +2923,21 @@ components:
       properties:
         bootstrap_servers:
           maxLength: 150
+          minLength: 1
           type: string
         kafka_topic:
           maxLength: 150
+          minLength: 1
           type: string
         use_tls:
           type: boolean
+        type:
+          description: Type identifier for this endpoint (kafka)
+          type: string
       required:
       - bootstrap_servers
       - kafka_topic
+      - type
       - use_tls
       title: KafkaEndpoint
       type: object
@@ -2672,9 +2954,13 @@ components:
           type: string
         use_tls:
           type: boolean
+        type:
+          description: Type identifier for this endpoint (kafka)
+          type: string
       required:
       - bootstrap_servers
       - kafka_topic
+      - type
       - use_tls
       title: KafkaEndpointRequest
       type: object
@@ -2686,6 +2972,7 @@ components:
             key: headers
           log_line_separator: log_line_separator
           payload_format: payload_format
+          type: type
           url: https://openapi-generator.tech
           max_size: 315634359
         type: type
@@ -2705,6 +2992,18 @@ components:
             * `azure_blob_storage` - Azure Blob Storage
           title: OutputTypeEnum
           type: string
+          x-extensible-enum:
+          - standard
+          - kafka
+          - s3
+          - big_query
+          - elasticsearch
+          - splunk
+          - aws_kinesis_firehose
+          - datadog
+          - qradar
+          - azure_monitor
+          - azure_blob_storage
         attributes:
           $ref: "#/components/schemas/OutputPolymorphic"
       required:
@@ -2778,6 +3077,7 @@ components:
             key: headers
           log_line_separator: log_line_separator
           payload_format: payload_format
+          type: type
           url: https://openapi-generator.tech
           max_size: 1294783612
         type: type
@@ -2797,6 +3097,18 @@ components:
             * `azure_blob_storage` - Azure Blob Storage
           title: OutputTypeEnum
           type: string
+          x-extensible-enum:
+          - standard
+          - kafka
+          - s3
+          - big_query
+          - elasticsearch
+          - splunk
+          - aws_kinesis_firehose
+          - datadog
+          - qradar
+          - azure_monitor
+          - azure_blob_storage
         attributes:
           $ref: "#/components/schemas/OutputPolymorphicRequest"
       required:
@@ -2819,10 +3131,24 @@ components:
         * `azure_blob_storage` - Azure Blob Storage
       title: OutputTypeEnum
       type: string
+      x-extensible-enum:
+      - standard
+      - kafka
+      - s3
+      - big_query
+      - elasticsearch
+      - splunk
+      - aws_kinesis_firehose
+      - datadog
+      - qradar
+      - azure_monitor
+      - azure_blob_storage
     PaginatedResponseListDataSourceList:
       additionalProperties: false
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - name: name
           active: true
@@ -2830,12 +3156,35 @@ components:
         - name: name
           active: true
           slug: slug
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
+          type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
           type: integer
         results:
           items:
@@ -2847,6 +3196,8 @@ components:
       additionalProperties: false
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - outputs:
           - attributes:
@@ -2854,6 +3205,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -2862,6 +3214,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -2887,6 +3240,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -2895,6 +3249,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -2914,12 +3269,35 @@ components:
           active: true
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
+          type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
           type: integer
         results:
           items:
@@ -2931,6 +3309,8 @@ components:
       additionalProperties: false
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - last_editor: last_editor
           custom: true
@@ -2946,12 +3326,35 @@ components:
           data_set: data_set
           id: 0
           last_modified: 2000-01-23T04:56:07.000+00:00
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
+          type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
           type: integer
         results:
           items:
@@ -3005,6 +3408,7 @@ components:
         active:
           type: boolean
         data_set:
+          maxLength: 65535
           minLength: 1
           type: string
       title: PatchedTemplateRequest
@@ -3015,7 +3419,11 @@ components:
         url:
           format: uri
           type: string
+        type:
+          description: Type identifier for this endpoint (qradar)
+          type: string
       required:
+      - type
       - url
       title: QRadarEndpoint
       type: object
@@ -3026,7 +3434,11 @@ components:
           format: uri
           minLength: 1
           type: string
+        type:
+          description: Type identifier for this endpoint (qradar)
+          type: string
       required:
+      - type
       - url
       title: QRadarEndpointRequest
       type: object
@@ -3040,6 +3452,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -3048,6 +3461,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -3134,6 +3548,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -3142,6 +3557,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -3173,28 +3589,6 @@ components:
       - data
       title: ResponseDataStream
       type: object
-    ResponseDeleteDataStream:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeleteDataStream
-      type: object
-    ResponseDeleteTemplate:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeleteTemplate
-      type: object
     ResponseListDataSource:
       additionalProperties: false
       example:
@@ -3225,6 +3619,7 @@ components:
               key: headers
             log_line_separator: log_line_separator
             payload_format: payload_format
+            type: type
             url: https://openapi-generator.tech
             max_size: 315634359
           type: type
@@ -3233,6 +3628,7 @@ components:
               key: headers
             log_line_separator: log_line_separator
             payload_format: payload_format
+            type: type
             url: https://openapi-generator.tech
             max_size: 315634359
           type: type
@@ -3258,14 +3654,17 @@ components:
           type: integer
         name:
           maxLength: 100
+          minLength: 1
           type: string
         last_editor:
+          maxLength: 100
           minLength: 1
           type: string
         last_modified:
           format: date-time
           type: string
         product_version:
+          maxLength: 50
           minLength: 1
           type: string
         active:
@@ -3312,6 +3711,7 @@ components:
           minLength: 1
           type: string
         last_editor:
+          maxLength: 100
           minLength: 1
           type: string
         last_modified:
@@ -3322,6 +3722,7 @@ components:
         active:
           type: boolean
         data_set:
+          maxLength: 65535
           minLength: 1
           type: string
       required:
@@ -3343,6 +3744,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -3351,6 +3753,7 @@ components:
                 key: headers
               log_line_separator: log_line_separator
               payload_format: payload_format
+              type: type
               url: https://openapi-generator.tech
               max_size: 315634359
             type: type
@@ -3423,19 +3826,24 @@ components:
       properties:
         access_key:
           maxLength: 150
+          minLength: 1
           type: string
         secret_key:
           maxLength: 150
+          minLength: 1
           type: string
         region:
           maxLength: 50
+          minLength: 1
           type: string
         object_key_prefix:
           maxLength: 150
+          minLength: 1
           nullable: true
           type: string
         bucket_name:
           maxLength: 150
+          minLength: 1
           type: string
         content_type:
           description: |-
@@ -3443,9 +3851,15 @@ components:
             * `application/gzip` - application/gzip
           title: ContentTypeEnum
           type: string
+          x-extensible-enum:
+          - plain/text
+          - application/gzip
         host_url:
           format: uri
           maxLength: 200
+          type: string
+        type:
+          description: Type identifier for this endpoint (s3)
           type: string
       required:
       - access_key
@@ -3454,6 +3868,7 @@ components:
       - host_url
       - region
       - secret_key
+      - type
       title: S3Endpoint
       type: object
     S3EndpointRequest:
@@ -3486,10 +3901,16 @@ components:
             * `application/gzip` - application/gzip
           title: ContentTypeEnum
           type: string
+          x-extensible-enum:
+          - plain/text
+          - application/gzip
         host_url:
           format: uri
           maxLength: 200
           minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (s3)
           type: string
       required:
       - access_key
@@ -3498,6 +3919,7 @@ components:
       - host_url
       - region
       - secret_key
+      - type
       title: S3EndpointRequest
       type: object
     SplunkEndpoint:
@@ -3508,9 +3930,14 @@ components:
           type: string
         api_key:
           maxLength: 255
+          minLength: 1
+          type: string
+        type:
+          description: Type identifier for this endpoint (splunk)
           type: string
       required:
       - api_key
+      - type
       - url
       title: SplunkEndpoint
       type: object
@@ -3525,8 +3952,12 @@ components:
           maxLength: 255
           minLength: 1
           type: string
+        type:
+          description: Type identifier for this endpoint (splunk)
+          type: string
       required:
       - api_key
+      - type
       - url
       title: SplunkEndpointRequest
       type: object
@@ -3549,6 +3980,7 @@ components:
           minLength: 1
           type: string
         last_editor:
+          maxLength: 100
           minLength: 1
           type: string
         last_modified:
@@ -3559,6 +3991,7 @@ components:
         active:
           type: boolean
         data_set:
+          maxLength: 65535
           minLength: 1
           type: string
       required:
@@ -3584,6 +4017,7 @@ components:
         active:
           type: boolean
         data_set:
+          maxLength: 65535
           minLength: 1
           type: string
       required:
@@ -3614,6 +4048,8 @@ components:
           description: '* `filter_workloads` - Filter Workloads'
           title: TransformFilterWorkloadsAttributesTypeEnum
           type: string
+          x-extensible-enum:
+          - filter_workloads
         attributes:
           $ref: "#/components/schemas/TransformFilterWorkloads"
       required:
@@ -3628,6 +4064,8 @@ components:
           description: '* `filter_workloads` - Filter Workloads'
           title: TransformFilterWorkloadsAttributesTypeEnum
           type: string
+          x-extensible-enum:
+          - filter_workloads
         attributes:
           $ref: "#/components/schemas/TransformFilterWorkloadsRequest"
       required:
@@ -3639,6 +4077,8 @@ components:
       description: '* `filter_workloads` - Filter Workloads'
       title: TransformFilterWorkloadsAttributesTypeEnum
       type: string
+      x-extensible-enum:
+      - filter_workloads
     TransformFilterWorkloadsRequest:
       additionalProperties: false
       description: Serializer for filter_workloads transform attributes.
@@ -3685,63 +4125,116 @@ components:
       additionalProperties: true
       properties:
         type:
-          allOf:
-          - $ref: "#/components/schemas/Type4f5Enum"
-          description: ""
+          maxLength: 255
+          minLength: 1
+          type: string
       required:
       - type
       title: TransformPolymorphicShared
       type: object
     TransformPolymorphicTransformFilterWorkloadsAttributes:
-      additionalProperties: true
       allOf:
       - $ref: "#/components/schemas/TransformPolymorphicShared"
       - $ref: "#/components/schemas/TransformFilterWorkloadsAttributes"
-      title: TransformPolymorphicTransformFilterWorkloadsAttributes
+      - additionalProperties: true
+        properties:
+          type:
+            description: Type identifier for this endpoint (filter_workloads)
+            type: string
+        required:
+        - type
+        title: TransformPolymorphicTransformFilterWorkloadsAttributes
+        type: object
+        example: null
+      example: null
     TransformPolymorphicTransformFilterWorkloadsAttributesRequest:
-      additionalProperties: true
       allOf:
       - $ref: "#/components/schemas/TransformPolymorphicShared"
       - $ref: "#/components/schemas/TransformFilterWorkloadsAttributesRequest"
-      title: TransformPolymorphicTransformFilterWorkloadsAttributesRequest
+      - additionalProperties: true
+        properties:
+          type:
+            description: Type identifier for this endpoint (filter_workloads)
+            type: string
+        required:
+        - type
+        title: TransformPolymorphicTransformFilterWorkloadsAttributesRequest
+        type: object
+        example: null
+      example: null
     TransformPolymorphicTransformRenderTemplateAttributes:
-      additionalProperties: true
       allOf:
       - $ref: "#/components/schemas/TransformPolymorphicShared"
       - $ref: "#/components/schemas/TransformRenderTemplateAttributes"
-      title: TransformPolymorphicTransformRenderTemplateAttributes
+      - additionalProperties: true
+        properties:
+          type:
+            description: Type identifier for this endpoint (render_template)
+            type: string
+        required:
+        - type
+        title: TransformPolymorphicTransformRenderTemplateAttributes
+        type: object
+        example: null
+      example: null
     TransformPolymorphicTransformRenderTemplateAttributesRequest:
-      additionalProperties: true
       allOf:
       - $ref: "#/components/schemas/TransformPolymorphicShared"
       - $ref: "#/components/schemas/TransformRenderTemplateAttributesRequest"
-      title: TransformPolymorphicTransformRenderTemplateAttributesRequest
+      - additionalProperties: true
+        properties:
+          type:
+            description: Type identifier for this endpoint (render_template)
+            type: string
+        required:
+        - type
+        title: TransformPolymorphicTransformRenderTemplateAttributesRequest
+        type: object
+        example: null
+      example: null
     TransformPolymorphicTransformSamplingAttributes:
-      additionalProperties: true
       allOf:
       - $ref: "#/components/schemas/TransformPolymorphicShared"
       - $ref: "#/components/schemas/TransformSamplingAttributes"
+      - additionalProperties: true
+        properties:
+          type:
+            description: Type identifier for this endpoint (sampling)
+            type: string
+        required:
+        - type
+        title: TransformPolymorphicTransformSamplingAttributes
+        type: object
+        example: null
       example:
         attributes:
           rate: 60
         type: type
-      title: TransformPolymorphicTransformSamplingAttributes
     TransformPolymorphicTransformSamplingAttributesRequest:
-      additionalProperties: true
       allOf:
       - $ref: "#/components/schemas/TransformPolymorphicShared"
       - $ref: "#/components/schemas/TransformSamplingAttributesRequest"
+      - additionalProperties: true
+        properties:
+          type:
+            description: Type identifier for this endpoint (sampling)
+            type: string
+        required:
+        - type
+        title: TransformPolymorphicTransformSamplingAttributesRequest
+        type: object
+        example: null
       example:
         attributes:
           rate: 8
         type: type
-      title: TransformPolymorphicTransformSamplingAttributesRequest
     TransformRenderTemplate:
       additionalProperties: false
       description: Serializer for render_template transform attributes.
       properties:
         template:
           format: int64
+          maximum: 2147483647
           minimum: 1
           type: integer
       required:
@@ -3755,6 +4248,8 @@ components:
           description: '* `render_template` - Render Template'
           title: TransformRenderTemplateAttributesTypeEnum
           type: string
+          x-extensible-enum:
+          - render_template
         attributes:
           $ref: "#/components/schemas/TransformRenderTemplate"
       required:
@@ -3769,6 +4264,8 @@ components:
           description: '* `render_template` - Render Template'
           title: TransformRenderTemplateAttributesTypeEnum
           type: string
+          x-extensible-enum:
+          - render_template
         attributes:
           $ref: "#/components/schemas/TransformRenderTemplateRequest"
       required:
@@ -3780,12 +4277,15 @@ components:
       description: '* `render_template` - Render Template'
       title: TransformRenderTemplateAttributesTypeEnum
       type: string
+      x-extensible-enum:
+      - render_template
     TransformRenderTemplateRequest:
       additionalProperties: false
       description: Serializer for render_template transform attributes.
       properties:
         template:
           format: int64
+          maximum: 2147483647
           minimum: 1
           type: integer
       required:
@@ -3814,6 +4314,8 @@ components:
           description: '* `sampling` - Sampling'
           title: TransformSamplingAttributesTypeEnum
           type: string
+          x-extensible-enum:
+          - sampling
         attributes:
           $ref: "#/components/schemas/TransformSampling"
       required:
@@ -3828,6 +4330,8 @@ components:
           description: '* `sampling` - Sampling'
           title: TransformSamplingAttributesTypeEnum
           type: string
+          x-extensible-enum:
+          - sampling
         attributes:
           $ref: "#/components/schemas/TransformSamplingRequest"
       required:
@@ -3839,6 +4343,8 @@ components:
       description: '* `sampling` - Sampling'
       title: TransformSamplingAttributesTypeEnum
       type: string
+      x-extensible-enum:
+      - sampling
     TransformSamplingRequest:
       additionalProperties: false
       description: Serializer for sampling transform attributes.
@@ -3853,10 +4359,6 @@ components:
       required:
       - rate
       title: TransformSamplingRequest
-      type: object
-    Type4f5Enum:
-      additionalProperties: false
-      title: Type4f5Enum
       type: object
   securitySchemes:
     BearerAuth:
