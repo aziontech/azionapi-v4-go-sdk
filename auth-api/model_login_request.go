@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
@@ -22,6 +22,7 @@ var _ MappedNullable = &LoginRequest{}
 // LoginRequest struct for LoginRequest
 type LoginRequest struct {
 	Email string `json:"email"`
+	// User password
 	Password string `json:"password"`
 	AccountId NullableInt64 `json:"account_id,omitempty"`
 }

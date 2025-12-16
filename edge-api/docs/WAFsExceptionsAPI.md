@@ -4,18 +4,18 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateWAFException**](WAFsExceptionsAPI.md#CreateWAFException) | **Post** /edge_firewall/wafs/{waf_id}/exceptions | Create an Exception for a Web Application Firewall (WAF)
-[**DestroyWAFException**](WAFsExceptionsAPI.md#DestroyWAFException) | **Delete** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Destroy an Exception from a Web Application Firewall (WAF)
-[**ListWAFExceptions**](WAFsExceptionsAPI.md#ListWAFExceptions) | **Get** /edge_firewall/wafs/{waf_id}/exceptions | List Exceptions for a Web Application Firewall (WAF)
-[**PartialUpdateWAFException**](WAFsExceptionsAPI.md#PartialUpdateWAFException) | **Patch** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Partially update an Exception for a Web Application Firewall (WAF)
-[**RetrieveWAFException**](WAFsExceptionsAPI.md#RetrieveWAFException) | **Get** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Retrieve details of an Exception from a Web Application Firewall (WAF)
-[**UpdateWAFException**](WAFsExceptionsAPI.md#UpdateWAFException) | **Put** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Update an Exception for a Web Application Firewall (WAF)
+[**CreateWafException**](WAFsExceptionsAPI.md#CreateWafException) | **Post** /workspace/wafs/{waf_id}/exceptions | Create an Exception for a Web Application Firewall (WAF)
+[**DeleteWafException**](WAFsExceptionsAPI.md#DeleteWafException) | **Delete** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Delete an Exception from a Web Application Firewall (WAF)
+[**ListWafExceptions**](WAFsExceptionsAPI.md#ListWafExceptions) | **Get** /workspace/wafs/{waf_id}/exceptions | List Exceptions for a Web Application Firewall (WAF)
+[**PartialUpdateWafException**](WAFsExceptionsAPI.md#PartialUpdateWafException) | **Patch** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Partially update an Exception for a Web Application Firewall (WAF)
+[**RetrieveWafException**](WAFsExceptionsAPI.md#RetrieveWafException) | **Get** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Retrieve details of an Exception from a Web Application Firewall (WAF)
+[**UpdateWafException**](WAFsExceptionsAPI.md#UpdateWafException) | **Put** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Update an Exception for a Web Application Firewall (WAF)
 
 
 
-## CreateWAFException
+## CreateWafException
 
-> ResponseWAFRule CreateWAFException(ctx, wafId).WAFRuleRequest(wAFRuleRequest).Execute()
+> ResponseWAFRule CreateWafException(ctx, wafId).WAFRuleRequest(wAFRuleRequest).Execute()
 
 Create an Exception for a Web Application Firewall (WAF)
 
@@ -34,18 +34,18 @@ import (
 )
 
 func main() {
-	wafId := "wafId_example" // string | 
+	wafId := int64(789) // int64 | A unique integer value identifying the WAF.
 	wAFRuleRequest := *openapiclient.NewWAFRuleRequest("Name_example", []openapiclient.WAFExceptionPolymorphicConditionRequest{openapiclient.WAFExceptionPolymorphicConditionRequest{WAFExceptionGenericConditionRequest: openapiclient.NewWAFExceptionGenericConditionRequest("Match_example")}}) // WAFRuleRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WAFsExceptionsAPI.CreateWAFException(context.Background(), wafId).WAFRuleRequest(wAFRuleRequest).Execute()
+	resp, r, err := apiClient.WAFsExceptionsAPI.CreateWafException(context.Background(), wafId).WAFRuleRequest(wAFRuleRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.CreateWAFException``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.CreateWafException``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateWAFException`: ResponseWAFRule
-	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.CreateWAFException`: %v\n", resp)
+	// response from `CreateWafException`: ResponseWAFRule
+	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.CreateWafException`: %v\n", resp)
 }
 ```
 
@@ -55,11 +55,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**wafId** | **string** |  | 
+**wafId** | **int64** | A unique integer value identifying the WAF. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateWAFExceptionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateWafExceptionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyWAFException
+## DeleteWafException
 
-> ResponseDeleteWAFRule DestroyWAFException(ctx, exceptionId, wafId).Execute()
+> ResponseAsyncDeleteWAFRule DeleteWafException(ctx, exceptionId, wafId).Execute()
 
-Destroy an Exception from a Web Application Firewall (WAF)
+Delete an Exception from a Web Application Firewall (WAF)
 
 
 
@@ -106,18 +106,18 @@ import (
 )
 
 func main() {
-	exceptionId := "exceptionId_example" // string | 
-	wafId := "wafId_example" // string | 
+	exceptionId := int64(789) // int64 | A unique integer value identifying the WAF exception.
+	wafId := int64(789) // int64 | A unique integer value identifying the WAF.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WAFsExceptionsAPI.DestroyWAFException(context.Background(), exceptionId, wafId).Execute()
+	resp, r, err := apiClient.WAFsExceptionsAPI.DeleteWafException(context.Background(), exceptionId, wafId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.DestroyWAFException``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.DeleteWafException``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyWAFException`: ResponseDeleteWAFRule
-	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.DestroyWAFException`: %v\n", resp)
+	// response from `DeleteWafException`: ResponseAsyncDeleteWAFRule
+	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.DeleteWafException`: %v\n", resp)
 }
 ```
 
@@ -127,12 +127,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exceptionId** | **string** |  | 
-**wafId** | **string** |  | 
+**exceptionId** | **int64** | A unique integer value identifying the WAF exception. | 
+**wafId** | **int64** | A unique integer value identifying the WAF. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyWAFExceptionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteWafExceptionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteWAFRule**](ResponseDeleteWAFRule.md)
+[**ResponseAsyncDeleteWAFRule**](ResponseAsyncDeleteWAFRule.md)
 
 ### Authorization
 
@@ -158,9 +158,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListWAFExceptions
+## ListWafExceptions
 
-> PaginatedWAFRuleList ListWAFExceptions(ctx, wafId).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedWAFRuleList ListWafExceptions(ctx, wafId).CreatedAtGte(createdAtGte).CreatedAtLte(createdAtLte).Description(description).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).Search(search).Execute()
 
 List Exceptions for a Web Application Firewall (WAF)
 
@@ -175,26 +175,35 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	wafId := "wafId_example" // string | 
+	wafId := int64(789) // int64 | A unique integer value identifying the WAF.
+	createdAtGte := time.Now() // time.Time | Filter by creation date (greater than or equal). (optional)
+	createdAtLte := time.Now() // time.Time | Filter by creation date (less than or equal). (optional)
+	description := "description_example" // string | Filter by description (case-insensitive, partial match). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: rule_id, name, path, conditions, operator, active, last_editor, last_modified) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
+	path := "path_example" // string | Filter by path (case-insensitive, partial match). (optional)
 	search := "search_example" // string | A search term. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WAFsExceptionsAPI.ListWAFExceptions(context.Background(), wafId).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.WAFsExceptionsAPI.ListWafExceptions(context.Background(), wafId).CreatedAtGte(createdAtGte).CreatedAtLte(createdAtLte).Description(description).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).Search(search).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.ListWAFExceptions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.ListWafExceptions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListWAFExceptions`: PaginatedWAFRuleList
-	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.ListWAFExceptions`: %v\n", resp)
+	// response from `ListWafExceptions`: PaginatedWAFRuleList
+	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.ListWafExceptions`: %v\n", resp)
 }
 ```
 
@@ -204,20 +213,28 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**wafId** | **string** |  | 
+**wafId** | **int64** | A unique integer value identifying the WAF. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListWAFExceptionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListWafExceptionsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **createdAtGte** | **time.Time** | Filter by creation date (greater than or equal). | 
+ **createdAtLte** | **time.Time** | Filter by creation date (less than or equal). | 
+ **description** | **string** | Filter by description (case-insensitive, partial match). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **id** | **int64** | Filter by id (accepts comma-separated values). | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: rule_id, name, path, conditions, operator, active, last_editor, last_modified) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
+ **path** | **string** | Filter by path (case-insensitive, partial match). | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -238,9 +255,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PartialUpdateWAFException
+## PartialUpdateWafException
 
-> ResponseWAFRule PartialUpdateWAFException(ctx, exceptionId, wafId).PatchedWAFRuleRequest(patchedWAFRuleRequest).Execute()
+> ResponseWAFRule PartialUpdateWafException(ctx, exceptionId, wafId).PatchedWAFRuleRequest(patchedWAFRuleRequest).Execute()
 
 Partially update an Exception for a Web Application Firewall (WAF)
 
@@ -259,19 +276,19 @@ import (
 )
 
 func main() {
-	exceptionId := "exceptionId_example" // string | 
-	wafId := "wafId_example" // string | 
+	exceptionId := int64(789) // int64 | A unique integer value identifying the WAF exception.
+	wafId := int64(789) // int64 | A unique integer value identifying the WAF.
 	patchedWAFRuleRequest := *openapiclient.NewPatchedWAFRuleRequest() // PatchedWAFRuleRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WAFsExceptionsAPI.PartialUpdateWAFException(context.Background(), exceptionId, wafId).PatchedWAFRuleRequest(patchedWAFRuleRequest).Execute()
+	resp, r, err := apiClient.WAFsExceptionsAPI.PartialUpdateWafException(context.Background(), exceptionId, wafId).PatchedWAFRuleRequest(patchedWAFRuleRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.PartialUpdateWAFException``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.PartialUpdateWafException``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateWAFException`: ResponseWAFRule
-	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.PartialUpdateWAFException`: %v\n", resp)
+	// response from `PartialUpdateWafException`: ResponseWAFRule
+	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.PartialUpdateWafException`: %v\n", resp)
 }
 ```
 
@@ -281,12 +298,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exceptionId** | **string** |  | 
-**wafId** | **string** |  | 
+**exceptionId** | **int64** | A unique integer value identifying the WAF exception. | 
+**wafId** | **int64** | A unique integer value identifying the WAF. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPartialUpdateWAFExceptionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPartialUpdateWafExceptionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -313,9 +330,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RetrieveWAFException
+## RetrieveWafException
 
-> ResponseRetrieveWAFRule RetrieveWAFException(ctx, exceptionId, wafId).Fields(fields).Execute()
+> ResponseRetrieveWAFRule RetrieveWafException(ctx, exceptionId, wafId).Fields(fields).Execute()
 
 Retrieve details of an Exception from a Web Application Firewall (WAF)
 
@@ -334,19 +351,19 @@ import (
 )
 
 func main() {
-	exceptionId := "exceptionId_example" // string | 
-	wafId := "wafId_example" // string | 
+	exceptionId := int64(789) // int64 | A unique integer value identifying the WAF exception.
+	wafId := int64(789) // int64 | A unique integer value identifying the WAF.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WAFsExceptionsAPI.RetrieveWAFException(context.Background(), exceptionId, wafId).Fields(fields).Execute()
+	resp, r, err := apiClient.WAFsExceptionsAPI.RetrieveWafException(context.Background(), exceptionId, wafId).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.RetrieveWAFException``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.RetrieveWafException``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveWAFException`: ResponseRetrieveWAFRule
-	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.RetrieveWAFException`: %v\n", resp)
+	// response from `RetrieveWafException`: ResponseRetrieveWAFRule
+	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.RetrieveWafException`: %v\n", resp)
 }
 ```
 
@@ -356,12 +373,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exceptionId** | **string** |  | 
-**wafId** | **string** |  | 
+**exceptionId** | **int64** | A unique integer value identifying the WAF exception. | 
+**wafId** | **int64** | A unique integer value identifying the WAF. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRetrieveWAFExceptionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRetrieveWafExceptionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -388,9 +405,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateWAFException
+## UpdateWafException
 
-> ResponseWAFRule UpdateWAFException(ctx, exceptionId, wafId).WAFRuleRequest(wAFRuleRequest).Execute()
+> ResponseWAFRule UpdateWafException(ctx, exceptionId, wafId).WAFRuleRequest(wAFRuleRequest).Execute()
 
 Update an Exception for a Web Application Firewall (WAF)
 
@@ -409,19 +426,19 @@ import (
 )
 
 func main() {
-	exceptionId := "exceptionId_example" // string | 
-	wafId := "wafId_example" // string | 
+	exceptionId := int64(789) // int64 | A unique integer value identifying the WAF exception.
+	wafId := int64(789) // int64 | A unique integer value identifying the WAF.
 	wAFRuleRequest := *openapiclient.NewWAFRuleRequest("Name_example", []openapiclient.WAFExceptionPolymorphicConditionRequest{openapiclient.WAFExceptionPolymorphicConditionRequest{WAFExceptionGenericConditionRequest: openapiclient.NewWAFExceptionGenericConditionRequest("Match_example")}}) // WAFRuleRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WAFsExceptionsAPI.UpdateWAFException(context.Background(), exceptionId, wafId).WAFRuleRequest(wAFRuleRequest).Execute()
+	resp, r, err := apiClient.WAFsExceptionsAPI.UpdateWafException(context.Background(), exceptionId, wafId).WAFRuleRequest(wAFRuleRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.UpdateWAFException``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.UpdateWafException``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateWAFException`: ResponseWAFRule
-	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.UpdateWAFException`: %v\n", resp)
+	// response from `UpdateWafException`: ResponseWAFRule
+	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.UpdateWafException`: %v\n", resp)
 }
 ```
 
@@ -431,12 +448,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exceptionId** | **string** |  | 
-**wafId** | **string** |  | 
+**exceptionId** | **int64** | A unique integer value identifying the WAF exception. | 
+**wafId** | **int64** | A unique integer value identifying the WAF. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateWAFExceptionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateWafExceptionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

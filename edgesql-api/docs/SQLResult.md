@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Columns** | **[]interface{}** |  | 
-**Rows** | **[]interface{}** |  | 
+**Columns** | **[]interface{}** | List of column names | 
+**Rows** | **[]interface{}** | List of result rows | 
 
 ## Methods
 

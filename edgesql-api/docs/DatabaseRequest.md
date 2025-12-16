@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Active** | Pointer to **bool** |  | [optional] 
+**Name** | **string** | Name of the database | 
+**Active** | Pointer to **bool** | Whether the database is active | [optional] 
 
 ## Methods
 

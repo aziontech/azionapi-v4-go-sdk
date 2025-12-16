@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -34,7 +35,7 @@ func (r ApiCreateDatabaseRequest) DatabaseRequest(databaseRequest DatabaseReques
 	return r
 }
 
-func (r ApiCreateDatabaseRequest) Execute() (*ResponseOpenAPISchema, *http.Response, error) {
+func (r ApiCreateDatabaseRequest) Execute() (*ResponseDatabaseDetail, *http.Response, error) {
 	return r.ApiService.CreateDatabaseExecute(r)
 }
 
@@ -54,13 +55,13 @@ func (a *SQLAPIService) CreateDatabase(ctx context.Context) ApiCreateDatabaseReq
 }
 
 // Execute executes the request
-//  @return ResponseOpenAPISchema
-func (a *SQLAPIService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*ResponseOpenAPISchema, *http.Response, error) {
+//  @return ResponseDatabaseDetail
+func (a *SQLAPIService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*ResponseDatabaseDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseOpenAPISchema
+		localVarReturnValue  *ResponseDatabaseDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SQLAPIService.CreateDatabase")
@@ -68,7 +69,7 @@ func (a *SQLAPIService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*Resp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_sql/databases"
+	localVarPath := localBasePath + "/workspace/sql/databases"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -234,50 +235,50 @@ func (a *SQLAPIService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*Resp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyDatabaseRequest struct {
+type ApiDeleteDatabaseRequest struct {
 	ctx context.Context
 	ApiService *SQLAPIService
-	id string
+	databaseId int64
 }
 
-func (r ApiDestroyDatabaseRequest) Execute() (*ResponseDeleteOpenAPISchema, *http.Response, error) {
-	return r.ApiService.DestroyDatabaseExecute(r)
+func (r ApiDeleteDatabaseRequest) Execute() (*ResponseAsyncDeleteDatabaseDetail, *http.Response, error) {
+	return r.ApiService.DeleteDatabaseExecute(r)
 }
 
 /*
-DestroyDatabase Destroy a database
+DeleteDatabase Delete a database
 
-Schedule the destruction of a specific database in your account.
+Schedule the deletion of a specific database in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDestroyDatabaseRequest
+ @param databaseId A unique integer value identifying this database.
+ @return ApiDeleteDatabaseRequest
 */
-func (a *SQLAPIService) DestroyDatabase(ctx context.Context, id string) ApiDestroyDatabaseRequest {
-	return ApiDestroyDatabaseRequest{
+func (a *SQLAPIService) DeleteDatabase(ctx context.Context, databaseId int64) ApiDeleteDatabaseRequest {
+	return ApiDeleteDatabaseRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
-//  @return ResponseDeleteOpenAPISchema
-func (a *SQLAPIService) DestroyDatabaseExecute(r ApiDestroyDatabaseRequest) (*ResponseDeleteOpenAPISchema, *http.Response, error) {
+//  @return ResponseAsyncDeleteDatabaseDetail
+func (a *SQLAPIService) DeleteDatabaseExecute(r ApiDeleteDatabaseRequest) (*ResponseAsyncDeleteDatabaseDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteOpenAPISchema
+		localVarReturnValue  *ResponseAsyncDeleteDatabaseDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SQLAPIService.DestroyDatabase")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SQLAPIService.DeleteDatabase")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_sql/databases/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/sql/databases/{database_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"database_id"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -430,7 +431,7 @@ func (a *SQLAPIService) DestroyDatabaseExecute(r ApiDestroyDatabaseRequest) (*Re
 type ApiExecuteQueryRequest struct {
 	ctx context.Context
 	ApiService *SQLAPIService
-	id int64
+	databaseId int64
 	sQLStatementsRequest *SQLStatementsRequest
 }
 
@@ -449,14 +450,14 @@ ExecuteQuery Execute a query into a database
 Execute a query into a database for your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param databaseId A unique integer value identifying this database.
  @return ApiExecuteQueryRequest
 */
-func (a *SQLAPIService) ExecuteQuery(ctx context.Context, id int64) ApiExecuteQueryRequest {
+func (a *SQLAPIService) ExecuteQuery(ctx context.Context, databaseId int64) ApiExecuteQueryRequest {
 	return ApiExecuteQueryRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		databaseId: databaseId,
 	}
 }
 
@@ -475,8 +476,8 @@ func (a *SQLAPIService) ExecuteQueryExecute(r ApiExecuteQueryRequest) (*Response
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_sql/databases/{id}/query"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/sql/databases/{database_id}/query"
+	localVarPath = strings.Replace(localVarPath, "{"+"database_id"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -645,11 +646,38 @@ func (a *SQLAPIService) ExecuteQueryExecute(r ApiExecuteQueryRequest) (*Response
 type ApiListDatabasesRequest struct {
 	ctx context.Context
 	ApiService *SQLAPIService
+	active *bool
+	createdAtGte *time.Time
+	createdAtLte *time.Time
 	fields *string
+	id *int64
+	lastEditor *string
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
 	search *string
+	status *string
+	updatedAtGte *time.Time
+	updatedAtLte *time.Time
+}
+
+// Filter by active status.
+func (r ApiListDatabasesRequest) Active(active bool) ApiListDatabasesRequest {
+	r.active = &active
+	return r
+}
+
+// Filter by created_at (greater than or equal).
+func (r ApiListDatabasesRequest) CreatedAtGte(createdAtGte time.Time) ApiListDatabasesRequest {
+	r.createdAtGte = &createdAtGte
+	return r
+}
+
+// Filter by created_at (less than or equal).
+func (r ApiListDatabasesRequest) CreatedAtLte(createdAtLte time.Time) ApiListDatabasesRequest {
+	r.createdAtLte = &createdAtLte
+	return r
 }
 
 // Comma-separated list of field names to include in the response.
@@ -658,7 +686,25 @@ func (r ApiListDatabasesRequest) Fields(fields string) ApiListDatabasesRequest {
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: id, name, status, active, last_modified)
+// Filter by id (accepts comma-separated values).
+func (r ApiListDatabasesRequest) Id(id int64) ApiListDatabasesRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListDatabasesRequest) LastEditor(lastEditor string) ApiListDatabasesRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListDatabasesRequest) Name(name string) ApiListDatabasesRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
 func (r ApiListDatabasesRequest) Ordering(ordering string) ApiListDatabasesRequest {
 	r.ordering = &ordering
 	return r
@@ -682,7 +728,25 @@ func (r ApiListDatabasesRequest) Search(search string) ApiListDatabasesRequest {
 	return r
 }
 
-func (r ApiListDatabasesRequest) Execute() (*PaginatedOpenAPISchemaList, *http.Response, error) {
+// Filter by status (accepts comma-separated values).
+func (r ApiListDatabasesRequest) Status(status string) ApiListDatabasesRequest {
+	r.status = &status
+	return r
+}
+
+// Filter by updated_at (greater than or equal).
+func (r ApiListDatabasesRequest) UpdatedAtGte(updatedAtGte time.Time) ApiListDatabasesRequest {
+	r.updatedAtGte = &updatedAtGte
+	return r
+}
+
+// Filter by updated_at (less than or equal).
+func (r ApiListDatabasesRequest) UpdatedAtLte(updatedAtLte time.Time) ApiListDatabasesRequest {
+	r.updatedAtLte = &updatedAtLte
+	return r
+}
+
+func (r ApiListDatabasesRequest) Execute() (*PaginatedDatabaseDetailList, *http.Response, error) {
 	return r.ApiService.ListDatabasesExecute(r)
 }
 
@@ -702,13 +766,13 @@ func (a *SQLAPIService) ListDatabases(ctx context.Context) ApiListDatabasesReque
 }
 
 // Execute executes the request
-//  @return PaginatedOpenAPISchemaList
-func (a *SQLAPIService) ListDatabasesExecute(r ApiListDatabasesRequest) (*PaginatedOpenAPISchemaList, *http.Response, error) {
+//  @return PaginatedDatabaseDetailList
+func (a *SQLAPIService) ListDatabasesExecute(r ApiListDatabasesRequest) (*PaginatedDatabaseDetailList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaginatedOpenAPISchemaList
+		localVarReturnValue  *PaginatedDatabaseDetailList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SQLAPIService.ListDatabases")
@@ -716,14 +780,32 @@ func (a *SQLAPIService) ListDatabasesExecute(r ApiListDatabasesRequest) (*Pagina
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_sql/databases"
+	localVarPath := localBasePath + "/workspace/sql/databases"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.active != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+	}
+	if r.createdAtGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_at__gte", r.createdAtGte, "form", "")
+	}
+	if r.createdAtLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_at__lte", r.createdAtLte, "form", "")
+	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -736,6 +818,15 @@ func (a *SQLAPIService) ListDatabasesExecute(r ApiListDatabasesRequest) (*Pagina
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.updatedAtGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "updated_at__gte", r.updatedAtGte, "form", "")
+	}
+	if r.updatedAtLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "updated_at__lte", r.updatedAtLte, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -884,7 +975,7 @@ func (a *SQLAPIService) ListDatabasesExecute(r ApiListDatabasesRequest) (*Pagina
 type ApiRetrieveDatabaseRequest struct {
 	ctx context.Context
 	ApiService *SQLAPIService
-	id string
+	databaseId int64
 	fields *string
 }
 
@@ -894,7 +985,7 @@ func (r ApiRetrieveDatabaseRequest) Fields(fields string) ApiRetrieveDatabaseReq
 	return r
 }
 
-func (r ApiRetrieveDatabaseRequest) Execute() (*ResponseRetrieveOpenAPISchema, *http.Response, error) {
+func (r ApiRetrieveDatabaseRequest) Execute() (*ResponseRetrieveDatabaseDetail, *http.Response, error) {
 	return r.ApiService.RetrieveDatabaseExecute(r)
 }
 
@@ -904,25 +995,25 @@ RetrieveDatabase Retrieve details from a database
 Retrieve details from a specific database in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param databaseId A unique integer value identifying this database.
  @return ApiRetrieveDatabaseRequest
 */
-func (a *SQLAPIService) RetrieveDatabase(ctx context.Context, id string) ApiRetrieveDatabaseRequest {
+func (a *SQLAPIService) RetrieveDatabase(ctx context.Context, databaseId int64) ApiRetrieveDatabaseRequest {
 	return ApiRetrieveDatabaseRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveOpenAPISchema
-func (a *SQLAPIService) RetrieveDatabaseExecute(r ApiRetrieveDatabaseRequest) (*ResponseRetrieveOpenAPISchema, *http.Response, error) {
+//  @return ResponseRetrieveDatabaseDetail
+func (a *SQLAPIService) RetrieveDatabaseExecute(r ApiRetrieveDatabaseRequest) (*ResponseRetrieveDatabaseDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveOpenAPISchema
+		localVarReturnValue  *ResponseRetrieveDatabaseDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SQLAPIService.RetrieveDatabase")
@@ -930,8 +1021,8 @@ func (a *SQLAPIService) RetrieveDatabaseExecute(r ApiRetrieveDatabaseRequest) (*
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_sql/databases/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/sql/databases/{database_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"database_id"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

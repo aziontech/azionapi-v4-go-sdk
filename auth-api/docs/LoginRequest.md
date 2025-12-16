@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Email** | **string** |  | 
-**Password** | **string** |  | 
+**Password** | **string** | User password | 
 **AccountId** | Pointer to **NullableInt64** |  | [optional] 
 
 ## Methods

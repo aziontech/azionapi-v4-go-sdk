@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDnsRecord**](DNSRecordsAPI.md#CreateDnsRecord) | **Post** /edge_dns/zones/{zoneId}/records | Create a DNS Record
-[**DeleteDnsRecord**](DNSRecordsAPI.md#DeleteDnsRecord) | **Delete** /edge_dns/zones/{zoneId}/records/{recordId} | Delete a DNS Record
-[**ListDnsRecords**](DNSRecordsAPI.md#ListDnsRecords) | **Get** /edge_dns/zones/{zoneId}/records | List DNS Records
-[**PartialUpdateDnsRecord**](DNSRecordsAPI.md#PartialUpdateDnsRecord) | **Patch** /edge_dns/zones/{zoneId}/records/{recordId} | Partially update a DNS Record
-[**RetrieveDnsRecord**](DNSRecordsAPI.md#RetrieveDnsRecord) | **Get** /edge_dns/zones/{zoneId}/records/{recordId} | Retrieve details of a DNS Record
-[**UpdateDnsRecord**](DNSRecordsAPI.md#UpdateDnsRecord) | **Put** /edge_dns/zones/{zoneId}/records/{recordId} | Update a DNS Record
+[**CreateDnsRecord**](DNSRecordsAPI.md#CreateDnsRecord) | **Post** /edge_dns/zones/{zone_id}/records | Create a DNS Record
+[**DeleteDnsRecord**](DNSRecordsAPI.md#DeleteDnsRecord) | **Delete** /edge_dns/zones/{zone_id}/records/{record_id} | Delete a DNS Record
+[**ListDnsRecords**](DNSRecordsAPI.md#ListDnsRecords) | **Get** /edge_dns/zones/{zone_id}/records | List DNS Records
+[**PartialUpdateDnsRecord**](DNSRecordsAPI.md#PartialUpdateDnsRecord) | **Patch** /edge_dns/zones/{zone_id}/records/{record_id} | Partially update a DNS Record
+[**RetrieveDnsRecord**](DNSRecordsAPI.md#RetrieveDnsRecord) | **Get** /edge_dns/zones/{zone_id}/records/{record_id} | Retrieve details of a DNS Record
+[**UpdateDnsRecord**](DNSRecordsAPI.md#UpdateDnsRecord) | **Put** /edge_dns/zones/{zone_id}/records/{record_id} | Update a DNS Record
 
 
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	zoneId := "zoneId_example" // string | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	recordRequest := *openapiclient.NewRecordRequest("Name_example", "Type_example", []string{"Rdata_example"}) // RecordRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **string** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDnsRecord
 
-> ResponseDeleteRecord DeleteDnsRecord(ctx, recordId, zoneId).Execute()
+> ResponseAsyncDeleteRecord DeleteDnsRecord(ctx, recordId, zoneId).Execute()
 
 Delete a DNS Record
 
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-	recordId := "recordId_example" // string | 
-	zoneId := "zoneId_example" // string | 
+	recordId := int64(789) // int64 | A unique integer value identifying the DNS Record.
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -116,7 +116,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSRecordsAPI.DeleteDnsRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteDnsRecord`: ResponseDeleteRecord
+	// response from `DeleteDnsRecord`: ResponseAsyncDeleteRecord
 	fmt.Fprintf(os.Stdout, "Response from `DNSRecordsAPI.DeleteDnsRecord`: %v\n", resp)
 }
 ```
@@ -127,8 +127,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**recordId** | **string** |  | 
-**zoneId** | **string** |  | 
+**recordId** | **int64** | A unique integer value identifying the DNS Record. | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteRecord**](ResponseDeleteRecord.md)
+[**ResponseAsyncDeleteRecord**](ResponseAsyncDeleteRecord.md)
 
 ### Authorization
 
@@ -179,12 +179,12 @@ import (
 )
 
 func main() {
-	zoneId := "zoneId_example" // string | 
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, weight) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string | Search in answers, entry, ttl, and type fields (case-insensitive, partial match). (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -204,7 +204,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**zoneId** | **string** |  | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, weight) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
- **search** | **string** | A search term. | 
+ **search** | **string** | Search in answers, entry, ttl, and type fields (case-insensitive, partial match). | 
 
 ### Return type
 
@@ -259,8 +259,8 @@ import (
 )
 
 func main() {
-	recordId := "recordId_example" // string | 
-	zoneId := "zoneId_example" // string | 
+	recordId := int64(789) // int64 | A unique integer value identifying the DNS Record.
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	patchedRecordRequest := *openapiclient.NewPatchedRecordRequest() // PatchedRecordRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -281,8 +281,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**recordId** | **string** |  | 
-**zoneId** | **string** |  | 
+**recordId** | **int64** | A unique integer value identifying the DNS Record. | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -334,8 +334,8 @@ import (
 )
 
 func main() {
-	recordId := "recordId_example" // string | 
-	zoneId := "zoneId_example" // string | 
+	recordId := int64(789) // int64 | A unique integer value identifying the DNS Record.
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -356,8 +356,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**recordId** | **string** |  | 
-**zoneId** | **string** |  | 
+**recordId** | **int64** | A unique integer value identifying the DNS Record. | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
@@ -409,8 +409,8 @@ import (
 )
 
 func main() {
-	recordId := "recordId_example" // string | 
-	zoneId := "zoneId_example" // string | 
+	recordId := int64(789) // int64 | A unique integer value identifying the DNS Record.
+	zoneId := int64(789) // int64 | A unique integer value identifying the DNS Zone.
 	recordRequest := *openapiclient.NewRecordRequest("Name_example", "Type_example", []string{"Rdata_example"}) // RecordRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -431,8 +431,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**recordId** | **string** |  | 
-**zoneId** | **string** |  | 
+**recordId** | **int64** | A unique integer value identifying the DNS Record. | 
+**zoneId** | **int64** | A unique integer value identifying the DNS Zone. | 
 
 ### Other Parameters
 
