@@ -226,10 +226,10 @@ func (a *DNSZonesAPIService) CreateDnsZoneExecute(r ApiCreateDnsZoneRequest) (*R
 type ApiDeleteDnsZoneRequest struct {
 	ctx context.Context
 	ApiService *DNSZonesAPIService
-	zoneId string
+	zoneId int64
 }
 
-func (r ApiDeleteDnsZoneRequest) Execute() (*ResponseDeleteZone, *http.Response, error) {
+func (r ApiDeleteDnsZoneRequest) Execute() (*ResponseAsyncDeleteZone, *http.Response, error) {
 	return r.ApiService.DeleteDnsZoneExecute(r)
 }
 
@@ -239,10 +239,10 @@ DeleteDnsZone Delete a DNS Zone
 Delete a specific DNS Zone in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiDeleteDnsZoneRequest
 */
-func (a *DNSZonesAPIService) DeleteDnsZone(ctx context.Context, zoneId string) ApiDeleteDnsZoneRequest {
+func (a *DNSZonesAPIService) DeleteDnsZone(ctx context.Context, zoneId int64) ApiDeleteDnsZoneRequest {
 	return ApiDeleteDnsZoneRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -251,13 +251,13 @@ func (a *DNSZonesAPIService) DeleteDnsZone(ctx context.Context, zoneId string) A
 }
 
 // Execute executes the request
-//  @return ResponseDeleteZone
-func (a *DNSZonesAPIService) DeleteDnsZoneExecute(r ApiDeleteDnsZoneRequest) (*ResponseDeleteZone, *http.Response, error) {
+//  @return ResponseAsyncDeleteZone
+func (a *DNSZonesAPIService) DeleteDnsZoneExecute(r ApiDeleteDnsZoneRequest) (*ResponseAsyncDeleteZone, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteZone
+		localVarReturnValue  *ResponseAsyncDeleteZone
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSZonesAPIService.DeleteDnsZone")
@@ -265,8 +265,8 @@ func (a *DNSZonesAPIService) DeleteDnsZoneExecute(r ApiDeleteDnsZoneRequest) (*R
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -419,7 +419,7 @@ func (a *DNSZonesAPIService) DeleteDnsZoneExecute(r ApiDeleteDnsZoneRequest) (*R
 type ApiListDnsZonesRequest struct {
 	ctx context.Context
 	ApiService *DNSZonesAPIService
-	active *string
+	active *bool
 	domain *string
 	fields *string
 	name *string
@@ -429,13 +429,13 @@ type ApiListDnsZonesRequest struct {
 	search *string
 }
 
-// Search by active
-func (r ApiListDnsZonesRequest) Active(active string) ApiListDnsZonesRequest {
+// Filter by active status.
+func (r ApiListDnsZonesRequest) Active(active bool) ApiListDnsZonesRequest {
 	r.active = &active
 	return r
 }
 
-// Search by domain
+// Filter by domain (exact match).
 func (r ApiListDnsZonesRequest) Domain(domain string) ApiListDnsZonesRequest {
 	r.domain = &domain
 	return r
@@ -447,7 +447,7 @@ func (r ApiListDnsZonesRequest) Fields(fields string) ApiListDnsZonesRequest {
 	return r
 }
 
-// Search by name
+// Filter by name (exact match).
 func (r ApiListDnsZonesRequest) Name(name string) ApiListDnsZonesRequest {
 	r.name = &name
 	return r
@@ -471,7 +471,7 @@ func (r ApiListDnsZonesRequest) PageSize(pageSize int64) ApiListDnsZonesRequest 
 	return r
 }
 
-// A search term.
+// Search in name and domain fields (case-insensitive, partial match).
 func (r ApiListDnsZonesRequest) Search(search string) ApiListDnsZonesRequest {
 	r.search = &search
 	return r
@@ -688,7 +688,7 @@ func (a *DNSZonesAPIService) ListDnsZonesExecute(r ApiListDnsZonesRequest) (*Pag
 type ApiPartialUpdateDnsZoneRequest struct {
 	ctx context.Context
 	ApiService *DNSZonesAPIService
-	zoneId string
+	zoneId int64
 	patchedUpdateZoneRequest *PatchedUpdateZoneRequest
 }
 
@@ -707,10 +707,10 @@ PartialUpdateDnsZone Partially update a DNS Zone
 Update one or more fields of an existing DNS Zone without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiPartialUpdateDnsZoneRequest
 */
-func (a *DNSZonesAPIService) PartialUpdateDnsZone(ctx context.Context, zoneId string) ApiPartialUpdateDnsZoneRequest {
+func (a *DNSZonesAPIService) PartialUpdateDnsZone(ctx context.Context, zoneId int64) ApiPartialUpdateDnsZoneRequest {
 	return ApiPartialUpdateDnsZoneRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -733,8 +733,8 @@ func (a *DNSZonesAPIService) PartialUpdateDnsZoneExecute(r ApiPartialUpdateDnsZo
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -889,7 +889,7 @@ func (a *DNSZonesAPIService) PartialUpdateDnsZoneExecute(r ApiPartialUpdateDnsZo
 type ApiRetrieveDnsZoneRequest struct {
 	ctx context.Context
 	ApiService *DNSZonesAPIService
-	zoneId string
+	zoneId int64
 	fields *string
 }
 
@@ -909,10 +909,10 @@ RetrieveDnsZone Retrieve details of a DNS Zone
 Retrieve details of a specific DNS Zone in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiRetrieveDnsZoneRequest
 */
-func (a *DNSZonesAPIService) RetrieveDnsZone(ctx context.Context, zoneId string) ApiRetrieveDnsZoneRequest {
+func (a *DNSZonesAPIService) RetrieveDnsZone(ctx context.Context, zoneId int64) ApiRetrieveDnsZoneRequest {
 	return ApiRetrieveDnsZoneRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -935,8 +935,8 @@ func (a *DNSZonesAPIService) RetrieveDnsZoneExecute(r ApiRetrieveDnsZoneRequest)
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1092,7 +1092,7 @@ func (a *DNSZonesAPIService) RetrieveDnsZoneExecute(r ApiRetrieveDnsZoneRequest)
 type ApiUpdateDnsZoneRequest struct {
 	ctx context.Context
 	ApiService *DNSZonesAPIService
-	zoneId string
+	zoneId int64
 	updateZoneRequest *UpdateZoneRequest
 }
 
@@ -1111,10 +1111,10 @@ UpdateDnsZone Update a DNS Zone
 Update an existing a DNS Zone. This replaces the entire DNS Zone with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiUpdateDnsZoneRequest
 */
-func (a *DNSZonesAPIService) UpdateDnsZone(ctx context.Context, zoneId string) ApiUpdateDnsZoneRequest {
+func (a *DNSZonesAPIService) UpdateDnsZone(ctx context.Context, zoneId int64) ApiUpdateDnsZoneRequest {
 	return ApiUpdateDnsZoneRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1137,8 +1137,8 @@ func (a *DNSZonesAPIService) UpdateDnsZoneExecute(r ApiUpdateDnsZoneRequest) (*R
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

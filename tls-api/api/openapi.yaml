@@ -6,15 +6,83 @@ info:
 servers:
 - url: /
 paths:
-  /digital_certificates/certificates:
+  /workspace/tls/certificates:
     get:
       description: List all certificates owned by your account.
-      operationId: list certificates
+      operationId: list_certificates
       parameters:
+      - description: Filter by certificate type (accepts comma-separated values).
+        explode: true
+        in: query
+        name: certificate_type
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
         name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by certificate ID (accepts comma-separated values).
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: "Filter by issuer (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: issuer
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by exact last modified date and time.
+        explode: true
+        in: query
+        name: last_modified
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by last modified date (greater than or equal).
+        explode: true
+        in: query
+        name: last_modified__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by last modified date (less than or equal).
+        explode: true
+        in: query
+        name: last_modified__lte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by managed status.
+        explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: "Filter by certificate name (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: name
         required: false
         schema:
           type: string
@@ -46,6 +114,33 @@ paths:
         schema:
           format: int64
           type: integer
+        style: form
+      - description: Filter by exact renewed date and time.
+        explode: true
+        in: query
+        name: renewed_at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by renewed date (greater than or equal).
+        explode: true
+        in: query
+        name: renewed_at__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by renewed date (less than or equal).
+        explode: true
+        in: query
+        name: renewed_at__lte
+        required: false
+        schema:
+          format: date-time
+          type: string
         style: form
       - description: A search term.
         explode: true
@@ -182,12 +277,12 @@ paths:
       - Digital Certificates - Certificates
     post:
       description: Create a new certificate for your account.
-      operationId: create certificate
+      operationId: create_certificate
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateRequest"
+              $ref: "#/components/schemas/Certificate"
         required: true
       responses:
         "201":
@@ -320,25 +415,23 @@ paths:
       summary: Create a certificate
       tags:
       - Digital Certificates - Certificates
-  /digital_certificates/certificates/{id}:
+  /workspace/tls/certificates/{certificate_id}:
     delete:
-      description: Destruction of a specific certificate in your account.
-      operationId: destroy certificate
+      description: Delete a specific certificate in your account.
+      operationId: delete_certificate
       parameters:
-      - explode: false
+      - description: The unique identifier of the certificate
+        explode: false
         in: path
-        name: id
+        name: certificate_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseDeleteCertificate"
-          description: ""
+        "204":
+          description: No response body
         "202":
           content:
             application/json:
@@ -460,13 +553,22 @@ paths:
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Destroy a certificate
+      summary: Delete a certificate
       tags:
       - Digital Certificates - Certificates
     get:
       description: Retrieve details from a specific certificate in your account.
-      operationId: retrive certificate
+      operationId: retrieve_certificate
       parameters:
+      - description: The unique identifier of the certificate
+        explode: false
+        in: path
+        name: certificate_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -475,13 +577,6 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
       responses:
         "200":
           content:
@@ -610,20 +705,22 @@ paths:
     patch:
       description: Update one or more fields of an existing certificate without affecting
         other fields.
-      operationId: partial update certificate
+      operationId: partial_update_certificate
       parameters:
-      - explode: false
+      - description: The unique identifier of the certificate
+        explode: false
         in: path
-        name: id
+        name: certificate_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PatchedCertificateRequest"
+              $ref: "#/components/schemas/PatchedCertificate"
       responses:
         "200":
           content:
@@ -758,20 +855,22 @@ paths:
     put:
       description: Update an existing certificate. This replaces the entire certificate
         with the new data provided.
-      operationId: update certificate
+      operationId: update_certificate
       parameters:
-      - explode: false
+      - description: The unique identifier of the certificate
+        explode: false
         in: path
-        name: id
+        name: certificate_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateRequest"
+              $ref: "#/components/schemas/Certificate"
         required: true
       responses:
         "200":
@@ -904,15 +1003,15 @@ paths:
       summary: Update a certificate
       tags:
       - Digital Certificates - Certificates
-  /digital_certificates/certificates/request:
+  /workspace/tls/certificates/request:
     post:
       description: Request a new certificate for your account.
-      operationId: request a certificate
+      operationId: request_certificate
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateRequestRequest"
+              $ref: "#/components/schemas/CertificateRequest"
         required: true
       responses:
         "201":
@@ -1039,10 +1138,10 @@ paths:
       summary: Request a certificate
       tags:
       - Digital Certificates - Request a Certificate
-  /digital_certificates/crls:
+  /workspace/tls/crls:
     get:
       description: List all certificate revocation lists (CRL) owned by your account.
-      operationId: list certificate revocation lists (CRL)
+      operationId: list_certificate_revocation_lists
       parameters:
       - description: Comma-separated list of field names to include in the response.
         explode: true
@@ -1050,6 +1149,112 @@ paths:
         name: fields
         required: false
         schema:
+          type: string
+        style: form
+      - description: Filter by CRL ID (accepts comma-separated values).
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: "Filter by issuer (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: issuer
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by exact last modified date and time.
+        explode: true
+        in: query
+        name: last_modified
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by last modified date (greater than or equal).
+        explode: true
+        in: query
+        name: last_modified__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by last modified date (less than or equal).
+        explode: true
+        in: query
+        name: last_modified__lte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by exact last update date and time.
+        explode: true
+        in: query
+        name: last_update
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by last update date (greater than or equal).
+        explode: true
+        in: query
+        name: last_update__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by last update date (less than or equal).
+        explode: true
+        in: query
+        name: last_update__lte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: "Filter by CRL name (case-insensitive, partial match)."
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by exact next update date and time.
+        explode: true
+        in: query
+        name: next_update
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by next update date (greater than or equal).
+        explode: true
+        in: query
+        name: next_update__gte
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter by next update date (less than or equal).
+        explode: true
+        in: query
+        name: next_update__lte
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       - description: |-
@@ -1215,12 +1420,12 @@ paths:
       - Digital Certificates - Certificate Revocation Lists
     post:
       description: Create a new certificate revocation lists (CRL) for your account.
-      operationId: create certificate revocation lists (CRL)
+      operationId: create_certificate_revocation_list
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateRevocationListRequest"
+              $ref: "#/components/schemas/CertificateRevocationList"
         required: true
       responses:
         "201":
@@ -1353,26 +1558,23 @@ paths:
       summary: Create a certificate revocation lists (CRL)
       tags:
       - Digital Certificates - Certificate Revocation Lists
-  /digital_certificates/crls/{id}:
+  /workspace/tls/crls/{crl_id}:
     delete:
-      description: Destruction of a specific certificate revocation lists (CRL) in
-        your account.
-      operationId: destroy certificate revocation lists (CRL)
+      description: Delete a specific certificate revocation list in your account.
+      operationId: delete_certificate_revocation_list
       parameters:
-      - explode: false
+      - description: The unique identifier of the certificate revocation list
+        explode: false
         in: path
-        name: id
+        name: crl_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseDeleteCertificateRevocationList"
-          description: ""
+        "204":
+          description: No response body
         "202":
           content:
             application/json:
@@ -1494,14 +1696,23 @@ paths:
       security:
       - TokenAuth: []
       - BearerAuth: []
-      summary: Destroy a certificate revocation lists (CRL)
+      summary: Delete a certificate revocation list
       tags:
       - Digital Certificates - Certificate Revocation Lists
     get:
       description: Retrieve details from a specific certificate revocation lists (CRL)
         in your account.
-      operationId: retrive certificate revocation lists (CRL)
+      operationId: retrieve_certificate_revocation_list
       parameters:
+      - description: The unique identifier of the certificate revocation list
+        explode: false
+        in: path
+        name: crl_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -1510,13 +1721,6 @@ paths:
         schema:
           type: string
         style: form
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1645,20 +1849,22 @@ paths:
     patch:
       description: Update one or more fields of an existing certificate revocation
         lists (CRL) without affecting other fields.
-      operationId: partial update certificate revocation lists (CRL)
+      operationId: partial_update_certificate_revocation_list
       parameters:
-      - explode: false
+      - description: The unique identifier of the certificate revocation list
+        explode: false
         in: path
-        name: id
+        name: crl_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PatchedCertificateRevocationListRequest"
+              $ref: "#/components/schemas/PatchedCertificateRevocationList"
       responses:
         "200":
           content:
@@ -1793,20 +1999,22 @@ paths:
     put:
       description: Update an existing certificate revocation lists (CRL).  This replaces
         the entire certificate with the new data provided.
-      operationId: update certificate revocation lists (CRL)
+      operationId: update_certificate_revocation_list
       parameters:
-      - explode: false
+      - description: The unique identifier of the certificate revocation list
+        explode: false
         in: path
-        name: id
+        name: crl_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateRevocationListRequest"
+              $ref: "#/components/schemas/CertificateRevocationList"
         required: true
       responses:
         "200":
@@ -1939,15 +2147,15 @@ paths:
       summary: Update a certificate revocation lists (CRL)
       tags:
       - Digital Certificates - Certificate Revocation Lists
-  /digital_certificates/csr:
+  /workspace/tls/csr:
     post:
       description: Create a new certificate signing request (CSR) for your account.
-      operationId: create certificate signing request (CSR)
+      operationId: create_certificate_signing_request
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateSigningRequestRequest"
+              $ref: "#/components/schemas/CertificateSigningRequest"
         required: true
       responses:
         "201":
@@ -2076,33 +2284,29 @@ paths:
       - Digital Certificates - Certificate Signing Requests
 components:
   schemas:
-    AuthorityEnum:
-      description: '* `lets_encrypt` - lets_encrypt'
-      title: AuthorityEnum
-      type: string
     Certificate:
-      additionalProperties: false
       example:
         product_version: product_version
         csr: csr
         last_editor: last_editor
         certificate: certificate
         active: true
+        private_key: private_key
         key_algorithm: key_algorithm
-        type: ""
+        type: type
         issuer: issuer
         status_detail: status_detail
         managed: true
-        authority: null
+        authority: authority
         name: name
         subject_name:
         - subject_name
         - subject_name
-        challenge: null
+        challenge: challenge
         id: 0
         validity: validity
         last_modified: 2000-01-23T04:56:07.000+00:00
-        status: ""
+        status: status
         renewed_at: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
@@ -2117,6 +2321,12 @@ components:
           minLength: 1
           nullable: true
           type: string
+        private_key:
+          maxLength: 64000
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
         issuer:
           nullable: true
           type: string
@@ -2128,18 +2338,29 @@ components:
           nullable: true
           type: string
         type:
-          allOf:
-          - $ref: "#/components/schemas/TypeEnum"
           description: |-
             The value can't be changed after the certificate creation.
 
             * `edge_certificate` - Edge Certificate
             * `trusted_ca_certificate` - Trusted CA Certificate
+          type: string
+          x-extensible-enum:
+          - edge_certificate
+          - trusted_ca_certificate
         managed:
           type: boolean
         status:
-          allOf:
-          - $ref: "#/components/schemas/StatusEnum"
+          description: |-
+            * `challenge_verification` - Challenge Verification
+            * `active` - Active
+            * `pending` - Pending
+            * `failed` - Failed
+          type: string
+          x-extensible-enum:
+          - challenge_verification
+          - active
+          - pending
+          - failed
         status_detail:
           maxLength: 500
           minLength: 0
@@ -2148,9 +2369,18 @@ components:
           nullable: true
           type: string
         challenge:
-          $ref: "#/components/schemas/Certificate_challenge"
+          description: |-
+            * `dns` - Uses DNS to solve the ACME challenge.
+            * `http` - Uses HTTP to solve the ACME challenge.
+          type: string
+          x-extensible-enum:
+          - dns
+          - http
         authority:
-          $ref: "#/components/schemas/Certificate_authority"
+          description: '* `lets_encrypt` - lets_encrypt'
+          type: string
+          x-extensible-enum:
+          - lets_encrypt
         key_algorithm:
           type: string
         active:
@@ -2189,63 +2419,40 @@ components:
       - status_detail
       - subject_name
       - validity
-      title: Certificate
       type: object
     CertificateRequest:
-      additionalProperties: false
       example:
-        name: name
+        product_version: product_version
+        source_certificate: 1294386359
+        csr: csr
+        last_editor: last_editor
         certificate: certificate
         active: true
         private_key: private_key
-        type: ""
-      properties:
-        name:
-          maxLength: 250
-          minLength: 1
-          type: string
-        certificate:
-          maxLength: 600000
-          minLength: 1
-          nullable: true
-          type: string
-        private_key:
-          maxLength: 64000
-          minLength: 1
-          nullable: true
-          type: string
-          writeOnly: true
-        type:
-          allOf:
-          - $ref: "#/components/schemas/TypeEnum"
-          description: |-
-            The value can't be changed after the certificate creation.
-
-            * `edge_certificate` - Edge Certificate
-            * `trusted_ca_certificate` - Trusted CA Certificate
-        active:
-          type: boolean
-      required:
-      - name
-      title: CertificateRequest
-      type: object
-    CertificateRequestRequest:
-      additionalProperties: false
-      example:
-        source_certificate: 171976545
-        authority: authority
-        name: name
-        certificate: certificate
-        challenge: challenge
-        active: true
-        private_key: private_key
-        key_algorithm: ""
-        type: ""
-        common_name: common_name
+        key_algorithm: key_algorithm
+        type: type
         alternative_names:
         - alternative_names
         - alternative_names
+        issuer: issuer
+        status_detail: status_detail
+        managed: true
+        authority: authority
+        name: name
+        subject_name:
+        - subject_name
+        - subject_name
+        challenge: challenge
+        id: 0
+        validity: validity
+        common_name: common_name
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        status: status
+        renewed_at: 2000-01-23T04:56:07.000+00:00
       properties:
+        id:
+          format: int64
+          type: integer
         name:
           maxLength: 250
           minLength: 1
@@ -2261,29 +2468,89 @@ components:
           nullable: true
           type: string
           writeOnly: true
+        issuer:
+          nullable: true
+          type: string
+        subject_name:
+          items:
+            type: string
+          type: array
+        validity:
+          nullable: true
+          type: string
         type:
-          allOf:
-          - $ref: "#/components/schemas/TypeEnum"
           description: |-
             The value can't be changed after the certificate creation.
 
             * `edge_certificate` - Edge Certificate
             * `trusted_ca_certificate` - Trusted CA Certificate
+          type: string
+          x-extensible-enum:
+          - edge_certificate
+          - trusted_ca_certificate
+        managed:
+          type: boolean
+        status:
+          description: |-
+            * `challenge_verification` - Challenge Verification
+            * `active` - Active
+            * `pending` - Pending
+            * `failed` - Failed
+          type: string
+          x-extensible-enum:
+          - challenge_verification
+          - active
+          - pending
+          - failed
+        status_detail:
+          maxLength: 500
+          minLength: 0
+          type: string
+        csr:
+          nullable: true
+          type: string
         challenge:
           description: |-
             * `dns` - Uses DNS to solve the ACME challenge.
             * `http` - Uses HTTP to solve the ACME challenge.
-          title: ChallengeEnum
           type: string
+          x-extensible-enum:
+          - dns
+          - http
         authority:
           description: '* `lets_encrypt` - lets_encrypt'
-          title: AuthorityEnum
           type: string
+          x-extensible-enum:
+          - lets_encrypt
         key_algorithm:
-          allOf:
-          - $ref: "#/components/schemas/KeyAlgorithmEnum"
+          description: |-
+            * `rsa_2048` - 2048-bit RSA
+            * `rsa_4096` - 4096-bit RSA
+            * `ecc_384` - 384-bit Prime Field Curve
+          type: string
+          x-extensible-enum:
+          - rsa_2048
+          - rsa_4096
+          - ecc_384
         active:
           type: boolean
+        product_version:
+          maxLength: 50
+          minLength: 3
+          type: string
+        last_editor:
+          type: string
+        last_modified:
+          description: Timestamp of the last modification made to the certificate
+            content on the platform.
+          format: date-time
+          type: string
+        renewed_at:
+          description: Timestamp indicating when the managed certificate was renewed
+            on our platform.
+          format: date-time
+          nullable: true
+          type: string
         common_name:
           maxLength: 64
           minLength: 1
@@ -2307,11 +2574,21 @@ components:
       - authority
       - challenge
       - common_name
+      - csr
+      - id
+      - issuer
+      - last_editor
+      - last_modified
+      - managed
       - name
-      title: CertificateRequestRequest
+      - product_version
+      - renewed_at
+      - status
+      - status_detail
+      - subject_name
+      - validity
       type: object
     CertificateRevocationList:
-      additionalProperties: false
       example:
         product_version: product_version
         last_editor: last_editor
@@ -2373,52 +2650,45 @@ components:
       - name
       - next_update
       - product_version
-      title: CertificateRevocationList
       type: object
-    CertificateRevocationListRequest:
-      additionalProperties: false
-      example:
-        name: name
-        active: true
-        crl: crl
-      properties:
-        name:
-          maxLength: 250
-          minLength: 1
-          type: string
-        active:
-          description: Indicates if the certificate revocation list is active. This
-            field cannot be set to false.
-          type: boolean
-        crl:
-          maxLength: 30720000
-          minLength: 1
-          type: string
-      required:
-      - crl
-      - name
-      title: CertificateRevocationListRequest
-      type: object
-    CertificateSigningRequestRequest:
-      additionalProperties: false
+    CertificateSigningRequest:
       example:
         country: country
+        csr: csr
         certificate: certificate
-        locality: locality
-        active: true
-        private_key: private_key
-        key_algorithm: ""
-        type: ""
+        type: type
         alternative_names:
         - alternative_names
         - alternative_names
+        issuer: issuer
         organization_unity: organization_unity
-        organization: organization
-        name: name
+        managed: true
+        id: 0
         state: state
         common_name: common_name
+        last_modified: 2000-01-23T04:56:07.000+00:00
         email: email
+        product_version: product_version
+        last_editor: last_editor
+        locality: locality
+        active: true
+        private_key: private_key
+        key_algorithm: key_algorithm
+        status_detail: status_detail
+        authority: authority
+        organization: organization
+        name: name
+        subject_name:
+        - subject_name
+        - subject_name
+        challenge: challenge
+        validity: validity
+        status: status
+        renewed_at: 2000-01-23T04:56:07.000+00:00
       properties:
+        id:
+          format: int64
+          type: integer
         name:
           maxLength: 250
           minLength: 1
@@ -2434,19 +2704,89 @@ components:
           nullable: true
           type: string
           writeOnly: true
+        issuer:
+          nullable: true
+          type: string
+        subject_name:
+          items:
+            type: string
+          type: array
+        validity:
+          nullable: true
+          type: string
         type:
-          allOf:
-          - $ref: "#/components/schemas/TypeEnum"
           description: |-
             The value can't be changed after the certificate creation.
 
             * `edge_certificate` - Edge Certificate
             * `trusted_ca_certificate` - Trusted CA Certificate
+          type: string
+          x-extensible-enum:
+          - edge_certificate
+          - trusted_ca_certificate
+        managed:
+          type: boolean
+        status:
+          description: |-
+            * `challenge_verification` - Challenge Verification
+            * `active` - Active
+            * `pending` - Pending
+            * `failed` - Failed
+          type: string
+          x-extensible-enum:
+          - challenge_verification
+          - active
+          - pending
+          - failed
+        status_detail:
+          maxLength: 500
+          minLength: 0
+          type: string
+        csr:
+          nullable: true
+          type: string
+        challenge:
+          description: |-
+            * `dns` - Uses DNS to solve the ACME challenge.
+            * `http` - Uses HTTP to solve the ACME challenge.
+          type: string
+          x-extensible-enum:
+          - dns
+          - http
+        authority:
+          description: '* `lets_encrypt` - lets_encrypt'
+          type: string
+          x-extensible-enum:
+          - lets_encrypt
         key_algorithm:
-          allOf:
-          - $ref: "#/components/schemas/KeyAlgorithmEnum"
+          description: |-
+            * `rsa_2048` - 2048-bit RSA
+            * `rsa_4096` - 4096-bit RSA
+            * `ecc_384` - 384-bit Prime Field Curve
+          type: string
+          x-extensible-enum:
+          - rsa_2048
+          - rsa_4096
+          - ecc_384
         active:
           type: boolean
+        product_version:
+          maxLength: 50
+          minLength: 3
+          type: string
+        last_editor:
+          type: string
+        last_modified:
+          description: Timestamp of the last modification made to the certificate
+            content on the platform.
+          format: date-time
+          type: string
+        renewed_at:
+          description: Timestamp indicating when the managed certificate was renewed
+            on our platform.
+          format: date-time
+          nullable: true
+          type: string
         common_name:
           maxLength: 250
           minLength: 1
@@ -2486,28 +2826,33 @@ components:
           writeOnly: true
         email:
           format: email
-          minLength: 1
           type: string
           writeOnly: true
       required:
+      - authority
+      - challenge
       - common_name
       - country
+      - csr
       - email
+      - id
+      - issuer
+      - last_editor
+      - last_modified
       - locality
+      - managed
       - name
       - organization
       - organization_unity
+      - product_version
+      - renewed_at
       - state
-      title: CertificateSigningRequestRequest
+      - status
+      - status_detail
+      - subject_name
+      - validity
       type: object
-    ChallengeEnum:
-      description: |-
-        * `dns` - Uses DNS to solve the ACME challenge.
-        * `http` - Uses HTTP to solve the ACME challenge.
-      title: ChallengeEnum
-      type: string
     JSONAPIErrorObject:
-      additionalProperties: false
       description: Serializer for a single JSON:API error object.
       example:
         code: code
@@ -2547,10 +2892,8 @@ components:
           additionalProperties: {}
           description: Non-standard meta-information about the error
           type: object
-      title: JSONAPIErrorObject
       type: object
     JSONAPIErrorResponse:
-      additionalProperties: false
       description: Serializer for a JSON:API error response.
       example:
         errors:
@@ -2576,10 +2919,8 @@ components:
           type: array
       required:
       - errors
-      title: JSONAPIErrorResponse
       type: object
     JSONAPIErrorSource:
-      additionalProperties: false
       description: Serializer for the 'source' object in a JSON:API error.
       properties:
         pointer:
@@ -2598,83 +2939,97 @@ components:
           maxLength: 4096
           minLength: 1
           type: string
-      title: JSONAPIErrorSource
-      type: object
-    KeyAlgorithmEnum:
-      description: |-
-        * `rsa_2048` - 2048-bit RSA
-        * `rsa_4096` - 4096-bit RSA
-        * `ecc_384` - 384-bit Prime Field Curve
-      title: KeyAlgorithmEnum
-      type: string
-    NullEnum:
-      additionalProperties: false
-      title: NullEnum
       type: object
     PaginatedCertificateList:
-      additionalProperties: false
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - product_version: product_version
           csr: csr
           last_editor: last_editor
           certificate: certificate
           active: true
+          private_key: private_key
           key_algorithm: key_algorithm
-          type: ""
+          type: type
           issuer: issuer
           status_detail: status_detail
           managed: true
-          authority: null
+          authority: authority
           name: name
           subject_name:
           - subject_name
           - subject_name
-          challenge: null
+          challenge: challenge
           id: 0
           validity: validity
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
           renewed_at: 2000-01-23T04:56:07.000+00:00
         - product_version: product_version
           csr: csr
           last_editor: last_editor
           certificate: certificate
           active: true
+          private_key: private_key
           key_algorithm: key_algorithm
-          type: ""
+          type: type
           issuer: issuer
           status_detail: status_detail
           managed: true
-          authority: null
+          authority: authority
           name: name
           subject_name:
           - subject_name
           - subject_name
-          challenge: null
+          challenge: challenge
           id: 0
           validity: validity
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
           renewed_at: 2000-01-23T04:56:07.000+00:00
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
+          type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
           type: integer
         results:
           items:
             $ref: "#/components/schemas/Certificate"
           type: array
-      title: PaginatedCertificateList
       type: object
     PaginatedCertificateRevocationListList:
-      additionalProperties: false
       example:
         count: 123
+        total_pages: 10
+        page: 1
         results:
         - product_version: product_version
           last_editor: last_editor
@@ -2696,28 +3051,69 @@ components:
           last_modified: 2000-01-23T04:56:07.000+00:00
           issuer: issuer
           next_update: 2000-01-23T04:56:07.000+00:00
+        page_size: 10
       properties:
         count:
+          description: Total number of items
           example: 123
           format: int64
           maximum: 2147483647
           minimum: 0
           type: integer
+        total_pages:
+          description: Total number of pages
+          example: 10
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page:
+          description: Current page number
+          example: 1
+          format: int64
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        page_size:
+          description: Number of items per page
+          example: 10
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
         results:
           items:
             $ref: "#/components/schemas/CertificateRevocationList"
           type: array
-      title: PaginatedCertificateRevocationListList
       type: object
-    PatchedCertificateRequest:
-      additionalProperties: false
+    PatchedCertificate:
       example:
-        name: name
+        product_version: product_version
+        csr: csr
+        last_editor: last_editor
         certificate: certificate
         active: true
         private_key: private_key
-        type: ""
+        key_algorithm: key_algorithm
+        type: type
+        issuer: issuer
+        status_detail: status_detail
+        managed: true
+        authority: authority
+        name: name
+        subject_name:
+        - subject_name
+        - subject_name
+        challenge: challenge
+        id: 0
+        validity: validity
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        status: status
+        renewed_at: 2000-01-23T04:56:07.000+00:00
       properties:
+        id:
+          format: int64
+          type: integer
         name:
           maxLength: 250
           minLength: 1
@@ -2733,25 +3129,98 @@ components:
           nullable: true
           type: string
           writeOnly: true
+        issuer:
+          nullable: true
+          type: string
+        subject_name:
+          items:
+            type: string
+          type: array
+        validity:
+          nullable: true
+          type: string
         type:
-          allOf:
-          - $ref: "#/components/schemas/TypeEnum"
           description: |-
             The value can't be changed after the certificate creation.
 
             * `edge_certificate` - Edge Certificate
             * `trusted_ca_certificate` - Trusted CA Certificate
+          type: string
+          x-extensible-enum:
+          - edge_certificate
+          - trusted_ca_certificate
+        managed:
+          type: boolean
+        status:
+          description: |-
+            * `challenge_verification` - Challenge Verification
+            * `active` - Active
+            * `pending` - Pending
+            * `failed` - Failed
+          type: string
+          x-extensible-enum:
+          - challenge_verification
+          - active
+          - pending
+          - failed
+        status_detail:
+          maxLength: 500
+          minLength: 0
+          type: string
+        csr:
+          nullable: true
+          type: string
+        challenge:
+          description: |-
+            * `dns` - Uses DNS to solve the ACME challenge.
+            * `http` - Uses HTTP to solve the ACME challenge.
+          type: string
+          x-extensible-enum:
+          - dns
+          - http
+        authority:
+          description: '* `lets_encrypt` - lets_encrypt'
+          type: string
+          x-extensible-enum:
+          - lets_encrypt
+        key_algorithm:
+          type: string
         active:
           type: boolean
-      title: PatchedCertificateRequest
+        product_version:
+          maxLength: 50
+          minLength: 3
+          type: string
+        last_editor:
+          type: string
+        last_modified:
+          description: Timestamp of the last modification made to the certificate
+            content on the platform.
+          format: date-time
+          type: string
+        renewed_at:
+          description: Timestamp indicating when the managed certificate was renewed
+            on our platform.
+          format: date-time
+          nullable: true
+          type: string
       type: object
-    PatchedCertificateRevocationListRequest:
-      additionalProperties: false
+    PatchedCertificateRevocationList:
       example:
+        product_version: product_version
+        last_editor: last_editor
+        last_update: 2000-01-23T04:56:07.000+00:00
         name: name
         active: true
+        id: 0
         crl: crl
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        issuer: issuer
+        next_update: 2000-01-23T04:56:07.000+00:00
       properties:
+        id:
+          format: int64
+          type: integer
         name:
           maxLength: 250
           minLength: 1
@@ -2760,14 +3229,36 @@ components:
           description: Indicates if the certificate revocation list is active. This
             field cannot be set to false.
           type: boolean
+        last_editor:
+          type: string
+        last_modified:
+          description: Timestamp of the last modification made to the certificate
+            content on the platform.
+          format: date-time
+          type: string
+        product_version:
+          maxLength: 50
+          minLength: 3
+          type: string
+        issuer:
+          minLength: 1
+          type: string
+        last_update:
+          description: Timestamp of the last update issued by the certification revocation
+            list issuer.
+          format: date-time
+          type: string
+        next_update:
+          description: Timestamp of the next scheduled update from the certification
+            revocation list issuer.
+          format: date-time
+          type: string
         crl:
           maxLength: 30720000
           minLength: 1
           type: string
-      title: PatchedCertificateRevocationListRequest
       type: object
     ResponseAsyncCertificate:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -2775,21 +3266,22 @@ components:
           last_editor: last_editor
           certificate: certificate
           active: true
+          private_key: private_key
           key_algorithm: key_algorithm
-          type: ""
+          type: type
           issuer: issuer
           status_detail: status_detail
           managed: true
-          authority: null
+          authority: authority
           name: name
           subject_name:
           - subject_name
           - subject_name
-          challenge: null
+          challenge: challenge
           id: 0
           validity: validity
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
           renewed_at: 2000-01-23T04:56:07.000+00:00
         state: state
       properties:
@@ -2801,10 +3293,8 @@ components:
           $ref: "#/components/schemas/Certificate"
       required:
       - data
-      title: ResponseAsyncCertificate
       type: object
     ResponseAsyncCertificateRevocationList:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -2827,10 +3317,8 @@ components:
           $ref: "#/components/schemas/CertificateRevocationList"
       required:
       - data
-      title: ResponseAsyncCertificateRevocationList
       type: object
     ResponseAsyncDeleteCertificate:
-      additionalProperties: false
       example:
         state: state
       properties:
@@ -2838,10 +3326,8 @@ components:
           maxLength: 8
           minLength: 1
           type: string
-      title: ResponseAsyncDeleteCertificate
       type: object
     ResponseAsyncDeleteCertificateRevocationList:
-      additionalProperties: false
       example:
         state: state
       properties:
@@ -2849,10 +3335,8 @@ components:
           maxLength: 8
           minLength: 1
           type: string
-      title: ResponseAsyncDeleteCertificateRevocationList
       type: object
     ResponseCertificate:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -2860,21 +3344,22 @@ components:
           last_editor: last_editor
           certificate: certificate
           active: true
+          private_key: private_key
           key_algorithm: key_algorithm
-          type: ""
+          type: type
           issuer: issuer
           status_detail: status_detail
           managed: true
-          authority: null
+          authority: authority
           name: name
           subject_name:
           - subject_name
           - subject_name
-          challenge: null
+          challenge: challenge
           id: 0
           validity: validity
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
           renewed_at: 2000-01-23T04:56:07.000+00:00
         state: state
       properties:
@@ -2886,10 +3371,8 @@ components:
           $ref: "#/components/schemas/Certificate"
       required:
       - data
-      title: ResponseCertificate
       type: object
     ResponseCertificateRevocationList:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -2912,32 +3395,8 @@ components:
           $ref: "#/components/schemas/CertificateRevocationList"
       required:
       - data
-      title: ResponseCertificateRevocationList
-      type: object
-    ResponseDeleteCertificate:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeleteCertificate
-      type: object
-    ResponseDeleteCertificateRevocationList:
-      additionalProperties: false
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      title: ResponseDeleteCertificateRevocationList
       type: object
     ResponseRetrieveCertificate:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -2945,31 +3404,30 @@ components:
           last_editor: last_editor
           certificate: certificate
           active: true
+          private_key: private_key
           key_algorithm: key_algorithm
-          type: ""
+          type: type
           issuer: issuer
           status_detail: status_detail
           managed: true
-          authority: null
+          authority: authority
           name: name
           subject_name:
           - subject_name
           - subject_name
-          challenge: null
+          challenge: challenge
           id: 0
           validity: validity
           last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ""
+          status: status
           renewed_at: 2000-01-23T04:56:07.000+00:00
       properties:
         data:
           $ref: "#/components/schemas/Certificate"
       required:
       - data
-      title: ResponseRetrieveCertificate
       type: object
     ResponseRetrieveCertificateRevocationList:
-      additionalProperties: false
       example:
         data:
           product_version: product_version
@@ -2987,32 +3445,7 @@ components:
           $ref: "#/components/schemas/CertificateRevocationList"
       required:
       - data
-      title: ResponseRetrieveCertificateRevocationList
       type: object
-    StatusEnum:
-      description: |-
-        * `challenge_verification` - Challenge Verification
-        * `active` - Active
-        * `pending` - Pending
-        * `failed` - Failed
-      title: StatusEnum
-      type: string
-    TypeEnum:
-      description: |-
-        * `edge_certificate` - Edge Certificate
-        * `trusted_ca_certificate` - Trusted CA Certificate
-      title: TypeEnum
-      type: string
-    Certificate_challenge:
-      nullable: true
-      oneOf:
-      - $ref: "#/components/schemas/ChallengeEnum"
-      - $ref: "#/components/schemas/NullEnum"
-    Certificate_authority:
-      nullable: true
-      oneOf:
-      - $ref: "#/components/schemas/AuthorityEnum"
-      - $ref: "#/components/schemas/NullEnum"
   securitySchemes:
     BearerAuth:
       scheme: bearer

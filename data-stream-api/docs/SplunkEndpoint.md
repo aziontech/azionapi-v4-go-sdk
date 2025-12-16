@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** |  | 
 **ApiKey** | **string** |  | 
+**Type** | **string** | Type identifier for this endpoint (splunk) | 
 
 ## Methods
 
 ### NewSplunkEndpoint
 
-`func NewSplunkEndpoint(url string, apiKey string, ) *SplunkEndpoint`
+`func NewSplunkEndpoint(url string, apiKey string, type_ string, ) *SplunkEndpoint`
 
 NewSplunkEndpoint instantiates a new SplunkEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *SplunkEndpoint) SetApiKey(v string)`
 
 SetApiKey sets ApiKey field to given value.
+
+
+### GetType
+
+`func (o *SplunkEndpoint) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *SplunkEndpoint) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *SplunkEndpoint) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 

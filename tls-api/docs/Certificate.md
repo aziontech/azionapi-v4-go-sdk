@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | 
 **Name** | **string** |  | 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
+**PrivateKey** | Pointer to **NullableString** |  | [optional] 
 **Issuer** | **NullableString** |  | 
 **SubjectName** | **[]string** |  | 
 **Validity** | **NullableString** |  | 
@@ -15,8 +16,8 @@ Name | Type | Description | Notes
 **Status** | **string** | * &#x60;challenge_verification&#x60; - Challenge Verification * &#x60;active&#x60; - Active * &#x60;pending&#x60; - Pending * &#x60;failed&#x60; - Failed | 
 **StatusDetail** | **string** |  | 
 **Csr** | **NullableString** |  | 
-**Challenge** | [**NullableCertificateChallenge**](CertificateChallenge.md) |  | 
-**Authority** | [**NullableCertificateAuthority**](CertificateAuthority.md) |  | 
+**Challenge** | **string** | * &#x60;dns&#x60; - Uses DNS to solve the ACME challenge. * &#x60;http&#x60; - Uses HTTP to solve the ACME challenge. | 
+**Authority** | **string** | * &#x60;lets_encrypt&#x60; - lets_encrypt | 
 **KeyAlgorithm** | **string** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **ProductVersion** | **string** |  | 
@@ -28,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewCertificate
 
-`func NewCertificate(id int64, name string, issuer NullableString, subjectName []string, validity NullableString, managed bool, status string, statusDetail string, csr NullableString, challenge NullableCertificateChallenge, authority NullableCertificateAuthority, keyAlgorithm string, productVersion string, lastEditor string, lastModified time.Time, renewedAt NullableTime, ) *Certificate`
+`func NewCertificate(id int64, name string, issuer NullableString, subjectName []string, validity NullableString, managed bool, status string, statusDetail string, csr NullableString, challenge string, authority string, keyAlgorithm string, productVersion string, lastEditor string, lastModified time.Time, renewedAt NullableTime, ) *Certificate`
 
 NewCertificate instantiates a new Certificate object
 This constructor will assign default values to properties that have it defined,
@@ -118,6 +119,41 @@ HasCertificate returns a boolean if a field has been set.
 `func (o *Certificate) UnsetCertificate()`
 
 UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
+### GetPrivateKey
+
+`func (o *Certificate) GetPrivateKey() string`
+
+GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
+
+### GetPrivateKeyOk
+
+`func (o *Certificate) GetPrivateKeyOk() (*string, bool)`
+
+GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKey
+
+`func (o *Certificate) SetPrivateKey(v string)`
+
+SetPrivateKey sets PrivateKey field to given value.
+
+### HasPrivateKey
+
+`func (o *Certificate) HasPrivateKey() bool`
+
+HasPrivateKey returns a boolean if a field has been set.
+
+### SetPrivateKeyNil
+
+`func (o *Certificate) SetPrivateKeyNil(b bool)`
+
+ SetPrivateKeyNil sets the value for PrivateKey to be an explicit nil
+
+### UnsetPrivateKey
+`func (o *Certificate) UnsetPrivateKey()`
+
+UnsetPrivateKey ensures that no value is present for PrivateKey, not even an explicit nil
 ### GetIssuer
 
 `func (o *Certificate) GetIssuer() string`
@@ -315,64 +351,44 @@ SetCsr sets Csr field to given value.
 UnsetCsr ensures that no value is present for Csr, not even an explicit nil
 ### GetChallenge
 
-`func (o *Certificate) GetChallenge() CertificateChallenge`
+`func (o *Certificate) GetChallenge() string`
 
 GetChallenge returns the Challenge field if non-nil, zero value otherwise.
 
 ### GetChallengeOk
 
-`func (o *Certificate) GetChallengeOk() (*CertificateChallenge, bool)`
+`func (o *Certificate) GetChallengeOk() (*string, bool)`
 
 GetChallengeOk returns a tuple with the Challenge field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChallenge
 
-`func (o *Certificate) SetChallenge(v CertificateChallenge)`
+`func (o *Certificate) SetChallenge(v string)`
 
 SetChallenge sets Challenge field to given value.
 
 
-### SetChallengeNil
-
-`func (o *Certificate) SetChallengeNil(b bool)`
-
- SetChallengeNil sets the value for Challenge to be an explicit nil
-
-### UnsetChallenge
-`func (o *Certificate) UnsetChallenge()`
-
-UnsetChallenge ensures that no value is present for Challenge, not even an explicit nil
 ### GetAuthority
 
-`func (o *Certificate) GetAuthority() CertificateAuthority`
+`func (o *Certificate) GetAuthority() string`
 
 GetAuthority returns the Authority field if non-nil, zero value otherwise.
 
 ### GetAuthorityOk
 
-`func (o *Certificate) GetAuthorityOk() (*CertificateAuthority, bool)`
+`func (o *Certificate) GetAuthorityOk() (*string, bool)`
 
 GetAuthorityOk returns a tuple with the Authority field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthority
 
-`func (o *Certificate) SetAuthority(v CertificateAuthority)`
+`func (o *Certificate) SetAuthority(v string)`
 
 SetAuthority sets Authority field to given value.
 
 
-### SetAuthorityNil
-
-`func (o *Certificate) SetAuthorityNil(b bool)`
-
- SetAuthorityNil sets the value for Authority to be an explicit nil
-
-### UnsetAuthority
-`func (o *Certificate) UnsetAuthority()`
-
-UnsetAuthority ensures that no value is present for Authority, not even an explicit nil
 ### GetKeyAlgorithm
 
 `func (o *Certificate) GetKeyAlgorithm() string`

@@ -23,33 +23,33 @@ import (
 // WAFsAPIService WAFsAPI service
 type WAFsAPIService service
 
-type ApiCloneWAFRequest struct {
+type ApiCloneWafRequest struct {
 	ctx context.Context
 	ApiService *WAFsAPIService
-	wafId string
+	wafId int64
 	cloneWAFRequest *CloneWAFRequest
 }
 
-func (r ApiCloneWAFRequest) CloneWAFRequest(cloneWAFRequest CloneWAFRequest) ApiCloneWAFRequest {
+func (r ApiCloneWafRequest) CloneWAFRequest(cloneWAFRequest CloneWAFRequest) ApiCloneWafRequest {
 	r.cloneWAFRequest = &cloneWAFRequest
 	return r
 }
 
-func (r ApiCloneWAFRequest) Execute() (*ResponseWAF, *http.Response, error) {
-	return r.ApiService.CloneWAFExecute(r)
+func (r ApiCloneWafRequest) Execute() (*ResponseWAF, *http.Response, error) {
+	return r.ApiService.CloneWafExecute(r)
 }
 
 /*
-CloneWAF Clone a Web Application Firewall (WAF)
+CloneWaf Clone a Web Application Firewall (WAF)
 
 Create a new WAF by performing a deep copy of an existing WAF, including its Exceptions.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param wafId
- @return ApiCloneWAFRequest
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiCloneWafRequest
 */
-func (a *WAFsAPIService) CloneWAF(ctx context.Context, wafId string) ApiCloneWAFRequest {
-	return ApiCloneWAFRequest{
+func (a *WAFsAPIService) CloneWaf(ctx context.Context, wafId int64) ApiCloneWafRequest {
+	return ApiCloneWafRequest{
 		ApiService: a,
 		ctx: ctx,
 		wafId: wafId,
@@ -58,7 +58,7 @@ func (a *WAFsAPIService) CloneWAF(ctx context.Context, wafId string) ApiCloneWAF
 
 // Execute executes the request
 //  @return ResponseWAF
-func (a *WAFsAPIService) CloneWAFExecute(r ApiCloneWAFRequest) (*ResponseWAF, *http.Response, error) {
+func (a *WAFsAPIService) CloneWafExecute(r ApiCloneWafRequest) (*ResponseWAF, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -66,12 +66,12 @@ func (a *WAFsAPIService) CloneWAFExecute(r ApiCloneWAFRequest) (*ResponseWAF, *h
 		localVarReturnValue  *ResponseWAF
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.CloneWAF")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.CloneWaf")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/clone"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/clone"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,31 +227,31 @@ func (a *WAFsAPIService) CloneWAFExecute(r ApiCloneWAFRequest) (*ResponseWAF, *h
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateWAFRequest struct {
+type ApiCreateWafRequest struct {
 	ctx context.Context
 	ApiService *WAFsAPIService
 	wAFRequest *WAFRequest
 }
 
-func (r ApiCreateWAFRequest) WAFRequest(wAFRequest WAFRequest) ApiCreateWAFRequest {
+func (r ApiCreateWafRequest) WAFRequest(wAFRequest WAFRequest) ApiCreateWafRequest {
 	r.wAFRequest = &wAFRequest
 	return r
 }
 
-func (r ApiCreateWAFRequest) Execute() (*ResponseWAF, *http.Response, error) {
-	return r.ApiService.CreateWAFExecute(r)
+func (r ApiCreateWafRequest) Execute() (*ResponseWAF, *http.Response, error) {
+	return r.ApiService.CreateWafExecute(r)
 }
 
 /*
-CreateWAF Create a Web Application Firewall (WAF)
+CreateWaf Create a Web Application Firewall (WAF)
 
 Create a new WAF for your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateWAFRequest
+ @return ApiCreateWafRequest
 */
-func (a *WAFsAPIService) CreateWAF(ctx context.Context) ApiCreateWAFRequest {
-	return ApiCreateWAFRequest{
+func (a *WAFsAPIService) CreateWaf(ctx context.Context) ApiCreateWafRequest {
+	return ApiCreateWafRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -259,7 +259,7 @@ func (a *WAFsAPIService) CreateWAF(ctx context.Context) ApiCreateWAFRequest {
 
 // Execute executes the request
 //  @return ResponseWAF
-func (a *WAFsAPIService) CreateWAFExecute(r ApiCreateWAFRequest) (*ResponseWAF, *http.Response, error) {
+func (a *WAFsAPIService) CreateWafExecute(r ApiCreateWafRequest) (*ResponseWAF, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -267,12 +267,12 @@ func (a *WAFsAPIService) CreateWAFExecute(r ApiCreateWAFRequest) (*ResponseWAF, 
 		localVarReturnValue  *ResponseWAF
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.CreateWAF")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.CreateWaf")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs"
+	localVarPath := localBasePath + "/workspace/wafs"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,27 +427,27 @@ func (a *WAFsAPIService) CreateWAFExecute(r ApiCreateWAFRequest) (*ResponseWAF, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyWAFRequest struct {
+type ApiDeleteWafRequest struct {
 	ctx context.Context
 	ApiService *WAFsAPIService
-	wafId string
+	wafId int64
 }
 
-func (r ApiDestroyWAFRequest) Execute() (*ResponseDeleteWAF, *http.Response, error) {
-	return r.ApiService.DestroyWAFExecute(r)
+func (r ApiDeleteWafRequest) Execute() (*ResponseAsyncDeleteWAF, *http.Response, error) {
+	return r.ApiService.DeleteWafExecute(r)
 }
 
 /*
-DestroyWAF Destroy a Web Application Firewall (WAF)
+DeleteWaf Delete a Web Application Firewall (WAF)
 
-Destruction of a specific WAF in your account.
+Delete a specific WAF in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param wafId
- @return ApiDestroyWAFRequest
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiDeleteWafRequest
 */
-func (a *WAFsAPIService) DestroyWAF(ctx context.Context, wafId string) ApiDestroyWAFRequest {
-	return ApiDestroyWAFRequest{
+func (a *WAFsAPIService) DeleteWaf(ctx context.Context, wafId int64) ApiDeleteWafRequest {
+	return ApiDeleteWafRequest{
 		ApiService: a,
 		ctx: ctx,
 		wafId: wafId,
@@ -455,21 +455,21 @@ func (a *WAFsAPIService) DestroyWAF(ctx context.Context, wafId string) ApiDestro
 }
 
 // Execute executes the request
-//  @return ResponseDeleteWAF
-func (a *WAFsAPIService) DestroyWAFExecute(r ApiDestroyWAFRequest) (*ResponseDeleteWAF, *http.Response, error) {
+//  @return ResponseAsyncDeleteWAF
+func (a *WAFsAPIService) DeleteWafExecute(r ApiDeleteWafRequest) (*ResponseAsyncDeleteWAF, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteWAF
+		localVarReturnValue  *ResponseAsyncDeleteWAF
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.DestroyWAF")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.DeleteWaf")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -620,10 +620,12 @@ func (a *WAFsAPIService) DestroyWAFExecute(r ApiDestroyWAFRequest) (*ResponseDel
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListWAFsRequest struct {
+type ApiListWafsRequest struct {
 	ctx context.Context
 	ApiService *WAFsAPIService
 	fields *string
+	id *int64
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
@@ -631,49 +633,61 @@ type ApiListWAFsRequest struct {
 }
 
 // Comma-separated list of field names to include in the response.
-func (r ApiListWAFsRequest) Fields(fields string) ApiListWAFsRequest {
+func (r ApiListWafsRequest) Fields(fields string) ApiListWafsRequest {
 	r.fields = &fields
 	return r
 }
 
+// Filter by id (accepts comma-separated values).
+func (r ApiListWafsRequest) Id(id int64) ApiListWafsRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListWafsRequest) Name(name string) ApiListWafsRequest {
+	r.name = &name
+	return r
+}
+
 // Which field to use when ordering the results. (Valid fields: name, id, active, last_editor, last_modified, product_version)
-func (r ApiListWAFsRequest) Ordering(ordering string) ApiListWAFsRequest {
+func (r ApiListWafsRequest) Ordering(ordering string) ApiListWafsRequest {
 	r.ordering = &ordering
 	return r
 }
 
 // A page number within the paginated result set.
-func (r ApiListWAFsRequest) Page(page int64) ApiListWAFsRequest {
+func (r ApiListWafsRequest) Page(page int64) ApiListWafsRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiListWAFsRequest) PageSize(pageSize int64) ApiListWAFsRequest {
+func (r ApiListWafsRequest) PageSize(pageSize int64) ApiListWafsRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // A search term.
-func (r ApiListWAFsRequest) Search(search string) ApiListWAFsRequest {
+func (r ApiListWafsRequest) Search(search string) ApiListWafsRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiListWAFsRequest) Execute() (*PaginatedWAFList, *http.Response, error) {
-	return r.ApiService.ListWAFsExecute(r)
+func (r ApiListWafsRequest) Execute() (*PaginatedWAFList, *http.Response, error) {
+	return r.ApiService.ListWafsExecute(r)
 }
 
 /*
-ListWAFs List Web Application Firewalls (WAFs)
+ListWafs List Web Application Firewalls (WAFs)
 
 List all WAFs owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListWAFsRequest
+ @return ApiListWafsRequest
 */
-func (a *WAFsAPIService) ListWAFs(ctx context.Context) ApiListWAFsRequest {
-	return ApiListWAFsRequest{
+func (a *WAFsAPIService) ListWafs(ctx context.Context) ApiListWafsRequest {
+	return ApiListWafsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -681,7 +695,7 @@ func (a *WAFsAPIService) ListWAFs(ctx context.Context) ApiListWAFsRequest {
 
 // Execute executes the request
 //  @return PaginatedWAFList
-func (a *WAFsAPIService) ListWAFsExecute(r ApiListWAFsRequest) (*PaginatedWAFList, *http.Response, error) {
+func (a *WAFsAPIService) ListWafsExecute(r ApiListWafsRequest) (*PaginatedWAFList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -689,12 +703,12 @@ func (a *WAFsAPIService) ListWAFsExecute(r ApiListWAFsRequest) (*PaginatedWAFLis
 		localVarReturnValue  *PaginatedWAFList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.ListWAFs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.ListWafs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs"
+	localVarPath := localBasePath + "/workspace/wafs"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -702,6 +716,12 @@ func (a *WAFsAPIService) ListWAFsExecute(r ApiListWAFsRequest) (*PaginatedWAFLis
 
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -859,33 +879,33 @@ func (a *WAFsAPIService) ListWAFsExecute(r ApiListWAFsRequest) (*PaginatedWAFLis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPartialUpdateWAFRequest struct {
+type ApiPartialUpdateWafRequest struct {
 	ctx context.Context
 	ApiService *WAFsAPIService
-	wafId string
+	wafId int64
 	patchedWAFRequest *PatchedWAFRequest
 }
 
-func (r ApiPartialUpdateWAFRequest) PatchedWAFRequest(patchedWAFRequest PatchedWAFRequest) ApiPartialUpdateWAFRequest {
+func (r ApiPartialUpdateWafRequest) PatchedWAFRequest(patchedWAFRequest PatchedWAFRequest) ApiPartialUpdateWafRequest {
 	r.patchedWAFRequest = &patchedWAFRequest
 	return r
 }
 
-func (r ApiPartialUpdateWAFRequest) Execute() (*ResponseWAF, *http.Response, error) {
-	return r.ApiService.PartialUpdateWAFExecute(r)
+func (r ApiPartialUpdateWafRequest) Execute() (*ResponseWAF, *http.Response, error) {
+	return r.ApiService.PartialUpdateWafExecute(r)
 }
 
 /*
-PartialUpdateWAF Partially update a Web Application Firewall (WAF)
+PartialUpdateWaf Partially update a Web Application Firewall (WAF)
 
 Update one or more fields of an existing WAF without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param wafId
- @return ApiPartialUpdateWAFRequest
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiPartialUpdateWafRequest
 */
-func (a *WAFsAPIService) PartialUpdateWAF(ctx context.Context, wafId string) ApiPartialUpdateWAFRequest {
-	return ApiPartialUpdateWAFRequest{
+func (a *WAFsAPIService) PartialUpdateWaf(ctx context.Context, wafId int64) ApiPartialUpdateWafRequest {
+	return ApiPartialUpdateWafRequest{
 		ApiService: a,
 		ctx: ctx,
 		wafId: wafId,
@@ -894,7 +914,7 @@ func (a *WAFsAPIService) PartialUpdateWAF(ctx context.Context, wafId string) Api
 
 // Execute executes the request
 //  @return ResponseWAF
-func (a *WAFsAPIService) PartialUpdateWAFExecute(r ApiPartialUpdateWAFRequest) (*ResponseWAF, *http.Response, error) {
+func (a *WAFsAPIService) PartialUpdateWafExecute(r ApiPartialUpdateWafRequest) (*ResponseWAF, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -902,12 +922,12 @@ func (a *WAFsAPIService) PartialUpdateWAFExecute(r ApiPartialUpdateWAFRequest) (
 		localVarReturnValue  *ResponseWAF
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.PartialUpdateWAF")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.PartialUpdateWaf")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1060,34 +1080,34 @@ func (a *WAFsAPIService) PartialUpdateWAFExecute(r ApiPartialUpdateWAFRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRetrieveWAFRequest struct {
+type ApiRetrieveWafRequest struct {
 	ctx context.Context
 	ApiService *WAFsAPIService
-	wafId string
+	wafId int64
 	fields *string
 }
 
 // Comma-separated list of field names to include in the response.
-func (r ApiRetrieveWAFRequest) Fields(fields string) ApiRetrieveWAFRequest {
+func (r ApiRetrieveWafRequest) Fields(fields string) ApiRetrieveWafRequest {
 	r.fields = &fields
 	return r
 }
 
-func (r ApiRetrieveWAFRequest) Execute() (*ResponseRetrieveWAF, *http.Response, error) {
-	return r.ApiService.RetrieveWAFExecute(r)
+func (r ApiRetrieveWafRequest) Execute() (*ResponseRetrieveWAF, *http.Response, error) {
+	return r.ApiService.RetrieveWafExecute(r)
 }
 
 /*
-RetrieveWAF Retrieve details from a Web Application Firewall (WAF)
+RetrieveWaf Retrieve details from a Web Application Firewall (WAF)
 
 Retrieve details from a specific WAF in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param wafId
- @return ApiRetrieveWAFRequest
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiRetrieveWafRequest
 */
-func (a *WAFsAPIService) RetrieveWAF(ctx context.Context, wafId string) ApiRetrieveWAFRequest {
-	return ApiRetrieveWAFRequest{
+func (a *WAFsAPIService) RetrieveWaf(ctx context.Context, wafId int64) ApiRetrieveWafRequest {
+	return ApiRetrieveWafRequest{
 		ApiService: a,
 		ctx: ctx,
 		wafId: wafId,
@@ -1096,7 +1116,7 @@ func (a *WAFsAPIService) RetrieveWAF(ctx context.Context, wafId string) ApiRetri
 
 // Execute executes the request
 //  @return ResponseRetrieveWAF
-func (a *WAFsAPIService) RetrieveWAFExecute(r ApiRetrieveWAFRequest) (*ResponseRetrieveWAF, *http.Response, error) {
+func (a *WAFsAPIService) RetrieveWafExecute(r ApiRetrieveWafRequest) (*ResponseRetrieveWAF, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1104,12 +1124,12 @@ func (a *WAFsAPIService) RetrieveWAFExecute(r ApiRetrieveWAFRequest) (*ResponseR
 		localVarReturnValue  *ResponseRetrieveWAF
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.RetrieveWAF")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.RetrieveWaf")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1263,33 +1283,33 @@ func (a *WAFsAPIService) RetrieveWAFExecute(r ApiRetrieveWAFRequest) (*ResponseR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateWAFRequest struct {
+type ApiUpdateWafRequest struct {
 	ctx context.Context
 	ApiService *WAFsAPIService
-	wafId string
+	wafId int64
 	wAFRequest *WAFRequest
 }
 
-func (r ApiUpdateWAFRequest) WAFRequest(wAFRequest WAFRequest) ApiUpdateWAFRequest {
+func (r ApiUpdateWafRequest) WAFRequest(wAFRequest WAFRequest) ApiUpdateWafRequest {
 	r.wAFRequest = &wAFRequest
 	return r
 }
 
-func (r ApiUpdateWAFRequest) Execute() (*ResponseWAF, *http.Response, error) {
-	return r.ApiService.UpdateWAFExecute(r)
+func (r ApiUpdateWafRequest) Execute() (*ResponseWAF, *http.Response, error) {
+	return r.ApiService.UpdateWafExecute(r)
 }
 
 /*
-UpdateWAF Update a Web Application Firewall (WAF)
+UpdateWaf Update a Web Application Firewall (WAF)
 
 Update an existing WAF. This replaces the entire WAF with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param wafId
- @return ApiUpdateWAFRequest
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiUpdateWafRequest
 */
-func (a *WAFsAPIService) UpdateWAF(ctx context.Context, wafId string) ApiUpdateWAFRequest {
-	return ApiUpdateWAFRequest{
+func (a *WAFsAPIService) UpdateWaf(ctx context.Context, wafId int64) ApiUpdateWafRequest {
+	return ApiUpdateWafRequest{
 		ApiService: a,
 		ctx: ctx,
 		wafId: wafId,
@@ -1298,7 +1318,7 @@ func (a *WAFsAPIService) UpdateWAF(ctx context.Context, wafId string) ApiUpdateW
 
 // Execute executes the request
 //  @return ResponseWAF
-func (a *WAFsAPIService) UpdateWAFExecute(r ApiUpdateWAFRequest) (*ResponseWAF, *http.Response, error) {
+func (a *WAFsAPIService) UpdateWafExecute(r ApiUpdateWafRequest) (*ResponseWAF, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1306,12 +1326,12 @@ func (a *WAFsAPIService) UpdateWAFExecute(r ApiUpdateWAFRequest) (*ResponseWAF, 
 		localVarReturnValue  *ResponseWAF
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.UpdateWAF")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.UpdateWaf")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
