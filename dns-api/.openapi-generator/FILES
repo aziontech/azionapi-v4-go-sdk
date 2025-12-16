@@ -15,7 +15,6 @@ docs/DNSSEC.md
 docs/DNSSECRequest.md
 docs/DNSZonesAPI.md
 docs/DelegationSigner.md
-docs/DelegationSignerRequest.md
 docs/JSONAPIErrorObject.md
 docs/JSONAPIErrorResponse.md
 docs/JSONAPIErrorSource.md
@@ -32,8 +31,6 @@ docs/ResponseAsyncDeleteZone.md
 docs/ResponseAsyncRecord.md
 docs/ResponseAsyncZone.md
 docs/ResponseDNSSEC.md
-docs/ResponseDeleteRecord.md
-docs/ResponseDeleteZone.md
 docs/ResponseRecord.md
 docs/ResponseRetrieveDNSSEC.md
 docs/ResponseRetrieveRecord.md
@@ -48,7 +45,6 @@ go.sum
 model_alg_type.go
 model_alg_type_request.go
 model_delegation_signer.go
-model_delegation_signer_request.go
 model_dnssec.go
 model_dnssec_request.go
 model_jsonapi_error_object.go
@@ -66,8 +62,6 @@ model_response_async_delete_zone.go
 model_response_async_dnssec.go
 model_response_async_record.go
 model_response_async_zone.go
-model_response_delete_record.go
-model_response_delete_zone.go
 model_response_dnssec.go
 model_response_record.go
 model_response_retrieve_dnssec.go

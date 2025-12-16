@@ -78,111 +78,111 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ApplicationsAPI* | [**CloneApplication**](docs/ApplicationsAPI.md#cloneapplication) | **Post** /edge_application/applications/{application_id}/clone | Clone an Application
-*ApplicationsAPI* | [**CreateApplication**](docs/ApplicationsAPI.md#createapplication) | **Post** /edge_application/applications | Create an Application
-*ApplicationsAPI* | [**DestroyApplication**](docs/ApplicationsAPI.md#destroyapplication) | **Delete** /edge_application/applications/{application_id} | Destroy an Application
-*ApplicationsAPI* | [**ListApplications**](docs/ApplicationsAPI.md#listapplications) | **Get** /edge_application/applications | List Applications
-*ApplicationsAPI* | [**PartialUpdateApplication**](docs/ApplicationsAPI.md#partialupdateapplication) | **Patch** /edge_application/applications/{application_id} | Partially update an Application
-*ApplicationsAPI* | [**RetrieveApplication**](docs/ApplicationsAPI.md#retrieveapplication) | **Get** /edge_application/applications/{application_id} | Retrieve details of an Application
-*ApplicationsAPI* | [**UpdateApplication**](docs/ApplicationsAPI.md#updateapplication) | **Put** /edge_application/applications/{application_id} | Update an Application
-*ApplicationsCacheSettingsAPI* | [**CreateCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#createcachesetting) | **Post** /edge_application/applications/{application_id}/cache_settings | Create an Applications Cache Setting
-*ApplicationsCacheSettingsAPI* | [**DestroyCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#destroycachesetting) | **Delete** /edge_application/applications/{application_id}/cache_settings/{id} | Destroy an Applications Cache Setting
-*ApplicationsCacheSettingsAPI* | [**ListCacheSettings**](docs/ApplicationsCacheSettingsAPI.md#listcachesettings) | **Get** /edge_application/applications/{application_id}/cache_settings | List all Applications Cache Settings
-*ApplicationsCacheSettingsAPI* | [**PartialUpdateCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#partialupdatecachesetting) | **Patch** /edge_application/applications/{application_id}/cache_settings/{id} | Partially update an Applications Cache Setting
-*ApplicationsCacheSettingsAPI* | [**RetrieveCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#retrievecachesetting) | **Get** /edge_application/applications/{application_id}/cache_settings/{id} | Retrieve details of an Applications Cache Setting
-*ApplicationsCacheSettingsAPI* | [**UpdateCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#updatecachesetting) | **Put** /edge_application/applications/{application_id}/cache_settings/{id} | Update an Applications Cache Setting
-*ApplicationsDeviceGroupsAPI* | [**CreateDeviceGroup**](docs/ApplicationsDeviceGroupsAPI.md#createdevicegroup) | **Post** /edge_application/applications/{application_id}/device_groups | Create an Applications Device Group
-*ApplicationsDeviceGroupsAPI* | [**DestroyDeviceGroups**](docs/ApplicationsDeviceGroupsAPI.md#destroydevicegroups) | **Delete** /edge_application/applications/{application_id}/device_groups/{id} | Destroy an Applications Device Group
-*ApplicationsDeviceGroupsAPI* | [**ListDeviceGroups**](docs/ApplicationsDeviceGroupsAPI.md#listdevicegroups) | **Get** /edge_application/applications/{application_id}/device_groups | List Applications Device Groups
-*ApplicationsDeviceGroupsAPI* | [**PartialUpdateDeviceGroup**](docs/ApplicationsDeviceGroupsAPI.md#partialupdatedevicegroup) | **Patch** /edge_application/applications/{application_id}/device_groups/{id} | Partially update an Applications Device Group
-*ApplicationsDeviceGroupsAPI* | [**RetrieveDeviceGroup**](docs/ApplicationsDeviceGroupsAPI.md#retrievedevicegroup) | **Get** /edge_application/applications/{application_id}/device_groups/{id} | Retrieve details of a Device Group
-*ApplicationsDeviceGroupsAPI* | [**UpdateDeviceGroup**](docs/ApplicationsDeviceGroupsAPI.md#updatedevicegroup) | **Put** /edge_application/applications/{application_id}/device_groups/{id} | Update an Applications Device Group
-*ApplicationsFunctionAPI* | [**CreateApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#createapplicationfunctioninstance) | **Post** /edge_application/applications/{application_id}/functions | Create an Application Function Instance
-*ApplicationsFunctionAPI* | [**DestroyApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#destroyapplicationfunctioninstance) | **Delete** /edge_application/applications/{application_id}/functions/{function_id} | Destroy an Application Function Instance
-*ApplicationsFunctionAPI* | [**ListApplicationFunctionInstances**](docs/ApplicationsFunctionAPI.md#listapplicationfunctioninstances) | **Get** /edge_application/applications/{application_id}/functions | List Function Instances
-*ApplicationsFunctionAPI* | [**PartialUpdateApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#partialupdateapplicationfunctioninstance) | **Patch** /edge_application/applications/{application_id}/functions/{function_id} | Partially update an Application Function Instance
-*ApplicationsFunctionAPI* | [**RetrieveApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#retrieveapplicationfunctioninstance) | **Get** /edge_application/applications/{application_id}/functions/{function_id} | Retrieve details of an Application Function Instance
-*ApplicationsFunctionAPI* | [**UpdateApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#updateapplicationfunctioninstance) | **Put** /edge_application/applications/{application_id}/functions/{function_id} | Update an Edge Application Function Instance
-*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesCreate**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulescreate) | **Post** /edge_application/applications/{application_id}/request_rules | Create an Application Request Rule
-*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesDestroy**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulesdestroy) | **Delete** /edge_application/applications/{application_id}/request_rules/{id} | Destroy an Application Request Rule
-*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesList**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestruleslist) | **Get** /edge_application/applications/{application_id}/request_rules | List Application Request Rules
-*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesOrderUpdate**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulesorderupdate) | **Put** /edge_application/applications/{application_id}/request_rules/order | Ordering Application Request Rules
-*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesPartialUpdate**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulespartialupdate) | **Patch** /edge_application/applications/{application_id}/request_rules/{id} | Partially update an Application Request Rule
-*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesRetrieve**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulesretrieve) | **Get** /edge_application/applications/{application_id}/request_rules/{id} | Retrieve details of an Application Request Rule
-*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesUpdate**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulesupdate) | **Put** /edge_application/applications/{application_id}/request_rules/{id} | Update an Application Request Rule
-*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesCreate**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulescreate) | **Post** /edge_application/applications/{application_id}/response_rules | Create an Application Response Rule
-*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesDestroy**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulesdestroy) | **Delete** /edge_application/applications/{application_id}/response_rules/{id} | Destroy an Application Response Rule
-*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesList**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponseruleslist) | **Get** /edge_application/applications/{application_id}/response_rules | List Application Response Rules
-*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesOrderUpdate**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulesorderupdate) | **Put** /edge_application/applications/{application_id}/response_rules/order | Ordering Application Response Rules
-*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesPartialUpdate**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulespartialupdate) | **Patch** /edge_application/applications/{application_id}/response_rules/{id} | Partially update an Application Response Rule
-*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesRetrieve**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulesretrieve) | **Get** /edge_application/applications/{application_id}/response_rules/{id} | Retrieve details of an Application Response Rule
-*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesUpdate**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulesupdate) | **Put** /edge_application/applications/{application_id}/response_rules/{id} | Update an Application Response Rule
-*ConnectorsAPI* | [**CreateConnector**](docs/ConnectorsAPI.md#createconnector) | **Post** /edge_connector/connectors | Create an Connector
-*ConnectorsAPI* | [**DestroyConnector**](docs/ConnectorsAPI.md#destroyconnector) | **Delete** /edge_connector/connectors/{id} | Destroy an Connector
-*ConnectorsAPI* | [**ListConnectors**](docs/ConnectorsAPI.md#listconnectors) | **Get** /edge_connector/connectors | List Connectors
-*ConnectorsAPI* | [**PartialUpdateConnector**](docs/ConnectorsAPI.md#partialupdateconnector) | **Patch** /edge_connector/connectors/{id} | Partially update an Connector
-*ConnectorsAPI* | [**RetrieveConnector**](docs/ConnectorsAPI.md#retrieveconnector) | **Get** /edge_connector/connectors/{id} | Retrieve details of an Connector
-*ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Put** /edge_connector/connectors/{id} | Update an Connector
+*ApplicationsAPI* | [**CloneApplication**](docs/ApplicationsAPI.md#cloneapplication) | **Post** /workspace/applications/{application_id}/clone | Clone an Application
+*ApplicationsAPI* | [**CreateApplication**](docs/ApplicationsAPI.md#createapplication) | **Post** /workspace/applications | Create an Application
+*ApplicationsAPI* | [**DeleteApplication**](docs/ApplicationsAPI.md#deleteapplication) | **Delete** /workspace/applications/{application_id} | Delete an Application
+*ApplicationsAPI* | [**ListApplications**](docs/ApplicationsAPI.md#listapplications) | **Get** /workspace/applications | List Applications
+*ApplicationsAPI* | [**PartialUpdateApplication**](docs/ApplicationsAPI.md#partialupdateapplication) | **Patch** /workspace/applications/{application_id} | Partially update an Application
+*ApplicationsAPI* | [**RetrieveApplication**](docs/ApplicationsAPI.md#retrieveapplication) | **Get** /workspace/applications/{application_id} | Retrieve details of an Application
+*ApplicationsAPI* | [**UpdateApplication**](docs/ApplicationsAPI.md#updateapplication) | **Put** /workspace/applications/{application_id} | Update an Application
+*ApplicationsCacheSettingsAPI* | [**CreateCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#createcachesetting) | **Post** /workspace/applications/{application_id}/cache_settings | Create an Applications Cache Setting
+*ApplicationsCacheSettingsAPI* | [**DeleteCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#deletecachesetting) | **Delete** /workspace/applications/{application_id}/cache_settings/{cache_setting_id} | Delete an Applications Cache Setting
+*ApplicationsCacheSettingsAPI* | [**ListCacheSettings**](docs/ApplicationsCacheSettingsAPI.md#listcachesettings) | **Get** /workspace/applications/{application_id}/cache_settings | List all Applications Cache Settings
+*ApplicationsCacheSettingsAPI* | [**PartialUpdateCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#partialupdatecachesetting) | **Patch** /workspace/applications/{application_id}/cache_settings/{cache_setting_id} | Partially update an Applications Cache Setting
+*ApplicationsCacheSettingsAPI* | [**RetrieveCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#retrievecachesetting) | **Get** /workspace/applications/{application_id}/cache_settings/{cache_setting_id} | Retrieve details of an Applications Cache Setting
+*ApplicationsCacheSettingsAPI* | [**UpdateCacheSetting**](docs/ApplicationsCacheSettingsAPI.md#updatecachesetting) | **Put** /workspace/applications/{application_id}/cache_settings/{cache_setting_id} | Update an Applications Cache Setting
+*ApplicationsDeviceGroupsAPI* | [**CreateDeviceGroup**](docs/ApplicationsDeviceGroupsAPI.md#createdevicegroup) | **Post** /workspace/applications/{application_id}/device_groups | Create an Applications Device Group
+*ApplicationsDeviceGroupsAPI* | [**DeleteDeviceGroups**](docs/ApplicationsDeviceGroupsAPI.md#deletedevicegroups) | **Delete** /workspace/applications/{application_id}/device_groups/{device_group_id} | Delete an Applications Device Group
+*ApplicationsDeviceGroupsAPI* | [**ListDeviceGroups**](docs/ApplicationsDeviceGroupsAPI.md#listdevicegroups) | **Get** /workspace/applications/{application_id}/device_groups | List Applications Device Groups
+*ApplicationsDeviceGroupsAPI* | [**PartialUpdateDeviceGroup**](docs/ApplicationsDeviceGroupsAPI.md#partialupdatedevicegroup) | **Patch** /workspace/applications/{application_id}/device_groups/{device_group_id} | Partially update an Applications Device Group
+*ApplicationsDeviceGroupsAPI* | [**RetrieveDeviceGroup**](docs/ApplicationsDeviceGroupsAPI.md#retrievedevicegroup) | **Get** /workspace/applications/{application_id}/device_groups/{device_group_id} | Retrieve details of a Device Group
+*ApplicationsDeviceGroupsAPI* | [**UpdateDeviceGroup**](docs/ApplicationsDeviceGroupsAPI.md#updatedevicegroup) | **Put** /workspace/applications/{application_id}/device_groups/{device_group_id} | Update an Applications Device Group
+*ApplicationsFunctionAPI* | [**CreateApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#createapplicationfunctioninstance) | **Post** /workspace/applications/{application_id}/functions | Create an Application Function Instance
+*ApplicationsFunctionAPI* | [**DeleteApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#deleteapplicationfunctioninstance) | **Delete** /workspace/applications/{application_id}/functions/{function_id} | Delete an Application Function Instance
+*ApplicationsFunctionAPI* | [**ListApplicationFunctionInstances**](docs/ApplicationsFunctionAPI.md#listapplicationfunctioninstances) | **Get** /workspace/applications/{application_id}/functions | List Function Instances
+*ApplicationsFunctionAPI* | [**PartialUpdateApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#partialupdateapplicationfunctioninstance) | **Patch** /workspace/applications/{application_id}/functions/{function_id} | Partially update an Application Function Instance
+*ApplicationsFunctionAPI* | [**RetrieveApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#retrieveapplicationfunctioninstance) | **Get** /workspace/applications/{application_id}/functions/{function_id} | Retrieve details of an Application Function Instance
+*ApplicationsFunctionAPI* | [**UpdateApplicationFunctionInstance**](docs/ApplicationsFunctionAPI.md#updateapplicationfunctioninstance) | **Put** /workspace/applications/{application_id}/functions/{function_id} | Update an Edge Application Function Instance
+*ApplicationsRequestRulesAPI* | [**DeleteApplicationRequestRule**](docs/ApplicationsRequestRulesAPI.md#deleteapplicationrequestrule) | **Delete** /workspace/applications/{application_id}/request_rules/{id} | Delete an Application Request Rule
+*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesCreate**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulescreate) | **Post** /workspace/applications/{application_id}/request_rules | Create an Application Request Rule
+*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesList**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestruleslist) | **Get** /workspace/applications/{application_id}/request_rules | List Application Request Rules
+*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesOrderUpdate**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulesorderupdate) | **Put** /workspace/applications/{application_id}/request_rules/order | Ordering Application Request Rules
+*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesPartialUpdate**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulespartialupdate) | **Patch** /workspace/applications/{application_id}/request_rules/{id} | Partially update an Application Request Rule
+*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesRetrieve**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulesretrieve) | **Get** /workspace/applications/{application_id}/request_rules/{id} | Retrieve details of an Application Request Rule
+*ApplicationsRequestRulesAPI* | [**EdgeApplicationApiApplicationsRequestRulesUpdate**](docs/ApplicationsRequestRulesAPI.md#edgeapplicationapiapplicationsrequestrulesupdate) | **Put** /workspace/applications/{application_id}/request_rules/{id} | Update an Application Request Rule
+*ApplicationsResponseRulesAPI* | [**DeleteApplicationResponseRule**](docs/ApplicationsResponseRulesAPI.md#deleteapplicationresponserule) | **Delete** /workspace/applications/{application_id}/response_rules/{id} | Delete an Application Response Rule
+*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesCreate**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulescreate) | **Post** /workspace/applications/{application_id}/response_rules | Create an Application Response Rule
+*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesList**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponseruleslist) | **Get** /workspace/applications/{application_id}/response_rules | List Application Response Rules
+*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesOrderUpdate**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulesorderupdate) | **Put** /workspace/applications/{application_id}/response_rules/order | Ordering Application Response Rules
+*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesPartialUpdate**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulespartialupdate) | **Patch** /workspace/applications/{application_id}/response_rules/{id} | Partially update an Application Response Rule
+*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesRetrieve**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulesretrieve) | **Get** /workspace/applications/{application_id}/response_rules/{id} | Retrieve details of an Application Response Rule
+*ApplicationsResponseRulesAPI* | [**EdgeApplicationApiApplicationsResponseRulesUpdate**](docs/ApplicationsResponseRulesAPI.md#edgeapplicationapiapplicationsresponserulesupdate) | **Put** /workspace/applications/{application_id}/response_rules/{id} | Update an Application Response Rule
+*ConnectorsAPI* | [**CreateConnector**](docs/ConnectorsAPI.md#createconnector) | **Post** /workspace/connectors | Create an Connector
+*ConnectorsAPI* | [**DeleteConnector**](docs/ConnectorsAPI.md#deleteconnector) | **Delete** /workspace/connectors/{connector_id} | Delete an Connector
+*ConnectorsAPI* | [**ListConnectors**](docs/ConnectorsAPI.md#listconnectors) | **Get** /workspace/connectors | List Connectors
+*ConnectorsAPI* | [**PartialUpdateConnector**](docs/ConnectorsAPI.md#partialupdateconnector) | **Patch** /workspace/connectors/{connector_id} | Partially update an Connector
+*ConnectorsAPI* | [**RetrieveConnector**](docs/ConnectorsAPI.md#retrieveconnector) | **Get** /workspace/connectors/{connector_id} | Retrieve details of an Connector
+*ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Put** /workspace/connectors/{connector_id} | Update an Connector
 *CustomPagesAPI* | [**CreateCustomPage**](docs/CustomPagesAPI.md#createcustompage) | **Post** /workspace/custom_pages | Create a Custom Page
-*CustomPagesAPI* | [**DestroyCustomPage**](docs/CustomPagesAPI.md#destroycustompage) | **Delete** /workspace/custom_pages/{id} | Destroy a Custom Page
+*CustomPagesAPI* | [**DeleteCustomPage**](docs/CustomPagesAPI.md#deletecustompage) | **Delete** /workspace/custom_pages/{custom_page_id} | Delete a Custom Page
 *CustomPagesAPI* | [**ListCustomPages**](docs/CustomPagesAPI.md#listcustompages) | **Get** /workspace/custom_pages | List Custom Pages
-*CustomPagesAPI* | [**PartialUpdateCustomPage**](docs/CustomPagesAPI.md#partialupdatecustompage) | **Patch** /workspace/custom_pages/{id} | Partially update a Custom Page
-*CustomPagesAPI* | [**RetrieveCustomPage**](docs/CustomPagesAPI.md#retrievecustompage) | **Get** /workspace/custom_pages/{id} | Retrieve details of a Custom Page
-*CustomPagesAPI* | [**UpdateCustomPage**](docs/CustomPagesAPI.md#updatecustompage) | **Put** /workspace/custom_pages/{id} | Update a Custom Page
-*FirewallsAPI* | [**CloneFirewall**](docs/FirewallsAPI.md#clonefirewall) | **Post** /edge_firewall/firewalls/{id}/clone | Clone an Firewall
-*FirewallsAPI* | [**CreateFirewall**](docs/FirewallsAPI.md#createfirewall) | **Post** /edge_firewall/firewalls | Create an Firewall
-*FirewallsAPI* | [**DestroyFirewall**](docs/FirewallsAPI.md#destroyfirewall) | **Delete** /edge_firewall/firewalls/{id} | Destroy an Firewall
-*FirewallsAPI* | [**ListFirewalls**](docs/FirewallsAPI.md#listfirewalls) | **Get** /edge_firewall/firewalls | List Firewalls
-*FirewallsAPI* | [**PartialUpdateFirewall**](docs/FirewallsAPI.md#partialupdatefirewall) | **Patch** /edge_firewall/firewalls/{id} | Partially update an Firewall
-*FirewallsAPI* | [**RetrieveFirewall**](docs/FirewallsAPI.md#retrievefirewall) | **Get** /edge_firewall/firewalls/{id} | Retrieve details from an Firewall
-*FirewallsAPI* | [**UpdateFirewall**](docs/FirewallsAPI.md#updatefirewall) | **Put** /edge_firewall/firewalls/{id} | Update an Firewall
-*FirewallsFunctionAPI* | [**CreateFirewallFunction**](docs/FirewallsFunctionAPI.md#createfirewallfunction) | **Post** /edge_firewall/firewalls/{firewall_id}/functions | Create an Firewall Function
-*FirewallsFunctionAPI* | [**DestroyFirewallFunction**](docs/FirewallsFunctionAPI.md#destroyfirewallfunction) | **Delete** /edge_firewall/firewalls/{firewall_id}/functions/{id} | Destroy an Firewall Function
-*FirewallsFunctionAPI* | [**ListFirewallFunction**](docs/FirewallsFunctionAPI.md#listfirewallfunction) | **Get** /edge_firewall/firewalls/{firewall_id}/functions | List Firewall Function
-*FirewallsFunctionAPI* | [**PartialUpdateFirewallFunction**](docs/FirewallsFunctionAPI.md#partialupdatefirewallfunction) | **Patch** /edge_firewall/firewalls/{firewall_id}/functions/{id} | Partially update an Firewall Function
-*FirewallsFunctionAPI* | [**RetrieveFirewallFunction**](docs/FirewallsFunctionAPI.md#retrievefirewallfunction) | **Get** /edge_firewall/firewalls/{firewall_id}/functions/{id} | Retrieve details of an Firewall Function
-*FirewallsFunctionAPI* | [**UpdateFirewallFunction**](docs/FirewallsFunctionAPI.md#updatefirewallfunction) | **Put** /edge_firewall/firewalls/{firewall_id}/functions/{id} | Update an Firewall Function
-*FirewallsRulesEngineAPI* | [**CreateFirewallRule**](docs/FirewallsRulesEngineAPI.md#createfirewallrule) | **Post** /edge_firewall/firewalls/{firewall_id}/request_rules | Create an Firewall Rule
-*FirewallsRulesEngineAPI* | [**DestroyFirewallRule**](docs/FirewallsRulesEngineAPI.md#destroyfirewallrule) | **Delete** /edge_firewall/firewalls/{firewall_id}/request_rules/{id} | Destroy an Firewall Rule
-*FirewallsRulesEngineAPI* | [**ListFirewallRules**](docs/FirewallsRulesEngineAPI.md#listfirewallrules) | **Get** /edge_firewall/firewalls/{firewall_id}/request_rules | List Firewall Rules
-*FirewallsRulesEngineAPI* | [**OrderFirewallRules**](docs/FirewallsRulesEngineAPI.md#orderfirewallrules) | **Put** /edge_firewall/firewalls/{firewall_id}/request_rules/order | Ordering Firewall Rules
-*FirewallsRulesEngineAPI* | [**PartialUpdateFirewallRule**](docs/FirewallsRulesEngineAPI.md#partialupdatefirewallrule) | **Patch** /edge_firewall/firewalls/{firewall_id}/request_rules/{id} | Partially update an Firewall Rule
-*FirewallsRulesEngineAPI* | [**RetrieveFirewallRule**](docs/FirewallsRulesEngineAPI.md#retrievefirewallrule) | **Get** /edge_firewall/firewalls/{firewall_id}/request_rules/{id} | Retrieve details of an Firewall Rule
-*FirewallsRulesEngineAPI* | [**UpdateFirewallRule**](docs/FirewallsRulesEngineAPI.md#updatefirewallrule) | **Put** /edge_firewall/firewalls/{firewall_id}/request_rules/{id} | Update an Firewall Rule
-*FunctionsAPI* | [**CreateFunction**](docs/FunctionsAPI.md#createfunction) | **Post** /edge_functions/functions | Create an Function
-*FunctionsAPI* | [**DestroyFunction**](docs/FunctionsAPI.md#destroyfunction) | **Delete** /edge_functions/functions/{id} | Destroy an Function
-*FunctionsAPI* | [**ListFunctions**](docs/FunctionsAPI.md#listfunctions) | **Get** /edge_functions/functions | List Functions
-*FunctionsAPI* | [**PartialUpdateFunction**](docs/FunctionsAPI.md#partialupdatefunction) | **Patch** /edge_functions/functions/{id} | Partially update an Function
-*FunctionsAPI* | [**RetrieveFunction**](docs/FunctionsAPI.md#retrievefunction) | **Get** /edge_functions/functions/{id} | Retrieve details of an Function
-*FunctionsAPI* | [**UpdateFunction**](docs/FunctionsAPI.md#updatefunction) | **Put** /edge_functions/functions/{id} | Update an Function
+*CustomPagesAPI* | [**PartialUpdateCustomPage**](docs/CustomPagesAPI.md#partialupdatecustompage) | **Patch** /workspace/custom_pages/{custom_page_id} | Partially update a Custom Page
+*CustomPagesAPI* | [**RetrieveCustomPage**](docs/CustomPagesAPI.md#retrievecustompage) | **Get** /workspace/custom_pages/{custom_page_id} | Retrieve details of a Custom Page
+*CustomPagesAPI* | [**UpdateCustomPage**](docs/CustomPagesAPI.md#updatecustompage) | **Put** /workspace/custom_pages/{custom_page_id} | Update a Custom Page
+*FirewallsAPI* | [**CloneFirewall**](docs/FirewallsAPI.md#clonefirewall) | **Post** /workspace/firewalls/{firewall_id}/clone | Clone a Firewall
+*FirewallsAPI* | [**CreateFirewall**](docs/FirewallsAPI.md#createfirewall) | **Post** /workspace/firewalls | Create a Firewall
+*FirewallsAPI* | [**DeleteFirewall**](docs/FirewallsAPI.md#deletefirewall) | **Delete** /workspace/firewalls/{firewall_id} | Delete a Firewall
+*FirewallsAPI* | [**ListFirewalls**](docs/FirewallsAPI.md#listfirewalls) | **Get** /workspace/firewalls | List Firewalls
+*FirewallsAPI* | [**PartialUpdateFirewall**](docs/FirewallsAPI.md#partialupdatefirewall) | **Patch** /workspace/firewalls/{firewall_id} | Partially update a Firewall
+*FirewallsAPI* | [**RetrieveFirewall**](docs/FirewallsAPI.md#retrievefirewall) | **Get** /workspace/firewalls/{firewall_id} | Retrieve details from a Firewall
+*FirewallsAPI* | [**UpdateFirewall**](docs/FirewallsAPI.md#updatefirewall) | **Put** /workspace/firewalls/{firewall_id} | Update a Firewall
+*FirewallsFunctionAPI* | [**CreateFirewallFunction**](docs/FirewallsFunctionAPI.md#createfirewallfunction) | **Post** /workspace/firewalls/{firewall_id}/functions | Create an Firewall Function
+*FirewallsFunctionAPI* | [**DeleteFirewallFunction**](docs/FirewallsFunctionAPI.md#deletefirewallfunction) | **Delete** /workspace/firewalls/{firewall_id}/functions/{function_id} | Delete an Firewall Function
+*FirewallsFunctionAPI* | [**ListFirewallFunction**](docs/FirewallsFunctionAPI.md#listfirewallfunction) | **Get** /workspace/firewalls/{firewall_id}/functions | List Firewall Function
+*FirewallsFunctionAPI* | [**PartialUpdateFirewallFunction**](docs/FirewallsFunctionAPI.md#partialupdatefirewallfunction) | **Patch** /workspace/firewalls/{firewall_id}/functions/{function_id} | Partially update an Firewall Function
+*FirewallsFunctionAPI* | [**RetrieveFirewallFunction**](docs/FirewallsFunctionAPI.md#retrievefirewallfunction) | **Get** /workspace/firewalls/{firewall_id}/functions/{function_id} | Retrieve details of an Firewall Function
+*FirewallsFunctionAPI* | [**UpdateFirewallFunction**](docs/FirewallsFunctionAPI.md#updatefirewallfunction) | **Put** /workspace/firewalls/{firewall_id}/functions/{function_id} | Update an Firewall Function
+*FirewallsRulesEngineAPI* | [**CreateFirewallRule**](docs/FirewallsRulesEngineAPI.md#createfirewallrule) | **Post** /workspace/firewalls/{firewall_id}/request_rules | Create an Firewall Rule
+*FirewallsRulesEngineAPI* | [**DeleteFirewallRule**](docs/FirewallsRulesEngineAPI.md#deletefirewallrule) | **Delete** /workspace/firewalls/{firewall_id}/request_rules/{id} | Delete an Firewall Rule
+*FirewallsRulesEngineAPI* | [**ListFirewallRules**](docs/FirewallsRulesEngineAPI.md#listfirewallrules) | **Get** /workspace/firewalls/{firewall_id}/request_rules | List Firewall Rules
+*FirewallsRulesEngineAPI* | [**OrderFirewallRules**](docs/FirewallsRulesEngineAPI.md#orderfirewallrules) | **Put** /workspace/firewalls/{firewall_id}/request_rules/order | Ordering Firewall Rules
+*FirewallsRulesEngineAPI* | [**PartialUpdateFirewallRule**](docs/FirewallsRulesEngineAPI.md#partialupdatefirewallrule) | **Patch** /workspace/firewalls/{firewall_id}/request_rules/{id} | Partially update an Firewall Rule
+*FirewallsRulesEngineAPI* | [**RetrieveFirewallRule**](docs/FirewallsRulesEngineAPI.md#retrievefirewallrule) | **Get** /workspace/firewalls/{firewall_id}/request_rules/{id} | Retrieve details of an Firewall Rule
+*FirewallsRulesEngineAPI* | [**UpdateFirewallRule**](docs/FirewallsRulesEngineAPI.md#updatefirewallrule) | **Put** /workspace/firewalls/{firewall_id}/request_rules/{id} | Update an Firewall Rule
+*FunctionsAPI* | [**CreateFunction**](docs/FunctionsAPI.md#createfunction) | **Post** /workspace/functions | Create an Function
+*FunctionsAPI* | [**DeleteFunction**](docs/FunctionsAPI.md#deletefunction) | **Delete** /workspace/functions/{function_id} | Delete an Function
+*FunctionsAPI* | [**ListFunctions**](docs/FunctionsAPI.md#listfunctions) | **Get** /workspace/functions | List Functions
+*FunctionsAPI* | [**PartialUpdateFunction**](docs/FunctionsAPI.md#partialupdatefunction) | **Patch** /workspace/functions/{function_id} | Partially update an Function
+*FunctionsAPI* | [**RetrieveFunction**](docs/FunctionsAPI.md#retrievefunction) | **Get** /workspace/functions/{function_id} | Retrieve details of an Function
+*FunctionsAPI* | [**UpdateFunction**](docs/FunctionsAPI.md#updatefunction) | **Put** /workspace/functions/{function_id} | Update an Function
 *NetworkListsAPI* | [**CreateNetworkList**](docs/NetworkListsAPI.md#createnetworklist) | **Post** /workspace/network_lists | Create a Network List
-*NetworkListsAPI* | [**DestroyNetworkList**](docs/NetworkListsAPI.md#destroynetworklist) | **Delete** /workspace/network_lists/{id} | Destroy a Network List
+*NetworkListsAPI* | [**DeleteNetworkList**](docs/NetworkListsAPI.md#deletenetworklist) | **Delete** /workspace/network_lists/{network_list_id} | Delete a Network List
 *NetworkListsAPI* | [**ListNetworkLists**](docs/NetworkListsAPI.md#listnetworklists) | **Get** /workspace/network_lists | List Network Lists
-*NetworkListsAPI* | [**PartialUpdateNetworkList**](docs/NetworkListsAPI.md#partialupdatenetworklist) | **Patch** /workspace/network_lists/{id} | Partially update a Network List
-*NetworkListsAPI* | [**RetrieveNetworkList**](docs/NetworkListsAPI.md#retrievenetworklist) | **Get** /workspace/network_lists/{id} | Retrieve details of a Network List
-*NetworkListsAPI* | [**UpdateNetworkList**](docs/NetworkListsAPI.md#updatenetworklist) | **Put** /workspace/network_lists/{id} | Update a Network List
+*NetworkListsAPI* | [**PartialUpdateNetworkList**](docs/NetworkListsAPI.md#partialupdatenetworklist) | **Patch** /workspace/network_lists/{network_list_id} | Partially update a Network List
+*NetworkListsAPI* | [**RetrieveNetworkList**](docs/NetworkListsAPI.md#retrievenetworklist) | **Get** /workspace/network_lists/{network_list_id} | Retrieve details of a Network List
+*NetworkListsAPI* | [**UpdateNetworkList**](docs/NetworkListsAPI.md#updatenetworklist) | **Put** /workspace/network_lists/{network_list_id} | Update a Network List
 *PurgeAPI* | [**CreatePurgeRequest**](docs/PurgeAPI.md#createpurgerequest) | **Post** /workspace/purge/{purge_type} | Create a Purge Request
-*WAFsAPI* | [**CloneWAF**](docs/WAFsAPI.md#clonewaf) | **Post** /edge_firewall/wafs/{waf_id}/clone | Clone a Web Application Firewall (WAF)
-*WAFsAPI* | [**CreateWAF**](docs/WAFsAPI.md#createwaf) | **Post** /edge_firewall/wafs | Create a Web Application Firewall (WAF)
-*WAFsAPI* | [**DestroyWAF**](docs/WAFsAPI.md#destroywaf) | **Delete** /edge_firewall/wafs/{waf_id} | Destroy a Web Application Firewall (WAF)
-*WAFsAPI* | [**ListWAFs**](docs/WAFsAPI.md#listwafs) | **Get** /edge_firewall/wafs | List Web Application Firewalls (WAFs)
-*WAFsAPI* | [**PartialUpdateWAF**](docs/WAFsAPI.md#partialupdatewaf) | **Patch** /edge_firewall/wafs/{waf_id} | Partially update a Web Application Firewall (WAF)
-*WAFsAPI* | [**RetrieveWAF**](docs/WAFsAPI.md#retrievewaf) | **Get** /edge_firewall/wafs/{waf_id} | Retrieve details from a Web Application Firewall (WAF)
-*WAFsAPI* | [**UpdateWAF**](docs/WAFsAPI.md#updatewaf) | **Put** /edge_firewall/wafs/{waf_id} | Update a Web Application Firewall (WAF)
-*WAFsExceptionsAPI* | [**CreateWAFException**](docs/WAFsExceptionsAPI.md#createwafexception) | **Post** /edge_firewall/wafs/{waf_id}/exceptions | Create an Exception for a Web Application Firewall (WAF)
-*WAFsExceptionsAPI* | [**DestroyWAFException**](docs/WAFsExceptionsAPI.md#destroywafexception) | **Delete** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Destroy an Exception from a Web Application Firewall (WAF)
-*WAFsExceptionsAPI* | [**ListWAFExceptions**](docs/WAFsExceptionsAPI.md#listwafexceptions) | **Get** /edge_firewall/wafs/{waf_id}/exceptions | List Exceptions for a Web Application Firewall (WAF)
-*WAFsExceptionsAPI* | [**PartialUpdateWAFException**](docs/WAFsExceptionsAPI.md#partialupdatewafexception) | **Patch** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Partially update an Exception for a Web Application Firewall (WAF)
-*WAFsExceptionsAPI* | [**RetrieveWAFException**](docs/WAFsExceptionsAPI.md#retrievewafexception) | **Get** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Retrieve details of an Exception from a Web Application Firewall (WAF)
-*WAFsExceptionsAPI* | [**UpdateWAFException**](docs/WAFsExceptionsAPI.md#updatewafexception) | **Put** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Update an Exception for a Web Application Firewall (WAF)
+*WAFsAPI* | [**CloneWAF**](docs/WAFsAPI.md#clonewaf) | **Post** /workspace/wafs/{waf_id}/clone | Clone a Web Application Firewall (WAF)
+*WAFsAPI* | [**CreateWAF**](docs/WAFsAPI.md#createwaf) | **Post** /workspace/wafs | Create a Web Application Firewall (WAF)
+*WAFsAPI* | [**DeleteWAF**](docs/WAFsAPI.md#deletewaf) | **Delete** /workspace/wafs/{waf_id} | Delete a Web Application Firewall (WAF)
+*WAFsAPI* | [**ListWAFs**](docs/WAFsAPI.md#listwafs) | **Get** /workspace/wafs | List Web Application Firewalls (WAFs)
+*WAFsAPI* | [**PartialUpdateWAF**](docs/WAFsAPI.md#partialupdatewaf) | **Patch** /workspace/wafs/{waf_id} | Partially update a Web Application Firewall (WAF)
+*WAFsAPI* | [**RetrieveWAF**](docs/WAFsAPI.md#retrievewaf) | **Get** /workspace/wafs/{waf_id} | Retrieve details from a Web Application Firewall (WAF)
+*WAFsAPI* | [**UpdateWAF**](docs/WAFsAPI.md#updatewaf) | **Put** /workspace/wafs/{waf_id} | Update a Web Application Firewall (WAF)
+*WAFsExceptionsAPI* | [**CreateWAFException**](docs/WAFsExceptionsAPI.md#createwafexception) | **Post** /workspace/wafs/{waf_id}/exceptions | Create an Exception for a Web Application Firewall (WAF)
+*WAFsExceptionsAPI* | [**DeleteWAFException**](docs/WAFsExceptionsAPI.md#deletewafexception) | **Delete** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Delete an Exception from a Web Application Firewall (WAF)
+*WAFsExceptionsAPI* | [**ListWAFExceptions**](docs/WAFsExceptionsAPI.md#listwafexceptions) | **Get** /workspace/wafs/{waf_id}/exceptions | List Exceptions for a Web Application Firewall (WAF)
+*WAFsExceptionsAPI* | [**PartialUpdateWAFException**](docs/WAFsExceptionsAPI.md#partialupdatewafexception) | **Patch** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Partially update an Exception for a Web Application Firewall (WAF)
+*WAFsExceptionsAPI* | [**RetrieveWAFException**](docs/WAFsExceptionsAPI.md#retrievewafexception) | **Get** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Retrieve details of an Exception from a Web Application Firewall (WAF)
+*WAFsExceptionsAPI* | [**UpdateWAFException**](docs/WAFsExceptionsAPI.md#updatewafexception) | **Put** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Update an Exception for a Web Application Firewall (WAF)
 *WorkloadDeploymentsAPI* | [**CreateWorkloadDeployment**](docs/WorkloadDeploymentsAPI.md#createworkloaddeployment) | **Post** /workspace/workloads/{workload_id}/deployments | Create a Workload Deployment
-*WorkloadDeploymentsAPI* | [**DestroyWorkloadDeployment**](docs/WorkloadDeploymentsAPI.md#destroyworkloaddeployment) | **Delete** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Destroy a Workload Deployment
+*WorkloadDeploymentsAPI* | [**DeleteWorkloadDeployment**](docs/WorkloadDeploymentsAPI.md#deleteworkloaddeployment) | **Delete** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Delete a Workload Deployment
 *WorkloadDeploymentsAPI* | [**ListWorkloadDeployments**](docs/WorkloadDeploymentsAPI.md#listworkloaddeployments) | **Get** /workspace/workloads/{workload_id}/deployments | List Workload Deployments
 *WorkloadDeploymentsAPI* | [**PartialUpdateWorkloadDeployment**](docs/WorkloadDeploymentsAPI.md#partialupdateworkloaddeployment) | **Patch** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Partially update a Workload Deployment
 *WorkloadDeploymentsAPI* | [**RetrieveWorkloadDeployment**](docs/WorkloadDeploymentsAPI.md#retrieveworkloaddeployment) | **Get** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Retrieve details of a Workload Deployment
 *WorkloadDeploymentsAPI* | [**UpdateWorkloadDeployment**](docs/WorkloadDeploymentsAPI.md#updateworkloaddeployment) | **Put** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Update a Workload Deployment
 *WorkloadsAPI* | [**CreateWorkload**](docs/WorkloadsAPI.md#createworkload) | **Post** /workspace/workloads | Create an Workload
-*WorkloadsAPI* | [**DestroyWorkload**](docs/WorkloadsAPI.md#destroyworkload) | **Delete** /workspace/workloads/{workload_id} | Destroy an Workload
+*WorkloadsAPI* | [**DeleteWorkload**](docs/WorkloadsAPI.md#deleteworkload) | **Delete** /workspace/workloads/{workload_id} | Delete an Workload
 *WorkloadsAPI* | [**ListWorkloads**](docs/WorkloadsAPI.md#listworkloads) | **Get** /workspace/workloads | List Workloads
 *WorkloadsAPI* | [**PartialUpdateWorkload**](docs/WorkloadsAPI.md#partialupdateworkload) | **Patch** /workspace/workloads/{workload_id} | Partially update an Workload
 *WorkloadsAPI* | [**RetrieveWorkload**](docs/WorkloadsAPI.md#retrieveworkload) | **Get** /workspace/workloads/{workload_id} | Retrieve details of an Workload
@@ -373,7 +373,6 @@ Class | Method | HTTP request | Description
  - [DefaultDeploymentStrategyAttrs](docs/DefaultDeploymentStrategyAttrs.md)
  - [DefaultDeploymentStrategyAttrsRequest](docs/DefaultDeploymentStrategyAttrsRequest.md)
  - [DefaultDeploymentStrategyRequest](docs/DefaultDeploymentStrategyRequest.md)
- - [DefaultErrorResponse](docs/DefaultErrorResponse.md)
  - [DeploymentStrategyDefaultDeploymentStrategy](docs/DeploymentStrategyDefaultDeploymentStrategy.md)
  - [DeploymentStrategyDefaultDeploymentStrategyRequest](docs/DeploymentStrategyDefaultDeploymentStrategyRequest.md)
  - [DeploymentStrategyShared](docs/DeploymentStrategyShared.md)
@@ -557,27 +556,14 @@ Class | Method | HTTP request | Description
  - [ResponseAsyncWAFRule](docs/ResponseAsyncWAFRule.md)
  - [ResponseAsyncWorkload](docs/ResponseAsyncWorkload.md)
  - [ResponseAsyncWorkloadDeployment](docs/ResponseAsyncWorkloadDeployment.md)
- - [ResponseBadRequestApplication](docs/ResponseBadRequestApplication.md)
- - [ResponseBadRequestCacheSetting](docs/ResponseBadRequestCacheSetting.md)
- - [ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCacheVaryByCookiesField](docs/ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCacheVaryByCookiesField.md)
- - [ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCacheVaryByCookiesFieldCookieNames](docs/ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCacheVaryByCookiesFieldCookieNames.md)
- - [ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCacheVaryByDevicesField](docs/ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCacheVaryByDevicesField.md)
- - [ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCacheVaryByQuerystringField](docs/ResponseBadRequestCacheSettingsApplicationAcceleratorModuleCacheVaryByQuerystringField.md)
- - [ResponseBadRequestCacheSettingsEdgeCacheModuleLargeFileCacheField](docs/ResponseBadRequestCacheSettingsEdgeCacheModuleLargeFileCacheField.md)
- - [ResponseBadRequestCacheSettingsEdgeCacheModuleStaleCacheField](docs/ResponseBadRequestCacheSettingsEdgeCacheModuleStaleCacheField.md)
- - [ResponseBadRequestCacheSettingsEdgeCacheModuleTieredCacheField](docs/ResponseBadRequestCacheSettingsEdgeCacheModuleTieredCacheField.md)
- - [ResponseBadRequestCacheSettingsModulesApplicationAcceleratorField](docs/ResponseBadRequestCacheSettingsModulesApplicationAcceleratorField.md)
- - [ResponseBadRequestCacheSettingsModulesCacheField](docs/ResponseBadRequestCacheSettingsModulesCacheField.md)
- - [ResponseBadRequestSerializerMetaclassBrowserCacheField](docs/ResponseBadRequestSerializerMetaclassBrowserCacheField.md)
- - [ResponseBadRequestSerializerMetaclassModulesField](docs/ResponseBadRequestSerializerMetaclassModulesField.md)
- - [ResponseBadRequestSerializerMetaclassStrategyField](docs/ResponseBadRequestSerializerMetaclassStrategyField.md)
- - [ResponseBadRequestWorkloadDeployment](docs/ResponseBadRequestWorkloadDeployment.md)
+ - [ResponseCacheSetting](docs/ResponseCacheSetting.md)
  - [ResponseConnectorPolymorphic](docs/ResponseConnectorPolymorphic.md)
  - [ResponseCustomPage](docs/ResponseCustomPage.md)
  - [ResponseDeleteApplication](docs/ResponseDeleteApplication.md)
  - [ResponseDeleteApplicationFunctionInstance](docs/ResponseDeleteApplicationFunctionInstance.md)
  - [ResponseDeleteApplicationRequestPhaseRuleEngine](docs/ResponseDeleteApplicationRequestPhaseRuleEngine.md)
  - [ResponseDeleteApplicationResponsePhaseRuleEngine](docs/ResponseDeleteApplicationResponsePhaseRuleEngine.md)
+ - [ResponseDeleteCacheSetting](docs/ResponseDeleteCacheSetting.md)
  - [ResponseDeleteConnectorPolymorphic](docs/ResponseDeleteConnectorPolymorphic.md)
  - [ResponseDeleteCustomPage](docs/ResponseDeleteCustomPage.md)
  - [ResponseDeleteFirewall](docs/ResponseDeleteFirewall.md)
@@ -587,6 +573,7 @@ Class | Method | HTTP request | Description
  - [ResponseDeleteNetworkListDetail](docs/ResponseDeleteNetworkListDetail.md)
  - [ResponseDeleteWAF](docs/ResponseDeleteWAF.md)
  - [ResponseDeleteWAFRule](docs/ResponseDeleteWAFRule.md)
+ - [ResponseDeleteWorkloadDeployment](docs/ResponseDeleteWorkloadDeployment.md)
  - [ResponseFirewall](docs/ResponseFirewall.md)
  - [ResponseFirewallFunctionInstance](docs/ResponseFirewallFunctionInstance.md)
  - [ResponseFirewallRuleEngine](docs/ResponseFirewallRuleEngine.md)

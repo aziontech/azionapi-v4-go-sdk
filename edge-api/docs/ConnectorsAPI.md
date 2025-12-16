@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateConnector**](ConnectorsAPI.md#CreateConnector) | **Post** /edge_connector/connectors | Create an Connector
-[**DestroyConnector**](ConnectorsAPI.md#DestroyConnector) | **Delete** /edge_connector/connectors/{id} | Destroy an Connector
-[**ListConnectors**](ConnectorsAPI.md#ListConnectors) | **Get** /edge_connector/connectors | List Connectors
-[**PartialUpdateConnector**](ConnectorsAPI.md#PartialUpdateConnector) | **Patch** /edge_connector/connectors/{id} | Partially update an Connector
-[**RetrieveConnector**](ConnectorsAPI.md#RetrieveConnector) | **Get** /edge_connector/connectors/{id} | Retrieve details of an Connector
-[**UpdateConnector**](ConnectorsAPI.md#UpdateConnector) | **Put** /edge_connector/connectors/{id} | Update an Connector
+[**CreateConnector**](ConnectorsAPI.md#CreateConnector) | **Post** /workspace/connectors | Create an Connector
+[**DeleteConnector**](ConnectorsAPI.md#DeleteConnector) | **Delete** /workspace/connectors/{connector_id} | Delete an Connector
+[**ListConnectors**](ConnectorsAPI.md#ListConnectors) | **Get** /workspace/connectors | List Connectors
+[**PartialUpdateConnector**](ConnectorsAPI.md#PartialUpdateConnector) | **Patch** /workspace/connectors/{connector_id} | Partially update an Connector
+[**RetrieveConnector**](ConnectorsAPI.md#RetrieveConnector) | **Get** /workspace/connectors/{connector_id} | Retrieve details of an Connector
+[**UpdateConnector**](ConnectorsAPI.md#UpdateConnector) | **Put** /workspace/connectors/{connector_id} | Update an Connector
 
 
 
@@ -79,11 +79,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyConnector
+## DeleteConnector
 
-> ResponseDeleteConnectorPolymorphic DestroyConnector(ctx, id).Execute()
+> ResponseDeleteConnectorPolymorphic DeleteConnector(ctx, connectorId).Execute()
 
-Destroy an Connector
+Delete an Connector
 
 
 
@@ -100,17 +100,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	connectorId := "connectorId_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorsAPI.DestroyConnector(context.Background(), id).Execute()
+	resp, r, err := apiClient.ConnectorsAPI.DeleteConnector(context.Background(), connectorId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.DestroyConnector``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.DeleteConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyConnector`: ResponseDeleteConnectorPolymorphic
-	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.DestroyConnector`: %v\n", resp)
+	// response from `DeleteConnector`: ResponseDeleteConnectorPolymorphic
+	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.DeleteConnector`: %v\n", resp)
 }
 ```
 
@@ -120,11 +120,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**connectorId** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyConnectorRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteConnectorRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateConnector
 
-> ResponseConnectorPolymorphic PartialUpdateConnector(ctx, id).PatchedConnectorPolymorphicRequest(patchedConnectorPolymorphicRequest).Execute()
+> ResponseConnectorPolymorphic PartialUpdateConnector(ctx, connectorId).PatchedConnectorPolymorphicRequest(patchedConnectorPolymorphicRequest).Execute()
 
 Partially update an Connector
 
@@ -244,12 +244,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	connectorId := "connectorId_example" // string | 
 	patchedConnectorPolymorphicRequest := openapiclient.PatchedConnectorPolymorphicRequest{PatchedConnectorHTTPRequest: openapiclient.NewPatchedConnectorHTTPRequest()} // PatchedConnectorPolymorphicRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorsAPI.PartialUpdateConnector(context.Background(), id).PatchedConnectorPolymorphicRequest(patchedConnectorPolymorphicRequest).Execute()
+	resp, r, err := apiClient.ConnectorsAPI.PartialUpdateConnector(context.Background(), connectorId).PatchedConnectorPolymorphicRequest(patchedConnectorPolymorphicRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PartialUpdateConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,7 +265,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**connectorId** | **string** |  | 
 
 ### Other Parameters
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveConnector
 
-> ResponseRetrieveConnectorPolymorphic RetrieveConnector(ctx, id).Fields(fields).Execute()
+> ResponseRetrieveConnectorPolymorphic RetrieveConnector(ctx, connectorId).Fields(fields).Execute()
 
 Retrieve details of an Connector
 
@@ -316,12 +316,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	connectorId := "connectorId_example" // string | 
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorsAPI.RetrieveConnector(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.ConnectorsAPI.RetrieveConnector(context.Background(), connectorId).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.RetrieveConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,7 +337,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**connectorId** | **string** |  | 
 
 ### Other Parameters
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## UpdateConnector
 
-> ResponseConnectorPolymorphic UpdateConnector(ctx, id).ConnectorPolymorphicRequest(connectorPolymorphicRequest).Execute()
+> ResponseConnectorPolymorphic UpdateConnector(ctx, connectorId).ConnectorPolymorphicRequest(connectorPolymorphicRequest).Execute()
 
 Update an Connector
 
@@ -388,12 +388,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	connectorId := "connectorId_example" // string | 
 	connectorPolymorphicRequest := openapiclient.ConnectorPolymorphicRequest{ConnectorHTTPRequest: openapiclient.NewConnectorHTTPRequest("Name_example", "Type_example", *openapiclient.NewConnectorHTTPAttributesRequest([]openapiclient.AddressRequest{*openapiclient.NewAddressRequest("Address_example")}))} // ConnectorPolymorphicRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorsAPI.UpdateConnector(context.Background(), id).ConnectorPolymorphicRequest(connectorPolymorphicRequest).Execute()
+	resp, r, err := apiClient.ConnectorsAPI.UpdateConnector(context.Background(), connectorId).ConnectorPolymorphicRequest(connectorPolymorphicRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.UpdateConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,7 +409,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**connectorId** | **string** |  | 
 
 ### Other Parameters
 

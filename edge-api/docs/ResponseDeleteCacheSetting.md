@@ -1,52 +1,52 @@
-# StatePendingResponse
+# ResponseDeleteCacheSetting
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to **string** | State of the operation (lowercase with underscores) | [optional] 
+**State** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
-### NewStatePendingResponse
+### NewResponseDeleteCacheSetting
 
-`func NewStatePendingResponse() *StatePendingResponse`
+`func NewResponseDeleteCacheSetting() *ResponseDeleteCacheSetting`
 
-NewStatePendingResponse instantiates a new StatePendingResponse object
+NewResponseDeleteCacheSetting instantiates a new ResponseDeleteCacheSetting object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewStatePendingResponseWithDefaults
+### NewResponseDeleteCacheSettingWithDefaults
 
-`func NewStatePendingResponseWithDefaults() *StatePendingResponse`
+`func NewResponseDeleteCacheSettingWithDefaults() *ResponseDeleteCacheSetting`
 
-NewStatePendingResponseWithDefaults instantiates a new StatePendingResponse object
+NewResponseDeleteCacheSettingWithDefaults instantiates a new ResponseDeleteCacheSetting object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetState
 
-`func (o *StatePendingResponse) GetState() string`
+`func (o *ResponseDeleteCacheSetting) GetState() string`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *StatePendingResponse) GetStateOk() (*string, bool)`
+`func (o *ResponseDeleteCacheSetting) GetStateOk() (*string, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *StatePendingResponse) SetState(v string)`
+`func (o *ResponseDeleteCacheSetting) SetState(v string)`
 
 SetState sets State field to given value.
 
 ### HasState
 
-`func (o *StatePendingResponse) HasState() bool`
+`func (o *ResponseDeleteCacheSetting) HasState() bool`
 
 HasState returns a boolean if a field has been set.
 

@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateApplicationFunctionInstance**](ApplicationsFunctionAPI.md#CreateApplicationFunctionInstance) | **Post** /edge_application/applications/{application_id}/functions | Create an Application Function Instance
-[**DestroyApplicationFunctionInstance**](ApplicationsFunctionAPI.md#DestroyApplicationFunctionInstance) | **Delete** /edge_application/applications/{application_id}/functions/{function_id} | Destroy an Application Function Instance
-[**ListApplicationFunctionInstances**](ApplicationsFunctionAPI.md#ListApplicationFunctionInstances) | **Get** /edge_application/applications/{application_id}/functions | List Function Instances
-[**PartialUpdateApplicationFunctionInstance**](ApplicationsFunctionAPI.md#PartialUpdateApplicationFunctionInstance) | **Patch** /edge_application/applications/{application_id}/functions/{function_id} | Partially update an Application Function Instance
-[**RetrieveApplicationFunctionInstance**](ApplicationsFunctionAPI.md#RetrieveApplicationFunctionInstance) | **Get** /edge_application/applications/{application_id}/functions/{function_id} | Retrieve details of an Application Function Instance
-[**UpdateApplicationFunctionInstance**](ApplicationsFunctionAPI.md#UpdateApplicationFunctionInstance) | **Put** /edge_application/applications/{application_id}/functions/{function_id} | Update an Edge Application Function Instance
+[**CreateApplicationFunctionInstance**](ApplicationsFunctionAPI.md#CreateApplicationFunctionInstance) | **Post** /workspace/applications/{application_id}/functions | Create an Application Function Instance
+[**DeleteApplicationFunctionInstance**](ApplicationsFunctionAPI.md#DeleteApplicationFunctionInstance) | **Delete** /workspace/applications/{application_id}/functions/{function_id} | Delete an Application Function Instance
+[**ListApplicationFunctionInstances**](ApplicationsFunctionAPI.md#ListApplicationFunctionInstances) | **Get** /workspace/applications/{application_id}/functions | List Function Instances
+[**PartialUpdateApplicationFunctionInstance**](ApplicationsFunctionAPI.md#PartialUpdateApplicationFunctionInstance) | **Patch** /workspace/applications/{application_id}/functions/{function_id} | Partially update an Application Function Instance
+[**RetrieveApplicationFunctionInstance**](ApplicationsFunctionAPI.md#RetrieveApplicationFunctionInstance) | **Get** /workspace/applications/{application_id}/functions/{function_id} | Retrieve details of an Application Function Instance
+[**UpdateApplicationFunctionInstance**](ApplicationsFunctionAPI.md#UpdateApplicationFunctionInstance) | **Put** /workspace/applications/{application_id}/functions/{function_id} | Update an Edge Application Function Instance
 
 
 
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyApplicationFunctionInstance
+## DeleteApplicationFunctionInstance
 
-> ResponseDeleteApplicationFunctionInstance DestroyApplicationFunctionInstance(ctx, applicationId, functionId).Execute()
+> ResponseDeleteApplicationFunctionInstance DeleteApplicationFunctionInstance(ctx, applicationId, functionId).Execute()
 
-Destroy an Application Function Instance
+Delete an Application Function Instance
 
 
 
@@ -111,13 +111,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsFunctionAPI.DestroyApplicationFunctionInstance(context.Background(), applicationId, functionId).Execute()
+	resp, r, err := apiClient.ApplicationsFunctionAPI.DeleteApplicationFunctionInstance(context.Background(), applicationId, functionId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsFunctionAPI.DestroyApplicationFunctionInstance``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsFunctionAPI.DeleteApplicationFunctionInstance``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyApplicationFunctionInstance`: ResponseDeleteApplicationFunctionInstance
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationsFunctionAPI.DestroyApplicationFunctionInstance`: %v\n", resp)
+	// response from `DeleteApplicationFunctionInstance`: ResponseDeleteApplicationFunctionInstance
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsFunctionAPI.DeleteApplicationFunctionInstance`: %v\n", resp)
 }
 ```
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyApplicationFunctionInstanceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteApplicationFunctionInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

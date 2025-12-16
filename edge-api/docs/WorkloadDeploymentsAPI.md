@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWorkloadDeployment**](WorkloadDeploymentsAPI.md#CreateWorkloadDeployment) | **Post** /workspace/workloads/{workload_id}/deployments | Create a Workload Deployment
-[**DestroyWorkloadDeployment**](WorkloadDeploymentsAPI.md#DestroyWorkloadDeployment) | **Delete** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Destroy a Workload Deployment
+[**DeleteWorkloadDeployment**](WorkloadDeploymentsAPI.md#DeleteWorkloadDeployment) | **Delete** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Delete a Workload Deployment
 [**ListWorkloadDeployments**](WorkloadDeploymentsAPI.md#ListWorkloadDeployments) | **Get** /workspace/workloads/{workload_id}/deployments | List Workload Deployments
 [**PartialUpdateWorkloadDeployment**](WorkloadDeploymentsAPI.md#PartialUpdateWorkloadDeployment) | **Patch** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Partially update a Workload Deployment
 [**RetrieveWorkloadDeployment**](WorkloadDeploymentsAPI.md#RetrieveWorkloadDeployment) | **Get** /workspace/workloads/{workload_id}/deployments/{deployment_id} | Retrieve details of a Workload Deployment
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateWorkloadDeployment
 
-> ResponseAsyncWorkloadDeployment CreateWorkloadDeployment(ctx, workloadId).WorkloadDeploymentRequest(workloadDeploymentRequest).Execute()
+> ResponseWorkloadDeployment CreateWorkloadDeployment(ctx, workloadId).WorkloadDeploymentRequest(workloadDeploymentRequest).Execute()
 
 Create a Workload Deployment
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadDeploymentsAPI.CreateWorkloadDeployment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateWorkloadDeployment`: ResponseAsyncWorkloadDeployment
+	// response from `CreateWorkloadDeployment`: ResponseWorkloadDeployment
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadDeploymentsAPI.CreateWorkloadDeployment`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncWorkloadDeployment**](ResponseAsyncWorkloadDeployment.md)
+[**ResponseWorkloadDeployment**](ResponseWorkloadDeployment.md)
 
 ### Authorization
 
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyWorkloadDeployment
+## DeleteWorkloadDeployment
 
-> ResponseAsyncDeleteWorkloadDeployment DestroyWorkloadDeployment(ctx, deploymentId, workloadId).Execute()
+> ResponseDeleteWorkloadDeployment DeleteWorkloadDeployment(ctx, deploymentId, workloadId).Execute()
 
-Destroy a Workload Deployment
+Delete a Workload Deployment
 
 
 
@@ -111,13 +111,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkloadDeploymentsAPI.DestroyWorkloadDeployment(context.Background(), deploymentId, workloadId).Execute()
+	resp, r, err := apiClient.WorkloadDeploymentsAPI.DeleteWorkloadDeployment(context.Background(), deploymentId, workloadId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadDeploymentsAPI.DestroyWorkloadDeployment``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadDeploymentsAPI.DeleteWorkloadDeployment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyWorkloadDeployment`: ResponseAsyncDeleteWorkloadDeployment
-	fmt.Fprintf(os.Stdout, "Response from `WorkloadDeploymentsAPI.DestroyWorkloadDeployment`: %v\n", resp)
+	// response from `DeleteWorkloadDeployment`: ResponseDeleteWorkloadDeployment
+	fmt.Fprintf(os.Stdout, "Response from `WorkloadDeploymentsAPI.DeleteWorkloadDeployment`: %v\n", resp)
 }
 ```
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyWorkloadDeploymentRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteWorkloadDeploymentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncDeleteWorkloadDeployment**](ResponseAsyncDeleteWorkloadDeployment.md)
+[**ResponseDeleteWorkloadDeployment**](ResponseDeleteWorkloadDeployment.md)
 
 ### Authorization
 

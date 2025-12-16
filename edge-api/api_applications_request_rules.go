@@ -23,66 +23,61 @@ import (
 // ApplicationsRequestRulesAPIService ApplicationsRequestRulesAPI service
 type ApplicationsRequestRulesAPIService service
 
-type ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest struct {
+type ApiDeleteApplicationRequestRuleRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
 	applicationId string
-	applicationRequestPhaseRuleEngineRequest *ApplicationRequestPhaseRuleEngineRequest
+	id string
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) ApplicationRequestPhaseRuleEngineRequest(applicationRequestPhaseRuleEngineRequest ApplicationRequestPhaseRuleEngineRequest) ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest {
-	r.applicationRequestPhaseRuleEngineRequest = &applicationRequestPhaseRuleEngineRequest
-	return r
-}
-
-func (r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesCreateExecute(r)
+func (r ApiDeleteApplicationRequestRuleRequest) Execute() (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
+	return r.ApiService.DeleteApplicationRequestRuleExecute(r)
 }
 
 /*
-EdgeApplicationApiApplicationsRequestRulesCreate Create an Application Request Rule
+DeleteApplicationRequestRule Delete an Application Request Rule
 
-Create a new Rule for a specific Application in your account.
+Delete a specific Rule in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId
- @return ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest
+ @param id
+ @return ApiDeleteApplicationRequestRuleRequest
 */
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesCreate(ctx context.Context, applicationId string) ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest{
+func (a *ApplicationsRequestRulesAPIService) DeleteApplicationRequestRule(ctx context.Context, applicationId string, id string) ApiDeleteApplicationRequestRuleRequest {
+	return ApiDeleteApplicationRequestRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//  @return ResponseApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesCreateExecute(r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+//  @return ResponseDeleteApplicationRequestPhaseRuleEngine
+func (a *ApplicationsRequestRulesAPIService) DeleteApplicationRequestRuleExecute(r ApiDeleteApplicationRequestRuleRequest) (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplicationRequestPhaseRuleEngine
+		localVarReturnValue  *ResponseDeleteApplicationRequestPhaseRuleEngine
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.DeleteApplicationRequestRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.applicationRequestPhaseRuleEngineRequest == nil {
-		return localVarReturnValue, nil, reportError("applicationRequestPhaseRuleEngineRequest is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -98,8 +93,6 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.applicationRequestPhaseRuleEngineRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -227,61 +220,66 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest struct {
+type ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
 	applicationId string
-	id string
+	applicationRequestPhaseRuleEngineRequest *ApplicationRequestPhaseRuleEngineRequest
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest) Execute() (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesDestroyExecute(r)
+func (r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) ApplicationRequestPhaseRuleEngineRequest(applicationRequestPhaseRuleEngineRequest ApplicationRequestPhaseRuleEngineRequest) ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest {
+	r.applicationRequestPhaseRuleEngineRequest = &applicationRequestPhaseRuleEngineRequest
+	return r
+}
+
+func (r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesCreateExecute(r)
 }
 
 /*
-EdgeApplicationApiApplicationsRequestRulesDestroy Destroy an Application Request Rule
+EdgeApplicationApiApplicationsRequestRulesCreate Create an Application Request Rule
 
-Destroy a specific Rule in your account.
+Create a new Rule for a specific Application in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId
- @param id
- @return ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest
+ @return ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest
 */
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesDestroy(ctx context.Context, applicationId string, id string) ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest{
+func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesCreate(ctx context.Context, applicationId string) ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest {
+	return ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
 	}
 }
 
 // Execute executes the request
-//  @return ResponseDeleteApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesDestroyExecute(r ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest) (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
+//  @return ResponseApplicationRequestPhaseRuleEngine
+func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesCreateExecute(r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteApplicationRequestPhaseRuleEngine
+		localVarReturnValue  *ResponseApplicationRequestPhaseRuleEngine
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.applicationRequestPhaseRuleEngineRequest == nil {
+		return localVarReturnValue, nil, reportError("applicationRequestPhaseRuleEngineRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -297,6 +295,8 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.applicationRequestPhaseRuleEngineRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -501,7 +501,7 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -743,7 +743,7 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/order"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/order"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -962,7 +962,7 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
@@ -1168,7 +1168,7 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
@@ -1374,7 +1374,7 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
