@@ -25,6 +25,8 @@ type AWSKinesisFirehoseEndpoint struct {
 	StreamName string `json:"stream_name"`
 	Region string `json:"region"`
 	SecretKey string `json:"secret_key"`
+	// Type identifier for this endpoint (aws_kinesis_firehose)
+	Type string `json:"type"`
 }
 
 type _AWSKinesisFirehoseEndpoint AWSKinesisFirehoseEndpoint
@@ -33,12 +35,13 @@ type _AWSKinesisFirehoseEndpoint AWSKinesisFirehoseEndpoint
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAWSKinesisFirehoseEndpoint(accessKey string, streamName string, region string, secretKey string) *AWSKinesisFirehoseEndpoint {
+func NewAWSKinesisFirehoseEndpoint(accessKey string, streamName string, region string, secretKey string, type_ string) *AWSKinesisFirehoseEndpoint {
 	this := AWSKinesisFirehoseEndpoint{}
 	this.AccessKey = accessKey
 	this.StreamName = streamName
 	this.Region = region
 	this.SecretKey = secretKey
+	this.Type = type_
 	return &this
 }
 
@@ -146,6 +149,30 @@ func (o *AWSKinesisFirehoseEndpoint) SetSecretKey(v string) {
 	o.SecretKey = v
 }
 
+// GetType returns the Type field value
+func (o *AWSKinesisFirehoseEndpoint) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AWSKinesisFirehoseEndpoint) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AWSKinesisFirehoseEndpoint) SetType(v string) {
+	o.Type = v
+}
+
 func (o AWSKinesisFirehoseEndpoint) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -160,6 +187,7 @@ func (o AWSKinesisFirehoseEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize["stream_name"] = o.StreamName
 	toSerialize["region"] = o.Region
 	toSerialize["secret_key"] = o.SecretKey
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -172,6 +200,7 @@ func (o *AWSKinesisFirehoseEndpoint) UnmarshalJSON(data []byte) (err error) {
 		"stream_name",
 		"region",
 		"secret_key",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

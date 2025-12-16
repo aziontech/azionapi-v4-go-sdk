@@ -12,6 +12,7 @@ package datastreamapi
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -20,10 +21,9 @@ var _ MappedNullable = &InputPolymorphicInputDataSourceAttributesRequest{}
 
 // InputPolymorphicInputDataSourceAttributesRequest struct for InputPolymorphicInputDataSourceAttributesRequest
 type InputPolymorphicInputDataSourceAttributesRequest struct {
-	// * `raw_logs` - Raw Logs
+	// Type identifier for this endpoint (raw_logs)
 	Type string `json:"type"`
 	Attributes InputDataSourceRequest `json:"attributes"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _InputPolymorphicInputDataSourceAttributesRequest InputPolymorphicInputDataSourceAttributesRequest
@@ -107,11 +107,6 @@ func (o InputPolymorphicInputDataSourceAttributesRequest) ToMap() (map[string]in
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -140,21 +135,15 @@ func (o *InputPolymorphicInputDataSourceAttributesRequest) UnmarshalJSON(data []
 
 	varInputPolymorphicInputDataSourceAttributesRequest := _InputPolymorphicInputDataSourceAttributesRequest{}
 
-	err = json.Unmarshal(data, &varInputPolymorphicInputDataSourceAttributesRequest)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInputPolymorphicInputDataSourceAttributesRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InputPolymorphicInputDataSourceAttributesRequest(varInputPolymorphicInputDataSourceAttributesRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "attributes")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

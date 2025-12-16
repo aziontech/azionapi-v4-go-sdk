@@ -26,7 +26,7 @@ type DNSRecordsAPIService service
 type ApiCreateDnsRecordRequest struct {
 	ctx context.Context
 	ApiService *DNSRecordsAPIService
-	zoneId string
+	zoneId int64
 	recordRequest *RecordRequest
 }
 
@@ -45,10 +45,10 @@ CreateDnsRecord Create a DNS Record
 Create a new DNS Record in a DNS Zone for your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiCreateDnsRecordRequest
 */
-func (a *DNSRecordsAPIService) CreateDnsRecord(ctx context.Context, zoneId string) ApiCreateDnsRecordRequest {
+func (a *DNSRecordsAPIService) CreateDnsRecord(ctx context.Context, zoneId int64) ApiCreateDnsRecordRequest {
 	return ApiCreateDnsRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,8 +71,8 @@ func (a *DNSRecordsAPIService) CreateDnsRecordExecute(r ApiCreateDnsRecordReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/records"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/records"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -230,11 +230,11 @@ func (a *DNSRecordsAPIService) CreateDnsRecordExecute(r ApiCreateDnsRecordReques
 type ApiDeleteDnsRecordRequest struct {
 	ctx context.Context
 	ApiService *DNSRecordsAPIService
-	recordId string
-	zoneId string
+	recordId int64
+	zoneId int64
 }
 
-func (r ApiDeleteDnsRecordRequest) Execute() (*ResponseDeleteRecord, *http.Response, error) {
+func (r ApiDeleteDnsRecordRequest) Execute() (*ResponseAsyncDeleteRecord, *http.Response, error) {
 	return r.ApiService.DeleteDnsRecordExecute(r)
 }
 
@@ -244,11 +244,11 @@ DeleteDnsRecord Delete a DNS Record
 Delete a specific DNS Record from a DNS Zone in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param recordId
- @param zoneId
+ @param recordId A unique integer value identifying the DNS Record.
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiDeleteDnsRecordRequest
 */
-func (a *DNSRecordsAPIService) DeleteDnsRecord(ctx context.Context, recordId string, zoneId string) ApiDeleteDnsRecordRequest {
+func (a *DNSRecordsAPIService) DeleteDnsRecord(ctx context.Context, recordId int64, zoneId int64) ApiDeleteDnsRecordRequest {
 	return ApiDeleteDnsRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -258,13 +258,13 @@ func (a *DNSRecordsAPIService) DeleteDnsRecord(ctx context.Context, recordId str
 }
 
 // Execute executes the request
-//  @return ResponseDeleteRecord
-func (a *DNSRecordsAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*ResponseDeleteRecord, *http.Response, error) {
+//  @return ResponseAsyncDeleteRecord
+func (a *DNSRecordsAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*ResponseAsyncDeleteRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteRecord
+		localVarReturnValue  *ResponseAsyncDeleteRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSRecordsAPIService.DeleteDnsRecord")
@@ -272,9 +272,9 @@ func (a *DNSRecordsAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/records/{recordId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/records/{record_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"record_id"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,7 +427,7 @@ func (a *DNSRecordsAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordReques
 type ApiListDnsRecordsRequest struct {
 	ctx context.Context
 	ApiService *DNSRecordsAPIService
-	zoneId string
+	zoneId int64
 	fields *string
 	ordering *string
 	page *int64
@@ -459,7 +459,7 @@ func (r ApiListDnsRecordsRequest) PageSize(pageSize int64) ApiListDnsRecordsRequ
 	return r
 }
 
-// A search term.
+// Search in answers, entry, ttl, and type fields (case-insensitive, partial match).
 func (r ApiListDnsRecordsRequest) Search(search string) ApiListDnsRecordsRequest {
 	r.search = &search
 	return r
@@ -475,10 +475,10 @@ ListDnsRecords List DNS Records
 List all DNS Records from a DNS Zone owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiListDnsRecordsRequest
 */
-func (a *DNSRecordsAPIService) ListDnsRecords(ctx context.Context, zoneId string) ApiListDnsRecordsRequest {
+func (a *DNSRecordsAPIService) ListDnsRecords(ctx context.Context, zoneId int64) ApiListDnsRecordsRequest {
 	return ApiListDnsRecordsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -501,8 +501,8 @@ func (a *DNSRecordsAPIService) ListDnsRecordsExecute(r ApiListDnsRecordsRequest)
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/records"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/records"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -670,8 +670,8 @@ func (a *DNSRecordsAPIService) ListDnsRecordsExecute(r ApiListDnsRecordsRequest)
 type ApiPartialUpdateDnsRecordRequest struct {
 	ctx context.Context
 	ApiService *DNSRecordsAPIService
-	recordId string
-	zoneId string
+	recordId int64
+	zoneId int64
 	patchedRecordRequest *PatchedRecordRequest
 }
 
@@ -690,11 +690,11 @@ PartialUpdateDnsRecord Partially update a DNS Record
 Update one or more fields of an existing DNS Record without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param recordId
- @param zoneId
+ @param recordId A unique integer value identifying the DNS Record.
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiPartialUpdateDnsRecordRequest
 */
-func (a *DNSRecordsAPIService) PartialUpdateDnsRecord(ctx context.Context, recordId string, zoneId string) ApiPartialUpdateDnsRecordRequest {
+func (a *DNSRecordsAPIService) PartialUpdateDnsRecord(ctx context.Context, recordId int64, zoneId int64) ApiPartialUpdateDnsRecordRequest {
 	return ApiPartialUpdateDnsRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -718,9 +718,9 @@ func (a *DNSRecordsAPIService) PartialUpdateDnsRecordExecute(r ApiPartialUpdateD
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/records/{recordId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/records/{record_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"record_id"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -875,8 +875,8 @@ func (a *DNSRecordsAPIService) PartialUpdateDnsRecordExecute(r ApiPartialUpdateD
 type ApiRetrieveDnsRecordRequest struct {
 	ctx context.Context
 	ApiService *DNSRecordsAPIService
-	recordId string
-	zoneId string
+	recordId int64
+	zoneId int64
 	fields *string
 }
 
@@ -896,11 +896,11 @@ RetrieveDnsRecord Retrieve details of a DNS Record
 Retrieve details of a specific DNS Record from a DNS Zone in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param recordId
- @param zoneId
+ @param recordId A unique integer value identifying the DNS Record.
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiRetrieveDnsRecordRequest
 */
-func (a *DNSRecordsAPIService) RetrieveDnsRecord(ctx context.Context, recordId string, zoneId string) ApiRetrieveDnsRecordRequest {
+func (a *DNSRecordsAPIService) RetrieveDnsRecord(ctx context.Context, recordId int64, zoneId int64) ApiRetrieveDnsRecordRequest {
 	return ApiRetrieveDnsRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -924,9 +924,9 @@ func (a *DNSRecordsAPIService) RetrieveDnsRecordExecute(r ApiRetrieveDnsRecordRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/records/{recordId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/records/{record_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"record_id"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,8 +1082,8 @@ func (a *DNSRecordsAPIService) RetrieveDnsRecordExecute(r ApiRetrieveDnsRecordRe
 type ApiUpdateDnsRecordRequest struct {
 	ctx context.Context
 	ApiService *DNSRecordsAPIService
-	recordId string
-	zoneId string
+	recordId int64
+	zoneId int64
 	recordRequest *RecordRequest
 }
 
@@ -1102,11 +1102,11 @@ UpdateDnsRecord Update a DNS Record
 Update an existing a DNS Record. This replaces the entire DNS Record with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param recordId
- @param zoneId
+ @param recordId A unique integer value identifying the DNS Record.
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiUpdateDnsRecordRequest
 */
-func (a *DNSRecordsAPIService) UpdateDnsRecord(ctx context.Context, recordId string, zoneId string) ApiUpdateDnsRecordRequest {
+func (a *DNSRecordsAPIService) UpdateDnsRecord(ctx context.Context, recordId int64, zoneId int64) ApiUpdateDnsRecordRequest {
 	return ApiUpdateDnsRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1130,9 +1130,9 @@ func (a *DNSRecordsAPIService) UpdateDnsRecordExecute(r ApiUpdateDnsRecordReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/records/{recordId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/records/{record_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"record_id"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

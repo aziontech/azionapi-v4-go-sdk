@@ -24,6 +24,8 @@ type AzureBlobStorageEndpoint struct {
 	StorageAccount string `json:"storage_account"`
 	ContainerName string `json:"container_name"`
 	BlobSasToken string `json:"blob_sas_token"`
+	// Type identifier for this endpoint (azure_blob_storage)
+	Type string `json:"type"`
 }
 
 type _AzureBlobStorageEndpoint AzureBlobStorageEndpoint
@@ -32,11 +34,12 @@ type _AzureBlobStorageEndpoint AzureBlobStorageEndpoint
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureBlobStorageEndpoint(storageAccount string, containerName string, blobSasToken string) *AzureBlobStorageEndpoint {
+func NewAzureBlobStorageEndpoint(storageAccount string, containerName string, blobSasToken string, type_ string) *AzureBlobStorageEndpoint {
 	this := AzureBlobStorageEndpoint{}
 	this.StorageAccount = storageAccount
 	this.ContainerName = containerName
 	this.BlobSasToken = blobSasToken
+	this.Type = type_
 	return &this
 }
 
@@ -120,6 +123,30 @@ func (o *AzureBlobStorageEndpoint) SetBlobSasToken(v string) {
 	o.BlobSasToken = v
 }
 
+// GetType returns the Type field value
+func (o *AzureBlobStorageEndpoint) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AzureBlobStorageEndpoint) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AzureBlobStorageEndpoint) SetType(v string) {
+	o.Type = v
+}
+
 func (o AzureBlobStorageEndpoint) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,6 +160,7 @@ func (o AzureBlobStorageEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize["storage_account"] = o.StorageAccount
 	toSerialize["container_name"] = o.ContainerName
 	toSerialize["blob_sas_token"] = o.BlobSasToken
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -144,6 +172,7 @@ func (o *AzureBlobStorageEndpoint) UnmarshalJSON(data []byte) (err error) {
 		"storage_account",
 		"container_name",
 		"blob_sas_token",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

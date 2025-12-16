@@ -35,6 +35,7 @@ type ApiListDataSourcesRequest struct {
 	slug *string
 }
 
+// Filter by active status.
 func (r ApiListDataSourcesRequest) Active(active bool) ApiListDataSourcesRequest {
 	r.active = &active
 	return r
@@ -46,6 +47,7 @@ func (r ApiListDataSourcesRequest) Fields(fields string) ApiListDataSourcesReque
 	return r
 }
 
+// Filter by name (case-insensitive, partial match).
 func (r ApiListDataSourcesRequest) Name(name string) ApiListDataSourcesRequest {
 	r.name = &name
 	return r
@@ -75,6 +77,7 @@ func (r ApiListDataSourcesRequest) Search(search string) ApiListDataSourcesReque
 	return r
 }
 
+// Filter by slug (case-insensitive, exact match).
 func (r ApiListDataSourcesRequest) Slug(slug string) ApiListDataSourcesRequest {
 	r.slug = &slug
 	return r
@@ -114,7 +117,7 @@ func (a *DataStreamDataSourcesAPIService) ListDataSourcesExecute(r ApiListDataSo
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/data_stream/data_sources"
+	localVarPath := localBasePath + "/workspace/stream/data_sources"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Capabilities** | **[]string** |  | 
-**Bucket** | Pointer to **string** |  | [optional] 
+**Buckets** | Pointer to **[]string** | List of bucket names to associate with this credential. | [optional] 
 **ExpirationDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
@@ -68,30 +68,30 @@ and a boolean to check if the value has been set.
 SetCapabilities sets Capabilities field to given value.
 
 
-### GetBucket
+### GetBuckets
 
-`func (o *CredentialCreateRequest) GetBucket() string`
+`func (o *CredentialCreateRequest) GetBuckets() []string`
 
-GetBucket returns the Bucket field if non-nil, zero value otherwise.
+GetBuckets returns the Buckets field if non-nil, zero value otherwise.
 
-### GetBucketOk
+### GetBucketsOk
 
-`func (o *CredentialCreateRequest) GetBucketOk() (*string, bool)`
+`func (o *CredentialCreateRequest) GetBucketsOk() (*[]string, bool)`
 
-GetBucketOk returns a tuple with the Bucket field if it's non-nil, zero value otherwise
+GetBucketsOk returns a tuple with the Buckets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBucket
+### SetBuckets
 
-`func (o *CredentialCreateRequest) SetBucket(v string)`
+`func (o *CredentialCreateRequest) SetBuckets(v []string)`
 
-SetBucket sets Bucket field to given value.
+SetBuckets sets Buckets field to given value.
 
-### HasBucket
+### HasBuckets
 
-`func (o *CredentialCreateRequest) HasBucket() bool`
+`func (o *CredentialCreateRequest) HasBuckets() bool`
 
-HasBucket returns a boolean if a field has been set.
+HasBuckets returns a boolean if a field has been set.
 
 ### GetExpirationDate
 

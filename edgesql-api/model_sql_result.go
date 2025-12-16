@@ -21,7 +21,9 @@ var _ MappedNullable = &SQLResult{}
 
 // SQLResult struct for SQLResult
 type SQLResult struct {
+	// List of column names
 	Columns []interface{} `json:"columns"`
+	// List of result rows
 	Rows []interface{} `json:"rows"`
 }
 
