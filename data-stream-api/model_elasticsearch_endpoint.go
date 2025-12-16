@@ -23,6 +23,8 @@ var _ MappedNullable = &ElasticsearchEndpoint{}
 type ElasticsearchEndpoint struct {
 	Url string `json:"url"`
 	ApiKey string `json:"api_key"`
+	// Type identifier for this endpoint (elasticsearch)
+	Type string `json:"type"`
 }
 
 type _ElasticsearchEndpoint ElasticsearchEndpoint
@@ -31,10 +33,11 @@ type _ElasticsearchEndpoint ElasticsearchEndpoint
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewElasticsearchEndpoint(url string, apiKey string) *ElasticsearchEndpoint {
+func NewElasticsearchEndpoint(url string, apiKey string, type_ string) *ElasticsearchEndpoint {
 	this := ElasticsearchEndpoint{}
 	this.Url = url
 	this.ApiKey = apiKey
+	this.Type = type_
 	return &this
 }
 
@@ -94,6 +97,30 @@ func (o *ElasticsearchEndpoint) SetApiKey(v string) {
 	o.ApiKey = v
 }
 
+// GetType returns the Type field value
+func (o *ElasticsearchEndpoint) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *ElasticsearchEndpoint) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *ElasticsearchEndpoint) SetType(v string) {
+	o.Type = v
+}
+
 func (o ElasticsearchEndpoint) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -106,6 +133,7 @@ func (o ElasticsearchEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["url"] = o.Url
 	toSerialize["api_key"] = o.ApiKey
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -116,6 +144,7 @@ func (o *ElasticsearchEndpoint) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"url",
 		"api_key",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | * &#x60;sampling&#x60; - Sampling | 
+**Type** | **string** | Type identifier for this endpoint (sampling) | 
 **Attributes** | [**TransformSamplingRequest**](TransformSamplingRequest.md) |  | 
 
 ## Methods

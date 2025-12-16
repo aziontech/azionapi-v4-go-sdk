@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -223,50 +224,50 @@ func (a *CustomPagesAPIService) CreateCustomPageExecute(r ApiCreateCustomPageReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyCustomPageRequest struct {
+type ApiDeleteCustomPageRequest struct {
 	ctx context.Context
 	ApiService *CustomPagesAPIService
-	id string
+	customPageId int64
 }
 
-func (r ApiDestroyCustomPageRequest) Execute() (*ResponseDeleteCustomPage, *http.Response, error) {
-	return r.ApiService.DestroyCustomPageExecute(r)
+func (r ApiDeleteCustomPageRequest) Execute() (*ResponseAsyncDeleteCustomPage, *http.Response, error) {
+	return r.ApiService.DeleteCustomPageExecute(r)
 }
 
 /*
-DestroyCustomPage Destroy a Custom Page
+DeleteCustomPage Delete a Custom Page
 
-Destruction of a specific Custom Page in your account.
+Delete a specific Custom Page in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDestroyCustomPageRequest
+ @param customPageId A unique integer value identifying the custom page.
+ @return ApiDeleteCustomPageRequest
 */
-func (a *CustomPagesAPIService) DestroyCustomPage(ctx context.Context, id string) ApiDestroyCustomPageRequest {
-	return ApiDestroyCustomPageRequest{
+func (a *CustomPagesAPIService) DeleteCustomPage(ctx context.Context, customPageId int64) ApiDeleteCustomPageRequest {
+	return ApiDeleteCustomPageRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		customPageId: customPageId,
 	}
 }
 
 // Execute executes the request
-//  @return ResponseDeleteCustomPage
-func (a *CustomPagesAPIService) DestroyCustomPageExecute(r ApiDestroyCustomPageRequest) (*ResponseDeleteCustomPage, *http.Response, error) {
+//  @return ResponseAsyncDeleteCustomPage
+func (a *CustomPagesAPIService) DeleteCustomPageExecute(r ApiDeleteCustomPageRequest) (*ResponseAsyncDeleteCustomPage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteCustomPage
+		localVarReturnValue  *ResponseAsyncDeleteCustomPage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPagesAPIService.DestroyCustomPage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPagesAPIService.DeleteCustomPage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/custom_pages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/custom_pages/{custom_page_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"custom_page_id"+"}", url.PathEscape(parameterValueToString(r.customPageId, "customPageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -419,16 +420,58 @@ func (a *CustomPagesAPIService) DestroyCustomPageExecute(r ApiDestroyCustomPageR
 type ApiListCustomPagesRequest struct {
 	ctx context.Context
 	ApiService *CustomPagesAPIService
+	active *bool
 	fields *string
+	id *int64
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
 	search *string
 }
 
+// Filter by active status.
+func (r ApiListCustomPagesRequest) Active(active bool) ApiListCustomPagesRequest {
+	r.active = &active
+	return r
+}
+
 // Comma-separated list of field names to include in the response.
 func (r ApiListCustomPagesRequest) Fields(fields string) ApiListCustomPagesRequest {
 	r.fields = &fields
+	return r
+}
+
+// Filter by id (accepts comma-separated values).
+func (r ApiListCustomPagesRequest) Id(id int64) ApiListCustomPagesRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListCustomPagesRequest) LastEditor(lastEditor string) ApiListCustomPagesRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListCustomPagesRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListCustomPagesRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListCustomPagesRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListCustomPagesRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListCustomPagesRequest) Name(name string) ApiListCustomPagesRequest {
+	r.name = &name
 	return r
 }
 
@@ -496,8 +539,26 @@ func (a *CustomPagesAPIService) ListCustomPagesExecute(r ApiListCustomPagesReque
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.active != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -658,7 +719,7 @@ func (a *CustomPagesAPIService) ListCustomPagesExecute(r ApiListCustomPagesReque
 type ApiPartialUpdateCustomPageRequest struct {
 	ctx context.Context
 	ApiService *CustomPagesAPIService
-	id string
+	customPageId int64
 	patchedCustomPageRequest *PatchedCustomPageRequest
 }
 
@@ -677,14 +738,14 @@ PartialUpdateCustomPage Partially update a Custom Page
 Update one or more fields of an existing Custom Page without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param customPageId A unique integer value identifying the custom page.
  @return ApiPartialUpdateCustomPageRequest
 */
-func (a *CustomPagesAPIService) PartialUpdateCustomPage(ctx context.Context, id string) ApiPartialUpdateCustomPageRequest {
+func (a *CustomPagesAPIService) PartialUpdateCustomPage(ctx context.Context, customPageId int64) ApiPartialUpdateCustomPageRequest {
 	return ApiPartialUpdateCustomPageRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		customPageId: customPageId,
 	}
 }
 
@@ -703,8 +764,8 @@ func (a *CustomPagesAPIService) PartialUpdateCustomPageExecute(r ApiPartialUpdat
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/custom_pages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/custom_pages/{custom_page_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"custom_page_id"+"}", url.PathEscape(parameterValueToString(r.customPageId, "customPageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -859,7 +920,7 @@ func (a *CustomPagesAPIService) PartialUpdateCustomPageExecute(r ApiPartialUpdat
 type ApiRetrieveCustomPageRequest struct {
 	ctx context.Context
 	ApiService *CustomPagesAPIService
-	id string
+	customPageId int64
 	fields *string
 }
 
@@ -879,14 +940,14 @@ RetrieveCustomPage Retrieve details of a Custom Page
 Retrieve details of a specific Custom Page in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param customPageId A unique integer value identifying the custom page.
  @return ApiRetrieveCustomPageRequest
 */
-func (a *CustomPagesAPIService) RetrieveCustomPage(ctx context.Context, id string) ApiRetrieveCustomPageRequest {
+func (a *CustomPagesAPIService) RetrieveCustomPage(ctx context.Context, customPageId int64) ApiRetrieveCustomPageRequest {
 	return ApiRetrieveCustomPageRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		customPageId: customPageId,
 	}
 }
 
@@ -905,8 +966,8 @@ func (a *CustomPagesAPIService) RetrieveCustomPageExecute(r ApiRetrieveCustomPag
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/custom_pages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/custom_pages/{custom_page_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"custom_page_id"+"}", url.PathEscape(parameterValueToString(r.customPageId, "customPageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1062,7 +1123,7 @@ func (a *CustomPagesAPIService) RetrieveCustomPageExecute(r ApiRetrieveCustomPag
 type ApiUpdateCustomPageRequest struct {
 	ctx context.Context
 	ApiService *CustomPagesAPIService
-	id string
+	customPageId int64
 	customPageRequest *CustomPageRequest
 }
 
@@ -1081,14 +1142,14 @@ UpdateCustomPage Update a Custom Page
 Update an existing Custom Page. This replaces the entire Custom Page with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param customPageId A unique integer value identifying the custom page.
  @return ApiUpdateCustomPageRequest
 */
-func (a *CustomPagesAPIService) UpdateCustomPage(ctx context.Context, id string) ApiUpdateCustomPageRequest {
+func (a *CustomPagesAPIService) UpdateCustomPage(ctx context.Context, customPageId int64) ApiUpdateCustomPageRequest {
 	return ApiUpdateCustomPageRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		customPageId: customPageId,
 	}
 }
 
@@ -1107,8 +1168,8 @@ func (a *CustomPagesAPIService) UpdateCustomPageExecute(r ApiUpdateCustomPageReq
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workspace/custom_pages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/custom_pages/{custom_page_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"custom_page_id"+"}", url.PathEscape(parameterValueToString(r.customPageId, "customPageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

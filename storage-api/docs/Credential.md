@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AccessKey** | **string** |  | 
 **SecretKey** | **string** |  | 
 **Capabilities** | **[]string** |  | 
-**Bucket** | Pointer to **string** |  | [optional] 
+**Buckets** | **[]string** |  | 
 **ExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **LastEditor** | **NullableString** |  | 
 **LastModified** | **time.Time** |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewCredential
 
-`func NewCredential(name string, accessKey string, secretKey string, capabilities []string, lastEditor NullableString, lastModified time.Time, ) *Credential`
+`func NewCredential(name string, accessKey string, secretKey string, capabilities []string, buckets []string, lastEditor NullableString, lastModified time.Time, ) *Credential`
 
 NewCredential instantiates a new Credential object
 This constructor will assign default values to properties that have it defined,
@@ -112,30 +112,25 @@ and a boolean to check if the value has been set.
 SetCapabilities sets Capabilities field to given value.
 
 
-### GetBucket
+### GetBuckets
 
-`func (o *Credential) GetBucket() string`
+`func (o *Credential) GetBuckets() []string`
 
-GetBucket returns the Bucket field if non-nil, zero value otherwise.
+GetBuckets returns the Buckets field if non-nil, zero value otherwise.
 
-### GetBucketOk
+### GetBucketsOk
 
-`func (o *Credential) GetBucketOk() (*string, bool)`
+`func (o *Credential) GetBucketsOk() (*[]string, bool)`
 
-GetBucketOk returns a tuple with the Bucket field if it's non-nil, zero value otherwise
+GetBucketsOk returns a tuple with the Buckets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBucket
+### SetBuckets
 
-`func (o *Credential) SetBucket(v string)`
+`func (o *Credential) SetBuckets(v []string)`
 
-SetBucket sets Bucket field to given value.
+SetBuckets sets Buckets field to given value.
 
-### HasBucket
-
-`func (o *Credential) HasBucket() bool`
-
-HasBucket returns a boolean if a field has been set.
 
 ### GetExpirationDate
 

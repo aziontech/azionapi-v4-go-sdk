@@ -12,6 +12,7 @@ package datastreamapi
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -20,10 +21,9 @@ var _ MappedNullable = &TransformPolymorphicTransformRenderTemplateAttributes{}
 
 // TransformPolymorphicTransformRenderTemplateAttributes struct for TransformPolymorphicTransformRenderTemplateAttributes
 type TransformPolymorphicTransformRenderTemplateAttributes struct {
-	// * `render_template` - Render Template
+	// Type identifier for this endpoint (render_template)
 	Type string `json:"type"`
 	Attributes TransformRenderTemplate `json:"attributes"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _TransformPolymorphicTransformRenderTemplateAttributes TransformPolymorphicTransformRenderTemplateAttributes
@@ -107,11 +107,6 @@ func (o TransformPolymorphicTransformRenderTemplateAttributes) ToMap() (map[stri
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -140,21 +135,15 @@ func (o *TransformPolymorphicTransformRenderTemplateAttributes) UnmarshalJSON(da
 
 	varTransformPolymorphicTransformRenderTemplateAttributes := _TransformPolymorphicTransformRenderTemplateAttributes{}
 
-	err = json.Unmarshal(data, &varTransformPolymorphicTransformRenderTemplateAttributes)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransformPolymorphicTransformRenderTemplateAttributes)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransformPolymorphicTransformRenderTemplateAttributes(varTransformPolymorphicTransformRenderTemplateAttributes)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "attributes")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

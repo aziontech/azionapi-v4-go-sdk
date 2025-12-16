@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
@@ -22,6 +22,7 @@ var _ MappedNullable = &LockoutPolicy{}
 // LockoutPolicy struct for LockoutPolicy
 type LockoutPolicy struct {
 	Active bool `json:"active"`
+	// Maximum number of failed login attempts before lockout
 	MaxAttempts int64 `json:"max_attempts"`
 	// Blocking period in minutes
 	BlockingPeriod int64 `json:"blocking_period"`
