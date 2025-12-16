@@ -4,14 +4,87 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EdgeApplicationApiApplicationsResponseRulesCreate**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesCreate) | **Post** /edge_application/applications/{application_id}/response_rules | Create an Application Response Rule
-[**EdgeApplicationApiApplicationsResponseRulesDestroy**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesDestroy) | **Delete** /edge_application/applications/{application_id}/response_rules/{id} | Destroy an Application Response Rule
-[**EdgeApplicationApiApplicationsResponseRulesList**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesList) | **Get** /edge_application/applications/{application_id}/response_rules | List Application Response Rules
-[**EdgeApplicationApiApplicationsResponseRulesOrderUpdate**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesOrderUpdate) | **Put** /edge_application/applications/{application_id}/response_rules/order | Ordering Application Response Rules
-[**EdgeApplicationApiApplicationsResponseRulesPartialUpdate**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesPartialUpdate) | **Patch** /edge_application/applications/{application_id}/response_rules/{id} | Partially update an Application Response Rule
-[**EdgeApplicationApiApplicationsResponseRulesRetrieve**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesRetrieve) | **Get** /edge_application/applications/{application_id}/response_rules/{id} | Retrieve details of an Application Response Rule
-[**EdgeApplicationApiApplicationsResponseRulesUpdate**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesUpdate) | **Put** /edge_application/applications/{application_id}/response_rules/{id} | Update an Application Response Rule
+[**DeleteApplicationResponseRule**](ApplicationsResponseRulesAPI.md#DeleteApplicationResponseRule) | **Delete** /workspace/applications/{application_id}/response_rules/{id} | Delete an Application Response Rule
+[**EdgeApplicationApiApplicationsResponseRulesCreate**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesCreate) | **Post** /workspace/applications/{application_id}/response_rules | Create an Application Response Rule
+[**EdgeApplicationApiApplicationsResponseRulesList**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesList) | **Get** /workspace/applications/{application_id}/response_rules | List Application Response Rules
+[**EdgeApplicationApiApplicationsResponseRulesOrderUpdate**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesOrderUpdate) | **Put** /workspace/applications/{application_id}/response_rules/order | Ordering Application Response Rules
+[**EdgeApplicationApiApplicationsResponseRulesPartialUpdate**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesPartialUpdate) | **Patch** /workspace/applications/{application_id}/response_rules/{id} | Partially update an Application Response Rule
+[**EdgeApplicationApiApplicationsResponseRulesRetrieve**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesRetrieve) | **Get** /workspace/applications/{application_id}/response_rules/{id} | Retrieve details of an Application Response Rule
+[**EdgeApplicationApiApplicationsResponseRulesUpdate**](ApplicationsResponseRulesAPI.md#EdgeApplicationApiApplicationsResponseRulesUpdate) | **Put** /workspace/applications/{application_id}/response_rules/{id} | Update an Application Response Rule
 
+
+
+## DeleteApplicationResponseRule
+
+> ResponseDeleteApplicationResponsePhaseRuleEngine DeleteApplicationResponseRule(ctx, applicationId, id).Execute()
+
+Delete an Application Response Rule
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	applicationId := "applicationId_example" // string | 
+	id := "id_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationsResponseRulesAPI.DeleteApplicationResponseRule(context.Background(), applicationId, id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsResponseRulesAPI.DeleteApplicationResponseRule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteApplicationResponseRule`: ResponseDeleteApplicationResponsePhaseRuleEngine
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationsResponseRulesAPI.DeleteApplicationResponseRule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**applicationId** | **string** |  | 
+**id** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteApplicationResponseRuleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ResponseDeleteApplicationResponsePhaseRuleEngine**](ResponseDeleteApplicationResponsePhaseRuleEngine.md)
+
+### Authorization
+
+[TokenAuth](../README.md#TokenAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## EdgeApplicationApiApplicationsResponseRulesCreate
@@ -79,79 +152,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EdgeApplicationApiApplicationsResponseRulesDestroy
-
-> ResponseDeleteApplicationResponsePhaseRuleEngine EdgeApplicationApiApplicationsResponseRulesDestroy(ctx, applicationId, id).Execute()
-
-Destroy an Application Response Rule
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	applicationId := "applicationId_example" // string | 
-	id := "id_example" // string | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsResponseRulesAPI.EdgeApplicationApiApplicationsResponseRulesDestroy(context.Background(), applicationId, id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsResponseRulesAPI.EdgeApplicationApiApplicationsResponseRulesDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EdgeApplicationApiApplicationsResponseRulesDestroy`: ResponseDeleteApplicationResponsePhaseRuleEngine
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationsResponseRulesAPI.EdgeApplicationApiApplicationsResponseRulesDestroy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | **string** |  | 
-**id** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEdgeApplicationApiApplicationsResponseRulesDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ResponseDeleteApplicationResponsePhaseRuleEngine**](ResponseDeleteApplicationResponsePhaseRuleEngine.md)
-
-### Authorization
-
-[TokenAuth](../README.md#TokenAuth), [BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

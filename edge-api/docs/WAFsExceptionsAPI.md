@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateWAFException**](WAFsExceptionsAPI.md#CreateWAFException) | **Post** /edge_firewall/wafs/{waf_id}/exceptions | Create an Exception for a Web Application Firewall (WAF)
-[**DestroyWAFException**](WAFsExceptionsAPI.md#DestroyWAFException) | **Delete** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Destroy an Exception from a Web Application Firewall (WAF)
-[**ListWAFExceptions**](WAFsExceptionsAPI.md#ListWAFExceptions) | **Get** /edge_firewall/wafs/{waf_id}/exceptions | List Exceptions for a Web Application Firewall (WAF)
-[**PartialUpdateWAFException**](WAFsExceptionsAPI.md#PartialUpdateWAFException) | **Patch** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Partially update an Exception for a Web Application Firewall (WAF)
-[**RetrieveWAFException**](WAFsExceptionsAPI.md#RetrieveWAFException) | **Get** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Retrieve details of an Exception from a Web Application Firewall (WAF)
-[**UpdateWAFException**](WAFsExceptionsAPI.md#UpdateWAFException) | **Put** /edge_firewall/wafs/{waf_id}/exceptions/{exception_id} | Update an Exception for a Web Application Firewall (WAF)
+[**CreateWAFException**](WAFsExceptionsAPI.md#CreateWAFException) | **Post** /workspace/wafs/{waf_id}/exceptions | Create an Exception for a Web Application Firewall (WAF)
+[**DeleteWAFException**](WAFsExceptionsAPI.md#DeleteWAFException) | **Delete** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Delete an Exception from a Web Application Firewall (WAF)
+[**ListWAFExceptions**](WAFsExceptionsAPI.md#ListWAFExceptions) | **Get** /workspace/wafs/{waf_id}/exceptions | List Exceptions for a Web Application Firewall (WAF)
+[**PartialUpdateWAFException**](WAFsExceptionsAPI.md#PartialUpdateWAFException) | **Patch** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Partially update an Exception for a Web Application Firewall (WAF)
+[**RetrieveWAFException**](WAFsExceptionsAPI.md#RetrieveWAFException) | **Get** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Retrieve details of an Exception from a Web Application Firewall (WAF)
+[**UpdateWAFException**](WAFsExceptionsAPI.md#UpdateWAFException) | **Put** /workspace/wafs/{waf_id}/exceptions/{exception_id} | Update an Exception for a Web Application Firewall (WAF)
 
 
 
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyWAFException
+## DeleteWAFException
 
-> ResponseDeleteWAFRule DestroyWAFException(ctx, exceptionId, wafId).Execute()
+> ResponseDeleteWAFRule DeleteWAFException(ctx, exceptionId, wafId).Execute()
 
-Destroy an Exception from a Web Application Firewall (WAF)
+Delete an Exception from a Web Application Firewall (WAF)
 
 
 
@@ -111,13 +111,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WAFsExceptionsAPI.DestroyWAFException(context.Background(), exceptionId, wafId).Execute()
+	resp, r, err := apiClient.WAFsExceptionsAPI.DeleteWAFException(context.Background(), exceptionId, wafId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.DestroyWAFException``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WAFsExceptionsAPI.DeleteWAFException``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyWAFException`: ResponseDeleteWAFRule
-	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.DestroyWAFException`: %v\n", resp)
+	// response from `DeleteWAFException`: ResponseDeleteWAFRule
+	fmt.Fprintf(os.Stdout, "Response from `WAFsExceptionsAPI.DeleteWAFException`: %v\n", resp)
 }
 ```
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyWAFExceptionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteWAFExceptionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

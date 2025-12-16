@@ -26,7 +26,7 @@ type FirewallsAPIService service
 type ApiCloneFirewallRequest struct {
 	ctx context.Context
 	ApiService *FirewallsAPIService
-	id string
+	firewallId string
 	cloneFirewallRequest *CloneFirewallRequest
 }
 
@@ -40,19 +40,19 @@ func (r ApiCloneFirewallRequest) Execute() (*ResponseFirewall, *http.Response, e
 }
 
 /*
-CloneFirewall Clone an Firewall
+CloneFirewall Clone a Firewall
 
 Create a new Firewall by performing a deep copy of an existing Firewall, including its Function Instances and Rules Engine.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param firewallId
  @return ApiCloneFirewallRequest
 */
-func (a *FirewallsAPIService) CloneFirewall(ctx context.Context, id string) ApiCloneFirewallRequest {
+func (a *FirewallsAPIService) CloneFirewall(ctx context.Context, firewallId string) ApiCloneFirewallRequest {
 	return ApiCloneFirewallRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		firewallId: firewallId,
 	}
 }
 
@@ -71,8 +71,8 @@ func (a *FirewallsAPIService) CloneFirewallExecute(r ApiCloneFirewallRequest) (*
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{id}/clone"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/clone"
+	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -243,7 +243,7 @@ func (r ApiCreateFirewallRequest) Execute() (*ResponseFirewall, *http.Response, 
 }
 
 /*
-CreateFirewall Create an Firewall
+CreateFirewall Create a Firewall
 
 Create a new Firewall for your account.
 
@@ -272,7 +272,7 @@ func (a *FirewallsAPIService) CreateFirewallExecute(r ApiCreateFirewallRequest) 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls"
+	localVarPath := localBasePath + "/workspace/firewalls"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,36 +427,36 @@ func (a *FirewallsAPIService) CreateFirewallExecute(r ApiCreateFirewallRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyFirewallRequest struct {
+type ApiDeleteFirewallRequest struct {
 	ctx context.Context
 	ApiService *FirewallsAPIService
-	id string
+	firewallId string
 }
 
-func (r ApiDestroyFirewallRequest) Execute() (*ResponseDeleteFirewall, *http.Response, error) {
-	return r.ApiService.DestroyFirewallExecute(r)
+func (r ApiDeleteFirewallRequest) Execute() (*ResponseDeleteFirewall, *http.Response, error) {
+	return r.ApiService.DeleteFirewallExecute(r)
 }
 
 /*
-DestroyFirewall Destroy an Firewall
+DeleteFirewall Delete a Firewall
 
-Destruction of a specific Firewall in your account.
+Delete a specific Firewall in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDestroyFirewallRequest
+ @param firewallId
+ @return ApiDeleteFirewallRequest
 */
-func (a *FirewallsAPIService) DestroyFirewall(ctx context.Context, id string) ApiDestroyFirewallRequest {
-	return ApiDestroyFirewallRequest{
+func (a *FirewallsAPIService) DeleteFirewall(ctx context.Context, firewallId string) ApiDeleteFirewallRequest {
+	return ApiDeleteFirewallRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		firewallId: firewallId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseDeleteFirewall
-func (a *FirewallsAPIService) DestroyFirewallExecute(r ApiDestroyFirewallRequest) (*ResponseDeleteFirewall, *http.Response, error) {
+func (a *FirewallsAPIService) DeleteFirewallExecute(r ApiDeleteFirewallRequest) (*ResponseDeleteFirewall, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -464,13 +464,13 @@ func (a *FirewallsAPIService) DestroyFirewallExecute(r ApiDestroyFirewallRequest
 		localVarReturnValue  *ResponseDeleteFirewall
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsAPIService.DestroyFirewall")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsAPIService.DeleteFirewall")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -694,7 +694,7 @@ func (a *FirewallsAPIService) ListFirewallsExecute(r ApiListFirewallsRequest) (*
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls"
+	localVarPath := localBasePath + "/workspace/firewalls"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -862,7 +862,7 @@ func (a *FirewallsAPIService) ListFirewallsExecute(r ApiListFirewallsRequest) (*
 type ApiPartialUpdateFirewallRequest struct {
 	ctx context.Context
 	ApiService *FirewallsAPIService
-	id string
+	firewallId string
 	patchedFirewallRequest *PatchedFirewallRequest
 }
 
@@ -876,19 +876,19 @@ func (r ApiPartialUpdateFirewallRequest) Execute() (*ResponseFirewall, *http.Res
 }
 
 /*
-PartialUpdateFirewall Partially update an Firewall
+PartialUpdateFirewall Partially update a Firewall
 
 Update one or more fields of an existing Firewall without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param firewallId
  @return ApiPartialUpdateFirewallRequest
 */
-func (a *FirewallsAPIService) PartialUpdateFirewall(ctx context.Context, id string) ApiPartialUpdateFirewallRequest {
+func (a *FirewallsAPIService) PartialUpdateFirewall(ctx context.Context, firewallId string) ApiPartialUpdateFirewallRequest {
 	return ApiPartialUpdateFirewallRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		firewallId: firewallId,
 	}
 }
 
@@ -907,8 +907,8 @@ func (a *FirewallsAPIService) PartialUpdateFirewallExecute(r ApiPartialUpdateFir
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1063,7 +1063,7 @@ func (a *FirewallsAPIService) PartialUpdateFirewallExecute(r ApiPartialUpdateFir
 type ApiRetrieveFirewallRequest struct {
 	ctx context.Context
 	ApiService *FirewallsAPIService
-	id string
+	firewallId string
 	fields *string
 }
 
@@ -1078,19 +1078,19 @@ func (r ApiRetrieveFirewallRequest) Execute() (*ResponseRetrieveFirewall, *http.
 }
 
 /*
-RetrieveFirewall Retrieve details from an Firewall
+RetrieveFirewall Retrieve details from a Firewall
 
 Retrieve details from a specific Firewall in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param firewallId
  @return ApiRetrieveFirewallRequest
 */
-func (a *FirewallsAPIService) RetrieveFirewall(ctx context.Context, id string) ApiRetrieveFirewallRequest {
+func (a *FirewallsAPIService) RetrieveFirewall(ctx context.Context, firewallId string) ApiRetrieveFirewallRequest {
 	return ApiRetrieveFirewallRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		firewallId: firewallId,
 	}
 }
 
@@ -1109,8 +1109,8 @@ func (a *FirewallsAPIService) RetrieveFirewallExecute(r ApiRetrieveFirewallReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1266,7 +1266,7 @@ func (a *FirewallsAPIService) RetrieveFirewallExecute(r ApiRetrieveFirewallReque
 type ApiUpdateFirewallRequest struct {
 	ctx context.Context
 	ApiService *FirewallsAPIService
-	id string
+	firewallId string
 	firewallRequest *FirewallRequest
 }
 
@@ -1280,19 +1280,19 @@ func (r ApiUpdateFirewallRequest) Execute() (*ResponseFirewall, *http.Response, 
 }
 
 /*
-UpdateFirewall Update an Firewall
+UpdateFirewall Update a Firewall
 
 Update an existing Firewall. This replaces the entire Firewall with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param firewallId
  @return ApiUpdateFirewallRequest
 */
-func (a *FirewallsAPIService) UpdateFirewall(ctx context.Context, id string) ApiUpdateFirewallRequest {
+func (a *FirewallsAPIService) UpdateFirewall(ctx context.Context, firewallId string) ApiUpdateFirewallRequest {
 	return ApiUpdateFirewallRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		firewallId: firewallId,
 	}
 }
 
@@ -1311,8 +1311,8 @@ func (a *FirewallsAPIService) UpdateFirewallExecute(r ApiUpdateFirewallRequest) 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

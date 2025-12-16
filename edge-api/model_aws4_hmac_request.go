@@ -22,7 +22,7 @@ var _ MappedNullable = &AWS4HMACRequest{}
 // AWS4HMACRequest struct for AWS4HMACRequest
 type AWS4HMACRequest struct {
 	// * `aws4_hmac_sha256` - AWS for HMAC - SHA256
-	Type string `json:"type"`
+	Type *string `json:"type,omitempty"`
 	Attributes AWS4HMACAttributesRequest `json:"attributes"`
 }
 
@@ -32,9 +32,8 @@ type _AWS4HMACRequest AWS4HMACRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAWS4HMACRequest(type_ string, attributes AWS4HMACAttributesRequest) *AWS4HMACRequest {
+func NewAWS4HMACRequest(attributes AWS4HMACAttributesRequest) *AWS4HMACRequest {
 	this := AWS4HMACRequest{}
-	this.Type = type_
 	this.Attributes = attributes
 	return &this
 }
@@ -47,28 +46,36 @@ func NewAWS4HMACRequestWithDefaults() *AWS4HMACRequest {
 	return &this
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *AWS4HMACRequest) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AWS4HMACRequest) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *AWS4HMACRequest) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *AWS4HMACRequest) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
 // GetAttributes returns the Attributes field value
@@ -105,7 +112,9 @@ func (o AWS4HMACRequest) MarshalJSON() ([]byte, error) {
 
 func (o AWS4HMACRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	toSerialize["attributes"] = o.Attributes
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *AWS4HMACRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"type",
 		"attributes",
 	}
 

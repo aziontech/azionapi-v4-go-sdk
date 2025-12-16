@@ -71,7 +71,7 @@ func (a *WAFsAPIService) CloneWAFExecute(r ApiCloneWAFRequest) (*ResponseWAF, *h
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/clone"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/clone"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -272,7 +272,7 @@ func (a *WAFsAPIService) CreateWAFExecute(r ApiCreateWAFRequest) (*ResponseWAF, 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs"
+	localVarPath := localBasePath + "/workspace/wafs"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,27 +427,27 @@ func (a *WAFsAPIService) CreateWAFExecute(r ApiCreateWAFRequest) (*ResponseWAF, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyWAFRequest struct {
+type ApiDeleteWAFRequest struct {
 	ctx context.Context
 	ApiService *WAFsAPIService
 	wafId string
 }
 
-func (r ApiDestroyWAFRequest) Execute() (*ResponseDeleteWAF, *http.Response, error) {
-	return r.ApiService.DestroyWAFExecute(r)
+func (r ApiDeleteWAFRequest) Execute() (*ResponseDeleteWAF, *http.Response, error) {
+	return r.ApiService.DeleteWAFExecute(r)
 }
 
 /*
-DestroyWAF Destroy a Web Application Firewall (WAF)
+DeleteWAF Delete a Web Application Firewall (WAF)
 
-Destruction of a specific WAF in your account.
+Delete a specific WAF in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param wafId
- @return ApiDestroyWAFRequest
+ @return ApiDeleteWAFRequest
 */
-func (a *WAFsAPIService) DestroyWAF(ctx context.Context, wafId string) ApiDestroyWAFRequest {
-	return ApiDestroyWAFRequest{
+func (a *WAFsAPIService) DeleteWAF(ctx context.Context, wafId string) ApiDeleteWAFRequest {
+	return ApiDeleteWAFRequest{
 		ApiService: a,
 		ctx: ctx,
 		wafId: wafId,
@@ -456,7 +456,7 @@ func (a *WAFsAPIService) DestroyWAF(ctx context.Context, wafId string) ApiDestro
 
 // Execute executes the request
 //  @return ResponseDeleteWAF
-func (a *WAFsAPIService) DestroyWAFExecute(r ApiDestroyWAFRequest) (*ResponseDeleteWAF, *http.Response, error) {
+func (a *WAFsAPIService) DeleteWAFExecute(r ApiDeleteWAFRequest) (*ResponseDeleteWAF, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -464,12 +464,12 @@ func (a *WAFsAPIService) DestroyWAFExecute(r ApiDestroyWAFRequest) (*ResponseDel
 		localVarReturnValue  *ResponseDeleteWAF
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.DestroyWAF")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsAPIService.DeleteWAF")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -694,7 +694,7 @@ func (a *WAFsAPIService) ListWAFsExecute(r ApiListWAFsRequest) (*PaginatedWAFLis
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs"
+	localVarPath := localBasePath + "/workspace/wafs"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -907,7 +907,7 @@ func (a *WAFsAPIService) PartialUpdateWAFExecute(r ApiPartialUpdateWAFRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1109,7 +1109,7 @@ func (a *WAFsAPIService) RetrieveWAFExecute(r ApiRetrieveWAFRequest) (*ResponseR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1311,7 +1311,7 @@ func (a *WAFsAPIService) UpdateWAFExecute(r ApiUpdateWAFRequest) (*ResponseWAF, 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFirewallRule**](FirewallsRulesEngineAPI.md#CreateFirewallRule) | **Post** /edge_firewall/firewalls/{firewall_id}/request_rules | Create an Firewall Rule
-[**DestroyFirewallRule**](FirewallsRulesEngineAPI.md#DestroyFirewallRule) | **Delete** /edge_firewall/firewalls/{firewall_id}/request_rules/{id} | Destroy an Firewall Rule
-[**ListFirewallRules**](FirewallsRulesEngineAPI.md#ListFirewallRules) | **Get** /edge_firewall/firewalls/{firewall_id}/request_rules | List Firewall Rules
-[**OrderFirewallRules**](FirewallsRulesEngineAPI.md#OrderFirewallRules) | **Put** /edge_firewall/firewalls/{firewall_id}/request_rules/order | Ordering Firewall Rules
-[**PartialUpdateFirewallRule**](FirewallsRulesEngineAPI.md#PartialUpdateFirewallRule) | **Patch** /edge_firewall/firewalls/{firewall_id}/request_rules/{id} | Partially update an Firewall Rule
-[**RetrieveFirewallRule**](FirewallsRulesEngineAPI.md#RetrieveFirewallRule) | **Get** /edge_firewall/firewalls/{firewall_id}/request_rules/{id} | Retrieve details of an Firewall Rule
-[**UpdateFirewallRule**](FirewallsRulesEngineAPI.md#UpdateFirewallRule) | **Put** /edge_firewall/firewalls/{firewall_id}/request_rules/{id} | Update an Firewall Rule
+[**CreateFirewallRule**](FirewallsRulesEngineAPI.md#CreateFirewallRule) | **Post** /workspace/firewalls/{firewall_id}/request_rules | Create an Firewall Rule
+[**DeleteFirewallRule**](FirewallsRulesEngineAPI.md#DeleteFirewallRule) | **Delete** /workspace/firewalls/{firewall_id}/request_rules/{id} | Delete an Firewall Rule
+[**ListFirewallRules**](FirewallsRulesEngineAPI.md#ListFirewallRules) | **Get** /workspace/firewalls/{firewall_id}/request_rules | List Firewall Rules
+[**OrderFirewallRules**](FirewallsRulesEngineAPI.md#OrderFirewallRules) | **Put** /workspace/firewalls/{firewall_id}/request_rules/order | Ordering Firewall Rules
+[**PartialUpdateFirewallRule**](FirewallsRulesEngineAPI.md#PartialUpdateFirewallRule) | **Patch** /workspace/firewalls/{firewall_id}/request_rules/{id} | Partially update an Firewall Rule
+[**RetrieveFirewallRule**](FirewallsRulesEngineAPI.md#RetrieveFirewallRule) | **Get** /workspace/firewalls/{firewall_id}/request_rules/{id} | Retrieve details of an Firewall Rule
+[**UpdateFirewallRule**](FirewallsRulesEngineAPI.md#UpdateFirewallRule) | **Put** /workspace/firewalls/{firewall_id}/request_rules/{id} | Update an Firewall Rule
 
 
 
@@ -86,11 +86,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyFirewallRule
+## DeleteFirewallRule
 
-> ResponseDeleteFirewallRuleEngine DestroyFirewallRule(ctx, firewallId, id).Execute()
+> ResponseDeleteFirewallRuleEngine DeleteFirewallRule(ctx, firewallId, id).Execute()
 
-Destroy an Firewall Rule
+Delete an Firewall Rule
 
 
 
@@ -112,13 +112,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FirewallsRulesEngineAPI.DestroyFirewallRule(context.Background(), firewallId, id).Execute()
+	resp, r, err := apiClient.FirewallsRulesEngineAPI.DeleteFirewallRule(context.Background(), firewallId, id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsRulesEngineAPI.DestroyFirewallRule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsRulesEngineAPI.DeleteFirewallRule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyFirewallRule`: ResponseDeleteFirewallRuleEngine
-	fmt.Fprintf(os.Stdout, "Response from `FirewallsRulesEngineAPI.DestroyFirewallRule`: %v\n", resp)
+	// response from `DeleteFirewallRule`: ResponseDeleteFirewallRuleEngine
+	fmt.Fprintf(os.Stdout, "Response from `FirewallsRulesEngineAPI.DeleteFirewallRule`: %v\n", resp)
 }
 ```
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyFirewallRuleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteFirewallRuleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
