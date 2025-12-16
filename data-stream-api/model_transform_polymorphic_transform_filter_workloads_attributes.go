@@ -12,6 +12,7 @@ package datastreamapi
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -20,10 +21,9 @@ var _ MappedNullable = &TransformPolymorphicTransformFilterWorkloadsAttributes{}
 
 // TransformPolymorphicTransformFilterWorkloadsAttributes struct for TransformPolymorphicTransformFilterWorkloadsAttributes
 type TransformPolymorphicTransformFilterWorkloadsAttributes struct {
-	// * `filter_workloads` - Filter Workloads
+	// Type identifier for this endpoint (filter_workloads)
 	Type string `json:"type"`
 	Attributes TransformFilterWorkloads `json:"attributes"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _TransformPolymorphicTransformFilterWorkloadsAttributes TransformPolymorphicTransformFilterWorkloadsAttributes
@@ -107,11 +107,6 @@ func (o TransformPolymorphicTransformFilterWorkloadsAttributes) ToMap() (map[str
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -140,21 +135,15 @@ func (o *TransformPolymorphicTransformFilterWorkloadsAttributes) UnmarshalJSON(d
 
 	varTransformPolymorphicTransformFilterWorkloadsAttributes := _TransformPolymorphicTransformFilterWorkloadsAttributes{}
 
-	err = json.Unmarshal(data, &varTransformPolymorphicTransformFilterWorkloadsAttributes)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransformPolymorphicTransformFilterWorkloadsAttributes)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransformPolymorphicTransformFilterWorkloadsAttributes(varTransformPolymorphicTransformFilterWorkloadsAttributes)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "attributes")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

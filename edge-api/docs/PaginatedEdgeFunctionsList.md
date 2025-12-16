@@ -4,7 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int64** |  | [optional] 
+**Count** | Pointer to **int64** | Total number of items | [optional] 
+**TotalPages** | Pointer to **int64** | Total number of pages | [optional] 
+**Page** | Pointer to **int64** | Current page number | [optional] 
+**PageSize** | Pointer to **int64** | Number of items per page | [optional] 
 **Results** | Pointer to [**[]EdgeFunctions**](EdgeFunctions.md) |  | [optional] 
 
 ## Methods
@@ -50,6 +53,81 @@ SetCount sets Count field to given value.
 `func (o *PaginatedEdgeFunctionsList) HasCount() bool`
 
 HasCount returns a boolean if a field has been set.
+
+### GetTotalPages
+
+`func (o *PaginatedEdgeFunctionsList) GetTotalPages() int64`
+
+GetTotalPages returns the TotalPages field if non-nil, zero value otherwise.
+
+### GetTotalPagesOk
+
+`func (o *PaginatedEdgeFunctionsList) GetTotalPagesOk() (*int64, bool)`
+
+GetTotalPagesOk returns a tuple with the TotalPages field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalPages
+
+`func (o *PaginatedEdgeFunctionsList) SetTotalPages(v int64)`
+
+SetTotalPages sets TotalPages field to given value.
+
+### HasTotalPages
+
+`func (o *PaginatedEdgeFunctionsList) HasTotalPages() bool`
+
+HasTotalPages returns a boolean if a field has been set.
+
+### GetPage
+
+`func (o *PaginatedEdgeFunctionsList) GetPage() int64`
+
+GetPage returns the Page field if non-nil, zero value otherwise.
+
+### GetPageOk
+
+`func (o *PaginatedEdgeFunctionsList) GetPageOk() (*int64, bool)`
+
+GetPageOk returns a tuple with the Page field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPage
+
+`func (o *PaginatedEdgeFunctionsList) SetPage(v int64)`
+
+SetPage sets Page field to given value.
+
+### HasPage
+
+`func (o *PaginatedEdgeFunctionsList) HasPage() bool`
+
+HasPage returns a boolean if a field has been set.
+
+### GetPageSize
+
+`func (o *PaginatedEdgeFunctionsList) GetPageSize() int64`
+
+GetPageSize returns the PageSize field if non-nil, zero value otherwise.
+
+### GetPageSizeOk
+
+`func (o *PaginatedEdgeFunctionsList) GetPageSizeOk() (*int64, bool)`
+
+GetPageSizeOk returns a tuple with the PageSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPageSize
+
+`func (o *PaginatedEdgeFunctionsList) SetPageSize(v int64)`
+
+SetPageSize sets PageSize field to given value.
+
+### HasPageSize
+
+`func (o *PaginatedEdgeFunctionsList) HasPageSize() bool`
+
+HasPageSize returns a boolean if a field has been set.
 
 ### GetResults
 

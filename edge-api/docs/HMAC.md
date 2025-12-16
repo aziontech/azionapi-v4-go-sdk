@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** |  | [optional] 
+**Enabled** | **bool** |  | 
 **Config** | Pointer to [**NullableAWS4HMAC**](AWS4HMAC.md) |  | [optional] 
 
 ## Methods
 
 ### NewHMAC
 
-`func NewHMAC() *HMAC`
+`func NewHMAC(enabled bool, ) *HMAC`
 
 NewHMAC instantiates a new HMAC object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *HMAC) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetConfig
 

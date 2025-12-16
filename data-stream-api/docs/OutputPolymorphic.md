@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **PayloadFormat** | Pointer to **string** |  | [optional] 
 **MaxSize** | Pointer to **NullableInt64** |  | [optional] 
 **Headers** | **map[string]string** |  | 
+**Type** | **string** | Type identifier for this endpoint (splunk) | 
 **BootstrapServers** | **string** |  | 
 **KafkaTopic** | **string** |  | 
 **UseTls** | **bool** |  | 
@@ -37,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewOutputPolymorphic
 
-`func NewOutputPolymorphic(url string, headers map[string]string, bootstrapServers string, kafkaTopic string, useTls bool, accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string, datasetId string, projectId string, tableId string, serviceAccountKey string, apiKey string, streamName string, logType string, sharedKey string, workspaceId string, storageAccount string, containerName string, blobSasToken string, ) *OutputPolymorphic`
+`func NewOutputPolymorphic(url string, headers map[string]string, type_ string, bootstrapServers string, kafkaTopic string, useTls bool, accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string, datasetId string, projectId string, tableId string, serviceAccountKey string, apiKey string, streamName string, logType string, sharedKey string, workspaceId string, storageAccount string, containerName string, blobSasToken string, ) *OutputPolymorphic`
 
 NewOutputPolymorphic instantiates a new OutputPolymorphic object
 This constructor will assign default values to properties that have it defined,
@@ -175,6 +176,26 @@ and a boolean to check if the value has been set.
 `func (o *OutputPolymorphic) SetHeaders(v map[string]string)`
 
 SetHeaders sets Headers field to given value.
+
+
+### GetType
+
+`func (o *OutputPolymorphic) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *OutputPolymorphic) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *OutputPolymorphic) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 ### GetBootstrapServers
