@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **ProjectId** | **string** |  | 
 **TableId** | **string** |  | 
 **ServiceAccountKey** | **string** |  | 
+**Type** | **string** | Type identifier for this endpoint (big_query) | 
 
 ## Methods
 
 ### NewBigQueryEndpointRequest
 
-`func NewBigQueryEndpointRequest(datasetId string, projectId string, tableId string, serviceAccountKey string, ) *BigQueryEndpointRequest`
+`func NewBigQueryEndpointRequest(datasetId string, projectId string, tableId string, serviceAccountKey string, type_ string, ) *BigQueryEndpointRequest`
 
 NewBigQueryEndpointRequest instantiates a new BigQueryEndpointRequest object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +107,26 @@ and a boolean to check if the value has been set.
 `func (o *BigQueryEndpointRequest) SetServiceAccountKey(v string)`
 
 SetServiceAccountKey sets ServiceAccountKey field to given value.
+
+
+### GetType
+
+`func (o *BigQueryEndpointRequest) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *BigQueryEndpointRequest) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *BigQueryEndpointRequest) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 

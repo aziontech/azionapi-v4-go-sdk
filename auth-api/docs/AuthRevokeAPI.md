@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## AuthUserRevoke
 
-> StateExecutedResponse AuthUserRevoke(ctx).Execute()
+> StateExecutedResponse AuthUserRevoke(ctx).Body(body).Execute()
 
 Revoke user JWT refresh token
 
@@ -29,10 +29,11 @@ import (
 )
 
 func main() {
+	body := interface{}(987) // interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AuthRevokeAPI.AuthUserRevoke(context.Background()).Execute()
+	resp, r, err := apiClient.AuthRevokeAPI.AuthUserRevoke(context.Background()).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AuthRevokeAPI.AuthUserRevoke``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -44,12 +45,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAuthUserRevokeRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **interface{}** |  | 
 
 ### Return type
 
@@ -57,11 +62,11 @@ Other parameters are passed through a pointer to a apiAuthUserRevokeRequest stru
 
 ### Authorization
 
-[JWT Refresh Authentication](../README.md#JWT Refresh Authentication)
+[JwtRefreshAuthentication](../README.md#JwtRefreshAuthentication)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **BootstrapServers** | **string** |  | 
 **KafkaTopic** | **string** |  | 
 **UseTls** | **bool** |  | 
+**Type** | **string** | Type identifier for this endpoint (kafka) | 
 
 ## Methods
 
 ### NewKafkaEndpointRequest
 
-`func NewKafkaEndpointRequest(bootstrapServers string, kafkaTopic string, useTls bool, ) *KafkaEndpointRequest`
+`func NewKafkaEndpointRequest(bootstrapServers string, kafkaTopic string, useTls bool, type_ string, ) *KafkaEndpointRequest`
 
 NewKafkaEndpointRequest instantiates a new KafkaEndpointRequest object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *KafkaEndpointRequest) SetUseTls(v bool)`
 
 SetUseTls sets UseTls field to given value.
+
+
+### GetType
+
+`func (o *KafkaEndpointRequest) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *KafkaEndpointRequest) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *KafkaEndpointRequest) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 

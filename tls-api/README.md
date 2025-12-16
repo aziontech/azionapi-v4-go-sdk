@@ -78,47 +78,41 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DigitalCertificatesCertificateRevocationListsAPI* | [**CreateCertificateRevocationListsCRL**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#createcertificaterevocationlistscrl) | **Post** /digital_certificates/crls | Create a certificate revocation lists (CRL)
-*DigitalCertificatesCertificateRevocationListsAPI* | [**DestroyCertificateRevocationListsCRL**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#destroycertificaterevocationlistscrl) | **Delete** /digital_certificates/crls/{id} | Destroy a certificate revocation lists (CRL)
-*DigitalCertificatesCertificateRevocationListsAPI* | [**ListCertificateRevocationListsCRL**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#listcertificaterevocationlistscrl) | **Get** /digital_certificates/crls | List certificate revocation lists (CRL)
-*DigitalCertificatesCertificateRevocationListsAPI* | [**PartialUpdateCertificateRevocationListsCRL**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#partialupdatecertificaterevocationlistscrl) | **Patch** /digital_certificates/crls/{id} | Update a certificate revocation lists (CRL)
-*DigitalCertificatesCertificateRevocationListsAPI* | [**RetriveCertificateRevocationListsCRL**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#retrivecertificaterevocationlistscrl) | **Get** /digital_certificates/crls/{id} | Retrieve details from a certificate revocation lists (CRL)
-*DigitalCertificatesCertificateRevocationListsAPI* | [**UpdateCertificateRevocationListsCRL**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#updatecertificaterevocationlistscrl) | **Put** /digital_certificates/crls/{id} | Update a certificate revocation lists (CRL)
-*DigitalCertificatesCertificateSigningRequestsAPI* | [**CreateCertificateSigningRequestCSR**](docs/DigitalCertificatesCertificateSigningRequestsAPI.md#createcertificatesigningrequestcsr) | **Post** /digital_certificates/csr | Create a certificate signing request (CSR)
-*DigitalCertificatesCertificatesAPI* | [**CreateCertificate**](docs/DigitalCertificatesCertificatesAPI.md#createcertificate) | **Post** /digital_certificates/certificates | Create a certificate
-*DigitalCertificatesCertificatesAPI* | [**DestroyCertificate**](docs/DigitalCertificatesCertificatesAPI.md#destroycertificate) | **Delete** /digital_certificates/certificates/{id} | Destroy a certificate
-*DigitalCertificatesCertificatesAPI* | [**ListCertificates**](docs/DigitalCertificatesCertificatesAPI.md#listcertificates) | **Get** /digital_certificates/certificates | List certificates
-*DigitalCertificatesCertificatesAPI* | [**PartialUpdateCertificate**](docs/DigitalCertificatesCertificatesAPI.md#partialupdatecertificate) | **Patch** /digital_certificates/certificates/{id} | Partially update a certificate
-*DigitalCertificatesCertificatesAPI* | [**RetriveCertificate**](docs/DigitalCertificatesCertificatesAPI.md#retrivecertificate) | **Get** /digital_certificates/certificates/{id} | Retrieve details from a certificate
-*DigitalCertificatesCertificatesAPI* | [**UpdateCertificate**](docs/DigitalCertificatesCertificatesAPI.md#updatecertificate) | **Put** /digital_certificates/certificates/{id} | Update a certificate
-*DigitalCertificatesRequestACertificateAPI* | [**RequestACertificate**](docs/DigitalCertificatesRequestACertificateAPI.md#requestacertificate) | **Post** /digital_certificates/certificates/request | Request a certificate
+*DigitalCertificatesCertificateRevocationListsAPI* | [**CreateCertificateRevocationList**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#createcertificaterevocationlist) | **Post** /workspace/tls/crls | Create a certificate revocation lists (CRL)
+*DigitalCertificatesCertificateRevocationListsAPI* | [**DeleteCertificateRevocationList**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#deletecertificaterevocationlist) | **Delete** /workspace/tls/crls/{crl_id} | Delete a certificate revocation list
+*DigitalCertificatesCertificateRevocationListsAPI* | [**ListCertificateRevocationLists**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#listcertificaterevocationlists) | **Get** /workspace/tls/crls | List certificate revocation lists (CRL)
+*DigitalCertificatesCertificateRevocationListsAPI* | [**PartialUpdateCertificateRevocationList**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#partialupdatecertificaterevocationlist) | **Patch** /workspace/tls/crls/{crl_id} | Update a certificate revocation lists (CRL)
+*DigitalCertificatesCertificateRevocationListsAPI* | [**RetrieveCertificateRevocationList**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#retrievecertificaterevocationlist) | **Get** /workspace/tls/crls/{crl_id} | Retrieve details from a certificate revocation lists (CRL)
+*DigitalCertificatesCertificateRevocationListsAPI* | [**UpdateCertificateRevocationList**](docs/DigitalCertificatesCertificateRevocationListsAPI.md#updatecertificaterevocationlist) | **Put** /workspace/tls/crls/{crl_id} | Update a certificate revocation lists (CRL)
+*DigitalCertificatesCertificateSigningRequestsAPI* | [**CreateCertificateSigningRequest**](docs/DigitalCertificatesCertificateSigningRequestsAPI.md#createcertificatesigningrequest) | **Post** /workspace/tls/csr | Create a certificate signing request (CSR)
+*DigitalCertificatesCertificatesAPI* | [**CreateCertificate**](docs/DigitalCertificatesCertificatesAPI.md#createcertificate) | **Post** /workspace/tls/certificates | Create a certificate
+*DigitalCertificatesCertificatesAPI* | [**DeleteCertificate**](docs/DigitalCertificatesCertificatesAPI.md#deletecertificate) | **Delete** /workspace/tls/certificates/{certificate_id} | Delete a certificate
+*DigitalCertificatesCertificatesAPI* | [**ListCertificates**](docs/DigitalCertificatesCertificatesAPI.md#listcertificates) | **Get** /workspace/tls/certificates | List certificates
+*DigitalCertificatesCertificatesAPI* | [**PartialUpdateCertificate**](docs/DigitalCertificatesCertificatesAPI.md#partialupdatecertificate) | **Patch** /workspace/tls/certificates/{certificate_id} | Partially update a certificate
+*DigitalCertificatesCertificatesAPI* | [**RetrieveCertificate**](docs/DigitalCertificatesCertificatesAPI.md#retrievecertificate) | **Get** /workspace/tls/certificates/{certificate_id} | Retrieve details from a certificate
+*DigitalCertificatesCertificatesAPI* | [**UpdateCertificate**](docs/DigitalCertificatesCertificatesAPI.md#updatecertificate) | **Put** /workspace/tls/certificates/{certificate_id} | Update a certificate
+*DigitalCertificatesRequestACertificateAPI* | [**RequestCertificate**](docs/DigitalCertificatesRequestACertificateAPI.md#requestcertificate) | **Post** /workspace/tls/certificates/request | Request a certificate
 
 
 ## Documentation For Models
 
  - [Certificate](docs/Certificate.md)
- - [CertificateAuthority](docs/CertificateAuthority.md)
- - [CertificateChallenge](docs/CertificateChallenge.md)
  - [CertificateRequest](docs/CertificateRequest.md)
- - [CertificateRequestRequest](docs/CertificateRequestRequest.md)
  - [CertificateRevocationList](docs/CertificateRevocationList.md)
- - [CertificateRevocationListRequest](docs/CertificateRevocationListRequest.md)
- - [CertificateSigningRequestRequest](docs/CertificateSigningRequestRequest.md)
+ - [CertificateSigningRequest](docs/CertificateSigningRequest.md)
  - [JSONAPIErrorObject](docs/JSONAPIErrorObject.md)
  - [JSONAPIErrorResponse](docs/JSONAPIErrorResponse.md)
  - [JSONAPIErrorSource](docs/JSONAPIErrorSource.md)
  - [PaginatedCertificateList](docs/PaginatedCertificateList.md)
  - [PaginatedCertificateRevocationListList](docs/PaginatedCertificateRevocationListList.md)
- - [PatchedCertificateRequest](docs/PatchedCertificateRequest.md)
- - [PatchedCertificateRevocationListRequest](docs/PatchedCertificateRevocationListRequest.md)
+ - [PatchedCertificate](docs/PatchedCertificate.md)
+ - [PatchedCertificateRevocationList](docs/PatchedCertificateRevocationList.md)
  - [ResponseAsyncCertificate](docs/ResponseAsyncCertificate.md)
  - [ResponseAsyncCertificateRevocationList](docs/ResponseAsyncCertificateRevocationList.md)
  - [ResponseAsyncDeleteCertificate](docs/ResponseAsyncDeleteCertificate.md)
  - [ResponseAsyncDeleteCertificateRevocationList](docs/ResponseAsyncDeleteCertificateRevocationList.md)
  - [ResponseCertificate](docs/ResponseCertificate.md)
  - [ResponseCertificateRevocationList](docs/ResponseCertificateRevocationList.md)
- - [ResponseDeleteCertificate](docs/ResponseDeleteCertificate.md)
- - [ResponseDeleteCertificateRevocationList](docs/ResponseDeleteCertificateRevocationList.md)
  - [ResponseRetrieveCertificate](docs/ResponseRetrieveCertificate.md)
  - [ResponseRetrieveCertificateRevocationList](docs/ResponseRetrieveCertificateRevocationList.md)
 

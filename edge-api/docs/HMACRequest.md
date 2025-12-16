@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** |  | [optional] 
+**Enabled** | **bool** |  | 
 **Config** | Pointer to [**NullableAWS4HMACRequest**](AWS4HMACRequest.md) |  | [optional] 
 
 ## Methods
 
 ### NewHMACRequest
 
-`func NewHMACRequest() *HMACRequest`
+`func NewHMACRequest(enabled bool, ) *HMACRequest`
 
 NewHMACRequest instantiates a new HMACRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *HMACRequest) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetConfig
 

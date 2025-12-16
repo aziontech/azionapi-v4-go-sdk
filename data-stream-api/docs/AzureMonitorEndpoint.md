@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **SharedKey** | **string** |  | 
 **TimeGeneratedField** | Pointer to **NullableString** |  | [optional] 
 **WorkspaceId** | **string** |  | 
+**Type** | **string** | Type identifier for this endpoint (azure_monitor) | 
 
 ## Methods
 
 ### NewAzureMonitorEndpoint
 
-`func NewAzureMonitorEndpoint(logType string, sharedKey string, workspaceId string, ) *AzureMonitorEndpoint`
+`func NewAzureMonitorEndpoint(logType string, sharedKey string, workspaceId string, type_ string, ) *AzureMonitorEndpoint`
 
 NewAzureMonitorEndpoint instantiates a new AzureMonitorEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -121,6 +122,26 @@ and a boolean to check if the value has been set.
 `func (o *AzureMonitorEndpoint) SetWorkspaceId(v string)`
 
 SetWorkspaceId sets WorkspaceId field to given value.
+
+
+### GetType
+
+`func (o *AzureMonitorEndpoint) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AzureMonitorEndpoint) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AzureMonitorEndpoint) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 

@@ -12,6 +12,7 @@ package datastreamapi
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -20,10 +21,9 @@ var _ MappedNullable = &TransformPolymorphicTransformRenderTemplateAttributesReq
 
 // TransformPolymorphicTransformRenderTemplateAttributesRequest struct for TransformPolymorphicTransformRenderTemplateAttributesRequest
 type TransformPolymorphicTransformRenderTemplateAttributesRequest struct {
-	// * `render_template` - Render Template
+	// Type identifier for this endpoint (render_template)
 	Type string `json:"type"`
 	Attributes TransformRenderTemplateRequest `json:"attributes"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _TransformPolymorphicTransformRenderTemplateAttributesRequest TransformPolymorphicTransformRenderTemplateAttributesRequest
@@ -107,11 +107,6 @@ func (o TransformPolymorphicTransformRenderTemplateAttributesRequest) ToMap() (m
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -140,21 +135,15 @@ func (o *TransformPolymorphicTransformRenderTemplateAttributesRequest) Unmarshal
 
 	varTransformPolymorphicTransformRenderTemplateAttributesRequest := _TransformPolymorphicTransformRenderTemplateAttributesRequest{}
 
-	err = json.Unmarshal(data, &varTransformPolymorphicTransformRenderTemplateAttributesRequest)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransformPolymorphicTransformRenderTemplateAttributesRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransformPolymorphicTransformRenderTemplateAttributesRequest(varTransformPolymorphicTransformRenderTemplateAttributesRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "attributes")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

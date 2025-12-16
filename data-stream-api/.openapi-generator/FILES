@@ -54,8 +54,6 @@ docs/ResponseAsyncDeleteDataStream.md
 docs/ResponseAsyncDeleteTemplate.md
 docs/ResponseAsyncTemplate.md
 docs/ResponseDataStream.md
-docs/ResponseDeleteDataStream.md
-docs/ResponseDeleteTemplate.md
 docs/ResponseListDataSource.md
 docs/ResponseListDataStream.md
 docs/ResponseListTemplate.md
@@ -136,8 +134,6 @@ model_response_async_delete_data_stream.go
 model_response_async_delete_template.go
 model_response_async_template.go
 model_response_data_stream.go
-model_response_delete_data_stream.go
-model_response_delete_template.go
 model_response_list_data_source.go
 model_response_list_data_stream.go
 model_response_list_template.go

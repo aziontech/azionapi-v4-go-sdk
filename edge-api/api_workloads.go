@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -223,27 +224,27 @@ func (a *WorkloadsAPIService) CreateWorkloadExecute(r ApiCreateWorkloadRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyWorkloadRequest struct {
+type ApiDeleteWorkloadRequest struct {
 	ctx context.Context
 	ApiService *WorkloadsAPIService
 	workloadId int64
 }
 
-func (r ApiDestroyWorkloadRequest) Execute() (*ResponseAsyncDeleteWorkload, *http.Response, error) {
-	return r.ApiService.DestroyWorkloadExecute(r)
+func (r ApiDeleteWorkloadRequest) Execute() (*ResponseAsyncDeleteWorkload, *http.Response, error) {
+	return r.ApiService.DeleteWorkloadExecute(r)
 }
 
 /*
-DestroyWorkload Destroy an Workload
+DeleteWorkload Delete an Workload
 
-Destruction of a specific Workload in your account.
+Delete a specific Workload in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param workloadId
- @return ApiDestroyWorkloadRequest
+ @param workloadId A unique integer value identifying the workload.
+ @return ApiDeleteWorkloadRequest
 */
-func (a *WorkloadsAPIService) DestroyWorkload(ctx context.Context, workloadId int64) ApiDestroyWorkloadRequest {
-	return ApiDestroyWorkloadRequest{
+func (a *WorkloadsAPIService) DeleteWorkload(ctx context.Context, workloadId int64) ApiDeleteWorkloadRequest {
+	return ApiDeleteWorkloadRequest{
 		ApiService: a,
 		ctx: ctx,
 		workloadId: workloadId,
@@ -252,7 +253,7 @@ func (a *WorkloadsAPIService) DestroyWorkload(ctx context.Context, workloadId in
 
 // Execute executes the request
 //  @return ResponseAsyncDeleteWorkload
-func (a *WorkloadsAPIService) DestroyWorkloadExecute(r ApiDestroyWorkloadRequest) (*ResponseAsyncDeleteWorkload, *http.Response, error) {
+func (a *WorkloadsAPIService) DeleteWorkloadExecute(r ApiDeleteWorkloadRequest) (*ResponseAsyncDeleteWorkload, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -260,7 +261,7 @@ func (a *WorkloadsAPIService) DestroyWorkloadExecute(r ApiDestroyWorkloadRequest
 		localVarReturnValue  *ResponseAsyncDeleteWorkload
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.DestroyWorkload")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.DeleteWorkload")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -419,16 +420,86 @@ func (a *WorkloadsAPIService) DestroyWorkloadExecute(r ApiDestroyWorkloadRequest
 type ApiListWorkloadsRequest struct {
 	ctx context.Context
 	ApiService *WorkloadsAPIService
+	active *bool
+	digitalCertificateId *int64
 	fields *string
+	id *int64
+	infrastructure *string
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
+	mapName *string
+	mtlsTrustedCaCertificateId *int64
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
 	search *string
 }
 
+// Filter by active status.
+func (r ApiListWorkloadsRequest) Active(active bool) ApiListWorkloadsRequest {
+	r.active = &active
+	return r
+}
+
+// Filter by digital certificate id (accepts comma-separated values).
+func (r ApiListWorkloadsRequest) DigitalCertificateId(digitalCertificateId int64) ApiListWorkloadsRequest {
+	r.digitalCertificateId = &digitalCertificateId
+	return r
+}
+
 // Comma-separated list of field names to include in the response.
 func (r ApiListWorkloadsRequest) Fields(fields string) ApiListWorkloadsRequest {
 	r.fields = &fields
+	return r
+}
+
+// Filter by id (accepts comma-separated values).
+func (r ApiListWorkloadsRequest) Id(id int64) ApiListWorkloadsRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by infrastructure (accepts comma-separated values).
+func (r ApiListWorkloadsRequest) Infrastructure(infrastructure string) ApiListWorkloadsRequest {
+	r.infrastructure = &infrastructure
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListWorkloadsRequest) LastEditor(lastEditor string) ApiListWorkloadsRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListWorkloadsRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListWorkloadsRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListWorkloadsRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListWorkloadsRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
+// Filter by map name (case-insensitive, partial match).
+func (r ApiListWorkloadsRequest) MapName(mapName string) ApiListWorkloadsRequest {
+	r.mapName = &mapName
+	return r
+}
+
+// Filter by mTLS trusted CA certificate id (accepts comma-separated values).
+func (r ApiListWorkloadsRequest) MtlsTrustedCaCertificateId(mtlsTrustedCaCertificateId int64) ApiListWorkloadsRequest {
+	r.mtlsTrustedCaCertificateId = &mtlsTrustedCaCertificateId
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListWorkloadsRequest) Name(name string) ApiListWorkloadsRequest {
+	r.name = &name
 	return r
 }
 
@@ -496,8 +567,38 @@ func (a *WorkloadsAPIService) ListWorkloadsExecute(r ApiListWorkloadsRequest) (*
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.active != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+	}
+	if r.digitalCertificateId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "digital_certificate_id", r.digitalCertificateId, "form", "")
+	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.infrastructure != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "infrastructure", r.infrastructure, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
+	}
+	if r.mapName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "map_name", r.mapName, "form", "")
+	}
+	if r.mtlsTrustedCaCertificateId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mtls_trusted_ca_certificate_id", r.mtlsTrustedCaCertificateId, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -677,7 +778,7 @@ PartialUpdateWorkload Partially update an Workload
 Update one or more fields of an existing Workload without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param workloadId
+ @param workloadId A unique integer value identifying the workload.
  @return ApiPartialUpdateWorkloadRequest
 */
 func (a *WorkloadsAPIService) PartialUpdateWorkload(ctx context.Context, workloadId int64) ApiPartialUpdateWorkloadRequest {
@@ -879,7 +980,7 @@ RetrieveWorkload Retrieve details of an Workload
 Retrieve details of a specific Workload in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param workloadId
+ @param workloadId A unique integer value identifying the workload.
  @return ApiRetrieveWorkloadRequest
 */
 func (a *WorkloadsAPIService) RetrieveWorkload(ctx context.Context, workloadId int64) ApiRetrieveWorkloadRequest {
@@ -1081,7 +1182,7 @@ UpdateWorkload Update an Workload
 Update an existing Workload. This replaces the entire Workload with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param workloadId
+ @param workloadId A unique integer value identifying the workload.
  @return ApiUpdateWorkloadRequest
 */
 func (a *WorkloadsAPIService) UpdateWorkload(ctx context.Context, workloadId int64) ApiUpdateWorkloadRequest {

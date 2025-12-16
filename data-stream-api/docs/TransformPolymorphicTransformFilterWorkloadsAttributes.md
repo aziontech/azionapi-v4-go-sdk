@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | * &#x60;filter_workloads&#x60; - Filter Workloads | 
+**Type** | **string** | Type identifier for this endpoint (filter_workloads) | 
 **Attributes** | [**TransformFilterWorkloads**](TransformFilterWorkloads.md) |  | 
 
 ## Methods
