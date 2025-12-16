@@ -5,11 +5,11 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateNetworkList**](NetworkListsAPI.md#CreateNetworkList) | **Post** /workspace/network_lists | Create a Network List
-[**DestroyNetworkList**](NetworkListsAPI.md#DestroyNetworkList) | **Delete** /workspace/network_lists/{id} | Destroy a Network List
+[**DeleteNetworkList**](NetworkListsAPI.md#DeleteNetworkList) | **Delete** /workspace/network_lists/{network_list_id} | Delete a Network List
 [**ListNetworkLists**](NetworkListsAPI.md#ListNetworkLists) | **Get** /workspace/network_lists | List Network Lists
-[**PartialUpdateNetworkList**](NetworkListsAPI.md#PartialUpdateNetworkList) | **Patch** /workspace/network_lists/{id} | Partially update a Network List
-[**RetrieveNetworkList**](NetworkListsAPI.md#RetrieveNetworkList) | **Get** /workspace/network_lists/{id} | Retrieve details of a Network List
-[**UpdateNetworkList**](NetworkListsAPI.md#UpdateNetworkList) | **Put** /workspace/network_lists/{id} | Update a Network List
+[**PartialUpdateNetworkList**](NetworkListsAPI.md#PartialUpdateNetworkList) | **Patch** /workspace/network_lists/{network_list_id} | Partially update a Network List
+[**RetrieveNetworkList**](NetworkListsAPI.md#RetrieveNetworkList) | **Get** /workspace/network_lists/{network_list_id} | Retrieve details of a Network List
+[**UpdateNetworkList**](NetworkListsAPI.md#UpdateNetworkList) | **Put** /workspace/network_lists/{network_list_id} | Update a Network List
 
 
 
@@ -79,11 +79,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyNetworkList
+## DeleteNetworkList
 
-> ResponseDeleteNetworkListDetail DestroyNetworkList(ctx, id).Execute()
+> ResponseAsyncDeleteNetworkListDetail DeleteNetworkList(ctx, networkListId).Execute()
 
-Destroy a Network List
+Delete a Network List
 
 
 
@@ -100,17 +100,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	networkListId := int64(789) // int64 | A unique integer value identifying the network list.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NetworkListsAPI.DestroyNetworkList(context.Background(), id).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.DeleteNetworkList(context.Background(), networkListId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.DestroyNetworkList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.DeleteNetworkList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyNetworkList`: ResponseDeleteNetworkListDetail
-	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.DestroyNetworkList`: %v\n", resp)
+	// response from `DeleteNetworkList`: ResponseAsyncDeleteNetworkListDetail
+	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.DeleteNetworkList`: %v\n", resp)
 }
 ```
 
@@ -120,11 +120,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**networkListId** | **int64** | A unique integer value identifying the network list. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyNetworkListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteNetworkListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteNetworkListDetail**](ResponseDeleteNetworkListDetail.md)
+[**ResponseAsyncDeleteNetworkListDetail**](ResponseAsyncDeleteNetworkListDetail.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ListNetworkLists
 
-> PaginatedNetworkListList ListNetworkLists(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedNetworkListList ListNetworkLists(ctx).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).ListTypeIn(listTypeIn).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 List Network Lists
 
@@ -166,11 +166,18 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
+	listTypeIn := "listTypeIn_example" // string | Filter by list type (accepts comma-separated values). (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: name, type, last_editor, last_modified, active) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
@@ -178,7 +185,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NetworkListsAPI.ListNetworkLists(context.Background()).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.ListNetworkLists(context.Background()).Fields(fields).Id(id).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).ListTypeIn(listTypeIn).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.ListNetworkLists``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,6 +207,12 @@ Other parameters are passed through a pointer to a apiListNetworkListsRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **id** | **int64** | Filter by id (accepts comma-separated values). | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
+ **listTypeIn** | **string** | Filter by list type (accepts comma-separated values). | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: name, type, last_editor, last_modified, active) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
@@ -225,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateNetworkList
 
-> ResponseNetworkListDetail PartialUpdateNetworkList(ctx, id).PatchedNetworkListDetailRequest(patchedNetworkListDetailRequest).Execute()
+> ResponseNetworkListDetail PartialUpdateNetworkList(ctx, networkListId).PatchedNetworkListDetailRequest(patchedNetworkListDetailRequest).Execute()
 
 Partially update a Network List
 
@@ -244,12 +257,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	networkListId := int64(789) // int64 | A unique integer value identifying the network list.
 	patchedNetworkListDetailRequest := *openapiclient.NewPatchedNetworkListDetailRequest() // PatchedNetworkListDetailRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NetworkListsAPI.PartialUpdateNetworkList(context.Background(), id).PatchedNetworkListDetailRequest(patchedNetworkListDetailRequest).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.PartialUpdateNetworkList(context.Background(), networkListId).PatchedNetworkListDetailRequest(patchedNetworkListDetailRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.PartialUpdateNetworkList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,7 +278,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**networkListId** | **int64** | A unique integer value identifying the network list. | 
 
 ### Other Parameters
 
@@ -297,7 +310,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveNetworkList
 
-> ResponseRetrieveNetworkListDetail RetrieveNetworkList(ctx, id).Fields(fields).Ipv4(ipv4).Ipv6(ipv6).Execute()
+> ResponseRetrieveNetworkListDetail RetrieveNetworkList(ctx, networkListId).Fields(fields).Ipv4(ipv4).Ipv6(ipv6).Execute()
 
 Retrieve details of a Network List
 
@@ -316,14 +329,14 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	networkListId := int64(789) // int64 | A unique integer value identifying the network list.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 	ipv4 := true // bool | Filter by IPv4. Only applicable for network lists of type 'ip_cidr'. (optional)
 	ipv6 := true // bool | Filter by IPv6. Only applicable for network lists of type 'ip_cidr'. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NetworkListsAPI.RetrieveNetworkList(context.Background(), id).Fields(fields).Ipv4(ipv4).Ipv6(ipv6).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.RetrieveNetworkList(context.Background(), networkListId).Fields(fields).Ipv4(ipv4).Ipv6(ipv6).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.RetrieveNetworkList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -339,7 +352,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**networkListId** | **int64** | A unique integer value identifying the network list. | 
 
 ### Other Parameters
 
@@ -373,7 +386,7 @@ Name | Type | Description  | Notes
 
 ## UpdateNetworkList
 
-> ResponseNetworkListDetail UpdateNetworkList(ctx, id).NetworkListDetailRequest(networkListDetailRequest).Execute()
+> ResponseNetworkListDetail UpdateNetworkList(ctx, networkListId).NetworkListDetailRequest(networkListDetailRequest).Execute()
 
 Update a Network List
 
@@ -392,12 +405,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	networkListId := int64(789) // int64 | A unique integer value identifying the network list.
 	networkListDetailRequest := *openapiclient.NewNetworkListDetailRequest("Name_example", "Type_example", []string{"Items_example"}) // NetworkListDetailRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NetworkListsAPI.UpdateNetworkList(context.Background(), id).NetworkListDetailRequest(networkListDetailRequest).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.UpdateNetworkList(context.Background(), networkListId).NetworkListDetailRequest(networkListDetailRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.UpdateNetworkList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -413,7 +426,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**networkListId** | **int64** | A unique integer value identifying the network list. | 
 
 ### Other Parameters
 

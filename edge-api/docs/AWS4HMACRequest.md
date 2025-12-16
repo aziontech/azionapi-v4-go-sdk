@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | * &#x60;aws4_hmac_sha256&#x60; - AWS for HMAC - SHA256 | 
+**Type** | Pointer to **string** | * &#x60;aws4_hmac_sha256&#x60; - AWS for HMAC - SHA256 | [optional] 
 **Attributes** | [**AWS4HMACAttributesRequest**](AWS4HMACAttributesRequest.md) |  | 
 
 ## Methods
 
 ### NewAWS4HMACRequest
 
-`func NewAWS4HMACRequest(type_ string, attributes AWS4HMACAttributesRequest, ) *AWS4HMACRequest`
+`func NewAWS4HMACRequest(attributes AWS4HMACAttributesRequest, ) *AWS4HMACRequest`
 
 NewAWS4HMACRequest instantiates a new AWS4HMACRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *AWS4HMACRequest) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetAttributes
 

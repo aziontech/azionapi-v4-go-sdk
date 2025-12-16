@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** |  | 
+**Type** | **string** | Type identifier for this endpoint (qradar) | 
 
 ## Methods
 
 ### NewQRadarEndpoint
 
-`func NewQRadarEndpoint(url string, ) *QRadarEndpoint`
+`func NewQRadarEndpoint(url string, type_ string, ) *QRadarEndpoint`
 
 NewQRadarEndpoint instantiates a new QRadarEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *QRadarEndpoint) SetUrl(v string)`
 
 SetUrl sets Url field to given value.
+
+
+### GetType
+
+`func (o *QRadarEndpoint) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *QRadarEndpoint) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *QRadarEndpoint) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 

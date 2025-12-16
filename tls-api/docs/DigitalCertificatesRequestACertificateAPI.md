@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RequestACertificate**](DigitalCertificatesRequestACertificateAPI.md#RequestACertificate) | **Post** /digital_certificates/certificates/request | Request a certificate
+[**RequestCertificate**](DigitalCertificatesRequestACertificateAPI.md#RequestCertificate) | **Post** /workspace/tls/certificates/request | Request a certificate
 
 
 
-## RequestACertificate
+## RequestCertificate
 
-> ResponseCertificate RequestACertificate(ctx).CertificateRequestRequest(certificateRequestRequest).Execute()
+> ResponseCertificate RequestCertificate(ctx).CertificateRequest(certificateRequest).Execute()
 
 Request a certificate
 
@@ -25,21 +25,22 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	certificateRequestRequest := *openapiclient.NewCertificateRequestRequest("Name_example", "Challenge_example", "Authority_example", "CommonName_example") // CertificateRequestRequest | 
+	certificateRequest := *openapiclient.NewCertificateRequest(int64(123), "Name_example", "Issuer_example", []string{"SubjectName_example"}, "Validity_example", false, "Status_example", "StatusDetail_example", "Csr_example", "Challenge_example", "Authority_example", "ProductVersion_example", "LastEditor_example", time.Now(), time.Now(), "CommonName_example") // CertificateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DigitalCertificatesRequestACertificateAPI.RequestACertificate(context.Background()).CertificateRequestRequest(certificateRequestRequest).Execute()
+	resp, r, err := apiClient.DigitalCertificatesRequestACertificateAPI.RequestCertificate(context.Background()).CertificateRequest(certificateRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesRequestACertificateAPI.RequestACertificate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesRequestACertificateAPI.RequestCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RequestACertificate`: ResponseCertificate
-	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesRequestACertificateAPI.RequestACertificate`: %v\n", resp)
+	// response from `RequestCertificate`: ResponseCertificate
+	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesRequestACertificateAPI.RequestCertificate`: %v\n", resp)
 }
 ```
 
@@ -49,12 +50,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRequestACertificateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRequestCertificateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **certificateRequestRequest** | [**CertificateRequestRequest**](CertificateRequestRequest.md) |  | 
+ **certificateRequest** | [**CertificateRequest**](CertificateRequest.md) |  | 
 
 ### Return type
 

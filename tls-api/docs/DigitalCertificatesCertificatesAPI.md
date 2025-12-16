@@ -4,18 +4,18 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCertificate**](DigitalCertificatesCertificatesAPI.md#CreateCertificate) | **Post** /digital_certificates/certificates | Create a certificate
-[**DestroyCertificate**](DigitalCertificatesCertificatesAPI.md#DestroyCertificate) | **Delete** /digital_certificates/certificates/{id} | Destroy a certificate
-[**ListCertificates**](DigitalCertificatesCertificatesAPI.md#ListCertificates) | **Get** /digital_certificates/certificates | List certificates
-[**PartialUpdateCertificate**](DigitalCertificatesCertificatesAPI.md#PartialUpdateCertificate) | **Patch** /digital_certificates/certificates/{id} | Partially update a certificate
-[**RetriveCertificate**](DigitalCertificatesCertificatesAPI.md#RetriveCertificate) | **Get** /digital_certificates/certificates/{id} | Retrieve details from a certificate
-[**UpdateCertificate**](DigitalCertificatesCertificatesAPI.md#UpdateCertificate) | **Put** /digital_certificates/certificates/{id} | Update a certificate
+[**CreateCertificate**](DigitalCertificatesCertificatesAPI.md#CreateCertificate) | **Post** /workspace/tls/certificates | Create a certificate
+[**DeleteCertificate**](DigitalCertificatesCertificatesAPI.md#DeleteCertificate) | **Delete** /workspace/tls/certificates/{certificate_id} | Delete a certificate
+[**ListCertificates**](DigitalCertificatesCertificatesAPI.md#ListCertificates) | **Get** /workspace/tls/certificates | List certificates
+[**PartialUpdateCertificate**](DigitalCertificatesCertificatesAPI.md#PartialUpdateCertificate) | **Patch** /workspace/tls/certificates/{certificate_id} | Partially update a certificate
+[**RetrieveCertificate**](DigitalCertificatesCertificatesAPI.md#RetrieveCertificate) | **Get** /workspace/tls/certificates/{certificate_id} | Retrieve details from a certificate
+[**UpdateCertificate**](DigitalCertificatesCertificatesAPI.md#UpdateCertificate) | **Put** /workspace/tls/certificates/{certificate_id} | Update a certificate
 
 
 
 ## CreateCertificate
 
-> ResponseCertificate CreateCertificate(ctx).CertificateRequest(certificateRequest).Execute()
+> ResponseCertificate CreateCertificate(ctx).Certificate(certificate).Execute()
 
 Create a certificate
 
@@ -30,15 +30,16 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	certificateRequest := *openapiclient.NewCertificateRequest("Name_example") // CertificateRequest | 
+	certificate := *openapiclient.NewCertificate(int64(123), "Name_example", "Issuer_example", []string{"SubjectName_example"}, "Validity_example", false, "Status_example", "StatusDetail_example", "Csr_example", "Challenge_example", "Authority_example", "KeyAlgorithm_example", "ProductVersion_example", "LastEditor_example", time.Now(), time.Now()) // Certificate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.CreateCertificate(context.Background()).CertificateRequest(certificateRequest).Execute()
+	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.CreateCertificate(context.Background()).Certificate(certificate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.CreateCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +60,7 @@ Other parameters are passed through a pointer to a apiCreateCertificateRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **certificateRequest** | [**CertificateRequest**](CertificateRequest.md) |  | 
+ **certificate** | [**Certificate**](Certificate.md) |  | 
 
 ### Return type
 
@@ -79,11 +80,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyCertificate
+## DeleteCertificate
 
-> ResponseDeleteCertificate DestroyCertificate(ctx, id).Execute()
+> ResponseAsyncDeleteCertificate DeleteCertificate(ctx, certificateId).Execute()
 
-Destroy a certificate
+Delete a certificate
 
 
 
@@ -100,17 +101,17 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	certificateId := int64(789) // int64 | The unique identifier of the certificate
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.DestroyCertificate(context.Background(), id).Execute()
+	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.DeleteCertificate(context.Background(), certificateId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.DestroyCertificate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.DeleteCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyCertificate`: ResponseDeleteCertificate
-	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesCertificatesAPI.DestroyCertificate`: %v\n", resp)
+	// response from `DeleteCertificate`: ResponseAsyncDeleteCertificate
+	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesCertificatesAPI.DeleteCertificate`: %v\n", resp)
 }
 ```
 
@@ -120,11 +121,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**certificateId** | **int64** | The unique identifier of the certificate | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyCertificateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteCertificateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -133,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteCertificate**](ResponseDeleteCertificate.md)
+[**ResponseAsyncDeleteCertificate**](ResponseAsyncDeleteCertificate.md)
 
 ### Authorization
 
@@ -151,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## ListCertificates
 
-> PaginatedCertificateList ListCertificates(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedCertificateList ListCertificates(ctx).CertificateType(certificateType).Fields(fields).Id(id).Issuer(issuer).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).RenewedAt(renewedAt).RenewedAtGte(renewedAtGte).RenewedAtLte(renewedAtLte).Search(search).Execute()
 
 List certificates
 
@@ -166,19 +167,31 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+	certificateType := "certificateType_example" // string | Filter by certificate type (accepts comma-separated values). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	id := int64(789) // int64 | Filter by certificate ID (accepts comma-separated values). (optional)
+	issuer := "issuer_example" // string | Filter by issuer (case-insensitive, partial match). (optional)
+	lastModified := time.Now() // time.Time | Filter by exact last modified date and time. (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
+	managed := true // bool | Filter by managed status. (optional)
+	name := "name_example" // string | Filter by certificate name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, certificate, issuer, validity, subject_name, type, managed, status, status_detail, csr, key_algorithm, challenge, authority, active, product_version, last_editor, last_modified, renewed_at) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
+	renewedAt := time.Now() // time.Time | Filter by exact renewed date and time. (optional)
+	renewedAtGte := time.Now() // time.Time | Filter by renewed date (greater than or equal). (optional)
+	renewedAtLte := time.Now() // time.Time | Filter by renewed date (less than or equal). (optional)
 	search := "search_example" // string | A search term. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.ListCertificates(context.Background()).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.ListCertificates(context.Background()).CertificateType(certificateType).Fields(fields).Id(id).Issuer(issuer).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).RenewedAt(renewedAt).RenewedAtGte(renewedAtGte).RenewedAtLte(renewedAtLte).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.ListCertificates``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -199,10 +212,21 @@ Other parameters are passed through a pointer to a apiListCertificatesRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **certificateType** | **string** | Filter by certificate type (accepts comma-separated values). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **id** | **int64** | Filter by certificate ID (accepts comma-separated values). | 
+ **issuer** | **string** | Filter by issuer (case-insensitive, partial match). | 
+ **lastModified** | **time.Time** | Filter by exact last modified date and time. | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
+ **managed** | **bool** | Filter by managed status. | 
+ **name** | **string** | Filter by certificate name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, certificate, issuer, validity, subject_name, type, managed, status, status_detail, csr, key_algorithm, challenge, authority, active, product_version, last_editor, last_modified, renewed_at) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
+ **renewedAt** | **time.Time** | Filter by exact renewed date and time. | 
+ **renewedAtGte** | **time.Time** | Filter by renewed date (greater than or equal). | 
+ **renewedAtLte** | **time.Time** | Filter by renewed date (less than or equal). | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -225,7 +249,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateCertificate
 
-> ResponseCertificate PartialUpdateCertificate(ctx, id).PatchedCertificateRequest(patchedCertificateRequest).Execute()
+> ResponseCertificate PartialUpdateCertificate(ctx, certificateId).PatchedCertificate(patchedCertificate).Execute()
 
 Partially update a certificate
 
@@ -244,12 +268,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
-	patchedCertificateRequest := *openapiclient.NewPatchedCertificateRequest() // PatchedCertificateRequest |  (optional)
+	certificateId := int64(789) // int64 | The unique identifier of the certificate
+	patchedCertificate := *openapiclient.NewPatchedCertificate() // PatchedCertificate |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.PartialUpdateCertificate(context.Background(), id).PatchedCertificateRequest(patchedCertificateRequest).Execute()
+	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.PartialUpdateCertificate(context.Background(), certificateId).PatchedCertificate(patchedCertificate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.PartialUpdateCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,7 +289,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**certificateId** | **int64** | The unique identifier of the certificate | 
 
 ### Other Parameters
 
@@ -275,7 +299,7 @@ Other parameters are passed through a pointer to a apiPartialUpdateCertificateRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchedCertificateRequest** | [**PatchedCertificateRequest**](PatchedCertificateRequest.md) |  | 
+ **patchedCertificate** | [**PatchedCertificate**](PatchedCertificate.md) |  | 
 
 ### Return type
 
@@ -295,9 +319,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RetriveCertificate
+## RetrieveCertificate
 
-> ResponseRetrieveCertificate RetriveCertificate(ctx, id).Fields(fields).Execute()
+> ResponseRetrieveCertificate RetrieveCertificate(ctx, certificateId).Fields(fields).Execute()
 
 Retrieve details from a certificate
 
@@ -316,18 +340,18 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | 
+	certificateId := int64(789) // int64 | The unique identifier of the certificate
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.RetriveCertificate(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.RetrieveCertificate(context.Background(), certificateId).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.RetriveCertificate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.RetrieveCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetriveCertificate`: ResponseRetrieveCertificate
-	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesCertificatesAPI.RetriveCertificate`: %v\n", resp)
+	// response from `RetrieveCertificate`: ResponseRetrieveCertificate
+	fmt.Fprintf(os.Stdout, "Response from `DigitalCertificatesCertificatesAPI.RetrieveCertificate`: %v\n", resp)
 }
 ```
 
@@ -337,11 +361,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**certificateId** | **int64** | The unique identifier of the certificate | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRetriveCertificateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRetrieveCertificateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -369,7 +393,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCertificate
 
-> ResponseCertificate UpdateCertificate(ctx, id).CertificateRequest(certificateRequest).Execute()
+> ResponseCertificate UpdateCertificate(ctx, certificateId).Certificate(certificate).Execute()
 
 Update a certificate
 
@@ -384,16 +408,17 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	id := "id_example" // string | 
-	certificateRequest := *openapiclient.NewCertificateRequest("Name_example") // CertificateRequest | 
+	certificateId := int64(789) // int64 | The unique identifier of the certificate
+	certificate := *openapiclient.NewCertificate(int64(123), "Name_example", "Issuer_example", []string{"SubjectName_example"}, "Validity_example", false, "Status_example", "StatusDetail_example", "Csr_example", "Challenge_example", "Authority_example", "KeyAlgorithm_example", "ProductVersion_example", "LastEditor_example", time.Now(), time.Now()) // Certificate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.UpdateCertificate(context.Background(), id).CertificateRequest(certificateRequest).Execute()
+	resp, r, err := apiClient.DigitalCertificatesCertificatesAPI.UpdateCertificate(context.Background(), certificateId).Certificate(certificate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DigitalCertificatesCertificatesAPI.UpdateCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,7 +434,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**certificateId** | **int64** | The unique identifier of the certificate | 
 
 ### Other Parameters
 
@@ -419,7 +444,7 @@ Other parameters are passed through a pointer to a apiUpdateCertificateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **certificateRequest** | [**CertificateRequest**](CertificateRequest.md) |  | 
+ **certificate** | [**Certificate**](Certificate.md) |  | 
 
 ### Return type
 

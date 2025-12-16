@@ -81,7 +81,6 @@ Class | Method | HTTP request | Description
 *AuthLoginAPI* | [**AuthUserLogin**](docs/AuthLoginAPI.md#authuserlogin) | **Post** /auth/login | User Login – Generate JWT Tokens
 *AuthLoginAPI* | [**AuthUserLoginMethod**](docs/AuthLoginAPI.md#authuserloginmethod) | **Get** /auth/login/method | Check User Authentication Method
 *AuthMFATOTPDeviceAPI* | [**CreateTotpDevice**](docs/AuthMFATOTPDeviceAPI.md#createtotpdevice) | **Post** /auth/mfa/totp | Create a TOTP device
-*AuthMFATOTPDeviceAPI* | [**DestroyTotpDevice**](docs/AuthMFATOTPDeviceAPI.md#destroytotpdevice) | **Delete** /auth/mfa/totp/{id} | Destroy a TOTP device
 *AuthMFATOTPDeviceAPI* | [**ListTotpDevices**](docs/AuthMFATOTPDeviceAPI.md#listtotpdevices) | **Get** /auth/mfa/totp | List of TOTP devices
 *AuthRefreshAccessTokenAPI* | [**AuthUserRefreshToken**](docs/AuthRefreshAccessTokenAPI.md#authuserrefreshtoken) | **Post** /auth/token | Refresh user JWT access token
 *AuthRevokeAPI* | [**AuthUserRevoke**](docs/AuthRevokeAPI.md#authuserrevoke) | **Post** /auth/revoke | Revoke user JWT refresh token
@@ -89,7 +88,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [DefaultErrorResponse](docs/DefaultErrorResponse.md)
  - [JSONAPIErrorObject](docs/JSONAPIErrorObject.md)
  - [JSONAPIErrorResponse](docs/JSONAPIErrorResponse.md)
  - [JSONAPIErrorSource](docs/JSONAPIErrorSource.md)
@@ -116,9 +114,6 @@ Class | Method | HTTP request | Description
  - [ResponseAsyncTOTPDeviceCreate](docs/ResponseAsyncTOTPDeviceCreate.md)
  - [ResponseAsyncToken](docs/ResponseAsyncToken.md)
  - [ResponseAsyncTokenPair](docs/ResponseAsyncTokenPair.md)
- - [ResponseBadRequestPolicy](docs/ResponseBadRequestPolicy.md)
- - [ResponseDeletePolicy](docs/ResponseDeletePolicy.md)
- - [ResponseDeleteTOTPDeviceCreate](docs/ResponseDeleteTOTPDeviceCreate.md)
  - [ResponseLockoutPolicy](docs/ResponseLockoutPolicy.md)
  - [ResponseLogin](docs/ResponseLogin.md)
  - [ResponsePolicy](docs/ResponsePolicy.md)
@@ -157,7 +152,7 @@ auth := context.WithValue(context.Background(), authapi.ContextAccessToken, "BEA
 r, err := client.Service.Operation(auth, args)
 ```
 
-### JWT MFA Authentication
+### JwtMfaAuthentication
 
 - **Type**: HTTP Bearer token authentication
 
@@ -168,7 +163,7 @@ auth := context.WithValue(context.Background(), authapi.ContextAccessToken, "BEA
 r, err := client.Service.Operation(auth, args)
 ```
 
-### JWT Refresh Authentication
+### JwtRefreshAuthentication
 
 - **Type**: HTTP Bearer token authentication
 

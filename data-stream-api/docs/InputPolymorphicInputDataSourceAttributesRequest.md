@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | * &#x60;raw_logs&#x60; - Raw Logs | 
+**Type** | **string** | Type identifier for this endpoint (raw_logs) | 
 **Attributes** | [**InputDataSourceRequest**](InputDataSourceRequest.md) |  | 
 
 ## Methods

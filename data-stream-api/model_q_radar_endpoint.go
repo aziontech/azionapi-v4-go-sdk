@@ -22,6 +22,8 @@ var _ MappedNullable = &QRadarEndpoint{}
 // QRadarEndpoint struct for QRadarEndpoint
 type QRadarEndpoint struct {
 	Url string `json:"url"`
+	// Type identifier for this endpoint (qradar)
+	Type string `json:"type"`
 }
 
 type _QRadarEndpoint QRadarEndpoint
@@ -30,9 +32,10 @@ type _QRadarEndpoint QRadarEndpoint
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewQRadarEndpoint(url string) *QRadarEndpoint {
+func NewQRadarEndpoint(url string, type_ string) *QRadarEndpoint {
 	this := QRadarEndpoint{}
 	this.Url = url
+	this.Type = type_
 	return &this
 }
 
@@ -68,6 +71,30 @@ func (o *QRadarEndpoint) SetUrl(v string) {
 	o.Url = v
 }
 
+// GetType returns the Type field value
+func (o *QRadarEndpoint) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *QRadarEndpoint) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *QRadarEndpoint) SetType(v string) {
+	o.Type = v
+}
+
 func (o QRadarEndpoint) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -79,6 +106,7 @@ func (o QRadarEndpoint) MarshalJSON() ([]byte, error) {
 func (o QRadarEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["url"] = o.Url
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -88,6 +116,7 @@ func (o *QRadarEndpoint) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"url",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

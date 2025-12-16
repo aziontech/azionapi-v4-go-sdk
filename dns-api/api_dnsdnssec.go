@@ -45,7 +45,7 @@ PartialUpdateDnssec Partially update a DNSSEC
 Update one or more fields of an existing DNSSEC without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiPartialUpdateDnssecRequest
 */
 func (a *DNSDNSSECAPIService) PartialUpdateDnssec(ctx context.Context, zoneId int64) ApiPartialUpdateDnssecRequest {
@@ -71,8 +71,8 @@ func (a *DNSDNSSECAPIService) PartialUpdateDnssecExecute(r ApiPartialUpdateDnsse
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/dnssec"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/dnssec"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -247,7 +247,7 @@ RetrieveDnssec Retrieve details of a DNSSEC
 Retrieve details of a specific DNSSEC from a DNS Zone in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiRetrieveDnssecRequest
 */
 func (a *DNSDNSSECAPIService) RetrieveDnssec(ctx context.Context, zoneId int64) ApiRetrieveDnssecRequest {
@@ -273,8 +273,8 @@ func (a *DNSDNSSECAPIService) RetrieveDnssecExecute(r ApiRetrieveDnssecRequest) 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/dnssec"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/dnssec"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -449,7 +449,7 @@ UpdateDnssec Update a DNSSEC
 Update an existing a DNSSEC. This replaces the entire DNSSEC with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId
+ @param zoneId A unique integer value identifying the DNS Zone.
  @return ApiUpdateDnssecRequest
 */
 func (a *DNSDNSSECAPIService) UpdateDnssec(ctx context.Context, zoneId int64) ApiUpdateDnssecRequest {
@@ -475,8 +475,8 @@ func (a *DNSDNSSECAPIService) UpdateDnssecExecute(r ApiUpdateDnssecRequest) (*Re
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_dns/zones/{zoneId}/dnssec"
-	localVarPath = strings.Replace(localVarPath, "{"+"zoneId"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
+	localVarPath := localBasePath + "/edge_dns/zones/{zone_id}/dnssec"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
