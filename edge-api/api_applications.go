@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -26,7 +27,7 @@ type ApplicationsAPIService service
 type ApiCloneApplicationRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsAPIService
-	applicationId string
+	applicationId int64
 	cloneApplicationRequest *CloneApplicationRequest
 }
 
@@ -35,7 +36,7 @@ func (r ApiCloneApplicationRequest) CloneApplicationRequest(cloneApplicationRequ
 	return r
 }
 
-func (r ApiCloneApplicationRequest) Execute() (*ResponseRetrieveApplication, *http.Response, error) {
+func (r ApiCloneApplicationRequest) Execute() (*ResponseApplication, *http.Response, error) {
 	return r.ApiService.CloneApplicationExecute(r)
 }
 
@@ -45,10 +46,10 @@ CloneApplication Clone an Application
 Create a new Application by performing a deep copy of an existing Application, including its Cache Settings, Origins, Error Responses, Function Instances, and Rules Engine.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
+ @param applicationId A unique integer value identifying the application.
  @return ApiCloneApplicationRequest
 */
-func (a *ApplicationsAPIService) CloneApplication(ctx context.Context, applicationId string) ApiCloneApplicationRequest {
+func (a *ApplicationsAPIService) CloneApplication(ctx context.Context, applicationId int64) ApiCloneApplicationRequest {
 	return ApiCloneApplicationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,13 +58,13 @@ func (a *ApplicationsAPIService) CloneApplication(ctx context.Context, applicati
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveApplication
-func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRequest) (*ResponseRetrieveApplication, *http.Response, error) {
+//  @return ResponseApplication
+func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRequest) (*ResponseApplication, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveApplication
+		localVarReturnValue  *ResponseApplication
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.CloneApplication")
@@ -71,7 +72,7 @@ func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/clone"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/clone"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -136,52 +137,8 @@ func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ResponseBadRequestApplication
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 405 {
-			var v DefaultErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 406 {
-			var v DefaultErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v DefaultErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -192,7 +149,7 @@ func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v DefaultErrorResponse
+			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -201,6 +158,60 @@ func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRe
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 405 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 406 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -262,7 +273,7 @@ func (a *ApplicationsAPIService) CreateApplicationExecute(r ApiCreateApplication
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications"
+	localVarPath := localBasePath + "/workspace/applications"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -417,27 +428,27 @@ func (a *ApplicationsAPIService) CreateApplicationExecute(r ApiCreateApplication
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyApplicationRequest struct {
+type ApiDeleteApplicationRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsAPIService
 	applicationId int64
 }
 
-func (r ApiDestroyApplicationRequest) Execute() (*ResponseDeleteApplication, *http.Response, error) {
-	return r.ApiService.DestroyApplicationExecute(r)
+func (r ApiDeleteApplicationRequest) Execute() (*ResponseAsyncDeleteApplication, *http.Response, error) {
+	return r.ApiService.DeleteApplicationExecute(r)
 }
 
 /*
-DestroyApplication Destroy an Application
+DeleteApplication Delete an Application
 
-Destruction of a specific Application in your account.
+Delete a specific Application in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId A unique integer value identifying the application.
- @return ApiDestroyApplicationRequest
+ @return ApiDeleteApplicationRequest
 */
-func (a *ApplicationsAPIService) DestroyApplication(ctx context.Context, applicationId int64) ApiDestroyApplicationRequest {
-	return ApiDestroyApplicationRequest{
+func (a *ApplicationsAPIService) DeleteApplication(ctx context.Context, applicationId int64) ApiDeleteApplicationRequest {
+	return ApiDeleteApplicationRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
@@ -445,21 +456,21 @@ func (a *ApplicationsAPIService) DestroyApplication(ctx context.Context, applica
 }
 
 // Execute executes the request
-//  @return ResponseDeleteApplication
-func (a *ApplicationsAPIService) DestroyApplicationExecute(r ApiDestroyApplicationRequest) (*ResponseDeleteApplication, *http.Response, error) {
+//  @return ResponseAsyncDeleteApplication
+func (a *ApplicationsAPIService) DeleteApplicationExecute(r ApiDeleteApplicationRequest) (*ResponseAsyncDeleteApplication, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteApplication
+		localVarReturnValue  *ResponseAsyncDeleteApplication
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.DestroyApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.DeleteApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -613,16 +624,58 @@ func (a *ApplicationsAPIService) DestroyApplicationExecute(r ApiDestroyApplicati
 type ApiListApplicationsRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsAPIService
+	active *bool
 	fields *string
+	id *int64
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
 	search *string
 }
 
+// Filter by active status.
+func (r ApiListApplicationsRequest) Active(active bool) ApiListApplicationsRequest {
+	r.active = &active
+	return r
+}
+
 // Comma-separated list of field names to include in the response.
 func (r ApiListApplicationsRequest) Fields(fields string) ApiListApplicationsRequest {
 	r.fields = &fields
+	return r
+}
+
+// Filter by id (accepts comma-separated values).
+func (r ApiListApplicationsRequest) Id(id int64) ApiListApplicationsRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListApplicationsRequest) LastEditor(lastEditor string) ApiListApplicationsRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListApplicationsRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListApplicationsRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListApplicationsRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListApplicationsRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListApplicationsRequest) Name(name string) ApiListApplicationsRequest {
+	r.name = &name
 	return r
 }
 
@@ -684,14 +737,32 @@ func (a *ApplicationsAPIService) ListApplicationsExecute(r ApiListApplicationsRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications"
+	localVarPath := localBasePath + "/workspace/applications"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.active != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -897,7 +968,7 @@ func (a *ApplicationsAPIService) PartialUpdateApplicationExecute(r ApiPartialUpd
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1099,7 +1170,7 @@ func (a *ApplicationsAPIService) RetrieveApplicationExecute(r ApiRetrieveApplica
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1301,7 +1372,7 @@ func (a *ApplicationsAPIService) UpdateApplicationExecute(r ApiUpdateApplication
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

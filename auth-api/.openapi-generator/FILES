@@ -12,7 +12,6 @@ docs/AuthLoginAPI.md
 docs/AuthMFATOTPDeviceAPI.md
 docs/AuthRefreshAccessTokenAPI.md
 docs/AuthRevokeAPI.md
-docs/DefaultErrorResponse.md
 docs/JSONAPIErrorObject.md
 docs/JSONAPIErrorResponse.md
 docs/JSONAPIErrorSource.md
@@ -39,9 +38,6 @@ docs/ResponseAsyncSessionTimeoutPolicy.md
 docs/ResponseAsyncTOTPDeviceCreate.md
 docs/ResponseAsyncToken.md
 docs/ResponseAsyncTokenPair.md
-docs/ResponseBadRequestPolicy.md
-docs/ResponseDeletePolicy.md
-docs/ResponseDeleteTOTPDeviceCreate.md
 docs/ResponseLockoutPolicy.md
 docs/ResponseLogin.md
 docs/ResponsePolicy.md
@@ -66,7 +62,6 @@ docs/UserLoginMethodResponse.md
 git_push.sh
 go.mod
 go.sum
-model_default_error_response.go
 model_jsonapi_error_object.go
 model_jsonapi_error_response.go
 model_jsonapi_error_source.go
@@ -93,9 +88,6 @@ model_response_async_session_timeout_policy.go
 model_response_async_token.go
 model_response_async_token_pair.go
 model_response_async_totp_device_create.go
-model_response_bad_request_policy.go
-model_response_delete_policy.go
-model_response_delete_totp_device_create.go
 model_response_lockout_policy.go
 model_response_login.go
 model_response_policy.go

@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateObjectKey**](StorageObjectsAPI.md#CreateObjectKey) | **Post** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Create new object key.
-[**DeleteObjectKey**](StorageObjectsAPI.md#DeleteObjectKey) | **Delete** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Delete object key
-[**DownloadObject**](StorageObjectsAPI.md#DownloadObject) | **Get** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Download object
-[**ListObjects**](StorageObjectsAPI.md#ListObjects) | **Get** /edge_storage/buckets/{bucketName}/objects | List objects from bucket
-[**UpdateObjectKey**](StorageObjectsAPI.md#UpdateObjectKey) | **Put** /edge_storage/buckets/{bucketName}/objects/{objectKey} | Update the object key.
+[**CreateObjectKey**](StorageObjectsAPI.md#CreateObjectKey) | **Post** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Create new object key.
+[**DeleteObjectKey**](StorageObjectsAPI.md#DeleteObjectKey) | **Delete** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Delete object key
+[**DownloadObject**](StorageObjectsAPI.md#DownloadObject) | **Get** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Download object
+[**ListObjects**](StorageObjectsAPI.md#ListObjects) | **Get** /workspace/storage/buckets/{bucket_name}/objects | List objects from bucket
+[**UpdateObjectKey**](StorageObjectsAPI.md#UpdateObjectKey) | **Put** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Update the object key.
 
 
 
@@ -33,9 +33,9 @@ import (
 )
 
 func main() {
-	bucketName := "bucketName_example" // string | 
-	objectKey := "objectKey_example" // string | 
-	contentType := "contentType_example" // string | The content type of the file (Example: application/octet-stream). (optional)
+	bucketName := "bucketName_example" // string | The name of the bucket
+	objectKey := "objectKey_example" // string | The key/path of the object within the bucket
+	contentType := "contentType_example" // string | The MIME type of the object being uploaded (optional)
 	body := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -56,8 +56,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**bucketName** | **string** |  | 
-**objectKey** | **string** |  | 
+**bucketName** | **string** | The name of the bucket | 
+**objectKey** | **string** | The key/path of the object within the bucket | 
 
 ### Other Parameters
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** | The content type of the file (Example: application/octet-stream). | 
+ **contentType** | **string** | The MIME type of the object being uploaded | 
  **body** | ***os.File** |  | 
 
 ### Return type
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## DeleteObjectKey
 
-> ResponseDeleteBucketObject DeleteObjectKey(ctx, bucketName, objectKey).Execute()
+> ResponseAsyncDeleteBucketObject DeleteObjectKey(ctx, bucketName, objectKey).Execute()
 
 Delete object key
 
@@ -110,8 +110,8 @@ import (
 )
 
 func main() {
-	bucketName := "bucketName_example" // string | 
-	objectKey := "objectKey_example" // string | 
+	bucketName := "bucketName_example" // string | The name of the bucket
+	objectKey := "objectKey_example" // string | The key/path of the object within the bucket
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -120,7 +120,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageObjectsAPI.DeleteObjectKey``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteObjectKey`: ResponseDeleteBucketObject
+	// response from `DeleteObjectKey`: ResponseAsyncDeleteBucketObject
 	fmt.Fprintf(os.Stdout, "Response from `StorageObjectsAPI.DeleteObjectKey`: %v\n", resp)
 }
 ```
@@ -131,8 +131,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**bucketName** | **string** |  | 
-**objectKey** | **string** |  | 
+**bucketName** | **string** | The name of the bucket | 
+**objectKey** | **string** | The key/path of the object within the bucket | 
 
 ### Other Parameters
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteBucketObject**](ResponseDeleteBucketObject.md)
+[**ResponseAsyncDeleteBucketObject**](ResponseAsyncDeleteBucketObject.md)
 
 ### Authorization
 
@@ -183,8 +183,8 @@ import (
 )
 
 func main() {
-	bucketName := "bucketName_example" // string | 
-	objectKey := "objectKey_example" // string | 
+	bucketName := "bucketName_example" // string | The name of the bucket
+	objectKey := "objectKey_example" // string | The key/path of the object within the bucket
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -205,8 +205,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**bucketName** | **string** |  | 
-**objectKey** | **string** |  | 
+**bucketName** | **string** | The name of the bucket | 
+**objectKey** | **string** | The key/path of the object within the bucket | 
 
 ### Other Parameters
 
@@ -258,7 +258,7 @@ import (
 )
 
 func main() {
-	bucketName := "bucketName_example" // string | 
+	bucketName := "bucketName_example" // string | The name of the bucket
 	allLevels := true // bool | If true, lists objects recursively. If false, lists only the first level using Delimiter='/' (default: true). (optional)
 	continuationToken := "continuationToken_example" // string | A continuation token for the next page of records. (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
@@ -283,7 +283,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**bucketName** | **string** |  | 
+**bucketName** | **string** | The name of the bucket | 
 
 ### Other Parameters
 
@@ -338,9 +338,9 @@ import (
 )
 
 func main() {
-	bucketName := "bucketName_example" // string | 
-	objectKey := "objectKey_example" // string | 
-	contentType := "contentType_example" // string | The content type of the file (Example: application/octet-stream). (optional)
+	bucketName := "bucketName_example" // string | The name of the bucket
+	objectKey := "objectKey_example" // string | The key/path of the object within the bucket
+	contentType := "contentType_example" // string | The MIME type of the object being uploaded (optional)
 	body := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -361,8 +361,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**bucketName** | **string** |  | 
-**objectKey** | **string** |  | 
+**bucketName** | **string** | The name of the bucket | 
+**objectKey** | **string** | The key/path of the object within the bucket | 
 
 ### Other Parameters
 
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** | The content type of the file (Example: application/octet-stream). | 
+ **contentType** | **string** | The MIME type of the object being uploaded | 
  **body** | ***os.File** |  | 
 
 ### Return type

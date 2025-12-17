@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListDataSources**](DataStreamDataSourcesAPI.md#ListDataSources) | **Get** /data_stream/data_sources | List of Data Sources
+[**ListDataSources**](DataStreamDataSourcesAPI.md#ListDataSources) | **Get** /workspace/stream/data_sources | List of Data Sources
 
 
 
@@ -29,14 +29,14 @@ import (
 )
 
 func main() {
-	active := true // bool |  (optional)
+	active := true // bool | Filter by active status. (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
-	name := "name_example" // string |  (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: slug, name, active) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
 	search := "search_example" // string | A search term. (optional)
-	slug := "slug_example" // string |  (optional)
+	slug := "slug_example" // string | Filter by slug (case-insensitive, exact match). (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -61,14 +61,14 @@ Other parameters are passed through a pointer to a apiListDataSourcesRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **active** | **bool** |  | 
+ **active** | **bool** | Filter by active status. | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
- **name** | **string** |  | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: slug, name, active) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
  **search** | **string** | A search term. | 
- **slug** | **string** |  | 
+ **slug** | **string** | Filter by slug (case-insensitive, exact match). | 
 
 ### Return type
 

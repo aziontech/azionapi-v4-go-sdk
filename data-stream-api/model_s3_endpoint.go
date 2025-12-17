@@ -29,6 +29,8 @@ type S3Endpoint struct {
 	// * `plain/text` - plain/text * `application/gzip` - application/gzip
 	ContentType string `json:"content_type"`
 	HostUrl string `json:"host_url"`
+	// Type identifier for this endpoint (s3)
+	Type string `json:"type"`
 }
 
 type _S3Endpoint S3Endpoint
@@ -37,7 +39,7 @@ type _S3Endpoint S3Endpoint
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewS3Endpoint(accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string) *S3Endpoint {
+func NewS3Endpoint(accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string, type_ string) *S3Endpoint {
 	this := S3Endpoint{}
 	this.AccessKey = accessKey
 	this.SecretKey = secretKey
@@ -45,6 +47,7 @@ func NewS3Endpoint(accessKey string, secretKey string, region string, bucketName
 	this.BucketName = bucketName
 	this.ContentType = contentType
 	this.HostUrl = hostUrl
+	this.Type = type_
 	return &this
 }
 
@@ -242,6 +245,30 @@ func (o *S3Endpoint) SetHostUrl(v string) {
 	o.HostUrl = v
 }
 
+// GetType returns the Type field value
+func (o *S3Endpoint) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *S3Endpoint) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *S3Endpoint) SetType(v string) {
+	o.Type = v
+}
+
 func (o S3Endpoint) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -261,6 +288,7 @@ func (o S3Endpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize["bucket_name"] = o.BucketName
 	toSerialize["content_type"] = o.ContentType
 	toSerialize["host_url"] = o.HostUrl
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -275,6 +303,7 @@ func (o *S3Endpoint) UnmarshalJSON(data []byte) (err error) {
 		"bucket_name",
 		"content_type",
 		"host_url",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})
