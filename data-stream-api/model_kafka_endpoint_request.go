@@ -24,6 +24,8 @@ type KafkaEndpointRequest struct {
 	BootstrapServers string `json:"bootstrap_servers"`
 	KafkaTopic string `json:"kafka_topic"`
 	UseTls bool `json:"use_tls"`
+	// Type identifier for this endpoint (kafka)
+	Type string `json:"type"`
 }
 
 type _KafkaEndpointRequest KafkaEndpointRequest
@@ -32,11 +34,12 @@ type _KafkaEndpointRequest KafkaEndpointRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKafkaEndpointRequest(bootstrapServers string, kafkaTopic string, useTls bool) *KafkaEndpointRequest {
+func NewKafkaEndpointRequest(bootstrapServers string, kafkaTopic string, useTls bool, type_ string) *KafkaEndpointRequest {
 	this := KafkaEndpointRequest{}
 	this.BootstrapServers = bootstrapServers
 	this.KafkaTopic = kafkaTopic
 	this.UseTls = useTls
+	this.Type = type_
 	return &this
 }
 
@@ -120,6 +123,30 @@ func (o *KafkaEndpointRequest) SetUseTls(v bool) {
 	o.UseTls = v
 }
 
+// GetType returns the Type field value
+func (o *KafkaEndpointRequest) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *KafkaEndpointRequest) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *KafkaEndpointRequest) SetType(v string) {
+	o.Type = v
+}
+
 func (o KafkaEndpointRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,6 +160,7 @@ func (o KafkaEndpointRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["bootstrap_servers"] = o.BootstrapServers
 	toSerialize["kafka_topic"] = o.KafkaTopic
 	toSerialize["use_tls"] = o.UseTls
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -144,6 +172,7 @@ func (o *KafkaEndpointRequest) UnmarshalJSON(data []byte) (err error) {
 		"bootstrap_servers",
 		"kafka_topic",
 		"use_tls",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

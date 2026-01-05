@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -26,7 +27,7 @@ type FirewallsFunctionAPIService service
 type ApiCreateFirewallFunctionRequest struct {
 	ctx context.Context
 	ApiService *FirewallsFunctionAPIService
-	firewallId string
+	firewallId int64
 	firewallFunctionInstanceRequest *FirewallFunctionInstanceRequest
 }
 
@@ -45,10 +46,10 @@ CreateFirewallFunction Create an Firewall Function
 Create a new Function Instance for a specific Firewall in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
+ @param firewallId A unique integer value identifying the firewall.
  @return ApiCreateFirewallFunctionRequest
 */
-func (a *FirewallsFunctionAPIService) CreateFirewallFunction(ctx context.Context, firewallId string) ApiCreateFirewallFunctionRequest {
+func (a *FirewallsFunctionAPIService) CreateFirewallFunction(ctx context.Context, firewallId int64) ApiCreateFirewallFunctionRequest {
 	return ApiCreateFirewallFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,7 +72,7 @@ func (a *FirewallsFunctionAPIService) CreateFirewallFunctionExecute(r ApiCreateF
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/functions"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/functions"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,39 +228,39 @@ func (a *FirewallsFunctionAPIService) CreateFirewallFunctionExecute(r ApiCreateF
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyFirewallFunctionRequest struct {
+type ApiDeleteFirewallFunctionRequest struct {
 	ctx context.Context
 	ApiService *FirewallsFunctionAPIService
-	firewallId string
-	id string
+	firewallId int64
+	functionId int64
 }
 
-func (r ApiDestroyFirewallFunctionRequest) Execute() (*ResponseDeleteFirewallFunctionInstance, *http.Response, error) {
-	return r.ApiService.DestroyFirewallFunctionExecute(r)
+func (r ApiDeleteFirewallFunctionRequest) Execute() (*ResponseDeleteFirewallFunctionInstance, *http.Response, error) {
+	return r.ApiService.DeleteFirewallFunctionExecute(r)
 }
 
 /*
-DestroyFirewallFunction Destroy an Firewall Function
+DeleteFirewallFunction Delete an Firewall Function
 
-Destroy a specific Firewall Function Instance in your account.
+Delete a specific Firewall Function Instance in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
- @param id
- @return ApiDestroyFirewallFunctionRequest
+ @param firewallId A unique integer value identifying the firewall.
+ @param functionId A unique integer value identifying the function instance.
+ @return ApiDeleteFirewallFunctionRequest
 */
-func (a *FirewallsFunctionAPIService) DestroyFirewallFunction(ctx context.Context, firewallId string, id string) ApiDestroyFirewallFunctionRequest {
-	return ApiDestroyFirewallFunctionRequest{
+func (a *FirewallsFunctionAPIService) DeleteFirewallFunction(ctx context.Context, firewallId int64, functionId int64) ApiDeleteFirewallFunctionRequest {
+	return ApiDeleteFirewallFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
 		firewallId: firewallId,
-		id: id,
+		functionId: functionId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseDeleteFirewallFunctionInstance
-func (a *FirewallsFunctionAPIService) DestroyFirewallFunctionExecute(r ApiDestroyFirewallFunctionRequest) (*ResponseDeleteFirewallFunctionInstance, *http.Response, error) {
+func (a *FirewallsFunctionAPIService) DeleteFirewallFunctionExecute(r ApiDeleteFirewallFunctionRequest) (*ResponseDeleteFirewallFunctionInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -267,14 +268,14 @@ func (a *FirewallsFunctionAPIService) DestroyFirewallFunctionExecute(r ApiDestro
 		localVarReturnValue  *ResponseDeleteFirewallFunctionInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsFunctionAPIService.DestroyFirewallFunction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsFunctionAPIService.DeleteFirewallFunction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/functions/{id}"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/functions/{function_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,8 +428,13 @@ func (a *FirewallsFunctionAPIService) DestroyFirewallFunctionExecute(r ApiDestro
 type ApiListFirewallFunctionRequest struct {
 	ctx context.Context
 	ApiService *FirewallsFunctionAPIService
-	firewallId string
+	firewallId int64
 	fields *string
+	id *int64
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
@@ -438,6 +444,36 @@ type ApiListFirewallFunctionRequest struct {
 // Comma-separated list of field names to include in the response.
 func (r ApiListFirewallFunctionRequest) Fields(fields string) ApiListFirewallFunctionRequest {
 	r.fields = &fields
+	return r
+}
+
+// Filter by id (accepts comma-separated values).
+func (r ApiListFirewallFunctionRequest) Id(id int64) ApiListFirewallFunctionRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListFirewallFunctionRequest) LastEditor(lastEditor string) ApiListFirewallFunctionRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListFirewallFunctionRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListFirewallFunctionRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListFirewallFunctionRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListFirewallFunctionRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListFirewallFunctionRequest) Name(name string) ApiListFirewallFunctionRequest {
+	r.name = &name
 	return r
 }
 
@@ -475,10 +511,10 @@ ListFirewallFunction List Firewall Function
 List all Function Instances for a specific Firewall owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
+ @param firewallId A unique integer value identifying the firewall.
  @return ApiListFirewallFunctionRequest
 */
-func (a *FirewallsFunctionAPIService) ListFirewallFunction(ctx context.Context, firewallId string) ApiListFirewallFunctionRequest {
+func (a *FirewallsFunctionAPIService) ListFirewallFunction(ctx context.Context, firewallId int64) ApiListFirewallFunctionRequest {
 	return ApiListFirewallFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -501,7 +537,7 @@ func (a *FirewallsFunctionAPIService) ListFirewallFunctionExecute(r ApiListFirew
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/functions"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/functions"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -510,6 +546,21 @@ func (a *FirewallsFunctionAPIService) ListFirewallFunctionExecute(r ApiListFirew
 
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -670,8 +721,8 @@ func (a *FirewallsFunctionAPIService) ListFirewallFunctionExecute(r ApiListFirew
 type ApiPartialUpdateFirewallFunctionRequest struct {
 	ctx context.Context
 	ApiService *FirewallsFunctionAPIService
-	firewallId string
-	id string
+	firewallId int64
+	functionId int64
 	patchedFirewallFunctionInstanceRequest *PatchedFirewallFunctionInstanceRequest
 }
 
@@ -690,16 +741,16 @@ PartialUpdateFirewallFunction Partially update an Firewall Function
 Update one or more fields of an existing Firewall Function Instance without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
- @param id
+ @param firewallId A unique integer value identifying the firewall.
+ @param functionId A unique integer value identifying the function instance.
  @return ApiPartialUpdateFirewallFunctionRequest
 */
-func (a *FirewallsFunctionAPIService) PartialUpdateFirewallFunction(ctx context.Context, firewallId string, id string) ApiPartialUpdateFirewallFunctionRequest {
+func (a *FirewallsFunctionAPIService) PartialUpdateFirewallFunction(ctx context.Context, firewallId int64, functionId int64) ApiPartialUpdateFirewallFunctionRequest {
 	return ApiPartialUpdateFirewallFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
 		firewallId: firewallId,
-		id: id,
+		functionId: functionId,
 	}
 }
 
@@ -718,9 +769,9 @@ func (a *FirewallsFunctionAPIService) PartialUpdateFirewallFunctionExecute(r Api
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/functions/{id}"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/functions/{function_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -875,8 +926,8 @@ func (a *FirewallsFunctionAPIService) PartialUpdateFirewallFunctionExecute(r Api
 type ApiRetrieveFirewallFunctionRequest struct {
 	ctx context.Context
 	ApiService *FirewallsFunctionAPIService
-	firewallId string
-	id string
+	firewallId int64
+	functionId int64
 	fields *string
 }
 
@@ -896,16 +947,16 @@ RetrieveFirewallFunction Retrieve details of an Firewall Function
 Retrieve details of a specific Firewall Function Instance in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
- @param id
+ @param firewallId A unique integer value identifying the firewall.
+ @param functionId A unique integer value identifying the function instance.
  @return ApiRetrieveFirewallFunctionRequest
 */
-func (a *FirewallsFunctionAPIService) RetrieveFirewallFunction(ctx context.Context, firewallId string, id string) ApiRetrieveFirewallFunctionRequest {
+func (a *FirewallsFunctionAPIService) RetrieveFirewallFunction(ctx context.Context, firewallId int64, functionId int64) ApiRetrieveFirewallFunctionRequest {
 	return ApiRetrieveFirewallFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
 		firewallId: firewallId,
-		id: id,
+		functionId: functionId,
 	}
 }
 
@@ -924,9 +975,9 @@ func (a *FirewallsFunctionAPIService) RetrieveFirewallFunctionExecute(r ApiRetri
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/functions/{id}"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/functions/{function_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,8 +1133,8 @@ func (a *FirewallsFunctionAPIService) RetrieveFirewallFunctionExecute(r ApiRetri
 type ApiUpdateFirewallFunctionRequest struct {
 	ctx context.Context
 	ApiService *FirewallsFunctionAPIService
-	firewallId string
-	id string
+	firewallId int64
+	functionId int64
 	firewallFunctionInstanceRequest *FirewallFunctionInstanceRequest
 }
 
@@ -1102,16 +1153,16 @@ UpdateFirewallFunction Update an Firewall Function
 Update an existing Firewall Function Instance. This replaces the entire Function Instance with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param firewallId
- @param id
+ @param firewallId A unique integer value identifying the firewall.
+ @param functionId A unique integer value identifying the function instance.
  @return ApiUpdateFirewallFunctionRequest
 */
-func (a *FirewallsFunctionAPIService) UpdateFirewallFunction(ctx context.Context, firewallId string, id string) ApiUpdateFirewallFunctionRequest {
+func (a *FirewallsFunctionAPIService) UpdateFirewallFunction(ctx context.Context, firewallId int64, functionId int64) ApiUpdateFirewallFunctionRequest {
 	return ApiUpdateFirewallFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
 		firewallId: firewallId,
-		id: id,
+		functionId: functionId,
 	}
 }
 
@@ -1130,9 +1181,9 @@ func (a *FirewallsFunctionAPIService) UpdateFirewallFunctionExecute(r ApiUpdateF
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/firewalls/{firewall_id}/functions/{id}"
+	localVarPath := localBasePath + "/workspace/firewalls/{firewall_id}/functions/{function_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"firewall_id"+"}", url.PathEscape(parameterValueToString(r.firewallId, "firewallId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

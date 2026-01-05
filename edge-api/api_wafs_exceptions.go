@@ -17,39 +17,40 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
 // WAFsExceptionsAPIService WAFsExceptionsAPI service
 type WAFsExceptionsAPIService service
 
-type ApiCreateWAFExceptionRequest struct {
+type ApiCreateWafExceptionRequest struct {
 	ctx context.Context
 	ApiService *WAFsExceptionsAPIService
-	wafId string
+	wafId int64
 	wAFRuleRequest *WAFRuleRequest
 }
 
-func (r ApiCreateWAFExceptionRequest) WAFRuleRequest(wAFRuleRequest WAFRuleRequest) ApiCreateWAFExceptionRequest {
+func (r ApiCreateWafExceptionRequest) WAFRuleRequest(wAFRuleRequest WAFRuleRequest) ApiCreateWafExceptionRequest {
 	r.wAFRuleRequest = &wAFRuleRequest
 	return r
 }
 
-func (r ApiCreateWAFExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
-	return r.ApiService.CreateWAFExceptionExecute(r)
+func (r ApiCreateWafExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
+	return r.ApiService.CreateWafExceptionExecute(r)
 }
 
 /*
-CreateWAFException Create an Exception for a Web Application Firewall (WAF)
+CreateWafException Create an Exception for a Web Application Firewall (WAF)
 
 Create a new Exception for a specific WAF in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param wafId
- @return ApiCreateWAFExceptionRequest
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiCreateWafExceptionRequest
 */
-func (a *WAFsExceptionsAPIService) CreateWAFException(ctx context.Context, wafId string) ApiCreateWAFExceptionRequest {
-	return ApiCreateWAFExceptionRequest{
+func (a *WAFsExceptionsAPIService) CreateWafException(ctx context.Context, wafId int64) ApiCreateWafExceptionRequest {
+	return ApiCreateWafExceptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		wafId: wafId,
@@ -58,7 +59,7 @@ func (a *WAFsExceptionsAPIService) CreateWAFException(ctx context.Context, wafId
 
 // Execute executes the request
 //  @return ResponseWAFRule
-func (a *WAFsExceptionsAPIService) CreateWAFExceptionExecute(r ApiCreateWAFExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
+func (a *WAFsExceptionsAPIService) CreateWafExceptionExecute(r ApiCreateWafExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -66,12 +67,12 @@ func (a *WAFsExceptionsAPIService) CreateWAFExceptionExecute(r ApiCreateWAFExcep
 		localVarReturnValue  *ResponseWAFRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.CreateWAFException")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.CreateWafException")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,29 +228,29 @@ func (a *WAFsExceptionsAPIService) CreateWAFExceptionExecute(r ApiCreateWAFExcep
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyWAFExceptionRequest struct {
+type ApiDeleteWafExceptionRequest struct {
 	ctx context.Context
 	ApiService *WAFsExceptionsAPIService
-	exceptionId string
-	wafId string
+	exceptionId int64
+	wafId int64
 }
 
-func (r ApiDestroyWAFExceptionRequest) Execute() (*ResponseDeleteWAFRule, *http.Response, error) {
-	return r.ApiService.DestroyWAFExceptionExecute(r)
+func (r ApiDeleteWafExceptionRequest) Execute() (*ResponseDeleteWAFRule, *http.Response, error) {
+	return r.ApiService.DeleteWafExceptionExecute(r)
 }
 
 /*
-DestroyWAFException Destroy an Exception from a Web Application Firewall (WAF)
+DeleteWafException Delete an Exception from a Web Application Firewall (WAF)
 
 Remove a specific Exception from a WAF in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exceptionId
- @param wafId
- @return ApiDestroyWAFExceptionRequest
+ @param exceptionId A unique integer value identifying the WAF exception.
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiDeleteWafExceptionRequest
 */
-func (a *WAFsExceptionsAPIService) DestroyWAFException(ctx context.Context, exceptionId string, wafId string) ApiDestroyWAFExceptionRequest {
-	return ApiDestroyWAFExceptionRequest{
+func (a *WAFsExceptionsAPIService) DeleteWafException(ctx context.Context, exceptionId int64, wafId int64) ApiDeleteWafExceptionRequest {
+	return ApiDeleteWafExceptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		exceptionId: exceptionId,
@@ -259,7 +260,7 @@ func (a *WAFsExceptionsAPIService) DestroyWAFException(ctx context.Context, exce
 
 // Execute executes the request
 //  @return ResponseDeleteWAFRule
-func (a *WAFsExceptionsAPIService) DestroyWAFExceptionExecute(r ApiDestroyWAFExceptionRequest) (*ResponseDeleteWAFRule, *http.Response, error) {
+func (a *WAFsExceptionsAPIService) DeleteWafExceptionExecute(r ApiDeleteWafExceptionRequest) (*ResponseDeleteWAFRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -267,12 +268,12 @@ func (a *WAFsExceptionsAPIService) DestroyWAFExceptionExecute(r ApiDestroyWAFExc
 		localVarReturnValue  *ResponseDeleteWAFRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.DestroyWAFException")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.DeleteWafException")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions/{exception_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions/{exception_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"exception_id"+"}", url.PathEscape(parameterValueToString(r.exceptionId, "exceptionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
@@ -424,62 +425,118 @@ func (a *WAFsExceptionsAPIService) DestroyWAFExceptionExecute(r ApiDestroyWAFExc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListWAFExceptionsRequest struct {
+type ApiListWafExceptionsRequest struct {
 	ctx context.Context
 	ApiService *WAFsExceptionsAPIService
-	wafId string
+	wafId int64
+	createdAtGte *time.Time
+	createdAtLte *time.Time
+	description *string
 	fields *string
+	id *int64
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
 	ordering *string
 	page *int64
 	pageSize *int64
+	path *string
 	search *string
 }
 
+// Filter by creation date (greater than or equal).
+func (r ApiListWafExceptionsRequest) CreatedAtGte(createdAtGte time.Time) ApiListWafExceptionsRequest {
+	r.createdAtGte = &createdAtGte
+	return r
+}
+
+// Filter by creation date (less than or equal).
+func (r ApiListWafExceptionsRequest) CreatedAtLte(createdAtLte time.Time) ApiListWafExceptionsRequest {
+	r.createdAtLte = &createdAtLte
+	return r
+}
+
+// Filter by description (case-insensitive, partial match).
+func (r ApiListWafExceptionsRequest) Description(description string) ApiListWafExceptionsRequest {
+	r.description = &description
+	return r
+}
+
 // Comma-separated list of field names to include in the response.
-func (r ApiListWAFExceptionsRequest) Fields(fields string) ApiListWAFExceptionsRequest {
+func (r ApiListWafExceptionsRequest) Fields(fields string) ApiListWafExceptionsRequest {
 	r.fields = &fields
 	return r
 }
 
+// Filter by id (accepts comma-separated values).
+func (r ApiListWafExceptionsRequest) Id(id int64) ApiListWafExceptionsRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListWafExceptionsRequest) LastEditor(lastEditor string) ApiListWafExceptionsRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListWafExceptionsRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListWafExceptionsRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListWafExceptionsRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListWafExceptionsRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
 // Which field to use when ordering the results. (Valid fields: rule_id, name, path, conditions, operator, active, last_editor, last_modified)
-func (r ApiListWAFExceptionsRequest) Ordering(ordering string) ApiListWAFExceptionsRequest {
+func (r ApiListWafExceptionsRequest) Ordering(ordering string) ApiListWafExceptionsRequest {
 	r.ordering = &ordering
 	return r
 }
 
 // A page number within the paginated result set.
-func (r ApiListWAFExceptionsRequest) Page(page int64) ApiListWAFExceptionsRequest {
+func (r ApiListWafExceptionsRequest) Page(page int64) ApiListWafExceptionsRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiListWAFExceptionsRequest) PageSize(pageSize int64) ApiListWAFExceptionsRequest {
+func (r ApiListWafExceptionsRequest) PageSize(pageSize int64) ApiListWafExceptionsRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
+// Filter by path (case-insensitive, partial match).
+func (r ApiListWafExceptionsRequest) Path(path string) ApiListWafExceptionsRequest {
+	r.path = &path
+	return r
+}
+
 // A search term.
-func (r ApiListWAFExceptionsRequest) Search(search string) ApiListWAFExceptionsRequest {
+func (r ApiListWafExceptionsRequest) Search(search string) ApiListWafExceptionsRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiListWAFExceptionsRequest) Execute() (*PaginatedWAFRuleList, *http.Response, error) {
-	return r.ApiService.ListWAFExceptionsExecute(r)
+func (r ApiListWafExceptionsRequest) Execute() (*PaginatedWAFRuleList, *http.Response, error) {
+	return r.ApiService.ListWafExceptionsExecute(r)
 }
 
 /*
-ListWAFExceptions List Exceptions for a Web Application Firewall (WAF)
+ListWafExceptions List Exceptions for a Web Application Firewall (WAF)
 
 List all Exceptions associated with a specific WAF owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param wafId
- @return ApiListWAFExceptionsRequest
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiListWafExceptionsRequest
 */
-func (a *WAFsExceptionsAPIService) ListWAFExceptions(ctx context.Context, wafId string) ApiListWAFExceptionsRequest {
-	return ApiListWAFExceptionsRequest{
+func (a *WAFsExceptionsAPIService) ListWafExceptions(ctx context.Context, wafId int64) ApiListWafExceptionsRequest {
+	return ApiListWafExceptionsRequest{
 		ApiService: a,
 		ctx: ctx,
 		wafId: wafId,
@@ -488,7 +545,7 @@ func (a *WAFsExceptionsAPIService) ListWAFExceptions(ctx context.Context, wafId 
 
 // Execute executes the request
 //  @return PaginatedWAFRuleList
-func (a *WAFsExceptionsAPIService) ListWAFExceptionsExecute(r ApiListWAFExceptionsRequest) (*PaginatedWAFRuleList, *http.Response, error) {
+func (a *WAFsExceptionsAPIService) ListWafExceptionsExecute(r ApiListWafExceptionsRequest) (*PaginatedWAFRuleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -496,20 +553,41 @@ func (a *WAFsExceptionsAPIService) ListWAFExceptionsExecute(r ApiListWAFExceptio
 		localVarReturnValue  *PaginatedWAFRuleList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.ListWAFExceptions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.ListWafExceptions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions"
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.createdAtGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_at__gte", r.createdAtGte, "form", "")
+	}
+	if r.createdAtLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_at__lte", r.createdAtLte, "form", "")
+	}
+	if r.description != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
+	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -519,6 +597,9 @@ func (a *WAFsExceptionsAPIService) ListWAFExceptionsExecute(r ApiListWAFExceptio
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.path != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "path", r.path, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
@@ -667,35 +748,35 @@ func (a *WAFsExceptionsAPIService) ListWAFExceptionsExecute(r ApiListWAFExceptio
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPartialUpdateWAFExceptionRequest struct {
+type ApiPartialUpdateWafExceptionRequest struct {
 	ctx context.Context
 	ApiService *WAFsExceptionsAPIService
-	exceptionId string
-	wafId string
+	exceptionId int64
+	wafId int64
 	patchedWAFRuleRequest *PatchedWAFRuleRequest
 }
 
-func (r ApiPartialUpdateWAFExceptionRequest) PatchedWAFRuleRequest(patchedWAFRuleRequest PatchedWAFRuleRequest) ApiPartialUpdateWAFExceptionRequest {
+func (r ApiPartialUpdateWafExceptionRequest) PatchedWAFRuleRequest(patchedWAFRuleRequest PatchedWAFRuleRequest) ApiPartialUpdateWafExceptionRequest {
 	r.patchedWAFRuleRequest = &patchedWAFRuleRequest
 	return r
 }
 
-func (r ApiPartialUpdateWAFExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
-	return r.ApiService.PartialUpdateWAFExceptionExecute(r)
+func (r ApiPartialUpdateWafExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
+	return r.ApiService.PartialUpdateWafExceptionExecute(r)
 }
 
 /*
-PartialUpdateWAFException Partially update an Exception for a Web Application Firewall (WAF)
+PartialUpdateWafException Partially update an Exception for a Web Application Firewall (WAF)
 
 Update one or more fields of an existing exception for a WAF without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exceptionId
- @param wafId
- @return ApiPartialUpdateWAFExceptionRequest
+ @param exceptionId A unique integer value identifying the WAF exception.
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiPartialUpdateWafExceptionRequest
 */
-func (a *WAFsExceptionsAPIService) PartialUpdateWAFException(ctx context.Context, exceptionId string, wafId string) ApiPartialUpdateWAFExceptionRequest {
-	return ApiPartialUpdateWAFExceptionRequest{
+func (a *WAFsExceptionsAPIService) PartialUpdateWafException(ctx context.Context, exceptionId int64, wafId int64) ApiPartialUpdateWafExceptionRequest {
+	return ApiPartialUpdateWafExceptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		exceptionId: exceptionId,
@@ -705,7 +786,7 @@ func (a *WAFsExceptionsAPIService) PartialUpdateWAFException(ctx context.Context
 
 // Execute executes the request
 //  @return ResponseWAFRule
-func (a *WAFsExceptionsAPIService) PartialUpdateWAFExceptionExecute(r ApiPartialUpdateWAFExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
+func (a *WAFsExceptionsAPIService) PartialUpdateWafExceptionExecute(r ApiPartialUpdateWafExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -713,12 +794,12 @@ func (a *WAFsExceptionsAPIService) PartialUpdateWAFExceptionExecute(r ApiPartial
 		localVarReturnValue  *ResponseWAFRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.PartialUpdateWAFException")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.PartialUpdateWafException")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions/{exception_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions/{exception_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"exception_id"+"}", url.PathEscape(parameterValueToString(r.exceptionId, "exceptionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
@@ -872,36 +953,36 @@ func (a *WAFsExceptionsAPIService) PartialUpdateWAFExceptionExecute(r ApiPartial
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRetrieveWAFExceptionRequest struct {
+type ApiRetrieveWafExceptionRequest struct {
 	ctx context.Context
 	ApiService *WAFsExceptionsAPIService
-	exceptionId string
-	wafId string
+	exceptionId int64
+	wafId int64
 	fields *string
 }
 
 // Comma-separated list of field names to include in the response.
-func (r ApiRetrieveWAFExceptionRequest) Fields(fields string) ApiRetrieveWAFExceptionRequest {
+func (r ApiRetrieveWafExceptionRequest) Fields(fields string) ApiRetrieveWafExceptionRequest {
 	r.fields = &fields
 	return r
 }
 
-func (r ApiRetrieveWAFExceptionRequest) Execute() (*ResponseRetrieveWAFRule, *http.Response, error) {
-	return r.ApiService.RetrieveWAFExceptionExecute(r)
+func (r ApiRetrieveWafExceptionRequest) Execute() (*ResponseRetrieveWAFRule, *http.Response, error) {
+	return r.ApiService.RetrieveWafExceptionExecute(r)
 }
 
 /*
-RetrieveWAFException Retrieve details of an Exception from a Web Application Firewall (WAF)
+RetrieveWafException Retrieve details of an Exception from a Web Application Firewall (WAF)
 
 Retrieve details of a specific Exception from a WAF in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exceptionId
- @param wafId
- @return ApiRetrieveWAFExceptionRequest
+ @param exceptionId A unique integer value identifying the WAF exception.
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiRetrieveWafExceptionRequest
 */
-func (a *WAFsExceptionsAPIService) RetrieveWAFException(ctx context.Context, exceptionId string, wafId string) ApiRetrieveWAFExceptionRequest {
-	return ApiRetrieveWAFExceptionRequest{
+func (a *WAFsExceptionsAPIService) RetrieveWafException(ctx context.Context, exceptionId int64, wafId int64) ApiRetrieveWafExceptionRequest {
+	return ApiRetrieveWafExceptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		exceptionId: exceptionId,
@@ -911,7 +992,7 @@ func (a *WAFsExceptionsAPIService) RetrieveWAFException(ctx context.Context, exc
 
 // Execute executes the request
 //  @return ResponseRetrieveWAFRule
-func (a *WAFsExceptionsAPIService) RetrieveWAFExceptionExecute(r ApiRetrieveWAFExceptionRequest) (*ResponseRetrieveWAFRule, *http.Response, error) {
+func (a *WAFsExceptionsAPIService) RetrieveWafExceptionExecute(r ApiRetrieveWafExceptionRequest) (*ResponseRetrieveWAFRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -919,12 +1000,12 @@ func (a *WAFsExceptionsAPIService) RetrieveWAFExceptionExecute(r ApiRetrieveWAFE
 		localVarReturnValue  *ResponseRetrieveWAFRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.RetrieveWAFException")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.RetrieveWafException")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions/{exception_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions/{exception_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"exception_id"+"}", url.PathEscape(parameterValueToString(r.exceptionId, "exceptionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
@@ -1079,35 +1160,35 @@ func (a *WAFsExceptionsAPIService) RetrieveWAFExceptionExecute(r ApiRetrieveWAFE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateWAFExceptionRequest struct {
+type ApiUpdateWafExceptionRequest struct {
 	ctx context.Context
 	ApiService *WAFsExceptionsAPIService
-	exceptionId string
-	wafId string
+	exceptionId int64
+	wafId int64
 	wAFRuleRequest *WAFRuleRequest
 }
 
-func (r ApiUpdateWAFExceptionRequest) WAFRuleRequest(wAFRuleRequest WAFRuleRequest) ApiUpdateWAFExceptionRequest {
+func (r ApiUpdateWafExceptionRequest) WAFRuleRequest(wAFRuleRequest WAFRuleRequest) ApiUpdateWafExceptionRequest {
 	r.wAFRuleRequest = &wAFRuleRequest
 	return r
 }
 
-func (r ApiUpdateWAFExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
-	return r.ApiService.UpdateWAFExceptionExecute(r)
+func (r ApiUpdateWafExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
+	return r.ApiService.UpdateWafExceptionExecute(r)
 }
 
 /*
-UpdateWAFException Update an Exception for a Web Application Firewall (WAF)
+UpdateWafException Update an Exception for a Web Application Firewall (WAF)
 
 Update an existing Exception for a WAF. This replaces the entire rule with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exceptionId
- @param wafId
- @return ApiUpdateWAFExceptionRequest
+ @param exceptionId A unique integer value identifying the WAF exception.
+ @param wafId A unique integer value identifying the WAF.
+ @return ApiUpdateWafExceptionRequest
 */
-func (a *WAFsExceptionsAPIService) UpdateWAFException(ctx context.Context, exceptionId string, wafId string) ApiUpdateWAFExceptionRequest {
-	return ApiUpdateWAFExceptionRequest{
+func (a *WAFsExceptionsAPIService) UpdateWafException(ctx context.Context, exceptionId int64, wafId int64) ApiUpdateWafExceptionRequest {
+	return ApiUpdateWafExceptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		exceptionId: exceptionId,
@@ -1117,7 +1198,7 @@ func (a *WAFsExceptionsAPIService) UpdateWAFException(ctx context.Context, excep
 
 // Execute executes the request
 //  @return ResponseWAFRule
-func (a *WAFsExceptionsAPIService) UpdateWAFExceptionExecute(r ApiUpdateWAFExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
+func (a *WAFsExceptionsAPIService) UpdateWafExceptionExecute(r ApiUpdateWafExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1125,12 +1206,12 @@ func (a *WAFsExceptionsAPIService) UpdateWAFExceptionExecute(r ApiUpdateWAFExcep
 		localVarReturnValue  *ResponseWAFRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.UpdateWAFException")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.UpdateWafException")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/wafs/{waf_id}/exceptions/{exception_id}"
+	localVarPath := localBasePath + "/workspace/wafs/{waf_id}/exceptions/{exception_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"exception_id"+"}", url.PathEscape(parameterValueToString(r.exceptionId, "exceptionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 

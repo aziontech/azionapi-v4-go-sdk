@@ -21,7 +21,9 @@ var _ MappedNullable = &DatabaseRequest{}
 
 // DatabaseRequest struct for DatabaseRequest
 type DatabaseRequest struct {
+	// Name of the database
 	Name string `json:"name"`
+	// Whether the database is active
 	Active *bool `json:"active,omitempty"`
 }
 

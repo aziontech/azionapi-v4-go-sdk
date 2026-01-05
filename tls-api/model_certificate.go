@@ -25,6 +25,7 @@ type Certificate struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
 	Certificate NullableString `json:"certificate,omitempty"`
+	PrivateKey NullableString `json:"private_key,omitempty"`
 	Issuer NullableString `json:"issuer"`
 	SubjectName []string `json:"subject_name"`
 	Validity NullableString `json:"validity"`
@@ -35,8 +36,10 @@ type Certificate struct {
 	Status string `json:"status"`
 	StatusDetail string `json:"status_detail"`
 	Csr NullableString `json:"csr"`
-	Challenge NullableCertificateChallenge `json:"challenge"`
-	Authority NullableCertificateAuthority `json:"authority"`
+	// * `dns` - Uses DNS to solve the ACME challenge. * `http` - Uses HTTP to solve the ACME challenge.
+	Challenge string `json:"challenge"`
+	// * `lets_encrypt` - lets_encrypt
+	Authority string `json:"authority"`
 	KeyAlgorithm string `json:"key_algorithm"`
 	Active *bool `json:"active,omitempty"`
 	ProductVersion string `json:"product_version"`
@@ -53,7 +56,7 @@ type _Certificate Certificate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificate(id int64, name string, issuer NullableString, subjectName []string, validity NullableString, managed bool, status string, statusDetail string, csr NullableString, challenge NullableCertificateChallenge, authority NullableCertificateAuthority, keyAlgorithm string, productVersion string, lastEditor string, lastModified time.Time, renewedAt NullableTime) *Certificate {
+func NewCertificate(id int64, name string, issuer NullableString, subjectName []string, validity NullableString, managed bool, status string, statusDetail string, csr NullableString, challenge string, authority string, keyAlgorithm string, productVersion string, lastEditor string, lastModified time.Time, renewedAt NullableTime) *Certificate {
 	this := Certificate{}
 	this.Id = id
 	this.Name = name
@@ -170,6 +173,48 @@ func (o *Certificate) SetCertificateNil() {
 // UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
 func (o *Certificate) UnsetCertificate() {
 	o.Certificate.Unset()
+}
+
+// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Certificate) GetPrivateKey() string {
+	if o == nil || IsNil(o.PrivateKey.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKey.Get()
+}
+
+// GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Certificate) GetPrivateKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PrivateKey.Get(), o.PrivateKey.IsSet()
+}
+
+// HasPrivateKey returns a boolean if a field has been set.
+func (o *Certificate) HasPrivateKey() bool {
+	if o != nil && o.PrivateKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKey gets a reference to the given NullableString and assigns it to the PrivateKey field.
+func (o *Certificate) SetPrivateKey(v string) {
+	o.PrivateKey.Set(&v)
+}
+// SetPrivateKeyNil sets the value for PrivateKey to be an explicit nil
+func (o *Certificate) SetPrivateKeyNil() {
+	o.PrivateKey.Set(nil)
+}
+
+// UnsetPrivateKey ensures that no value is present for PrivateKey, not even an explicit nil
+func (o *Certificate) UnsetPrivateKey() {
+	o.PrivateKey.Unset()
 }
 
 // GetIssuer returns the Issuer field value
@@ -379,55 +424,51 @@ func (o *Certificate) SetCsr(v string) {
 }
 
 // GetChallenge returns the Challenge field value
-// If the value is explicit nil, the zero value for CertificateChallenge will be returned
-func (o *Certificate) GetChallenge() CertificateChallenge {
-	if o == nil || o.Challenge.Get() == nil {
-		var ret CertificateChallenge
+func (o *Certificate) GetChallenge() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
 
-	return *o.Challenge.Get()
+	return o.Challenge
 }
 
 // GetChallengeOk returns a tuple with the Challenge field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Certificate) GetChallengeOk() (*CertificateChallenge, bool) {
+func (o *Certificate) GetChallengeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Challenge.Get(), o.Challenge.IsSet()
+	return &o.Challenge, true
 }
 
 // SetChallenge sets field value
-func (o *Certificate) SetChallenge(v CertificateChallenge) {
-	o.Challenge.Set(&v)
+func (o *Certificate) SetChallenge(v string) {
+	o.Challenge = v
 }
 
 // GetAuthority returns the Authority field value
-// If the value is explicit nil, the zero value for CertificateAuthority will be returned
-func (o *Certificate) GetAuthority() CertificateAuthority {
-	if o == nil || o.Authority.Get() == nil {
-		var ret CertificateAuthority
+func (o *Certificate) GetAuthority() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
 
-	return *o.Authority.Get()
+	return o.Authority
 }
 
 // GetAuthorityOk returns a tuple with the Authority field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Certificate) GetAuthorityOk() (*CertificateAuthority, bool) {
+func (o *Certificate) GetAuthorityOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Authority.Get(), o.Authority.IsSet()
+	return &o.Authority, true
 }
 
 // SetAuthority sets field value
-func (o *Certificate) SetAuthority(v CertificateAuthority) {
-	o.Authority.Set(&v)
+func (o *Certificate) SetAuthority(v string) {
+	o.Authority = v
 }
 
 // GetKeyAlgorithm returns the KeyAlgorithm field value
@@ -599,6 +640,9 @@ func (o Certificate) ToMap() (map[string]interface{}, error) {
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
+	if o.PrivateKey.IsSet() {
+		toSerialize["private_key"] = o.PrivateKey.Get()
+	}
 	toSerialize["issuer"] = o.Issuer.Get()
 	toSerialize["subject_name"] = o.SubjectName
 	toSerialize["validity"] = o.Validity.Get()
@@ -609,8 +653,8 @@ func (o Certificate) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["status_detail"] = o.StatusDetail
 	toSerialize["csr"] = o.Csr.Get()
-	toSerialize["challenge"] = o.Challenge.Get()
-	toSerialize["authority"] = o.Authority.Get()
+	toSerialize["challenge"] = o.Challenge
+	toSerialize["authority"] = o.Authority
 	toSerialize["key_algorithm"] = o.KeyAlgorithm
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active

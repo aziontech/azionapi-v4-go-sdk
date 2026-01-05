@@ -12,6 +12,7 @@ package datastreamapi
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -20,10 +21,9 @@ var _ MappedNullable = &TransformPolymorphicTransformSamplingAttributes{}
 
 // TransformPolymorphicTransformSamplingAttributes struct for TransformPolymorphicTransformSamplingAttributes
 type TransformPolymorphicTransformSamplingAttributes struct {
-	// * `sampling` - Sampling
+	// Type identifier for this endpoint (sampling)
 	Type string `json:"type"`
 	Attributes TransformSampling `json:"attributes"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _TransformPolymorphicTransformSamplingAttributes TransformPolymorphicTransformSamplingAttributes
@@ -107,11 +107,6 @@ func (o TransformPolymorphicTransformSamplingAttributes) ToMap() (map[string]int
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -140,21 +135,15 @@ func (o *TransformPolymorphicTransformSamplingAttributes) UnmarshalJSON(data []b
 
 	varTransformPolymorphicTransformSamplingAttributes := _TransformPolymorphicTransformSamplingAttributes{}
 
-	err = json.Unmarshal(data, &varTransformPolymorphicTransformSamplingAttributes)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransformPolymorphicTransformSamplingAttributes)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransformPolymorphicTransformSamplingAttributes(varTransformPolymorphicTransformSamplingAttributes)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "attributes")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

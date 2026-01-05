@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
@@ -22,7 +22,9 @@ var _ MappedNullable = &TOTPDeviceList{}
 // TOTPDeviceList struct for TOTPDeviceList
 type TOTPDeviceList struct {
 	Id int64 `json:"id"`
+	// User's full name (alphanumeric, spaces, hyphens, dots)
 	Name string `json:"name"`
+	// User's email address
 	Email string `json:"email"`
 	// Is this device ready for use?
 	Confirmed *bool `json:"confirmed,omitempty"`

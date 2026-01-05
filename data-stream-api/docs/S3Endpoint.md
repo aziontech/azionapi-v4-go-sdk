@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **BucketName** | **string** |  | 
 **ContentType** | **string** | * &#x60;plain/text&#x60; - plain/text * &#x60;application/gzip&#x60; - application/gzip | 
 **HostUrl** | **string** |  | 
+**Type** | **string** | Type identifier for this endpoint (s3) | 
 
 ## Methods
 
 ### NewS3Endpoint
 
-`func NewS3Endpoint(accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string, ) *S3Endpoint`
+`func NewS3Endpoint(accessKey string, secretKey string, region string, bucketName string, contentType string, hostUrl string, type_ string, ) *S3Endpoint`
 
 NewS3Endpoint instantiates a new S3Endpoint object
 This constructor will assign default values to properties that have it defined,
@@ -184,6 +185,26 @@ and a boolean to check if the value has been set.
 `func (o *S3Endpoint) SetHostUrl(v string)`
 
 SetHostUrl sets HostUrl field to given value.
+
+
+### GetType
+
+`func (o *S3Endpoint) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *S3Endpoint) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *S3Endpoint) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 

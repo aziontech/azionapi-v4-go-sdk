@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
@@ -25,6 +25,12 @@ type AuthRevokeAPIService service
 type ApiAuthUserRevokeRequest struct {
 	ctx context.Context
 	ApiService *AuthRevokeAPIService
+	body *interface{}
+}
+
+func (r ApiAuthUserRevokeRequest) Body(body interface{}) ApiAuthUserRevokeRequest {
+	r.body = &body
+	return r
 }
 
 func (r ApiAuthUserRevokeRequest) Execute() (*StateExecutedResponse, *http.Response, error) {
@@ -68,7 +74,7 @@ func (a *AuthRevokeAPIService) AuthUserRevokeExecute(r ApiAuthUserRevokeRequest)
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -84,6 +90,8 @@ func (a *AuthRevokeAPIService) AuthUserRevokeExecute(r ApiAuthUserRevokeRequest)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

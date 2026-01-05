@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | 
-**Name** | **string** |  | 
-**Email** | **string** |  | 
+**Name** | **string** | User&#39;s full name (alphanumeric, spaces, hyphens, dots) | 
+**Email** | **string** | User&#39;s email address | 
 **Confirmed** | Pointer to **bool** | Is this device ready for use? | [optional] 
 **UserId** | **int64** | The user that this device belongs to. | 
 

@@ -25,6 +25,8 @@ type BigQueryEndpoint struct {
 	ProjectId string `json:"project_id"`
 	TableId string `json:"table_id"`
 	ServiceAccountKey string `json:"service_account_key"`
+	// Type identifier for this endpoint (big_query)
+	Type string `json:"type"`
 }
 
 type _BigQueryEndpoint BigQueryEndpoint
@@ -33,12 +35,13 @@ type _BigQueryEndpoint BigQueryEndpoint
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBigQueryEndpoint(datasetId string, projectId string, tableId string, serviceAccountKey string) *BigQueryEndpoint {
+func NewBigQueryEndpoint(datasetId string, projectId string, tableId string, serviceAccountKey string, type_ string) *BigQueryEndpoint {
 	this := BigQueryEndpoint{}
 	this.DatasetId = datasetId
 	this.ProjectId = projectId
 	this.TableId = tableId
 	this.ServiceAccountKey = serviceAccountKey
+	this.Type = type_
 	return &this
 }
 
@@ -146,6 +149,30 @@ func (o *BigQueryEndpoint) SetServiceAccountKey(v string) {
 	o.ServiceAccountKey = v
 }
 
+// GetType returns the Type field value
+func (o *BigQueryEndpoint) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *BigQueryEndpoint) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *BigQueryEndpoint) SetType(v string) {
+	o.Type = v
+}
+
 func (o BigQueryEndpoint) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -160,6 +187,7 @@ func (o BigQueryEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize["project_id"] = o.ProjectId
 	toSerialize["table_id"] = o.TableId
 	toSerialize["service_account_key"] = o.ServiceAccountKey
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -172,6 +200,7 @@ func (o *BigQueryEndpoint) UnmarshalJSON(data []byte) (err error) {
 		"project_id",
 		"table_id",
 		"service_account_key",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

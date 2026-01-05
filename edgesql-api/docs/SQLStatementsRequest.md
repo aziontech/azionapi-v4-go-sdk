@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Statements** | **[]string** |  | 
+**Statements** | **[]string** | List of SQL statements to execute | 
 
 ## Methods
 

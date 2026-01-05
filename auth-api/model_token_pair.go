@@ -1,5 +1,5 @@
 /*
-Auth API
+auth-api
 
 REST API OpenAPI documentation for the Auth API
 
