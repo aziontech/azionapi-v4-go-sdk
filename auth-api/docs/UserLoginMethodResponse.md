@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Method** | **string** |  | 
+**Method** | **string** | Login method type (lowercase with underscores) | 
 **Url** | **string** |  | 
 
 ## Methods

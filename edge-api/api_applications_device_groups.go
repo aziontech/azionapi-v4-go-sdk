@@ -26,7 +26,7 @@ type ApplicationsDeviceGroupsAPIService service
 type ApiCreateDeviceGroupRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsDeviceGroupsAPIService
-	applicationId string
+	applicationId int64
 	applicationDeviceGroupsRequest *ApplicationDeviceGroupsRequest
 }
 
@@ -45,10 +45,10 @@ CreateDeviceGroup Create an Applications Device Group
 Create a new Device Group in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
+ @param applicationId A unique integer value identifying the application.
  @return ApiCreateDeviceGroupRequest
 */
-func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroup(ctx context.Context, applicationId string) ApiCreateDeviceGroupRequest {
+func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroup(ctx context.Context, applicationId int64) ApiCreateDeviceGroupRequest {
 	return ApiCreateDeviceGroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,7 +71,7 @@ func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroupExecute(r ApiCreat
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/device_groups"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/device_groups"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,54 +227,54 @@ func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroupExecute(r ApiCreat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyDeviceGroupsRequest struct {
+type ApiDeleteDeviceGroupsRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsDeviceGroupsAPIService
-	applicationId string
-	id string
+	applicationId int64
+	deviceGroupId int64
 }
 
-func (r ApiDestroyDeviceGroupsRequest) Execute() (*ResponseApplicationDeviceGroups, *http.Response, error) {
-	return r.ApiService.DestroyDeviceGroupsExecute(r)
+func (r ApiDeleteDeviceGroupsRequest) Execute() (*ResponseDeleteApplicationDeviceGroups, *http.Response, error) {
+	return r.ApiService.DeleteDeviceGroupsExecute(r)
 }
 
 /*
-DestroyDeviceGroups Destroy an Applications Device Group
+DeleteDeviceGroups Delete an Applications Device Group
 
-Destruction of a specific Device Group in your account.
+Delete a specific Device Group in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @param id
- @return ApiDestroyDeviceGroupsRequest
+ @param applicationId A unique integer value identifying the application.
+ @param deviceGroupId A unique integer value identifying the device group.
+ @return ApiDeleteDeviceGroupsRequest
 */
-func (a *ApplicationsDeviceGroupsAPIService) DestroyDeviceGroups(ctx context.Context, applicationId string, id string) ApiDestroyDeviceGroupsRequest {
-	return ApiDestroyDeviceGroupsRequest{
+func (a *ApplicationsDeviceGroupsAPIService) DeleteDeviceGroups(ctx context.Context, applicationId int64, deviceGroupId int64) ApiDeleteDeviceGroupsRequest {
+	return ApiDeleteDeviceGroupsRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
+		deviceGroupId: deviceGroupId,
 	}
 }
 
 // Execute executes the request
-//  @return ResponseApplicationDeviceGroups
-func (a *ApplicationsDeviceGroupsAPIService) DestroyDeviceGroupsExecute(r ApiDestroyDeviceGroupsRequest) (*ResponseApplicationDeviceGroups, *http.Response, error) {
+//  @return ResponseDeleteApplicationDeviceGroups
+func (a *ApplicationsDeviceGroupsAPIService) DeleteDeviceGroupsExecute(r ApiDeleteDeviceGroupsRequest) (*ResponseDeleteApplicationDeviceGroups, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplicationDeviceGroups
+		localVarReturnValue  *ResponseDeleteApplicationDeviceGroups
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.DestroyDeviceGroups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.DeleteDeviceGroups")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/device_groups/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/device_groups/{device_group_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_group_id"+"}", url.PathEscape(parameterValueToString(r.deviceGroupId, "deviceGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,17 +427,32 @@ func (a *ApplicationsDeviceGroupsAPIService) DestroyDeviceGroupsExecute(r ApiDes
 type ApiListDeviceGroupsRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsDeviceGroupsAPIService
-	applicationId string
+	applicationId int64
 	fields *string
+	id *int64
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
 	search *string
+	userAgent *string
 }
 
 // Comma-separated list of field names to include in the response.
 func (r ApiListDeviceGroupsRequest) Fields(fields string) ApiListDeviceGroupsRequest {
 	r.fields = &fields
+	return r
+}
+
+// Filter by id (accepts comma-separated values).
+func (r ApiListDeviceGroupsRequest) Id(id int64) ApiListDeviceGroupsRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListDeviceGroupsRequest) Name(name string) ApiListDeviceGroupsRequest {
+	r.name = &name
 	return r
 }
 
@@ -465,6 +480,12 @@ func (r ApiListDeviceGroupsRequest) Search(search string) ApiListDeviceGroupsReq
 	return r
 }
 
+// Filter by user agent (case-insensitive, partial match).
+func (r ApiListDeviceGroupsRequest) UserAgent(userAgent string) ApiListDeviceGroupsRequest {
+	r.userAgent = &userAgent
+	return r
+}
+
 func (r ApiListDeviceGroupsRequest) Execute() (*PaginatedApplicationDeviceGroupsList, *http.Response, error) {
 	return r.ApiService.ListDeviceGroupsExecute(r)
 }
@@ -475,10 +496,10 @@ ListDeviceGroups List Applications Device Groups
 List all Device Groups owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
+ @param applicationId A unique integer value identifying the application.
  @return ApiListDeviceGroupsRequest
 */
-func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroups(ctx context.Context, applicationId string) ApiListDeviceGroupsRequest {
+func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroups(ctx context.Context, applicationId int64) ApiListDeviceGroupsRequest {
 	return ApiListDeviceGroupsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -501,7 +522,7 @@ func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroupsExecute(r ApiListDe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/device_groups"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/device_groups"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -510,6 +531,12 @@ func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroupsExecute(r ApiListDe
 
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -522,6 +549,9 @@ func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroupsExecute(r ApiListDe
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+	}
+	if r.userAgent != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_agent", r.userAgent, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -670,8 +700,8 @@ func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroupsExecute(r ApiListDe
 type ApiPartialUpdateDeviceGroupRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsDeviceGroupsAPIService
-	applicationId string
-	id string
+	applicationId int64
+	deviceGroupId int64
 	patchedApplicationDeviceGroupsRequest *PatchedApplicationDeviceGroupsRequest
 }
 
@@ -690,16 +720,16 @@ PartialUpdateDeviceGroup Partially update an Applications Device Group
 Update one or more fields of an existing Device Group without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @param id
+ @param applicationId A unique integer value identifying the application.
+ @param deviceGroupId A unique integer value identifying the device group.
  @return ApiPartialUpdateDeviceGroupRequest
 */
-func (a *ApplicationsDeviceGroupsAPIService) PartialUpdateDeviceGroup(ctx context.Context, applicationId string, id string) ApiPartialUpdateDeviceGroupRequest {
+func (a *ApplicationsDeviceGroupsAPIService) PartialUpdateDeviceGroup(ctx context.Context, applicationId int64, deviceGroupId int64) ApiPartialUpdateDeviceGroupRequest {
 	return ApiPartialUpdateDeviceGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
+		deviceGroupId: deviceGroupId,
 	}
 }
 
@@ -718,9 +748,9 @@ func (a *ApplicationsDeviceGroupsAPIService) PartialUpdateDeviceGroupExecute(r A
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/device_groups/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/device_groups/{device_group_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_group_id"+"}", url.PathEscape(parameterValueToString(r.deviceGroupId, "deviceGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -875,8 +905,8 @@ func (a *ApplicationsDeviceGroupsAPIService) PartialUpdateDeviceGroupExecute(r A
 type ApiRetrieveDeviceGroupRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsDeviceGroupsAPIService
-	applicationId string
-	id string
+	applicationId int64
+	deviceGroupId int64
 	fields *string
 }
 
@@ -896,16 +926,16 @@ RetrieveDeviceGroup Retrieve details of a Device Group
 Retrieve details of a specific Device Group in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @param id
+ @param applicationId A unique integer value identifying the application.
+ @param deviceGroupId A unique integer value identifying the device group.
  @return ApiRetrieveDeviceGroupRequest
 */
-func (a *ApplicationsDeviceGroupsAPIService) RetrieveDeviceGroup(ctx context.Context, applicationId string, id string) ApiRetrieveDeviceGroupRequest {
+func (a *ApplicationsDeviceGroupsAPIService) RetrieveDeviceGroup(ctx context.Context, applicationId int64, deviceGroupId int64) ApiRetrieveDeviceGroupRequest {
 	return ApiRetrieveDeviceGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
+		deviceGroupId: deviceGroupId,
 	}
 }
 
@@ -924,9 +954,9 @@ func (a *ApplicationsDeviceGroupsAPIService) RetrieveDeviceGroupExecute(r ApiRet
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/device_groups/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/device_groups/{device_group_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_group_id"+"}", url.PathEscape(parameterValueToString(r.deviceGroupId, "deviceGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,8 +1112,8 @@ func (a *ApplicationsDeviceGroupsAPIService) RetrieveDeviceGroupExecute(r ApiRet
 type ApiUpdateDeviceGroupRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsDeviceGroupsAPIService
-	applicationId string
-	id string
+	applicationId int64
+	deviceGroupId int64
 	applicationDeviceGroupsRequest *ApplicationDeviceGroupsRequest
 }
 
@@ -1102,16 +1132,16 @@ UpdateDeviceGroup Update an Applications Device Group
 Update an existing Device Group. This replaces the entire Device Group with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @param id
+ @param applicationId A unique integer value identifying the application.
+ @param deviceGroupId A unique integer value identifying the device group.
  @return ApiUpdateDeviceGroupRequest
 */
-func (a *ApplicationsDeviceGroupsAPIService) UpdateDeviceGroup(ctx context.Context, applicationId string, id string) ApiUpdateDeviceGroupRequest {
+func (a *ApplicationsDeviceGroupsAPIService) UpdateDeviceGroup(ctx context.Context, applicationId int64, deviceGroupId int64) ApiUpdateDeviceGroupRequest {
 	return ApiUpdateDeviceGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
+		deviceGroupId: deviceGroupId,
 	}
 }
 
@@ -1130,9 +1160,9 @@ func (a *ApplicationsDeviceGroupsAPIService) UpdateDeviceGroupExecute(r ApiUpdat
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/device_groups/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/device_groups/{device_group_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_group_id"+"}", url.PathEscape(parameterValueToString(r.deviceGroupId, "deviceGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

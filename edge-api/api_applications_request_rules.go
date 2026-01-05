@@ -17,39 +17,40 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
 // ApplicationsRequestRulesAPIService ApplicationsRequestRulesAPI service
 type ApplicationsRequestRulesAPIService service
 
-type ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest struct {
+type ApiCreateApplicationRequestRuleRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
-	applicationId string
+	applicationId int64
 	applicationRequestPhaseRuleEngineRequest *ApplicationRequestPhaseRuleEngineRequest
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) ApplicationRequestPhaseRuleEngineRequest(applicationRequestPhaseRuleEngineRequest ApplicationRequestPhaseRuleEngineRequest) ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest {
+func (r ApiCreateApplicationRequestRuleRequest) ApplicationRequestPhaseRuleEngineRequest(applicationRequestPhaseRuleEngineRequest ApplicationRequestPhaseRuleEngineRequest) ApiCreateApplicationRequestRuleRequest {
 	r.applicationRequestPhaseRuleEngineRequest = &applicationRequestPhaseRuleEngineRequest
 	return r
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesCreateExecute(r)
+func (r ApiCreateApplicationRequestRuleRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+	return r.ApiService.CreateApplicationRequestRuleExecute(r)
 }
 
 /*
-EdgeApplicationApiApplicationsRequestRulesCreate Create an Application Request Rule
+CreateApplicationRequestRule Create an Application Request Rule
 
 Create a new Rule for a specific Application in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @return ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest
+ @param applicationId A unique integer value identifying the application.
+ @return ApiCreateApplicationRequestRuleRequest
 */
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesCreate(ctx context.Context, applicationId string) ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest{
+func (a *ApplicationsRequestRulesAPIService) CreateApplicationRequestRule(ctx context.Context, applicationId int64) ApiCreateApplicationRequestRuleRequest {
+	return ApiCreateApplicationRequestRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
@@ -58,7 +59,7 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 
 // Execute executes the request
 //  @return ResponseApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesCreateExecute(r ApiEdgeApplicationApiApplicationsRequestRulesCreateRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (a *ApplicationsRequestRulesAPIService) CreateApplicationRequestRuleExecute(r ApiCreateApplicationRequestRuleRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -66,12 +67,12 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		localVarReturnValue  *ResponseApplicationRequestPhaseRuleEngine
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.CreateApplicationRequestRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,39 +228,39 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest struct {
+type ApiDeleteApplicationRequestRuleRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
-	applicationId string
-	id string
+	applicationId int64
+	requestRuleId int64
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest) Execute() (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesDestroyExecute(r)
+func (r ApiDeleteApplicationRequestRuleRequest) Execute() (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
+	return r.ApiService.DeleteApplicationRequestRuleExecute(r)
 }
 
 /*
-EdgeApplicationApiApplicationsRequestRulesDestroy Destroy an Application Request Rule
+DeleteApplicationRequestRule Delete an Application Request Rule
 
-Destroy a specific Rule in your account.
+Delete a specific Rule in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @param id
- @return ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest
+ @param applicationId A unique integer value identifying the application.
+ @param requestRuleId A unique integer value identifying the request rule.
+ @return ApiDeleteApplicationRequestRuleRequest
 */
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesDestroy(ctx context.Context, applicationId string, id string) ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest{
+func (a *ApplicationsRequestRulesAPIService) DeleteApplicationRequestRule(ctx context.Context, applicationId int64, requestRuleId int64) ApiDeleteApplicationRequestRuleRequest {
+	return ApiDeleteApplicationRequestRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
+		requestRuleId: requestRuleId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseDeleteApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesDestroyExecute(r ApiEdgeApplicationApiApplicationsRequestRulesDestroyRequest) (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (a *ApplicationsRequestRulesAPIService) DeleteApplicationRequestRuleExecute(r ApiDeleteApplicationRequestRuleRequest) (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -267,14 +268,14 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		localVarReturnValue  *ResponseDeleteApplicationRequestPhaseRuleEngine
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.DeleteApplicationRequestRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/{request_rule_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"request_rule_id"+"}", url.PathEscape(parameterValueToString(r.requestRuleId, "requestRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -424,62 +425,118 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEdgeApplicationApiApplicationsRequestRulesListRequest struct {
+type ApiListApplicationRequestRulesRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
-	applicationId string
+	applicationId int64
+	description *string
 	fields *string
+	id *int64
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
+	name *string
+	orderGte *int64
+	orderLte *int64
 	ordering *string
 	page *int64
 	pageSize *int64
 	search *string
 }
 
+// Filter by description (case-insensitive, partial match).
+func (r ApiListApplicationRequestRulesRequest) Description(description string) ApiListApplicationRequestRulesRequest {
+	r.description = &description
+	return r
+}
+
 // Comma-separated list of field names to include in the response.
-func (r ApiEdgeApplicationApiApplicationsRequestRulesListRequest) Fields(fields string) ApiEdgeApplicationApiApplicationsRequestRulesListRequest {
+func (r ApiListApplicationRequestRulesRequest) Fields(fields string) ApiListApplicationRequestRulesRequest {
 	r.fields = &fields
 	return r
 }
 
+// Filter by id (accepts comma-separated values).
+func (r ApiListApplicationRequestRulesRequest) Id(id int64) ApiListApplicationRequestRulesRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListApplicationRequestRulesRequest) LastEditor(lastEditor string) ApiListApplicationRequestRulesRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListApplicationRequestRulesRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListApplicationRequestRulesRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListApplicationRequestRulesRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListApplicationRequestRulesRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListApplicationRequestRulesRequest) Name(name string) ApiListApplicationRequestRulesRequest {
+	r.name = &name
+	return r
+}
+
+// Filter by order (greater than or equal).
+func (r ApiListApplicationRequestRulesRequest) OrderGte(orderGte int64) ApiListApplicationRequestRulesRequest {
+	r.orderGte = &orderGte
+	return r
+}
+
+// Filter by order (less than or equal).
+func (r ApiListApplicationRequestRulesRequest) OrderLte(orderLte int64) ApiListApplicationRequestRulesRequest {
+	r.orderLte = &orderLte
+	return r
+}
+
 // Which field to use when ordering the results. (Valid fields: name, active, description, order, criteria, last_editor, last_modified, behaviors)
-func (r ApiEdgeApplicationApiApplicationsRequestRulesListRequest) Ordering(ordering string) ApiEdgeApplicationApiApplicationsRequestRulesListRequest {
+func (r ApiListApplicationRequestRulesRequest) Ordering(ordering string) ApiListApplicationRequestRulesRequest {
 	r.ordering = &ordering
 	return r
 }
 
 // A page number within the paginated result set.
-func (r ApiEdgeApplicationApiApplicationsRequestRulesListRequest) Page(page int64) ApiEdgeApplicationApiApplicationsRequestRulesListRequest {
+func (r ApiListApplicationRequestRulesRequest) Page(page int64) ApiListApplicationRequestRulesRequest {
 	r.page = &page
 	return r
 }
 
 // A numeric value that indicates the number of items per page.
-func (r ApiEdgeApplicationApiApplicationsRequestRulesListRequest) PageSize(pageSize int64) ApiEdgeApplicationApiApplicationsRequestRulesListRequest {
+func (r ApiListApplicationRequestRulesRequest) PageSize(pageSize int64) ApiListApplicationRequestRulesRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // A search term.
-func (r ApiEdgeApplicationApiApplicationsRequestRulesListRequest) Search(search string) ApiEdgeApplicationApiApplicationsRequestRulesListRequest {
+func (r ApiListApplicationRequestRulesRequest) Search(search string) ApiListApplicationRequestRulesRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesListRequest) Execute() (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesListExecute(r)
+func (r ApiListApplicationRequestRulesRequest) Execute() (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
+	return r.ApiService.ListApplicationRequestRulesExecute(r)
 }
 
 /*
-EdgeApplicationApiApplicationsRequestRulesList List Application Request Rules
+ListApplicationRequestRules List Application Request Rules
 
 List all Rules for a specific Application owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @return ApiEdgeApplicationApiApplicationsRequestRulesListRequest
+ @param applicationId A unique integer value identifying the application.
+ @return ApiListApplicationRequestRulesRequest
 */
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesList(ctx context.Context, applicationId string) ApiEdgeApplicationApiApplicationsRequestRulesListRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesListRequest{
+func (a *ApplicationsRequestRulesAPIService) ListApplicationRequestRules(ctx context.Context, applicationId int64) ApiListApplicationRequestRulesRequest {
+	return ApiListApplicationRequestRulesRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
@@ -488,7 +545,7 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 
 // Execute executes the request
 //  @return PaginatedApplicationRequestPhaseRuleEngineList
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesListExecute(r ApiEdgeApplicationApiApplicationsRequestRulesListRequest) (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
+func (a *ApplicationsRequestRulesAPIService) ListApplicationRequestRulesExecute(r ApiListApplicationRequestRulesRequest) (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -496,20 +553,44 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		localVarReturnValue  *PaginatedApplicationRequestPhaseRuleEngineList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.ListApplicationRequestRules")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.description != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
+	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	}
+	if r.orderGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order__gte", r.orderGte, "form", "")
+	}
+	if r.orderLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order__lte", r.orderLte, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -667,289 +748,45 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest struct {
+type ApiPartialUpdateApplicationRequestRuleRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
-	applicationId string
-	applicationRequestPhaseRuleEngineOrderRequest *ApplicationRequestPhaseRuleEngineOrderRequest
-	ordering *string
-	page *int64
-	pageSize *int64
-	search *string
-}
-
-func (r ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest) ApplicationRequestPhaseRuleEngineOrderRequest(applicationRequestPhaseRuleEngineOrderRequest ApplicationRequestPhaseRuleEngineOrderRequest) ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest {
-	r.applicationRequestPhaseRuleEngineOrderRequest = &applicationRequestPhaseRuleEngineOrderRequest
-	return r
-}
-
-// Which field to use when ordering the results. (Valid fields: order)
-func (r ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest) Ordering(ordering string) ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A page number within the paginated result set.
-func (r ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest) Page(page int64) ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest {
-	r.page = &page
-	return r
-}
-
-// Number of results to return per page.
-func (r ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest) PageSize(pageSize int64) ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// A search term.
-func (r ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest) Search(search string) ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest) Execute() (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesOrderUpdateExecute(r)
-}
-
-/*
-EdgeApplicationApiApplicationsRequestRulesOrderUpdate Ordering Application Request Rules
-
-Reoder all Rules for a specific Application owned by your account.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @return ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest
-*/
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesOrderUpdate(ctx context.Context, applicationId string) ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
-	}
-}
-
-// Execute executes the request
-//  @return PaginatedApplicationRequestPhaseRuleEngineList
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesOrderUpdateExecute(r ApiEdgeApplicationApiApplicationsRequestRulesOrderUpdateRequest) (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedApplicationRequestPhaseRuleEngineList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesOrderUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/order"
-	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.applicationRequestPhaseRuleEngineOrderRequest == nil {
-		return localVarReturnValue, nil, reportError("applicationRequestPhaseRuleEngineOrderRequest is required and must be specified")
-	}
-
-	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
-	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.applicationRequestPhaseRuleEngineOrderRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["TokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 405 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 406 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v JSONAPIErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEdgeApplicationApiApplicationsRequestRulesPartialUpdateRequest struct {
-	ctx context.Context
-	ApiService *ApplicationsRequestRulesAPIService
-	applicationId string
-	id string
+	applicationId int64
+	requestRuleId int64
 	patchedApplicationRequestPhaseRuleEngineRequest *PatchedApplicationRequestPhaseRuleEngineRequest
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesPartialUpdateRequest) PatchedApplicationRequestPhaseRuleEngineRequest(patchedApplicationRequestPhaseRuleEngineRequest PatchedApplicationRequestPhaseRuleEngineRequest) ApiEdgeApplicationApiApplicationsRequestRulesPartialUpdateRequest {
+func (r ApiPartialUpdateApplicationRequestRuleRequest) PatchedApplicationRequestPhaseRuleEngineRequest(patchedApplicationRequestPhaseRuleEngineRequest PatchedApplicationRequestPhaseRuleEngineRequest) ApiPartialUpdateApplicationRequestRuleRequest {
 	r.patchedApplicationRequestPhaseRuleEngineRequest = &patchedApplicationRequestPhaseRuleEngineRequest
 	return r
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesPartialUpdateRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesPartialUpdateExecute(r)
+func (r ApiPartialUpdateApplicationRequestRuleRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+	return r.ApiService.PartialUpdateApplicationRequestRuleExecute(r)
 }
 
 /*
-EdgeApplicationApiApplicationsRequestRulesPartialUpdate Partially update an Application Request Rule
+PartialUpdateApplicationRequestRule Partially update an Application Request Rule
 
 Update one or more fields of an existing Application Rule  without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @param id
- @return ApiEdgeApplicationApiApplicationsRequestRulesPartialUpdateRequest
+ @param applicationId A unique integer value identifying the application.
+ @param requestRuleId A unique integer value identifying the request rule.
+ @return ApiPartialUpdateApplicationRequestRuleRequest
 */
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesPartialUpdate(ctx context.Context, applicationId string, id string) ApiEdgeApplicationApiApplicationsRequestRulesPartialUpdateRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesPartialUpdateRequest{
+func (a *ApplicationsRequestRulesAPIService) PartialUpdateApplicationRequestRule(ctx context.Context, applicationId int64, requestRuleId int64) ApiPartialUpdateApplicationRequestRuleRequest {
+	return ApiPartialUpdateApplicationRequestRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
+		requestRuleId: requestRuleId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesPartialUpdateExecute(r ApiEdgeApplicationApiApplicationsRequestRulesPartialUpdateRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (a *ApplicationsRequestRulesAPIService) PartialUpdateApplicationRequestRuleExecute(r ApiPartialUpdateApplicationRequestRuleRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -957,14 +794,14 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		localVarReturnValue  *ResponseApplicationRequestPhaseRuleEngine
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.PartialUpdateApplicationRequestRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/{request_rule_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"request_rule_id"+"}", url.PathEscape(parameterValueToString(r.requestRuleId, "requestRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1116,46 +953,46 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEdgeApplicationApiApplicationsRequestRulesRetrieveRequest struct {
+type ApiRetrieveApplicationRequestRuleRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
-	applicationId string
-	id string
+	applicationId int64
+	requestRuleId int64
 	fields *string
 }
 
 // Comma-separated list of field names to include in the response.
-func (r ApiEdgeApplicationApiApplicationsRequestRulesRetrieveRequest) Fields(fields string) ApiEdgeApplicationApiApplicationsRequestRulesRetrieveRequest {
+func (r ApiRetrieveApplicationRequestRuleRequest) Fields(fields string) ApiRetrieveApplicationRequestRuleRequest {
 	r.fields = &fields
 	return r
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesRetrieveRequest) Execute() (*ResponseRetrieveApplicationRequestPhaseRuleEngine, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesRetrieveExecute(r)
+func (r ApiRetrieveApplicationRequestRuleRequest) Execute() (*ResponseRetrieveApplicationRequestPhaseRuleEngine, *http.Response, error) {
+	return r.ApiService.RetrieveApplicationRequestRuleExecute(r)
 }
 
 /*
-EdgeApplicationApiApplicationsRequestRulesRetrieve Retrieve details of an Application Request Rule
+RetrieveApplicationRequestRule Retrieve details of an Application Request Rule
 
 Retrieve details of a specific Rule in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @param id
- @return ApiEdgeApplicationApiApplicationsRequestRulesRetrieveRequest
+ @param applicationId A unique integer value identifying the application.
+ @param requestRuleId A unique integer value identifying the request rule.
+ @return ApiRetrieveApplicationRequestRuleRequest
 */
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesRetrieve(ctx context.Context, applicationId string, id string) ApiEdgeApplicationApiApplicationsRequestRulesRetrieveRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesRetrieveRequest{
+func (a *ApplicationsRequestRulesAPIService) RetrieveApplicationRequestRule(ctx context.Context, applicationId int64, requestRuleId int64) ApiRetrieveApplicationRequestRuleRequest {
+	return ApiRetrieveApplicationRequestRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
+		requestRuleId: requestRuleId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseRetrieveApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesRetrieveExecute(r ApiEdgeApplicationApiApplicationsRequestRulesRetrieveRequest) (*ResponseRetrieveApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (a *ApplicationsRequestRulesAPIService) RetrieveApplicationRequestRuleExecute(r ApiRetrieveApplicationRequestRuleRequest) (*ResponseRetrieveApplicationRequestPhaseRuleEngine, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1163,14 +1000,14 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		localVarReturnValue  *ResponseRetrieveApplicationRequestPhaseRuleEngine
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.RetrieveApplicationRequestRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/{request_rule_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"request_rule_id"+"}", url.PathEscape(parameterValueToString(r.requestRuleId, "requestRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1323,45 +1160,45 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEdgeApplicationApiApplicationsRequestRulesUpdateRequest struct {
+type ApiUpdateApplicationRequestRuleRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
-	applicationId string
-	id string
+	applicationId int64
+	requestRuleId int64
 	applicationRequestPhaseRuleEngineRequest *ApplicationRequestPhaseRuleEngineRequest
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesUpdateRequest) ApplicationRequestPhaseRuleEngineRequest(applicationRequestPhaseRuleEngineRequest ApplicationRequestPhaseRuleEngineRequest) ApiEdgeApplicationApiApplicationsRequestRulesUpdateRequest {
+func (r ApiUpdateApplicationRequestRuleRequest) ApplicationRequestPhaseRuleEngineRequest(applicationRequestPhaseRuleEngineRequest ApplicationRequestPhaseRuleEngineRequest) ApiUpdateApplicationRequestRuleRequest {
 	r.applicationRequestPhaseRuleEngineRequest = &applicationRequestPhaseRuleEngineRequest
 	return r
 }
 
-func (r ApiEdgeApplicationApiApplicationsRequestRulesUpdateRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
-	return r.ApiService.EdgeApplicationApiApplicationsRequestRulesUpdateExecute(r)
+func (r ApiUpdateApplicationRequestRuleRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+	return r.ApiService.UpdateApplicationRequestRuleExecute(r)
 }
 
 /*
-EdgeApplicationApiApplicationsRequestRulesUpdate Update an Application Request Rule
+UpdateApplicationRequestRule Update an Application Request Rule
 
 Update an existing Rule. This replaces the entire Rule with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId
- @param id
- @return ApiEdgeApplicationApiApplicationsRequestRulesUpdateRequest
+ @param applicationId A unique integer value identifying the application.
+ @param requestRuleId A unique integer value identifying the request rule.
+ @return ApiUpdateApplicationRequestRuleRequest
 */
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesUpdate(ctx context.Context, applicationId string, id string) ApiEdgeApplicationApiApplicationsRequestRulesUpdateRequest {
-	return ApiEdgeApplicationApiApplicationsRequestRulesUpdateRequest{
+func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRule(ctx context.Context, applicationId int64, requestRuleId int64) ApiUpdateApplicationRequestRuleRequest {
+	return ApiUpdateApplicationRequestRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
-		id: id,
+		requestRuleId: requestRuleId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsRequestRulesUpdateExecute(r ApiEdgeApplicationApiApplicationsRequestRulesUpdateRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRuleExecute(r ApiUpdateApplicationRequestRuleRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1369,14 +1206,14 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 		localVarReturnValue  *ResponseApplicationRequestPhaseRuleEngine
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.EdgeApplicationApiApplicationsRequestRulesUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.UpdateApplicationRequestRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_application/applications/{application_id}/request_rules/{id}"
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/{request_rule_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"request_rule_id"+"}", url.PathEscape(parameterValueToString(r.requestRuleId, "requestRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1507,6 +1344,250 @@ func (a *ApplicationsRequestRulesAPIService) EdgeApplicationApiApplicationsReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateApplicationRequestRulesOrderRequest struct {
+	ctx context.Context
+	ApiService *ApplicationsRequestRulesAPIService
+	applicationId int64
+	applicationRequestPhaseRuleEngineOrderRequest *ApplicationRequestPhaseRuleEngineOrderRequest
+	ordering *string
+	page *int64
+	pageSize *int64
+	search *string
+}
+
+func (r ApiUpdateApplicationRequestRulesOrderRequest) ApplicationRequestPhaseRuleEngineOrderRequest(applicationRequestPhaseRuleEngineOrderRequest ApplicationRequestPhaseRuleEngineOrderRequest) ApiUpdateApplicationRequestRulesOrderRequest {
+	r.applicationRequestPhaseRuleEngineOrderRequest = &applicationRequestPhaseRuleEngineOrderRequest
+	return r
+}
+
+// Which field to use when ordering the results. (Valid fields: order)
+func (r ApiUpdateApplicationRequestRulesOrderRequest) Ordering(ordering string) ApiUpdateApplicationRequestRulesOrderRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiUpdateApplicationRequestRulesOrderRequest) Page(page int64) ApiUpdateApplicationRequestRulesOrderRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiUpdateApplicationRequestRulesOrderRequest) PageSize(pageSize int64) ApiUpdateApplicationRequestRulesOrderRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiUpdateApplicationRequestRulesOrderRequest) Search(search string) ApiUpdateApplicationRequestRulesOrderRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiUpdateApplicationRequestRulesOrderRequest) Execute() (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
+	return r.ApiService.UpdateApplicationRequestRulesOrderExecute(r)
+}
+
+/*
+UpdateApplicationRequestRulesOrder Ordering Application Request Rules
+
+Reoder all Rules for a specific Application owned by your account.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param applicationId A unique integer value identifying the application.
+ @return ApiUpdateApplicationRequestRulesOrderRequest
+*/
+func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRulesOrder(ctx context.Context, applicationId int64) ApiUpdateApplicationRequestRulesOrderRequest {
+	return ApiUpdateApplicationRequestRulesOrderRequest{
+		ApiService: a,
+		ctx: ctx,
+		applicationId: applicationId,
+	}
+}
+
+// Execute executes the request
+//  @return PaginatedApplicationRequestPhaseRuleEngineList
+func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRulesOrderExecute(r ApiUpdateApplicationRequestRulesOrderRequest) (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PaginatedApplicationRequestPhaseRuleEngineList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.UpdateApplicationRequestRulesOrder")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/workspace/applications/{application_id}/request_rules/order"
+	localVarPath = strings.Replace(localVarPath, "{"+"application_id"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.applicationRequestPhaseRuleEngineOrderRequest == nil {
+		return localVarReturnValue, nil, reportError("applicationRequestPhaseRuleEngineOrderRequest is required and must be specified")
+	}
+
+	if r.ordering != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.applicationRequestPhaseRuleEngineOrderRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["TokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 405 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 406 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v JSONAPIErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
 			var v JSONAPIErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

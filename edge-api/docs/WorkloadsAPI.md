@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWorkload**](WorkloadsAPI.md#CreateWorkload) | **Post** /workspace/workloads | Create an Workload
-[**DestroyWorkload**](WorkloadsAPI.md#DestroyWorkload) | **Delete** /workspace/workloads/{workload_id} | Destroy an Workload
+[**DeleteWorkload**](WorkloadsAPI.md#DeleteWorkload) | **Delete** /workspace/workloads/{workload_id} | Delete an Workload
 [**ListWorkloads**](WorkloadsAPI.md#ListWorkloads) | **Get** /workspace/workloads | List Workloads
 [**PartialUpdateWorkload**](WorkloadsAPI.md#PartialUpdateWorkload) | **Patch** /workspace/workloads/{workload_id} | Partially update an Workload
 [**RetrieveWorkload**](WorkloadsAPI.md#RetrieveWorkload) | **Get** /workspace/workloads/{workload_id} | Retrieve details of an Workload
@@ -79,11 +79,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DestroyWorkload
+## DeleteWorkload
 
-> ResponseAsyncDeleteWorkload DestroyWorkload(ctx, workloadId).Execute()
+> ResponseDeleteWorkload DeleteWorkload(ctx, workloadId).Execute()
 
-Destroy an Workload
+Delete an Workload
 
 
 
@@ -100,17 +100,17 @@ import (
 )
 
 func main() {
-	workloadId := int64(789) // int64 | 
+	workloadId := int64(789) // int64 | A unique integer value identifying the workload.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkloadsAPI.DestroyWorkload(context.Background(), workloadId).Execute()
+	resp, r, err := apiClient.WorkloadsAPI.DeleteWorkload(context.Background(), workloadId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.DestroyWorkload``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.DeleteWorkload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DestroyWorkload`: ResponseAsyncDeleteWorkload
-	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.DestroyWorkload`: %v\n", resp)
+	// response from `DeleteWorkload`: ResponseDeleteWorkload
+	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.DeleteWorkload`: %v\n", resp)
 }
 ```
 
@@ -120,11 +120,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workloadId** | **int64** |  | 
+**workloadId** | **int64** | A unique integer value identifying the workload. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDestroyWorkloadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteWorkloadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncDeleteWorkload**](ResponseAsyncDeleteWorkload.md)
+[**ResponseDeleteWorkload**](ResponseDeleteWorkload.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ListWorkloads
 
-> PaginatedWorkloadList ListWorkloads(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedWorkloadList ListWorkloads(ctx).Active(active).DigitalCertificateId(digitalCertificateId).Fields(fields).Id(id).Infrastructure(infrastructure).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).MapName(mapName).MtlsTrustedCaCertificateId(mtlsTrustedCaCertificateId).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 List Workloads
 
@@ -166,11 +166,22 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+	active := true // bool | Filter by active status. (optional)
+	digitalCertificateId := int64(789) // int64 | Filter by digital certificate id (accepts comma-separated values). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
+	infrastructure := "infrastructure_example" // string | Filter by infrastructure (accepts comma-separated values). (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
+	mapName := "mapName_example" // string | Filter by map name (case-insensitive, partial match). (optional)
+	mtlsTrustedCaCertificateId := int64(789) // int64 | Filter by mTLS trusted CA certificate id (accepts comma-separated values). (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, active, workload_domain_allow_access, workload_domain, infrastructure, domains, product_version) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
@@ -178,7 +189,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkloadsAPI.ListWorkloads(context.Background()).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.WorkloadsAPI.ListWorkloads(context.Background()).Active(active).DigitalCertificateId(digitalCertificateId).Fields(fields).Id(id).Infrastructure(infrastructure).LastEditor(lastEditor).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).MapName(mapName).MtlsTrustedCaCertificateId(mtlsTrustedCaCertificateId).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.ListWorkloads``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -199,7 +210,17 @@ Other parameters are passed through a pointer to a apiListWorkloadsRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **active** | **bool** | Filter by active status. | 
+ **digitalCertificateId** | **int64** | Filter by digital certificate id (accepts comma-separated values). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **id** | **int64** | Filter by id (accepts comma-separated values). | 
+ **infrastructure** | **string** | Filter by infrastructure (accepts comma-separated values). | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
+ **mapName** | **string** | Filter by map name (case-insensitive, partial match). | 
+ **mtlsTrustedCaCertificateId** | **int64** | Filter by mTLS trusted CA certificate id (accepts comma-separated values). | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, active, workload_domain_allow_access, workload_domain, infrastructure, domains, product_version) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
@@ -244,7 +265,7 @@ import (
 )
 
 func main() {
-	workloadId := int64(789) // int64 | 
+	workloadId := int64(789) // int64 | A unique integer value identifying the workload.
 	patchedWorkloadRequest := *openapiclient.NewPatchedWorkloadRequest() // PatchedWorkloadRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -265,7 +286,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workloadId** | **int64** |  | 
+**workloadId** | **int64** | A unique integer value identifying the workload. | 
 
 ### Other Parameters
 
@@ -316,7 +337,7 @@ import (
 )
 
 func main() {
-	workloadId := int64(789) // int64 | 
+	workloadId := int64(789) // int64 | A unique integer value identifying the workload.
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -337,7 +358,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workloadId** | **int64** |  | 
+**workloadId** | **int64** | A unique integer value identifying the workload. | 
 
 ### Other Parameters
 
@@ -388,7 +409,7 @@ import (
 )
 
 func main() {
-	workloadId := int64(789) // int64 | 
+	workloadId := int64(789) // int64 | A unique integer value identifying the workload.
 	workloadRequest := *openapiclient.NewWorkloadRequest("Name_example") // WorkloadRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -409,7 +430,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workloadId** | **int64** |  | 
+**workloadId** | **int64** | A unique integer value identifying the workload. | 
 
 ### Other Parameters
 

@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -68,7 +69,7 @@ func (a *FunctionsAPIService) CreateFunctionExecute(r ApiCreateFunctionRequest) 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_functions/functions"
+	localVarPath := localBasePath + "/workspace/functions"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -223,36 +224,36 @@ func (a *FunctionsAPIService) CreateFunctionExecute(r ApiCreateFunctionRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyFunctionRequest struct {
+type ApiDeleteFunctionRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
-	id string
+	functionId int64
 }
 
-func (r ApiDestroyFunctionRequest) Execute() (*ResponseDeleteFunctionsDoc, *http.Response, error) {
-	return r.ApiService.DestroyFunctionExecute(r)
+func (r ApiDeleteFunctionRequest) Execute() (*ResponseDeleteFunctionsDoc, *http.Response, error) {
+	return r.ApiService.DeleteFunctionExecute(r)
 }
 
 /*
-DestroyFunction Destroy an Function
+DeleteFunction Delete an Function
 
-Destroy a specific Function in your account.
+Delete a specific Function in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDestroyFunctionRequest
+ @param functionId A unique integer value identifying the edge function.
+ @return ApiDeleteFunctionRequest
 */
-func (a *FunctionsAPIService) DestroyFunction(ctx context.Context, id string) ApiDestroyFunctionRequest {
-	return ApiDestroyFunctionRequest{
+func (a *FunctionsAPIService) DeleteFunction(ctx context.Context, functionId int64) ApiDeleteFunctionRequest {
+	return ApiDeleteFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		functionId: functionId,
 	}
 }
 
 // Execute executes the request
 //  @return ResponseDeleteFunctionsDoc
-func (a *FunctionsAPIService) DestroyFunctionExecute(r ApiDestroyFunctionRequest) (*ResponseDeleteFunctionsDoc, *http.Response, error) {
+func (a *FunctionsAPIService) DeleteFunctionExecute(r ApiDeleteFunctionRequest) (*ResponseDeleteFunctionsDoc, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -260,13 +261,13 @@ func (a *FunctionsAPIService) DestroyFunctionExecute(r ApiDestroyFunctionRequest
 		localVarReturnValue  *ResponseDeleteFunctionsDoc
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FunctionsAPIService.DestroyFunction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FunctionsAPIService.DeleteFunction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_functions/functions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/functions/{function_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -419,16 +420,66 @@ func (a *FunctionsAPIService) DestroyFunctionExecute(r ApiDestroyFunctionRequest
 type ApiListFunctionsRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
+	active *bool
 	fields *string
+	id *int64
+	languageIn *string
+	lastEditor *string
+	lastModifiedGte *time.Time
+	lastModifiedLte *time.Time
+	name *string
 	ordering *string
 	page *int64
 	pageSize *int64
+	runtimeEnvironmentIn *string
 	search *string
+}
+
+// Filter by active status.
+func (r ApiListFunctionsRequest) Active(active bool) ApiListFunctionsRequest {
+	r.active = &active
+	return r
 }
 
 // Comma-separated list of field names to include in the response.
 func (r ApiListFunctionsRequest) Fields(fields string) ApiListFunctionsRequest {
 	r.fields = &fields
+	return r
+}
+
+// Filter by id (accepts comma-separated values).
+func (r ApiListFunctionsRequest) Id(id int64) ApiListFunctionsRequest {
+	r.id = &id
+	return r
+}
+
+// Filter by language (accepts comma-separated values).
+func (r ApiListFunctionsRequest) LanguageIn(languageIn string) ApiListFunctionsRequest {
+	r.languageIn = &languageIn
+	return r
+}
+
+// Filter by last editor (case-insensitive, partial match).
+func (r ApiListFunctionsRequest) LastEditor(lastEditor string) ApiListFunctionsRequest {
+	r.lastEditor = &lastEditor
+	return r
+}
+
+// Filter by last modified date (greater than or equal).
+func (r ApiListFunctionsRequest) LastModifiedGte(lastModifiedGte time.Time) ApiListFunctionsRequest {
+	r.lastModifiedGte = &lastModifiedGte
+	return r
+}
+
+// Filter by last modified date (less than or equal).
+func (r ApiListFunctionsRequest) LastModifiedLte(lastModifiedLte time.Time) ApiListFunctionsRequest {
+	r.lastModifiedLte = &lastModifiedLte
+	return r
+}
+
+// Filter by name (case-insensitive, partial match).
+func (r ApiListFunctionsRequest) Name(name string) ApiListFunctionsRequest {
+	r.name = &name
 	return r
 }
 
@@ -447,6 +498,12 @@ func (r ApiListFunctionsRequest) Page(page int64) ApiListFunctionsRequest {
 // A numeric value that indicates the number of items per page.
 func (r ApiListFunctionsRequest) PageSize(pageSize int64) ApiListFunctionsRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+// Filter by runtime environment (accepts comma-separated values).
+func (r ApiListFunctionsRequest) RuntimeEnvironmentIn(runtimeEnvironmentIn string) ApiListFunctionsRequest {
+	r.runtimeEnvironmentIn = &runtimeEnvironmentIn
 	return r
 }
 
@@ -490,14 +547,35 @@ func (a *FunctionsAPIService) ListFunctionsExecute(r ApiListFunctionsRequest) (*
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_functions/functions"
+	localVarPath := localBasePath + "/workspace/functions"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.active != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.languageIn != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "language__in", r.languageIn, "form", "")
+	}
+	if r.lastEditor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_editor", r.lastEditor, "form", "")
+	}
+	if r.lastModifiedGte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__gte", r.lastModifiedGte, "form", "")
+	}
+	if r.lastModifiedLte != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified__lte", r.lastModifiedLte, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
@@ -507,6 +585,9 @@ func (a *FunctionsAPIService) ListFunctionsExecute(r ApiListFunctionsRequest) (*
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.runtimeEnvironmentIn != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "runtime_environment__in", r.runtimeEnvironmentIn, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
@@ -658,7 +739,7 @@ func (a *FunctionsAPIService) ListFunctionsExecute(r ApiListFunctionsRequest) (*
 type ApiPartialUpdateFunctionRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
-	id string
+	functionId int64
 	patchedEdgeFunctionsRequest *PatchedEdgeFunctionsRequest
 }
 
@@ -677,14 +758,14 @@ PartialUpdateFunction Partially update an Function
 Update one or more fields of an existing Function without affecting other fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param functionId A unique integer value identifying the edge function.
  @return ApiPartialUpdateFunctionRequest
 */
-func (a *FunctionsAPIService) PartialUpdateFunction(ctx context.Context, id string) ApiPartialUpdateFunctionRequest {
+func (a *FunctionsAPIService) PartialUpdateFunction(ctx context.Context, functionId int64) ApiPartialUpdateFunctionRequest {
 	return ApiPartialUpdateFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		functionId: functionId,
 	}
 }
 
@@ -703,8 +784,8 @@ func (a *FunctionsAPIService) PartialUpdateFunctionExecute(r ApiPartialUpdateFun
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_functions/functions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/functions/{function_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -859,7 +940,7 @@ func (a *FunctionsAPIService) PartialUpdateFunctionExecute(r ApiPartialUpdateFun
 type ApiRetrieveFunctionRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
-	id string
+	functionId int64
 	fields *string
 }
 
@@ -879,14 +960,14 @@ RetrieveFunction Retrieve details of an Function
 Retrieve details of a specific Function in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param functionId A unique integer value identifying the edge function.
  @return ApiRetrieveFunctionRequest
 */
-func (a *FunctionsAPIService) RetrieveFunction(ctx context.Context, id string) ApiRetrieveFunctionRequest {
+func (a *FunctionsAPIService) RetrieveFunction(ctx context.Context, functionId int64) ApiRetrieveFunctionRequest {
 	return ApiRetrieveFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		functionId: functionId,
 	}
 }
 
@@ -905,8 +986,8 @@ func (a *FunctionsAPIService) RetrieveFunctionExecute(r ApiRetrieveFunctionReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_functions/functions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/functions/{function_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1062,7 +1143,7 @@ func (a *FunctionsAPIService) RetrieveFunctionExecute(r ApiRetrieveFunctionReque
 type ApiUpdateFunctionRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
-	id string
+	functionId int64
 	edgeFunctionsRequest *EdgeFunctionsRequest
 }
 
@@ -1081,14 +1162,14 @@ UpdateFunction Update an Function
 Update an existing Function. This replaces the entire Function with the new data provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param functionId A unique integer value identifying the edge function.
  @return ApiUpdateFunctionRequest
 */
-func (a *FunctionsAPIService) UpdateFunction(ctx context.Context, id string) ApiUpdateFunctionRequest {
+func (a *FunctionsAPIService) UpdateFunction(ctx context.Context, functionId int64) ApiUpdateFunctionRequest {
 	return ApiUpdateFunctionRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		functionId: functionId,
 	}
 }
 
@@ -1107,8 +1188,8 @@ func (a *FunctionsAPIService) UpdateFunctionExecute(r ApiUpdateFunctionRequest) 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_functions/functions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workspace/functions/{function_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"function_id"+"}", url.PathEscape(parameterValueToString(r.functionId, "functionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

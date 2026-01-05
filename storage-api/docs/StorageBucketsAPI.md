@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateBucket**](StorageBucketsAPI.md#CreateBucket) | **Post** /edge_storage/buckets | Create a new bucket
-[**DeleteBucket**](StorageBucketsAPI.md#DeleteBucket) | **Delete** /edge_storage/buckets/{name} | Delete a bucket
-[**ListBuckets**](StorageBucketsAPI.md#ListBuckets) | **Get** /edge_storage/buckets | List buckets
-[**RetrieveBucket**](StorageBucketsAPI.md#RetrieveBucket) | **Get** /edge_storage/buckets/{name} | Retrieve details from a bucket
-[**UpdateBucket**](StorageBucketsAPI.md#UpdateBucket) | **Patch** /edge_storage/buckets/{name} | Update bucket info
+[**CreateBucket**](StorageBucketsAPI.md#CreateBucket) | **Post** /workspace/storage/buckets | Create a new bucket
+[**DeleteBucket**](StorageBucketsAPI.md#DeleteBucket) | **Delete** /workspace/storage/buckets/{bucket_name} | Delete a bucket
+[**ListBuckets**](StorageBucketsAPI.md#ListBuckets) | **Get** /workspace/storage/buckets | List buckets
+[**RetrieveBucket**](StorageBucketsAPI.md#RetrieveBucket) | **Get** /workspace/storage/buckets/{bucket_name} | Retrieve a bucket
+[**UpdateBucket**](StorageBucketsAPI.md#UpdateBucket) | **Patch** /workspace/storage/buckets/{bucket_name} | Update bucket info
 
 
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## DeleteBucket
 
-> ResponseDeleteBucketCreate DeleteBucket(ctx, name).Execute()
+> ResponseAsyncDeleteBucketCreate DeleteBucket(ctx, bucketName).Execute()
 
 Delete a bucket
 
@@ -99,16 +99,16 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | 
+	bucketName := "bucketName_example" // string | The name of the bucket
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageBucketsAPI.DeleteBucket(context.Background(), name).Execute()
+	resp, r, err := apiClient.StorageBucketsAPI.DeleteBucket(context.Background(), bucketName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.DeleteBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteBucket`: ResponseDeleteBucketCreate
+	// response from `DeleteBucket`: ResponseAsyncDeleteBucketCreate
 	fmt.Fprintf(os.Stdout, "Response from `StorageBucketsAPI.DeleteBucket`: %v\n", resp)
 }
 ```
@@ -119,7 +119,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** |  | 
+**bucketName** | **string** | The name of the bucket | 
 
 ### Other Parameters
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteBucketCreate**](ResponseDeleteBucketCreate.md)
+[**ResponseAsyncDeleteBucketCreate**](ResponseAsyncDeleteBucketCreate.md)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## ListBuckets
 
-> PaginatedBucketList ListBuckets(ctx).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedBucketList ListBuckets(ctx).Bucket(bucket).Created(created).CreatedGte(createdGte).CreatedLte(createdLte).Description(description).EdgeAccess(edgeAccess).Fields(fields).LastEditor(lastEditor).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
 
 List buckets
 
@@ -165,19 +165,32 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+	bucket := "bucket_example" // string | Filter by bucket (exact match). (optional)
+	created := time.Now() // time.Time | Filter by creation date (exact match). (optional)
+	createdGte := time.Now() // time.Time | Filter by creation date (greater than or equal). (optional)
+	createdLte := time.Now() // time.Time | Filter by creation date (less than or equal). (optional)
+	description := "description_example" // string | Filter by description (case-insensitive, partial match). (optional)
+	edgeAccess := "edgeAccess_example" // string | Filter by edge access (accepts comma-separated values). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
+	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
+	lastModified := time.Now() // time.Time | Filter by last modified date (exact match). (optional)
+	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
+	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
+	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
 	search := "search_example" // string | A search term. (optional)
+	status := "status_example" // string | Filter by status (accepts comma-separated values). (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageBucketsAPI.ListBuckets(context.Background()).Fields(fields).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.StorageBucketsAPI.ListBuckets(context.Background()).Bucket(bucket).Created(created).CreatedGte(createdGte).CreatedLte(createdLte).Description(description).EdgeAccess(edgeAccess).Fields(fields).LastEditor(lastEditor).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.ListBuckets``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -198,11 +211,23 @@ Other parameters are passed through a pointer to a apiListBucketsRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **bucket** | **string** | Filter by bucket (exact match). | 
+ **created** | **time.Time** | Filter by creation date (exact match). | 
+ **createdGte** | **time.Time** | Filter by creation date (greater than or equal). | 
+ **createdLte** | **time.Time** | Filter by creation date (less than or equal). | 
+ **description** | **string** | Filter by description (case-insensitive, partial match). | 
+ **edgeAccess** | **string** | Filter by edge access (accepts comma-separated values). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
+ **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
+ **lastModified** | **time.Time** | Filter by last modified date (exact match). | 
+ **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
+ **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
+ **name** | **string** | Filter by name (case-insensitive, partial match). | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
  **search** | **string** | A search term. | 
+ **status** | **string** | Filter by status (accepts comma-separated values). | 
 
 ### Return type
 
@@ -224,9 +249,9 @@ Name | Type | Description  | Notes
 
 ## RetrieveBucket
 
-> ResponseRetrieveBucket RetrieveBucket(ctx, name).Fields(fields).Execute()
+> ResponseBucketCreate RetrieveBucket(ctx, bucketName).Fields(fields).Execute()
 
-Retrieve details from a bucket
+Retrieve a bucket
 
 
 
@@ -243,17 +268,17 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | 
+	bucketName := "bucketName_example" // string | The name of the bucket
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageBucketsAPI.RetrieveBucket(context.Background(), name).Fields(fields).Execute()
+	resp, r, err := apiClient.StorageBucketsAPI.RetrieveBucket(context.Background(), bucketName).Fields(fields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.RetrieveBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveBucket`: ResponseRetrieveBucket
+	// response from `RetrieveBucket`: ResponseBucketCreate
 	fmt.Fprintf(os.Stdout, "Response from `StorageBucketsAPI.RetrieveBucket`: %v\n", resp)
 }
 ```
@@ -264,7 +289,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** |  | 
+**bucketName** | **string** | The name of the bucket | 
 
 ### Other Parameters
 
@@ -278,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveBucket**](ResponseRetrieveBucket.md)
+[**ResponseBucketCreate**](ResponseBucketCreate.md)
 
 ### Authorization
 
@@ -296,7 +321,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBucket
 
-> ResponseBucketCreate UpdateBucket(ctx, name).PatchedBucketRequest(patchedBucketRequest).Execute()
+> ResponseBucketCreate UpdateBucket(ctx, bucketName).PatchedBucketRequest(patchedBucketRequest).Execute()
 
 Update bucket info
 
@@ -315,12 +340,12 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | 
+	bucketName := "bucketName_example" // string | The name of the bucket
 	patchedBucketRequest := *openapiclient.NewPatchedBucketRequest() // PatchedBucketRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageBucketsAPI.UpdateBucket(context.Background(), name).PatchedBucketRequest(patchedBucketRequest).Execute()
+	resp, r, err := apiClient.StorageBucketsAPI.UpdateBucket(context.Background(), bucketName).PatchedBucketRequest(patchedBucketRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.UpdateBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,7 +361,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** |  | 
+**bucketName** | **string** | The name of the bucket | 
 
 ### Other Parameters
 

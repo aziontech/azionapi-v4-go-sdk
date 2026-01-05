@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **StorageAccount** | **string** |  | 
 **ContainerName** | **string** |  | 
 **BlobSasToken** | **string** |  | 
+**Type** | **string** | Type identifier for this endpoint (azure_blob_storage) | 
 
 ## Methods
 
 ### NewAzureBlobStorageEndpoint
 
-`func NewAzureBlobStorageEndpoint(storageAccount string, containerName string, blobSasToken string, ) *AzureBlobStorageEndpoint`
+`func NewAzureBlobStorageEndpoint(storageAccount string, containerName string, blobSasToken string, type_ string, ) *AzureBlobStorageEndpoint`
 
 NewAzureBlobStorageEndpoint instantiates a new AzureBlobStorageEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *AzureBlobStorageEndpoint) SetBlobSasToken(v string)`
 
 SetBlobSasToken sets BlobSasToken field to given value.
+
+
+### GetType
+
+`func (o *AzureBlobStorageEndpoint) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AzureBlobStorageEndpoint) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AzureBlobStorageEndpoint) SetType(v string)`
+
+SetType sets Type field to given value.
 
 
 
