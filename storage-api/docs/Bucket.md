@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**EdgeAccess** | **string** | * &#x60;read_only&#x60; - read_only * &#x60;read_write&#x60; - read_write * &#x60;restricted&#x60; - restricted | 
+**WorkloadsAccess** | **string** | * &#x60;read_only&#x60; - read_only * &#x60;read_write&#x60; - read_write * &#x60;restricted&#x60; - restricted | 
 **LastEditor** | **string** |  | 
 **LastModified** | **time.Time** |  | 
 **ProductVersion** | **string** |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewBucket
 
-`func NewBucket(name string, edgeAccess string, lastEditor string, lastModified time.Time, productVersion string, ) *Bucket`
+`func NewBucket(name string, workloadsAccess string, lastEditor string, lastModified time.Time, productVersion string, ) *Bucket`
 
 NewBucket instantiates a new Bucket object
 This constructor will assign default values to properties that have it defined,
@@ -49,24 +49,24 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetEdgeAccess
+### GetWorkloadsAccess
 
-`func (o *Bucket) GetEdgeAccess() string`
+`func (o *Bucket) GetWorkloadsAccess() string`
 
-GetEdgeAccess returns the EdgeAccess field if non-nil, zero value otherwise.
+GetWorkloadsAccess returns the WorkloadsAccess field if non-nil, zero value otherwise.
 
-### GetEdgeAccessOk
+### GetWorkloadsAccessOk
 
-`func (o *Bucket) GetEdgeAccessOk() (*string, bool)`
+`func (o *Bucket) GetWorkloadsAccessOk() (*string, bool)`
 
-GetEdgeAccessOk returns a tuple with the EdgeAccess field if it's non-nil, zero value otherwise
+GetWorkloadsAccessOk returns a tuple with the WorkloadsAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEdgeAccess
+### SetWorkloadsAccess
 
-`func (o *Bucket) SetEdgeAccess(v string)`
+`func (o *Bucket) SetWorkloadsAccess(v string)`
 
-SetEdgeAccess sets EdgeAccess field to given value.
+SetWorkloadsAccess sets WorkloadsAccess field to given value.
 
 
 ### GetLastEditor

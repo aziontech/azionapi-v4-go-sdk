@@ -23,7 +23,7 @@ var _ MappedNullable = &BucketCreateRequest{}
 type BucketCreateRequest struct {
 	Name string `json:"name"`
 	// * `read_only` - read_only * `read_write` - read_write * `restricted` - restricted
-	EdgeAccess string `json:"edge_access"`
+	WorkloadsAccess string `json:"workloads_access"`
 }
 
 type _BucketCreateRequest BucketCreateRequest
@@ -32,10 +32,10 @@ type _BucketCreateRequest BucketCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBucketCreateRequest(name string, edgeAccess string) *BucketCreateRequest {
+func NewBucketCreateRequest(name string, workloadsAccess string) *BucketCreateRequest {
 	this := BucketCreateRequest{}
 	this.Name = name
-	this.EdgeAccess = edgeAccess
+	this.WorkloadsAccess = workloadsAccess
 	return &this
 }
 
@@ -71,28 +71,28 @@ func (o *BucketCreateRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetEdgeAccess returns the EdgeAccess field value
-func (o *BucketCreateRequest) GetEdgeAccess() string {
+// GetWorkloadsAccess returns the WorkloadsAccess field value
+func (o *BucketCreateRequest) GetWorkloadsAccess() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.EdgeAccess
+	return o.WorkloadsAccess
 }
 
-// GetEdgeAccessOk returns a tuple with the EdgeAccess field value
+// GetWorkloadsAccessOk returns a tuple with the WorkloadsAccess field value
 // and a boolean to check if the value has been set.
-func (o *BucketCreateRequest) GetEdgeAccessOk() (*string, bool) {
+func (o *BucketCreateRequest) GetWorkloadsAccessOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.EdgeAccess, true
+	return &o.WorkloadsAccess, true
 }
 
-// SetEdgeAccess sets field value
-func (o *BucketCreateRequest) SetEdgeAccess(v string) {
-	o.EdgeAccess = v
+// SetWorkloadsAccess sets field value
+func (o *BucketCreateRequest) SetWorkloadsAccess(v string) {
+	o.WorkloadsAccess = v
 }
 
 func (o BucketCreateRequest) MarshalJSON() ([]byte, error) {
@@ -106,7 +106,7 @@ func (o BucketCreateRequest) MarshalJSON() ([]byte, error) {
 func (o BucketCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	toSerialize["edge_access"] = o.EdgeAccess
+	toSerialize["workloads_access"] = o.WorkloadsAccess
 	return toSerialize, nil
 }
 
@@ -116,7 +116,7 @@ func (o *BucketCreateRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"edge_access",
+		"workloads_access",
 	}
 
 	allProperties := make(map[string]interface{})

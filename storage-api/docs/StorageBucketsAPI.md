@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateBucket
 
-> ResponseBucketCreate CreateBucket(ctx).BucketCreateRequest(bucketCreateRequest).Execute()
+> BucketCreateResponse CreateBucket(ctx).BucketCreateRequest(bucketCreateRequest).Execute()
 
 Create a new bucket
 
@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	bucketCreateRequest := *openapiclient.NewBucketCreateRequest("Name_example", "EdgeAccess_example") // BucketCreateRequest | 
+	bucketCreateRequest := *openapiclient.NewBucketCreateRequest("Name_example", "WorkloadsAccess_example") // BucketCreateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.CreateBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateBucket`: ResponseBucketCreate
+	// response from `CreateBucket`: BucketCreateResponse
 	fmt.Fprintf(os.Stdout, "Response from `StorageBucketsAPI.CreateBucket`: %v\n", resp)
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseBucketCreate**](ResponseBucketCreate.md)
+[**BucketCreateResponse**](BucketCreateResponse.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## DeleteBucket
 
-> ResponseAsyncDeleteBucketCreate DeleteBucket(ctx, bucketName).Execute()
+> DeleteResponse DeleteBucket(ctx, bucketName).Execute()
 
 Delete a bucket
 
@@ -108,7 +108,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.DeleteBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteBucket`: ResponseAsyncDeleteBucketCreate
+	// response from `DeleteBucket`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `StorageBucketsAPI.DeleteBucket`: %v\n", resp)
 }
 ```
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncDeleteBucketCreate**](ResponseAsyncDeleteBucketCreate.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## ListBuckets
 
-> PaginatedBucketList ListBuckets(ctx).Bucket(bucket).Created(created).CreatedGte(createdGte).CreatedLte(createdLte).Description(description).EdgeAccess(edgeAccess).Fields(fields).LastEditor(lastEditor).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
+> PaginatedBucketList ListBuckets(ctx).Bucket(bucket).Created(created).CreatedGte(createdGte).CreatedLte(createdLte).Description(description).Fields(fields).LastEditor(lastEditor).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).WorkloadsAccess(workloadsAccess).Execute()
 
 List buckets
 
@@ -175,7 +175,6 @@ func main() {
 	createdGte := time.Now() // time.Time | Filter by creation date (greater than or equal). (optional)
 	createdLte := time.Now() // time.Time | Filter by creation date (less than or equal). (optional)
 	description := "description_example" // string | Filter by description (case-insensitive, partial match). (optional)
-	edgeAccess := "edgeAccess_example" // string | Filter by edge access (accepts comma-separated values). (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 	lastEditor := "lastEditor_example" // string | Filter by last editor (case-insensitive, partial match). (optional)
 	lastModified := time.Now() // time.Time | Filter by last modified date (exact match). (optional)
@@ -187,10 +186,11 @@ func main() {
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
 	search := "search_example" // string | A search term. (optional)
 	status := "status_example" // string | Filter by status (accepts comma-separated values). (optional)
+	workloadsAccess := "workloadsAccess_example" // string | Filter by workloads access (accepts comma-separated values). (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageBucketsAPI.ListBuckets(context.Background()).Bucket(bucket).Created(created).CreatedGte(createdGte).CreatedLte(createdLte).Description(description).EdgeAccess(edgeAccess).Fields(fields).LastEditor(lastEditor).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
+	resp, r, err := apiClient.StorageBucketsAPI.ListBuckets(context.Background()).Bucket(bucket).Created(created).CreatedGte(createdGte).CreatedLte(createdLte).Description(description).Fields(fields).LastEditor(lastEditor).LastModified(lastModified).LastModifiedGte(lastModifiedGte).LastModifiedLte(lastModifiedLte).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).WorkloadsAccess(workloadsAccess).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.ListBuckets``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,7 +216,6 @@ Name | Type | Description  | Notes
  **createdGte** | **time.Time** | Filter by creation date (greater than or equal). | 
  **createdLte** | **time.Time** | Filter by creation date (less than or equal). | 
  **description** | **string** | Filter by description (case-insensitive, partial match). | 
- **edgeAccess** | **string** | Filter by edge access (accepts comma-separated values). | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
  **lastEditor** | **string** | Filter by last editor (case-insensitive, partial match). | 
  **lastModified** | **time.Time** | Filter by last modified date (exact match). | 
@@ -228,6 +227,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
  **search** | **string** | A search term. | 
  **status** | **string** | Filter by status (accepts comma-separated values). | 
+ **workloadsAccess** | **string** | Filter by workloads access (accepts comma-separated values). | 
 
 ### Return type
 
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveBucket
 
-> ResponseBucketCreate RetrieveBucket(ctx, bucketName).Fields(fields).Execute()
+> BucketCreateResponse RetrieveBucket(ctx, bucketName).Fields(fields).Execute()
 
 Retrieve a bucket
 
@@ -278,7 +278,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.RetrieveBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveBucket`: ResponseBucketCreate
+	// response from `RetrieveBucket`: BucketCreateResponse
 	fmt.Fprintf(os.Stdout, "Response from `StorageBucketsAPI.RetrieveBucket`: %v\n", resp)
 }
 ```
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseBucketCreate**](ResponseBucketCreate.md)
+[**BucketCreateResponse**](BucketCreateResponse.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBucket
 
-> ResponseBucketCreate UpdateBucket(ctx, bucketName).PatchedBucketRequest(patchedBucketRequest).Execute()
+> BucketCreateResponse UpdateBucket(ctx, bucketName).PatchedBucketRequest(patchedBucketRequest).Execute()
 
 Update bucket info
 
@@ -350,7 +350,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageBucketsAPI.UpdateBucket``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateBucket`: ResponseBucketCreate
+	// response from `UpdateBucket`: BucketCreateResponse
 	fmt.Fprintf(os.Stdout, "Response from `StorageBucketsAPI.UpdateBucket`: %v\n", resp)
 }
 ```
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseBucketCreate**](ResponseBucketCreate.md)
+[**BucketCreateResponse**](BucketCreateResponse.md)
 
 ### Authorization
 

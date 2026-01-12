@@ -20,7 +20,7 @@ var _ MappedNullable = &PatchedBucketRequest{}
 // PatchedBucketRequest struct for PatchedBucketRequest
 type PatchedBucketRequest struct {
 	// * `read_only` - read_only * `read_write` - read_write * `restricted` - restricted
-	EdgeAccess *string `json:"edge_access,omitempty"`
+	WorkloadsAccess *string `json:"workloads_access,omitempty"`
 }
 
 // NewPatchedBucketRequest instantiates a new PatchedBucketRequest object
@@ -40,36 +40,36 @@ func NewPatchedBucketRequestWithDefaults() *PatchedBucketRequest {
 	return &this
 }
 
-// GetEdgeAccess returns the EdgeAccess field value if set, zero value otherwise.
-func (o *PatchedBucketRequest) GetEdgeAccess() string {
-	if o == nil || IsNil(o.EdgeAccess) {
+// GetWorkloadsAccess returns the WorkloadsAccess field value if set, zero value otherwise.
+func (o *PatchedBucketRequest) GetWorkloadsAccess() string {
+	if o == nil || IsNil(o.WorkloadsAccess) {
 		var ret string
 		return ret
 	}
-	return *o.EdgeAccess
+	return *o.WorkloadsAccess
 }
 
-// GetEdgeAccessOk returns a tuple with the EdgeAccess field value if set, nil otherwise
+// GetWorkloadsAccessOk returns a tuple with the WorkloadsAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedBucketRequest) GetEdgeAccessOk() (*string, bool) {
-	if o == nil || IsNil(o.EdgeAccess) {
+func (o *PatchedBucketRequest) GetWorkloadsAccessOk() (*string, bool) {
+	if o == nil || IsNil(o.WorkloadsAccess) {
 		return nil, false
 	}
-	return o.EdgeAccess, true
+	return o.WorkloadsAccess, true
 }
 
-// HasEdgeAccess returns a boolean if a field has been set.
-func (o *PatchedBucketRequest) HasEdgeAccess() bool {
-	if o != nil && !IsNil(o.EdgeAccess) {
+// HasWorkloadsAccess returns a boolean if a field has been set.
+func (o *PatchedBucketRequest) HasWorkloadsAccess() bool {
+	if o != nil && !IsNil(o.WorkloadsAccess) {
 		return true
 	}
 
 	return false
 }
 
-// SetEdgeAccess gets a reference to the given string and assigns it to the EdgeAccess field.
-func (o *PatchedBucketRequest) SetEdgeAccess(v string) {
-	o.EdgeAccess = &v
+// SetWorkloadsAccess gets a reference to the given string and assigns it to the WorkloadsAccess field.
+func (o *PatchedBucketRequest) SetWorkloadsAccess(v string) {
+	o.WorkloadsAccess = &v
 }
 
 func (o PatchedBucketRequest) MarshalJSON() ([]byte, error) {
@@ -82,8 +82,8 @@ func (o PatchedBucketRequest) MarshalJSON() ([]byte, error) {
 
 func (o PatchedBucketRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EdgeAccess) {
-		toSerialize["edge_access"] = o.EdgeAccess
+	if !IsNil(o.WorkloadsAccess) {
+		toSerialize["workloads_access"] = o.WorkloadsAccess
 	}
 	return toSerialize, nil
 }

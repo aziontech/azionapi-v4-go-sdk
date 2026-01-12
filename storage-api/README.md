@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *StorageCredentialsAPI* | [**DeleteCredential**](docs/StorageCredentialsAPI.md#deletecredential) | **Delete** /workspace/storage/credentials/{credential_id} | Delete a credential
 *StorageCredentialsAPI* | [**ListCredentials**](docs/StorageCredentialsAPI.md#listcredentials) | **Get** /workspace/storage/credentials | List credentials
 *StorageCredentialsAPI* | [**RetrieveCredential**](docs/StorageCredentialsAPI.md#retrievecredential) | **Get** /workspace/storage/credentials/{credential_id} | Retrieve details from a credential
+*StorageObjectsAPI* | [**CopyObjectKey**](docs/StorageObjectsAPI.md#copyobjectkey) | **Post** /workspace/storage/buckets/{bucket_name}/objects/{object_key}/copy/{new_object_key} | Copy object to new key
 *StorageObjectsAPI* | [**CreateObjectKey**](docs/StorageObjectsAPI.md#createobjectkey) | **Post** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Create new object key.
 *StorageObjectsAPI* | [**DeleteObjectKey**](docs/StorageObjectsAPI.md#deleteobjectkey) | **Delete** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Delete object key
 *StorageObjectsAPI* | [**DownloadObject**](docs/StorageObjectsAPI.md#downloadobject) | **Get** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Download object
@@ -99,9 +100,12 @@ Class | Method | HTTP request | Description
  - [Bucket](docs/Bucket.md)
  - [BucketCreate](docs/BucketCreate.md)
  - [BucketCreateRequest](docs/BucketCreateRequest.md)
+ - [BucketCreateResponse](docs/BucketCreateResponse.md)
  - [BucketObject](docs/BucketObject.md)
  - [Credential](docs/Credential.md)
  - [CredentialCreateRequest](docs/CredentialCreateRequest.md)
+ - [CredentialResponse](docs/CredentialResponse.md)
+ - [DeleteResponse](docs/DeleteResponse.md)
  - [JSONAPIErrorObject](docs/JSONAPIErrorObject.md)
  - [JSONAPIErrorResponse](docs/JSONAPIErrorResponse.md)
  - [JSONAPIErrorSource](docs/JSONAPIErrorSource.md)
@@ -110,14 +114,7 @@ Class | Method | HTTP request | Description
  - [PaginatedBucketList](docs/PaginatedBucketList.md)
  - [PaginatedCredentialList](docs/PaginatedCredentialList.md)
  - [PatchedBucketRequest](docs/PatchedBucketRequest.md)
- - [ResponseAsyncBucketCreate](docs/ResponseAsyncBucketCreate.md)
- - [ResponseAsyncCredential](docs/ResponseAsyncCredential.md)
- - [ResponseAsyncDeleteBucketCreate](docs/ResponseAsyncDeleteBucketCreate.md)
- - [ResponseAsyncDeleteBucketObject](docs/ResponseAsyncDeleteBucketObject.md)
- - [ResponseAsyncDeleteCredential](docs/ResponseAsyncDeleteCredential.md)
- - [ResponseBucketCreate](docs/ResponseBucketCreate.md)
  - [ResponseBucketObject](docs/ResponseBucketObject.md)
- - [ResponseCredential](docs/ResponseCredential.md)
  - [SuccessObjectOperation](docs/SuccessObjectOperation.md)
  - [SuccessObjectOperationAsync](docs/SuccessObjectOperationAsync.md)
 
