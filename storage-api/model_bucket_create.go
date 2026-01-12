@@ -24,7 +24,7 @@ var _ MappedNullable = &BucketCreate{}
 type BucketCreate struct {
 	Name string `json:"name"`
 	// * `read_only` - read_only * `read_write` - read_write * `restricted` - restricted
-	EdgeAccess string `json:"edge_access"`
+	WorkloadsAccess string `json:"workloads_access"`
 	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 	ProductVersion string `json:"product_version"`
@@ -36,10 +36,10 @@ type _BucketCreate BucketCreate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBucketCreate(name string, edgeAccess string, lastEditor string, lastModified time.Time, productVersion string) *BucketCreate {
+func NewBucketCreate(name string, workloadsAccess string, lastEditor string, lastModified time.Time, productVersion string) *BucketCreate {
 	this := BucketCreate{}
 	this.Name = name
-	this.EdgeAccess = edgeAccess
+	this.WorkloadsAccess = workloadsAccess
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	this.ProductVersion = productVersion
@@ -78,28 +78,28 @@ func (o *BucketCreate) SetName(v string) {
 	o.Name = v
 }
 
-// GetEdgeAccess returns the EdgeAccess field value
-func (o *BucketCreate) GetEdgeAccess() string {
+// GetWorkloadsAccess returns the WorkloadsAccess field value
+func (o *BucketCreate) GetWorkloadsAccess() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.EdgeAccess
+	return o.WorkloadsAccess
 }
 
-// GetEdgeAccessOk returns a tuple with the EdgeAccess field value
+// GetWorkloadsAccessOk returns a tuple with the WorkloadsAccess field value
 // and a boolean to check if the value has been set.
-func (o *BucketCreate) GetEdgeAccessOk() (*string, bool) {
+func (o *BucketCreate) GetWorkloadsAccessOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.EdgeAccess, true
+	return &o.WorkloadsAccess, true
 }
 
-// SetEdgeAccess sets field value
-func (o *BucketCreate) SetEdgeAccess(v string) {
-	o.EdgeAccess = v
+// SetWorkloadsAccess sets field value
+func (o *BucketCreate) SetWorkloadsAccess(v string) {
+	o.WorkloadsAccess = v
 }
 
 // GetLastEditor returns the LastEditor field value
@@ -185,7 +185,7 @@ func (o BucketCreate) MarshalJSON() ([]byte, error) {
 func (o BucketCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	toSerialize["edge_access"] = o.EdgeAccess
+	toSerialize["workloads_access"] = o.WorkloadsAccess
 	toSerialize["last_editor"] = o.LastEditor
 	toSerialize["last_modified"] = o.LastModified
 	toSerialize["product_version"] = o.ProductVersion
@@ -198,7 +198,7 @@ func (o *BucketCreate) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"edge_access",
+		"workloads_access",
 		"last_editor",
 		"last_modified",
 		"product_version",

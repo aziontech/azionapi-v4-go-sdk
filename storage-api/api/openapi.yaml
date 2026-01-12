@@ -57,14 +57,6 @@ paths:
         schema:
           type: string
         style: form
-      - description: Filter by edge access (accepts comma-separated values).
-        explode: true
-        in: query
-        name: edge_access
-        required: false
-        schema:
-          type: string
-        style: form
       - description: Comma-separated list of field names to include in the response.
         explode: true
         in: query
@@ -154,6 +146,14 @@ paths:
         explode: true
         in: query
         name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by workloads access (accepts comma-separated values).
+        explode: true
+        in: query
+        name: workloads_access
         required: false
         schema:
           type: string
@@ -297,13 +297,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseBucketCreate"
+                $ref: "#/components/schemas/BucketCreateResponse"
           description: ""
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncBucketCreate"
+                $ref: "#/components/schemas/BucketCreateResponse"
           description: ""
         "400":
           content:
@@ -437,13 +437,17 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
-          description: No response body
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+          description: ""
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncDeleteBucketCreate"
+                $ref: "#/components/schemas/DeleteResponse"
           description: ""
         "401":
           content:
@@ -588,7 +592,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseBucketCreate"
+                $ref: "#/components/schemas/BucketCreateResponse"
           description: ""
         "400":
           content:
@@ -730,13 +734,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseBucketCreate"
+                $ref: "#/components/schemas/BucketCreateResponse"
           description: ""
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncBucketCreate"
+                $ref: "#/components/schemas/BucketCreateResponse"
           description: ""
         "400":
           content:
@@ -1061,13 +1065,17 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
-          description: No response body
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+          description: ""
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncDeleteBucketObject"
+                $ref: "#/components/schemas/DeleteResponse"
           description: ""
         "400":
           content:
@@ -1675,6 +1683,52 @@ paths:
       summary: Update the object key.
       tags:
       - Storage - Objects
+  /workspace/storage/buckets/{bucket_name}/objects/{object_key}/copy/{new_object_key}:
+    post:
+      description: Copy an object to a new key within the same bucket.
+      operationId: copy_object_key
+      parameters:
+      - description: The name of the bucket
+        explode: false
+        in: path
+        name: bucket_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The key/path of the destination object within the bucket
+        explode: false
+        in: path
+        name: new_object_key
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The key/path of the source object within the bucket
+        explode: false
+        in: path
+        name: object_key
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                description: Object copied successfully
+          description: ""
+      security:
+      - TokenAuth: []
+      - BearerAuth: []
+      summary: Copy object to new key
+      tags:
+      - Storage - Objects
   /workspace/storage/credentials:
     get:
       description: List all credentials.
@@ -1937,13 +1991,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseCredential"
+                $ref: "#/components/schemas/CredentialResponse"
           description: ""
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncCredential"
+                $ref: "#/components/schemas/CredentialResponse"
           description: ""
         "400":
           content:
@@ -2078,13 +2132,17 @@ paths:
           type: integer
         style: simple
       responses:
-        "204":
-          description: No response body
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+          description: ""
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncDeleteCredential"
+                $ref: "#/components/schemas/DeleteResponse"
           description: ""
         "401":
           content:
@@ -2230,7 +2288,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseCredential"
+                $ref: "#/components/schemas/CredentialResponse"
           description: ""
         "401":
           content:
@@ -2355,7 +2413,7 @@ components:
     Bucket:
       example:
         product_version: product_version
-        edge_access: edge_access
+        workloads_access: workloads_access
         last_editor: last_editor
         name: name
         last_modified: 2000-01-23T04:56:07.000+00:00
@@ -2364,7 +2422,7 @@ components:
           maxLength: 63
           minLength: 6
           type: string
-        edge_access:
+        workloads_access:
           description: |-
             * `read_only` - read_only
             * `read_write` - read_write
@@ -2384,16 +2442,16 @@ components:
           minLength: 3
           type: string
       required:
-      - edge_access
       - last_editor
       - last_modified
       - name
       - product_version
+      - workloads_access
       type: object
     BucketCreate:
       example:
         product_version: product_version
-        edge_access: edge_access
+        workloads_access: workloads_access
         last_editor: last_editor
         name: name
         last_modified: 2000-01-23T04:56:07.000+00:00
@@ -2402,7 +2460,7 @@ components:
           maxLength: 63
           minLength: 6
           type: string
-        edge_access:
+        workloads_access:
           description: |-
             * `read_only` - read_only
             * `read_write` - read_write
@@ -2422,22 +2480,22 @@ components:
           minLength: 3
           type: string
       required:
-      - edge_access
       - last_editor
       - last_modified
       - name
       - product_version
+      - workloads_access
       type: object
     BucketCreateRequest:
       example:
-        edge_access: edge_access
+        workloads_access: workloads_access
         name: name
       properties:
         name:
           maxLength: 63
           minLength: 6
           type: string
-        edge_access:
+        workloads_access:
           description: |-
             * `read_only` - read_only
             * `read_write` - read_write
@@ -2448,8 +2506,27 @@ components:
           - read_write
           - restricted
       required:
-      - edge_access
       - name
+      - workloads_access
+      type: object
+    BucketCreateResponse:
+      example:
+        data:
+          product_version: product_version
+          workloads_access: workloads_access
+          last_editor: last_editor
+          name: name
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+        data:
+          $ref: "#/components/schemas/BucketCreate"
+      required:
+      - data
       type: object
     BucketObject:
       example:
@@ -2572,6 +2649,41 @@ components:
       - capabilities
       - name
       type: object
+    CredentialResponse:
+      example:
+        data:
+          secret_key: secret_key
+          capabilities:
+          - capabilities
+          - capabilities
+          access_key: access_key
+          buckets:
+          - buckets
+          - buckets
+          last_editor: last_editor
+          name: name
+          expiration_date: 2000-01-23T04:56:07.000+00:00
+          last_modified: 2000-01-23T04:56:07.000+00:00
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+        data:
+          $ref: "#/components/schemas/Credential"
+      required:
+      - data
+      type: object
+    DeleteResponse:
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+      type: object
     JSONAPIErrorObject:
       description: Serializer for a single JSON:API error object.
       example:
@@ -2689,12 +2801,12 @@ components:
         page: 1
         results:
         - product_version: product_version
-          edge_access: edge_access
+          workloads_access: workloads_access
           last_editor: last_editor
           name: name
           last_modified: 2000-01-23T04:56:07.000+00:00
         - product_version: product_version
-          edge_access: edge_access
+          workloads_access: workloads_access
           last_editor: last_editor
           name: name
           last_modified: 2000-01-23T04:56:07.000+00:00
@@ -2800,9 +2912,9 @@ components:
       type: object
     PatchedBucketRequest:
       example:
-        edge_access: edge_access
+        workloads_access: workloads_access
       properties:
-        edge_access:
+        workloads_access:
           description: |-
             * `read_only` - read_only
             * `read_write` - read_write
@@ -2812,97 +2924,6 @@ components:
           - read_only
           - read_write
           - restricted
-      type: object
-    ResponseAsyncBucketCreate:
-      example:
-        data:
-          product_version: product_version
-          edge_access: edge_access
-          last_editor: last_editor
-          name: name
-          last_modified: 2000-01-23T04:56:07.000+00:00
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/BucketCreate"
-      required:
-      - data
-      type: object
-    ResponseAsyncCredential:
-      example:
-        data:
-          secret_key: secret_key
-          capabilities:
-          - capabilities
-          - capabilities
-          access_key: access_key
-          buckets:
-          - buckets
-          - buckets
-          last_editor: last_editor
-          name: name
-          expiration_date: 2000-01-23T04:56:07.000+00:00
-          last_modified: 2000-01-23T04:56:07.000+00:00
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/Credential"
-      required:
-      - data
-      type: object
-    ResponseAsyncDeleteBucketCreate:
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      type: object
-    ResponseAsyncDeleteBucketObject:
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      type: object
-    ResponseAsyncDeleteCredential:
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      type: object
-    ResponseBucketCreate:
-      example:
-        data:
-          product_version: product_version
-          edge_access: edge_access
-          last_editor: last_editor
-          name: name
-          last_modified: 2000-01-23T04:56:07.000+00:00
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/BucketCreate"
-      required:
-      - data
       type: object
     ResponseBucketObject:
       example:
@@ -2929,32 +2950,6 @@ components:
       required:
       - continuation_token
       - results
-      type: object
-    ResponseCredential:
-      example:
-        data:
-          secret_key: secret_key
-          capabilities:
-          - capabilities
-          - capabilities
-          access_key: access_key
-          buckets:
-          - buckets
-          - buckets
-          last_editor: last_editor
-          name: name
-          expiration_date: 2000-01-23T04:56:07.000+00:00
-          last_modified: 2000-01-23T04:56:07.000+00:00
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/Credential"
-      required:
-      - data
       type: object
     SuccessObjectOperation:
       example:

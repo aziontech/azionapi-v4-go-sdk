@@ -35,7 +35,7 @@ func (r ApiCreateBucketRequest) BucketCreateRequest(bucketCreateRequest BucketCr
 	return r
 }
 
-func (r ApiCreateBucketRequest) Execute() (*ResponseBucketCreate, *http.Response, error) {
+func (r ApiCreateBucketRequest) Execute() (*BucketCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateBucketExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *StorageBucketsAPIService) CreateBucket(ctx context.Context) ApiCreateBu
 }
 
 // Execute executes the request
-//  @return ResponseBucketCreate
-func (a *StorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequest) (*ResponseBucketCreate, *http.Response, error) {
+//  @return BucketCreateResponse
+func (a *StorageBucketsAPIService) CreateBucketExecute(r ApiCreateBucketRequest) (*BucketCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseBucketCreate
+		localVarReturnValue  *BucketCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageBucketsAPIService.CreateBucket")
@@ -230,7 +230,7 @@ type ApiDeleteBucketRequest struct {
 	bucketName string
 }
 
-func (r ApiDeleteBucketRequest) Execute() (*ResponseAsyncDeleteBucketCreate, *http.Response, error) {
+func (r ApiDeleteBucketRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteBucketExecute(r)
 }
 
@@ -252,13 +252,13 @@ func (a *StorageBucketsAPIService) DeleteBucket(ctx context.Context, bucketName 
 }
 
 // Execute executes the request
-//  @return ResponseAsyncDeleteBucketCreate
-func (a *StorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequest) (*ResponseAsyncDeleteBucketCreate, *http.Response, error) {
+//  @return DeleteResponse
+func (a *StorageBucketsAPIService) DeleteBucketExecute(r ApiDeleteBucketRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseAsyncDeleteBucketCreate
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageBucketsAPIService.DeleteBucket")
@@ -425,7 +425,6 @@ type ApiListBucketsRequest struct {
 	createdGte *time.Time
 	createdLte *time.Time
 	description *string
-	edgeAccess *string
 	fields *string
 	lastEditor *string
 	lastModified *time.Time
@@ -437,6 +436,7 @@ type ApiListBucketsRequest struct {
 	pageSize *int64
 	search *string
 	status *string
+	workloadsAccess *string
 }
 
 // Filter by bucket (exact match).
@@ -466,12 +466,6 @@ func (r ApiListBucketsRequest) CreatedLte(createdLte time.Time) ApiListBucketsRe
 // Filter by description (case-insensitive, partial match).
 func (r ApiListBucketsRequest) Description(description string) ApiListBucketsRequest {
 	r.description = &description
-	return r
-}
-
-// Filter by edge access (accepts comma-separated values).
-func (r ApiListBucketsRequest) EdgeAccess(edgeAccess string) ApiListBucketsRequest {
-	r.edgeAccess = &edgeAccess
 	return r
 }
 
@@ -541,6 +535,12 @@ func (r ApiListBucketsRequest) Status(status string) ApiListBucketsRequest {
 	return r
 }
 
+// Filter by workloads access (accepts comma-separated values).
+func (r ApiListBucketsRequest) WorkloadsAccess(workloadsAccess string) ApiListBucketsRequest {
+	r.workloadsAccess = &workloadsAccess
+	return r
+}
+
 func (r ApiListBucketsRequest) Execute() (*PaginatedBucketList, *http.Response, error) {
 	return r.ApiService.ListBucketsExecute(r)
 }
@@ -596,9 +596,6 @@ func (a *StorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsRequest) (
 	if r.description != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
 	}
-	if r.edgeAccess != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "edge_access", r.edgeAccess, "form", "")
-	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
 	}
@@ -631,6 +628,9 @@ func (a *StorageBucketsAPIService) ListBucketsExecute(r ApiListBucketsRequest) (
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.workloadsAccess != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "workloads_access", r.workloadsAccess, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -789,7 +789,7 @@ func (r ApiRetrieveBucketRequest) Fields(fields string) ApiRetrieveBucketRequest
 	return r
 }
 
-func (r ApiRetrieveBucketRequest) Execute() (*ResponseBucketCreate, *http.Response, error) {
+func (r ApiRetrieveBucketRequest) Execute() (*BucketCreateResponse, *http.Response, error) {
 	return r.ApiService.RetrieveBucketExecute(r)
 }
 
@@ -811,13 +811,13 @@ func (a *StorageBucketsAPIService) RetrieveBucket(ctx context.Context, bucketNam
 }
 
 // Execute executes the request
-//  @return ResponseBucketCreate
-func (a *StorageBucketsAPIService) RetrieveBucketExecute(r ApiRetrieveBucketRequest) (*ResponseBucketCreate, *http.Response, error) {
+//  @return BucketCreateResponse
+func (a *StorageBucketsAPIService) RetrieveBucketExecute(r ApiRetrieveBucketRequest) (*BucketCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseBucketCreate
+		localVarReturnValue  *BucketCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageBucketsAPIService.RetrieveBucket")
@@ -991,7 +991,7 @@ func (r ApiUpdateBucketRequest) PatchedBucketRequest(patchedBucketRequest Patche
 	return r
 }
 
-func (r ApiUpdateBucketRequest) Execute() (*ResponseBucketCreate, *http.Response, error) {
+func (r ApiUpdateBucketRequest) Execute() (*BucketCreateResponse, *http.Response, error) {
 	return r.ApiService.UpdateBucketExecute(r)
 }
 
@@ -1013,13 +1013,13 @@ func (a *StorageBucketsAPIService) UpdateBucket(ctx context.Context, bucketName 
 }
 
 // Execute executes the request
-//  @return ResponseBucketCreate
-func (a *StorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequest) (*ResponseBucketCreate, *http.Response, error) {
+//  @return BucketCreateResponse
+func (a *StorageBucketsAPIService) UpdateBucketExecute(r ApiUpdateBucketRequest) (*BucketCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseBucketCreate
+		localVarReturnValue  *BucketCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageBucketsAPIService.UpdateBucket")

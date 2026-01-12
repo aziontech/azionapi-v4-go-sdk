@@ -35,7 +35,7 @@ func (r ApiCreateCredentialRequest) CredentialCreateRequest(credentialCreateRequ
 	return r
 }
 
-func (r ApiCreateCredentialRequest) Execute() (*ResponseCredential, *http.Response, error) {
+func (r ApiCreateCredentialRequest) Execute() (*CredentialResponse, *http.Response, error) {
 	return r.ApiService.CreateCredentialExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *StorageCredentialsAPIService) CreateCredential(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return ResponseCredential
-func (a *StorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCredentialRequest) (*ResponseCredential, *http.Response, error) {
+//  @return CredentialResponse
+func (a *StorageCredentialsAPIService) CreateCredentialExecute(r ApiCreateCredentialRequest) (*CredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseCredential
+		localVarReturnValue  *CredentialResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageCredentialsAPIService.CreateCredential")
@@ -230,7 +230,7 @@ type ApiDeleteCredentialRequest struct {
 	credentialId int64
 }
 
-func (r ApiDeleteCredentialRequest) Execute() (*ResponseAsyncDeleteCredential, *http.Response, error) {
+func (r ApiDeleteCredentialRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteCredentialExecute(r)
 }
 
@@ -252,13 +252,13 @@ func (a *StorageCredentialsAPIService) DeleteCredential(ctx context.Context, cre
 }
 
 // Execute executes the request
-//  @return ResponseAsyncDeleteCredential
-func (a *StorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCredentialRequest) (*ResponseAsyncDeleteCredential, *http.Response, error) {
+//  @return DeleteResponse
+func (a *StorageCredentialsAPIService) DeleteCredentialExecute(r ApiDeleteCredentialRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseAsyncDeleteCredential
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageCredentialsAPIService.DeleteCredential")
@@ -759,7 +759,7 @@ func (r ApiRetrieveCredentialRequest) Fields(fields string) ApiRetrieveCredentia
 	return r
 }
 
-func (r ApiRetrieveCredentialRequest) Execute() (*ResponseCredential, *http.Response, error) {
+func (r ApiRetrieveCredentialRequest) Execute() (*CredentialResponse, *http.Response, error) {
 	return r.ApiService.RetrieveCredentialExecute(r)
 }
 
@@ -781,13 +781,13 @@ func (a *StorageCredentialsAPIService) RetrieveCredential(ctx context.Context, c
 }
 
 // Execute executes the request
-//  @return ResponseCredential
-func (a *StorageCredentialsAPIService) RetrieveCredentialExecute(r ApiRetrieveCredentialRequest) (*ResponseCredential, *http.Response, error) {
+//  @return CredentialResponse
+func (a *StorageCredentialsAPIService) RetrieveCredentialExecute(r ApiRetrieveCredentialRequest) (*CredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseCredential
+		localVarReturnValue  *CredentialResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageCredentialsAPIService.RetrieveCredential")

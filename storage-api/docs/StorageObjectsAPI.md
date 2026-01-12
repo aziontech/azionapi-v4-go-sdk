@@ -4,12 +4,91 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CopyObjectKey**](StorageObjectsAPI.md#CopyObjectKey) | **Post** /workspace/storage/buckets/{bucket_name}/objects/{object_key}/copy/{new_object_key} | Copy object to new key
 [**CreateObjectKey**](StorageObjectsAPI.md#CreateObjectKey) | **Post** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Create new object key.
 [**DeleteObjectKey**](StorageObjectsAPI.md#DeleteObjectKey) | **Delete** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Delete object key
 [**DownloadObject**](StorageObjectsAPI.md#DownloadObject) | **Get** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Download object
 [**ListObjects**](StorageObjectsAPI.md#ListObjects) | **Get** /workspace/storage/buckets/{bucket_name}/objects | List objects from bucket
 [**UpdateObjectKey**](StorageObjectsAPI.md#UpdateObjectKey) | **Put** /workspace/storage/buckets/{bucket_name}/objects/{object_key} | Update the object key.
 
+
+
+## CopyObjectKey
+
+> interface{} CopyObjectKey(ctx, bucketName, newObjectKey, objectKey).Body(body).Execute()
+
+Copy object to new key
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	bucketName := "bucketName_example" // string | The name of the bucket
+	newObjectKey := "newObjectKey_example" // string | The key/path of the destination object within the bucket
+	objectKey := "objectKey_example" // string | The key/path of the source object within the bucket
+	body := interface{}(987) // interface{} |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageObjectsAPI.CopyObjectKey(context.Background(), bucketName, newObjectKey, objectKey).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageObjectsAPI.CopyObjectKey``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CopyObjectKey`: interface{}
+	fmt.Fprintf(os.Stdout, "Response from `StorageObjectsAPI.CopyObjectKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**bucketName** | **string** | The name of the bucket | 
+**newObjectKey** | **string** | The key/path of the destination object within the bucket | 
+**objectKey** | **string** | The key/path of the source object within the bucket | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCopyObjectKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **body** | **interface{}** |  | 
+
+### Return type
+
+**interface{}**
+
+### Authorization
+
+[TokenAuth](../README.md#TokenAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateObjectKey
@@ -91,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## DeleteObjectKey
 
-> ResponseAsyncDeleteBucketObject DeleteObjectKey(ctx, bucketName, objectKey).Execute()
+> DeleteResponse DeleteObjectKey(ctx, bucketName, objectKey).Execute()
 
 Delete object key
 
@@ -120,7 +199,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageObjectsAPI.DeleteObjectKey``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteObjectKey`: ResponseAsyncDeleteBucketObject
+	// response from `DeleteObjectKey`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `StorageObjectsAPI.DeleteObjectKey`: %v\n", resp)
 }
 ```
@@ -146,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncDeleteBucketObject**](ResponseAsyncDeleteBucketObject.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 

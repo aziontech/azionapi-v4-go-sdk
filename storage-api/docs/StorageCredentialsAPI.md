@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateCredential
 
-> ResponseCredential CreateCredential(ctx).CredentialCreateRequest(credentialCreateRequest).Execute()
+> CredentialResponse CreateCredential(ctx).CredentialCreateRequest(credentialCreateRequest).Execute()
 
 Create a new credential
 
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageCredentialsAPI.CreateCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateCredential`: ResponseCredential
+	// response from `CreateCredential`: CredentialResponse
 	fmt.Fprintf(os.Stdout, "Response from `StorageCredentialsAPI.CreateCredential`: %v\n", resp)
 }
 ```
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseCredential**](ResponseCredential.md)
+[**CredentialResponse**](CredentialResponse.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## DeleteCredential
 
-> ResponseAsyncDeleteCredential DeleteCredential(ctx, credentialId).Execute()
+> DeleteResponse DeleteCredential(ctx, credentialId).Execute()
 
 Delete a credential
 
@@ -107,7 +107,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageCredentialsAPI.DeleteCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteCredential`: ResponseAsyncDeleteCredential
+	// response from `DeleteCredential`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `StorageCredentialsAPI.DeleteCredential`: %v\n", resp)
 }
 ```
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncDeleteCredential**](ResponseAsyncDeleteCredential.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveCredential
 
-> ResponseCredential RetrieveCredential(ctx, credentialId).Fields(fields).Execute()
+> CredentialResponse RetrieveCredential(ctx, credentialId).Fields(fields).Execute()
 
 Retrieve details from a credential
 
@@ -271,7 +271,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageCredentialsAPI.RetrieveCredential``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveCredential`: ResponseCredential
+	// response from `RetrieveCredential`: CredentialResponse
 	fmt.Fprintf(os.Stdout, "Response from `StorageCredentialsAPI.RetrieveCredential`: %v\n", resp)
 }
 ```
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseCredential**](ResponseCredential.md)
+[**CredentialResponse**](CredentialResponse.md)
 
 ### Authorization
 

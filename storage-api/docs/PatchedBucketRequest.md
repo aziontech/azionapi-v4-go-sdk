@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EdgeAccess** | Pointer to **string** | * &#x60;read_only&#x60; - read_only * &#x60;read_write&#x60; - read_write * &#x60;restricted&#x60; - restricted | [optional] 
+**WorkloadsAccess** | Pointer to **string** | * &#x60;read_only&#x60; - read_only * &#x60;read_write&#x60; - read_write * &#x60;restricted&#x60; - restricted | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewPatchedBucketRequestWithDefaults instantiates a new PatchedBucketRequest obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEdgeAccess
+### GetWorkloadsAccess
 
-`func (o *PatchedBucketRequest) GetEdgeAccess() string`
+`func (o *PatchedBucketRequest) GetWorkloadsAccess() string`
 
-GetEdgeAccess returns the EdgeAccess field if non-nil, zero value otherwise.
+GetWorkloadsAccess returns the WorkloadsAccess field if non-nil, zero value otherwise.
 
-### GetEdgeAccessOk
+### GetWorkloadsAccessOk
 
-`func (o *PatchedBucketRequest) GetEdgeAccessOk() (*string, bool)`
+`func (o *PatchedBucketRequest) GetWorkloadsAccessOk() (*string, bool)`
 
-GetEdgeAccessOk returns a tuple with the EdgeAccess field if it's non-nil, zero value otherwise
+GetWorkloadsAccessOk returns a tuple with the WorkloadsAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEdgeAccess
+### SetWorkloadsAccess
 
-`func (o *PatchedBucketRequest) SetEdgeAccess(v string)`
+`func (o *PatchedBucketRequest) SetWorkloadsAccess(v string)`
 
-SetEdgeAccess sets EdgeAccess field to given value.
+SetWorkloadsAccess sets WorkloadsAccess field to given value.
 
-### HasEdgeAccess
+### HasWorkloadsAccess
 
-`func (o *PatchedBucketRequest) HasEdgeAccess() bool`
+`func (o *PatchedBucketRequest) HasWorkloadsAccess() bool`
 
-HasEdgeAccess returns a boolean if a field has been set.
+HasWorkloadsAccess returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
