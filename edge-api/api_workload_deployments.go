@@ -35,7 +35,7 @@ func (r ApiCreateWorkloadDeploymentRequest) WorkloadDeploymentRequest(workloadDe
 	return r
 }
 
-func (r ApiCreateWorkloadDeploymentRequest) Execute() (*ResponseWorkloadDeployment, *http.Response, error) {
+func (r ApiCreateWorkloadDeploymentRequest) Execute() (*WorkloadDeploymentResponse, *http.Response, error) {
 	return r.ApiService.CreateWorkloadDeploymentExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *WorkloadDeploymentsAPIService) CreateWorkloadDeployment(ctx context.Con
 }
 
 // Execute executes the request
-//  @return ResponseWorkloadDeployment
-func (a *WorkloadDeploymentsAPIService) CreateWorkloadDeploymentExecute(r ApiCreateWorkloadDeploymentRequest) (*ResponseWorkloadDeployment, *http.Response, error) {
+//  @return WorkloadDeploymentResponse
+func (a *WorkloadDeploymentsAPIService) CreateWorkloadDeploymentExecute(r ApiCreateWorkloadDeploymentRequest) (*WorkloadDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWorkloadDeployment
+		localVarReturnValue  *WorkloadDeploymentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadDeploymentsAPIService.CreateWorkloadDeployment")
@@ -234,7 +234,7 @@ type ApiDeleteWorkloadDeploymentRequest struct {
 	workloadId int64
 }
 
-func (r ApiDeleteWorkloadDeploymentRequest) Execute() (*ResponseDeleteWorkloadDeployment, *http.Response, error) {
+func (r ApiDeleteWorkloadDeploymentRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteWorkloadDeploymentExecute(r)
 }
 
@@ -258,13 +258,13 @@ func (a *WorkloadDeploymentsAPIService) DeleteWorkloadDeployment(ctx context.Con
 }
 
 // Execute executes the request
-//  @return ResponseDeleteWorkloadDeployment
-func (a *WorkloadDeploymentsAPIService) DeleteWorkloadDeploymentExecute(r ApiDeleteWorkloadDeploymentRequest) (*ResponseDeleteWorkloadDeployment, *http.Response, error) {
+//  @return DeleteResponse
+func (a *WorkloadDeploymentsAPIService) DeleteWorkloadDeploymentExecute(r ApiDeleteWorkloadDeploymentRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteWorkloadDeployment
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadDeploymentsAPIService.DeleteWorkloadDeployment")
@@ -456,7 +456,7 @@ func (r ApiListWorkloadDeploymentsRequest) Id(id int64) ApiListWorkloadDeploymen
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: id, name, active, last_editor, last_modified, current)
+// Which field to use when ordering the results. (Valid fields: id, tag, current)
 func (r ApiListWorkloadDeploymentsRequest) Ordering(ordering string) ApiListWorkloadDeploymentsRequest {
 	r.ordering = &ordering
 	return r
@@ -474,7 +474,7 @@ func (r ApiListWorkloadDeploymentsRequest) PageSize(pageSize int64) ApiListWorkl
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: id, tag, current.
 func (r ApiListWorkloadDeploymentsRequest) Search(search string) ApiListWorkloadDeploymentsRequest {
 	r.search = &search
 	return r
@@ -710,7 +710,7 @@ func (r ApiPartialUpdateWorkloadDeploymentRequest) PatchedWorkloadDeploymentRequ
 	return r
 }
 
-func (r ApiPartialUpdateWorkloadDeploymentRequest) Execute() (*ResponseWorkloadDeployment, *http.Response, error) {
+func (r ApiPartialUpdateWorkloadDeploymentRequest) Execute() (*WorkloadDeploymentResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateWorkloadDeploymentExecute(r)
 }
 
@@ -734,13 +734,13 @@ func (a *WorkloadDeploymentsAPIService) PartialUpdateWorkloadDeployment(ctx cont
 }
 
 // Execute executes the request
-//  @return ResponseWorkloadDeployment
-func (a *WorkloadDeploymentsAPIService) PartialUpdateWorkloadDeploymentExecute(r ApiPartialUpdateWorkloadDeploymentRequest) (*ResponseWorkloadDeployment, *http.Response, error) {
+//  @return WorkloadDeploymentResponse
+func (a *WorkloadDeploymentsAPIService) PartialUpdateWorkloadDeploymentExecute(r ApiPartialUpdateWorkloadDeploymentRequest) (*WorkloadDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWorkloadDeployment
+		localVarReturnValue  *WorkloadDeploymentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadDeploymentsAPIService.PartialUpdateWorkloadDeployment")
@@ -916,7 +916,7 @@ func (r ApiRetrieveWorkloadDeploymentRequest) Fields(fields string) ApiRetrieveW
 	return r
 }
 
-func (r ApiRetrieveWorkloadDeploymentRequest) Execute() (*ResponseRetrieveWorkloadDeployment, *http.Response, error) {
+func (r ApiRetrieveWorkloadDeploymentRequest) Execute() (*WorkloadDeploymentResponse, *http.Response, error) {
 	return r.ApiService.RetrieveWorkloadDeploymentExecute(r)
 }
 
@@ -940,13 +940,13 @@ func (a *WorkloadDeploymentsAPIService) RetrieveWorkloadDeployment(ctx context.C
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveWorkloadDeployment
-func (a *WorkloadDeploymentsAPIService) RetrieveWorkloadDeploymentExecute(r ApiRetrieveWorkloadDeploymentRequest) (*ResponseRetrieveWorkloadDeployment, *http.Response, error) {
+//  @return WorkloadDeploymentResponse
+func (a *WorkloadDeploymentsAPIService) RetrieveWorkloadDeploymentExecute(r ApiRetrieveWorkloadDeploymentRequest) (*WorkloadDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveWorkloadDeployment
+		localVarReturnValue  *WorkloadDeploymentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadDeploymentsAPIService.RetrieveWorkloadDeployment")
@@ -1122,7 +1122,7 @@ func (r ApiUpdateWorkloadDeploymentRequest) WorkloadDeploymentRequest(workloadDe
 	return r
 }
 
-func (r ApiUpdateWorkloadDeploymentRequest) Execute() (*ResponseWorkloadDeployment, *http.Response, error) {
+func (r ApiUpdateWorkloadDeploymentRequest) Execute() (*WorkloadDeploymentResponse, *http.Response, error) {
 	return r.ApiService.UpdateWorkloadDeploymentExecute(r)
 }
 
@@ -1146,13 +1146,13 @@ func (a *WorkloadDeploymentsAPIService) UpdateWorkloadDeployment(ctx context.Con
 }
 
 // Execute executes the request
-//  @return ResponseWorkloadDeployment
-func (a *WorkloadDeploymentsAPIService) UpdateWorkloadDeploymentExecute(r ApiUpdateWorkloadDeploymentRequest) (*ResponseWorkloadDeployment, *http.Response, error) {
+//  @return WorkloadDeploymentResponse
+func (a *WorkloadDeploymentsAPIService) UpdateWorkloadDeploymentExecute(r ApiUpdateWorkloadDeploymentRequest) (*WorkloadDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWorkloadDeployment
+		localVarReturnValue  *WorkloadDeploymentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadDeploymentsAPIService.UpdateWorkloadDeployment")

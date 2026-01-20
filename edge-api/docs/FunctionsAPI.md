@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateFunction
 
-> ResponseFunctionsDoc CreateFunction(ctx).EdgeFunctionsRequest(edgeFunctionsRequest).Execute()
+> FunctionResponse CreateFunction(ctx).EdgeFunctionsRequest(edgeFunctionsRequest).Execute()
 
 Create an Function
 
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FunctionsAPI.CreateFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateFunction`: ResponseFunctionsDoc
+	// response from `CreateFunction`: FunctionResponse
 	fmt.Fprintf(os.Stdout, "Response from `FunctionsAPI.CreateFunction`: %v\n", resp)
 }
 ```
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseFunctionsDoc**](ResponseFunctionsDoc.md)
+[**FunctionResponse**](FunctionResponse.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## DeleteFunction
 
-> ResponseDeleteFunctionsDoc DeleteFunction(ctx, functionId).Execute()
+> DeleteResponse DeleteFunction(ctx, functionId).Execute()
 
 Delete an Function
 
@@ -109,7 +109,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FunctionsAPI.DeleteFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteFunction`: ResponseDeleteFunctionsDoc
+	// response from `DeleteFunction`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `FunctionsAPI.DeleteFunction`: %v\n", resp)
 }
 ```
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteFunctionsDoc**](ResponseDeleteFunctionsDoc.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -179,11 +179,11 @@ func main() {
 	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
 	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
 	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, language, json_args, runtime_environment, active, last_editor, last_modified, product_version) (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, language, runtime_environment, active, last_editor, last_modified) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
 	runtimeEnvironmentIn := "runtimeEnvironmentIn_example" // string | Filter by runtime environment (accepts comma-separated values). (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string | A search term to filter results. Searches across the following fields: name, last_editor, language, runtime_environment, active. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -216,11 +216,11 @@ Name | Type | Description  | Notes
  **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
  **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
  **name** | **string** | Filter by name (case-insensitive, partial match). | 
- **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, language, json_args, runtime_environment, active, last_editor, last_modified, product_version) | 
+ **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, language, runtime_environment, active, last_editor, last_modified) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
  **runtimeEnvironmentIn** | **string** | Filter by runtime environment (accepts comma-separated values). | 
- **search** | **string** | A search term. | 
+ **search** | **string** | A search term to filter results. Searches across the following fields: name, last_editor, language, runtime_environment, active. | 
 
 ### Return type
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateFunction
 
-> ResponseFunctionsDoc PartialUpdateFunction(ctx, functionId).PatchedEdgeFunctionsRequest(patchedEdgeFunctionsRequest).Execute()
+> FunctionResponse PartialUpdateFunction(ctx, functionId).PatchedEdgeFunctionsRequest(patchedEdgeFunctionsRequest).Execute()
 
 Partially update an Function
 
@@ -271,7 +271,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FunctionsAPI.PartialUpdateFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateFunction`: ResponseFunctionsDoc
+	// response from `PartialUpdateFunction`: FunctionResponse
 	fmt.Fprintf(os.Stdout, "Response from `FunctionsAPI.PartialUpdateFunction`: %v\n", resp)
 }
 ```
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseFunctionsDoc**](ResponseFunctionsDoc.md)
+[**FunctionResponse**](FunctionResponse.md)
 
 ### Authorization
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveFunction
 
-> ResponseRetrieveFunctionsDoc RetrieveFunction(ctx, functionId).Fields(fields).Execute()
+> FunctionResponse RetrieveFunction(ctx, functionId).Fields(fields).Execute()
 
 Retrieve details of an Function
 
@@ -343,7 +343,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FunctionsAPI.RetrieveFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveFunction`: ResponseRetrieveFunctionsDoc
+	// response from `RetrieveFunction`: FunctionResponse
 	fmt.Fprintf(os.Stdout, "Response from `FunctionsAPI.RetrieveFunction`: %v\n", resp)
 }
 ```
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveFunctionsDoc**](ResponseRetrieveFunctionsDoc.md)
+[**FunctionResponse**](FunctionResponse.md)
 
 ### Authorization
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 ## UpdateFunction
 
-> ResponseFunctionsDoc UpdateFunction(ctx, functionId).EdgeFunctionsRequest(edgeFunctionsRequest).Execute()
+> FunctionResponse UpdateFunction(ctx, functionId).EdgeFunctionsRequest(edgeFunctionsRequest).Execute()
 
 Update an Function
 
@@ -415,7 +415,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FunctionsAPI.UpdateFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateFunction`: ResponseFunctionsDoc
+	// response from `UpdateFunction`: FunctionResponse
 	fmt.Fprintf(os.Stdout, "Response from `FunctionsAPI.UpdateFunction`: %v\n", resp)
 }
 ```
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseFunctionsDoc**](ResponseFunctionsDoc.md)
+[**FunctionResponse**](FunctionResponse.md)
 
 ### Authorization
 
