@@ -35,7 +35,7 @@ func (r ApiCreateConnectorRequest) ConnectorPolymorphicRequest(connectorPolymorp
 	return r
 }
 
-func (r ApiCreateConnectorRequest) Execute() (*ResponseConnectorPolymorphic, *http.Response, error) {
+func (r ApiCreateConnectorRequest) Execute() (*ConnectorPolymorphicResponse, *http.Response, error) {
 	return r.ApiService.CreateConnectorExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *ConnectorsAPIService) CreateConnector(ctx context.Context) ApiCreateCon
 }
 
 // Execute executes the request
-//  @return ResponseConnectorPolymorphic
-func (a *ConnectorsAPIService) CreateConnectorExecute(r ApiCreateConnectorRequest) (*ResponseConnectorPolymorphic, *http.Response, error) {
+//  @return ConnectorPolymorphicResponse
+func (a *ConnectorsAPIService) CreateConnectorExecute(r ApiCreateConnectorRequest) (*ConnectorPolymorphicResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseConnectorPolymorphic
+		localVarReturnValue  *ConnectorPolymorphicResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.CreateConnector")
@@ -227,7 +227,7 @@ type ApiDeleteConnectorRequest struct {
 	connectorId int64
 }
 
-func (r ApiDeleteConnectorRequest) Execute() (*ResponseDeleteConnectorPolymorphic, *http.Response, error) {
+func (r ApiDeleteConnectorRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteConnectorExecute(r)
 }
 
@@ -249,13 +249,13 @@ func (a *ConnectorsAPIService) DeleteConnector(ctx context.Context, connectorId 
 }
 
 // Execute executes the request
-//  @return ResponseDeleteConnectorPolymorphic
-func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorRequest) (*ResponseDeleteConnectorPolymorphic, *http.Response, error) {
+//  @return DeleteResponse
+func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteConnectorPolymorphic
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.DeleteConnector")
@@ -473,7 +473,7 @@ func (r ApiListConnectorsRequest) Name(name string) ApiListConnectorsRequest {
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: )
+// Which field to use when ordering the results. (Valid fields: id, name, type, last_editor, last_modified, active)
 func (r ApiListConnectorsRequest) Ordering(ordering string) ApiListConnectorsRequest {
 	r.ordering = &ordering
 	return r
@@ -491,7 +491,7 @@ func (r ApiListConnectorsRequest) PageSize(pageSize int64) ApiListConnectorsRequ
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: id, name, type, last_editor, last_modified, active.
 func (r ApiListConnectorsRequest) Search(search string) ApiListConnectorsRequest {
 	r.search = &search
 	return r
@@ -735,7 +735,7 @@ func (r ApiPartialUpdateConnectorRequest) PatchedConnectorPolymorphicRequest(pat
 	return r
 }
 
-func (r ApiPartialUpdateConnectorRequest) Execute() (*ResponseConnectorPolymorphic, *http.Response, error) {
+func (r ApiPartialUpdateConnectorRequest) Execute() (*ConnectorPolymorphicResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateConnectorExecute(r)
 }
 
@@ -757,13 +757,13 @@ func (a *ConnectorsAPIService) PartialUpdateConnector(ctx context.Context, conne
 }
 
 // Execute executes the request
-//  @return ResponseConnectorPolymorphic
-func (a *ConnectorsAPIService) PartialUpdateConnectorExecute(r ApiPartialUpdateConnectorRequest) (*ResponseConnectorPolymorphic, *http.Response, error) {
+//  @return ConnectorPolymorphicResponse
+func (a *ConnectorsAPIService) PartialUpdateConnectorExecute(r ApiPartialUpdateConnectorRequest) (*ConnectorPolymorphicResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseConnectorPolymorphic
+		localVarReturnValue  *ConnectorPolymorphicResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PartialUpdateConnector")
@@ -937,7 +937,7 @@ func (r ApiRetrieveConnectorRequest) Fields(fields string) ApiRetrieveConnectorR
 	return r
 }
 
-func (r ApiRetrieveConnectorRequest) Execute() (*ResponseRetrieveConnectorPolymorphic, *http.Response, error) {
+func (r ApiRetrieveConnectorRequest) Execute() (*ConnectorPolymorphicResponse, *http.Response, error) {
 	return r.ApiService.RetrieveConnectorExecute(r)
 }
 
@@ -959,13 +959,13 @@ func (a *ConnectorsAPIService) RetrieveConnector(ctx context.Context, connectorI
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveConnectorPolymorphic
-func (a *ConnectorsAPIService) RetrieveConnectorExecute(r ApiRetrieveConnectorRequest) (*ResponseRetrieveConnectorPolymorphic, *http.Response, error) {
+//  @return ConnectorPolymorphicResponse
+func (a *ConnectorsAPIService) RetrieveConnectorExecute(r ApiRetrieveConnectorRequest) (*ConnectorPolymorphicResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveConnectorPolymorphic
+		localVarReturnValue  *ConnectorPolymorphicResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.RetrieveConnector")
@@ -1139,7 +1139,7 @@ func (r ApiUpdateConnectorRequest) ConnectorPolymorphicRequest(connectorPolymorp
 	return r
 }
 
-func (r ApiUpdateConnectorRequest) Execute() (*ResponseConnectorPolymorphic, *http.Response, error) {
+func (r ApiUpdateConnectorRequest) Execute() (*ConnectorPolymorphicResponse, *http.Response, error) {
 	return r.ApiService.UpdateConnectorExecute(r)
 }
 
@@ -1161,13 +1161,13 @@ func (a *ConnectorsAPIService) UpdateConnector(ctx context.Context, connectorId 
 }
 
 // Execute executes the request
-//  @return ResponseConnectorPolymorphic
-func (a *ConnectorsAPIService) UpdateConnectorExecute(r ApiUpdateConnectorRequest) (*ResponseConnectorPolymorphic, *http.Response, error) {
+//  @return ConnectorPolymorphicResponse
+func (a *ConnectorsAPIService) UpdateConnectorExecute(r ApiUpdateConnectorRequest) (*ConnectorPolymorphicResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseConnectorPolymorphic
+		localVarReturnValue  *ConnectorPolymorphicResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.UpdateConnector")

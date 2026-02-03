@@ -27,15 +27,15 @@ type NetworkListsAPIService service
 type ApiCreateNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
-	networkListDetailRequest *NetworkListDetailRequest
+	networkListRequest *NetworkListRequest
 }
 
-func (r ApiCreateNetworkListRequest) NetworkListDetailRequest(networkListDetailRequest NetworkListDetailRequest) ApiCreateNetworkListRequest {
-	r.networkListDetailRequest = &networkListDetailRequest
+func (r ApiCreateNetworkListRequest) NetworkListRequest(networkListRequest NetworkListRequest) ApiCreateNetworkListRequest {
+	r.networkListRequest = &networkListRequest
 	return r
 }
 
-func (r ApiCreateNetworkListRequest) Execute() (*ResponseNetworkListDetail, *http.Response, error) {
+func (r ApiCreateNetworkListRequest) Execute() (*NetworkListResponse, *http.Response, error) {
 	return r.ApiService.CreateNetworkListExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *NetworkListsAPIService) CreateNetworkList(ctx context.Context) ApiCreat
 }
 
 // Execute executes the request
-//  @return ResponseNetworkListDetail
-func (a *NetworkListsAPIService) CreateNetworkListExecute(r ApiCreateNetworkListRequest) (*ResponseNetworkListDetail, *http.Response, error) {
+//  @return NetworkListResponse
+func (a *NetworkListsAPIService) CreateNetworkListExecute(r ApiCreateNetworkListRequest) (*NetworkListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseNetworkListDetail
+		localVarReturnValue  *NetworkListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.CreateNetworkList")
@@ -74,8 +74,8 @@ func (a *NetworkListsAPIService) CreateNetworkListExecute(r ApiCreateNetworkList
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.networkListDetailRequest == nil {
-		return localVarReturnValue, nil, reportError("networkListDetailRequest is required and must be specified")
+	if r.networkListRequest == nil {
+		return localVarReturnValue, nil, reportError("networkListRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *NetworkListsAPIService) CreateNetworkListExecute(r ApiCreateNetworkList
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.networkListDetailRequest
+	localVarPostBody = r.networkListRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -230,7 +230,7 @@ type ApiDeleteNetworkListRequest struct {
 	networkListId int64
 }
 
-func (r ApiDeleteNetworkListRequest) Execute() (*ResponseDeleteNetworkListDetail, *http.Response, error) {
+func (r ApiDeleteNetworkListRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteNetworkListExecute(r)
 }
 
@@ -252,13 +252,13 @@ func (a *NetworkListsAPIService) DeleteNetworkList(ctx context.Context, networkL
 }
 
 // Execute executes the request
-//  @return ResponseDeleteNetworkListDetail
-func (a *NetworkListsAPIService) DeleteNetworkListExecute(r ApiDeleteNetworkListRequest) (*ResponseDeleteNetworkListDetail, *http.Response, error) {
+//  @return DeleteResponse
+func (a *NetworkListsAPIService) DeleteNetworkListExecute(r ApiDeleteNetworkListRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteNetworkListDetail
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.DeleteNetworkList")
@@ -475,7 +475,7 @@ func (r ApiListNetworkListsRequest) Name(name string) ApiListNetworkListsRequest
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: name, type, last_editor, last_modified, active)
+// Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, list_type)
 func (r ApiListNetworkListsRequest) Ordering(ordering string) ApiListNetworkListsRequest {
 	r.ordering = &ordering
 	return r
@@ -493,13 +493,13 @@ func (r ApiListNetworkListsRequest) PageSize(pageSize int64) ApiListNetworkLists
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: last_editor, list_type, name.
 func (r ApiListNetworkListsRequest) Search(search string) ApiListNetworkListsRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiListNetworkListsRequest) Execute() (*PaginatedNetworkListList, *http.Response, error) {
+func (r ApiListNetworkListsRequest) Execute() (*PaginatedNetworkListSummaryList, *http.Response, error) {
 	return r.ApiService.ListNetworkListsExecute(r)
 }
 
@@ -519,13 +519,13 @@ func (a *NetworkListsAPIService) ListNetworkLists(ctx context.Context) ApiListNe
 }
 
 // Execute executes the request
-//  @return PaginatedNetworkListList
-func (a *NetworkListsAPIService) ListNetworkListsExecute(r ApiListNetworkListsRequest) (*PaginatedNetworkListList, *http.Response, error) {
+//  @return PaginatedNetworkListSummaryList
+func (a *NetworkListsAPIService) ListNetworkListsExecute(r ApiListNetworkListsRequest) (*PaginatedNetworkListSummaryList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaginatedNetworkListList
+		localVarReturnValue  *PaginatedNetworkListSummaryList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.ListNetworkLists")
@@ -720,15 +720,15 @@ type ApiPartialUpdateNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
 	networkListId int64
-	patchedNetworkListDetailRequest *PatchedNetworkListDetailRequest
+	patchedNetworkListRequest *PatchedNetworkListRequest
 }
 
-func (r ApiPartialUpdateNetworkListRequest) PatchedNetworkListDetailRequest(patchedNetworkListDetailRequest PatchedNetworkListDetailRequest) ApiPartialUpdateNetworkListRequest {
-	r.patchedNetworkListDetailRequest = &patchedNetworkListDetailRequest
+func (r ApiPartialUpdateNetworkListRequest) PatchedNetworkListRequest(patchedNetworkListRequest PatchedNetworkListRequest) ApiPartialUpdateNetworkListRequest {
+	r.patchedNetworkListRequest = &patchedNetworkListRequest
 	return r
 }
 
-func (r ApiPartialUpdateNetworkListRequest) Execute() (*ResponseNetworkListDetail, *http.Response, error) {
+func (r ApiPartialUpdateNetworkListRequest) Execute() (*NetworkListResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateNetworkListExecute(r)
 }
 
@@ -750,13 +750,13 @@ func (a *NetworkListsAPIService) PartialUpdateNetworkList(ctx context.Context, n
 }
 
 // Execute executes the request
-//  @return ResponseNetworkListDetail
-func (a *NetworkListsAPIService) PartialUpdateNetworkListExecute(r ApiPartialUpdateNetworkListRequest) (*ResponseNetworkListDetail, *http.Response, error) {
+//  @return NetworkListResponse
+func (a *NetworkListsAPIService) PartialUpdateNetworkListExecute(r ApiPartialUpdateNetworkListRequest) (*NetworkListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseNetworkListDetail
+		localVarReturnValue  *NetworkListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.PartialUpdateNetworkList")
@@ -789,7 +789,7 @@ func (a *NetworkListsAPIService) PartialUpdateNetworkListExecute(r ApiPartialUpd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedNetworkListDetailRequest
+	localVarPostBody = r.patchedNetworkListRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -944,7 +944,7 @@ func (r ApiRetrieveNetworkListRequest) Ipv6(ipv6 bool) ApiRetrieveNetworkListReq
 	return r
 }
 
-func (r ApiRetrieveNetworkListRequest) Execute() (*ResponseRetrieveNetworkListDetail, *http.Response, error) {
+func (r ApiRetrieveNetworkListRequest) Execute() (*NetworkListResponse, *http.Response, error) {
 	return r.ApiService.RetrieveNetworkListExecute(r)
 }
 
@@ -966,13 +966,13 @@ func (a *NetworkListsAPIService) RetrieveNetworkList(ctx context.Context, networ
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveNetworkListDetail
-func (a *NetworkListsAPIService) RetrieveNetworkListExecute(r ApiRetrieveNetworkListRequest) (*ResponseRetrieveNetworkListDetail, *http.Response, error) {
+//  @return NetworkListResponse
+func (a *NetworkListsAPIService) RetrieveNetworkListExecute(r ApiRetrieveNetworkListRequest) (*NetworkListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveNetworkListDetail
+		localVarReturnValue  *NetworkListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.RetrieveNetworkList")
@@ -1144,15 +1144,15 @@ type ApiUpdateNetworkListRequest struct {
 	ctx context.Context
 	ApiService *NetworkListsAPIService
 	networkListId int64
-	networkListDetailRequest *NetworkListDetailRequest
+	networkListRequest *NetworkListRequest
 }
 
-func (r ApiUpdateNetworkListRequest) NetworkListDetailRequest(networkListDetailRequest NetworkListDetailRequest) ApiUpdateNetworkListRequest {
-	r.networkListDetailRequest = &networkListDetailRequest
+func (r ApiUpdateNetworkListRequest) NetworkListRequest(networkListRequest NetworkListRequest) ApiUpdateNetworkListRequest {
+	r.networkListRequest = &networkListRequest
 	return r
 }
 
-func (r ApiUpdateNetworkListRequest) Execute() (*ResponseNetworkListDetail, *http.Response, error) {
+func (r ApiUpdateNetworkListRequest) Execute() (*NetworkListResponse, *http.Response, error) {
 	return r.ApiService.UpdateNetworkListExecute(r)
 }
 
@@ -1174,13 +1174,13 @@ func (a *NetworkListsAPIService) UpdateNetworkList(ctx context.Context, networkL
 }
 
 // Execute executes the request
-//  @return ResponseNetworkListDetail
-func (a *NetworkListsAPIService) UpdateNetworkListExecute(r ApiUpdateNetworkListRequest) (*ResponseNetworkListDetail, *http.Response, error) {
+//  @return NetworkListResponse
+func (a *NetworkListsAPIService) UpdateNetworkListExecute(r ApiUpdateNetworkListRequest) (*NetworkListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseNetworkListDetail
+		localVarReturnValue  *NetworkListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkListsAPIService.UpdateNetworkList")
@@ -1194,8 +1194,8 @@ func (a *NetworkListsAPIService) UpdateNetworkListExecute(r ApiUpdateNetworkList
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.networkListDetailRequest == nil {
-		return localVarReturnValue, nil, reportError("networkListDetailRequest is required and must be specified")
+	if r.networkListRequest == nil {
+		return localVarReturnValue, nil, reportError("networkListRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1216,7 +1216,7 @@ func (a *NetworkListsAPIService) UpdateNetworkListExecute(r ApiUpdateNetworkList
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.networkListDetailRequest
+	localVarPostBody = r.networkListRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

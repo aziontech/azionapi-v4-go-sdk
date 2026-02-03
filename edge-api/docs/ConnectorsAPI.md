@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateConnector
 
-> ResponseConnectorPolymorphic CreateConnector(ctx).ConnectorPolymorphicRequest(connectorPolymorphicRequest).Execute()
+> ConnectorPolymorphicResponse CreateConnector(ctx).ConnectorPolymorphicRequest(connectorPolymorphicRequest).Execute()
 
 Create an Connector
 
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.CreateConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateConnector`: ResponseConnectorPolymorphic
+	// response from `CreateConnector`: ConnectorPolymorphicResponse
 	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.CreateConnector`: %v\n", resp)
 }
 ```
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseConnectorPolymorphic**](ResponseConnectorPolymorphic.md)
+[**ConnectorPolymorphicResponse**](ConnectorPolymorphicResponse.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## DeleteConnector
 
-> ResponseDeleteConnectorPolymorphic DeleteConnector(ctx, connectorId).Execute()
+> DeleteResponse DeleteConnector(ctx, connectorId).Execute()
 
 Delete an Connector
 
@@ -109,7 +109,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.DeleteConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteConnector`: ResponseDeleteConnectorPolymorphic
+	// response from `DeleteConnector`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.DeleteConnector`: %v\n", resp)
 }
 ```
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteConnectorPolymorphic**](ResponseDeleteConnectorPolymorphic.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -178,10 +178,10 @@ func main() {
 	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
 	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
 	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: ) (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, type, last_editor, last_modified, active) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string | A search term to filter results. Searches across the following fields: id, name, type, last_editor, last_modified, active. (optional)
 	typeIn := "typeIn_example" // string | Filter by type (accepts comma-separated values). (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -214,10 +214,10 @@ Name | Type | Description  | Notes
  **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
  **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
  **name** | **string** | Filter by name (case-insensitive, partial match). | 
- **ordering** | **string** | Which field to use when ordering the results. (Valid fields: ) | 
+ **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, type, last_editor, last_modified, active) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
- **search** | **string** | A search term. | 
+ **search** | **string** | A search term to filter results. Searches across the following fields: id, name, type, last_editor, last_modified, active. | 
  **typeIn** | **string** | Filter by type (accepts comma-separated values). | 
 
 ### Return type
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateConnector
 
-> ResponseConnectorPolymorphic PartialUpdateConnector(ctx, connectorId).PatchedConnectorPolymorphicRequest(patchedConnectorPolymorphicRequest).Execute()
+> ConnectorPolymorphicResponse PartialUpdateConnector(ctx, connectorId).PatchedConnectorPolymorphicRequest(patchedConnectorPolymorphicRequest).Execute()
 
 Partially update an Connector
 
@@ -269,7 +269,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PartialUpdateConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateConnector`: ResponseConnectorPolymorphic
+	// response from `PartialUpdateConnector`: ConnectorPolymorphicResponse
 	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PartialUpdateConnector`: %v\n", resp)
 }
 ```
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseConnectorPolymorphic**](ResponseConnectorPolymorphic.md)
+[**ConnectorPolymorphicResponse**](ConnectorPolymorphicResponse.md)
 
 ### Authorization
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveConnector
 
-> ResponseRetrieveConnectorPolymorphic RetrieveConnector(ctx, connectorId).Fields(fields).Execute()
+> ConnectorPolymorphicResponse RetrieveConnector(ctx, connectorId).Fields(fields).Execute()
 
 Retrieve details of an Connector
 
@@ -341,7 +341,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.RetrieveConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveConnector`: ResponseRetrieveConnectorPolymorphic
+	// response from `RetrieveConnector`: ConnectorPolymorphicResponse
 	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.RetrieveConnector`: %v\n", resp)
 }
 ```
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveConnectorPolymorphic**](ResponseRetrieveConnectorPolymorphic.md)
+[**ConnectorPolymorphicResponse**](ConnectorPolymorphicResponse.md)
 
 ### Authorization
 
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 
 ## UpdateConnector
 
-> ResponseConnectorPolymorphic UpdateConnector(ctx, connectorId).ConnectorPolymorphicRequest(connectorPolymorphicRequest).Execute()
+> ConnectorPolymorphicResponse UpdateConnector(ctx, connectorId).ConnectorPolymorphicRequest(connectorPolymorphicRequest).Execute()
 
 Update an Connector
 
@@ -413,7 +413,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.UpdateConnector``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateConnector`: ResponseConnectorPolymorphic
+	// response from `UpdateConnector`: ConnectorPolymorphicResponse
 	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.UpdateConnector`: %v\n", resp)
 }
 ```
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseConnectorPolymorphic**](ResponseConnectorPolymorphic.md)
+[**ConnectorPolymorphicResponse**](ConnectorPolymorphicResponse.md)
 
 ### Authorization
 

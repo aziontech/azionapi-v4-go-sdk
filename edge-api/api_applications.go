@@ -36,7 +36,7 @@ func (r ApiCloneApplicationRequest) CloneApplicationRequest(cloneApplicationRequ
 	return r
 }
 
-func (r ApiCloneApplicationRequest) Execute() (*ResponseApplication, *http.Response, error) {
+func (r ApiCloneApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
 	return r.ApiService.CloneApplicationExecute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *ApplicationsAPIService) CloneApplication(ctx context.Context, applicati
 }
 
 // Execute executes the request
-//  @return ResponseApplication
-func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRequest) (*ResponseApplication, *http.Response, error) {
+//  @return ApplicationResponse
+func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplication
+		localVarReturnValue  *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.CloneApplication")
@@ -239,7 +239,7 @@ func (r ApiCreateApplicationRequest) ApplicationRequest(applicationRequest Appli
 	return r
 }
 
-func (r ApiCreateApplicationRequest) Execute() (*ResponseApplication, *http.Response, error) {
+func (r ApiCreateApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
 	return r.ApiService.CreateApplicationExecute(r)
 }
 
@@ -259,13 +259,13 @@ func (a *ApplicationsAPIService) CreateApplication(ctx context.Context) ApiCreat
 }
 
 // Execute executes the request
-//  @return ResponseApplication
-func (a *ApplicationsAPIService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*ResponseApplication, *http.Response, error) {
+//  @return ApplicationResponse
+func (a *ApplicationsAPIService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplication
+		localVarReturnValue  *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.CreateApplication")
@@ -434,7 +434,7 @@ type ApiDeleteApplicationRequest struct {
 	applicationId int64
 }
 
-func (r ApiDeleteApplicationRequest) Execute() (*ResponseDeleteApplication, *http.Response, error) {
+func (r ApiDeleteApplicationRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteApplicationExecute(r)
 }
 
@@ -456,13 +456,13 @@ func (a *ApplicationsAPIService) DeleteApplication(ctx context.Context, applicat
 }
 
 // Execute executes the request
-//  @return ResponseDeleteApplication
-func (a *ApplicationsAPIService) DeleteApplicationExecute(r ApiDeleteApplicationRequest) (*ResponseDeleteApplication, *http.Response, error) {
+//  @return DeleteResponse
+func (a *ApplicationsAPIService) DeleteApplicationExecute(r ApiDeleteApplicationRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteApplication
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.DeleteApplication")
@@ -697,7 +697,7 @@ func (r ApiListApplicationsRequest) PageSize(pageSize int64) ApiListApplications
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: id, name, last_editor, last_modified, active.
 func (r ApiListApplicationsRequest) Search(search string) ApiListApplicationsRequest {
 	r.search = &search
 	return r
@@ -932,7 +932,7 @@ func (r ApiPartialUpdateApplicationRequest) PatchedApplicationRequest(patchedApp
 	return r
 }
 
-func (r ApiPartialUpdateApplicationRequest) Execute() (*ResponseApplication, *http.Response, error) {
+func (r ApiPartialUpdateApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateApplicationExecute(r)
 }
 
@@ -954,13 +954,13 @@ func (a *ApplicationsAPIService) PartialUpdateApplication(ctx context.Context, a
 }
 
 // Execute executes the request
-//  @return ResponseApplication
-func (a *ApplicationsAPIService) PartialUpdateApplicationExecute(r ApiPartialUpdateApplicationRequest) (*ResponseApplication, *http.Response, error) {
+//  @return ApplicationResponse
+func (a *ApplicationsAPIService) PartialUpdateApplicationExecute(r ApiPartialUpdateApplicationRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplication
+		localVarReturnValue  *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.PartialUpdateApplication")
@@ -1134,7 +1134,7 @@ func (r ApiRetrieveApplicationRequest) Fields(fields string) ApiRetrieveApplicat
 	return r
 }
 
-func (r ApiRetrieveApplicationRequest) Execute() (*ResponseRetrieveApplication, *http.Response, error) {
+func (r ApiRetrieveApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
 	return r.ApiService.RetrieveApplicationExecute(r)
 }
 
@@ -1156,13 +1156,13 @@ func (a *ApplicationsAPIService) RetrieveApplication(ctx context.Context, applic
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveApplication
-func (a *ApplicationsAPIService) RetrieveApplicationExecute(r ApiRetrieveApplicationRequest) (*ResponseRetrieveApplication, *http.Response, error) {
+//  @return ApplicationResponse
+func (a *ApplicationsAPIService) RetrieveApplicationExecute(r ApiRetrieveApplicationRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveApplication
+		localVarReturnValue  *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.RetrieveApplication")
@@ -1336,7 +1336,7 @@ func (r ApiUpdateApplicationRequest) ApplicationRequest(applicationRequest Appli
 	return r
 }
 
-func (r ApiUpdateApplicationRequest) Execute() (*ResponseApplication, *http.Response, error) {
+func (r ApiUpdateApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
 	return r.ApiService.UpdateApplicationExecute(r)
 }
 
@@ -1358,13 +1358,13 @@ func (a *ApplicationsAPIService) UpdateApplication(ctx context.Context, applicat
 }
 
 // Execute executes the request
-//  @return ResponseApplication
-func (a *ApplicationsAPIService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (*ResponseApplication, *http.Response, error) {
+//  @return ApplicationResponse
+func (a *ApplicationsAPIService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplication
+		localVarReturnValue  *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.UpdateApplication")

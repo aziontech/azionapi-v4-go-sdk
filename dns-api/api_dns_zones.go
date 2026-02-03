@@ -34,7 +34,7 @@ func (r ApiCreateDnsZoneRequest) ZoneRequest(zoneRequest ZoneRequest) ApiCreateD
 	return r
 }
 
-func (r ApiCreateDnsZoneRequest) Execute() (*ResponseZone, *http.Response, error) {
+func (r ApiCreateDnsZoneRequest) Execute() (*ZoneResponse, *http.Response, error) {
 	return r.ApiService.CreateDnsZoneExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *DNSZonesAPIService) CreateDnsZone(ctx context.Context) ApiCreateDnsZone
 }
 
 // Execute executes the request
-//  @return ResponseZone
-func (a *DNSZonesAPIService) CreateDnsZoneExecute(r ApiCreateDnsZoneRequest) (*ResponseZone, *http.Response, error) {
+//  @return ZoneResponse
+func (a *DNSZonesAPIService) CreateDnsZoneExecute(r ApiCreateDnsZoneRequest) (*ZoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseZone
+		localVarReturnValue  *ZoneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSZonesAPIService.CreateDnsZone")
@@ -229,7 +229,7 @@ type ApiDeleteDnsZoneRequest struct {
 	zoneId int64
 }
 
-func (r ApiDeleteDnsZoneRequest) Execute() (*ResponseAsyncDeleteZone, *http.Response, error) {
+func (r ApiDeleteDnsZoneRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteDnsZoneExecute(r)
 }
 
@@ -251,13 +251,13 @@ func (a *DNSZonesAPIService) DeleteDnsZone(ctx context.Context, zoneId int64) Ap
 }
 
 // Execute executes the request
-//  @return ResponseAsyncDeleteZone
-func (a *DNSZonesAPIService) DeleteDnsZoneExecute(r ApiDeleteDnsZoneRequest) (*ResponseAsyncDeleteZone, *http.Response, error) {
+//  @return DeleteResponse
+func (a *DNSZonesAPIService) DeleteDnsZoneExecute(r ApiDeleteDnsZoneRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseAsyncDeleteZone
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSZonesAPIService.DeleteDnsZone")
@@ -471,7 +471,7 @@ func (r ApiListDnsZonesRequest) PageSize(pageSize int64) ApiListDnsZonesRequest 
 	return r
 }
 
-// Search in name and domain fields (case-insensitive, partial match).
+// A search term to filter results. Searches across the following fields: name, domain.
 func (r ApiListDnsZonesRequest) Search(search string) ApiListDnsZonesRequest {
 	r.search = &search
 	return r
@@ -697,7 +697,7 @@ func (r ApiPartialUpdateDnsZoneRequest) PatchedUpdateZoneRequest(patchedUpdateZo
 	return r
 }
 
-func (r ApiPartialUpdateDnsZoneRequest) Execute() (*ResponseZone, *http.Response, error) {
+func (r ApiPartialUpdateDnsZoneRequest) Execute() (*ZoneResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateDnsZoneExecute(r)
 }
 
@@ -719,13 +719,13 @@ func (a *DNSZonesAPIService) PartialUpdateDnsZone(ctx context.Context, zoneId in
 }
 
 // Execute executes the request
-//  @return ResponseZone
-func (a *DNSZonesAPIService) PartialUpdateDnsZoneExecute(r ApiPartialUpdateDnsZoneRequest) (*ResponseZone, *http.Response, error) {
+//  @return ZoneResponse
+func (a *DNSZonesAPIService) PartialUpdateDnsZoneExecute(r ApiPartialUpdateDnsZoneRequest) (*ZoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseZone
+		localVarReturnValue  *ZoneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSZonesAPIService.PartialUpdateDnsZone")
@@ -899,7 +899,7 @@ func (r ApiRetrieveDnsZoneRequest) Fields(fields string) ApiRetrieveDnsZoneReque
 	return r
 }
 
-func (r ApiRetrieveDnsZoneRequest) Execute() (*ResponseRetrieveZone, *http.Response, error) {
+func (r ApiRetrieveDnsZoneRequest) Execute() (*ZoneResponse, *http.Response, error) {
 	return r.ApiService.RetrieveDnsZoneExecute(r)
 }
 
@@ -921,13 +921,13 @@ func (a *DNSZonesAPIService) RetrieveDnsZone(ctx context.Context, zoneId int64) 
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveZone
-func (a *DNSZonesAPIService) RetrieveDnsZoneExecute(r ApiRetrieveDnsZoneRequest) (*ResponseRetrieveZone, *http.Response, error) {
+//  @return ZoneResponse
+func (a *DNSZonesAPIService) RetrieveDnsZoneExecute(r ApiRetrieveDnsZoneRequest) (*ZoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveZone
+		localVarReturnValue  *ZoneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSZonesAPIService.RetrieveDnsZone")
@@ -1101,7 +1101,7 @@ func (r ApiUpdateDnsZoneRequest) UpdateZoneRequest(updateZoneRequest UpdateZoneR
 	return r
 }
 
-func (r ApiUpdateDnsZoneRequest) Execute() (*ResponseZone, *http.Response, error) {
+func (r ApiUpdateDnsZoneRequest) Execute() (*ZoneResponse, *http.Response, error) {
 	return r.ApiService.UpdateDnsZoneExecute(r)
 }
 
@@ -1123,13 +1123,13 @@ func (a *DNSZonesAPIService) UpdateDnsZone(ctx context.Context, zoneId int64) Ap
 }
 
 // Execute executes the request
-//  @return ResponseZone
-func (a *DNSZonesAPIService) UpdateDnsZoneExecute(r ApiUpdateDnsZoneRequest) (*ResponseZone, *http.Response, error) {
+//  @return ZoneResponse
+func (a *DNSZonesAPIService) UpdateDnsZoneExecute(r ApiUpdateDnsZoneRequest) (*ZoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseZone
+		localVarReturnValue  *ZoneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSZonesAPIService.UpdateDnsZone")

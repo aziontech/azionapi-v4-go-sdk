@@ -27,15 +27,15 @@ type ApiCreatePurgeRequestRequest struct {
 	ctx context.Context
 	ApiService *PurgeAPIService
 	purgeType string
-	purgeInputRequest *PurgeInputRequest
+	purgeRequest *PurgeRequest
 }
 
-func (r ApiCreatePurgeRequestRequest) PurgeInputRequest(purgeInputRequest PurgeInputRequest) ApiCreatePurgeRequestRequest {
-	r.purgeInputRequest = &purgeInputRequest
+func (r ApiCreatePurgeRequestRequest) PurgeRequest(purgeRequest PurgeRequest) ApiCreatePurgeRequestRequest {
+	r.purgeRequest = &purgeRequest
 	return r
 }
 
-func (r ApiCreatePurgeRequestRequest) Execute() (*ResponsePurgeInput, *http.Response, error) {
+func (r ApiCreatePurgeRequestRequest) Execute() (*PurgeResponse, *http.Response, error) {
 	return r.ApiService.CreatePurgeRequestExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *PurgeAPIService) CreatePurgeRequest(ctx context.Context, purgeType stri
 }
 
 // Execute executes the request
-//  @return ResponsePurgeInput
-func (a *PurgeAPIService) CreatePurgeRequestExecute(r ApiCreatePurgeRequestRequest) (*ResponsePurgeInput, *http.Response, error) {
+//  @return PurgeResponse
+func (a *PurgeAPIService) CreatePurgeRequestExecute(r ApiCreatePurgeRequestRequest) (*PurgeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponsePurgeInput
+		localVarReturnValue  *PurgeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PurgeAPIService.CreatePurgeRequest")
@@ -77,8 +77,8 @@ func (a *PurgeAPIService) CreatePurgeRequestExecute(r ApiCreatePurgeRequestReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.purgeInputRequest == nil {
-		return localVarReturnValue, nil, reportError("purgeInputRequest is required and must be specified")
+	if r.purgeRequest == nil {
+		return localVarReturnValue, nil, reportError("purgeRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -99,7 +99,7 @@ func (a *PurgeAPIService) CreatePurgeRequestExecute(r ApiCreatePurgeRequestReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.purgeInputRequest
+	localVarPostBody = r.purgeRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

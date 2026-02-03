@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## PartialUpdateDnssec
 
-> ResponseDNSSEC PartialUpdateDnssec(ctx, zoneId).PatchedDNSSECRequest(patchedDNSSECRequest).Execute()
+> DNSSECResponse PartialUpdateDnssec(ctx, zoneId).PatchedDNSSECRequest(patchedDNSSECRequest).Execute()
 
 Partially update a DNSSEC
 
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSDNSSECAPI.PartialUpdateDnssec``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateDnssec`: ResponseDNSSEC
+	// response from `PartialUpdateDnssec`: DNSSECResponse
 	fmt.Fprintf(os.Stdout, "Response from `DNSDNSSECAPI.PartialUpdateDnssec`: %v\n", resp)
 }
 ```
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDNSSEC**](ResponseDNSSEC.md)
+[**DNSSECResponse**](DNSSECResponse.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveDnssec
 
-> ResponseRetrieveDNSSEC RetrieveDnssec(ctx, zoneId).Fields(fields).Execute()
+> DNSSECResponse RetrieveDnssec(ctx, zoneId).Fields(fields).Execute()
 
 Retrieve details of a DNSSEC
 
@@ -113,7 +113,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSDNSSECAPI.RetrieveDnssec``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveDnssec`: ResponseRetrieveDNSSEC
+	// response from `RetrieveDnssec`: DNSSECResponse
 	fmt.Fprintf(os.Stdout, "Response from `DNSDNSSECAPI.RetrieveDnssec`: %v\n", resp)
 }
 ```
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveDNSSEC**](ResponseRetrieveDNSSEC.md)
+[**DNSSECResponse**](DNSSECResponse.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDnssec
 
-> ResponseDNSSEC UpdateDnssec(ctx, zoneId).DNSSECRequest(dNSSECRequest).Execute()
+> DNSSECResponse UpdateDnssec(ctx, zoneId).DNSSECRequest(dNSSECRequest).Execute()
 
 Update a DNSSEC
 
@@ -185,7 +185,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSDNSSECAPI.UpdateDnssec``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateDnssec`: ResponseDNSSEC
+	// response from `UpdateDnssec`: DNSSECResponse
 	fmt.Fprintf(os.Stdout, "Response from `DNSDNSSECAPI.UpdateDnssec`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDNSSEC**](ResponseDNSSEC.md)
+[**DNSSECResponse**](DNSSECResponse.md)
 
 ### Authorization
 

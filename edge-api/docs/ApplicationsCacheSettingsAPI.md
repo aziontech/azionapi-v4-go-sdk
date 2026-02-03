@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateCacheSetting
 
-> ResponseCacheSetting CreateCacheSetting(ctx, applicationId).CacheSettingRequest(cacheSettingRequest).Execute()
+> CacheSettingResponse CreateCacheSetting(ctx, applicationId).CacheSettingRequest(cacheSettingRequest).Execute()
 
 Create an Applications Cache Setting
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsCacheSettingsAPI.CreateCacheSetting``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateCacheSetting`: ResponseCacheSetting
+	// response from `CreateCacheSetting`: CacheSettingResponse
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationsCacheSettingsAPI.CreateCacheSetting`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseCacheSetting**](ResponseCacheSetting.md)
+[**CacheSettingResponse**](CacheSettingResponse.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## DeleteCacheSetting
 
-> ResponseDeleteCacheSetting DeleteCacheSetting(ctx, applicationId, cacheSettingId).Execute()
+> DeleteResponse DeleteCacheSetting(ctx, applicationId, cacheSettingId).Execute()
 
 Delete an Applications Cache Setting
 
@@ -116,7 +116,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsCacheSettingsAPI.DeleteCacheSetting``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteCacheSetting`: ResponseDeleteCacheSetting
+	// response from `DeleteCacheSetting`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationsCacheSettingsAPI.DeleteCacheSetting`: %v\n", resp)
 }
 ```
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteCacheSetting**](ResponseDeleteCacheSetting.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## ListCacheSettings
 
-> PaginatedResponseListCacheSettingList ListCacheSettings(ctx, applicationId).Fields(fields).Id(id).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedCacheSettingList ListCacheSettings(ctx, applicationId).Fields(fields).Id(id).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 List all Applications Cache Settings
 
@@ -183,10 +183,10 @@ func main() {
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
 	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name) (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, browser_cache_settings, cdn_cache_settings, cache_by_query_string, cache_by_cookies, adaptive_delivery_action, enable_caching_for_post, enable_caching_for_options, enable_stale_cache, l2_caching_enabled) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string | A search term to filter results. Searches across the following fields: name, cdn_cache_settings, cache_by_query_string, query_string_fields, cache_by_cookies, cookie_names, adaptive_delivery_action. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -195,7 +195,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsCacheSettingsAPI.ListCacheSettings``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListCacheSettings`: PaginatedResponseListCacheSettingList
+	// response from `ListCacheSettings`: PaginatedCacheSettingList
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationsCacheSettingsAPI.ListCacheSettings`: %v\n", resp)
 }
 ```
@@ -219,14 +219,14 @@ Name | Type | Description  | Notes
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
  **id** | **int64** | Filter by id (accepts comma-separated values). | 
  **name** | **string** | Filter by name (case-insensitive, partial match). | 
- **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name) | 
+ **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, browser_cache_settings, cdn_cache_settings, cache_by_query_string, cache_by_cookies, adaptive_delivery_action, enable_caching_for_post, enable_caching_for_options, enable_stale_cache, l2_caching_enabled) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
- **search** | **string** | A search term. | 
+ **search** | **string** | A search term to filter results. Searches across the following fields: name, cdn_cache_settings, cache_by_query_string, query_string_fields, cache_by_cookies, cookie_names, adaptive_delivery_action. | 
 
 ### Return type
 
-[**PaginatedResponseListCacheSettingList**](PaginatedResponseListCacheSettingList.md)
+[**PaginatedCacheSettingList**](PaginatedCacheSettingList.md)
 
 ### Authorization
 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateCacheSetting
 
-> ResponseCacheSetting PartialUpdateCacheSetting(ctx, applicationId, cacheSettingId).PatchedCacheSettingRequest(patchedCacheSettingRequest).Execute()
+> CacheSettingResponse PartialUpdateCacheSetting(ctx, applicationId, cacheSettingId).PatchedCacheSettingRequest(patchedCacheSettingRequest).Execute()
 
 Partially update an Applications Cache Setting
 
@@ -274,7 +274,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsCacheSettingsAPI.PartialUpdateCacheSetting``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateCacheSetting`: ResponseCacheSetting
+	// response from `PartialUpdateCacheSetting`: CacheSettingResponse
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationsCacheSettingsAPI.PartialUpdateCacheSetting`: %v\n", resp)
 }
 ```
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseCacheSetting**](ResponseCacheSetting.md)
+[**CacheSettingResponse**](CacheSettingResponse.md)
 
 ### Authorization
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveCacheSetting
 
-> ResponseRetrieveCacheSetting RetrieveCacheSetting(ctx, applicationId, cacheSettingId).Fields(fields).Execute()
+> CacheSetting RetrieveCacheSetting(ctx, applicationId, cacheSettingId).Fields(fields).Execute()
 
 Retrieve details of an Applications Cache Setting
 
@@ -349,7 +349,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsCacheSettingsAPI.RetrieveCacheSetting``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveCacheSetting`: ResponseRetrieveCacheSetting
+	// response from `RetrieveCacheSetting`: CacheSetting
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationsCacheSettingsAPI.RetrieveCacheSetting`: %v\n", resp)
 }
 ```
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveCacheSetting**](ResponseRetrieveCacheSetting.md)
+[**CacheSetting**](CacheSetting.md)
 
 ### Authorization
 
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCacheSetting
 
-> ResponseCacheSetting UpdateCacheSetting(ctx, applicationId, cacheSettingId).CacheSettingRequest(cacheSettingRequest).Execute()
+> CacheSettingResponse UpdateCacheSetting(ctx, applicationId, cacheSettingId).CacheSettingRequest(cacheSettingRequest).Execute()
 
 Update an Applications Cache Setting
 
@@ -424,7 +424,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsCacheSettingsAPI.UpdateCacheSetting``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateCacheSetting`: ResponseCacheSetting
+	// response from `UpdateCacheSetting`: CacheSettingResponse
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationsCacheSettingsAPI.UpdateCacheSetting`: %v\n", resp)
 }
 ```
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseCacheSetting**](ResponseCacheSetting.md)
+[**CacheSettingResponse**](CacheSettingResponse.md)
 
 ### Authorization
 

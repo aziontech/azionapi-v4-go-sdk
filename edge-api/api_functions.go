@@ -35,7 +35,7 @@ func (r ApiCreateFunctionRequest) EdgeFunctionsRequest(edgeFunctionsRequest Edge
 	return r
 }
 
-func (r ApiCreateFunctionRequest) Execute() (*ResponseFunctionsDoc, *http.Response, error) {
+func (r ApiCreateFunctionRequest) Execute() (*FunctionResponse, *http.Response, error) {
 	return r.ApiService.CreateFunctionExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *FunctionsAPIService) CreateFunction(ctx context.Context) ApiCreateFunct
 }
 
 // Execute executes the request
-//  @return ResponseFunctionsDoc
-func (a *FunctionsAPIService) CreateFunctionExecute(r ApiCreateFunctionRequest) (*ResponseFunctionsDoc, *http.Response, error) {
+//  @return FunctionResponse
+func (a *FunctionsAPIService) CreateFunctionExecute(r ApiCreateFunctionRequest) (*FunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseFunctionsDoc
+		localVarReturnValue  *FunctionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FunctionsAPIService.CreateFunction")
@@ -230,7 +230,7 @@ type ApiDeleteFunctionRequest struct {
 	functionId int64
 }
 
-func (r ApiDeleteFunctionRequest) Execute() (*ResponseDeleteFunctionsDoc, *http.Response, error) {
+func (r ApiDeleteFunctionRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteFunctionExecute(r)
 }
 
@@ -252,13 +252,13 @@ func (a *FunctionsAPIService) DeleteFunction(ctx context.Context, functionId int
 }
 
 // Execute executes the request
-//  @return ResponseDeleteFunctionsDoc
-func (a *FunctionsAPIService) DeleteFunctionExecute(r ApiDeleteFunctionRequest) (*ResponseDeleteFunctionsDoc, *http.Response, error) {
+//  @return DeleteResponse
+func (a *FunctionsAPIService) DeleteFunctionExecute(r ApiDeleteFunctionRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteFunctionsDoc
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FunctionsAPIService.DeleteFunction")
@@ -483,7 +483,7 @@ func (r ApiListFunctionsRequest) Name(name string) ApiListFunctionsRequest {
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: id, name, language, json_args, runtime_environment, active, last_editor, last_modified, product_version)
+// Which field to use when ordering the results. (Valid fields: id, name, language, runtime_environment, active, last_editor, last_modified)
 func (r ApiListFunctionsRequest) Ordering(ordering string) ApiListFunctionsRequest {
 	r.ordering = &ordering
 	return r
@@ -507,7 +507,7 @@ func (r ApiListFunctionsRequest) RuntimeEnvironmentIn(runtimeEnvironmentIn strin
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: name, last_editor, language, runtime_environment, active.
 func (r ApiListFunctionsRequest) Search(search string) ApiListFunctionsRequest {
 	r.search = &search
 	return r
@@ -748,7 +748,7 @@ func (r ApiPartialUpdateFunctionRequest) PatchedEdgeFunctionsRequest(patchedEdge
 	return r
 }
 
-func (r ApiPartialUpdateFunctionRequest) Execute() (*ResponseFunctionsDoc, *http.Response, error) {
+func (r ApiPartialUpdateFunctionRequest) Execute() (*FunctionResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateFunctionExecute(r)
 }
 
@@ -770,13 +770,13 @@ func (a *FunctionsAPIService) PartialUpdateFunction(ctx context.Context, functio
 }
 
 // Execute executes the request
-//  @return ResponseFunctionsDoc
-func (a *FunctionsAPIService) PartialUpdateFunctionExecute(r ApiPartialUpdateFunctionRequest) (*ResponseFunctionsDoc, *http.Response, error) {
+//  @return FunctionResponse
+func (a *FunctionsAPIService) PartialUpdateFunctionExecute(r ApiPartialUpdateFunctionRequest) (*FunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseFunctionsDoc
+		localVarReturnValue  *FunctionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FunctionsAPIService.PartialUpdateFunction")
@@ -950,7 +950,7 @@ func (r ApiRetrieveFunctionRequest) Fields(fields string) ApiRetrieveFunctionReq
 	return r
 }
 
-func (r ApiRetrieveFunctionRequest) Execute() (*ResponseRetrieveFunctionsDoc, *http.Response, error) {
+func (r ApiRetrieveFunctionRequest) Execute() (*FunctionResponse, *http.Response, error) {
 	return r.ApiService.RetrieveFunctionExecute(r)
 }
 
@@ -972,13 +972,13 @@ func (a *FunctionsAPIService) RetrieveFunction(ctx context.Context, functionId i
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveFunctionsDoc
-func (a *FunctionsAPIService) RetrieveFunctionExecute(r ApiRetrieveFunctionRequest) (*ResponseRetrieveFunctionsDoc, *http.Response, error) {
+//  @return FunctionResponse
+func (a *FunctionsAPIService) RetrieveFunctionExecute(r ApiRetrieveFunctionRequest) (*FunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveFunctionsDoc
+		localVarReturnValue  *FunctionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FunctionsAPIService.RetrieveFunction")
@@ -1152,7 +1152,7 @@ func (r ApiUpdateFunctionRequest) EdgeFunctionsRequest(edgeFunctionsRequest Edge
 	return r
 }
 
-func (r ApiUpdateFunctionRequest) Execute() (*ResponseFunctionsDoc, *http.Response, error) {
+func (r ApiUpdateFunctionRequest) Execute() (*FunctionResponse, *http.Response, error) {
 	return r.ApiService.UpdateFunctionExecute(r)
 }
 
@@ -1174,13 +1174,13 @@ func (a *FunctionsAPIService) UpdateFunction(ctx context.Context, functionId int
 }
 
 // Execute executes the request
-//  @return ResponseFunctionsDoc
-func (a *FunctionsAPIService) UpdateFunctionExecute(r ApiUpdateFunctionRequest) (*ResponseFunctionsDoc, *http.Response, error) {
+//  @return FunctionResponse
+func (a *FunctionsAPIService) UpdateFunctionExecute(r ApiUpdateFunctionRequest) (*FunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseFunctionsDoc
+		localVarReturnValue  *FunctionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FunctionsAPIService.UpdateFunction")

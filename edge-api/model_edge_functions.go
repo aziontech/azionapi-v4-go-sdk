@@ -35,7 +35,7 @@ type EdgeFunctions struct {
 	// String containing the function code. Maximum size: 20MB.
 	Code string `json:"code"`
 	DefaultArgs interface{} `json:"default_args,omitempty"`
-	AzionForm *ApplicationFunctionInstanceAzionForm `json:"azion_form,omitempty"`
+	AzionForm *EdgeFunctionsAzionForm `json:"azion_form,omitempty"`
 	ReferenceCount int64 `json:"reference_count"`
 	// Installed version, which may not be the latest if the vendor has released updates since installation.
 	Version string `json:"version"`
@@ -344,9 +344,9 @@ func (o *EdgeFunctions) SetDefaultArgs(v interface{}) {
 }
 
 // GetAzionForm returns the AzionForm field value if set, zero value otherwise.
-func (o *EdgeFunctions) GetAzionForm() ApplicationFunctionInstanceAzionForm {
+func (o *EdgeFunctions) GetAzionForm() EdgeFunctionsAzionForm {
 	if o == nil || IsNil(o.AzionForm) {
-		var ret ApplicationFunctionInstanceAzionForm
+		var ret EdgeFunctionsAzionForm
 		return ret
 	}
 	return *o.AzionForm
@@ -354,7 +354,7 @@ func (o *EdgeFunctions) GetAzionForm() ApplicationFunctionInstanceAzionForm {
 
 // GetAzionFormOk returns a tuple with the AzionForm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeFunctions) GetAzionFormOk() (*ApplicationFunctionInstanceAzionForm, bool) {
+func (o *EdgeFunctions) GetAzionFormOk() (*EdgeFunctionsAzionForm, bool) {
 	if o == nil || IsNil(o.AzionForm) {
 		return nil, false
 	}
@@ -370,8 +370,8 @@ func (o *EdgeFunctions) HasAzionForm() bool {
 	return false
 }
 
-// SetAzionForm gets a reference to the given ApplicationFunctionInstanceAzionForm and assigns it to the AzionForm field.
-func (o *EdgeFunctions) SetAzionForm(v ApplicationFunctionInstanceAzionForm) {
+// SetAzionForm gets a reference to the given EdgeFunctionsAzionForm and assigns it to the AzionForm field.
+func (o *EdgeFunctions) SetAzionForm(v EdgeFunctionsAzionForm) {
 	o.AzionForm = &v
 }
 
