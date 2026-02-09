@@ -20,12 +20,13 @@ import (
 // checks if the NetworkList type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NetworkList{}
 
-// NetworkList struct for NetworkList
+// NetworkList A Network List item can be one of the following formats:   1. IP Addresses (IPv4/IPv6):      - Simple IPv4: 192.168.0.1      - IPv4 with CIDR: 192.168.0.1/24      - Simple IPv6: 2001:db8:3333:4444:5555:6666:7777:8888      - IPv6 with CIDR: 2001:db8::/32      - IP with expiration date: 192.168.0.1 --LT2025-05-29T12:25:23Z          (The expiration date format is --LT followed by ISO8601 date in UTC timezone)   2. Country Codes:      - Two-character uppercase alphanumeric country code (ISO 3166-1 alpha-2)      - Examples: BR, US, DE, JP   3. Autonomous System Numbers (ASN):      - Number composed of digits only      - Examples: 1234, 5678, 13335
 type NetworkList struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
 	// * `asn` - ASN * `countries` - Countries * `ip_cidr` - IP/CIDR
 	Type string `json:"type"`
+	Items []string `json:"items"`
 	LastEditor string `json:"last_editor"`
 	LastModified time.Time `json:"last_modified"`
 	Active *bool `json:"active,omitempty"`
@@ -37,11 +38,12 @@ type _NetworkList NetworkList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNetworkList(id int64, name string, type_ string, lastEditor string, lastModified time.Time) *NetworkList {
+func NewNetworkList(id int64, name string, type_ string, items []string, lastEditor string, lastModified time.Time) *NetworkList {
 	this := NetworkList{}
 	this.Id = id
 	this.Name = name
 	this.Type = type_
+	this.Items = items
 	this.LastEditor = lastEditor
 	this.LastModified = lastModified
 	return &this
@@ -125,6 +127,30 @@ func (o *NetworkList) GetTypeOk() (*string, bool) {
 // SetType sets field value
 func (o *NetworkList) SetType(v string) {
 	o.Type = v
+}
+
+// GetItems returns the Items field value
+func (o *NetworkList) GetItems() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *NetworkList) GetItemsOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *NetworkList) SetItems(v []string) {
+	o.Items = v
 }
 
 // GetLastEditor returns the LastEditor field value
@@ -220,6 +246,7 @@ func (o NetworkList) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
+	toSerialize["items"] = o.Items
 	toSerialize["last_editor"] = o.LastEditor
 	toSerialize["last_modified"] = o.LastModified
 	if !IsNil(o.Active) {
@@ -236,6 +263,7 @@ func (o *NetworkList) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"name",
 		"type",
+		"items",
 		"last_editor",
 		"last_modified",
 	}

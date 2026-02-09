@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateDnsZone
 
-> ResponseZone CreateDnsZone(ctx).ZoneRequest(zoneRequest).Execute()
+> ZoneResponse CreateDnsZone(ctx).ZoneRequest(zoneRequest).Execute()
 
 Create a DNS Zone
 
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSZonesAPI.CreateDnsZone``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateDnsZone`: ResponseZone
+	// response from `CreateDnsZone`: ZoneResponse
 	fmt.Fprintf(os.Stdout, "Response from `DNSZonesAPI.CreateDnsZone`: %v\n", resp)
 }
 ```
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseZone**](ResponseZone.md)
+[**ZoneResponse**](ZoneResponse.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDnsZone
 
-> ResponseAsyncDeleteZone DeleteDnsZone(ctx, zoneId).Execute()
+> DeleteResponse DeleteDnsZone(ctx, zoneId).Execute()
 
 Delete a DNS Zone
 
@@ -109,7 +109,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSZonesAPI.DeleteDnsZone``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteDnsZone`: ResponseAsyncDeleteZone
+	// response from `DeleteDnsZone`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `DNSZonesAPI.DeleteDnsZone`: %v\n", resp)
 }
 ```
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAsyncDeleteZone**](ResponseAsyncDeleteZone.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -177,7 +177,7 @@ func main() {
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, domain, active) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
-	search := "search_example" // string | Search in name and domain fields (case-insensitive, partial match). (optional)
+	search := "search_example" // string | A search term to filter results. Searches across the following fields: name, domain. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, domain, active) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
- **search** | **string** | Search in name and domain fields (case-insensitive, partial match). | 
+ **search** | **string** | A search term to filter results. Searches across the following fields: name, domain. | 
 
 ### Return type
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateDnsZone
 
-> ResponseZone PartialUpdateDnsZone(ctx, zoneId).PatchedUpdateZoneRequest(patchedUpdateZoneRequest).Execute()
+> ZoneResponse PartialUpdateDnsZone(ctx, zoneId).PatchedUpdateZoneRequest(patchedUpdateZoneRequest).Execute()
 
 Partially update a DNS Zone
 
@@ -260,7 +260,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSZonesAPI.PartialUpdateDnsZone``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateDnsZone`: ResponseZone
+	// response from `PartialUpdateDnsZone`: ZoneResponse
 	fmt.Fprintf(os.Stdout, "Response from `DNSZonesAPI.PartialUpdateDnsZone`: %v\n", resp)
 }
 ```
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseZone**](ResponseZone.md)
+[**ZoneResponse**](ZoneResponse.md)
 
 ### Authorization
 
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveDnsZone
 
-> ResponseRetrieveZone RetrieveDnsZone(ctx, zoneId).Fields(fields).Execute()
+> ZoneResponse RetrieveDnsZone(ctx, zoneId).Fields(fields).Execute()
 
 Retrieve details of a DNS Zone
 
@@ -332,7 +332,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSZonesAPI.RetrieveDnsZone``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveDnsZone`: ResponseRetrieveZone
+	// response from `RetrieveDnsZone`: ZoneResponse
 	fmt.Fprintf(os.Stdout, "Response from `DNSZonesAPI.RetrieveDnsZone`: %v\n", resp)
 }
 ```
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveZone**](ResponseRetrieveZone.md)
+[**ZoneResponse**](ZoneResponse.md)
 
 ### Authorization
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDnsZone
 
-> ResponseZone UpdateDnsZone(ctx, zoneId).UpdateZoneRequest(updateZoneRequest).Execute()
+> ZoneResponse UpdateDnsZone(ctx, zoneId).UpdateZoneRequest(updateZoneRequest).Execute()
 
 Update a DNS Zone
 
@@ -404,7 +404,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSZonesAPI.UpdateDnsZone``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateDnsZone`: ResponseZone
+	// response from `UpdateDnsZone`: ZoneResponse
 	fmt.Fprintf(os.Stdout, "Response from `DNSZonesAPI.UpdateDnsZone`: %v\n", resp)
 }
 ```
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseZone**](ResponseZone.md)
+[**ZoneResponse**](ZoneResponse.md)
 
 ### Authorization
 

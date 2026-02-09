@@ -74,8 +74,8 @@ paths:
           format: int64
           type: integer
         style: form
-      - description: "Search in name and domain fields (case-insensitive, partial\
-          \ match)."
+      - description: "A search term to filter results. Searches across the following\
+          \ fields: name, domain."
         explode: true
         in: query
         name: search
@@ -89,7 +89,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PaginatedZoneList"
-          description: ""
+          description: List of DNS zones retrieved successfully.
         "401":
           content:
             application/json:
@@ -222,14 +222,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseZone"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncZone"
-          description: ""
+                $ref: "#/components/schemas/ZoneResponse"
+          description: DNS zone created successfully.
         "401":
           content:
             application/json:
@@ -363,14 +357,12 @@ paths:
           type: integer
         style: simple
       responses:
-        "204":
-          description: No response body
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncDeleteZone"
-          description: ""
+                $ref: "#/components/schemas/DeleteResponse"
+          description: DNS zone deletion accepted and processing asynchronously.
         "401":
           content:
             application/json:
@@ -515,8 +507,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseRetrieveZone"
-          description: ""
+                $ref: "#/components/schemas/ZoneResponse"
+          description: DNS zone details retrieved successfully.
         "401":
           content:
             application/json:
@@ -659,14 +651,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseZone"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncZone"
-          description: ""
+                $ref: "#/components/schemas/ZoneResponse"
+          description: DNS zone partially updated successfully.
         "401":
           content:
             application/json:
@@ -810,14 +796,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseZone"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncZone"
-          description: ""
+                $ref: "#/components/schemas/ZoneResponse"
+          description: DNS zone updated successfully.
         "401":
           content:
             application/json:
@@ -963,8 +943,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseRetrieveDNSSEC"
-          description: ""
+                $ref: "#/components/schemas/DNSSECResponse"
+          description: DNSSEC details retrieved successfully.
         "401":
           content:
             application/json:
@@ -1107,14 +1087,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseDNSSEC"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncDNSSEC"
-          description: ""
+                $ref: "#/components/schemas/DNSSECResponse"
+          description: DNSSEC partially updated successfully.
         "401":
           content:
             application/json:
@@ -1258,14 +1232,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseDNSSEC"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncDNSSEC"
-          description: ""
+                $ref: "#/components/schemas/DNSSECResponse"
+          description: DNSSEC updated successfully.
         "401":
           content:
             application/json:
@@ -1425,8 +1393,8 @@ paths:
           format: int64
           type: integer
         style: form
-      - description: "Search in answers, entry, ttl, and type fields (case-insensitive,\
-          \ partial match)."
+      - description: "A search term to filter results. Searches across the following\
+          \ fields: answers, entry, ttl, type."
         explode: true
         in: query
         name: search
@@ -1449,7 +1417,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PaginatedRecordList"
-          description: ""
+          description: List of DNS records retrieved successfully.
         "401":
           content:
             application/json:
@@ -1592,14 +1560,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseRecord"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncRecord"
-          description: ""
+                $ref: "#/components/schemas/RecordResponse"
+          description: DNS record created successfully.
         "401":
           content:
             application/json:
@@ -1742,14 +1704,12 @@ paths:
           type: integer
         style: simple
       responses:
-        "204":
-          description: No response body
         "202":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseAsyncDeleteRecord"
-          description: ""
+                $ref: "#/components/schemas/DeleteResponse"
+          description: DNS record deletion accepted and processing asynchronously.
         "401":
           content:
             application/json:
@@ -1904,8 +1864,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseRetrieveRecord"
-          description: ""
+                $ref: "#/components/schemas/RecordResponse"
+          description: DNS record details retrieved successfully.
         "401":
           content:
             application/json:
@@ -2057,14 +2017,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseRecord"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncRecord"
-          description: ""
+                $ref: "#/components/schemas/RecordResponse"
+          description: DNS record partially updated successfully.
         "401":
           content:
             application/json:
@@ -2217,14 +2171,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ResponseRecord"
-          description: ""
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResponseAsyncRecord"
-          description: ""
+                $ref: "#/components/schemas/RecordResponse"
+          description: DNS record updated successfully.
         "401":
           content:
             application/json:
@@ -2411,6 +2359,18 @@ components:
       required:
       - enabled
       type: object
+    DNSSECResponse:
+      example:
+        data:
+          delegation_signer: ""
+          enabled: true
+          status: status
+      properties:
+        data:
+          $ref: "#/components/schemas/DNSSEC"
+      required:
+      - data
+      type: object
     DelegationSigner:
       properties:
         algorithm_type:
@@ -2431,6 +2391,15 @@ components:
       - digest
       - digest_type
       - key_tag
+      type: object
+    DeleteResponse:
+      example:
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
       type: object
     JSONAPIErrorObject:
       description: Serializer for a single JSON:API error object.
@@ -2522,6 +2491,8 @@ components:
       type: object
     PaginatedRecordList:
       example:
+        next: https://api.example.com/items?page=3
+        previous: https://api.example.com/items?page=1
         count: 123
         total_pages: 10
         page: 1
@@ -2576,6 +2547,18 @@ components:
           maximum: 100
           minimum: 1
           type: integer
+        next:
+          description: URL to the next page of results
+          example: https://api.example.com/items?page=3
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          description: URL to the previous page of results
+          example: https://api.example.com/items?page=1
+          format: uri
+          nullable: true
+          type: string
         results:
           items:
             $ref: "#/components/schemas/Record"
@@ -2583,6 +2566,8 @@ components:
       type: object
     PaginatedZoneList:
       example:
+        next: https://api.example.com/items?page=3
+        previous: https://api.example.com/items?page=1
         count: 123
         total_pages: 10
         page: 1
@@ -2633,6 +2618,18 @@ components:
           maximum: 100
           minimum: 1
           type: integer
+        next:
+          description: URL to the next page of results
+          example: https://api.example.com/items?page=3
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          description: URL to the previous page of results
+          example: https://api.example.com/items?page=1
+          format: uri
+          nullable: true
+          type: string
         results:
           items:
             $ref: "#/components/schemas/Zone"
@@ -2879,42 +2876,7 @@ components:
       - rdata
       - type
       type: object
-    ResponseAsyncDNSSEC:
-      example:
-        data:
-          delegation_signer: ""
-          enabled: true
-          status: status
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/DNSSEC"
-      required:
-      - data
-      type: object
-    ResponseAsyncDeleteRecord:
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      type: object
-    ResponseAsyncDeleteZone:
-      example:
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-      type: object
-    ResponseAsyncRecord:
+    RecordResponse:
       example:
         data:
           name: name
@@ -2935,139 +2897,6 @@ components:
           type: string
         data:
           $ref: "#/components/schemas/Record"
-      required:
-      - data
-      type: object
-    ResponseAsyncZone:
-      example:
-        data:
-          product_version: product_version
-          nameservers:
-          - nameservers
-          - nameservers
-          domain: domain
-          name: name
-          active: true
-          id: 0
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/Zone"
-      required:
-      - data
-      type: object
-    ResponseDNSSEC:
-      example:
-        data:
-          delegation_signer: ""
-          enabled: true
-          status: status
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/DNSSEC"
-      required:
-      - data
-      type: object
-    ResponseRecord:
-      example:
-        data:
-          name: name
-          description: description
-          rdata:
-          - rdata
-          - rdata
-          weight: 37
-          id: 0
-          type: type
-          ttl: 1294386359
-          policy: policy
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/Record"
-      required:
-      - data
-      type: object
-    ResponseRetrieveDNSSEC:
-      example:
-        data:
-          delegation_signer: ""
-          enabled: true
-          status: status
-      properties:
-        data:
-          $ref: "#/components/schemas/DNSSEC"
-      required:
-      - data
-      type: object
-    ResponseRetrieveRecord:
-      example:
-        data:
-          name: name
-          description: description
-          rdata:
-          - rdata
-          - rdata
-          weight: 37
-          id: 0
-          type: type
-          ttl: 1294386359
-          policy: policy
-      properties:
-        data:
-          $ref: "#/components/schemas/Record"
-      required:
-      - data
-      type: object
-    ResponseRetrieveZone:
-      example:
-        data:
-          product_version: product_version
-          nameservers:
-          - nameservers
-          - nameservers
-          domain: domain
-          name: name
-          active: true
-          id: 0
-      properties:
-        data:
-          $ref: "#/components/schemas/Zone"
-      required:
-      - data
-      type: object
-    ResponseZone:
-      example:
-        data:
-          product_version: product_version
-          nameservers:
-          - nameservers
-          - nameservers
-          domain: domain
-          name: name
-          active: true
-          id: 0
-        state: state
-      properties:
-        state:
-          maxLength: 8
-          minLength: 1
-          type: string
-        data:
-          $ref: "#/components/schemas/Zone"
       required:
       - data
       type: object
@@ -3146,6 +2975,28 @@ components:
       - active
       - domain
       - name
+      type: object
+    ZoneResponse:
+      example:
+        data:
+          product_version: product_version
+          nameservers:
+          - nameservers
+          - nameservers
+          domain: domain
+          name: name
+          active: true
+          id: 0
+        state: state
+      properties:
+        state:
+          maxLength: 8
+          minLength: 1
+          type: string
+        data:
+          $ref: "#/components/schemas/Zone"
+      required:
+      - data
       type: object
   securitySchemes:
     BearerAuth:

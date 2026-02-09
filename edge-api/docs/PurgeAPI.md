@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## CreatePurgeRequest
 
-> ResponsePurgeInput CreatePurgeRequest(ctx, purgeType).PurgeInputRequest(purgeInputRequest).Execute()
+> PurgeResponse CreatePurgeRequest(ctx, purgeType).PurgeRequest(purgeRequest).Execute()
 
 Create a Purge Request
 
@@ -30,16 +30,16 @@ import (
 
 func main() {
 	purgeType := "purgeType_example" // string | type of purge: URL, Wildcard or Cachekey
-	purgeInputRequest := *openapiclient.NewPurgeInputRequest([]string{"Items_example"}) // PurgeInputRequest | 
+	purgeRequest := *openapiclient.NewPurgeRequest([]string{"Items_example"}) // PurgeRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PurgeAPI.CreatePurgeRequest(context.Background(), purgeType).PurgeInputRequest(purgeInputRequest).Execute()
+	resp, r, err := apiClient.PurgeAPI.CreatePurgeRequest(context.Background(), purgeType).PurgeRequest(purgeRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PurgeAPI.CreatePurgeRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreatePurgeRequest`: ResponsePurgeInput
+	// response from `CreatePurgeRequest`: PurgeResponse
 	fmt.Fprintf(os.Stdout, "Response from `PurgeAPI.CreatePurgeRequest`: %v\n", resp)
 }
 ```
@@ -60,11 +60,11 @@ Other parameters are passed through a pointer to a apiCreatePurgeRequestRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **purgeInputRequest** | [**PurgeInputRequest**](PurgeInputRequest.md) |  | 
+ **purgeRequest** | [**PurgeRequest**](PurgeRequest.md) |  | 
 
 ### Return type
 
-[**ResponsePurgeInput**](ResponsePurgeInput.md)
+[**PurgeResponse**](PurgeResponse.md)
 
 ### Authorization
 

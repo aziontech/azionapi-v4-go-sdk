@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateWorkload
 
-> ResponseWorkload CreateWorkload(ctx).WorkloadRequest(workloadRequest).Execute()
+> WorkloadResponse CreateWorkload(ctx).WorkloadRequest(workloadRequest).Execute()
 
 Create an Workload
 
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.CreateWorkload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateWorkload`: ResponseWorkload
+	// response from `CreateWorkload`: WorkloadResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.CreateWorkload`: %v\n", resp)
 }
 ```
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseWorkload**](ResponseWorkload.md)
+[**WorkloadResponse**](WorkloadResponse.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## DeleteWorkload
 
-> ResponseDeleteWorkload DeleteWorkload(ctx, workloadId).Execute()
+> DeleteResponse DeleteWorkload(ctx, workloadId).Execute()
 
 Delete an Workload
 
@@ -109,7 +109,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.DeleteWorkload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteWorkload`: ResponseDeleteWorkload
+	// response from `DeleteWorkload`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.DeleteWorkload`: %v\n", resp)
 }
 ```
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteWorkload**](ResponseDeleteWorkload.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -182,10 +182,10 @@ func main() {
 	mapName := "mapName_example" // string | Filter by map name (case-insensitive, partial match). (optional)
 	mtlsTrustedCaCertificateId := int64(789) // int64 | Filter by mTLS trusted CA certificate id (accepts comma-separated values). (optional)
 	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, active, workload_domain_allow_access, workload_domain, infrastructure, domains, product_version) (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, active, last_editor, last_modified) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string | A search term to filter results. Searches across the following fields: id, name, last_editor. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -221,10 +221,10 @@ Name | Type | Description  | Notes
  **mapName** | **string** | Filter by map name (case-insensitive, partial match). | 
  **mtlsTrustedCaCertificateId** | **int64** | Filter by mTLS trusted CA certificate id (accepts comma-separated values). | 
  **name** | **string** | Filter by name (case-insensitive, partial match). | 
- **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, active, workload_domain_allow_access, workload_domain, infrastructure, domains, product_version) | 
+ **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, active, last_editor, last_modified) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
- **search** | **string** | A search term. | 
+ **search** | **string** | A search term to filter results. Searches across the following fields: id, name, last_editor. | 
 
 ### Return type
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateWorkload
 
-> ResponseWorkload PartialUpdateWorkload(ctx, workloadId).PatchedWorkloadRequest(patchedWorkloadRequest).Execute()
+> WorkloadResponse PartialUpdateWorkload(ctx, workloadId).PatchedWorkloadRequest(patchedWorkloadRequest).Execute()
 
 Partially update an Workload
 
@@ -275,7 +275,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.PartialUpdateWorkload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateWorkload`: ResponseWorkload
+	// response from `PartialUpdateWorkload`: WorkloadResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.PartialUpdateWorkload`: %v\n", resp)
 }
 ```
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseWorkload**](ResponseWorkload.md)
+[**WorkloadResponse**](WorkloadResponse.md)
 
 ### Authorization
 
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveWorkload
 
-> ResponseRetrieveWorkload RetrieveWorkload(ctx, workloadId).Fields(fields).Execute()
+> WorkloadResponse RetrieveWorkload(ctx, workloadId).Fields(fields).Execute()
 
 Retrieve details of an Workload
 
@@ -347,7 +347,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.RetrieveWorkload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveWorkload`: ResponseRetrieveWorkload
+	// response from `RetrieveWorkload`: WorkloadResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.RetrieveWorkload`: %v\n", resp)
 }
 ```
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveWorkload**](ResponseRetrieveWorkload.md)
+[**WorkloadResponse**](WorkloadResponse.md)
 
 ### Authorization
 
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 
 ## UpdateWorkload
 
-> ResponseWorkload UpdateWorkload(ctx, workloadId).WorkloadRequest(workloadRequest).Execute()
+> WorkloadResponse UpdateWorkload(ctx, workloadId).WorkloadRequest(workloadRequest).Execute()
 
 Update an Workload
 
@@ -419,7 +419,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadsAPI.UpdateWorkload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateWorkload`: ResponseWorkload
+	// response from `UpdateWorkload`: WorkloadResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadsAPI.UpdateWorkload`: %v\n", resp)
 }
 ```
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseWorkload**](ResponseWorkload.md)
+[**WorkloadResponse**](WorkloadResponse.md)
 
 ### Authorization
 

@@ -23,7 +23,7 @@ var _ MappedNullable = &FirewallFunctionInstanceRequest{}
 type FirewallFunctionInstanceRequest struct {
 	Name string `json:"name"`
 	Args interface{} `json:"args,omitempty"`
-	AzionForm *ApplicationFunctionInstanceAzionForm `json:"azion_form,omitempty"`
+	AzionForm *EdgeFunctionsAzionForm `json:"azion_form,omitempty"`
 	Function int64 `json:"function"`
 	Active *bool `json:"active,omitempty"`
 }
@@ -107,9 +107,9 @@ func (o *FirewallFunctionInstanceRequest) SetArgs(v interface{}) {
 }
 
 // GetAzionForm returns the AzionForm field value if set, zero value otherwise.
-func (o *FirewallFunctionInstanceRequest) GetAzionForm() ApplicationFunctionInstanceAzionForm {
+func (o *FirewallFunctionInstanceRequest) GetAzionForm() EdgeFunctionsAzionForm {
 	if o == nil || IsNil(o.AzionForm) {
-		var ret ApplicationFunctionInstanceAzionForm
+		var ret EdgeFunctionsAzionForm
 		return ret
 	}
 	return *o.AzionForm
@@ -117,7 +117,7 @@ func (o *FirewallFunctionInstanceRequest) GetAzionForm() ApplicationFunctionInst
 
 // GetAzionFormOk returns a tuple with the AzionForm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallFunctionInstanceRequest) GetAzionFormOk() (*ApplicationFunctionInstanceAzionForm, bool) {
+func (o *FirewallFunctionInstanceRequest) GetAzionFormOk() (*EdgeFunctionsAzionForm, bool) {
 	if o == nil || IsNil(o.AzionForm) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *FirewallFunctionInstanceRequest) HasAzionForm() bool {
 	return false
 }
 
-// SetAzionForm gets a reference to the given ApplicationFunctionInstanceAzionForm and assigns it to the AzionForm field.
-func (o *FirewallFunctionInstanceRequest) SetAzionForm(v ApplicationFunctionInstanceAzionForm) {
+// SetAzionForm gets a reference to the given EdgeFunctionsAzionForm and assigns it to the AzionForm field.
+func (o *FirewallFunctionInstanceRequest) SetAzionForm(v EdgeFunctionsAzionForm) {
 	o.AzionForm = &v
 }
 

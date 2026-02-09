@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
 **Type** | **string** | Type of the connector  * &#x60;http&#x60; - HTTP * &#x60;storage&#x60; - Storage * &#x60;live_ingest&#x60; - Live Ingest | 
-**Attributes** | [**ConnectorLiveIngestAttributesRequest**](ConnectorLiveIngestAttributesRequest.md) |  | 
+**Attributes** | [**ConnectorStorageAttributesRequest**](ConnectorStorageAttributesRequest.md) |  | 
 
 ## Methods
 
 ### NewConnectorPolymorphicRequest
 
-`func NewConnectorPolymorphicRequest(name string, type_ string, attributes ConnectorLiveIngestAttributesRequest, ) *ConnectorPolymorphicRequest`
+`func NewConnectorPolymorphicRequest(name string, type_ string, attributes ConnectorStorageAttributesRequest, ) *ConnectorPolymorphicRequest`
 
 NewConnectorPolymorphicRequest instantiates a new ConnectorPolymorphicRequest object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ SetType sets Type field to given value.
 
 ### GetAttributes
 
-`func (o *ConnectorPolymorphicRequest) GetAttributes() ConnectorLiveIngestAttributesRequest`
+`func (o *ConnectorPolymorphicRequest) GetAttributes() ConnectorStorageAttributesRequest`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *ConnectorPolymorphicRequest) GetAttributesOk() (*ConnectorLiveIngestAttributesRequest, bool)`
+`func (o *ConnectorPolymorphicRequest) GetAttributesOk() (*ConnectorStorageAttributesRequest, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *ConnectorPolymorphicRequest) SetAttributes(v ConnectorLiveIngestAttributesRequest)`
+`func (o *ConnectorPolymorphicRequest) SetAttributes(v ConnectorStorageAttributesRequest)`
 
 SetAttributes sets Attributes field to given value.
 

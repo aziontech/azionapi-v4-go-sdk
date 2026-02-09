@@ -35,7 +35,7 @@ func (r ApiCreateDnsRecordRequest) RecordRequest(recordRequest RecordRequest) Ap
 	return r
 }
 
-func (r ApiCreateDnsRecordRequest) Execute() (*ResponseRecord, *http.Response, error) {
+func (r ApiCreateDnsRecordRequest) Execute() (*RecordResponse, *http.Response, error) {
 	return r.ApiService.CreateDnsRecordExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *DNSRecordsAPIService) CreateDnsRecord(ctx context.Context, zoneId int64
 }
 
 // Execute executes the request
-//  @return ResponseRecord
-func (a *DNSRecordsAPIService) CreateDnsRecordExecute(r ApiCreateDnsRecordRequest) (*ResponseRecord, *http.Response, error) {
+//  @return RecordResponse
+func (a *DNSRecordsAPIService) CreateDnsRecordExecute(r ApiCreateDnsRecordRequest) (*RecordResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRecord
+		localVarReturnValue  *RecordResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSRecordsAPIService.CreateDnsRecord")
@@ -234,7 +234,7 @@ type ApiDeleteDnsRecordRequest struct {
 	zoneId int64
 }
 
-func (r ApiDeleteDnsRecordRequest) Execute() (*ResponseAsyncDeleteRecord, *http.Response, error) {
+func (r ApiDeleteDnsRecordRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteDnsRecordExecute(r)
 }
 
@@ -258,13 +258,13 @@ func (a *DNSRecordsAPIService) DeleteDnsRecord(ctx context.Context, recordId int
 }
 
 // Execute executes the request
-//  @return ResponseAsyncDeleteRecord
-func (a *DNSRecordsAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*ResponseAsyncDeleteRecord, *http.Response, error) {
+//  @return DeleteResponse
+func (a *DNSRecordsAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseAsyncDeleteRecord
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSRecordsAPIService.DeleteDnsRecord")
@@ -459,7 +459,7 @@ func (r ApiListDnsRecordsRequest) PageSize(pageSize int64) ApiListDnsRecordsRequ
 	return r
 }
 
-// Search in answers, entry, ttl, and type fields (case-insensitive, partial match).
+// A search term to filter results. Searches across the following fields: answers, entry, ttl, type.
 func (r ApiListDnsRecordsRequest) Search(search string) ApiListDnsRecordsRequest {
 	r.search = &search
 	return r
@@ -680,7 +680,7 @@ func (r ApiPartialUpdateDnsRecordRequest) PatchedRecordRequest(patchedRecordRequ
 	return r
 }
 
-func (r ApiPartialUpdateDnsRecordRequest) Execute() (*ResponseRecord, *http.Response, error) {
+func (r ApiPartialUpdateDnsRecordRequest) Execute() (*RecordResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateDnsRecordExecute(r)
 }
 
@@ -704,13 +704,13 @@ func (a *DNSRecordsAPIService) PartialUpdateDnsRecord(ctx context.Context, recor
 }
 
 // Execute executes the request
-//  @return ResponseRecord
-func (a *DNSRecordsAPIService) PartialUpdateDnsRecordExecute(r ApiPartialUpdateDnsRecordRequest) (*ResponseRecord, *http.Response, error) {
+//  @return RecordResponse
+func (a *DNSRecordsAPIService) PartialUpdateDnsRecordExecute(r ApiPartialUpdateDnsRecordRequest) (*RecordResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRecord
+		localVarReturnValue  *RecordResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSRecordsAPIService.PartialUpdateDnsRecord")
@@ -886,7 +886,7 @@ func (r ApiRetrieveDnsRecordRequest) Fields(fields string) ApiRetrieveDnsRecordR
 	return r
 }
 
-func (r ApiRetrieveDnsRecordRequest) Execute() (*ResponseRetrieveRecord, *http.Response, error) {
+func (r ApiRetrieveDnsRecordRequest) Execute() (*RecordResponse, *http.Response, error) {
 	return r.ApiService.RetrieveDnsRecordExecute(r)
 }
 
@@ -910,13 +910,13 @@ func (a *DNSRecordsAPIService) RetrieveDnsRecord(ctx context.Context, recordId i
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveRecord
-func (a *DNSRecordsAPIService) RetrieveDnsRecordExecute(r ApiRetrieveDnsRecordRequest) (*ResponseRetrieveRecord, *http.Response, error) {
+//  @return RecordResponse
+func (a *DNSRecordsAPIService) RetrieveDnsRecordExecute(r ApiRetrieveDnsRecordRequest) (*RecordResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveRecord
+		localVarReturnValue  *RecordResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSRecordsAPIService.RetrieveDnsRecord")
@@ -1092,7 +1092,7 @@ func (r ApiUpdateDnsRecordRequest) RecordRequest(recordRequest RecordRequest) Ap
 	return r
 }
 
-func (r ApiUpdateDnsRecordRequest) Execute() (*ResponseRecord, *http.Response, error) {
+func (r ApiUpdateDnsRecordRequest) Execute() (*RecordResponse, *http.Response, error) {
 	return r.ApiService.UpdateDnsRecordExecute(r)
 }
 
@@ -1116,13 +1116,13 @@ func (a *DNSRecordsAPIService) UpdateDnsRecord(ctx context.Context, recordId int
 }
 
 // Execute executes the request
-//  @return ResponseRecord
-func (a *DNSRecordsAPIService) UpdateDnsRecordExecute(r ApiUpdateDnsRecordRequest) (*ResponseRecord, *http.Response, error) {
+//  @return RecordResponse
+func (a *DNSRecordsAPIService) UpdateDnsRecordExecute(r ApiUpdateDnsRecordRequest) (*RecordResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRecord
+		localVarReturnValue  *RecordResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSRecordsAPIService.UpdateDnsRecord")

@@ -35,7 +35,7 @@ func (r ApiPartialUpdateDnssecRequest) PatchedDNSSECRequest(patchedDNSSECRequest
 	return r
 }
 
-func (r ApiPartialUpdateDnssecRequest) Execute() (*ResponseDNSSEC, *http.Response, error) {
+func (r ApiPartialUpdateDnssecRequest) Execute() (*DNSSECResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateDnssecExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *DNSDNSSECAPIService) PartialUpdateDnssec(ctx context.Context, zoneId in
 }
 
 // Execute executes the request
-//  @return ResponseDNSSEC
-func (a *DNSDNSSECAPIService) PartialUpdateDnssecExecute(r ApiPartialUpdateDnssecRequest) (*ResponseDNSSEC, *http.Response, error) {
+//  @return DNSSECResponse
+func (a *DNSDNSSECAPIService) PartialUpdateDnssecExecute(r ApiPartialUpdateDnssecRequest) (*DNSSECResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDNSSEC
+		localVarReturnValue  *DNSSECResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSDNSSECAPIService.PartialUpdateDnssec")
@@ -237,7 +237,7 @@ func (r ApiRetrieveDnssecRequest) Fields(fields string) ApiRetrieveDnssecRequest
 	return r
 }
 
-func (r ApiRetrieveDnssecRequest) Execute() (*ResponseRetrieveDNSSEC, *http.Response, error) {
+func (r ApiRetrieveDnssecRequest) Execute() (*DNSSECResponse, *http.Response, error) {
 	return r.ApiService.RetrieveDnssecExecute(r)
 }
 
@@ -259,13 +259,13 @@ func (a *DNSDNSSECAPIService) RetrieveDnssec(ctx context.Context, zoneId int64) 
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveDNSSEC
-func (a *DNSDNSSECAPIService) RetrieveDnssecExecute(r ApiRetrieveDnssecRequest) (*ResponseRetrieveDNSSEC, *http.Response, error) {
+//  @return DNSSECResponse
+func (a *DNSDNSSECAPIService) RetrieveDnssecExecute(r ApiRetrieveDnssecRequest) (*DNSSECResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveDNSSEC
+		localVarReturnValue  *DNSSECResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSDNSSECAPIService.RetrieveDnssec")
@@ -439,7 +439,7 @@ func (r ApiUpdateDnssecRequest) DNSSECRequest(dNSSECRequest DNSSECRequest) ApiUp
 	return r
 }
 
-func (r ApiUpdateDnssecRequest) Execute() (*ResponseDNSSEC, *http.Response, error) {
+func (r ApiUpdateDnssecRequest) Execute() (*DNSSECResponse, *http.Response, error) {
 	return r.ApiService.UpdateDnssecExecute(r)
 }
 
@@ -461,13 +461,13 @@ func (a *DNSDNSSECAPIService) UpdateDnssec(ctx context.Context, zoneId int64) Ap
 }
 
 // Execute executes the request
-//  @return ResponseDNSSEC
-func (a *DNSDNSSECAPIService) UpdateDnssecExecute(r ApiUpdateDnssecRequest) (*ResponseDNSSEC, *http.Response, error) {
+//  @return DNSSECResponse
+func (a *DNSDNSSECAPIService) UpdateDnssecExecute(r ApiUpdateDnssecRequest) (*DNSSECResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDNSSEC
+		localVarReturnValue  *DNSSECResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSDNSSECAPIService.UpdateDnssec")
