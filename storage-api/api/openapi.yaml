@@ -164,7 +164,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PaginatedBucketList"
-          description: ""
+          description: List of buckets retrieved successfully.
         "400":
           content:
             application/json:
@@ -298,13 +298,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BucketCreateResponse"
-          description: ""
+          description: Bucket created successfully.
         "202":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BucketCreateResponse"
-          description: ""
+          description: Bucket creation request accepted and is being processed.
         "400":
           content:
             application/json:
@@ -442,13 +442,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DeleteResponse"
-          description: ""
+          description: Bucket deleted successfully.
         "202":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/DeleteResponse"
-          description: ""
+          description: Bucket deletion request accepted and is being processed.
         "401":
           content:
             application/json:
@@ -593,7 +593,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BucketCreateResponse"
-          description: ""
+          description: Bucket details retrieved successfully.
         "400":
           content:
             application/json:
@@ -735,13 +735,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BucketCreateResponse"
-          description: ""
+          description: Bucket updated successfully.
         "202":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BucketCreateResponse"
-          description: ""
+          description: Bucket update request accepted and is being processed.
         "400":
           content:
             application/json:
@@ -923,7 +923,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ResponseBucketObject"
-          description: ""
+          description: List of bucket objects retrieved successfully.
         "400":
           content:
             application/json:
@@ -1070,13 +1070,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DeleteResponse"
-          description: ""
+          description: Object deleted successfully.
         "202":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/DeleteResponse"
-          description: ""
+          description: Object deletion request accepted and is being processed.
         "400":
           content:
             application/json:
@@ -1230,7 +1230,7 @@ paths:
               schema:
                 format: binary
                 type: string
-          description: ""
+          description: Object downloaded successfully.
         "400":
           content:
             application/json:
@@ -1391,13 +1391,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuccessObjectOperation"
-          description: ""
+          description: Object created successfully.
         "202":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuccessObjectOperationAsync"
-          description: ""
+          description: Object creation request accepted and is being processed.
         "400":
           content:
             application/json:
@@ -1558,13 +1558,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuccessObjectOperation"
-          description: ""
+          description: Object updated successfully.
         "202":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuccessObjectOperationAsync"
-          description: ""
+          description: Object update request accepted and is being processed.
         "400":
           content:
             application/json:
@@ -1858,7 +1858,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PaginatedCredentialList"
-          description: ""
+          description: List of credentials retrieved successfully.
         "400":
           content:
             application/json:
@@ -1992,13 +1992,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CredentialResponse"
-          description: ""
+          description: Credential created successfully.
         "202":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/CredentialResponse"
-          description: ""
+          description: Credential creation request accepted and is being processed.
         "400":
           content:
             application/json:
@@ -2137,13 +2137,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DeleteResponse"
-          description: ""
+          description: Credential deleted successfully.
         "202":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/DeleteResponse"
-          description: ""
+          description: Credential deletion request accepted and is being processed.
         "401":
           content:
             application/json:
@@ -2289,7 +2289,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CredentialResponse"
-          description: ""
+          description: Credential details retrieved successfully.
         "401":
           content:
             application/json:
@@ -2565,9 +2565,13 @@ components:
         - buckets
         last_editor: last_editor
         name: name
+        id: 0
         expiration_date: 2000-01-23T04:56:07.000+00:00
         last_modified: 2000-01-23T04:56:07.000+00:00
       properties:
+        id:
+          format: int64
+          type: integer
         name:
           maxLength: 100
           minLength: 1
@@ -2604,6 +2608,7 @@ components:
       - access_key
       - buckets
       - capabilities
+      - id
       - last_editor
       - last_modified
       - name
@@ -2662,6 +2667,7 @@ components:
           - buckets
           last_editor: last_editor
           name: name
+          id: 0
           expiration_date: 2000-01-23T04:56:07.000+00:00
           last_modified: 2000-01-23T04:56:07.000+00:00
         state: state
@@ -2796,6 +2802,8 @@ components:
       type: object
     PaginatedBucketList:
       example:
+        next: https://api.example.com/items?page=3
+        previous: https://api.example.com/items?page=1
         count: 123
         total_pages: 10
         page: 1
@@ -2840,6 +2848,18 @@ components:
           maximum: 100
           minimum: 1
           type: integer
+        next:
+          description: URL to the next page of results
+          example: https://api.example.com/items?page=3
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          description: URL to the previous page of results
+          example: https://api.example.com/items?page=1
+          format: uri
+          nullable: true
+          type: string
         results:
           items:
             $ref: "#/components/schemas/Bucket"
@@ -2847,6 +2867,8 @@ components:
       type: object
     PaginatedCredentialList:
       example:
+        next: https://api.example.com/items?page=3
+        previous: https://api.example.com/items?page=1
         count: 123
         total_pages: 10
         page: 1
@@ -2861,6 +2883,7 @@ components:
           - buckets
           last_editor: last_editor
           name: name
+          id: 0
           expiration_date: 2000-01-23T04:56:07.000+00:00
           last_modified: 2000-01-23T04:56:07.000+00:00
         - secret_key: secret_key
@@ -2873,6 +2896,7 @@ components:
           - buckets
           last_editor: last_editor
           name: name
+          id: 0
           expiration_date: 2000-01-23T04:56:07.000+00:00
           last_modified: 2000-01-23T04:56:07.000+00:00
         page_size: 10
@@ -2905,6 +2929,18 @@ components:
           maximum: 100
           minimum: 1
           type: integer
+        next:
+          description: URL to the next page of results
+          example: https://api.example.com/items?page=3
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          description: URL to the previous page of results
+          example: https://api.example.com/items?page=1
+          format: uri
+          nullable: true
+          type: string
         results:
           items:
             $ref: "#/components/schemas/Credential"
