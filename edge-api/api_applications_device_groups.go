@@ -27,15 +27,15 @@ type ApiCreateDeviceGroupRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsDeviceGroupsAPIService
 	applicationId int64
-	applicationDeviceGroupsRequest *ApplicationDeviceGroupsRequest
+	deviceGroupRequest *DeviceGroupRequest
 }
 
-func (r ApiCreateDeviceGroupRequest) ApplicationDeviceGroupsRequest(applicationDeviceGroupsRequest ApplicationDeviceGroupsRequest) ApiCreateDeviceGroupRequest {
-	r.applicationDeviceGroupsRequest = &applicationDeviceGroupsRequest
+func (r ApiCreateDeviceGroupRequest) DeviceGroupRequest(deviceGroupRequest DeviceGroupRequest) ApiCreateDeviceGroupRequest {
+	r.deviceGroupRequest = &deviceGroupRequest
 	return r
 }
 
-func (r ApiCreateDeviceGroupRequest) Execute() (*ResponseApplicationDeviceGroups, *http.Response, error) {
+func (r ApiCreateDeviceGroupRequest) Execute() (*DeviceGroupResponse, *http.Response, error) {
 	return r.ApiService.CreateDeviceGroupExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroup(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return ResponseApplicationDeviceGroups
-func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroupExecute(r ApiCreateDeviceGroupRequest) (*ResponseApplicationDeviceGroups, *http.Response, error) {
+//  @return DeviceGroupResponse
+func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroupExecute(r ApiCreateDeviceGroupRequest) (*DeviceGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplicationDeviceGroups
+		localVarReturnValue  *DeviceGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.CreateDeviceGroup")
@@ -77,8 +77,8 @@ func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroupExecute(r ApiCreat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.applicationDeviceGroupsRequest == nil {
-		return localVarReturnValue, nil, reportError("applicationDeviceGroupsRequest is required and must be specified")
+	if r.deviceGroupRequest == nil {
+		return localVarReturnValue, nil, reportError("deviceGroupRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -99,7 +99,7 @@ func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroupExecute(r ApiCreat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.applicationDeviceGroupsRequest
+	localVarPostBody = r.deviceGroupRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -227,29 +227,29 @@ func (a *ApplicationsDeviceGroupsAPIService) CreateDeviceGroupExecute(r ApiCreat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteDeviceGroupsRequest struct {
+type ApiDeleteDeviceGroupRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsDeviceGroupsAPIService
 	applicationId int64
 	deviceGroupId int64
 }
 
-func (r ApiDeleteDeviceGroupsRequest) Execute() (*ResponseDeleteApplicationDeviceGroups, *http.Response, error) {
-	return r.ApiService.DeleteDeviceGroupsExecute(r)
+func (r ApiDeleteDeviceGroupRequest) Execute() (*DeleteResponse, *http.Response, error) {
+	return r.ApiService.DeleteDeviceGroupExecute(r)
 }
 
 /*
-DeleteDeviceGroups Delete an Applications Device Group
+DeleteDeviceGroup Delete an Applications Device Group
 
 Delete a specific Device Group in your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId A unique integer value identifying the application.
  @param deviceGroupId A unique integer value identifying the device group.
- @return ApiDeleteDeviceGroupsRequest
+ @return ApiDeleteDeviceGroupRequest
 */
-func (a *ApplicationsDeviceGroupsAPIService) DeleteDeviceGroups(ctx context.Context, applicationId int64, deviceGroupId int64) ApiDeleteDeviceGroupsRequest {
-	return ApiDeleteDeviceGroupsRequest{
+func (a *ApplicationsDeviceGroupsAPIService) DeleteDeviceGroup(ctx context.Context, applicationId int64, deviceGroupId int64) ApiDeleteDeviceGroupRequest {
+	return ApiDeleteDeviceGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		applicationId: applicationId,
@@ -258,16 +258,16 @@ func (a *ApplicationsDeviceGroupsAPIService) DeleteDeviceGroups(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ResponseDeleteApplicationDeviceGroups
-func (a *ApplicationsDeviceGroupsAPIService) DeleteDeviceGroupsExecute(r ApiDeleteDeviceGroupsRequest) (*ResponseDeleteApplicationDeviceGroups, *http.Response, error) {
+//  @return DeleteResponse
+func (a *ApplicationsDeviceGroupsAPIService) DeleteDeviceGroupExecute(r ApiDeleteDeviceGroupRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteApplicationDeviceGroups
+		localVarReturnValue  *DeleteResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.DeleteDeviceGroups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.DeleteDeviceGroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -456,7 +456,7 @@ func (r ApiListDeviceGroupsRequest) Name(name string) ApiListDeviceGroupsRequest
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: name, id, user_agent)
+// Which field to use when ordering the results. (Valid fields: id, name, user_agent)
 func (r ApiListDeviceGroupsRequest) Ordering(ordering string) ApiListDeviceGroupsRequest {
 	r.ordering = &ordering
 	return r
@@ -474,7 +474,7 @@ func (r ApiListDeviceGroupsRequest) PageSize(pageSize int64) ApiListDeviceGroups
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: name, user_agent.
 func (r ApiListDeviceGroupsRequest) Search(search string) ApiListDeviceGroupsRequest {
 	r.search = &search
 	return r
@@ -486,7 +486,7 @@ func (r ApiListDeviceGroupsRequest) UserAgent(userAgent string) ApiListDeviceGro
 	return r
 }
 
-func (r ApiListDeviceGroupsRequest) Execute() (*PaginatedApplicationDeviceGroupsList, *http.Response, error) {
+func (r ApiListDeviceGroupsRequest) Execute() (*PaginatedDeviceGroupList, *http.Response, error) {
 	return r.ApiService.ListDeviceGroupsExecute(r)
 }
 
@@ -508,13 +508,13 @@ func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroups(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return PaginatedApplicationDeviceGroupsList
-func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroupsExecute(r ApiListDeviceGroupsRequest) (*PaginatedApplicationDeviceGroupsList, *http.Response, error) {
+//  @return PaginatedDeviceGroupList
+func (a *ApplicationsDeviceGroupsAPIService) ListDeviceGroupsExecute(r ApiListDeviceGroupsRequest) (*PaginatedDeviceGroupList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaginatedApplicationDeviceGroupsList
+		localVarReturnValue  *PaginatedDeviceGroupList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.ListDeviceGroups")
@@ -702,15 +702,15 @@ type ApiPartialUpdateDeviceGroupRequest struct {
 	ApiService *ApplicationsDeviceGroupsAPIService
 	applicationId int64
 	deviceGroupId int64
-	patchedApplicationDeviceGroupsRequest *PatchedApplicationDeviceGroupsRequest
+	patchedDeviceGroupRequest *PatchedDeviceGroupRequest
 }
 
-func (r ApiPartialUpdateDeviceGroupRequest) PatchedApplicationDeviceGroupsRequest(patchedApplicationDeviceGroupsRequest PatchedApplicationDeviceGroupsRequest) ApiPartialUpdateDeviceGroupRequest {
-	r.patchedApplicationDeviceGroupsRequest = &patchedApplicationDeviceGroupsRequest
+func (r ApiPartialUpdateDeviceGroupRequest) PatchedDeviceGroupRequest(patchedDeviceGroupRequest PatchedDeviceGroupRequest) ApiPartialUpdateDeviceGroupRequest {
+	r.patchedDeviceGroupRequest = &patchedDeviceGroupRequest
 	return r
 }
 
-func (r ApiPartialUpdateDeviceGroupRequest) Execute() (*ResponseApplicationDeviceGroups, *http.Response, error) {
+func (r ApiPartialUpdateDeviceGroupRequest) Execute() (*DeviceGroupResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateDeviceGroupExecute(r)
 }
 
@@ -734,13 +734,13 @@ func (a *ApplicationsDeviceGroupsAPIService) PartialUpdateDeviceGroup(ctx contex
 }
 
 // Execute executes the request
-//  @return ResponseApplicationDeviceGroups
-func (a *ApplicationsDeviceGroupsAPIService) PartialUpdateDeviceGroupExecute(r ApiPartialUpdateDeviceGroupRequest) (*ResponseApplicationDeviceGroups, *http.Response, error) {
+//  @return DeviceGroupResponse
+func (a *ApplicationsDeviceGroupsAPIService) PartialUpdateDeviceGroupExecute(r ApiPartialUpdateDeviceGroupRequest) (*DeviceGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplicationDeviceGroups
+		localVarReturnValue  *DeviceGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.PartialUpdateDeviceGroup")
@@ -774,7 +774,7 @@ func (a *ApplicationsDeviceGroupsAPIService) PartialUpdateDeviceGroupExecute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedApplicationDeviceGroupsRequest
+	localVarPostBody = r.patchedDeviceGroupRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -916,7 +916,7 @@ func (r ApiRetrieveDeviceGroupRequest) Fields(fields string) ApiRetrieveDeviceGr
 	return r
 }
 
-func (r ApiRetrieveDeviceGroupRequest) Execute() (*ResponseRetrieveApplicationDeviceGroups, *http.Response, error) {
+func (r ApiRetrieveDeviceGroupRequest) Execute() (*DeviceGroupResponse, *http.Response, error) {
 	return r.ApiService.RetrieveDeviceGroupExecute(r)
 }
 
@@ -940,13 +940,13 @@ func (a *ApplicationsDeviceGroupsAPIService) RetrieveDeviceGroup(ctx context.Con
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveApplicationDeviceGroups
-func (a *ApplicationsDeviceGroupsAPIService) RetrieveDeviceGroupExecute(r ApiRetrieveDeviceGroupRequest) (*ResponseRetrieveApplicationDeviceGroups, *http.Response, error) {
+//  @return DeviceGroupResponse
+func (a *ApplicationsDeviceGroupsAPIService) RetrieveDeviceGroupExecute(r ApiRetrieveDeviceGroupRequest) (*DeviceGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveApplicationDeviceGroups
+		localVarReturnValue  *DeviceGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.RetrieveDeviceGroup")
@@ -1114,15 +1114,15 @@ type ApiUpdateDeviceGroupRequest struct {
 	ApiService *ApplicationsDeviceGroupsAPIService
 	applicationId int64
 	deviceGroupId int64
-	applicationDeviceGroupsRequest *ApplicationDeviceGroupsRequest
+	deviceGroupRequest *DeviceGroupRequest
 }
 
-func (r ApiUpdateDeviceGroupRequest) ApplicationDeviceGroupsRequest(applicationDeviceGroupsRequest ApplicationDeviceGroupsRequest) ApiUpdateDeviceGroupRequest {
-	r.applicationDeviceGroupsRequest = &applicationDeviceGroupsRequest
+func (r ApiUpdateDeviceGroupRequest) DeviceGroupRequest(deviceGroupRequest DeviceGroupRequest) ApiUpdateDeviceGroupRequest {
+	r.deviceGroupRequest = &deviceGroupRequest
 	return r
 }
 
-func (r ApiUpdateDeviceGroupRequest) Execute() (*ResponseApplicationDeviceGroups, *http.Response, error) {
+func (r ApiUpdateDeviceGroupRequest) Execute() (*DeviceGroupResponse, *http.Response, error) {
 	return r.ApiService.UpdateDeviceGroupExecute(r)
 }
 
@@ -1146,13 +1146,13 @@ func (a *ApplicationsDeviceGroupsAPIService) UpdateDeviceGroup(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return ResponseApplicationDeviceGroups
-func (a *ApplicationsDeviceGroupsAPIService) UpdateDeviceGroupExecute(r ApiUpdateDeviceGroupRequest) (*ResponseApplicationDeviceGroups, *http.Response, error) {
+//  @return DeviceGroupResponse
+func (a *ApplicationsDeviceGroupsAPIService) UpdateDeviceGroupExecute(r ApiUpdateDeviceGroupRequest) (*DeviceGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplicationDeviceGroups
+		localVarReturnValue  *DeviceGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsDeviceGroupsAPIService.UpdateDeviceGroup")
@@ -1167,8 +1167,8 @@ func (a *ApplicationsDeviceGroupsAPIService) UpdateDeviceGroupExecute(r ApiUpdat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.applicationDeviceGroupsRequest == nil {
-		return localVarReturnValue, nil, reportError("applicationDeviceGroupsRequest is required and must be specified")
+	if r.deviceGroupRequest == nil {
+		return localVarReturnValue, nil, reportError("deviceGroupRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1189,7 +1189,7 @@ func (a *ApplicationsDeviceGroupsAPIService) UpdateDeviceGroupExecute(r ApiUpdat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.applicationDeviceGroupsRequest
+	localVarPostBody = r.deviceGroupRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

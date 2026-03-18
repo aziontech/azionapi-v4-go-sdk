@@ -28,15 +28,15 @@ type ApiCreateApplicationRequestRuleRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsRequestRulesAPIService
 	applicationId int64
-	applicationRequestPhaseRuleEngineRequest *ApplicationRequestPhaseRuleEngineRequest
+	requestPhaseRuleRequest *RequestPhaseRuleRequest
 }
 
-func (r ApiCreateApplicationRequestRuleRequest) ApplicationRequestPhaseRuleEngineRequest(applicationRequestPhaseRuleEngineRequest ApplicationRequestPhaseRuleEngineRequest) ApiCreateApplicationRequestRuleRequest {
-	r.applicationRequestPhaseRuleEngineRequest = &applicationRequestPhaseRuleEngineRequest
+func (r ApiCreateApplicationRequestRuleRequest) RequestPhaseRuleRequest(requestPhaseRuleRequest RequestPhaseRuleRequest) ApiCreateApplicationRequestRuleRequest {
+	r.requestPhaseRuleRequest = &requestPhaseRuleRequest
 	return r
 }
 
-func (r ApiCreateApplicationRequestRuleRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (r ApiCreateApplicationRequestRuleRequest) Execute() (*RequestPhaseRuleResponse, *http.Response, error) {
 	return r.ApiService.CreateApplicationRequestRuleExecute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *ApplicationsRequestRulesAPIService) CreateApplicationRequestRule(ctx co
 }
 
 // Execute executes the request
-//  @return ResponseApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) CreateApplicationRequestRuleExecute(r ApiCreateApplicationRequestRuleRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+//  @return RequestPhaseRuleResponse
+func (a *ApplicationsRequestRulesAPIService) CreateApplicationRequestRuleExecute(r ApiCreateApplicationRequestRuleRequest) (*RequestPhaseRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplicationRequestPhaseRuleEngine
+		localVarReturnValue  *RequestPhaseRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.CreateApplicationRequestRule")
@@ -78,8 +78,8 @@ func (a *ApplicationsRequestRulesAPIService) CreateApplicationRequestRuleExecute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.applicationRequestPhaseRuleEngineRequest == nil {
-		return localVarReturnValue, nil, reportError("applicationRequestPhaseRuleEngineRequest is required and must be specified")
+	if r.requestPhaseRuleRequest == nil {
+		return localVarReturnValue, nil, reportError("requestPhaseRuleRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -100,7 +100,7 @@ func (a *ApplicationsRequestRulesAPIService) CreateApplicationRequestRuleExecute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.applicationRequestPhaseRuleEngineRequest
+	localVarPostBody = r.requestPhaseRuleRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -235,7 +235,7 @@ type ApiDeleteApplicationRequestRuleRequest struct {
 	requestRuleId int64
 }
 
-func (r ApiDeleteApplicationRequestRuleRequest) Execute() (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (r ApiDeleteApplicationRequestRuleRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteApplicationRequestRuleExecute(r)
 }
 
@@ -259,13 +259,13 @@ func (a *ApplicationsRequestRulesAPIService) DeleteApplicationRequestRule(ctx co
 }
 
 // Execute executes the request
-//  @return ResponseDeleteApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) DeleteApplicationRequestRuleExecute(r ApiDeleteApplicationRequestRuleRequest) (*ResponseDeleteApplicationRequestPhaseRuleEngine, *http.Response, error) {
+//  @return DeleteResponse
+func (a *ApplicationsRequestRulesAPIService) DeleteApplicationRequestRuleExecute(r ApiDeleteApplicationRequestRuleRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteApplicationRequestPhaseRuleEngine
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.DeleteApplicationRequestRule")
@@ -498,7 +498,7 @@ func (r ApiListApplicationRequestRulesRequest) OrderLte(orderLte int64) ApiListA
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: name, active, description, order, criteria, last_editor, last_modified, behaviors)
+// Which field to use when ordering the results. (Valid fields: id, name, description, last_editor, last_modified, order)
 func (r ApiListApplicationRequestRulesRequest) Ordering(ordering string) ApiListApplicationRequestRulesRequest {
 	r.ordering = &ordering
 	return r
@@ -516,13 +516,13 @@ func (r ApiListApplicationRequestRulesRequest) PageSize(pageSize int64) ApiListA
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: name.
 func (r ApiListApplicationRequestRulesRequest) Search(search string) ApiListApplicationRequestRulesRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiListApplicationRequestRulesRequest) Execute() (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
+func (r ApiListApplicationRequestRulesRequest) Execute() (*PaginatedRequestPhaseRuleList, *http.Response, error) {
 	return r.ApiService.ListApplicationRequestRulesExecute(r)
 }
 
@@ -544,13 +544,13 @@ func (a *ApplicationsRequestRulesAPIService) ListApplicationRequestRules(ctx con
 }
 
 // Execute executes the request
-//  @return PaginatedApplicationRequestPhaseRuleEngineList
-func (a *ApplicationsRequestRulesAPIService) ListApplicationRequestRulesExecute(r ApiListApplicationRequestRulesRequest) (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
+//  @return PaginatedRequestPhaseRuleList
+func (a *ApplicationsRequestRulesAPIService) ListApplicationRequestRulesExecute(r ApiListApplicationRequestRulesRequest) (*PaginatedRequestPhaseRuleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaginatedApplicationRequestPhaseRuleEngineList
+		localVarReturnValue  *PaginatedRequestPhaseRuleList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.ListApplicationRequestRules")
@@ -753,15 +753,15 @@ type ApiPartialUpdateApplicationRequestRuleRequest struct {
 	ApiService *ApplicationsRequestRulesAPIService
 	applicationId int64
 	requestRuleId int64
-	patchedApplicationRequestPhaseRuleEngineRequest *PatchedApplicationRequestPhaseRuleEngineRequest
+	patchedRequestPhaseRuleRequest *PatchedRequestPhaseRuleRequest
 }
 
-func (r ApiPartialUpdateApplicationRequestRuleRequest) PatchedApplicationRequestPhaseRuleEngineRequest(patchedApplicationRequestPhaseRuleEngineRequest PatchedApplicationRequestPhaseRuleEngineRequest) ApiPartialUpdateApplicationRequestRuleRequest {
-	r.patchedApplicationRequestPhaseRuleEngineRequest = &patchedApplicationRequestPhaseRuleEngineRequest
+func (r ApiPartialUpdateApplicationRequestRuleRequest) PatchedRequestPhaseRuleRequest(patchedRequestPhaseRuleRequest PatchedRequestPhaseRuleRequest) ApiPartialUpdateApplicationRequestRuleRequest {
+	r.patchedRequestPhaseRuleRequest = &patchedRequestPhaseRuleRequest
 	return r
 }
 
-func (r ApiPartialUpdateApplicationRequestRuleRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (r ApiPartialUpdateApplicationRequestRuleRequest) Execute() (*RequestPhaseRuleResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateApplicationRequestRuleExecute(r)
 }
 
@@ -785,13 +785,13 @@ func (a *ApplicationsRequestRulesAPIService) PartialUpdateApplicationRequestRule
 }
 
 // Execute executes the request
-//  @return ResponseApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) PartialUpdateApplicationRequestRuleExecute(r ApiPartialUpdateApplicationRequestRuleRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+//  @return RequestPhaseRuleResponse
+func (a *ApplicationsRequestRulesAPIService) PartialUpdateApplicationRequestRuleExecute(r ApiPartialUpdateApplicationRequestRuleRequest) (*RequestPhaseRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplicationRequestPhaseRuleEngine
+		localVarReturnValue  *RequestPhaseRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.PartialUpdateApplicationRequestRule")
@@ -825,7 +825,7 @@ func (a *ApplicationsRequestRulesAPIService) PartialUpdateApplicationRequestRule
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedApplicationRequestPhaseRuleEngineRequest
+	localVarPostBody = r.patchedRequestPhaseRuleRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -967,7 +967,7 @@ func (r ApiRetrieveApplicationRequestRuleRequest) Fields(fields string) ApiRetri
 	return r
 }
 
-func (r ApiRetrieveApplicationRequestRuleRequest) Execute() (*ResponseRetrieveApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (r ApiRetrieveApplicationRequestRuleRequest) Execute() (*ResponsePhaseRuleResponse, *http.Response, error) {
 	return r.ApiService.RetrieveApplicationRequestRuleExecute(r)
 }
 
@@ -991,13 +991,13 @@ func (a *ApplicationsRequestRulesAPIService) RetrieveApplicationRequestRule(ctx 
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) RetrieveApplicationRequestRuleExecute(r ApiRetrieveApplicationRequestRuleRequest) (*ResponseRetrieveApplicationRequestPhaseRuleEngine, *http.Response, error) {
+//  @return ResponsePhaseRuleResponse
+func (a *ApplicationsRequestRulesAPIService) RetrieveApplicationRequestRuleExecute(r ApiRetrieveApplicationRequestRuleRequest) (*ResponsePhaseRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveApplicationRequestPhaseRuleEngine
+		localVarReturnValue  *ResponsePhaseRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.RetrieveApplicationRequestRule")
@@ -1165,15 +1165,15 @@ type ApiUpdateApplicationRequestRuleRequest struct {
 	ApiService *ApplicationsRequestRulesAPIService
 	applicationId int64
 	requestRuleId int64
-	applicationRequestPhaseRuleEngineRequest *ApplicationRequestPhaseRuleEngineRequest
+	requestPhaseRuleRequest *RequestPhaseRuleRequest
 }
 
-func (r ApiUpdateApplicationRequestRuleRequest) ApplicationRequestPhaseRuleEngineRequest(applicationRequestPhaseRuleEngineRequest ApplicationRequestPhaseRuleEngineRequest) ApiUpdateApplicationRequestRuleRequest {
-	r.applicationRequestPhaseRuleEngineRequest = &applicationRequestPhaseRuleEngineRequest
+func (r ApiUpdateApplicationRequestRuleRequest) RequestPhaseRuleRequest(requestPhaseRuleRequest RequestPhaseRuleRequest) ApiUpdateApplicationRequestRuleRequest {
+	r.requestPhaseRuleRequest = &requestPhaseRuleRequest
 	return r
 }
 
-func (r ApiUpdateApplicationRequestRuleRequest) Execute() (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+func (r ApiUpdateApplicationRequestRuleRequest) Execute() (*RequestPhaseRuleResponse, *http.Response, error) {
 	return r.ApiService.UpdateApplicationRequestRuleExecute(r)
 }
 
@@ -1197,13 +1197,13 @@ func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRule(ctx co
 }
 
 // Execute executes the request
-//  @return ResponseApplicationRequestPhaseRuleEngine
-func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRuleExecute(r ApiUpdateApplicationRequestRuleRequest) (*ResponseApplicationRequestPhaseRuleEngine, *http.Response, error) {
+//  @return RequestPhaseRuleResponse
+func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRuleExecute(r ApiUpdateApplicationRequestRuleRequest) (*RequestPhaseRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseApplicationRequestPhaseRuleEngine
+		localVarReturnValue  *RequestPhaseRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.UpdateApplicationRequestRule")
@@ -1218,8 +1218,8 @@ func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRuleExecute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.applicationRequestPhaseRuleEngineRequest == nil {
-		return localVarReturnValue, nil, reportError("applicationRequestPhaseRuleEngineRequest is required and must be specified")
+	if r.requestPhaseRuleRequest == nil {
+		return localVarReturnValue, nil, reportError("requestPhaseRuleRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1240,7 +1240,7 @@ func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRuleExecute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.applicationRequestPhaseRuleEngineRequest
+	localVarPostBody = r.requestPhaseRuleRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1373,9 +1373,6 @@ type ApiUpdateApplicationRequestRulesOrderRequest struct {
 	ApiService *ApplicationsRequestRulesAPIService
 	applicationId int64
 	applicationRequestPhaseRuleEngineOrderRequest *ApplicationRequestPhaseRuleEngineOrderRequest
-	ordering *string
-	page *int64
-	pageSize *int64
 	search *string
 }
 
@@ -1384,38 +1381,20 @@ func (r ApiUpdateApplicationRequestRulesOrderRequest) ApplicationRequestPhaseRul
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: order)
-func (r ApiUpdateApplicationRequestRulesOrderRequest) Ordering(ordering string) ApiUpdateApplicationRequestRulesOrderRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A page number within the paginated result set.
-func (r ApiUpdateApplicationRequestRulesOrderRequest) Page(page int64) ApiUpdateApplicationRequestRulesOrderRequest {
-	r.page = &page
-	return r
-}
-
-// Number of results to return per page.
-func (r ApiUpdateApplicationRequestRulesOrderRequest) PageSize(pageSize int64) ApiUpdateApplicationRequestRulesOrderRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// A search term.
+// A search term to filter results. Searches across the following fields: name.
 func (r ApiUpdateApplicationRequestRulesOrderRequest) Search(search string) ApiUpdateApplicationRequestRulesOrderRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiUpdateApplicationRequestRulesOrderRequest) Execute() (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
+func (r ApiUpdateApplicationRequestRulesOrderRequest) Execute() (*PaginatedRequestPhaseRuleList, *http.Response, error) {
 	return r.ApiService.UpdateApplicationRequestRulesOrderExecute(r)
 }
 
 /*
 UpdateApplicationRequestRulesOrder Ordering Application Request Rules
 
-Reoder all Rules for a specific Application owned by your account.
+Reorder all Rules for a specific Application owned by your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId A unique integer value identifying the application.
@@ -1430,13 +1409,13 @@ func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRulesOrder(
 }
 
 // Execute executes the request
-//  @return PaginatedApplicationRequestPhaseRuleEngineList
-func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRulesOrderExecute(r ApiUpdateApplicationRequestRulesOrderRequest) (*PaginatedApplicationRequestPhaseRuleEngineList, *http.Response, error) {
+//  @return PaginatedRequestPhaseRuleList
+func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRulesOrderExecute(r ApiUpdateApplicationRequestRulesOrderRequest) (*PaginatedRequestPhaseRuleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaginatedApplicationRequestPhaseRuleEngineList
+		localVarReturnValue  *PaginatedRequestPhaseRuleList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsRequestRulesAPIService.UpdateApplicationRequestRulesOrder")
@@ -1454,15 +1433,6 @@ func (a *ApplicationsRequestRulesAPIService) UpdateApplicationRequestRulesOrderE
 		return localVarReturnValue, nil, reportError("applicationRequestPhaseRuleEngineOrderRequest is required and must be specified")
 	}
 
-	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
-	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
-	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
