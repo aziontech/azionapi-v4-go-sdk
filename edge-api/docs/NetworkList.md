@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | 
 **Name** | **string** |  | 
 **Type** | **string** | * &#x60;asn&#x60; - ASN * &#x60;countries&#x60; - Countries * &#x60;ip_cidr&#x60; - IP/CIDR | 
+**Items** | **[]string** |  | 
 **LastEditor** | **string** |  | 
 **LastModified** | **time.Time** |  | 
 **Active** | Pointer to **bool** |  | [optional] 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewNetworkList
 
-`func NewNetworkList(id int64, name string, type_ string, lastEditor string, lastModified time.Time, ) *NetworkList`
+`func NewNetworkList(id int64, name string, type_ string, items []string, lastEditor string, lastModified time.Time, ) *NetworkList`
 
 NewNetworkList instantiates a new NetworkList object
 This constructor will assign default values to properties that have it defined,
@@ -88,6 +89,26 @@ and a boolean to check if the value has been set.
 `func (o *NetworkList) SetType(v string)`
 
 SetType sets Type field to given value.
+
+
+### GetItems
+
+`func (o *NetworkList) GetItems() []string`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *NetworkList) GetItemsOk() (*[]string, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *NetworkList) SetItems(v []string)`
+
+SetItems sets Items field to given value.
 
 
 ### GetLastEditor

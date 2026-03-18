@@ -36,7 +36,7 @@ func (r ApiCloneFirewallRequest) CloneFirewallRequest(cloneFirewallRequest Clone
 	return r
 }
 
-func (r ApiCloneFirewallRequest) Execute() (*ResponseFirewall, *http.Response, error) {
+func (r ApiCloneFirewallRequest) Execute() (*FirewallResponse, *http.Response, error) {
 	return r.ApiService.CloneFirewallExecute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *FirewallsAPIService) CloneFirewall(ctx context.Context, firewallId int6
 }
 
 // Execute executes the request
-//  @return ResponseFirewall
-func (a *FirewallsAPIService) CloneFirewallExecute(r ApiCloneFirewallRequest) (*ResponseFirewall, *http.Response, error) {
+//  @return FirewallResponse
+func (a *FirewallsAPIService) CloneFirewallExecute(r ApiCloneFirewallRequest) (*FirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseFirewall
+		localVarReturnValue  *FirewallResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsAPIService.CloneFirewall")
@@ -239,7 +239,7 @@ func (r ApiCreateFirewallRequest) FirewallRequest(firewallRequest FirewallReques
 	return r
 }
 
-func (r ApiCreateFirewallRequest) Execute() (*ResponseFirewall, *http.Response, error) {
+func (r ApiCreateFirewallRequest) Execute() (*FirewallResponse, *http.Response, error) {
 	return r.ApiService.CreateFirewallExecute(r)
 }
 
@@ -259,13 +259,13 @@ func (a *FirewallsAPIService) CreateFirewall(ctx context.Context) ApiCreateFirew
 }
 
 // Execute executes the request
-//  @return ResponseFirewall
-func (a *FirewallsAPIService) CreateFirewallExecute(r ApiCreateFirewallRequest) (*ResponseFirewall, *http.Response, error) {
+//  @return FirewallResponse
+func (a *FirewallsAPIService) CreateFirewallExecute(r ApiCreateFirewallRequest) (*FirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseFirewall
+		localVarReturnValue  *FirewallResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsAPIService.CreateFirewall")
@@ -434,7 +434,7 @@ type ApiDeleteFirewallRequest struct {
 	firewallId int64
 }
 
-func (r ApiDeleteFirewallRequest) Execute() (*ResponseDeleteFirewall, *http.Response, error) {
+func (r ApiDeleteFirewallRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteFirewallExecute(r)
 }
 
@@ -456,13 +456,13 @@ func (a *FirewallsAPIService) DeleteFirewall(ctx context.Context, firewallId int
 }
 
 // Execute executes the request
-//  @return ResponseDeleteFirewall
-func (a *FirewallsAPIService) DeleteFirewallExecute(r ApiDeleteFirewallRequest) (*ResponseDeleteFirewall, *http.Response, error) {
+//  @return DeleteResponse
+func (a *FirewallsAPIService) DeleteFirewallExecute(r ApiDeleteFirewallRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteFirewall
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsAPIService.DeleteFirewall")
@@ -686,7 +686,7 @@ func (r ApiListFirewallsRequest) Name(name string) ApiListFirewallsRequest {
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: name, id, debug, active, last_editor, last_modified, product_version)
+// Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, active, debug)
 func (r ApiListFirewallsRequest) Ordering(ordering string) ApiListFirewallsRequest {
 	r.ordering = &ordering
 	return r
@@ -704,7 +704,7 @@ func (r ApiListFirewallsRequest) PageSize(pageSize int64) ApiListFirewallsReques
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: id, name, last_editor.
 func (r ApiListFirewallsRequest) Search(search string) ApiListFirewallsRequest {
 	r.search = &search
 	return r
@@ -942,7 +942,7 @@ func (r ApiPartialUpdateFirewallRequest) PatchedFirewallRequest(patchedFirewallR
 	return r
 }
 
-func (r ApiPartialUpdateFirewallRequest) Execute() (*ResponseFirewall, *http.Response, error) {
+func (r ApiPartialUpdateFirewallRequest) Execute() (*FirewallResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateFirewallExecute(r)
 }
 
@@ -964,13 +964,13 @@ func (a *FirewallsAPIService) PartialUpdateFirewall(ctx context.Context, firewal
 }
 
 // Execute executes the request
-//  @return ResponseFirewall
-func (a *FirewallsAPIService) PartialUpdateFirewallExecute(r ApiPartialUpdateFirewallRequest) (*ResponseFirewall, *http.Response, error) {
+//  @return FirewallResponse
+func (a *FirewallsAPIService) PartialUpdateFirewallExecute(r ApiPartialUpdateFirewallRequest) (*FirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseFirewall
+		localVarReturnValue  *FirewallResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsAPIService.PartialUpdateFirewall")
@@ -1144,7 +1144,7 @@ func (r ApiRetrieveFirewallRequest) Fields(fields string) ApiRetrieveFirewallReq
 	return r
 }
 
-func (r ApiRetrieveFirewallRequest) Execute() (*ResponseRetrieveFirewall, *http.Response, error) {
+func (r ApiRetrieveFirewallRequest) Execute() (*FirewallResponse, *http.Response, error) {
 	return r.ApiService.RetrieveFirewallExecute(r)
 }
 
@@ -1166,13 +1166,13 @@ func (a *FirewallsAPIService) RetrieveFirewall(ctx context.Context, firewallId i
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveFirewall
-func (a *FirewallsAPIService) RetrieveFirewallExecute(r ApiRetrieveFirewallRequest) (*ResponseRetrieveFirewall, *http.Response, error) {
+//  @return FirewallResponse
+func (a *FirewallsAPIService) RetrieveFirewallExecute(r ApiRetrieveFirewallRequest) (*FirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveFirewall
+		localVarReturnValue  *FirewallResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsAPIService.RetrieveFirewall")
@@ -1346,7 +1346,7 @@ func (r ApiUpdateFirewallRequest) FirewallRequest(firewallRequest FirewallReques
 	return r
 }
 
-func (r ApiUpdateFirewallRequest) Execute() (*ResponseFirewall, *http.Response, error) {
+func (r ApiUpdateFirewallRequest) Execute() (*FirewallResponse, *http.Response, error) {
 	return r.ApiService.UpdateFirewallExecute(r)
 }
 
@@ -1368,13 +1368,13 @@ func (a *FirewallsAPIService) UpdateFirewall(ctx context.Context, firewallId int
 }
 
 // Execute executes the request
-//  @return ResponseFirewall
-func (a *FirewallsAPIService) UpdateFirewallExecute(r ApiUpdateFirewallRequest) (*ResponseFirewall, *http.Response, error) {
+//  @return FirewallResponse
+func (a *FirewallsAPIService) UpdateFirewallExecute(r ApiUpdateFirewallRequest) (*FirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseFirewall
+		localVarReturnValue  *FirewallResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirewallsAPIService.UpdateFirewall")

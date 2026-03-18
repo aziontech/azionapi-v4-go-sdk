@@ -25,10 +25,10 @@ type PatchedEdgeFunctionsRequest struct {
 	Runtime *string `json:"runtime,omitempty"`
 	// * `firewall` - Firewall * `application` - Application
 	ExecutionEnvironment *string `json:"execution_environment,omitempty"`
-	// String containing the function code. Maximum size: 20MB.
-	Code *string `json:"code,omitempty"`
 	DefaultArgs interface{} `json:"default_args,omitempty"`
-	AzionForm *ApplicationFunctionInstanceAzionForm `json:"azion_form,omitempty"`
+	AzionForm *EdgeFunctionsAzionForm `json:"azion_form,omitempty"`
+	// String containing the function code. Maximum size: 20.0MB
+	Code *string `json:"code,omitempty"`
 }
 
 // NewPatchedEdgeFunctionsRequest instantiates a new PatchedEdgeFunctionsRequest object
@@ -176,38 +176,6 @@ func (o *PatchedEdgeFunctionsRequest) SetExecutionEnvironment(v string) {
 	o.ExecutionEnvironment = &v
 }
 
-// GetCode returns the Code field value if set, zero value otherwise.
-func (o *PatchedEdgeFunctionsRequest) GetCode() string {
-	if o == nil || IsNil(o.Code) {
-		var ret string
-		return ret
-	}
-	return *o.Code
-}
-
-// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedEdgeFunctionsRequest) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
-		return nil, false
-	}
-	return o.Code, true
-}
-
-// HasCode returns a boolean if a field has been set.
-func (o *PatchedEdgeFunctionsRequest) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
-		return true
-	}
-
-	return false
-}
-
-// SetCode gets a reference to the given string and assigns it to the Code field.
-func (o *PatchedEdgeFunctionsRequest) SetCode(v string) {
-	o.Code = &v
-}
-
 // GetDefaultArgs returns the DefaultArgs field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEdgeFunctionsRequest) GetDefaultArgs() interface{} {
 	if o == nil {
@@ -242,9 +210,9 @@ func (o *PatchedEdgeFunctionsRequest) SetDefaultArgs(v interface{}) {
 }
 
 // GetAzionForm returns the AzionForm field value if set, zero value otherwise.
-func (o *PatchedEdgeFunctionsRequest) GetAzionForm() ApplicationFunctionInstanceAzionForm {
+func (o *PatchedEdgeFunctionsRequest) GetAzionForm() EdgeFunctionsAzionForm {
 	if o == nil || IsNil(o.AzionForm) {
-		var ret ApplicationFunctionInstanceAzionForm
+		var ret EdgeFunctionsAzionForm
 		return ret
 	}
 	return *o.AzionForm
@@ -252,7 +220,7 @@ func (o *PatchedEdgeFunctionsRequest) GetAzionForm() ApplicationFunctionInstance
 
 // GetAzionFormOk returns a tuple with the AzionForm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEdgeFunctionsRequest) GetAzionFormOk() (*ApplicationFunctionInstanceAzionForm, bool) {
+func (o *PatchedEdgeFunctionsRequest) GetAzionFormOk() (*EdgeFunctionsAzionForm, bool) {
 	if o == nil || IsNil(o.AzionForm) {
 		return nil, false
 	}
@@ -268,9 +236,41 @@ func (o *PatchedEdgeFunctionsRequest) HasAzionForm() bool {
 	return false
 }
 
-// SetAzionForm gets a reference to the given ApplicationFunctionInstanceAzionForm and assigns it to the AzionForm field.
-func (o *PatchedEdgeFunctionsRequest) SetAzionForm(v ApplicationFunctionInstanceAzionForm) {
+// SetAzionForm gets a reference to the given EdgeFunctionsAzionForm and assigns it to the AzionForm field.
+func (o *PatchedEdgeFunctionsRequest) SetAzionForm(v EdgeFunctionsAzionForm) {
 	o.AzionForm = &v
+}
+
+// GetCode returns the Code field value if set, zero value otherwise.
+func (o *PatchedEdgeFunctionsRequest) GetCode() string {
+	if o == nil || IsNil(o.Code) {
+		var ret string
+		return ret
+	}
+	return *o.Code
+}
+
+// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedEdgeFunctionsRequest) GetCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.Code) {
+		return nil, false
+	}
+	return o.Code, true
+}
+
+// HasCode returns a boolean if a field has been set.
+func (o *PatchedEdgeFunctionsRequest) HasCode() bool {
+	if o != nil && !IsNil(o.Code) {
+		return true
+	}
+
+	return false
+}
+
+// SetCode gets a reference to the given string and assigns it to the Code field.
+func (o *PatchedEdgeFunctionsRequest) SetCode(v string) {
+	o.Code = &v
 }
 
 func (o PatchedEdgeFunctionsRequest) MarshalJSON() ([]byte, error) {
@@ -295,14 +295,14 @@ func (o PatchedEdgeFunctionsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExecutionEnvironment) {
 		toSerialize["execution_environment"] = o.ExecutionEnvironment
 	}
-	if !IsNil(o.Code) {
-		toSerialize["code"] = o.Code
-	}
 	if o.DefaultArgs != nil {
 		toSerialize["default_args"] = o.DefaultArgs
 	}
 	if !IsNil(o.AzionForm) {
 		toSerialize["azion_form"] = o.AzionForm
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
 	}
 	return toSerialize, nil
 }

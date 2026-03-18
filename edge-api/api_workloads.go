@@ -35,7 +35,7 @@ func (r ApiCreateWorkloadRequest) WorkloadRequest(workloadRequest WorkloadReques
 	return r
 }
 
-func (r ApiCreateWorkloadRequest) Execute() (*ResponseWorkload, *http.Response, error) {
+func (r ApiCreateWorkloadRequest) Execute() (*WorkloadResponse, *http.Response, error) {
 	return r.ApiService.CreateWorkloadExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *WorkloadsAPIService) CreateWorkload(ctx context.Context) ApiCreateWorkl
 }
 
 // Execute executes the request
-//  @return ResponseWorkload
-func (a *WorkloadsAPIService) CreateWorkloadExecute(r ApiCreateWorkloadRequest) (*ResponseWorkload, *http.Response, error) {
+//  @return WorkloadResponse
+func (a *WorkloadsAPIService) CreateWorkloadExecute(r ApiCreateWorkloadRequest) (*WorkloadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWorkload
+		localVarReturnValue  *WorkloadResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.CreateWorkload")
@@ -230,7 +230,7 @@ type ApiDeleteWorkloadRequest struct {
 	workloadId int64
 }
 
-func (r ApiDeleteWorkloadRequest) Execute() (*ResponseDeleteWorkload, *http.Response, error) {
+func (r ApiDeleteWorkloadRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteWorkloadExecute(r)
 }
 
@@ -252,13 +252,13 @@ func (a *WorkloadsAPIService) DeleteWorkload(ctx context.Context, workloadId int
 }
 
 // Execute executes the request
-//  @return ResponseDeleteWorkload
-func (a *WorkloadsAPIService) DeleteWorkloadExecute(r ApiDeleteWorkloadRequest) (*ResponseDeleteWorkload, *http.Response, error) {
+//  @return DeleteResponse
+func (a *WorkloadsAPIService) DeleteWorkloadExecute(r ApiDeleteWorkloadRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteWorkload
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.DeleteWorkload")
@@ -503,7 +503,7 @@ func (r ApiListWorkloadsRequest) Name(name string) ApiListWorkloadsRequest {
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, active, workload_domain_allow_access, workload_domain, infrastructure, domains, product_version)
+// Which field to use when ordering the results. (Valid fields: id, name, active, last_editor, last_modified)
 func (r ApiListWorkloadsRequest) Ordering(ordering string) ApiListWorkloadsRequest {
 	r.ordering = &ordering
 	return r
@@ -521,7 +521,7 @@ func (r ApiListWorkloadsRequest) PageSize(pageSize int64) ApiListWorkloadsReques
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: id, name, last_editor.
 func (r ApiListWorkloadsRequest) Search(search string) ApiListWorkloadsRequest {
 	r.search = &search
 	return r
@@ -768,7 +768,7 @@ func (r ApiPartialUpdateWorkloadRequest) PatchedWorkloadRequest(patchedWorkloadR
 	return r
 }
 
-func (r ApiPartialUpdateWorkloadRequest) Execute() (*ResponseWorkload, *http.Response, error) {
+func (r ApiPartialUpdateWorkloadRequest) Execute() (*WorkloadResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateWorkloadExecute(r)
 }
 
@@ -790,13 +790,13 @@ func (a *WorkloadsAPIService) PartialUpdateWorkload(ctx context.Context, workloa
 }
 
 // Execute executes the request
-//  @return ResponseWorkload
-func (a *WorkloadsAPIService) PartialUpdateWorkloadExecute(r ApiPartialUpdateWorkloadRequest) (*ResponseWorkload, *http.Response, error) {
+//  @return WorkloadResponse
+func (a *WorkloadsAPIService) PartialUpdateWorkloadExecute(r ApiPartialUpdateWorkloadRequest) (*WorkloadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWorkload
+		localVarReturnValue  *WorkloadResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.PartialUpdateWorkload")
@@ -970,7 +970,7 @@ func (r ApiRetrieveWorkloadRequest) Fields(fields string) ApiRetrieveWorkloadReq
 	return r
 }
 
-func (r ApiRetrieveWorkloadRequest) Execute() (*ResponseRetrieveWorkload, *http.Response, error) {
+func (r ApiRetrieveWorkloadRequest) Execute() (*WorkloadResponse, *http.Response, error) {
 	return r.ApiService.RetrieveWorkloadExecute(r)
 }
 
@@ -992,13 +992,13 @@ func (a *WorkloadsAPIService) RetrieveWorkload(ctx context.Context, workloadId i
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveWorkload
-func (a *WorkloadsAPIService) RetrieveWorkloadExecute(r ApiRetrieveWorkloadRequest) (*ResponseRetrieveWorkload, *http.Response, error) {
+//  @return WorkloadResponse
+func (a *WorkloadsAPIService) RetrieveWorkloadExecute(r ApiRetrieveWorkloadRequest) (*WorkloadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveWorkload
+		localVarReturnValue  *WorkloadResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.RetrieveWorkload")
@@ -1172,7 +1172,7 @@ func (r ApiUpdateWorkloadRequest) WorkloadRequest(workloadRequest WorkloadReques
 	return r
 }
 
-func (r ApiUpdateWorkloadRequest) Execute() (*ResponseWorkload, *http.Response, error) {
+func (r ApiUpdateWorkloadRequest) Execute() (*WorkloadResponse, *http.Response, error) {
 	return r.ApiService.UpdateWorkloadExecute(r)
 }
 
@@ -1194,13 +1194,13 @@ func (a *WorkloadsAPIService) UpdateWorkload(ctx context.Context, workloadId int
 }
 
 // Execute executes the request
-//  @return ResponseWorkload
-func (a *WorkloadsAPIService) UpdateWorkloadExecute(r ApiUpdateWorkloadRequest) (*ResponseWorkload, *http.Response, error) {
+//  @return WorkloadResponse
+func (a *WorkloadsAPIService) UpdateWorkloadExecute(r ApiUpdateWorkloadRequest) (*WorkloadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWorkload
+		localVarReturnValue  *WorkloadResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkloadsAPIService.UpdateWorkload")

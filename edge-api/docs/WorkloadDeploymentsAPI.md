@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateWorkloadDeployment
 
-> ResponseWorkloadDeployment CreateWorkloadDeployment(ctx, workloadId).WorkloadDeploymentRequest(workloadDeploymentRequest).Execute()
+> WorkloadDeploymentResponse CreateWorkloadDeployment(ctx, workloadId).WorkloadDeploymentRequest(workloadDeploymentRequest).Execute()
 
 Create a Workload Deployment
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadDeploymentsAPI.CreateWorkloadDeployment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateWorkloadDeployment`: ResponseWorkloadDeployment
+	// response from `CreateWorkloadDeployment`: WorkloadDeploymentResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadDeploymentsAPI.CreateWorkloadDeployment`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseWorkloadDeployment**](ResponseWorkloadDeployment.md)
+[**WorkloadDeploymentResponse**](WorkloadDeploymentResponse.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## DeleteWorkloadDeployment
 
-> ResponseDeleteWorkloadDeployment DeleteWorkloadDeployment(ctx, deploymentId, workloadId).Execute()
+> DeleteResponse DeleteWorkloadDeployment(ctx, deploymentId, workloadId).Execute()
 
 Delete a Workload Deployment
 
@@ -116,7 +116,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadDeploymentsAPI.DeleteWorkloadDeployment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteWorkloadDeployment`: ResponseDeleteWorkloadDeployment
+	// response from `DeleteWorkloadDeployment`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadDeploymentsAPI.DeleteWorkloadDeployment`: %v\n", resp)
 }
 ```
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteWorkloadDeployment**](ResponseDeleteWorkloadDeployment.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -183,10 +183,10 @@ func main() {
 	current := true // bool | Filter by current status. (optional)
 	fields := "fields_example" // string | Comma-separated list of field names to include in the response. (optional)
 	id := int64(789) // int64 | Filter by id (accepts comma-separated values). (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, active, last_editor, last_modified, current) (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, tag, current) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string | A search term to filter results. Searches across the following fields: id, tag, current. (optional)
 	tag := "tag_example" // string | Filter by tag (case-insensitive, partial match). (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -220,10 +220,10 @@ Name | Type | Description  | Notes
  **current** | **bool** | Filter by current status. | 
  **fields** | **string** | Comma-separated list of field names to include in the response. | 
  **id** | **int64** | Filter by id (accepts comma-separated values). | 
- **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, active, last_editor, last_modified, current) | 
+ **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, tag, current) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
- **search** | **string** | A search term. | 
+ **search** | **string** | A search term to filter results. Searches across the following fields: id, tag, current. | 
  **tag** | **string** | Filter by tag (case-insensitive, partial match). | 
 
 ### Return type
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateWorkloadDeployment
 
-> ResponseWorkloadDeployment PartialUpdateWorkloadDeployment(ctx, deploymentId, workloadId).PatchedWorkloadDeploymentRequest(patchedWorkloadDeploymentRequest).Execute()
+> WorkloadDeploymentResponse PartialUpdateWorkloadDeployment(ctx, deploymentId, workloadId).PatchedWorkloadDeploymentRequest(patchedWorkloadDeploymentRequest).Execute()
 
 Partially update a Workload Deployment
 
@@ -276,7 +276,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadDeploymentsAPI.PartialUpdateWorkloadDeployment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateWorkloadDeployment`: ResponseWorkloadDeployment
+	// response from `PartialUpdateWorkloadDeployment`: WorkloadDeploymentResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadDeploymentsAPI.PartialUpdateWorkloadDeployment`: %v\n", resp)
 }
 ```
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseWorkloadDeployment**](ResponseWorkloadDeployment.md)
+[**WorkloadDeploymentResponse**](WorkloadDeploymentResponse.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveWorkloadDeployment
 
-> ResponseRetrieveWorkloadDeployment RetrieveWorkloadDeployment(ctx, deploymentId, workloadId).Fields(fields).Execute()
+> WorkloadDeploymentResponse RetrieveWorkloadDeployment(ctx, deploymentId, workloadId).Fields(fields).Execute()
 
 Retrieve details of a Workload Deployment
 
@@ -351,7 +351,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadDeploymentsAPI.RetrieveWorkloadDeployment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveWorkloadDeployment`: ResponseRetrieveWorkloadDeployment
+	// response from `RetrieveWorkloadDeployment`: WorkloadDeploymentResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadDeploymentsAPI.RetrieveWorkloadDeployment`: %v\n", resp)
 }
 ```
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveWorkloadDeployment**](ResponseRetrieveWorkloadDeployment.md)
+[**WorkloadDeploymentResponse**](WorkloadDeploymentResponse.md)
 
 ### Authorization
 
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 
 ## UpdateWorkloadDeployment
 
-> ResponseWorkloadDeployment UpdateWorkloadDeployment(ctx, deploymentId, workloadId).WorkloadDeploymentRequest(workloadDeploymentRequest).Execute()
+> WorkloadDeploymentResponse UpdateWorkloadDeployment(ctx, deploymentId, workloadId).WorkloadDeploymentRequest(workloadDeploymentRequest).Execute()
 
 Update a Workload Deployment
 
@@ -426,7 +426,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkloadDeploymentsAPI.UpdateWorkloadDeployment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateWorkloadDeployment`: ResponseWorkloadDeployment
+	// response from `UpdateWorkloadDeployment`: WorkloadDeploymentResponse
 	fmt.Fprintf(os.Stdout, "Response from `WorkloadDeploymentsAPI.UpdateWorkloadDeployment`: %v\n", resp)
 }
 ```
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseWorkloadDeployment**](ResponseWorkloadDeployment.md)
+[**WorkloadDeploymentResponse**](WorkloadDeploymentResponse.md)
 
 ### Authorization
 

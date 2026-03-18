@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateFirewallFunction
 
-> ResponseFirewallFunctionInstance CreateFirewallFunction(ctx, firewallId).FirewallFunctionInstanceRequest(firewallFunctionInstanceRequest).Execute()
+> FirewallFunctionInstanceResponse CreateFirewallFunction(ctx, firewallId).FirewallFunctionInstanceRequest(firewallFunctionInstanceRequest).Execute()
 
 Create an Firewall Function
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.CreateFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateFirewallFunction`: ResponseFirewallFunctionInstance
+	// response from `CreateFirewallFunction`: FirewallFunctionInstanceResponse
 	fmt.Fprintf(os.Stdout, "Response from `FirewallsFunctionAPI.CreateFirewallFunction`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseFirewallFunctionInstance**](ResponseFirewallFunctionInstance.md)
+[**FirewallFunctionInstanceResponse**](FirewallFunctionInstanceResponse.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## DeleteFirewallFunction
 
-> ResponseDeleteFirewallFunctionInstance DeleteFirewallFunction(ctx, firewallId, functionId).Execute()
+> DeleteResponse DeleteFirewallFunction(ctx, firewallId, functionId).Execute()
 
 Delete an Firewall Function
 
@@ -116,7 +116,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.DeleteFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteFirewallFunction`: ResponseDeleteFirewallFunctionInstance
+	// response from `DeleteFirewallFunction`: DeleteResponse
 	fmt.Fprintf(os.Stdout, "Response from `FirewallsFunctionAPI.DeleteFirewallFunction`: %v\n", resp)
 }
 ```
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseDeleteFirewallFunctionInstance**](ResponseDeleteFirewallFunctionInstance.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -187,10 +187,10 @@ func main() {
 	lastModifiedGte := time.Now() // time.Time | Filter by last modified date (greater than or equal). (optional)
 	lastModifiedLte := time.Now() // time.Time | Filter by last modified date (less than or equal). (optional)
 	name := "name_example" // string | Filter by name (case-insensitive, partial match). (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, last_editor, last_modified, name, args, azion_form, function, active) (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified) (optional)
 	page := int64(789) // int64 | A page number within the paginated result set. (optional)
 	pageSize := int64(789) // int64 | A numeric value that indicates the number of items per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string | A search term to filter results. Searches across the following fields: name, last_editor. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -226,10 +226,10 @@ Name | Type | Description  | Notes
  **lastModifiedGte** | **time.Time** | Filter by last modified date (greater than or equal). | 
  **lastModifiedLte** | **time.Time** | Filter by last modified date (less than or equal). | 
  **name** | **string** | Filter by name (case-insensitive, partial match). | 
- **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, last_editor, last_modified, name, args, azion_form, function, active) | 
+ **ordering** | **string** | Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified) | 
  **page** | **int64** | A page number within the paginated result set. | 
  **pageSize** | **int64** | A numeric value that indicates the number of items per page. | 
- **search** | **string** | A search term. | 
+ **search** | **string** | A search term to filter results. Searches across the following fields: name, last_editor. | 
 
 ### Return type
 
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 
 ## PartialUpdateFirewallFunction
 
-> ResponseFirewallFunctionInstance PartialUpdateFirewallFunction(ctx, firewallId, functionId).PatchedFirewallFunctionInstanceRequest(patchedFirewallFunctionInstanceRequest).Execute()
+> FirewallFunctionInstanceResponse PartialUpdateFirewallFunction(ctx, firewallId, functionId).PatchedFirewallFunctionInstanceRequest(patchedFirewallFunctionInstanceRequest).Execute()
 
 Partially update an Firewall Function
 
@@ -281,7 +281,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.PartialUpdateFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PartialUpdateFirewallFunction`: ResponseFirewallFunctionInstance
+	// response from `PartialUpdateFirewallFunction`: FirewallFunctionInstanceResponse
 	fmt.Fprintf(os.Stdout, "Response from `FirewallsFunctionAPI.PartialUpdateFirewallFunction`: %v\n", resp)
 }
 ```
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseFirewallFunctionInstance**](ResponseFirewallFunctionInstance.md)
+[**FirewallFunctionInstanceResponse**](FirewallFunctionInstanceResponse.md)
 
 ### Authorization
 
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 ## RetrieveFirewallFunction
 
-> ResponseRetrieveFirewallFunctionInstance RetrieveFirewallFunction(ctx, firewallId, functionId).Fields(fields).Execute()
+> FirewallFunctionInstanceResponse RetrieveFirewallFunction(ctx, firewallId, functionId).Fields(fields).Execute()
 
 Retrieve details of an Firewall Function
 
@@ -356,7 +356,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.RetrieveFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RetrieveFirewallFunction`: ResponseRetrieveFirewallFunctionInstance
+	// response from `RetrieveFirewallFunction`: FirewallFunctionInstanceResponse
 	fmt.Fprintf(os.Stdout, "Response from `FirewallsFunctionAPI.RetrieveFirewallFunction`: %v\n", resp)
 }
 ```
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseRetrieveFirewallFunctionInstance**](ResponseRetrieveFirewallFunctionInstance.md)
+[**FirewallFunctionInstanceResponse**](FirewallFunctionInstanceResponse.md)
 
 ### Authorization
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 
 ## UpdateFirewallFunction
 
-> ResponseFirewallFunctionInstance UpdateFirewallFunction(ctx, firewallId, functionId).FirewallFunctionInstanceRequest(firewallFunctionInstanceRequest).Execute()
+> FirewallFunctionInstanceResponse UpdateFirewallFunction(ctx, firewallId, functionId).FirewallFunctionInstanceRequest(firewallFunctionInstanceRequest).Execute()
 
 Update an Firewall Function
 
@@ -431,7 +431,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FirewallsFunctionAPI.UpdateFirewallFunction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateFirewallFunction`: ResponseFirewallFunctionInstance
+	// response from `UpdateFirewallFunction`: FirewallFunctionInstanceResponse
 	fmt.Fprintf(os.Stdout, "Response from `FirewallsFunctionAPI.UpdateFirewallFunction`: %v\n", resp)
 }
 ```
@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseFirewallFunctionInstance**](ResponseFirewallFunctionInstance.md)
+[**FirewallFunctionInstanceResponse**](FirewallFunctionInstanceResponse.md)
 
 ### Authorization
 

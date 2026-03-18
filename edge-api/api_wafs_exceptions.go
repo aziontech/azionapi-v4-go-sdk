@@ -36,7 +36,7 @@ func (r ApiCreateWafExceptionRequest) WAFRuleRequest(wAFRuleRequest WAFRuleReque
 	return r
 }
 
-func (r ApiCreateWafExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
+func (r ApiCreateWafExceptionRequest) Execute() (*WAFRuleResponse, *http.Response, error) {
 	return r.ApiService.CreateWafExceptionExecute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *WAFsExceptionsAPIService) CreateWafException(ctx context.Context, wafId
 }
 
 // Execute executes the request
-//  @return ResponseWAFRule
-func (a *WAFsExceptionsAPIService) CreateWafExceptionExecute(r ApiCreateWafExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
+//  @return WAFRuleResponse
+func (a *WAFsExceptionsAPIService) CreateWafExceptionExecute(r ApiCreateWafExceptionRequest) (*WAFRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWAFRule
+		localVarReturnValue  *WAFRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.CreateWafException")
@@ -235,7 +235,7 @@ type ApiDeleteWafExceptionRequest struct {
 	wafId int64
 }
 
-func (r ApiDeleteWafExceptionRequest) Execute() (*ResponseDeleteWAFRule, *http.Response, error) {
+func (r ApiDeleteWafExceptionRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteWafExceptionExecute(r)
 }
 
@@ -259,13 +259,13 @@ func (a *WAFsExceptionsAPIService) DeleteWafException(ctx context.Context, excep
 }
 
 // Execute executes the request
-//  @return ResponseDeleteWAFRule
-func (a *WAFsExceptionsAPIService) DeleteWafExceptionExecute(r ApiDeleteWafExceptionRequest) (*ResponseDeleteWAFRule, *http.Response, error) {
+//  @return DeleteResponse
+func (a *WAFsExceptionsAPIService) DeleteWafExceptionExecute(r ApiDeleteWafExceptionRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteWAFRule
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.DeleteWafException")
@@ -492,7 +492,7 @@ func (r ApiListWafExceptionsRequest) LastModifiedLte(lastModifiedLte time.Time) 
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: rule_id, name, path, conditions, operator, active, last_editor, last_modified)
+// Which field to use when ordering the results. (Valid fields: id, description, path, last_editor, last_modified, created_at)
 func (r ApiListWafExceptionsRequest) Ordering(ordering string) ApiListWafExceptionsRequest {
 	r.ordering = &ordering
 	return r
@@ -516,7 +516,7 @@ func (r ApiListWafExceptionsRequest) Path(path string) ApiListWafExceptionsReque
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: description, path, last_editor.
 func (r ApiListWafExceptionsRequest) Search(search string) ApiListWafExceptionsRequest {
 	r.search = &search
 	return r
@@ -761,7 +761,7 @@ func (r ApiPartialUpdateWafExceptionRequest) PatchedWAFRuleRequest(patchedWAFRul
 	return r
 }
 
-func (r ApiPartialUpdateWafExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
+func (r ApiPartialUpdateWafExceptionRequest) Execute() (*WAFRuleResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateWafExceptionExecute(r)
 }
 
@@ -785,13 +785,13 @@ func (a *WAFsExceptionsAPIService) PartialUpdateWafException(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ResponseWAFRule
-func (a *WAFsExceptionsAPIService) PartialUpdateWafExceptionExecute(r ApiPartialUpdateWafExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
+//  @return WAFRuleResponse
+func (a *WAFsExceptionsAPIService) PartialUpdateWafExceptionExecute(r ApiPartialUpdateWafExceptionRequest) (*WAFRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWAFRule
+		localVarReturnValue  *WAFRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.PartialUpdateWafException")
@@ -967,7 +967,7 @@ func (r ApiRetrieveWafExceptionRequest) Fields(fields string) ApiRetrieveWafExce
 	return r
 }
 
-func (r ApiRetrieveWafExceptionRequest) Execute() (*ResponseRetrieveWAFRule, *http.Response, error) {
+func (r ApiRetrieveWafExceptionRequest) Execute() (*WAFRuleResponse, *http.Response, error) {
 	return r.ApiService.RetrieveWafExceptionExecute(r)
 }
 
@@ -991,13 +991,13 @@ func (a *WAFsExceptionsAPIService) RetrieveWafException(ctx context.Context, exc
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveWAFRule
-func (a *WAFsExceptionsAPIService) RetrieveWafExceptionExecute(r ApiRetrieveWafExceptionRequest) (*ResponseRetrieveWAFRule, *http.Response, error) {
+//  @return WAFRuleResponse
+func (a *WAFsExceptionsAPIService) RetrieveWafExceptionExecute(r ApiRetrieveWafExceptionRequest) (*WAFRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveWAFRule
+		localVarReturnValue  *WAFRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.RetrieveWafException")
@@ -1173,7 +1173,7 @@ func (r ApiUpdateWafExceptionRequest) WAFRuleRequest(wAFRuleRequest WAFRuleReque
 	return r
 }
 
-func (r ApiUpdateWafExceptionRequest) Execute() (*ResponseWAFRule, *http.Response, error) {
+func (r ApiUpdateWafExceptionRequest) Execute() (*WAFRuleResponse, *http.Response, error) {
 	return r.ApiService.UpdateWafExceptionExecute(r)
 }
 
@@ -1197,13 +1197,13 @@ func (a *WAFsExceptionsAPIService) UpdateWafException(ctx context.Context, excep
 }
 
 // Execute executes the request
-//  @return ResponseWAFRule
-func (a *WAFsExceptionsAPIService) UpdateWafExceptionExecute(r ApiUpdateWafExceptionRequest) (*ResponseWAFRule, *http.Response, error) {
+//  @return WAFRuleResponse
+func (a *WAFsExceptionsAPIService) UpdateWafExceptionExecute(r ApiUpdateWafExceptionRequest) (*WAFRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseWAFRule
+		localVarReturnValue  *WAFRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFsExceptionsAPIService.UpdateWafException")

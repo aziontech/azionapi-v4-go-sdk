@@ -35,7 +35,7 @@ func (r ApiCreateCustomPageRequest) CustomPageRequest(customPageRequest CustomPa
 	return r
 }
 
-func (r ApiCreateCustomPageRequest) Execute() (*ResponseCustomPage, *http.Response, error) {
+func (r ApiCreateCustomPageRequest) Execute() (*CustomPageResponse, *http.Response, error) {
 	return r.ApiService.CreateCustomPageExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *CustomPagesAPIService) CreateCustomPage(ctx context.Context) ApiCreateC
 }
 
 // Execute executes the request
-//  @return ResponseCustomPage
-func (a *CustomPagesAPIService) CreateCustomPageExecute(r ApiCreateCustomPageRequest) (*ResponseCustomPage, *http.Response, error) {
+//  @return CustomPageResponse
+func (a *CustomPagesAPIService) CreateCustomPageExecute(r ApiCreateCustomPageRequest) (*CustomPageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseCustomPage
+		localVarReturnValue  *CustomPageResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPagesAPIService.CreateCustomPage")
@@ -230,7 +230,7 @@ type ApiDeleteCustomPageRequest struct {
 	customPageId int64
 }
 
-func (r ApiDeleteCustomPageRequest) Execute() (*ResponseDeleteCustomPage, *http.Response, error) {
+func (r ApiDeleteCustomPageRequest) Execute() (*DeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteCustomPageExecute(r)
 }
 
@@ -252,13 +252,13 @@ func (a *CustomPagesAPIService) DeleteCustomPage(ctx context.Context, customPage
 }
 
 // Execute executes the request
-//  @return ResponseDeleteCustomPage
-func (a *CustomPagesAPIService) DeleteCustomPageExecute(r ApiDeleteCustomPageRequest) (*ResponseDeleteCustomPage, *http.Response, error) {
+//  @return DeleteResponse
+func (a *CustomPagesAPIService) DeleteCustomPageExecute(r ApiDeleteCustomPageRequest) (*DeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseDeleteCustomPage
+		localVarReturnValue  *DeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPagesAPIService.DeleteCustomPage")
@@ -475,7 +475,7 @@ func (r ApiListCustomPagesRequest) Name(name string) ApiListCustomPagesRequest {
 	return r
 }
 
-// Which field to use when ordering the results. (Valid fields: name, last_editor, last_modified, active, product_version, pages)
+// Which field to use when ordering the results. (Valid fields: id, name, last_editor, last_modified, active)
 func (r ApiListCustomPagesRequest) Ordering(ordering string) ApiListCustomPagesRequest {
 	r.ordering = &ordering
 	return r
@@ -493,7 +493,7 @@ func (r ApiListCustomPagesRequest) PageSize(pageSize int64) ApiListCustomPagesRe
 	return r
 }
 
-// A search term.
+// A search term to filter results. Searches across the following fields: id, name, last_editor, last_modified, active.
 func (r ApiListCustomPagesRequest) Search(search string) ApiListCustomPagesRequest {
 	r.search = &search
 	return r
@@ -728,7 +728,7 @@ func (r ApiPartialUpdateCustomPageRequest) PatchedCustomPageRequest(patchedCusto
 	return r
 }
 
-func (r ApiPartialUpdateCustomPageRequest) Execute() (*ResponseCustomPage, *http.Response, error) {
+func (r ApiPartialUpdateCustomPageRequest) Execute() (*CustomPageResponse, *http.Response, error) {
 	return r.ApiService.PartialUpdateCustomPageExecute(r)
 }
 
@@ -750,13 +750,13 @@ func (a *CustomPagesAPIService) PartialUpdateCustomPage(ctx context.Context, cus
 }
 
 // Execute executes the request
-//  @return ResponseCustomPage
-func (a *CustomPagesAPIService) PartialUpdateCustomPageExecute(r ApiPartialUpdateCustomPageRequest) (*ResponseCustomPage, *http.Response, error) {
+//  @return CustomPageResponse
+func (a *CustomPagesAPIService) PartialUpdateCustomPageExecute(r ApiPartialUpdateCustomPageRequest) (*CustomPageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseCustomPage
+		localVarReturnValue  *CustomPageResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPagesAPIService.PartialUpdateCustomPage")
@@ -930,7 +930,7 @@ func (r ApiRetrieveCustomPageRequest) Fields(fields string) ApiRetrieveCustomPag
 	return r
 }
 
-func (r ApiRetrieveCustomPageRequest) Execute() (*ResponseRetrieveCustomPage, *http.Response, error) {
+func (r ApiRetrieveCustomPageRequest) Execute() (*CustomPageResponse, *http.Response, error) {
 	return r.ApiService.RetrieveCustomPageExecute(r)
 }
 
@@ -952,13 +952,13 @@ func (a *CustomPagesAPIService) RetrieveCustomPage(ctx context.Context, customPa
 }
 
 // Execute executes the request
-//  @return ResponseRetrieveCustomPage
-func (a *CustomPagesAPIService) RetrieveCustomPageExecute(r ApiRetrieveCustomPageRequest) (*ResponseRetrieveCustomPage, *http.Response, error) {
+//  @return CustomPageResponse
+func (a *CustomPagesAPIService) RetrieveCustomPageExecute(r ApiRetrieveCustomPageRequest) (*CustomPageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseRetrieveCustomPage
+		localVarReturnValue  *CustomPageResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPagesAPIService.RetrieveCustomPage")
@@ -1132,7 +1132,7 @@ func (r ApiUpdateCustomPageRequest) CustomPageRequest(customPageRequest CustomPa
 	return r
 }
 
-func (r ApiUpdateCustomPageRequest) Execute() (*ResponseCustomPage, *http.Response, error) {
+func (r ApiUpdateCustomPageRequest) Execute() (*CustomPageResponse, *http.Response, error) {
 	return r.ApiService.UpdateCustomPageExecute(r)
 }
 
@@ -1154,13 +1154,13 @@ func (a *CustomPagesAPIService) UpdateCustomPage(ctx context.Context, customPage
 }
 
 // Execute executes the request
-//  @return ResponseCustomPage
-func (a *CustomPagesAPIService) UpdateCustomPageExecute(r ApiUpdateCustomPageRequest) (*ResponseCustomPage, *http.Response, error) {
+//  @return CustomPageResponse
+func (a *CustomPagesAPIService) UpdateCustomPageExecute(r ApiUpdateCustomPageRequest) (*CustomPageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponseCustomPage
+		localVarReturnValue  *CustomPageResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPagesAPIService.UpdateCustomPage")
