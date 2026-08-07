@@ -48,3 +48,4 @@ jobs:
         uses: github/codeql-action/analyze@18420e3271f74589575af831a523c833acda327f # codeql-bundle-v2.26.2
         with:
           category: '/language:${{ matrix.language }}'
+
