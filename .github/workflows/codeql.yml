@@ -23,11 +23,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Build-free extraction: `go build ./...` does not succeed at the
-          # repo root because some generated directories hold more than one
-          # package name, so autobuild is not usable here.
+          # Go has no build-free extraction, and `go build ./...` does not
+          # succeed at the repo root: several generated directories carry
+          # stale files that redeclare types or split a directory across two
+          # package names. The manual build below extracts the packages that
+          # do compile instead of failing the whole scan.
           - language: go
-            build-mode: none
+            build-mode: manual
           # Scans the workflows in .github/workflows for injection and
           # permission problems.
           - language: actions
@@ -38,14 +40,27 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Set up Go
+        if: matrix.language == 'go'
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          cache: false
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@18420e3271f74589575af831a523c833acda327f # codeql-bundle-v2.26.2
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
 
+      - name: Build Go packages
+        if: matrix.language == 'go'
+        run: |
+          # Packages that fail to compile are skipped rather than failing the
+          # scan; everything that builds is extracted and analyzed.
+          go build ./... || echo "::warning::Some Go packages failed to build and were not analyzed"
+
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@18420e3271f74589575af831a523c833acda327f # codeql-bundle-v2.26.2
         with:
           category: '/language:${{ matrix.language }}'
-
